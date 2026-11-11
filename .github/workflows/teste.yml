@@ -6,35 +6,51 @@ permissions:
   contents: write
 concurrency:
   group: projeto-social-teste
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   teste:
     if: ${{ !contains(github.event.head_commit.message, 'Resultado do teste') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      DEPURAR: "1"
+      PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install -q feedparser
-      - name: Correr tudo
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          TAREFAS: online-digital-emprego,pt-pla,br-ce
-          DEPURAR: "1"
-        run: |
-          mkdir -p logs
-          rm -f estado/noticias-vistas.json
-          cd scripts
-          { echo "### NOTICIAS"; python3 noticias.py; echo "saida=$?";
-            echo "### CURSOS"; python3 cursos.py; echo "saida=$?";
-            echo "### SITE"; python3 construir_site.py;
-            echo "### SEMANAL"; python3 semanal.py; echo "saida=$?"; } 2>&1 | tee ../logs/teste.txt
-      - name: Guardar resultado
-        if: ${{ always() }}
+      - name: Preparar
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf logs estado/noticias-vistas.json; mkdir -p logs
+          echo "inicio $(date -u +%T)" > logs/teste.txt
+          cat > /tmp/guardar.sh <<'SH'
           git add -A docs estado semanal logs
-          git commit -q -m "Resultado do teste $(date -u +%FT%H%M)" && (git push -q || (git pull -q --rebase && git push -q))
+          git commit -q -m "Resultado do teste ($1) $(date -u +%H%M%S)" || exit 0
+          git push -q || (git pull -q --rebase && git push -q)
+          SH
+          bash /tmp/guardar.sh inicio
+      - name: Notícias
+        timeout-minutes: 10
+        run: cd scripts && { echo "### NOTICIAS $(date -u +%T)"; python3 noticias.py; echo "saida=$?"; } >> ../logs/teste.txt 2>&1
+      - name: Guardar (notícias)
+        if: ${{ always() }}
+        run: bash /tmp/guardar.sh noticias
+      - name: Cursos
+        timeout-minutes: 25
+        env:
+          TAREFAS: online-digital-emprego,pt-pla,br-ce
+        run: cd scripts && { echo "### CURSOS $(date -u +%T)"; python3 cursos.py; echo "saida=$?"; } >> ../logs/teste.txt 2>&1
+      - name: Guardar (cursos)
+        if: ${{ always() }}
+        run: bash /tmp/guardar.sh cursos
+      - name: Site e semanal
+        if: ${{ always() }}
+        run: cd scripts && { echo "### SITE $(date -u +%T)"; python3 construir_site.py; echo "### SEMANAL"; python3 semanal.py; echo "fim $(date -u +%T)"; } >> ../logs/teste.txt 2>&1
+      - name: Guardar (fim)
+        if: ${{ always() }}
+        run: bash /tmp/guardar.sh fim

@@ -60,7 +60,7 @@ def _post_claude(corpo, tentativas=5):
         req = urllib.request.Request(URL_ANTHROPIC, data=dados, method="POST", headers={
             "x-api-key": chave, "anthropic-version": "2023-06-01", "content-type": "application/json"})
         try:
-            with urllib.request.urlopen(req, timeout=300) as r:
+            with urllib.request.urlopen(req, timeout=240) as r:
                 return json.loads(r.read().decode("utf-8"))
         except urllib.error.HTTPError as e:
             texto = e.read().decode("utf-8", "replace")[:500]
@@ -70,8 +70,9 @@ def _post_claude(corpo, tentativas=5):
                 espera *= 2
                 continue
             raise ErroClaude(f"Erro {e.code} da API: {texto}")
-        except (urllib.error.URLError, TimeoutError) as e:
-            if n < tentativas - 1:
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            print(f"  Sem resposta da API ({type(e).__name__}); tentativa {n + 1}")
+            if n < min(tentativas, 2) - 1:
                 time.sleep(espera)
                 espera *= 2
                 continue

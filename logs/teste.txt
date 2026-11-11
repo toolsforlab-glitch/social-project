@@ -1,1 +1,24 @@
 inicio 21:22:29
+### NOTICIAS 21:22:30
+Fontes:
+  ✓ The New Humanitarian: 10 no feed, 2 novas
+  ✓ Nonprofit Quarterly: 12 no feed, 4 novas
+  ✓ Alliance Magazine: 10 no feed, 3 novas
+  ✓ Stanford Social Innovation Review: 40 no feed, 2 novas
+  ✓ Observatório do Terceiro Setor: 20 no feed, 4 novas
+  ✓ GIFE: 10 no feed, 0 novas
+  ✓ Agência Brasil – Direitos Humanos: 10 no feed, 6 novas
+  ✓ Google News – humanitarian and nonprofit: 100 no feed, 15 novas
+  ✓ Google Notícias – terceiro setor (Brasil): 100 no feed, 15 novas
+  ✓ Google Notícias – ONG e solidariedade (Portugal): 100 no feed, 15 novas
+Candidatas novas: 66
+Escolhidas: 8  |  custo estimado: 0.0229 USD
+  • [direitos] Tribunal Constitucional de Angola trava normas da nova Lei das ONG (DW.com)
+  • [direitos] Estudo regista 18 mortes e 379 casos de violência política em 27 dias (Agência Brasil – Direitos Humanos)
+  • [direitos] Número de adolescentes privados de liberdade cai para metade em dez anos (Agência Brasil – Direitos Humanos)
+  • [filantropia] Filantropia promete 88 milhões de dólares ao fundo brasileiro de florestas na COP31 (Exame)
+  • [ambiente] Russos e chineses exploram florestas da República Centro-Africana sem controlo, denuncia ONG (Agroportal)
+  • [humanitario] Haiti: o que significa a intervenção de Bukele na crise de segurança (The New Humanitarian)
+  • [humanitario] Um «Super» El Niño expõe os desafios da filantropia perante choques combinados (Alliance Magazine)
+  • [desenvolvimento] Os 25% mais pobres têm 8,3% de chance de chegar ao topo da distribuição (Observatório do Terceiro Setor)
+saida=0

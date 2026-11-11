@@ -108,8 +108,11 @@ def main():
     temas = cfg["temas"]
     lista = "\n\n".join(
         f"[{c['id']}] ({c['fonte']}, {c['idioma']}) {c['titulo']}\n{c['resumo']}" for c in candidatos)
+    recentes = [it["titulo"] for d in dados["dias"][:3] for it in d["itens"]]
+    ja_publicadas = ("Já publicadas nos últimos dias (não repitas a mesma história, mesmo vinda de outra fonte):\n"
+                     + "\n".join(f"- {t}" for t in recentes) + "\n\n") if recentes else ""
     pedido = (
-        f"Data de hoje: {hoje().isoformat()}.\n\nNotícias candidatas:\n\n{lista}\n\n"
+        f"Data de hoje: {hoje().isoformat()}.\n\n{ja_publicadas}Notícias candidatas:\n\n{lista}\n\n"
         f"Escolhe entre 5 e {cfg['max_por_dia']} notícias (menos só se não houver mais candidatas relevantes). "
         f"Temas possíveis: {', '.join(temas)}.\n"
         "Não expliques a escolha. Responde só com JSON entre <json></json>, uma lista na ordem de importância, assim:\n"

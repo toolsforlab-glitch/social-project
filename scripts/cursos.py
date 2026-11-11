@@ -37,6 +37,9 @@ Não uses notícias genéricas. Se for uma página com várias turmas, o título
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
 
 Para cada curso:
+- "titulo": o nome do curso, curto, sem repetir o nome da entidade nem siglas de programas \
+(ex.: "Auxiliar de cozinha", e não "Auxiliar de cozinha – Senac Ceará PSG"). Para páginas com várias turmas, \
+indica o local (ex.: "Português Língua de Acolhimento (A1) em Arganil").
 - "descricao": 1 ou 2 frases em linguagem muito simples, que qualquer pessoa entenda. Para cursos no Brasil \
 escreve em português do Brasil; em Portugal, em português de Portugal; online, em português neutro. \
 Nunca rotules as pessoas (não escrevas "para pessoas vulneráveis", "para pobres", "para prostitutas"); \
@@ -109,7 +112,7 @@ def normalizar(c, tarefa, cfg, dominios):
     certificado = c.get("certificado") if c.get("certificado") in ("gratuito", "pago", "sem certificado") else "desconhecido"
     local = tarefa["local"]
     curso = {
-        "id": hashlib.sha1(url.encode()).hexdigest()[:10],
+        "id": hashlib.sha1((url + "|" + titulo.lower()).encode()).hexdigest()[:10],
         "titulo": titulo[:200], "entidade": (c.get("entidade") or "").strip()[:150], "url": url,
         "local": local,
         "modalidade": c.get("modalidade") if c.get("modalidade") in ("online", "presencial", "misto") else
@@ -130,7 +133,7 @@ def main():
     cfg = cfg_total["cursos"]
     modelo = cfg_total.get("modelo_cursos", "claude-haiku-5-5")
     base = ler_json(FICHEIRO, {"atualizado": None, "cursos": []})
-    por_url = {c["url"]: c for c in base["cursos"]}
+    por_url = {c["id"]: c for c in base["cursos"]}
 
     tarefas = cfg["pesquisas"]
     so = os.environ.get("TAREFAS", "").strip()
@@ -173,10 +176,10 @@ def main():
                 continue
             curso["link_verificado"] = 200 <= estado < 400
             hoje_txt = hoje().isoformat()
-            antigo = por_url.get(curso["url"])
+            antigo = por_url.get(curso["id"])
             curso["primeiro_visto"] = antigo["primeiro_visto"] if antigo else hoje_txt
             curso["visto_em"] = hoje_txt
-            por_url[curso["url"]] = curso
+            por_url[curso["id"]] = curso
             if antigo:
                 atualizados += 1
             else:

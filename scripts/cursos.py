@@ -151,6 +151,8 @@ def main():
         if not isinstance(lista, list):
             print(f"  Sem JSON válido na resposta. Início: {texto[:300]!r}")
             continue
+        if not lista:
+            print(f"  Lista vazia. Fim da resposta: {texto[-600:]!r}")
         print(f"  {len(lista)} propostos | {uso.get('pesquisas_web', 0)} pesquisas | custo ≈ {custo} USD")
         for c in lista:
             curso, motivo = normalizar(c, t, cfg, dominios)

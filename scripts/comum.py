@@ -97,6 +97,7 @@ def claude(modelo, sistema, pedido, max_tokens=4000, ferramentas=None, max_conti
         if ferramentas:
             corpo["tools"] = ferramentas
         resp = _post_claude(corpo)
+        depurar(f"resposta-{int(time.time() * 1000)}.json", resp)
         somar_uso(uso_total, resp.get("usage") or {})
         conteudo = resp.get("content") or []
         textos.append("".join(b.get("text", "") for b in conteudo if b.get("type") == "text"))
@@ -127,6 +128,13 @@ def extrair_json(texto):
             except json.JSONDecodeError:
                 continue
     return None
+
+
+def depurar(nome, conteudo):
+    if os.environ.get("DEPURAR") == "1":
+        os.makedirs(caminho("logs"), exist_ok=True)
+        with open(caminho("logs", nome), "w", encoding="utf-8") as f:
+            f.write(conteudo if isinstance(conteudo, str) else json.dumps(conteudo, ensure_ascii=False, indent=1))
 
 
 def custo_estimado(uso, modelo):

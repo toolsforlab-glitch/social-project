@@ -22,8 +22,10 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TAREFAS: online-digital-emprego,pt-pla,br-ce
+          DEPURAR: "1"
         run: |
           mkdir -p logs
+          rm -f estado/noticias-vistas.json
           cd scripts
           { echo "### NOTICIAS"; python3 noticias.py; echo "saida=$?";
             echo "### CURSOS"; python3 cursos.py; echo "saida=$?";

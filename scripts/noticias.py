@@ -122,6 +122,8 @@ def main():
         print(f"ERRO: {e}")
         return 1
     escolhidas = extrair_json(texto) or []
+    if not escolhidas:
+        print(f"  Resposta sem lista válida. Início: {texto[:500]!r}")
     por_id = {c["id"]: c for c in candidatos}
     itens = []
     for s in escolhidas:

@@ -32,16 +32,13 @@
     },
     "fontes": [
       {"nome": "The New Humanitarian", "url": "https://www.thenewhumanitarian.org/rss/all.xml", "idioma": "en"},
-      {"nome": "ReliefWeb", "url": "https://reliefweb.int/headlines/rss.xml", "idioma": "en"},
-      {"nome": "ONU News (ajuda humanitária)", "url": "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml", "idioma": "en"},
       {"nome": "Nonprofit Quarterly", "url": "https://nonprofitquarterly.org/feed/", "idioma": "en"},
       {"nome": "Alliance Magazine", "url": "https://www.alliancemagazine.org/feed/", "idioma": "en"},
-      {"nome": "Devex", "url": "https://www.devex.com/news.rss", "idioma": "en"},
       {"nome": "Stanford Social Innovation Review", "url": "https://ssir.org/site/rss_2.0", "idioma": "en"},
-      {"nome": "ONU News Português", "url": "https://news.un.org/feed/subscribe/pt/news/all/rss.xml", "idioma": "pt"},
       {"nome": "Observatório do Terceiro Setor", "url": "https://observatorio3setor.org.br/feed/", "idioma": "pt"},
       {"nome": "GIFE", "url": "https://gife.org.br/feed/", "idioma": "pt"},
       {"nome": "Agência Brasil – Direitos Humanos", "url": "https://agenciabrasil.ebc.com.br/rss/direitos-humanos/feed.xml", "idioma": "pt"},
+      {"nome": "Google News – humanitarian and nonprofit", "url": "https://news.google.com/rss/search?q=%22humanitarian+aid%22+OR+nonprofits+OR+philanthropy&hl=en-US&gl=US&ceid=US:en", "idioma": "en"},
       {"nome": "Google Notícias – terceiro setor (Brasil)", "url": "https://news.google.com/rss/search?q=%22terceiro+setor%22+OR+ONG+OR+filantropia&hl=pt-BR&gl=BR&ceid=BR:pt-419", "idioma": "pt"},
       {"nome": "Google Notícias – ONG e solidariedade (Portugal)", "url": "https://news.google.com/rss/search?q=ONG+OR+IPSS+OR+solidariedade+OR+%22economia+social%22&hl=pt-PT&gl=PT&ceid=PT:pt-150", "idioma": "pt"}
     ]

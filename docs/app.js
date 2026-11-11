@@ -104,7 +104,8 @@
       var factos = [];
       if (c.modalidade === "online") factos.push("Online");
       else {
-        var sitio = [c.cidade, c.regiao].filter(Boolean).join(", ") || nomesLocal[c.local] || "";
+        var partes = [c.cidade, c.regiao].filter(Boolean).filter(function (v, i, a) { return a.indexOf(v) === i; });
+        var sitio = partes.join(", ") || nomesLocal[c.local] || "";
         factos.push((c.modalidade === "misto" ? "Presencial e online" : "Presencial") + (sitio ? ": " + sitio : ""));
       }
       if (c.certificado === "gratuito") factos.push('<span class="bom">Certificado gratuito</span>');

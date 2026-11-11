@@ -1,0 +1,46 @@
+### NOTICIAS
+Fontes:
+  ✓ The New Humanitarian: 10 no feed, 2 novas
+  ✓ ReliefWeb: 0 no feed, 0 novas
+  ✗ ONU News (ajuda humanitária): feed inválido (<unknown>:2:0: not well-formed (invalid token))
+  ✓ Nonprofit Quarterly: 12 no feed, 4 novas
+  ✓ Alliance Magazine: 10 no feed, 3 novas
+  ✗ Devex: não foi possível ler (HTTPError: HTTP Error 404: Not Found)
+  ✓ Stanford Social Innovation Review: 40 no feed, 2 novas
+  ✗ ONU News Português: feed inválido (<unknown>:2:0: not well-formed (invalid token))
+  ✓ Observatório do Terceiro Setor: 20 no feed, 4 novas
+  ✓ GIFE: 10 no feed, 0 novas
+  ✓ Agência Brasil – Direitos Humanos: 10 no feed, 5 novas
+  ✓ Google Notícias – terceiro setor (Brasil): 100 no feed, 15 novas
+  ✓ Google Notícias – ONG e solidariedade (Portugal): 100 no feed, 15 novas
+Candidatas novas: 50
+Escolhidas: 0  |  custo estimado: 0.0226 USD
+saida=0
+### CURSOS
+
+== online-digital-emprego ==
+  Sem JSON válido na resposta. Início: ''
+
+== pt-pla ==
+  0 propostos | 4 pesquisas | custo ≈ 0.1221 USD
+
+== br-ce ==
+  0 propostos | 3 pesquisas | custo ≈ 0.0857 USD
+
+Resumo: 0 novos, 0 atualizados, 0 removidos, 0 no total.
+Pesquisas web: 10 | tokens entrada: 162449 | saída: 11388 | custo estimado: 0.319 USD
+saida=0
+### SITE
+Site gerado em docs/
+### SEMANAL
+Publicação para o WhatsApp:
+
+📚 *Cursos gratuitos*
+
+Esta semana não entraram cursos novos, mas a lista continua disponível:
+https://toolsforlab-glitch.github.io/projeto-social/cursos.html
+
+Newsletter: 0 notícias, 0 cursos.
+
+Brevo ainda não configurado: nada foi enviado. O texto fica em docs/semanal/whatsapp.txt.
+saida=0

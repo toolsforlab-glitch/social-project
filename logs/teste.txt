@@ -50,3 +50,42 @@ saida=0
 Resumo: 9 novos, 4 atualizados, 0 removidos, 9 no total.
 Pesquisas web: 9 | tokens entrada: 161061 | saída: 21065 | custo estimado: 0.356 USD
 saida=0
+### SITE 21:24:35
+Site gerado em docs/
+### SEMANAL
+Publicação para o WhatsApp:
+
+📚 *Cursos gratuitos desta semana*
+
+✅ *Bolos, Recheios e Coberturas – Senac Ceará PSG*
+Ceará
+https://psg.ce.senac.br/oportunidades/
+
+✅ *Português Língua de Acolhimento - Percurso A1 – IEFP Arganil*
+Arganil, Coimbra
+https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=268
+
+✅ *Aprender Educação Financeira Pessoal*
+online
+https://www.gov.br/pt-br/servicos/aprender-educacao-financeira-pessoal-no-aprender-valor
+
+✅ *Curso FIC Empreendedorismo artesanal – Renda de labirinto – IFCE Campus Aracati (Edital 27/2026)*
+Aracati, Ceará
+https://portal.ifce.edu.br/campus/aracati/
+
+✅ *Português Língua de Acolhimento - Percurso A2 – IEFP Guimarães*
+Guimarães, Braga
+Para migrantes
+https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=199
+
+✅ *Aprender gestão de finanças pessoais*
+online
+https://www.gov.br/pt-br/servicos/aprender-a-administrar-suas-financas-pessoais
+
+E mais 3 cursos novos esta semana.
+👉 Veja todos e escolha o que quer aprender: https://toolsforlab-glitch.github.io/projeto-social/cursos.html
+
+Newsletter: 2 notícias, 6 cursos.
+
+Brevo ainda não configurado: nada foi enviado. O texto fica em docs/semanal/whatsapp.txt.
+fim 21:24:35

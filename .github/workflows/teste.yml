@@ -1,0 +1,38 @@
+name: Teste do projeto social
+on:
+  push:
+    branches: [teste-projeto-social]
+permissions:
+  contents: write
+concurrency:
+  group: projeto-social-teste
+  cancel-in-progress: false
+jobs:
+  teste:
+    if: ${{ !contains(github.event.head_commit.message, 'Resultado do teste') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q feedparser
+      - name: Correr tudo
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAREFAS: online-digital-emprego,pt-pla,br-ce
+        run: |
+          mkdir -p logs
+          cd scripts
+          { echo "### NOTICIAS"; python3 noticias.py; echo "saida=$?";
+            echo "### CURSOS"; python3 cursos.py; echo "saida=$?";
+            echo "### SITE"; python3 construir_site.py;
+            echo "### SEMANAL"; python3 semanal.py; echo "saida=$?"; } 2>&1 | tee ../logs/teste.txt
+      - name: Guardar resultado
+        if: ${{ always() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A docs estado semanal logs
+          git commit -q -m "Resultado do teste $(date -u +%FT%H%M)" && (git push -q || (git pull -q --rebase && git push -q))

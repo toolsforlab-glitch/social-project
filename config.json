@@ -1,0 +1,104 @@
+{
+  "nome": "Projeto Social",
+  "nome_provisorio": true,
+  "slogan": "Informação e oportunidades para quem ajuda e para quem precisa",
+  "url_site": "https://toolsforlab-glitch.github.io/projeto-social/",
+  "links": {
+    "playlist_ongs": "https://open.spotify.com/playlist/0Wa3oKP9SIKGNx5mm0lorq",
+    "canal_whatsapp": ""
+  },
+
+  "modelo_noticias": "claude-haiku-5-5",
+  "modelo_cursos": "claude-haiku-5-5",
+  "precos_por_milhao_tokens": {
+    "claude-haiku-5-5": [1, 5],
+    "claude-sonnet-5-5": [3, 15]
+  },
+
+  "noticias": {
+    "max_por_dia": 8,
+    "dias_guardados": 30,
+    "horas_janela": 36,
+    "temas": {
+      "humanitario": "Ajuda humanitária",
+      "desenvolvimento": "Desenvolvimento e pobreza",
+      "filantropia": "Filantropia e financiamento",
+      "gestao": "Gestão de ONGs",
+      "direitos": "Direitos humanos",
+      "educacao": "Educação",
+      "saude": "Saúde",
+      "ambiente": "Clima e ambiente",
+      "migracoes": "Migrações e refugiados"
+    },
+    "fontes": [
+      {"nome": "The New Humanitarian", "url": "https://www.thenewhumanitarian.org/rss/all.xml", "idioma": "en"},
+      {"nome": "ReliefWeb", "url": "https://reliefweb.int/headlines/rss.xml", "idioma": "en"},
+      {"nome": "ONU News (ajuda humanitária)", "url": "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml", "idioma": "en"},
+      {"nome": "Nonprofit Quarterly", "url": "https://nonprofitquarterly.org/feed/", "idioma": "en"},
+      {"nome": "Alliance Magazine", "url": "https://www.alliancemagazine.org/feed/", "idioma": "en"},
+      {"nome": "Devex", "url": "https://www.devex.com/news.rss", "idioma": "en"},
+      {"nome": "Stanford Social Innovation Review", "url": "https://ssir.org/site/rss_2.0", "idioma": "en"},
+      {"nome": "ONU News Português", "url": "https://news.un.org/feed/subscribe/pt/news/all/rss.xml", "idioma": "pt"},
+      {"nome": "Observatório do Terceiro Setor", "url": "https://observatorio3setor.org.br/feed/", "idioma": "pt"},
+      {"nome": "GIFE", "url": "https://gife.org.br/feed/", "idioma": "pt"},
+      {"nome": "Agência Brasil – Direitos Humanos", "url": "https://agenciabrasil.ebc.com.br/rss/direitos-humanos/feed.xml", "idioma": "pt"},
+      {"nome": "Google Notícias – terceiro setor (Brasil)", "url": "https://news.google.com/rss/search?q=%22terceiro+setor%22+OR+ONG+OR+filantropia&hl=pt-BR&gl=BR&ceid=BR:pt-419", "idioma": "pt"},
+      {"nome": "Google Notícias – ONG e solidariedade (Portugal)", "url": "https://news.google.com/rss/search?q=ONG+OR+IPSS+OR+solidariedade+OR+%22economia+social%22&hl=pt-PT&gl=PT&ceid=PT:pt-150", "idioma": "pt"}
+    ]
+  },
+
+  "cursos": {
+    "max_pesquisas_web": 4,
+    "max_por_pesquisa": 8,
+    "dias_validade": 60,
+    "necessidades": [
+      {"id": "digital", "rotulo": "Usar o computador e a internet"},
+      {"id": "tecnologia", "rotulo": "Trabalhar com tecnologia"},
+      {"id": "portugues", "rotulo": "Aprender português"},
+      {"id": "linguas", "rotulo": "Aprender outra língua"},
+      {"id": "profissao", "rotulo": "Aprender uma profissão"},
+      {"id": "mudar", "rotulo": "Mudar de profissão"},
+      {"id": "escola", "rotulo": "Terminar a escola"},
+      {"id": "emprego", "rotulo": "Encontrar emprego"},
+      {"id": "negocio", "rotulo": "Abrir o meu próprio negócio"},
+      {"id": "dinheiro", "rotulo": "Organizar o meu dinheiro"},
+      {"id": "direitos", "rotulo": "Conhecer os meus direitos"}
+    ],
+    "perfis_internos": [
+      "jovens", "50mais", "mudanca_profissao", "mulheres", "migrantes_refugiados",
+      "pessoas_com_deficiencia", "situacao_de_rua", "saida_sistema_prisional", "lgbtqia",
+      "rurais_indigenas_quilombolas", "desempregados", "todos"
+    ],
+    "locais": [
+      {"id": "online", "rotulo": "Online (em qualquer lugar)"},
+      {"id": "PT", "rotulo": "Portugal"},
+      {"id": "BR-MA", "rotulo": "Brasil – Maranhão"},
+      {"id": "BR-CE", "rotulo": "Brasil – Ceará"},
+      {"id": "BR-AC", "rotulo": "Brasil – Acre"}
+    ],
+    "dominios": {
+      "online": ["escolavirtual.gov.br", "gov.br", "nau.edu.pt", "academiaportugaldigital.pt", "iefp.pt", "gcfglobal.org", "kiron.ngo", "khanacademy.org", "sebrae.com.br", "ev.org.br", "escoladotrabalhador40.com.br"],
+      "PT": ["iefp.pt", "qualifica.gov.pt", "aima.gov.pt", "gov.pt", "anqep.gov.pt", "scml.pt", "caritas.pt"],
+      "BR-MA": ["ifma.edu.br", "ufma.br", "ma.gov.br", "senac.br", "senai.br", "fiema.org.br", "sebrae.com.br", "gov.br"],
+      "BR-CE": ["ifce.edu.br", "ufc.br", "ce.gov.br", "senac.br", "senai.br", "sfiec.org.br", "sebrae.com.br", "gov.br"],
+      "BR-AC": ["ifac.edu.br", "ufac.br", "ac.gov.br", "senac.br", "senai.br", "sebrae.com.br", "gov.br"]
+    },
+    "pesquisas": [
+      {"id": "online-digital-emprego", "local": "online", "pedido": "cursos online gratuitos de competências digitais básicas, preparação para o emprego e educação financeira, para iniciantes, em português"},
+      {"id": "online-profissao-negocio", "local": "online", "pedido": "cursos online gratuitos profissionalizantes, de empreendedorismo e de tecnologia para iniciantes, em português, com certificado gratuito"},
+      {"id": "online-linguas-refugiados", "local": "online", "pedido": "cursos online gratuitos de português para estrangeiros e de outras línguas, e programas gratuitos de formação para refugiados e migrantes"},
+      {"id": "pt-formacao", "local": "PT", "pedido": "formação profissional gratuita presencial em Portugal para desempregados, jovens e adultos (IEFP, Centros Qualifica, conclusão do 9.º e 12.º ano, RVCC) com inscrições abertas"},
+      {"id": "pt-pla", "local": "PT", "pedido": "cursos gratuitos de Português Língua de Acolhimento (PLA) e outras formações gratuitas presenciais para migrantes em Portugal"},
+      {"id": "br-ma", "local": "BR-MA", "pedido": "cursos gratuitos presenciais com inscrições abertas no Maranhão (São Luís e interior): qualificação profissional, cursos FIC de institutos federais, Senac, Senai, programas estaduais e municipais, EJA"},
+      {"id": "br-ce", "local": "BR-CE", "pedido": "cursos gratuitos presenciais com inscrições abertas no Ceará (Fortaleza e interior): qualificação profissional, cursos FIC do IFCE, Senac, Senai, programas estaduais e municipais, EJA"},
+      {"id": "br-ac", "local": "BR-AC", "pedido": "cursos gratuitos presenciais com inscrições abertas no Acre (Rio Branco e interior): qualificação profissional, cursos FIC do IFAC, Senac, Senai, programas estaduais e municipais, EJA"}
+    ]
+  },
+
+  "semanal": {
+    "max_noticias_newsletter": 8,
+    "max_cursos_whatsapp": 6,
+    "newsletter_remetente_nome": "Projeto Social",
+    "newsletter_remetente_email": ""
+  }
+}

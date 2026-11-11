@@ -1,0 +1,53 @@
+name: Cursos e resumo da semana
+
+on:
+  schedule:
+    - cron: "23 6 * * 1"   # todas as segundas-feiras às 06:23 UTC
+  workflow_dispatch:
+    inputs:
+      tarefas:
+        description: "Só estas pesquisas de cursos (ids separados por vírgulas; vazio = todas)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: projeto-social
+  cancel-in-progress: false
+
+jobs:
+  semanal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q feedparser
+
+      - name: Procurar cursos gratuitos
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAREFAS: ${{ inputs.tarefas }}
+        run: cd scripts && python3 cursos.py
+
+      - name: Atualizar o site
+        run: cd scripts && python3 construir_site.py
+
+      - name: Newsletter e publicação para o WhatsApp
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LISTA_ID: ${{ secrets.BREVO_LISTA_ID }}
+          EMAIL_ADMIN: ${{ secrets.EMAIL_ADMIN }}
+        run: cd scripts && python3 semanal.py
+
+      - name: Publicar
+        if: ${{ always() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs semanal
+          git diff --cached --quiet || (git commit -q -m "Cursos e resumo $(date -u +%F)" && (git push -q || (git pull -q --rebase && git push -q)))

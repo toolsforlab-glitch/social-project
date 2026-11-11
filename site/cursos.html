@@ -1,0 +1,24 @@
+<h1>Cursos gratuitos</h1>
+<p>Cursos sem custo, online ou presenciais. A lista é atualizada todas as semanas.</p>
+
+<form id="cursos-filtros" onsubmit="return false">
+  <div class="campo">
+    <label for="cursos-onde">Onde está?</label>
+    <select id="cursos-onde"></select>
+  </div>
+  <fieldset style="border:0;padding:0;margin:0">
+    <legend style="font-weight:700;margin-bottom:.5rem;padding:0">O que quer aprender?</legend>
+    <ul class="opcoes" id="cursos-opcoes"></ul>
+  </fieldset>
+  <div class="campo">
+    <label for="cursos-texto">Procurar por palavra</label>
+    <input type="search" id="cursos-texto" placeholder="Ex.: cozinha, Excel, inglês">
+  </div>
+</form>
+
+<p class="contagem" id="cursos-contagem" aria-live="polite"></p>
+<ul class="lista" id="cursos-lista"></ul>
+
+<div class="aviso">
+  <p><strong>Antes de se inscrever:</strong> abra a página do curso e confirme datas, requisitos e se o certificado também é gratuito. Se um link não funcionar, o curso pode já ter terminado.</p>
+</div>

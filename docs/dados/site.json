@@ -1,0 +1,82 @@
+{
+ "nome": "Projeto Social",
+ "necessidades": [
+  {
+   "id": "digital",
+   "rotulo": "Usar o computador e a internet"
+  },
+  {
+   "id": "tecnologia",
+   "rotulo": "Trabalhar com tecnologia"
+  },
+  {
+   "id": "portugues",
+   "rotulo": "Aprender português"
+  },
+  {
+   "id": "linguas",
+   "rotulo": "Aprender outra língua"
+  },
+  {
+   "id": "profissao",
+   "rotulo": "Aprender uma profissão"
+  },
+  {
+   "id": "mudar",
+   "rotulo": "Mudar de profissão"
+  },
+  {
+   "id": "escola",
+   "rotulo": "Terminar a escola"
+  },
+  {
+   "id": "emprego",
+   "rotulo": "Encontrar emprego"
+  },
+  {
+   "id": "negocio",
+   "rotulo": "Abrir o meu próprio negócio"
+  },
+  {
+   "id": "dinheiro",
+   "rotulo": "Organizar o meu dinheiro"
+  },
+  {
+   "id": "direitos",
+   "rotulo": "Conhecer os meus direitos"
+  }
+ ],
+ "locais": [
+  {
+   "id": "online",
+   "rotulo": "Online (em qualquer lugar)"
+  },
+  {
+   "id": "PT",
+   "rotulo": "Portugal"
+  },
+  {
+   "id": "BR-MA",
+   "rotulo": "Brasil – Maranhão"
+  },
+  {
+   "id": "BR-CE",
+   "rotulo": "Brasil – Ceará"
+  },
+  {
+   "id": "BR-AC",
+   "rotulo": "Brasil – Acre"
+  }
+ ],
+ "temas": {
+  "humanitario": "Ajuda humanitária",
+  "desenvolvimento": "Desenvolvimento e pobreza",
+  "filantropia": "Filantropia e financiamento",
+  "gestao": "Gestão de ONGs",
+  "direitos": "Direitos humanos",
+  "educacao": "Educação",
+  "saude": "Saúde",
+  "ambiente": "Clima e ambiente",
+  "migracoes": "Migrações e refugiados"
+ }
+}

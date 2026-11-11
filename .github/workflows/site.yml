@@ -1,0 +1,30 @@
+name: Atualizar o site
+
+# Corre quando se muda a configuração (ex.: o nome do projeto) ou o aspeto do site.
+on:
+  push:
+    branches: [main]
+    paths: ["config.json", "site/**", "scripts/construir_site.py"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: projeto-social
+  cancel-in-progress: false
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - name: Gerar o site
+        run: cd scripts && python3 construir_site.py
+      - name: Publicar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet || (git commit -q -m "Site atualizado" && (git push -q || (git pull -q --rebase && git push -q)))

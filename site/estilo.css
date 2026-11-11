@@ -1,0 +1,124 @@
+/* Paleta: anil de azulejo (comum a Portugal e ao Brasil), cal, girassol.
+   Tipo: Atkinson Hyperlegible, desenhada para leitura fácil, inclusive com baixa visão. */
+:root {
+  --anil: #1d3f8f;
+  --anil-escuro: #142d68;
+  --anil-claro: #e8eefa;
+  --cal: #fbfbf8;
+  --tinta: #1a1f2b;
+  --tinta-suave: #4a5163;
+  --pedra: #dfe3ec;
+  --girassol: #f6c343;
+  --folha: #2e7d4f;
+  --raio: 10px;
+  --largura: 46rem;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--cal);
+  color: var(--tinta);
+  font-family: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+a { color: var(--anil); text-underline-offset: 0.18em; }
+a:hover { color: var(--anil-escuro); }
+:focus-visible { outline: 3px solid var(--girassol); outline-offset: 2px; border-radius: 4px; }
+
+.saltar { position: absolute; left: -999px; }
+.saltar:focus { left: 1rem; top: 1rem; background: var(--girassol); color: var(--tinta); padding: .5rem 1rem; z-index: 10; }
+
+/* Faixa de azulejo: o único elemento decorativo do site */
+.azulejo {
+  height: 28px;
+  background-color: var(--anil);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cg fill='none' stroke='%23fbfbf8' stroke-width='1.6'%3E%3Cpath d='M14 2 L26 14 L14 26 L2 14 Z'/%3E%3Ccircle cx='14' cy='14' r='4'/%3E%3Cpath d='M0 0 Q7 7 0 14 M28 0 Q21 7 28 14 M0 28 Q7 21 0 14 M28 28 Q21 21 28 14'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 28px 28px;
+}
+
+.topo { background: var(--cal); border-bottom: 1px solid var(--pedra); }
+.topo .dentro { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: .9rem; padding-bottom: .9rem; }
+.marca { font-weight: 700; font-size: 1.3rem; color: var(--anil); text-decoration: none; letter-spacing: -0.01em; }
+.menu { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 1rem; }
+.menu a { text-decoration: none; color: var(--tinta); padding: .2rem 0; border-bottom: 2px solid transparent; }
+.menu a[aria-current="page"] { border-bottom-color: var(--anil); color: var(--anil); font-weight: 700; }
+
+.dentro { max-width: var(--largura); margin: 0 auto; padding-left: 1.15rem; padding-right: 1.15rem; }
+main.dentro { padding-top: 2rem; padding-bottom: 3rem; }
+
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 .6rem; }
+h1 { font-size: clamp(2rem, 6vw, 2.9rem); color: var(--anil); }
+h2 { font-size: 1.55rem; margin-top: 2.6rem; }
+h3 { font-size: 1.2rem; }
+p { margin: 0 0 1rem; max-width: 40em; }
+.discreto { color: var(--tinta-suave); font-size: 1rem; }
+
+/* Pergunta principal */
+.pergunta { margin-bottom: 1.2rem; }
+.opcoes { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.4rem; padding: 0; list-style: none; }
+.opcao {
+  display: inline-block; font: inherit; font-size: 1rem; cursor: pointer; text-decoration: none;
+  padding: .55rem .95rem; border-radius: 999px; border: 2px solid var(--anil);
+  background: #fff; color: var(--anil); line-height: 1.25;
+}
+.opcao:hover { background: var(--anil-claro); }
+.opcao[aria-pressed="true"] { background: var(--anil); color: #fff; }
+.opcao[aria-pressed="true"]::before { content: "✓ "; }
+
+.campo { display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1rem; max-width: 26rem; }
+.campo label { font-weight: 700; }
+select, input[type="search"] {
+  font: inherit; font-size: 1.05rem; padding: .7rem .8rem; border: 2px solid var(--pedra);
+  border-radius: var(--raio); background: #fff; color: var(--tinta); width: 100%;
+}
+select:focus, input[type="search"]:focus { border-color: var(--anil); }
+.filtros { display: grid; gap: 0 1.2rem; grid-template-columns: 1fr; }
+@media (min-width: 40rem) { .filtros { grid-template-columns: 1fr 1fr; } }
+
+.botao {
+  display: inline-block; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+  background: var(--anil); color: #fff; border: 0; border-radius: var(--raio); padding: .8rem 1.3rem;
+}
+.botao:hover { background: var(--anil-escuro); color: #fff; }
+.botao.secundario { background: transparent; color: var(--anil); border: 2px solid var(--anil); }
+
+/* Listas */
+.lista { list-style: none; padding: 0; margin: 0; }
+.curso, .noticia { padding: 1.1rem 0 1.2rem; border-bottom: 1px solid var(--pedra); }
+.curso h3 { margin-bottom: .25rem; }
+.curso h3 a { text-decoration: none; }
+.curso h3 a:hover { text-decoration: underline; }
+.entidade { color: var(--tinta-suave); font-size: 1rem; margin-bottom: .5rem; }
+.factos { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: .5rem 0 .8rem; padding: 0; list-style: none; font-size: .95rem; }
+.factos li { background: var(--anil-claro); color: var(--anil-escuro); padding: .15rem .6rem; border-radius: 6px; }
+.factos li.bom { background: #e5f3ea; color: var(--folha); }
+.factos li.atencao { background: #fff4d6; color: #6b4e00; }
+.condicao { font-size: 1rem; margin: 0 0 .6rem; }
+
+.noticia h3 { font-size: 1.15rem; margin-bottom: .3rem; }
+.noticia h3 a { text-decoration: none; color: var(--tinta); }
+.noticia h3 a:hover { color: var(--anil); text-decoration: underline; }
+.noticia .meta { font-size: .95rem; color: var(--tinta-suave); margin: 0; }
+.dia { margin-top: 2rem; font-size: 1.1rem; color: var(--tinta-suave); font-weight: 700; }
+
+.contagem { font-weight: 700; margin: 1.4rem 0 .2rem; }
+.vazio { background: #fff; border: 2px dashed var(--pedra); border-radius: var(--raio); padding: 1.2rem; }
+
+/* Caminhos na página inicial */
+.caminhos { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1rem; }
+@media (min-width: 40rem) { .caminhos { grid-template-columns: 1fr 1fr; } }
+.caminho { background: #fff; border: 1px solid var(--pedra); border-left: 5px solid var(--anil); border-radius: var(--raio); padding: 1rem 1.1rem; }
+.caminho h3 { margin-bottom: .3rem; }
+.caminho p { margin: 0; font-size: 1rem; }
+.caminho.breve { border-left-color: var(--pedra); }
+.caminho.breve h3 { color: var(--tinta-suave); }
+
+.aviso { background: var(--anil-claro); border-radius: var(--raio); padding: 1rem 1.1rem; font-size: 1rem; margin-top: 2rem; }
+
+.rodape { border-top: 1px solid var(--pedra); padding: 1.5rem 0 2.5rem; font-size: .95rem; color: var(--tinta-suave); }
+.rodape p { margin-bottom: .5rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

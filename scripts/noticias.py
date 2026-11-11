@@ -110,14 +110,14 @@ def main():
         f"[{c['id']}] ({c['fonte']}, {c['idioma']}) {c['titulo']}\n{c['resumo']}" for c in candidatos)
     pedido = (
         f"Data de hoje: {hoje().isoformat()}.\n\nNotícias candidatas:\n\n{lista}\n\n"
-        f"Escolhe no máximo {cfg['max_por_dia']} (podes escolher menos se não houver boas). "
+        f"Escolhe entre 5 e {cfg['max_por_dia']} notícias (menos só se não houver mais candidatas relevantes). "
         f"Temas possíveis: {', '.join(temas)}.\n"
-        "Responde só com JSON entre <json></json>, uma lista na ordem de importância, assim:\n"
+        "Não expliques a escolha. Responde só com JSON entre <json></json>, uma lista na ordem de importância, assim:\n"
         '<json>[{"id": "...", "titulo": "título em português", "resumo": "1-2 frases", '
         '"tema": "um dos temas", "regiao": "Mundo, Portugal, Brasil, África, Europa, Américas, Ásia ou Médio Oriente"}]</json>')
     modelo = cfg_total.get("modelo_noticias", "claude-haiku-5-5")
     try:
-        texto, uso = claude(modelo, SISTEMA, pedido, max_tokens=3000)
+        texto, uso = claude(modelo, SISTEMA, pedido, max_tokens=12000)
     except ErroClaude as e:
         print(f"ERRO: {e}")
         return 1

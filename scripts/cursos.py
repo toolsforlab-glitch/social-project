@@ -22,12 +22,19 @@ SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabili
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.
 
 Um curso só entra se cumprir TODAS estas regras:
-1. É gratuito para quem o frequenta (inscrição e aulas sem custo).
+1. É gratuito para quem o frequenta (inscrição e aulas sem custo). Conta como gratuito um programa oficial \
+que é gratuito por regra (ex.: formação do IEFP para desempregados, Português Língua de Acolhimento, cursos \
+FIC dos institutos federais, Programa Senac de Gratuidade), mesmo que a página não o repita em cada turma.
 2. Está disponível agora: inscrições abertas, curso de acesso livre a qualquer momento, ou turma com data futura. \
 Exclui cursos com inscrições já encerradas ou de anos anteriores.
 3. É de nível iniciante ou não exige formação anterior difícil (indica os requisitos que existirem).
 4. É de uma entidade de confiança (organismo público, universidade, instituto federal, Sistema S, ONG reconhecida).
-5. O link aponta para a página do curso ou da inscrição (não para uma notícia genérica), e veio dos resultados da pesquisa.
+5. O link veio dos resultados da pesquisa e leva a pessoa à inscrição: a página do curso, de um edital/processo \
+seletivo, ou a página da oferta da entidade onde se escolhe a turma (ex.: a oferta formativa de um centro do IEFP). \
+Não uses notícias genéricas. Se for uma página com várias turmas, o título diz o que é \
+(ex.: "Cursos de Português Língua de Acolhimento – IEFP Braga").
+
+Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
 
 Para cada curso:
 - "descricao": 1 ou 2 frases em linguagem muito simples, que qualquer pessoa entenda. Para cursos no Brasil \
@@ -77,7 +84,8 @@ def pedido_para(tarefa, cfg):
         f"Lista de necessidades (ids): {necessidades}.\nLista interna de perfis (ids): {perfis}.\n\n"
         f"Devolve no máximo {cfg['max_por_pesquisa']} cursos, os melhores e mais úteis. "
         "Se não encontrares nenhum que cumpra as regras, devolve uma lista vazia.\n"
-        "Responde no fim com JSON entre <json></json>, uma lista de objetos com estes campos:\n"
+        "Não escrevas explicações nem listas de candidatos recusados: responde só com o JSON entre "
+        "<json></json>, uma lista de objetos com estes campos:\n"
         f"{', '.join(CAMPOS)}")
 
 
@@ -138,7 +146,7 @@ def main():
             ferramenta["user_location"] = LOCALIZACAO[t["local"]]
         print(f"\n== {t['id']} ==")
         try:
-            texto, uso = claude(modelo, SISTEMA, pedido_para(t, cfg), max_tokens=6000, ferramentas=[ferramenta])
+            texto, uso = claude(modelo, SISTEMA, pedido_para(t, cfg), max_tokens=16000, ferramentas=[ferramenta])
         except ErroClaude as e:
             print(f"  ERRO: {e}")
             falhas += 1

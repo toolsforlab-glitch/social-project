@@ -22,3 +22,31 @@ Escolhidas: 8  |  custo estimado: 0.0229 USD
   • [humanitario] Um «Super» El Niño expõe os desafios da filantropia perante choques combinados (Alliance Magazine)
   • [desenvolvimento] Os 25% mais pobres têm 8,3% de chance de chegar ao topo da distribuição (Observatório do Terceiro Setor)
 saida=0
+### CURSOS 21:22:49
+
+== online-digital-emprego ==
+  4 propostos | 3 pesquisas | custo ≈ 0.1195 USD
+  + Aprender gestão de finanças pessoais — Banco Central do Brasil / Escola Virtual de Governo (EV.G)
+  + Aprender Educação Financeira Pessoal — Escola Virtual de Governo (EV.G)
+  - recusado: link não abre (404) https://mooc.cps.sp.gov.br
+  + Comunicação Assertiva e Técnicas de Procura de Emprego – IEFP (oferta de formação) — IEFP – Instituto do Emprego e Formação Profissional
+
+== pt-pla ==
+  4 propostos | 2 pesquisas | custo ≈ 0.0771 USD
+  + Português Língua de Acolhimento - Percurso A2 – IEFP Guimarães — IEFP - Instituto do Emprego e Formação Profissional
+  + Português Língua de Acolhimento - Percurso A1 – IEFP Arganil — IEFP - Instituto do Emprego e Formação Profissional
+  + Português Língua de Acolhimento - Percursos A1 + A2 – IEFP Salvaterra de Magos — IEFP - Instituto do Emprego e Formação Profissional
+  + Português Língua de Acolhimento - Percursos A1 + A2 e B1 – IEFP Águeda — IEFP - Instituto do Emprego e Formação Profissional
+
+== br-ce ==
+  6 propostos | 4 pesquisas | custo ≈ 0.1598 USD
+  + Assistente de Suporte e Manutenção de Computadores – Senac Ceará PSG — Senac Ceará (Programa Senac de Gratuidade)
+  + Introdução ao Mundo Digital – Senac Ceará PSG — Senac Ceará (Programa Senac de Gratuidade)
+  + Assistente Administrativo – Senac Ceará PSG — Senac Ceará (Programa Senac de Gratuidade)
+  + Depilador – Senac Ceará PSG — Senac Ceará (Programa Senac de Gratuidade)
+  + Bolos, Recheios e Coberturas – Senac Ceará PSG — Senac Ceará (Programa Senac de Gratuidade)
+  + Curso FIC Empreendedorismo artesanal – Renda de labirinto – IFCE Campus Aracati (Edital 27/2026) — IFCE – Instituto Federal do Ceará, Campus Aracati
+
+Resumo: 9 novos, 4 atualizados, 0 removidos, 9 no total.
+Pesquisas web: 9 | tokens entrada: 161061 | saída: 21065 | custo estimado: 0.356 USD
+saida=0

@@ -30,6 +30,8 @@ Regras:
 - Se a mesma história aparece em várias fontes, escolhe só uma.
 - Evita publicidade, angariações de fundos de uma só organização, eventos sem interesse geral e textos sem informação.
 - Equilibra temas e regiões; inclui pelo menos uma notícia de Portugal ou do Brasil quando houver boas candidatas.
+- Evita notícias locais de interesse restrito (uma cidade, um condado ou uma organização pequena nos EUA ou noutro país), \
+exceto quando têm relevância nacional em Portugal ou no Brasil, ou ensinam algo útil a qualquer ONG.
 - Escreve em português neutro, compreensível em Portugal e no Brasil, sem regionalismos.
 - O título e o resumo são escritos por ti, com as tuas palavras: não copies frases do original. \
 O resumo tem 1 ou 2 frases curtas e diz o essencial. Não acrescentes factos que não estejam no texto dado.
@@ -131,7 +133,7 @@ def main():
     itens = []
     for s in escolhidas:
         c = por_id.get(str(s.get("id")))
-        if not c or not s.get("titulo") or not s.get("resumo"):
+        if not c or not s.get("titulo") or not s.get("resumo") or s.get("tema") not in temas:
             continue
         itens.append({
             "titulo": s["titulo"].strip(), "resumo": s["resumo"].strip(),

@@ -31,7 +31,13 @@
    "Origem",
    "Notas",
    "Como me inscrever",
-   "Nota da verificação"
+   "Nota da verificação",
+   "Situação das inscrições",
+   "Verificar automaticamente",
+   "Falhas seguidas do link",
+   "Impressão da página",
+   "Página mudou em",
+   "Próxima verificação"
   ],
   [
    "C-949362f8",
@@ -59,7 +65,13 @@
    "rotina",
    "",
    "1. Abra a página de ofertas de formação do IEFP (iefp.pt/ofertas-formacao).\n2. Procure por \"Comunicação Assertiva e Técnicas de Procura de Emprego\".\n3. Confirme o local, a data de início e os requisitos na oferta que aparece, porque podem não corresponder aos dados que temos.\n4. Clique em \"Mais Detalhes\" para ver como se inscrever.\n5. Se a página não indicar o processo, contacte o Centro de Emprego ou o Serviço de Formação Profissional da sua zona.",
-   "2026-11-14: A página lista uma oferta com este título (ID 280033) em Oliveira do Hospital, presencial, com início a 25/11/2026 e sem requisito de 12.º ano nem de idade entre 18 e 35 anos; os dados que temos indicam online, início a 23/11/2026, 12.º ano e 18-35 anos, por isso não foi possível confirmar. A página não diz que o curso é gratuito nem indica data limite de inscrição."
+   "2026-11-14: A página lista uma oferta com este título (ID 280033) em Oliveira do Hospital, presencial, com início a 25/11/2026 e sem requisito de 12.º ano nem de idade entre 18 e 35 anos; os dados que temos indicam online, início a 23/11/2026, 12.º ano e 18-35 anos, por isso não foi possível confirmar. A página não diz que o curso é gratuito nem indica data limite de inscrição.",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-ac9029b1",
@@ -87,7 +99,13 @@
    "rotina",
    "",
    "1. Entre no site Aprender Valor (aprendervalor.bcb.gov.br) com a sua Conta gov.br de nível prata ou ouro.\n2. Clique em \"Acessar Plataforma\", no canto superior direito.\n3. No menu superior, escolha \"Formações\" e depois \"Educação Financeira Pessoal\".\n4. O curso abre pela Escola Virtual de Governo (EV.G). Siga as instruções na tela para começar.",
-   "2026-11-14: A página diz que o curso é aberto, gratuito e com certificado, mas não indica data limite de inscrição."
+   "2026-11-14: A página diz que o curso é aberto, gratuito e com certificado, mas não indica data limite de inscrição.",
+   "Aberto",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-2204a779",
@@ -115,7 +133,13 @@
    "rotina",
    "",
    "1. Acesse o Portal da Escola Virtual de Governo (EV.G) e crie seu cadastro com e-mail, CPF e os seus dados pessoais.\n2. Confirme seu cadastro pelo link que chega no seu e-mail.\n3. No portal, pesquise por \"Gestão de Finanças Pessoais\", abra a página do curso e clique em \"Inscreva-se\".\n4. Entre com seu e-mail ou CPF e sua senha e comece o curso. Você tem 30 dias para terminar todos os módulos (cerca de 20 horas).",
-   "2026-11-14: A página diz que o curso é online, gratuito e não informa data limite para se inscrever; por isso, consta como aberto, com 30 dias para concluir após a inscrição."
+   "2026-11-14: A página diz que o curso é online, gratuito e não informa data limite para se inscrever; por isso, consta como aberto, com 30 dias para concluir após a inscrição.",
+   "Aberto",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-79ff417b",
@@ -143,7 +167,13 @@
    "rotina",
    "Parece ser presencial em Belo Horizonte, fora das regiões do projeto.",
    "1. Chame no WhatsApp (31) 98888-3238 e diga que quer se inscrever no curso de Informática Básica.\n2. Ou faça a inscrição diretamente pelo site da Prefeitura (link da notícia).\n3. Se preferir ir pessoalmente, vá à Unidade de Inclusão Digital da PBH, na Rua José Clemente Pereira, 440, bairro Ipiranga, de segunda a sexta, das 8h às 17h.\n4. Confirme que você mora em Belo Horizonte, que é o requisito do curso.",
-   "2026-11-14: A página diz que estão abertas as inscrições para o curso gratuito, online e com 60 horas, mas não indica data limite. A notícia é de 14/09/2026, por isso vale confirmar pelo WhatsApp se as vagas continuam abertas."
+   "2026-11-14: A página diz que estão abertas as inscrições para o curso gratuito, online e com 60 horas, mas não indica data limite. A notícia é de 14/09/2026, por isso vale confirmar pelo WhatsApp se as vagas continuam abertas.",
+   "Aberto",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-c575e970",
@@ -169,6 +199,12 @@
    "2026-11-11",
    "2026-11-11",
    "rotina",
+   "",
+   "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
    "",
    "",
    ""
@@ -199,6 +235,12 @@
    "rotina",
    "",
    "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
    ""
   ],
   [
@@ -225,6 +267,12 @@
    "2026-11-11",
    "2026-11-11",
    "rotina",
+   "",
+   "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
    "",
    "",
    ""
@@ -255,6 +303,12 @@
    "rotina",
    "",
    "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
    ""
   ],
   [
@@ -281,6 +335,12 @@
    "2026-11-11",
    "2026-11-11",
    "rotina",
+   "",
+   "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
    "",
    "",
    ""
@@ -311,6 +371,12 @@
    "rotina",
    "",
    "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
    ""
   ],
   [
@@ -337,6 +403,12 @@
    "2026-11-11",
    "2026-11-11",
    "rotina",
+   "",
+   "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
    "",
    "",
    ""
@@ -367,7 +439,13 @@
    "rotina",
    "",
    "1. Acesse a página de oportunidades do Senac Ceará PSG (psg.ce.senac.br/oportunidades).\n2. Procure o curso Assistente Administrativo na lista e escolha a unidade onde quer estudar.\n3. Clique em \"Quero me inscrever\" e siga as instruções do site.\n4. Veja a página \"Bolsas de estudos\" para saber o que precisa para garantir a sua vaga.",
-   "2026-11-14: A página lista cursos com bolsas de estudo, mas o Assistente Administrativo não aparece no texto verificado, por isso não consigo confirmar se as inscrições estão abertas nem a data limite."
+   "2026-11-14: A página lista cursos com bolsas de estudo, mas o Assistente Administrativo não aparece no texto verificado, por isso não consigo confirmar se as inscrições estão abertas nem a data limite.",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-dcbfec54",
@@ -395,7 +473,13 @@
    "rotina",
    "",
    "1. Abra o site psg.ce.senac.br e clique em \"Como participar\" para ver as regras.\n2. Leia a página \"Bolsas de estudos\", indicada no site, para confirmar se você cumpre os requisitos.\n3. Na lista de cursos, procure \"Assistente de Suporte e Manutenção de Computadores\" e veja as datas e o horário.\n4. Se o curso aparecer com inscrições abertas, clique em \"QUERO ME INSCREVER\" e siga as instruções da página.",
-   "2026-11-14: O texto da página mostra só a primeira de 24 páginas de cursos e não inclui este curso; a página fala em cursos com bolsas de estudo, mas não confirma a gratuidade nem as datas deste curso específico."
+   "2026-11-14: O texto da página mostra só a primeira de 24 páginas de cursos e não inclui este curso; a página fala em cursos com bolsas de estudo, mas não confirma a gratuidade nem as datas deste curso específico.",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-fa5789f3",
@@ -423,7 +507,13 @@
    "rotina",
    "",
    "1. Confirme se você cumpre os requisitos: renda familiar de até 2 salários mínimos por pessoa e estar estudando ou ter concluído a educação básica.\n2. Escolha a turma: a página lista o curso no Senac Quixadá (16/11/2026 a 23/11/2026, segunda a sexta, 18h às 22h) e no Senac Iguatu (24/11/2026 a 27/11/2026, terça, quarta, quinta e sexta, 12h às 17h).\n3. No site psg.ce.senac.br/oportunidades, clique em \"Quero me inscrever\" e siga as instruções do formulário.\n4. Para saber o que precisa para garantir a vaga, veja a página \"Bolsas de estudos\" indicada no site.",
-   "2026-11-14: A página mostra o curso com \"Inscrições abertas\" e fala em cursos com bolsas de estudo, mas não indica uma data limite para inscrição (as datas listadas parecem ser as do curso); há duas turmas listadas, em Quixadá e Iguatu."
+   "2026-11-14: A página mostra o curso com \"Inscrições abertas\" e fala em cursos com bolsas de estudo, mas não indica uma data limite para inscrição (as datas listadas parecem ser as do curso); há duas turmas listadas, em Quixadá e Iguatu.",
+   "Aberto",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-df352c6e",
@@ -451,7 +541,13 @@
    "rotina",
    "",
    "1. Abra a página oficial do Senac Ceará PSG (psg.ce.senac.br/oportunidades).\n2. Procure o curso 'Introdução ao Mundo Digital' na lista de cursos ou use o filtro por unidade.\n3. Leia a página 'Bolsas de estudos' do site para ver o que é preciso para conquistar a vaga.\n4. Clique em 'Quero me inscrever' e siga as instruções da página.\n5. Se tiver dúvidas, use a página 'Fale conosco' do site.",
-   "2026-11-14: O curso 'Introdução ao Mundo Digital' não aparece no texto da página verificada, que lista outros cursos com bolsas; a situação, a gratuidade e as datas não puderam ser confirmadas."
+   "2026-11-14: O curso 'Introdução ao Mundo Digital' não aparece no texto da página verificada, que lista outros cursos com bolsas; a situação, a gratuidade e as datas não puderam ser confirmadas.",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-76f08ea6",
@@ -479,7 +575,13 @@
    "rotina",
    "",
    "1. Acesse o site do Campus Aracati do IFCE: portal.ifce.edu.br/campus/aracati.\n2. Clique em \"Processos seletivos\" e procure o edital 27/2026 do curso FIC Empreendedorismo artesanal – Renda de labirinto.\n3. Leia o edital para ver os requisitos, os documentos exigidos e como fazer a inscrição.\n4. Faça a inscrição até 22/12, que é a data indicada na página para as etapas em andamento.\n5. Acompanhe as próximas etapas e a data de início das aulas no mesmo site.",
-   "2026-11-14: A página do campus indica a seleção do curso (edital 27/2026) com etapas em andamento até 22/12, mas não diz explicitamente que essa é a data limite de inscrição nem menciona custos para este curso específico; a gratuidade citada refere-se aos cursos técnicos e superiores do campus."
+   "2026-11-14: A página do campus indica a seleção do curso (edital 27/2026) com etapas em andamento até 22/12, mas não diz explicitamente que essa é a data limite de inscrição nem menciona custos para este curso específico; a gratuidade citada refere-se aos cursos técnicos e superiores do campus.",
+   "Aberto",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-a9231ddf",
@@ -507,7 +609,13 @@
    "rotina",
    "",
    "1. Acesse o site psg.ce.senac.br e clique em \"Como participar\".\n2. Procure o curso \"Aperfeiçoamento para garçom\" na lista de cursos, usando os filtros ou as páginas seguintes (a lista tem 24 páginas).\n3. Leia a página \"Bolsas de estudos\", indicada no site, para ver o que é preciso para conquistar a vaga.\n4. Clique em \"QUERO ME INSCREVER\" e siga as instruções do formulário.\n5. Confirme no site o prazo de inscrição, pois a página não mostra a data limite para este curso.",
-   "2026-11-14: O curso \"Aperfeiçoamento para garçom\" não aparece no texto da página lida, que mostra outros cursos com bolsas de estudo; a situação e a gratuidade não puderam ser confirmadas, e não há data limite de inscrição indicada."
+   "2026-11-14: O curso \"Aperfeiçoamento para garçom\" não aparece no texto da página lida, que mostra outros cursos com bolsas de estudo; a situação e a gratuidade não puderam ser confirmadas, e não há data limite de inscrição indicada.",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
+   ""
   ],
   [
    "C-0fe8cad4",
@@ -535,6 +643,12 @@
    "rotina",
    "A turma começou a 2026-11-03: confirmar se ainda aceita inscrições.",
    "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
    ""
   ],
   [
@@ -561,6 +675,12 @@
    "2026-11-14",
    "2026-11-14",
    "rotina",
+   "",
+   "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
    "",
    "",
    ""
@@ -591,6 +711,12 @@
    "rotina",
    "",
    "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
    ""
   ],
   [
@@ -617,6 +743,12 @@
    "2026-11-14",
    "2026-11-14",
    "rotina",
+   "",
+   "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
    "",
    "",
    ""
@@ -647,6 +779,12 @@
    "rotina",
    "Link de notícia: procurar a página oficial da inscrição.",
    "",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
    ""
   ],
   [
@@ -675,6 +813,12 @@
    "manual",
    "Proposta de Associação Teste (exemplo) (teste@exemplo.org)",
    "1. Esta proposta não tem link de inscrição.\n2. Procure a Associação Teste (exemplo) em Fortaleza.\n3. Pergunte como fazer a inscrição e se há vagas.\n4. Confirme as datas e o horário antes de começar.",
+   "",
+   "Por confirmar",
+   "TRUE",
+   0,
+   "",
+   "",
    ""
   ]
  ],
@@ -1940,6 +2084,26 @@
    "verificar_cursos",
    "SIM",
    ""
+  ],
+  [
+   "verificacao_diaria",
+   "NÃO",
+   "SIM: todos os dias testa os links, deteta as páginas que mudaram e confirma os cursos que fecham em breve. Fica em NÃO até a rotina diária estar pronta"
+  ],
+  [
+   "dias_aviso_fecho",
+   "7",
+   "Os cursos que fecham nos próximos N dias são verificados todos os dias"
+  ],
+  [
+   "max_leituras_por_dia",
+   "15",
+   "Máximo de páginas que o Claude lê por dia na verificação diária (controla o custo)"
+  ],
+  [
+   "falhas_link_para_rever",
+   "3",
+   "Dias seguidos com o link a falhar antes de o curso passar a Rever"
   ]
  ],
  "Sugestões": [
@@ -1971,6 +2135,20 @@
    "",
    "",
    "7 cursos visíveis no site"
+  ]
+ ],
+ "Histórico de verificações": [
+  [
+   "Data e hora",
+   "ID do curso",
+   "Título",
+   "Tipo de verificação",
+   "Resultado",
+   "Situação antes",
+   "Situação depois",
+   "Estado antes",
+   "Estado depois",
+   "Notas"
   ]
  ]
 }

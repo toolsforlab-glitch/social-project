@@ -7,7 +7,7 @@ import os
 import re
 import sys
 
-from base import Base, carregar_config, hoje_iso
+from base import VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso
 from comum import ErroClaude, claude, custo_estimado, dominio_permitido, extrair_json, hoje, verificar_link
 
 ABA = "Cursos"
@@ -211,6 +211,7 @@ def main():
                 "Estado": "Rever" if notas else "Novo",
                 "Primeiro visto": hoje_txt, "Última verificação": hoje_txt, "Origem": "rotina",
                 "Notas": " ".join(notas), "Como me inscrever": "", "Nota da verificação": "",
+                **VERIFICACAO_INICIAL,
             })
             novos.append(curso)
             existentes["por_id"][curso["ID"]] = curso

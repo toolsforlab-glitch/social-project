@@ -208,5 +208,30 @@ def visivel(estado, cfg):
     return estado in ESTADOS_VISIVEIS or (estado == "Novo" and cfg.get("publicacao_automatica", True))
 
 
+SITUACOES = {"aberto": "Aberto", "encerrado": "Encerrado", "incerto": "Por confirmar"}
+HISTORICO = "Histórico de verificações"
+
+# Valores iniciais das colunas de verificação, para cursos acabados de criar
+VERIFICACAO_INICIAL = {"Situação das inscrições": "Por confirmar", "Verificar automaticamente": "TRUE",
+                       "Falhas seguidas do link": 0, "Impressão da página": "", "Página mudou em": "",
+                       "Próxima verificação": ""}
+
+
+def curso_no_site(r, cfg):
+    """Um curso aparece se o Estado o permitir e as inscrições não estiverem encerradas."""
+    return visivel(r.get("Estado"), cfg) and (r.get("Situação das inscrições") or "").strip() != "Encerrado"
+
+
+def registo_historico(r, tipo, resultado, depois, notas=""):
+    """Linha para o separador Histórico de verificações."""
+    agora = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M")
+    return {"Data e hora": agora, "ID do curso": r.get("ID", ""), "Título": r.get("Título", ""),
+            "Tipo de verificação": tipo, "Resultado": resultado,
+            "Situação antes": r.get("Situação das inscrições", ""),
+            "Situação depois": depois.get("Situação das inscrições", r.get("Situação das inscrições", "")),
+            "Estado antes": r.get("Estado", ""), "Estado depois": depois.get("Estado", r.get("Estado", "")),
+            "Notas": notas}
+
+
 def hoje_iso():
     return datetime.datetime.now(datetime.timezone.utc).date().isoformat()

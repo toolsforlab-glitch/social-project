@@ -5,7 +5,7 @@
 """
 import sys
 
-from base import Base, carregar_config, hoje_iso
+from base import VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso
 from comum import ErroClaude, claude, extrair_json
 from cursos import id_curso, ler_data
 
@@ -102,6 +102,7 @@ def criar_cursos(base, cfg):
             "Notas": f"Proposta de {p.get('Organização', '')} ({p.get('Contacto', '')})",
             "Como me inscrever": "\n".join(f"{i}. {s}" for i, s in enumerate((c.get("como_me_inscrever") or [])[:5], 1)),
             "Nota da verificação": "",
+            **VERIFICACAO_INICIAL,
         }
         novos.append(curso)
         alteracoes.append((p["_linha"], {"ID do curso criado": curso["ID"]}))

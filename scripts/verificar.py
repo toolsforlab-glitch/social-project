@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import Base, carregar_config, hoje_iso, visivel
+from base import HISTORICO, SITUACOES, Base, carregar_config, hoje_iso, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json
 
 ABA = "Cursos"
@@ -48,6 +48,7 @@ def main():
     candidatos = [r for r in base.tabela(ABA)
                   if (visivel(r.get("Estado"), cfg) or r.get("Estado") == "Rever")
                   and r.get("Local") in locais and r.get("Link")
+                  and (r.get("Verificar automaticamente", "") == "" or sim(r.get("Verificar automaticamente")))
                   # durante um piloto, os cursos online de outros países não aparecem no site: não gastar com eles
                   and not (r.get("Local") == "online" and pais_piloto
                            and r.get("País") not in (pais_piloto, "Internacional", ""))]
@@ -57,6 +58,7 @@ def main():
     candidatos = candidatos[:MAX_POR_EXECUCAO]
     print(f"A verificar {len(candidatos)} cursos")
 
+    historico = []
     alteracoes, custo_total, contagem = [], 0.0, {"aberto": 0, "encerrado": 0, "incerto": 0, "falhou": 0}
     for r in candidatos:
         try:
@@ -82,7 +84,8 @@ def main():
             continue
         situacao = res.get("situacao") if res.get("situacao") in contagem else "incerto"
         contagem[situacao] += 1
-        campos = {"Última verificação": hoje_txt, "Nota da verificação": f"{hoje_txt}: {res.get('nota') or ''}".strip()}
+        campos = {"Última verificação": hoje_txt, "Nota da verificação": f"{hoje_txt}: {res.get('nota') or ''}".strip(),
+                  "Situação das inscrições": SITUACOES[situacao], "Próxima verificação": ""}
         passos = res.get("como_me_inscrever") or []
         if passos and not r.get("Como me inscrever"):
             campos["Como me inscrever"] = "\n".join(f"{i}. {p.strip()}" for i, p in enumerate(passos[:5], 1))
@@ -94,10 +97,14 @@ def main():
             campos["Estado"] = "Rever"
             campos["Notas"] = ((r.get("Notas") or "") + " A verificação indica que pode não ser gratuito.").strip()
         alteracoes.append((r["_linha"], campos))
+        if campos.get("Situação das inscrições") != r.get("Situação das inscrições") or "Estado" in campos:
+            historico.append(registo_historico(r, "Claude", situacao, campos, res.get("nota") or ""))
         marca = {"aberto": "✓", "encerrado": "⨯", "incerto": "?"}[situacao]
         print(f"  {marca} {r['Título']}: {res.get('nota')}")
 
     base.atualizar(ABA, alteracoes)
+    if HISTORICO in base.abas():
+        base.acrescentar(HISTORICO, historico)
     base.guardar()
     print(f"\nResumo: {contagem} | custo estimado: {round(custo_total, 3)} USD")
     return 0

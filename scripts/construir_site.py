@@ -6,7 +6,7 @@ import shutil
 import sys
 import time
 
-from base import Base, carregar_config, visivel
+from base import Base, carregar_config, curso_no_site, visivel
 from comum import caminho, gravar_json
 
 PAGINAS = {
@@ -32,7 +32,7 @@ def exportar_dados(base, cfg):
     pais_piloto = "BR" if piloto.startswith("BR") else "PT" if piloto == "PT" else ""
     cursos = []
     for r in base.tabela("Cursos"):
-        if not visivel(r.get("Estado"), cfg) or r.get("Local") not in locais or not r.get("Link"):
+        if not curso_no_site(r, cfg) or r.get("Local") not in locais or not r.get("Link"):
             continue
         if r.get("Local") == "online" and pais_piloto and r.get("País") not in (pais_piloto, "Internacional"):
             continue

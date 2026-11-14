@@ -27,7 +27,9 @@ Um curso só entra se cumprir TODAS estas regras:
 que é gratuito por regra (ex.: Programa Senac de Gratuidade, cursos FIC dos institutos federais, Centec), \
 mesmo que a página não o repita em cada turma. Se houver taxa de inscrição, indica-o nos requisitos.
 2. Está disponível agora: inscrições abertas, curso de acesso livre a qualquer momento, ou turma com data futura. \
-Exclui cursos com inscrições já encerradas ou de anos anteriores.
+Exclui cursos com inscrições já encerradas ou de anos anteriores. Um programa que abre inscrições \
+regularmente (ex.: matrículas todos os meses) conta como disponível se a página mais recente for deste ano: \
+diz nos requisitos quando costumam abrir as inscrições.
 3. É de nível iniciante ou não exige formação anterior difícil (indica os requisitos que existirem).
 4. É de uma entidade de confiança (organismo público, universidade, instituto federal, Sistema S, ONG reconhecida).
 5. O link veio dos resultados da pesquisa e leva a pessoa à inscrição: a página do curso, de um edital ou da \
@@ -201,6 +203,9 @@ def main():
                 notas.append("Link de notícia: procurar a página oficial da inscrição.")
             if curso["Link verificado"] == "NÃO":
                 notas.append(f"O link não respondeu à verificação automática ({estado_http}).")
+            inicio = str(curso.get("Início") or "")
+            if inicio and inicio < hoje_txt and not curso.get("Inscrições até"):
+                notas.append(f"A turma começou a {inicio}: confirmar se ainda aceita inscrições.")
             curso.update({
                 "ID": id_curso(curso["Link"], curso["Título"]),
                 "Estado": "Rever" if notas else "Novo",

@@ -43,9 +43,14 @@ def main():
     locais = {l["id"] for l in cfg["cursos"]["locais"]}
     hoje_txt = hoje_iso()
 
+    piloto = cfg.get("territorio_piloto", "")
+    pais_piloto = "BR" if piloto.startswith("BR") else "PT" if piloto == "PT" else ""
     candidatos = [r for r in base.tabela(ABA)
                   if (visivel(r.get("Estado"), cfg) or r.get("Estado") == "Rever")
-                  and r.get("Local") in locais and r.get("Link")]
+                  and r.get("Local") in locais and r.get("Link")
+                  # durante um piloto, os cursos online de outros países não aparecem no site: não gastar com eles
+                  and not (r.get("Local") == "online" and pais_piloto
+                           and r.get("País") not in (pais_piloto, "Internacional", ""))]
     # primeiro os que ainda não têm passo a passo, depois os verificados há mais tempo
     candidatos.sort(key=lambda r: (bool(r.get("Como me inscrever")), r.get("Nota da verificação") != "",
                                    r.get("Última verificação") or ""))

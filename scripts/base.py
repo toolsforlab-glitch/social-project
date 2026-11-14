@@ -219,7 +219,17 @@ VERIFICACAO_INICIAL = {"Situação das inscrições": "Por confirmar", "Verifica
                        "Revisto por pessoa": "", "Mudança a rever": "FALSE", "O que falta confirmar": ""}
 
 # Nomes usados na coluna "Campos comprovados"
-CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_ate": "data", "restricoes": "restrições"}
+CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_ate": "data", "restricoes": "restrições",
+                "idade_minima": "idade", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
+                "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
+                "ajuda_custo": "ajuda", "documentos": "documentos"}
+# coluna da folha onde fica cada dado extra (só é escrito se estiver comprovado e a coluna estiver vazia)
+COLUNAS_BARREIRAS = {"idade_minima": "Idade mínima", "escolaridade_minima": "Escolaridade mínima",
+                     "renda_maxima": "Renda máxima", "prioridade_cadunico": "Prioridade CadÚnico", "turnos": "Turno",
+                     "precisa_internet": "Precisa de internet", "ajuda_custo": "Ajuda de custo ou transporte",
+                     "documentos": "Documentos pedidos"}
+ESCOLARIDADES = ["Nenhuma", "Saber ler e escrever", "Fundamental incompleto", "Fundamental completo",
+                 "Médio incompleto", "Médio completo", "Superior"]
 
 
 def comprovado(r, campo):

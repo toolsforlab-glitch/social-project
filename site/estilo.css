@@ -133,3 +133,19 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .onde-titulo { margin: 0 0 .3rem; font-weight: 700; color: var(--anil); }
 .onde ul { margin: 0; padding: 0; list-style: none; }
 .onde li + li { margin-top: .6rem; }
+
+.posso { margin: 0 0 .9rem; padding: .6rem .9rem; border: 2px solid var(--anil-claro); border-radius: var(--raio); }
+.posso summary { cursor: pointer; font-weight: 700; color: var(--anil); }
+.posso ol { margin: .4rem 0 0; padding-left: 1.3rem; }
+.posso li p { margin: .5rem 0 .3rem; }
+.simnao { display: flex; gap: .5rem; }
+.simnao .opcao { min-width: 4.5rem; }
+.resultado { margin: .6rem 0 0; font-weight: 700; }
+.resultado.bom { color: var(--folha); }
+.resultado.atencao { color: #8a4b00; }
+.antes { margin: 0 0 .9rem; }
+.indice ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
+.guia { margin: 2rem 0; padding-top: 1rem; border-top: 1px solid var(--pedra); }
+.guia ol li { margin-bottom: .5rem; }
+.guia-info { list-style: none; padding: .7rem .9rem; background: var(--anil-claro); border-radius: var(--raio); }
+.guia-info li + li { margin-top: .3rem; }

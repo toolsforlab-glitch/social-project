@@ -29,6 +29,13 @@ Para trabalhar sem a folha (testes), `MODO_LOCAL=1` usa a cópia em `dados_locai
 
 O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/` (`whatsapp.txt`, `cartaz.pdf`, `newsletter.html`).
 
+## O que o site faz por quem procura um curso
+
+- **Posso me inscrever?** Perguntas simples por curso (idade, escolaridade, renda, experiência) com resposta imediata. Nada é guardado.
+- **O que facilita para você?** Filtros "À noite", "Sem precisar de internet", "Sem escolaridade exigida", "Com ajuda de custo" e "Cidade". Só entram cursos em que isso está comprovado.
+- **Antes de começar:** guias para tirar o CPF, criar e subir a conta gov.br e fazer o CadÚnico, ligados aos cursos que os exigem.
+- **Onde se inscrever:** morada, horário de matrículas e o que levar, da unidade mais próxima.
+
 ## Como se evita informação errada
 
 - **O que a página oficial não diz fica vazio.** O Claude nunca deduz datas, gratuidade, requisitos ou contactos.

@@ -13,8 +13,22 @@ PAGINAS = {
     "index.html": ("inicio", "{nome}: cursos gratuitos e informação útil"),
     "cursos.html": ("cursos", "Cursos gratuitos online e presenciais | {nome}"),
     "noticias.html": ("noticias", "Notícias do setor social | {nome}"),
+    "antes.html": ("antes", "Antes de começar: CPF, conta gov.br e CadÚnico | {nome}"),
     "sobre.html": ("sobre", "Sobre | {nome}"),
 }
+
+# Dados sobre quem pode entrar e as barreiras; só saem para o site se estiverem comprovados
+BARREIRAS = [("idade_minima", "Idade mínima", "idade"), ("escolaridade", "Escolaridade mínima", "escolaridade"),
+             ("renda", "Renda máxima", "renda"), ("cadunico", "Prioridade CadÚnico", "cadunico"),
+             ("turnos", "Turno", "turno"), ("internet", "Precisa de internet", "internet"),
+             ("ajuda", "Ajuda de custo ou transporte", "ajuda"), ("documentos", "Documentos pedidos", "documentos")]
+
+
+def valor_comprovado(r, coluna, prova):
+    v = str(r.get(coluna) or "").strip()
+    if not v or v == "Não indicado" or not comprovado(r, prova):
+        return ""
+    return v
 
 
 def lista(valor):
@@ -42,6 +56,19 @@ def exportar_dados(base, cfg):
                     ("bairro", "Bairro", "bairro"), ("morada", "Morada", "morada"),
                     ("telefone", "Telefone", "telefone"), ("whatsapp", "WhatsApp", "whatsapp"),
                     ("horario", "Horário de atendimento", "horário"), ("o_que_levar", "O que levar", "o que levar"))}
+    # Guias "Antes de começar" publicados
+    guias = []
+    if "Antes de começar" in base.abas():
+        for g in base.tabela("Antes de começar"):
+            if (g.get("Estado") or "").strip() == "Publicado" and g.get("ID"):
+                guias.append({"id": g["ID"].strip(), "titulo": g.get("Título", ""), "para_que": g.get("Para que serve", ""),
+                              "passos": passos(g.get("Passos")), "onde": g.get("Onde fazer", ""),
+                              "custo": g.get("Quanto custa", ""), "tempo": g.get("Quanto tempo leva", ""),
+                              "fonte": g.get("Fonte", ""),
+                              "verificado_em": (g.get("Revisto por pessoa") or g.get("Última verificação") or "")[:10]})
+    gravar_json("docs/dados/guias.json", {"atualizado": time.strftime("%Y-%m-%dT%H:%M"), "guias": guias})
+    ids_guias = {g["id"] for g in guias}
+
     cursos = []
     for r in base.tabela("Cursos"):
         if not curso_no_site(r, cfg) or r.get("Local") not in locais or not r.get("Link"):
@@ -64,7 +91,14 @@ def exportar_dados(base, cfg):
             "verificado_em": (r.get("Revisto por pessoa") or (r.get("Última verificação") if r.get("Nota da verificação") else "") or "")[:10],
             "inicio": r.get("Início", ""), "duracao": r.get("Duração", ""),
             "primeiro_visto": r.get("Primeiro visto", ""), "como_me_inscrever": passos(r.get("Como me inscrever")),
+            "antes": [i for i in lista(r.get("Antes de começar")) if i in ids_guias],
+            **{k: valor_comprovado(r, c, p) for k, c, p in BARREIRAS},
         })
+        cursos[-1]["turnos"] = lista(cursos[-1]["turnos"])
+        try:
+            cursos[-1]["idade_minima"] = int(float(cursos[-1]["idade_minima"])) if cursos[-1]["idade_minima"] else None
+        except ValueError:
+            cursos[-1]["idade_minima"] = None
     gravar_json("docs/dados/cursos.json", {"atualizado": time.strftime("%Y-%m-%dT%H:%M"), "cursos": cursos})
 
     temas = cfg["noticias"]["temas"]
@@ -119,7 +153,7 @@ def main():
                        .replace("{{DESCRICAO}}", slogan)
                        .replace("{{NOME}}", nome).replace("{{SLOGAN}}", slogan)
                        .replace("{{PAGINA}}", pagina).replace("{{VERSAO}}", versao))
-        for p in ("cursos", "noticias", "sobre"):
+        for p in ("cursos", "antes", "noticias", "sobre"):
             pagina_html = pagina_html.replace("{{ATUAL_%s}}" % p.upper(),
                                               ' aria-current="page"' if p == pagina else "")
         with open(os.path.join(docs, ficheiro), "w", encoding="utf-8") as f:

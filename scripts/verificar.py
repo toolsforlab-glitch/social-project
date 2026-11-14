@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import texto_de_html, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, registo_historico, sim, visivel
+from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json
 
 ABA = "Cursos"
@@ -32,8 +32,22 @@ futura com inscrição), "encerrado" (a página diz que as inscrições terminar
 - "inscricoes_ate": data AAAA-MM-DD só se a página indicar a data limite de INSCRIÇÃO; senão null.
 - "restricoes": quem pode entrar (idade, renda, escolaridade, morada, já ser estudante…), só se a página o \
 disser; senão null.
-- "evidencias": objeto com as frases exatas para "situacao", "gratuito", "inscricoes_ate" e "restricoes" \
-(null quando não houver).
+- "idade_minima": número, só se a página indicar idade mínima; senão null.
+- "escolaridade_minima": uma de "Nenhuma", "Saber ler e escrever", "Fundamental incompleto", "Fundamental completo", \
+"Médio incompleto", "Médio completo", "Superior", só se a página o disser; senão null.
+- "renda_maxima": limite de renda, como está na página (ex.: "Renda familiar por pessoa de até dois salários mínimos"); senão null.
+- "prioridade_cadunico": "sim" só se a página disser que há prioridade ou exigência de Cadastro Único; senão null.
+- "turnos": lista com "Manhã", "Tarde" e/ou "Noite", tirada dos horários de turmas FUTURAS indicados na página \
+(antes das 12h = Manhã, das 12h às 18h = Tarde, a partir das 18h = Noite); senão [].
+- "precisa_internet": "sim" se o curso ou a inscrição só puderem ser feitos pela internet, "não" se a página disser \
+que há inscrição presencial e o curso é presencial; senão null.
+- "ajuda_custo": ajuda em dinheiro, vale-transporte, lanche ou material oferecido, como está na página; senão null. \
+"Bolsa de estudo" que só significa curso gratuito NÃO é ajuda de custo.
+- "documentos": documentos pedidos para a inscrição, como estão na página; senão null.
+- "evidencias": objeto com as frases exatas para cada um dos campos acima (null quando não houver).
+
+ATENÇÃO a rótulos enganadores: alguns sites mostram "Inscrições abertas" em turmas que já começaram ou terminaram. \
+Compara sempre as datas da turma com a data de hoje: uma turma que já começou não prova que as inscrições estão abertas.
 - "em_falta": lista curta, em linguagem simples, do que a página não esclarece e a pessoa tem de confirmar \
 (ex.: "Não diz até quando são as inscrições").
 - "como_me_inscrever": 3 a 5 passos curtos, em linguagem muito simples, só com o que a página explica (onde ir, \
@@ -114,10 +128,13 @@ def main():
         data = str(res.get("inscricoes_ate") or "")[:10] if "inscricoes_ate" in provas else ""
         contagem[situacao] += 1
 
+        # mantém provas registadas à mão (ex.: "unidades") e junta as novas
+        outros = [c.strip() for c in (r.get("Campos comprovados") or "").split(",")
+                  if c.strip() and c.strip() not in CAMPOS_PROVA.values()]
         campos = {"Última verificação": hoje_txt, "Nota da verificação": f"{hoje_txt}: {res.get('nota') or ''}".strip(),
                   "Próxima verificação": "",
-                  "Evidência": " | ".join(f"{CAMPOS_PROVA[k]}: «{v}»" for k, v in provas.items()),
-                  "Campos comprovados": ", ".join(CAMPOS_PROVA[k] for k in provas)}
+                  "Evidência": " | ".join(f"{CAMPOS_PROVA[k]}: «{v}»" for k, v in provas.items())[:1500],
+                  "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas])}
         motivos = []
         if rejeitadas:
             motivos.append("O Claude afirmou " + ", ".join(rejeitadas) + " sem frase da página que o prove (ignorado).")
@@ -139,6 +156,21 @@ def main():
                 campos["Inscrições até"] = data
             elif r.get("Inscrições até") and "inscricoes_ate" not in provas:
                 motivos.append(f"A data {r['Inscrições até']} não está confirmada na página.")
+            # dados de elegibilidade e barreiras: só com prova, e sem apagar o que já lá está
+            for chave, coluna in COLUNAS_BARREIRAS.items():
+                if chave not in provas or str(r.get(coluna) or "").strip() not in ("", "Não indicado"):
+                    continue
+                v = res.get(chave)
+                if chave == "turnos":
+                    v = ", ".join(t for t in (v or []) if t in ("Manhã", "Tarde", "Noite"))
+                elif chave == "escolaridade_minima":
+                    v = v if v in ESCOLARIDADES else ""
+                elif chave in ("prioridade_cadunico", "precisa_internet"):
+                    v = {"sim": "Sim", "não": "Não", "nao": "Não"}.get(str(v or "").lower(), "")
+                elif chave == "idade_minima":
+                    v = str(int(v)) if isinstance(v, (int, float)) or str(v or "").isdigit() else ""
+                if v:
+                    campos[coluna] = str(v)[:300]
             if situacao == "encerrado" and r.get("Estado") in ("Novo", "Publicado"):
                 campos["Estado"] = "Expirado"
                 motivos.append("A página diz que as inscrições terminaram: passou a Expirado.")

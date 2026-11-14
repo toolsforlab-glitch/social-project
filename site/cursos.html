@@ -11,6 +11,19 @@
     <legend style="font-weight:700;margin-bottom:.5rem;padding:0">O que você quer aprender?</legend>
     <ul class="opcoes" id="cursos-opcoes"></ul>
   </fieldset>
+  <fieldset style="border:0;padding:0;margin:0">
+    <legend style="font-weight:700;margin-bottom:.5rem;padding:0">O que facilita para você?</legend>
+    <ul class="opcoes" id="cursos-barreiras">
+      <li><button type="button" class="opcao" data-barreira="noite" aria-pressed="false">À noite</button></li>
+      <li><button type="button" class="opcao" data-barreira="sem_internet" aria-pressed="false">Sem precisar de internet</button></li>
+      <li><button type="button" class="opcao" data-barreira="sem_escolaridade" aria-pressed="false">Sem escolaridade exigida</button></li>
+      <li><button type="button" class="opcao" data-barreira="ajuda" aria-pressed="false">Com ajuda de custo ou transporte</button></li>
+    </ul>
+  </fieldset>
+  <div class="campo">
+    <label for="cursos-cidade">Cidade</label>
+    <select id="cursos-cidade"><option value="">Qualquer cidade</option></select>
+  </div>
   <div class="campo">
     <label for="cursos-texto">Buscar por palavra</label>
     <input type="search" id="cursos-texto" placeholder="Ex.: cozinha, Excel, inglês">
@@ -18,6 +31,7 @@
 </form>
 
 <p class="contagem" id="cursos-contagem" aria-live="polite"></p>
+<p class="discreto" id="cursos-nota-barreiras" hidden>Mostramos só os cursos em que isso está confirmado na página oficial. Outros cursos podem servir: desmarque a opção para ver todos.</p>
 <ul class="lista" id="cursos-lista"></ul>
 
 <div class="aviso">

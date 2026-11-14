@@ -2,7 +2,7 @@ name: Notícias do dia
 
 on:
   schedule:
-    - cron: "17 7 * * *"   # todos os dias às 07:17 UTC (07:17 em Lisboa no inverno, 04:17 em Fortaleza)
+    - cron: "17 9 * * *"   # todos os dias às 09:17 UTC (06:17 em Fortaleza)
   workflow_dispatch:
 
 permissions:
@@ -13,27 +13,36 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  noticias:
+  diario:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      FOLHA_ID: ${{ secrets.FOLHA_ID }}
+      PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -q feedparser
+      - run: pip install -q -r requirements.txt
 
       - name: Escolher e resumir as notícias
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: cd scripts && python3 noticias.py
 
-      - name: Atualizar o site
+      - name: Propostas de parceiros aceites
+        if: ${{ always() }}
+        run: cd scripts && python3 parceiros.py
+
+      - name: Atualizar o site a partir da folha
+        if: ${{ always() }}
         run: cd scripts && python3 construir_site.py
 
       - name: Publicar
+        if: ${{ always() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs estado
-          git diff --cached --quiet || (git commit -q -m "Notícias $(date -u +%F)" && (git push -q || (git pull -q --rebase && git push -q)))
+          git diff --cached --quiet || (git commit -q -m "Notícias e site $(date -u +%F)" && (git push -q || (git pull -q --rebase && git push -q)))

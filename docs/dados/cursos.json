@@ -1,37 +1,151 @@
 {
- "atualizado": "2026-11-11T21:24+00:00",
+ "atualizado": "2026-11-14T20:16",
  "cursos": [
   {
-   "id": "90f66633fd",
-   "titulo": "Bolos, Recheios e Coberturas – Senac Ceará PSG",
+   "id": "C-ac9029b1",
+   "titulo": "Educação financeira pessoal",
+   "entidade": "Escola Virtual de Governo (EV.G)",
+   "url": "https://www.gov.br/pt-br/servicos/aprender-educacao-financeira-pessoal-no-aprender-valor",
+   "local": "online",
+   "modalidade": "online",
+   "pais": "BR",
+   "regiao": "",
+   "cidade": "",
+   "descricao": "Explica como planejar o uso do dinheiro, poupar com regularidade e usar o crédito de forma responsável.",
+   "necessidades": [
+    "dinheiro"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "",
+   "certificado": "gratuito",
+   "inscricoes_ate": "",
+   "inicio": "",
+   "duracao": "",
+   "primeiro_visto": "2026-11-11",
+   "como_me_inscrever": []
+  },
+  {
+   "id": "C-2204a779",
+   "titulo": "Gestão de finanças pessoais",
+   "entidade": "Banco Central do Brasil (acesso pela Escola Virtual de Governo)",
+   "url": "https://www.gov.br/pt-br/servicos/aprender-a-administrar-suas-financas-pessoais",
+   "local": "online",
+   "modalidade": "online",
+   "pais": "BR",
+   "regiao": "",
+   "cidade": "",
+   "descricao": "Ensina o básico de como organizar o dinheiro do dia a dia, com vídeos animados e uma história simples.",
+   "necessidades": [
+    "dinheiro"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Ter e-mail ou CPF para criar o acesso",
+   "certificado": "desconhecido",
+   "inscricoes_ate": "",
+   "inicio": "",
+   "duracao": "Em média 20 horas",
+   "primeiro_visto": "2026-11-11",
+   "como_me_inscrever": []
+  },
+  {
+   "id": "C-7c972577",
+   "titulo": "Assistente Administrativo",
    "entidade": "Senac Ceará (Programa Senac de Gratuidade)",
    "url": "https://psg.ce.senac.br/oportunidades/",
    "local": "BR-CE",
    "modalidade": "presencial",
    "pais": "BR",
    "regiao": "Ceará",
-   "cidade": null,
-   "descricao": "Você aprende a preparar bolos, recheios e coberturas. A formação pode ajudar a trabalhar com confeitaria ou começar um pequeno negócio.",
-   "exclusivo_para": null,
-   "requisitos": "Renda familiar per capita de até 2 salários mínimos; estar cursando ou ter concluído a educação básica",
+   "cidade": "",
+   "descricao": "Aprende tarefas de escritório, como organizar documentos e atender clientes, para trabalhar em empresas.",
+   "necessidades": [
+    "emprego",
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
    "certificado": "desconhecido",
+   "inscricoes_ate": "",
+   "inicio": "",
+   "duracao": "",
+   "primeiro_visto": "2026-11-11",
+   "como_me_inscrever": []
+  },
+  {
+   "id": "C-dcbfec54",
+   "titulo": "Assistente de Suporte e Manutenção de Computadores",
+   "entidade": "Senac Ceará (Programa Senac de Gratuidade)",
+   "url": "https://psg.ce.senac.br/oportunidades/",
+   "local": "BR-CE",
+   "modalidade": "presencial",
+   "pais": "BR",
+   "regiao": "Ceará",
+   "cidade": "",
+   "descricao": "Aprende a montar, arrumar e dar suporte a computadores. Ajuda a conseguir trabalho na área de informática.",
+   "necessidades": [
+    "tecnologia",
+    "emprego",
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
+   "certificado": "desconhecido",
+   "inscricoes_ate": "",
+   "inicio": "2026-11-16",
+   "duracao": "",
+   "primeiro_visto": "2026-11-11",
+   "como_me_inscrever": []
+  },
+  {
+   "id": "C-fa5789f3",
+   "titulo": "Bolos, Recheios e Coberturas",
+   "entidade": "Senac Ceará (Programa Senac de Gratuidade)",
+   "url": "https://psg.ce.senac.br/oportunidades/",
+   "local": "BR-CE",
+   "modalidade": "presencial",
+   "pais": "BR",
+   "regiao": "Ceará",
+   "cidade": "",
+   "descricao": "Aprende a fazer bolos, recheios e coberturas. Serve para trabalhar em confeitaria ou começar um negócio de doces.",
    "necessidades": [
     "profissao",
     "negocio"
    ],
-   "perfis": [
-    "todos"
-   ],
-   "inscricoes_ate": null,
-   "inicio": null,
-   "duracao": null,
-   "link_verificado": true,
+   "exclusivo_para": "",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
+   "certificado": "desconhecido",
+   "inscricoes_ate": "",
+   "inicio": "",
+   "duracao": "",
    "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
+   "como_me_inscrever": []
   },
   {
-   "id": "c92bc0c933",
-   "titulo": "Curso FIC Empreendedorismo artesanal – Renda de labirinto – IFCE Campus Aracati (Edital 27/2026)",
+   "id": "C-df352c6e",
+   "titulo": "Introdução ao Mundo Digital",
+   "entidade": "Senac Ceará (Programa Senac de Gratuidade)",
+   "url": "https://psg.ce.senac.br/oportunidades/",
+   "local": "BR-CE",
+   "modalidade": "presencial",
+   "pais": "BR",
+   "regiao": "Ceará",
+   "cidade": "",
+   "descricao": "Curso básico para aprender a usar o computador e a internet no dia a dia e no trabalho.",
+   "necessidades": [
+    "digital"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
+   "certificado": "desconhecido",
+   "inscricoes_ate": "",
+   "inicio": "",
+   "duracao": "",
+   "primeiro_visto": "2026-11-11",
+   "como_me_inscrever": []
+  },
+  {
+   "id": "C-76f08ea6",
+   "titulo": "Renda de labirinto (empreendedorismo artesanal) em Aracati",
    "entidade": "IFCE – Instituto Federal do Ceará, Campus Aracati",
    "url": "https://portal.ifce.edu.br/campus/aracati/",
    "local": "BR-CE",
@@ -40,215 +154,18 @@
    "regiao": "Ceará",
    "cidade": "Aracati",
    "descricao": "Você aprende a fazer renda de labirinto, um artesanato tradicional do Ceará, e a transformar essa habilidade em renda. O curso também ensina a pensar em um pequeno negócio.",
-   "exclusivo_para": null,
-   "requisitos": null,
-   "certificado": "desconhecido",
    "necessidades": [
     "profissao",
     "negocio"
    ],
-   "perfis": [
-    "todos"
-   ],
-   "inscricoes_ate": null,
-   "inicio": null,
-   "duracao": null,
-   "link_verificado": true,
-   "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
-  },
-  {
-   "id": "f266215329",
-   "titulo": "Português Língua de Acolhimento - Percurso A1 – IEFP Arganil",
-   "entidade": "IEFP - Instituto do Emprego e Formação Profissional",
-   "url": "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=268",
-   "local": "PT",
-   "modalidade": "presencial",
-   "pais": "PT",
-   "regiao": "Coimbra",
-   "cidade": "Arganil",
-   "descricao": "Curso inicial para aprender português básico, para comunicar no dia a dia em Portugal. As aulas são depois do horário de trabalho.",
-   "exclusivo_para": null,
-   "requisitos": null,
+   "exclusivo_para": "",
+   "requisitos": "",
    "certificado": "desconhecido",
-   "necessidades": [
-    "portugues",
-    "emprego"
-   ],
-   "perfis": [
-    "todos"
-   ],
-   "inscricoes_ate": null,
-   "inicio": "2026-12-02",
-   "duracao": "75 horas",
-   "link_verificado": true,
+   "inscricoes_ate": "",
+   "inicio": "",
+   "duracao": "",
    "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
-  },
-  {
-   "id": "5bf04bb98b",
-   "titulo": "Português Língua de Acolhimento - Percurso A2 – IEFP Guimarães",
-   "entidade": "IEFP - Instituto do Emprego e Formação Profissional",
-   "url": "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=199",
-   "local": "PT",
-   "modalidade": "presencial",
-   "pais": "PT",
-   "regiao": "Braga",
-   "cidade": "Guimarães",
-   "descricao": "Curso para aprender português para o dia a dia, para falar, ler e escrever e viver melhor em Portugal. As aulas são depois do horário de trabalho.",
-   "exclusivo_para": "Para migrantes",
-   "requisitos": "Ser imigrante com 18 anos ou mais, em situação legal em Portugal.",
-   "certificado": "desconhecido",
-   "necessidades": [
-    "portugues",
-    "emprego"
-   ],
-   "perfis": [
-    "migrantes_refugiados"
-   ],
-   "inscricoes_ate": null,
-   "inicio": "2026-12-10",
-   "duracao": "75 horas",
-   "link_verificado": true,
-   "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
-  },
-  {
-   "id": "9f6b94c779",
-   "titulo": "Português Língua de Acolhimento - Percursos A1 + A2 e B1 – IEFP Águeda",
-   "entidade": "IEFP - Instituto do Emprego e Formação Profissional",
-   "url": "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=299",
-   "local": "PT",
-   "modalidade": "presencial",
-   "pais": "PT",
-   "regiao": "Aveiro",
-   "cidade": "Águeda",
-   "descricao": "Curso para aprender português em níveis básicos e intermédios, para falar e entender melhor no dia a dia e no trabalho. As aulas são depois do horário de trabalho.",
-   "exclusivo_para": "Para migrantes",
-   "requisitos": "Ser imigrante com 18 anos ou mais, em situação legal em Portugal.",
-   "certificado": "desconhecido",
-   "necessidades": [
-    "portugues",
-    "emprego"
-   ],
-   "perfis": [
-    "migrantes_refugiados"
-   ],
-   "inscricoes_ate": null,
-   "inicio": "2026-12-03",
-   "duracao": "100 horas",
-   "link_verificado": true,
-   "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
-  },
-  {
-   "id": "cf869b41a8",
-   "titulo": "Português Língua de Acolhimento - Percursos A1 + A2 – IEFP Salvaterra de Magos",
-   "entidade": "IEFP - Instituto do Emprego e Formação Profissional",
-   "url": "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=394",
-   "local": "PT",
-   "modalidade": "presencial",
-   "pais": "PT",
-   "regiao": "Santarém",
-   "cidade": "Salvaterra de Magos",
-   "descricao": "Curso para aprender português desde o início, para comunicar, trabalhar e viver em Portugal. As aulas são depois do horário de trabalho.",
-   "exclusivo_para": null,
-   "requisitos": null,
-   "certificado": "desconhecido",
-   "necessidades": [
-    "portugues",
-    "emprego"
-   ],
-   "perfis": [
-    "migrantes_refugiados"
-   ],
-   "inscricoes_ate": null,
-   "inicio": "2026-12-09",
-   "duracao": "150 horas",
-   "link_verificado": true,
-   "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
-  },
-  {
-   "id": "03e2b1c0c7",
-   "titulo": "Aprender Educação Financeira Pessoal",
-   "entidade": "Escola Virtual de Governo (EV.G)",
-   "url": "https://www.gov.br/pt-br/servicos/aprender-educacao-financeira-pessoal-no-aprender-valor",
-   "local": "online",
-   "modalidade": "online",
-   "pais": "BR",
-   "regiao": null,
-   "cidade": null,
-   "descricao": "Curso gratuito que explica como planejar o uso do dinheiro, poupar com regularidade e usar o crédito de forma responsável.",
-   "exclusivo_para": null,
-   "requisitos": null,
-   "certificado": "gratuito",
-   "necessidades": [
-    "dinheiro"
-   ],
-   "perfis": [
-    "todos"
-   ],
-   "inscricoes_ate": null,
-   "inicio": null,
-   "duracao": null,
-   "link_verificado": true,
-   "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
-  },
-  {
-   "id": "d44914196f",
-   "titulo": "Aprender gestão de finanças pessoais",
-   "entidade": "Banco Central do Brasil / Escola Virtual de Governo (EV.G)",
-   "url": "https://www.gov.br/pt-br/servicos/aprender-a-administrar-suas-financas-pessoais",
-   "local": "online",
-   "modalidade": "online",
-   "pais": "BR",
-   "regiao": null,
-   "cidade": null,
-   "descricao": "Curso de vídeos animados que ensina a organizar o dinheiro do dia a dia, a controlar gastos e a usar o dinheiro com consciência.",
-   "exclusivo_para": null,
-   "requisitos": "Ter um e-mail ou CPF e uma senha para entrar no portal da EV.G",
-   "certificado": "desconhecido",
-   "necessidades": [
-    "dinheiro"
-   ],
-   "perfis": [
-    "todos"
-   ],
-   "inscricoes_ate": null,
-   "inicio": null,
-   "duracao": "cerca de 20 horas",
-   "link_verificado": true,
-   "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
-  },
-  {
-   "id": "ab253e1eb8",
-   "titulo": "Comunicação Assertiva e Técnicas de Procura de Emprego – IEFP (oferta de formação)",
-   "entidade": "IEFP – Instituto do Emprego e Formação Profissional",
-   "url": "https://iefp.pt/ofertas-formacao",
-   "local": "online",
-   "modalidade": "online",
-   "pais": "PT",
-   "regiao": null,
-   "cidade": null,
-   "descricao": "Curso a distância que ensina a comunicar melhor e a procurar trabalho, incluindo como fazer um currículo, responder a anúncios e preparar entrevistas.",
-   "exclusivo_para": "Para pessoas desempregadas, dos 18 aos 35 anos",
-   "requisitos": "Ter o 12.º ano (12 anos de escolaridade); ter entre 18 e 35 anos",
-   "certificado": "desconhecido",
-   "necessidades": [
-    "emprego"
-   ],
-   "perfis": [
-    "desempregados"
-   ],
-   "inscricoes_ate": null,
-   "inicio": "2026-11-23",
-   "duracao": "300 horas",
-   "link_verificado": true,
-   "primeiro_visto": "2026-11-11",
-   "visto_em": "2026-11-11"
+   "como_me_inscrever": []
   }
  ]
 }

@@ -1,71 +1,71 @@
-"""Rotina semanal de cursos gratuitos: o Claude pesquisa só em fontes de confiança, classifica cada curso
-e a rotina confirma que o link abre antes de o publicar."""
+"""Rotina semanal de cursos gratuitos: o Claude pesquisa só em fontes de confiança, classifica cada curso,
+e a rotina confirma que o link abre antes de o acrescentar à folha."""
 import datetime
+import difflib
 import hashlib
 import os
 import re
 import sys
 
-from comum import (ErroClaude, agora_utc, claude, config, custo_estimado, dominio_permitido,
-                   extrair_json, gravar_json, hoje, ler_json, verificar_link)
+from base import Base, carregar_config, hoje_iso
+from comum import ErroClaude, claude, custo_estimado, dominio_permitido, extrair_json, hoje, verificar_link
 
-FICHEIRO = "docs/dados/cursos.json"
-
+ABA = "Cursos"
 LOCALIZACAO = {
     "PT": {"type": "approximate", "country": "PT", "timezone": "Europe/Lisbon"},
     "BR-MA": {"type": "approximate", "country": "BR", "region": "Maranhão", "city": "São Luís", "timezone": "America/Fortaleza"},
     "BR-CE": {"type": "approximate", "country": "BR", "region": "Ceará", "city": "Fortaleza", "timezone": "America/Fortaleza"},
     "BR-AC": {"type": "approximate", "country": "BR", "region": "Acre", "city": "Rio Branco", "timezone": "America/Rio_Branco"},
 }
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.
 
 Um curso só entra se cumprir TODAS estas regras:
 1. É gratuito para quem o frequenta (inscrição e aulas sem custo). Conta como gratuito um programa oficial \
-que é gratuito por regra (ex.: formação do IEFP para desempregados, Português Língua de Acolhimento, cursos \
-FIC dos institutos federais, Programa Senac de Gratuidade), mesmo que a página não o repita em cada turma.
+que é gratuito por regra (ex.: Programa Senac de Gratuidade, cursos FIC dos institutos federais, Centec), \
+mesmo que a página não o repita em cada turma. Se houver taxa de inscrição, indica-o nos requisitos.
 2. Está disponível agora: inscrições abertas, curso de acesso livre a qualquer momento, ou turma com data futura. \
 Exclui cursos com inscrições já encerradas ou de anos anteriores.
 3. É de nível iniciante ou não exige formação anterior difícil (indica os requisitos que existirem).
 4. É de uma entidade de confiança (organismo público, universidade, instituto federal, Sistema S, ONG reconhecida).
-5. O link veio dos resultados da pesquisa e leva a pessoa à inscrição: a página do curso, de um edital/processo \
-seletivo, ou a página da oferta da entidade onde se escolhe a turma (ex.: a oferta formativa de um centro do IEFP). \
-Não uses notícias genéricas. Se for uma página com várias turmas, o título diz o que é \
-(ex.: "Cursos de Português Língua de Acolhimento – IEFP Braga").
+5. O link veio dos resultados da pesquisa e leva a pessoa à inscrição: a página do curso, de um edital ou da \
+oferta da entidade. Se só encontraste o curso numa notícia, procura a página oficial; se não a encontrares, \
+usa o link da notícia.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
 
-Para cada curso:
-- "titulo": o nome do curso, curto, sem repetir o nome da entidade nem siglas de programas \
-(ex.: "Auxiliar de cozinha", e não "Auxiliar de cozinha – Senac Ceará PSG"). Para páginas com várias turmas, \
-indica o local (ex.: "Português Língua de Acolhimento (A1) em Arganil").
-- "descricao": 1 ou 2 frases em linguagem muito simples, que qualquer pessoa entenda. Para cursos no Brasil \
-escreve em português do Brasil; em Portugal, em português de Portugal; online, em português neutro. \
-Nunca rotules as pessoas (não escrevas "para pessoas vulneráveis", "para pobres", "para prostitutas"); \
-descreve o que se aprende e para que serve.
+Escreve em LINGUAGEM SIMPLES, para quem lê pouco:
+- "titulo": nome curto do curso, sem repetir a entidade nem siglas de programas (ex.: "Auxiliar de cozinha").
+- "descricao": 1 ou 2 frases com menos de 20 palavras cada, palavras do dia a dia, sem siglas sem explicação. \
+Diz o que se aprende e para que serve. Para cursos no Brasil escreve em português do Brasil; em Portugal, \
+em português de Portugal; online, em português neutro. Nunca rotules as pessoas (não escrevas "para \
+pessoas vulneráveis", "para pobres"); descreve o curso.
 - "exclusivo_para": se o curso só aceita um grupo (ex.: "Só para mulheres", "Dos 18 aos 29 anos", \
-"Para pessoas com 50 anos ou mais", "Para migrantes"), escreve isso de forma respeitosa; senão null.
-- "requisitos": o que é preciso para entrar (ex.: "Ter CPF", "Ter 16 anos ou mais", "Ter o 9.º ano"), ou null.
+"Para quem mora em Fortaleza"), escreve isso de forma respeitosa; senão null.
+- "requisitos": o que é preciso para entrar (ex.: "Ter CPF", "Ter 16 anos ou mais", "Ter o ensino fundamental"), ou null.
 - "certificado": "gratuito", "pago", "sem certificado" ou "desconhecido".
 - "necessidades": ids da lista dada a que o curso responde (um ou mais).
 - "perfis": ids da lista interna de perfis a quem o curso serve bem (um ou mais; "todos" se for geral).
-- Datas no formato AAAA-MM-DD, ou null se não souberes. Não inventes nada: se não encontraste, usa null."""
+- Datas no formato AAAA-MM-DD, ou null se não souberes. Não inventes nada."""
 
 CAMPOS = ["titulo", "entidade", "url", "modalidade", "pais", "regiao", "cidade", "descricao", "exclusivo_para",
           "requisitos", "certificado", "necessidades", "perfis", "inscricoes_ate", "inicio", "duracao"]
 
 
 def ler_data(valor):
-    if not valor or not isinstance(valor, str):
-        return None
-    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", valor)
+    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", str(valor or ""))
     if not m:
-        return None
+        return ""
     try:
         return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3))).isoformat()
     except ValueError:
-        return None
+        return ""
+
+
+def id_curso(url, titulo):
+    return "C-" + hashlib.sha1((url + "|" + titulo.strip().lower()).encode()).hexdigest()[:8]
 
 
 def pedido_para(tarefa, cfg):
@@ -79,17 +79,17 @@ def pedido_para(tarefa, cfg):
         onde = ('Cursos presenciais (ou mistos) em Portugal. "modalidade": "presencial" ou "misto". "pais": "PT". '
                 '"regiao": o distrito; "cidade": o concelho ou localidade.')
     else:
-        estado = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre"}[local]
-        onde = (f'Cursos presenciais (ou mistos) no estado do {estado}, Brasil, incluindo cidades do interior. '
-                f'"modalidade": "presencial" ou "misto". "pais": "BR". "regiao": "{estado}"; "cidade": o município.')
+        estado = NOMES_LOCAIS.get(local, local)
+        onde = (f'Cursos presenciais (ou mistos, ou online só para quem mora no estado) no {estado}, Brasil, '
+                f'incluindo cidades do interior. "modalidade": "presencial", "misto" ou "online". "pais": "BR". '
+                f'"regiao": "{estado}"; "cidade": o município (ou null se for em todo o estado).')
     return (
         f"Data de hoje: {hoje().isoformat()}.\n\nProcura: {tarefa['pedido']}.\n{onde}\n\n"
         f"Lista de necessidades (ids): {necessidades}.\nLista interna de perfis (ids): {perfis}.\n\n"
         f"Devolve no máximo {cfg['max_por_pesquisa']} cursos, os melhores e mais úteis. "
         "Se não encontrares nenhum que cumpra as regras, devolve uma lista vazia.\n"
         "Não escrevas explicações nem listas de candidatos recusados: responde só com o JSON entre "
-        "<json></json>, uma lista de objetos com estes campos:\n"
-        f"{', '.join(CAMPOS)}")
+        "<json></json>, uma lista de objetos com estes campos:\n" + ", ".join(CAMPOS))
 
 
 def normalizar(c, tarefa, cfg, dominios):
@@ -103,46 +103,64 @@ def normalizar(c, tarefa, cfg, dominios):
     titulo = (c.get("titulo") or "").strip()
     if not titulo:
         return None, "sem título"
-    ids_nec = {n["id"] for n in cfg["necessidades"]}
-    necessidades = [n for n in (c.get("necessidades") or []) if n in ids_nec]
-    perfis = [p for p in (c.get("perfis") or []) if p in cfg["perfis_internos"]] or ["todos"]
     inscricoes = ler_data(c.get("inscricoes_ate"))
-    if inscricoes and inscricoes < hoje().isoformat():
+    if inscricoes and inscricoes < hoje_iso():
         return None, "inscrições encerradas"
-    certificado = c.get("certificado") if c.get("certificado") in ("gratuito", "pago", "sem certificado") else "desconhecido"
+    ids_nec = {n["id"] for n in cfg["necessidades"]}
     local = tarefa["local"]
-    curso = {
-        "id": hashlib.sha1((url + "|" + titulo.lower()).encode()).hexdigest()[:10],
-        "titulo": titulo[:200], "entidade": (c.get("entidade") or "").strip()[:150], "url": url,
-        "local": local,
-        "modalidade": c.get("modalidade") if c.get("modalidade") in ("online", "presencial", "misto") else
-        ("online" if local == "online" else "presencial"),
-        "pais": c.get("pais") if c.get("pais") in ("PT", "BR", "Internacional") else
-        ("PT" if local == "PT" else "BR" if local.startswith("BR") else "Internacional"),
-        "regiao": c.get("regiao"), "cidade": c.get("cidade"),
-        "descricao": (c.get("descricao") or "").strip()[:400],
-        "exclusivo_para": c.get("exclusivo_para") or None, "requisitos": c.get("requisitos") or None,
-        "certificado": certificado, "necessidades": necessidades, "perfis": perfis,
-        "inscricoes_ate": inscricoes, "inicio": ler_data(c.get("inicio")), "duracao": c.get("duracao") or None,
-    }
-    return curso, None
+    modalidade = c.get("modalidade") if c.get("modalidade") in ("online", "presencial", "misto") else \
+        ("online" if local == "online" else "presencial")
+    pais = c.get("pais") if c.get("pais") in ("PT", "BR", "Internacional") else \
+        ("PT" if local == "PT" else "BR" if local.startswith("BR") else "Internacional")
+    return {
+        "Título": titulo[:200], "Entidade": (c.get("entidade") or "").strip()[:150], "Link": url,
+        "Local": local, "Modalidade": modalidade, "País": pais,
+        "Região": c.get("regiao") or "", "Cidade": c.get("cidade") or "",
+        "Descrição": (c.get("descricao") or "").strip()[:400],
+        "Necessidades": ", ".join(n for n in (c.get("necessidades") or []) if n in ids_nec),
+        "Perfis": ", ".join(p for p in (c.get("perfis") or []) if p in cfg["perfis_internos"]) or "todos",
+        "Condição de acesso": c.get("exclusivo_para") or "", "Requisitos": c.get("requisitos") or "",
+        "Certificado": c.get("certificado") if c.get("certificado") in ("gratuito", "pago", "sem certificado") else "desconhecido",
+        "Inscrições até": inscricoes, "Início": ler_data(c.get("inicio")), "Duração": c.get("duracao") or "",
+    }, None
+
+
+def procurar_existente(curso, existentes):
+    """Mesmo ID, ou mesmo link com título muito parecido."""
+    cid = id_curso(curso["Link"], curso["Título"])
+    if cid in existentes["por_id"]:
+        return existentes["por_id"][cid]
+    for r in existentes["por_link"].get(curso["Link"], []):
+        if difflib.SequenceMatcher(None, r["Título"].lower(), curso["Título"].lower()).ratio() >= 0.8:
+            return r
+    return None
 
 
 def main():
-    cfg_total = config()
+    base = Base()
+    cfg_total = carregar_config(base)
     cfg = cfg_total["cursos"]
     modelo = cfg_total.get("modelo_cursos", "claude-haiku-5-5")
-    base = ler_json(FICHEIRO, {"atualizado": None, "cursos": []})
-    por_url = {c["id"]: c for c in base["cursos"]}
+    descoberta = cfg.get("dominios_descoberta", set())
+
+    registos = base.tabela(ABA)
+    existentes = {"por_id": {r["ID"]: r for r in registos if r.get("ID")}, "por_link": {}}
+    for r in registos:
+        existentes["por_link"].setdefault(r.get("Link", ""), []).append(r)
 
     tarefas = cfg["pesquisas"]
     so = os.environ.get("TAREFAS", "").strip()
     if so:
         tarefas = [t for t in tarefas if t["id"] in so.split(",")]
+    print(f"Pesquisas ativas: {', '.join(t['id'] for t in tarefas) or 'nenhuma'}")
 
-    uso_total, custo_total, novos, atualizados, falhas = {}, 0.0, 0, 0, 0
+    hoje_txt = hoje_iso()
+    novos, alteracoes, falhas, custo_total, pesquisas_web = [], [], 0, 0.0, 0
     for t in tarefas:
-        dominios = cfg["dominios"][t["local"]]
+        dominios = cfg["dominios"].get(t["local"], [])
+        if not dominios:
+            print(f"\n== {t['id']} == sem sites de confiança para {t['local']}; ignorada")
+            continue
         ferramenta = {"type": "web_search_20250305", "name": "web_search",
                       "max_uses": cfg.get("max_pesquisas_web", 4), "allowed_domains": dominios}
         if t["local"] in LOCALIZACAO:
@@ -156,51 +174,62 @@ def main():
             continue
         custo = custo_estimado(uso, modelo)
         custo_total += custo
-        for k, v in uso.items():
-            uso_total[k] = uso_total.get(k, 0) + v
+        pesquisas_web += uso.get("pesquisas_web", 0)
         lista = extrair_json(texto)
         if not isinstance(lista, list):
-            print(f"  Sem JSON válido na resposta. Início: {texto[:300]!r}")
+            print(f"  Sem JSON válido. Fim da resposta: {texto[-400:]!r}")
             continue
-        if not lista:
-            print(f"  Lista vazia. Fim da resposta: {texto[-600:]!r}")
         print(f"  {len(lista)} propostos | {uso.get('pesquisas_web', 0)} pesquisas | custo ≈ {custo} USD")
         for c in lista:
             curso, motivo = normalizar(c, t, cfg, dominios)
             if not curso:
                 print(f"  - recusado: {motivo}")
                 continue
-            estado = verificar_link(curso["url"])
-            if estado in (404, 410) or (400 <= estado < 500 and estado not in (401, 403, 405, 429)):
-                print(f"  - recusado: link não abre ({estado}) {curso['url']}")
-                continue
-            curso["link_verificado"] = 200 <= estado < 400
-            hoje_txt = hoje().isoformat()
-            antigo = por_url.get(curso["id"])
-            curso["primeiro_visto"] = antigo["primeiro_visto"] if antigo else hoje_txt
-            curso["visto_em"] = hoje_txt
-            por_url[curso["id"]] = curso
+            antigo = procurar_existente(curso, existentes)
             if antigo:
-                atualizados += 1
-            else:
-                novos += 1
-            marca = "" if curso["link_verificado"] else f" (link não confirmado: {estado})"
-            print(f"  + {curso['titulo']} — {curso['entidade']}{marca}")
+                if antigo.get("_linha") and antigo.get("Estado") not in ("Oculto", "Expirado"):
+                    alteracoes.append((antigo["_linha"], {"Última verificação": hoje_txt}))
+                print(f"  = já existe ({antigo.get('Estado')}): {antigo['Título']}")
+                continue
+            estado_http = verificar_link(curso["Link"])
+            if estado_http in (404, 410) or (400 <= estado_http < 500 and estado_http not in (401, 403, 405, 429)):
+                print(f"  - recusado: link não abre ({estado_http}) {curso['Link']}")
+                continue
+            curso["Link verificado"] = "SIM" if 200 <= estado_http < 400 else "NÃO"
+            notas = []
+            if dominio_permitido(curso["Link"], descoberta):
+                notas.append("Link de notícia: procurar a página oficial da inscrição.")
+            if curso["Link verificado"] == "NÃO":
+                notas.append(f"O link não respondeu à verificação automática ({estado_http}).")
+            curso.update({
+                "ID": id_curso(curso["Link"], curso["Título"]),
+                "Estado": "Rever" if notas else "Novo",
+                "Primeiro visto": hoje_txt, "Última verificação": hoje_txt, "Origem": "rotina",
+                "Notas": " ".join(notas), "Como me inscrever": "", "Nota da verificação": "",
+            })
+            novos.append(curso)
+            existentes["por_id"][curso["ID"]] = curso
+            existentes["por_link"].setdefault(curso["Link"], []).append(curso)
+            print(f"  + [{curso['Estado']}] {curso['Título']} — {curso['Entidade']}")
 
-    # limpeza: inscrições passadas ou cursos que deixaram de aparecer há muito tempo
-    hoje_txt = hoje().isoformat()
+    # expirar: inscrições passadas, ou cursos da rotina que deixaram de aparecer há muito tempo
     corte = (hoje() - datetime.timedelta(days=cfg.get("dias_validade", 60))).isoformat()
-    antes = len(por_url)
-    cursos = [c for c in por_url.values()
-              if not (c.get("inscricoes_ate") and c["inscricoes_ate"] < hoje_txt) and c["visto_em"] >= corte]
-    removidos = antes - len(cursos)
-    cursos.sort(key=lambda c: (c["local"], c["titulo"].lower()))
-    gravar_json(FICHEIRO, {"atualizado": agora_utc().isoformat(timespec="minutes"), "cursos": cursos})
+    expirados = 0
+    for r in registos:
+        if r.get("Estado") not in ("Novo", "Publicado", "Rever"):
+            continue
+        fim = ler_data(r.get("Inscrições até"))
+        visto = ler_data(r.get("Última verificação")) or ler_data(r.get("Primeiro visto"))
+        if (fim and fim < hoje_txt) or (r.get("Origem") == "rotina" and visto and visto < corte):
+            alteracoes.append((r["_linha"], {"Estado": "Expirado"}))
+            expirados += 1
 
-    print(f"\nResumo: {novos} novos, {atualizados} atualizados, {removidos} removidos, {len(cursos)} no total.")
-    print(f"Pesquisas web: {uso_total.get('pesquisas_web', 0)} | tokens entrada: {uso_total.get('input_tokens', 0)} "
-          f"| saída: {uso_total.get('output_tokens', 0)} | custo estimado: {round(custo_total, 3)} USD")
-    return 1 if falhas == len(tarefas) else 0
+    base.atualizar(ABA, alteracoes)
+    base.acrescentar(ABA, novos)
+    base.guardar()
+    print(f"\nResumo: {len(novos)} novos, {expirados} expirados.")
+    print(f"Pesquisas web: {pesquisas_web} | custo estimado: {round(custo_total, 3)} USD")
+    return 1 if tarefas and falhas == len(tarefas) else 0
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 {
  "nome": "Projeto Social",
+ "territorio_piloto": "BR-CE",
  "necessidades": [
   {
    "id": "digital",
@@ -52,20 +53,8 @@
    "rotulo": "Online (em qualquer lugar)"
   },
   {
-   "id": "PT",
-   "rotulo": "Portugal"
-  },
-  {
-   "id": "BR-MA",
-   "rotulo": "Brasil – Maranhão"
-  },
-  {
    "id": "BR-CE",
    "rotulo": "Brasil – Ceará"
-  },
-  {
-   "id": "BR-AC",
-   "rotulo": "Brasil – Acre"
   }
  ],
  "temas": {

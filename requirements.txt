@@ -1,0 +1,5 @@
+feedparser
+gspread
+google-auth
+reportlab
+qrcode

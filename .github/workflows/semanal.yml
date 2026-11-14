@@ -2,11 +2,11 @@ name: Cursos e resumo da semana
 
 on:
   schedule:
-    - cron: "23 6 * * 1"   # todas as segundas-feiras às 06:23 UTC
+    - cron: "23 8 * * 1"   # todas as segundas-feiras às 08:23 UTC (05:23 em Fortaleza)
   workflow_dispatch:
     inputs:
       tarefas:
-        description: "Só estas pesquisas de cursos (ids separados por vírgulas; vazio = todas)"
+        description: "Só estas pesquisas de cursos (IDs separados por vírgulas; vazio = todas as ativas)"
         required: false
         default: ""
 
@@ -20,24 +20,40 @@ concurrency:
 jobs:
   semanal:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      FOLHA_ID: ${{ secrets.FOLHA_ID }}
+      PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -q feedparser
+      - run: pip install -q -r requirements.txt
 
       - name: Procurar cursos gratuitos
+        timeout-minutes: 30
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TAREFAS: ${{ inputs.tarefas }}
         run: cd scripts && python3 cursos.py
 
+      - name: Verificar cursos e escrever o passo a passo
+        if: ${{ always() }}
+        timeout-minutes: 20
+        run: cd scripts && python3 verificar.py
+
+      - name: Propostas de parceiros aceites
+        if: ${{ always() }}
+        run: cd scripts && python3 parceiros.py
+
       - name: Atualizar o site
+        if: ${{ always() }}
         run: cd scripts && python3 construir_site.py
 
-      - name: Newsletter e publicação para o WhatsApp
+      - name: WhatsApp, cartaz e newsletter
+        if: ${{ always() }}
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           BREVO_LISTA_ID: ${{ secrets.BREVO_LISTA_ID }}

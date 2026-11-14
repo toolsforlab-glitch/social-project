@@ -1,36 +1,39 @@
 <section class="pergunta" aria-labelledby="titulo-pergunta">
-  <h1 id="titulo-pergunta">O que quer aprender?</h1>
-  <p>Escolha uma ou mais opções e veja cursos gratuitos, online ou perto de si, em Portugal e no Brasil.</p>
-  <ul class="opcoes" id="inicio-opcoes" aria-label="O que quer aprender"></ul>
+  <h1 id="titulo-pergunta">O que você quer aprender?</h1>
+  <p>Escolha uma ou mais opções e veja cursos gratuitos, on-line ou perto de você.</p>
+  <ul class="opcoes" id="inicio-opcoes" aria-label="O que você quer aprender"></ul>
   <div class="campo">
-    <label for="inicio-onde">Onde está?</label>
+    <label for="inicio-onde">Onde você está?</label>
     <select id="inicio-onde"></select>
   </div>
   <a class="botao" id="inicio-ver" href="cursos.html">Ver cursos gratuitos</a>
 </section>
 
-<section aria-labelledby="titulo-noticias">
-  <h2 id="titulo-noticias">Notícias do setor social</h2>
-  <p class="discreto">Escolhidas e resumidas todos os dias a partir de fontes de todo o mundo.</p>
-  <ul class="lista" id="inicio-noticias"></ul>
-  <p><a href="noticias.html">Ver todas as notícias</a></p>
+<section aria-labelledby="titulo-ultimos">
+  <h2 id="titulo-ultimos">Inscrições terminando</h2>
+  <p class="discreto">Cursos com inscrições abertas só por mais alguns dias.</p>
+  <ul class="lista" id="inicio-ultimos"></ul>
 </section>
 
 <section aria-labelledby="titulo-caminhos">
-  <h2 id="titulo-caminhos">Mais formas de se informar</h2>
+  <h2 id="titulo-caminhos">Receba as novidades</h2>
+  <div class="caminhos">
+    {{CAMINHO_WHATSAPP}}
+  </div>
+</section>
+
+<section aria-labelledby="titulo-organizacoes">
+  <h2 id="titulo-organizacoes">Para organizações sociais</h2>
+  <p>Se você trabalha ou é voluntário em uma organização social, pode compartilhar esta lista com as pessoas que atende e enviar os cursos da sua organização.</p>
+  {{PARCEIROS}}
   <div class="caminhos">
     <div class="caminho">
+      <h3><a href="noticias.html">Notícias do setor social</a></h3>
+      <p>Escolhidas e resumidas todos os dias, com o link para a fonte original.</p>
+    </div>
+    <div class="caminho">
       <h3><a href="{{PLAYLIST_ONGS}}" rel="noopener">Podcasts sobre ONGs e impacto social</a></h3>
-      <p>Uma playlist no Spotify com episódios novos todos os dias, em inglês.</p>
-    </div>
-    {{CAMINHO_WHATSAPP}}
-    <div class="caminho breve">
-      <h3>Vagas, voluntariado e financiamento</h3>
-      <p>Em breve.</p>
-    </div>
-    <div class="caminho breve">
-      <h3>Diretório de organizações</h3>
-      <p>Em breve: ONGs por causa e por região, e como ajudar cada uma.</p>
+      <p>Uma playlist no Spotify com episódios novos todo dia, em inglês.</p>
     </div>
   </div>
 </section>

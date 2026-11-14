@@ -15,13 +15,14 @@ jobs:
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       DEPURAR: "1"
+      MODO_LOCAL: "1"
       PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -q feedparser
+      - run: pip install -q -r requirements.txt
       - name: Preparar
         run: |
           git config user.name "github-actions[bot]"
@@ -29,7 +30,7 @@ jobs:
           rm -rf logs estado/noticias-vistas.json; mkdir -p logs
           echo "inicio $(date -u +%T)" > logs/teste.txt
           cat > /tmp/guardar.sh <<'SH'
-          git add -A docs estado semanal logs
+          git add -A docs estado semanal logs dados_locais
           git commit -q -m "Resultado do teste ($1) $(date -u +%H%M%S)" || exit 0
           git push -q || (git pull -q --rebase && git push -q)
           SH
@@ -43,8 +44,14 @@ jobs:
       - name: Cursos
         timeout-minutes: 25
         env:
-          TAREFAS: online-digital-emprego,pt-pla,br-ce
+          TAREFAS: ce-estado,ce-sistema-s,ce-noticias
         run: cd scripts && { echo "### CURSOS $(date -u +%T)"; python3 cursos.py; echo "saida=$?"; } >> ../logs/teste.txt 2>&1
+      - name: Verificar e propostas
+        if: ${{ always() }}
+        timeout-minutes: 15
+        env:
+          MAX_VERIFICACOES: "10"
+        run: cd scripts && { echo "### VERIFICAR $(date -u +%T)"; python3 verificar.py; echo "### PARCEIROS"; python3 parceiros.py; } >> ../logs/teste.txt 2>&1
       - name: Guardar (cursos)
         if: ${{ always() }}
         run: bash /tmp/guardar.sh cursos

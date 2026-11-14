@@ -1,10 +1,10 @@
 name: Atualizar o site
 
-# Corre quando se muda a configuração (ex.: o nome do projeto) ou o aspeto do site.
+# Corre quando se muda o aspeto do site, ou à mão depois de editar a folha.
 on:
   push:
     branches: [main]
-    paths: ["config.json", "site/**", "scripts/construir_site.py"]
+    paths: ["site/**", "scripts/construir_site.py"]
   workflow_dispatch:
 
 permissions:
@@ -17,10 +17,17 @@ concurrency:
 jobs:
   site:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      FOLHA_ID: ${{ secrets.FOLHA_ID }}
     steps:
       - uses: actions/checkout@v5
-      - name: Gerar o site
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - name: Gerar o site a partir da folha
         run: cd scripts && python3 construir_site.py
       - name: Publicar
         run: |

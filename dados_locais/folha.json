@@ -1,0 +1,1676 @@
+{
+ "Como usar": [
+  [
+   "x"
+  ]
+ ],
+ "Cursos": [
+  [
+   "ID",
+   "Estado",
+   "Título",
+   "Entidade",
+   "Link",
+   "Local",
+   "Modalidade",
+   "País",
+   "Região",
+   "Cidade",
+   "Descrição",
+   "Necessidades",
+   "Perfis",
+   "Condição de acesso",
+   "Requisitos",
+   "Certificado",
+   "Inscrições até",
+   "Início",
+   "Duração",
+   "Link verificado",
+   "Primeiro visto",
+   "Última verificação",
+   "Origem",
+   "Notas",
+   "Como me inscrever",
+   "Nota da verificação"
+  ],
+  [
+   "C-949362f8",
+   "Publicado",
+   "Comunicação assertiva e técnicas de procura de emprego",
+   "IEFP – Instituto do Emprego e Formação Profissional",
+   "https://iefp.pt/ofertas-formacao",
+   "online",
+   "online",
+   "PT",
+   "",
+   "",
+   "Curso a distância que ensina a comunicar melhor e a procurar trabalho, incluindo como fazer um currículo, responder a anúncios e preparar entrevistas.",
+   "emprego",
+   "desempregados",
+   "Para pessoas desempregadas, dos 18 aos 35 anos",
+   "Ter o 12.º ano (12 anos de escolaridade); ter entre 18 e 35 anos",
+   "desconhecido",
+   "",
+   "2026-11-23",
+   "300 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-ac9029b1",
+   "Publicado",
+   "Educação financeira pessoal",
+   "Escola Virtual de Governo (EV.G)",
+   "https://www.gov.br/pt-br/servicos/aprender-educacao-financeira-pessoal-no-aprender-valor",
+   "online",
+   "online",
+   "BR",
+   "",
+   "",
+   "Explica como planejar o uso do dinheiro, poupar com regularidade e usar o crédito de forma responsável.",
+   "dinheiro",
+   "todos",
+   "",
+   "",
+   "gratuito",
+   "",
+   "",
+   "",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-2204a779",
+   "Publicado",
+   "Gestão de finanças pessoais",
+   "Banco Central do Brasil (acesso pela Escola Virtual de Governo)",
+   "https://www.gov.br/pt-br/servicos/aprender-a-administrar-suas-financas-pessoais",
+   "online",
+   "online",
+   "BR",
+   "",
+   "",
+   "Ensina o básico de como organizar o dinheiro do dia a dia, com vídeos animados e uma história simples.",
+   "dinheiro",
+   "todos",
+   "",
+   "Ter e-mail ou CPF para criar o acesso",
+   "desconhecido",
+   "",
+   "",
+   "Em média 20 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-79ff417b",
+   "Rever",
+   "Informática básica",
+   "Prefeitura de Belo Horizonte (Programa de Inclusão Digital)",
+   "https://prefeitura.pbh.gov.br/noticias/curso-gratuito-de-informatica-basica-da-pbh-ensina-usar-ferramentas-do-google-e-acessar",
+   "online",
+   "online",
+   "BR",
+   "",
+   "",
+   "Ensina a usar o computador e a internet com segurança, a criar e-mail e a usar ferramentas do Google.",
+   "digital",
+   "todos",
+   "",
+   "Morar em Belo Horizonte",
+   "desconhecido",
+   "",
+   "",
+   "60 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "Parece ser presencial em Belo Horizonte, fora das regiões do projeto.",
+   "",
+   ""
+  ],
+  [
+   "C-c575e970",
+   "Publicado",
+   "Português Língua de Acolhimento (A1 + A2) em Salvaterra de Magos",
+   "IEFP - Instituto do Emprego e Formação Profissional",
+   "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=394",
+   "PT",
+   "presencial",
+   "PT",
+   "Santarém",
+   "Salvaterra de Magos",
+   "Aulas de português para começar a comunicar no dia a dia e nas situações de trabalho, em horário pós-laboral.",
+   "portugues",
+   "migrantes_refugiados, desempregados",
+   "",
+   "",
+   "desconhecido",
+   "",
+   "2026-12-09",
+   "150 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-ed089dec",
+   "Publicado",
+   "Português Língua de Acolhimento (A1) em Arganil",
+   "IEFP - Instituto do Emprego e Formação Profissional",
+   "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=268",
+   "PT",
+   "presencial",
+   "PT",
+   "Coimbra",
+   "Arganil",
+   "Curso inicial para aprender português básico, para comunicar no dia a dia em Portugal. As aulas são depois do horário de trabalho.",
+   "portugues, emprego",
+   "todos",
+   "",
+   "",
+   "desconhecido",
+   "",
+   "2026-12-02",
+   "75 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-b28ac191",
+   "Publicado",
+   "Português Língua de Acolhimento (A1, A2 e B1) em Águeda",
+   "IEFP - Instituto do Emprego e Formação Profissional",
+   "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=299",
+   "PT",
+   "presencial",
+   "PT",
+   "Aveiro",
+   "Águeda",
+   "Curso para aprender português em níveis básicos e intermédios, para falar e entender melhor no dia a dia e no trabalho. As aulas são depois do horário de trabalho.",
+   "portugues, emprego",
+   "migrantes_refugiados",
+   "Para migrantes",
+   "Ser imigrante com 18 anos ou mais, em situação legal em Portugal.",
+   "desconhecido",
+   "",
+   "2026-12-03",
+   "100 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-035a1372",
+   "Publicado",
+   "Português Língua de Acolhimento (A2) em Braga",
+   "IEFP - Instituto do Emprego e Formação Profissional",
+   "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=199",
+   "PT",
+   "presencial",
+   "PT",
+   "Braga",
+   "Braga",
+   "Curso curto de português para melhorar a comunicação no quotidiano e no trabalho, com aulas à noite.",
+   "portugues",
+   "migrantes_refugiados, desempregados",
+   "",
+   "Ter o 9.º ano ou mais; ter 18 anos ou mais",
+   "desconhecido",
+   "",
+   "2026-11-26",
+   "50 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-a791e45d",
+   "Publicado",
+   "Português Língua de Acolhimento (A2) em Guimarães",
+   "IEFP - Instituto do Emprego e Formação Profissional",
+   "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=199",
+   "PT",
+   "presencial",
+   "PT",
+   "Braga",
+   "Guimarães",
+   "Aulas de português para o dia a dia, o trabalho e a vida em Portugal, em horário pós-laboral. Serve para quem quer falar e entender melhor a língua.",
+   "portugues",
+   "migrantes_refugiados, desempregados",
+   "Para imigrantes com 18 anos ou mais, em situação legal",
+   "Ter 18 anos ou mais; estar em situação legal em Portugal",
+   "desconhecido",
+   "",
+   "2026-12-10",
+   "75 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-4dfcb8fe",
+   "Publicado",
+   "Português Língua de Acolhimento no Porto (para quem não sabe ler nem escrever)",
+   "IEFP - Instituto do Emprego e Formação Profissional",
+   "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao",
+   "PT",
+   "presencial",
+   "PT",
+   "Porto",
+   "Porto",
+   "Aulas de português desde o início, com foco em aprender a ler e a escrever e a comunicar no dia a dia. Turmas à tarde.",
+   "portugues, escola",
+   "migrantes_refugiados",
+   "Para pessoas que ainda não sabem ler nem escrever",
+   "Não saber ler nem escrever; ter 18 anos ou mais",
+   "desconhecido",
+   "",
+   "2026-11-24",
+   "50 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-fbd8e74a",
+   "Publicado",
+   "Proficiência digital – nível básico em Vizela",
+   "IEFP - Instituto do Emprego e Formação Profissional",
+   "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=199",
+   "PT",
+   "presencial",
+   "PT",
+   "Braga",
+   "Vizela",
+   "Aprende a usar o computador, o telemóvel e a internet no dia a dia, de forma prática e segura.",
+   "digital",
+   "desempregados",
+   "Para pessoas desempregadas",
+   "Ter 18 anos ou mais; não saber ler nem escrever (condição indicada na oferta)",
+   "desconhecido",
+   "",
+   "2026-12-03",
+   "100 horas",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-7c972577",
+   "Publicado",
+   "Assistente Administrativo",
+   "Senac Ceará (Programa Senac de Gratuidade)",
+   "https://psg.ce.senac.br/oportunidades/",
+   "BR-CE",
+   "presencial",
+   "BR",
+   "Ceará",
+   "",
+   "Aprende tarefas de escritório, como organizar documentos e atender clientes, para trabalhar em empresas.",
+   "emprego, profissao",
+   "todos",
+   "",
+   "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
+   "desconhecido",
+   "",
+   "",
+   "",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-dcbfec54",
+   "Publicado",
+   "Assistente de Suporte e Manutenção de Computadores",
+   "Senac Ceará (Programa Senac de Gratuidade)",
+   "https://psg.ce.senac.br/oportunidades/",
+   "BR-CE",
+   "presencial",
+   "BR",
+   "Ceará",
+   "",
+   "Aprende a montar, arrumar e dar suporte a computadores. Ajuda a conseguir trabalho na área de informática.",
+   "tecnologia, emprego, profissao",
+   "todos",
+   "",
+   "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
+   "desconhecido",
+   "",
+   "2026-11-16",
+   "",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-fa5789f3",
+   "Publicado",
+   "Bolos, Recheios e Coberturas",
+   "Senac Ceará (Programa Senac de Gratuidade)",
+   "https://psg.ce.senac.br/oportunidades/",
+   "BR-CE",
+   "presencial",
+   "BR",
+   "Ceará",
+   "",
+   "Aprende a fazer bolos, recheios e coberturas. Serve para trabalhar em confeitaria ou começar um negócio de doces.",
+   "profissao, negocio",
+   "todos",
+   "",
+   "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
+   "desconhecido",
+   "",
+   "",
+   "",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-df352c6e",
+   "Publicado",
+   "Introdução ao Mundo Digital",
+   "Senac Ceará (Programa Senac de Gratuidade)",
+   "https://psg.ce.senac.br/oportunidades/",
+   "BR-CE",
+   "presencial",
+   "BR",
+   "Ceará",
+   "",
+   "Curso básico para aprender a usar o computador e a internet no dia a dia e no trabalho.",
+   "digital",
+   "todos",
+   "",
+   "Renda familiar de até 2 salários mínimos por pessoa; estar cursando ou ter concluído a educação básica",
+   "desconhecido",
+   "",
+   "",
+   "",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ],
+  [
+   "C-76f08ea6",
+   "Publicado",
+   "Renda de labirinto (empreendedorismo artesanal) em Aracati",
+   "IFCE – Instituto Federal do Ceará, Campus Aracati",
+   "https://portal.ifce.edu.br/campus/aracati/",
+   "BR-CE",
+   "presencial",
+   "BR",
+   "Ceará",
+   "Aracati",
+   "Você aprende a fazer renda de labirinto, um artesanato tradicional do Ceará, e a transformar essa habilidade em renda. O curso também ensina a pensar em um pequeno negócio.",
+   "profissao, negocio",
+   "todos",
+   "",
+   "",
+   "desconhecido",
+   "",
+   "",
+   "",
+   "SIM",
+   "2026-11-11",
+   "2026-11-11",
+   "rotina",
+   "",
+   "",
+   ""
+  ]
+ ],
+ "Notícias": [
+  [
+   "ID",
+   "Estado",
+   "Data",
+   "Título",
+   "Resumo",
+   "Tema",
+   "Região",
+   "Fonte",
+   "Idioma original",
+   "Link",
+   "Notas"
+  ],
+  [
+   "N-daae61b2",
+   "Publicado",
+   "2026-11-11",
+   "Tribunal Constitucional de Angola trava normas da nova lei das ONG",
+   "O Tribunal Constitucional angolano considerou inconstitucionais várias normas da nova lei das ONG, por violarem a liberdade de associação. A decisão afeta o enquadramento legal das organizações da sociedade civil no país.",
+   "direitos",
+   "África",
+   "Lusa",
+   "pt",
+   "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQclFKbGtIVEVJaHo1S2FJTVBVUG90MEpPUDBueGFFWEdqa2R6WmxMYmhnSERyckRsQjR0Qm14bWZXY1kyWkdZM0dKcEtwZ0piYjFTSnhpOGJNRDJrYnZVTjF4QVotNmJ2LXVZRXBQQ0NhOEZEbkVyTDhweVNJN292eVo4RTNGX3BYZDVNRml6bm14N2piTDJuY2VSZU5LVlNHWEJKUGQwcllFWXRFRnI2MnBJVnRHWU5TYkctdWJkMGxqN2oxcGc4MWhKbXdWSkN3Vl85eXE2cEU5SXBjTHI2NDJqVkI3dFlhTndnSEdraVNUUQ?oc=5",
+   ""
+  ],
+  [
+   "N-be67e213",
+   "Oculto",
+   "2026-11-11",
+   "Tribunal Constitucional de Angola trava normas da nova Lei das ONG",
+   "O Tribunal Constitucional angolano declarou inconstitucionais algumas normas da nova Lei das ONG. A decisão afeta as regras que regulam o funcionamento destas organizações no país.",
+   "direitos",
+   "África",
+   "DW.com",
+   "pt",
+   "https://news.google.com/rss/articles/CBMimgFBVV95cUxQU3p6QjlLcHJEM1lJblR0eFdoZGdTUlJ5MkFidE9BRjVEVWVHYjFVUU1tekxnX0NNbjlSdHFMckd4Uk9zTE5feDZlQ29uLUxuUzBEMkUySlBrd3ZTdVBxU1N3UFdXbG9VU0EzY1RQSm1QYlpnTXN6NWltY0dNMGxuSWJWa1dmbkk0ZXpVR1VYY24tdUtsTkZDWmZ30gGaAUFVX3lxTE04cFhyLW9Kc0VHRGxGZDhzenRkOTVESmFOUkk1R21JWVU2MzdWM19vZ3MwX0twSmNWdHlFWXdPS1pBN1c1NC1FOTdWdHRHcVpJSDhydlh2dkhCb0ZhMm52QlN5V3pCX2hBVGhMcll0YmVCVjNuVGt5RktSRXA0NWx1SU1wczAtWl9wUDQzWDdoQlR4b3hzT1gtWEE?oc=5",
+   "Mesma história de outra fonte."
+  ],
+  [
+   "N-400dc76d",
+   "Publicado",
+   "2026-11-11",
+   "Estudo regista 18 mortes e 379 casos de violência política em 27 dias",
+   "Levantamento das organizações Terra de Direitos e Justiça Global conta 18 mortes e 379 casos de violência política entre 5 e 31 de outubro. A maioria dos casos atingiu eleitores, militantes e equipes de campanha.",
+   "direitos",
+   "Brasil",
+   "Agência Brasil – Direitos Humanos",
+   "pt",
+   "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/violencia-politica-estudo-registra-18-mortes-e-379-casos-em-27-dias",
+   ""
+  ],
+  [
+   "N-c5aa71d4",
+   "Publicado",
+   "2026-11-11",
+   "Número de adolescentes privados de liberdade cai para metade em dez anos",
+   "Segundo o Sinase, o número de adolescentes em medidas de restrição de liberdade caiu de 26,8 mil em 2015 para cerca de 13 mil em 2025. Ao mesmo tempo, avança na Câmara uma PEC que pode reduzir a maioridade penal.",
+   "direitos",
+   "Brasil",
+   "Agência Brasil – Direitos Humanos",
+   "pt",
+   "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/numero-de-jovens-privados-de-liberdade-caiu-pela-metade-em-dez-anos",
+   ""
+  ],
+  [
+   "N-590b6c6b",
+   "Publicado",
+   "2026-11-11",
+   "Filantropia promete 88 milhões de dólares ao fundo brasileiro de florestas na COP31",
+   "Doadores filantrópicos comprometeram 88 milhões de dólares para o fundo brasileiro de florestas, anunciado na COP31. O financiamento reforça a aposta em proteção florestal com capital privado.",
+   "filantropia",
+   "Brasil",
+   "Exame",
+   "pt",
+   "https://news.google.com/rss/articles/CBMinwFBVV95cUxNYjZ2aWp0ZHN5cWllRUpMU3UzUmtEWjFoWEFuTmVmRnplUmt2aV9pX3hza0ZWU3dhdHJhUXVuaU5rRnZQMDJOMHduby1xSVM1OGZvUm1LSXNiUWRmM1RJT0U0V1hubEJCR3RVWm9TX0dRMlJMR2VxV1V2cjI5QmJSbHZkRjFLTTJ2ajFRcjR2eVZPeDUzOHJFLTVmVUhqOEE?oc=5",
+   ""
+  ],
+  [
+   "N-380eec49",
+   "Publicado",
+   "2026-11-11",
+   "Russos e chineses exploram florestas da República Centro-Africana sem controlo, denuncia ONG",
+   "Uma ONG denuncia que empresas russas e chinesas exploram as florestas da República Centro-Africana sem controlo adequado. O caso levanta dúvidas sobre a gestão dos recursos naturais no país.",
+   "ambiente",
+   "África",
+   "Agroportal",
+   "pt",
+   "https://news.google.com/rss/articles/CBMirgFBVV95cUxPTnNjSi1zeTZ6T1NMWEJOdlhvNEVJSzRCMkZmVWkxUVlRbEFiTlFTWjJBR1pZUnFrMDZZbXBUQU1RTTFFd2M5Ry1wQ2VEeWtXT3hLRERVUlZDZ1ItRkRPdjczT2lJQXBxeGV6emZ3TWxtbGJKRV9ES3UtTHZpMWdzdVUybHFKWDZHYkIxMU11UEhjMWU2QjdkY3B1YUpnSnhab1AwanNBNHd0cklTZFE?oc=5",
+   ""
+  ],
+  [
+   "N-43984f91",
+   "Publicado",
+   "2026-11-11",
+   "Haiti: o que significa a intervenção de Bukele na crise de segurança",
+   "A mobilização de mais de 2.000 militares pelo líder salvadorenho aumentou os riscos no Haiti, alimentando a violência. Os haitianos dividem-se entre a esperança e o medo.",
+   "humanitario",
+   "Américas",
+   "The New Humanitarian",
+   "en",
+   "https://www.thenewhumanitarian.org/analysis/2026/11/11/haiti-depth-what-bukeles-intervention-means-security-crisis",
+   ""
+  ],
+  [
+   "N-a14e0119",
+   "Publicado",
+   "2026-11-11",
+   "Um «Super» El Niño expõe os desafios da filantropia perante choques combinados",
+   "Um El Niño recorde está previsto e o maior perigo está na forma como várias crises se reforçam mutuamente. A filantropia enfrenta o desafio de aprender a responder a estes choques combinados, mais do que apenas mover dinheiro mais depressa.",
+   "humanitario",
+   "Mundo",
+   "Alliance Magazine",
+   "en",
+   "https://www.alliancemagazine.org/blog/in-an-age-of-compound-shocks-the-super-el-nino-is-revealing-for-philanthropy/",
+   ""
+  ],
+  [
+   "N-1d2e45ca",
+   "Publicado",
+   "2026-11-11",
+   "Os 25% mais pobres têm 8,3% de chance de chegar ao topo da distribuição",
+   "Dados do Atlas da Mobilidade Social, apresentados no Dia da Favela, mostram que a origem familiar e o local de residência pesam muito na mobilidade social. A probabilidade de os 25% mais pobres chegarem aos 25% mais ricos é de 8,3%.",
+   "desenvolvimento",
+   "Brasil",
+   "Observatório do Terceiro Setor",
+   "pt",
+   "https://observatorio3setor.org.br/os-25-mais-pobres-tem-83-de-chance-de-chegar-ao-grupo-dos-25-mais-ricos/",
+   ""
+  ],
+  [
+   "N-0592b550",
+   "Publicado",
+   "2026-11-11",
+   "Brasil recebe de volta restos mortais de duas pessoas escravizadas levadas para os EUA",
+   "Os restos mortais, retirados do Brasil no século XIX, estiveram 150 anos sob guarda de instituições ligadas à Universidade de Harvard. Agora ficam temporariamente com o Museu Nacional da UFRJ e a UFBA.",
+   "direitos",
+   "Brasil",
+   "Agência Brasil – Direitos Humanos",
+   "pt",
+   "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/brasil-repatria-restos-mortais-de-escravizados-que-estavam-nos-eua",
+   ""
+  ],
+  [
+   "N-683b4dd9",
+   "Publicado",
+   "2026-11-11",
+   "Movimento negro propõe seis projetos de lei para educação antirracista nas escolas",
+   "Organizações do movimento negro apresentaram em Brasília um pacote de projetos para combater o racismo no ambiente escolar. A meta é aprová-los em câmaras municipais e assembleias estaduais de todo o país.",
+   "educacao",
+   "Brasil",
+   "Agência Brasil – Direitos Humanos",
+   "pt",
+   "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/movimento-negro-reivindica-projetos-de-leis-antirracistas-para-escolas",
+   ""
+  ],
+  [
+   "N-9e0c33ba",
+   "Publicado",
+   "2026-11-11",
+   "Prefeitura de São Paulo rescinde contrato de 157 milhões de reais com ONG",
+   "A prefeitura só agora rompeu um contrato de cerca de R$ 157 milhões com uma organização ligada ao filme sobre Bolsonaro. A decisão levanta questões sobre a fiscalização de parcerias com o terceiro setor.",
+   "gestao",
+   "Brasil",
+   "Hora do Povo",
+   "pt",
+   "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQll6Ty1YNWhsRlVMckVKdEVnN3p1OVpoQ1BYRExjR3JndllqVHdVNFoxYXFUNHI1NXQ5TWdyU0o2Slc5My1wWWc0My1ZbnB6MDVsN1g4VHY1aHppM1RicC1DR1hyMjJXSFB3a2QxenYyRXJRaTdSRXFEWHJuaUlUSDVjMlh1a2ltYk8wZEFEMmNoR1V5QVNhdFZEbS0tWk9DeEQwclVZMlhKZUZyU1JRSjVR?oc=5",
+   ""
+  ],
+  [
+   "N-b95e4179",
+   "Publicado",
+   "2026-11-11",
+   "Nova Iorque dá às ONG a primeira oportunidade de comprar prédios degradados",
+   "Mamdani assinou a lei COPA, que permite às organizações sem fins lucrativos fazer as primeiras propostas de compra de edifícios em mau estado. A medida pretende facilitar o acesso à habitação.",
+   "gestao",
+   "Américas",
+   "6sqft",
+   "en",
+   "https://news.google.com/rss/articles/CBMivAFBVV95cUxPQUdJcEFkLUVhVmZLdHN6TktyNWdqdHBFYm8tbERNMnY4YmZGRVZicnh2OS1PNVJPd2VjRzFYZGktejVEbTBfSWhqeGNOaGJJSGs4bEN1WE1KS2ZuY210VUpsVEN2OTJXc0gyWkpaQThWMnFJd1pIc1IyOFhoOGVISU1Hb1l0ZmZfbTRxc0phWFJ2MkxaS2wxODhiXzVORXpVQmJFZlZIWVFyRkZZRHYtN3lINUdqWG8xY29VZw?oc=5",
+   ""
+  ],
+  [
+   "N-b386d40e",
+   "Publicado",
+   "2026-11-11",
+   "AVPN alarga fundo de inteligência artificial a toda a Ásia-Pacífico",
+   "A plataforma de impacto social expandiu o seu fundo de oportunidades em IA com 28 novos beneficiários. Entre eles está a Pratham Education Foundation, da Índia, que forma professores para usar a IA de forma crítica.",
+   "filantropia",
+   "Ásia",
+   "Alliance Magazine",
+   "en",
+   "https://www.alliancemagazine.org/blog/avpn-expands-ai-fund-across-asia-pacific-region/",
+   ""
+  ],
+  [
+   "N-5309bae9",
+   "Publicado",
+   "2026-11-11",
+   "Trabalhadores ao ar livre na Turquia pagam o custo humano da crise climática",
+   "Enquanto a COP31 decorre em salas de conferências com ar condicionado, os trabalhadores ao ar livre da Turquia pedem medidas urgentes. Reclamam proteção para a sua saúde e para o seu sustento.",
+   "ambiente",
+   "Médio Oriente",
+   "The New Humanitarian",
+   "en",
+   "https://www.thenewhumanitarian.org/news-feature/2026/11/10/turkiye-hosts-cop31-its-outdoor-workers-bear-human-cost-climate-crisis",
+   ""
+  ],
+  [
+   "N-9f208344",
+   "Publicado",
+   "2026-11-11",
+   "Igreja centenária no Texas contesta na justiça a construção do muro na fronteira",
+   "A organização Friends of the Ruidosa Church é autora de uma ação contra o uso de isenções legais que aceleram a obra do muro. A igreja de adobe, de 1915, fica perto do Rio Grande.",
+   "migracoes",
+   "Américas",
+   "Nonprofit Quarterly",
+   "en",
+   "https://nonprofitquarterly.org/a-century-old-texas-church-is-fighting-trumps-border-wall/",
+   ""
+  ],
+  [
+   "N-35504d48",
+   "Publicado",
+   "2026-11-11",
+   "ONG do condado de Seminole enfrentam incerteza com cortes de financiamento",
+   "Após a aprovação da Emenda 3, as organizações sem fins lucrativos deste condado norte-americano temem cortes nas verbas. A incerteza sobre o financiamento mantém-se.",
+   "",
+   "Américas",
+   "WESH",
+   "en",
+   "https://news.google.com/rss/articles/CBMijwFBVV95cUxOcUtnTEFMbDRpa2ozQjRyVFBRTHVxcnh3eXNOY2tNNVBJUVdQVWJhQXBOV2djbHotVnQ4NmFscjBkX0h6QU95QldKaWdTMjBrY3FaQmlYWXZERFlhOWR6UExrNWoxRmNxNXpMcXpzRWRlTFJDUjB6TXlBSmx2QmQ4Ujc2eW9GY09wYkxWbEFzSQ?oc=5",
+   ""
+  ]
+ ],
+ "Propostas de parceiros": [
+  [
+   "Data",
+   "Estado",
+   "Organização",
+   "Contacto",
+   "Título do curso",
+   "Link",
+   "Cidade",
+   "Modalidade",
+   "Datas e horários",
+   "Para quem é / requisitos",
+   "Descrição",
+   "ID do curso criado",
+   "Notas"
+  ],
+  [
+   "2026-11-14 10:00",
+   "Aceite",
+   "Associação Teste (exemplo)",
+   "teste@exemplo.org",
+   "Corte e costura para iniciantes",
+   "",
+   "Fortaleza",
+   "presencial",
+   "Terças e quintas, 14h às 17h, de 1/12 a 28/2",
+   "Maiores de 16 anos",
+   "Aulas práticas de costura básica com máquina, para fazer consertos e pequenas peças para vender.",
+   "",
+   ""
+  ]
+ ],
+ "Organizações": [
+  [
+   "ID",
+   "Estado",
+   "Nome",
+   "Causa",
+   "País",
+   "Região",
+   "Cidade",
+   "Site",
+   "Como ajudar",
+   "Contacto",
+   "Origem",
+   "Notas"
+  ]
+ ],
+ "Oportunidades": [
+  [
+   "ID",
+   "Estado",
+   "Tipo",
+   "Título",
+   "Organização",
+   "Local",
+   "Modalidade",
+   "Link",
+   "Prazo",
+   "Descrição",
+   "Origem",
+   "Notas"
+  ]
+ ],
+ "Fontes de notícias": [
+  [
+   "Ativa",
+   "Nome",
+   "Link do feed (RSS)",
+   "Idioma",
+   "Notas"
+  ],
+  [
+   "TRUE",
+   "The New Humanitarian",
+   "https://www.thenewhumanitarian.org/rss/all.xml",
+   "en",
+   ""
+  ],
+  [
+   "TRUE",
+   "Nonprofit Quarterly",
+   "https://nonprofitquarterly.org/feed/",
+   "en",
+   ""
+  ],
+  [
+   "TRUE",
+   "Alliance Magazine",
+   "https://www.alliancemagazine.org/feed/",
+   "en",
+   ""
+  ],
+  [
+   "TRUE",
+   "Stanford Social Innovation Review",
+   "https://ssir.org/site/rss_2.0",
+   "en",
+   ""
+  ],
+  [
+   "TRUE",
+   "Observatório do Terceiro Setor",
+   "https://observatorio3setor.org.br/feed/",
+   "pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "GIFE",
+   "https://gife.org.br/feed/",
+   "pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "Agência Brasil – Direitos Humanos",
+   "https://agenciabrasil.ebc.com.br/rss/direitos-humanos/feed.xml",
+   "pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "Google News – humanitarian and nonprofit",
+   "https://news.google.com/rss/search?q=%22humanitarian+aid%22+OR+%22humanitarian+crisis%22+OR+%22global+development%22&hl=en-US&gl=US&ceid=US:en",
+   "en",
+   ""
+  ],
+  [
+   "TRUE",
+   "Google Notícias – terceiro setor (Brasil)",
+   "https://news.google.com/rss/search?q=%22terceiro+setor%22+OR+ONG+OR+filantropia&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+   "pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "Google Notícias – ONG e solidariedade (Portugal)",
+   "https://news.google.com/rss/search?q=ONG+OR+IPSS+OR+solidariedade+OR+%22economia+social%22&hl=pt-PT&gl=PT&ceid=PT:pt-150",
+   "pt",
+   ""
+  ]
+ ],
+ "Pesquisas de cursos": [
+  [
+   "Ativa",
+   "ID",
+   "Local",
+   "O que procurar",
+   "Notas"
+  ],
+  [
+   "TRUE",
+   "online-digital-emprego",
+   "online",
+   "cursos online gratuitos de competências digitais básicas, preparação para o emprego e educação financeira, para iniciantes, em português",
+   ""
+  ],
+  [
+   "TRUE",
+   "online-profissao-negocio",
+   "online",
+   "cursos online gratuitos profissionalizantes, de empreendedorismo e de tecnologia para iniciantes, em português, com certificado gratuito",
+   ""
+  ],
+  [
+   "TRUE",
+   "online-linguas-refugiados",
+   "online",
+   "cursos online gratuitos de português para estrangeiros e de outras línguas, e programas gratuitos de formação para refugiados e migrantes",
+   ""
+  ],
+  [
+   "FALSE",
+   "pt-formacao",
+   "PT",
+   "formação profissional gratuita presencial em Portugal para desempregados, jovens e adultos (IEFP, Centros Qualifica, conclusão do 9.º e 12.º ano, RVCC) com inscrições abertas",
+   ""
+  ],
+  [
+   "FALSE",
+   "pt-pla",
+   "PT",
+   "cursos gratuitos de Português Língua de Acolhimento (PLA) e outras formações gratuitas presenciais para migrantes em Portugal",
+   ""
+  ],
+  [
+   "FALSE",
+   "br-ma",
+   "BR-MA",
+   "cursos gratuitos presenciais com inscrições abertas no Maranhão (São Luís e interior): qualificação profissional, cursos FIC de institutos federais, Senac, Senai, programas estaduais e municipais, EJA",
+   ""
+  ],
+  [
+   "FALSE",
+   "br-ce",
+   "BR-CE",
+   "cursos gratuitos presenciais com inscrições abertas no Ceará (Fortaleza e interior): qualificação profissional, cursos FIC do IFCE, Senac, Senai, programas estaduais e municipais, EJA",
+   ""
+  ],
+  [
+   "FALSE",
+   "br-ac",
+   "BR-AC",
+   "cursos gratuitos presenciais com inscrições abertas no Acre (Rio Branco e interior): qualificação profissional, cursos FIC do IFAC, Senac, Senai, programas estaduais e municipais, EJA",
+   ""
+  ],
+  [
+   "TRUE",
+   "ce-estado",
+   "BR-CE",
+   "cursos gratuitos do Governo do Ceará com inscrições abertas: Secretaria da Proteção Social (SPS), Instituto Centec e Centros Vocacionais Tecnológicos (CVT), Centec Academy, Geração Tech, Ceará Sem Fome, Cagece Capacita, Escolas Estaduais de Educação Profissional",
+   ""
+  ],
+  [
+   "TRUE",
+   "ce-fortaleza",
+   "BR-CE",
+   "cursos gratuitos da Prefeitura de Fortaleza com inscrições abertas: Fortaleza + Futuro, Autonomia Econômica (Fortaleza Inclusiva), Rede Cuca, Fortaleza Capacita, cursos de idiomas nas periferias",
+   ""
+  ],
+  [
+   "TRUE",
+   "ce-sistema-s",
+   "BR-CE",
+   "cursos gratuitos com inscrições abertas no Ceará do Senac Ceará (Programa Senac de Gratuidade), do SENAI Ceará (cursos gratuitos e gratuidade regimental) e do Sebrae Ceará",
+   ""
+  ],
+  [
+   "TRUE",
+   "ce-ifce-universidades",
+   "BR-CE",
+   "cursos FIC, de extensão e de qualificação gratuitos com inscrições abertas do IFCE (todos os campi), da UFC, UECE, URCA, UFCA, Unilab e da Fundação Edson Queiroz (Centro de Formação Profissional)",
+   ""
+  ],
+  [
+   "TRUE",
+   "ce-interior",
+   "BR-CE",
+   "cursos gratuitos presenciais com inscrições abertas no interior do Ceará: Juazeiro do Norte, Crato, Barbalha, Sobral, Caucaia, Maracanaú, Iguatu, Crateús, Quixadá, Limoeiro do Norte, Aracati",
+   ""
+  ],
+  [
+   "TRUE",
+   "ce-noticias",
+   "BR-CE",
+   "notícias recentes sobre cursos gratuitos com inscrições abertas no Ceará (Diário do Nordeste, O Povo); sempre que possível, usar o link oficial da inscrição em vez do link da notícia",
+   "Fonte de descoberta: cursos com link de notícia entram em Rever"
+  ]
+ ],
+ "Sites de confiança": [
+  [
+   "Ativo",
+   "Local",
+   "Domínio",
+   "Notas"
+  ],
+  [
+   "TRUE",
+   "online",
+   "escolavirtual.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "www.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "nau.edu.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "academiaportugaldigital.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "iefp.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "gcfglobal.org",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "kiron.ngo",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "khanacademy.org",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "sebrae.com.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "ev.org.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "online",
+   "escoladotrabalhador40.com.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "PT",
+   "iefp.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "PT",
+   "qualifica.gov.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "PT",
+   "aima.gov.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "PT",
+   "gov.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "PT",
+   "anqep.gov.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "PT",
+   "scml.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "PT",
+   "caritas.pt",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "ifma.edu.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "ufma.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "ma.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "senac.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "senai.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "fiema.org.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "sebrae.com.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-MA",
+   "www.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "ifce.edu.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "ufc.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "ce.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "senac.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "senai.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "sfiec.org.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "sebrae.com.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "www.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-AC",
+   "ifac.edu.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-AC",
+   "ufac.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-AC",
+   "ac.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-AC",
+   "senac.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-AC",
+   "senai.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-AC",
+   "sebrae.com.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-AC",
+   "www.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "senai-ce.org.br",
+   "SENAI Ceará"
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "centec.org.br",
+   "Centec"
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "ceara.gov.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "cagece.com.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "unifor.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "uece.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "urca.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "ufca.edu.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "unilab.edu.br",
+   ""
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "diariodonordeste.verdesmares.com.br",
+   "Só para descobrir: cursos com link de notícia entram em Rever"
+  ],
+  [
+   "TRUE",
+   "BR-CE",
+   "opovo.com.br",
+   "Só para descobrir: cursos com link de notícia entram em Rever"
+  ]
+ ],
+ "Necessidades": [
+  [
+   "Ordem",
+   "ID",
+   "Texto no site",
+   "Ativa"
+  ],
+  [
+   1,
+   "digital",
+   "Usar o computador e a internet",
+   "TRUE"
+  ],
+  [
+   2,
+   "tecnologia",
+   "Trabalhar com tecnologia",
+   "TRUE"
+  ],
+  [
+   3,
+   "portugues",
+   "Aprender português",
+   "TRUE"
+  ],
+  [
+   4,
+   "linguas",
+   "Aprender outra língua",
+   "TRUE"
+  ],
+  [
+   5,
+   "profissao",
+   "Aprender uma profissão",
+   "TRUE"
+  ],
+  [
+   6,
+   "mudar",
+   "Mudar de profissão",
+   "TRUE"
+  ],
+  [
+   7,
+   "escola",
+   "Terminar a escola",
+   "TRUE"
+  ],
+  [
+   8,
+   "emprego",
+   "Encontrar emprego",
+   "TRUE"
+  ],
+  [
+   9,
+   "negocio",
+   "Abrir o meu próprio negócio",
+   "TRUE"
+  ],
+  [
+   10,
+   "dinheiro",
+   "Organizar o meu dinheiro",
+   "TRUE"
+  ],
+  [
+   11,
+   "direitos",
+   "Conhecer os meus direitos",
+   "TRUE"
+  ]
+ ],
+ "Perfis": [
+  [
+   "ID",
+   "Descrição (nunca aparece no site)",
+   "Ativo"
+  ],
+  [
+   "jovens",
+   "Jovens à procura do primeiro emprego ou fora da escola",
+   "TRUE"
+  ],
+  [
+   "50mais",
+   "Pessoas com 50 anos ou mais que querem mudar de carreira ou voltar ao trabalho",
+   "TRUE"
+  ],
+  [
+   "mudanca_profissao",
+   "Pessoas que querem mudar de profissão, incluindo profissionais do sexo",
+   "TRUE"
+  ],
+  [
+   "mulheres",
+   "Mulheres em situação de vulnerabilidade, mães sozinhas",
+   "TRUE"
+  ],
+  [
+   "migrantes_refugiados",
+   "Migrantes e refugiados",
+   "TRUE"
+  ],
+  [
+   "pessoas_com_deficiencia",
+   "Pessoas com deficiência",
+   "TRUE"
+  ],
+  [
+   "situacao_de_rua",
+   "Pessoas em situação de rua ou sem-abrigo",
+   "TRUE"
+  ],
+  [
+   "saida_sistema_prisional",
+   "Pessoas a sair do sistema prisional",
+   "TRUE"
+  ],
+  [
+   "lgbtqia",
+   "Pessoas LGBTQIA+ em situação de vulnerabilidade",
+   "TRUE"
+  ],
+  [
+   "rurais_indigenas_quilombolas",
+   "Comunidades rurais, indígenas e quilombolas",
+   "TRUE"
+  ],
+  [
+   "desempregados",
+   "Desempregados de longa duração",
+   "TRUE"
+  ],
+  [
+   "todos",
+   "Cursos gerais, para qualquer pessoa",
+   "TRUE"
+  ]
+ ],
+ "Locais": [
+  [
+   "Ordem",
+   "ID",
+   "Texto no site",
+   "País",
+   "Ativo"
+  ],
+  [
+   1,
+   "online",
+   "Online (em qualquer lugar)",
+   "",
+   "TRUE"
+  ],
+  [
+   2,
+   "PT",
+   "Portugal",
+   "PT",
+   "FALSE"
+  ],
+  [
+   3,
+   "BR-MA",
+   "Brasil – Maranhão",
+   "BR",
+   "FALSE"
+  ],
+  [
+   4,
+   "BR-CE",
+   "Brasil – Ceará",
+   "BR",
+   "TRUE"
+  ],
+  [
+   5,
+   "BR-AC",
+   "Brasil – Acre",
+   "BR",
+   "FALSE"
+  ]
+ ],
+ "Temas": [
+  [
+   "ID",
+   "Texto no site",
+   "Ativo"
+  ],
+  [
+   "humanitario",
+   "Ajuda humanitária",
+   "TRUE"
+  ],
+  [
+   "desenvolvimento",
+   "Desenvolvimento e pobreza",
+   "TRUE"
+  ],
+  [
+   "filantropia",
+   "Filantropia e financiamento",
+   "TRUE"
+  ],
+  [
+   "gestao",
+   "Gestão de ONGs",
+   "TRUE"
+  ],
+  [
+   "direitos",
+   "Direitos humanos",
+   "TRUE"
+  ],
+  [
+   "educacao",
+   "Educação",
+   "TRUE"
+  ],
+  [
+   "saude",
+   "Saúde",
+   "TRUE"
+  ],
+  [
+   "ambiente",
+   "Clima e ambiente",
+   "TRUE"
+  ],
+  [
+   "migracoes",
+   "Migrações e refugiados",
+   "TRUE"
+  ]
+ ],
+ "Configuração": [
+  [
+   "Chave",
+   "Valor",
+   "Para que serve"
+  ],
+  [
+   "nome",
+   "Projeto Social",
+   "Nome do projeto, no site, na newsletter e no WhatsApp"
+  ],
+  [
+   "nome_provisorio",
+   "SIM",
+   "SIM enquanto o nome não for definitivo"
+  ],
+  [
+   "slogan",
+   "Informação e oportunidades para quem ajuda e para quem precisa",
+   "Frase curta que aparece no rodapé e nas pesquisas do Google"
+  ],
+  [
+   "url_site",
+   "https://toolsforlab-glitch.github.io/projeto-social/",
+   "Endereço do site, usado nos links da newsletter e do WhatsApp"
+  ],
+  [
+   "link_playlist_ongs",
+   "https://open.spotify.com/playlist/0Wa3oKP9SIKGNx5mm0lorq",
+   "Playlist de podcasts no Spotify"
+  ],
+  [
+   "link_canal_whatsapp",
+   "",
+   "Link do canal de WhatsApp; vazio mostra \"Em breve\""
+  ],
+  [
+   "publicacao_automatica",
+   "SIM",
+   "SIM: o conteúdo novo aparece logo no site. NÃO: só aparece depois de mudar o estado para Publicado"
+  ],
+  [
+   "modelo_noticias",
+   "claude-haiku-5-5",
+   "Modelo do Claude que escolhe as notícias"
+  ],
+  [
+   "modelo_cursos",
+   "claude-haiku-5-5",
+   "Modelo do Claude que pesquisa os cursos"
+  ],
+  [
+   "noticias_max_por_dia",
+   8,
+   "Máximo de notícias escolhidas por dia"
+  ],
+  [
+   "noticias_dias_no_site",
+   30,
+   "Quantos dias de notícias aparecem no site (o histórico fica todo na folha)"
+  ],
+  [
+   "noticias_horas_janela",
+   36,
+   "Só considera notícias publicadas nas últimas N horas"
+  ],
+  [
+   "cursos_max_pesquisas_web",
+   4,
+   "Pesquisas na web por linha de \"Pesquisas de cursos\" (mais pesquisas, mais custo)"
+  ],
+  [
+   "cursos_max_por_pesquisa",
+   8,
+   "Máximo de cursos trazidos por cada pesquisa"
+  ],
+  [
+   "cursos_dias_validade",
+   60,
+   "Um curso que não volta a aparecer durante N dias passa a Expirado"
+  ],
+  [
+   "whatsapp_max_cursos",
+   6,
+   "Cursos na publicação semanal do WhatsApp"
+  ],
+  [
+   "newsletter_max_noticias",
+   8,
+   "Notícias na newsletter semanal"
+  ],
+  [
+   "newsletter_remetente_nome",
+   "Projeto Social",
+   "Nome que aparece como remetente da newsletter"
+  ],
+  [
+   "newsletter_remetente_email",
+   "",
+   "Email verificado no Brevo que envia a newsletter"
+  ],
+  [
+   "territorio_piloto",
+   "BR-CE",
+   ""
+  ],
+  [
+   "link_formulario_parceiros",
+   "",
+   ""
+  ],
+  [
+   "verificar_cursos",
+   "SIM",
+   ""
+  ]
+ ],
+ "Sugestões": [
+  [
+   "Data",
+   "Aprovar",
+   "Tipo",
+   "Local",
+   "Sugestão",
+   "Porquê",
+   "Notas"
+  ]
+ ],
+ "Métricas": [
+  [
+   "Semana (segunda-feira)",
+   "Visitas ao site",
+   "Cliques em cursos",
+   "Cursos novos",
+   "Seguidores do canal",
+   "Parceiros ativos",
+   "Notas"
+  ],
+  [
+   "2026-11-09",
+   "",
+   "",
+   7,
+   "",
+   "",
+   "7 cursos visíveis no site"
+  ]
+ ]
+}

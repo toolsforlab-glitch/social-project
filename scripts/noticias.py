@@ -9,10 +9,10 @@ import sys
 
 import feedparser
 
-from comum import (ErroClaude, agora_utc, baixar, claude, config, custo_estimado, extrair_json,
-                   gravar_json, hoje, ler_json)
+from base import Base, carregar_config
+from comum import (ErroClaude, agora_utc, baixar, claude, custo_estimado, extrair_json, gravar_json, hoje,
+                   ler_json)
 
-FICHEIRO = "docs/dados/noticias.json"
 ESTADO = "estado/noticias-vistas.json"
 MAX_CANDIDATOS = 120
 MAX_POR_FONTE = 15
@@ -91,11 +91,12 @@ def recolher(cfg, vistos):
 
 
 def main():
-    cfg_total = config()
+    base = Base()
+    cfg_total = carregar_config(base)
     cfg = cfg_total["noticias"]
-    dados = ler_json(FICHEIRO, {"atualizado": None, "dias": []})
+    registos = base.tabela("Notícias")
     estado = ler_json(ESTADO, {"vistas": []})
-    vistos = set(estado["vistas"]) | {it["link"] for d in dados["dias"] for it in d["itens"]}
+    vistos = set(estado["vistas"]) | {r.get("Link", "") for r in registos}
 
     candidatos, relatorio = recolher(cfg, vistos)
     print("Fontes:")
@@ -110,7 +111,8 @@ def main():
     temas = cfg["temas"]
     lista = "\n\n".join(
         f"[{c['id']}] ({c['fonte']}, {c['idioma']}) {c['titulo']}\n{c['resumo']}" for c in candidatos)
-    recentes = [it["titulo"] for d in dados["dias"][:3] for it in d["itens"]]
+    corte_recentes = (hoje() - datetime.timedelta(days=3)).isoformat()
+    recentes = [r["Título"] for r in registos if r.get("Data", "") >= corte_recentes]
     ja_publicadas = ("Já publicadas nos últimos dias (não repitas a mesma história, mesmo vinda de outra fonte):\n"
                      + "\n".join(f"- {t}" for t in recentes) + "\n\n") if recentes else ""
     pedido = (
@@ -130,31 +132,23 @@ def main():
     if not escolhidas:
         print(f"  Resposta sem lista válida. Início: {texto[:500]!r}")
     por_id = {c["id"]: c for c in candidatos}
-    itens = []
+    novas = []
+    dia = hoje().isoformat()
     for s in escolhidas:
         c = por_id.get(str(s.get("id")))
         if not c or not s.get("titulo") or not s.get("resumo") or s.get("tema") not in temas:
             continue
-        itens.append({
-            "titulo": s["titulo"].strip(), "resumo": s["resumo"].strip(),
-            "tema": s.get("tema") if s.get("tema") in temas else None,
-            "regiao": s.get("regiao"), "fonte": c["fonte"], "idioma_original": c["idioma"],
-            "link": c["link"], "data": c["data"],
+        novas.append({
+            "ID": "N-" + hashlib.sha1(c["link"].encode()).hexdigest()[:8], "Estado": "Novo", "Data": dia,
+            "Título": s["titulo"].strip(), "Resumo": s["resumo"].strip(), "Tema": s["tema"],
+            "Região": s.get("regiao") or "", "Fonte": c["fonte"], "Idioma original": c["idioma"],
+            "Link": c["link"], "Notas": "",
         })
-    print(f"Escolhidas: {len(itens)}  |  custo estimado: {custo_estimado(uso, modelo)} USD")
-    for it in itens:
-        print(f"  • [{it['tema']}] {it['titulo']} ({it['fonte']})")
-
-    dia = hoje().isoformat()
-    if dados["dias"] and dados["dias"][0]["data"] == dia:
-        ja = {i["link"] for i in dados["dias"][0]["itens"]}
-        dados["dias"][0]["itens"].extend(i for i in itens if i["link"] not in ja)
-    elif itens:
-        dados["dias"].insert(0, {"data": dia, "itens": itens})
-    corte = (hoje() - datetime.timedelta(days=cfg.get("dias_guardados", 30))).isoformat()
-    dados["dias"] = [d for d in dados["dias"] if d["data"] >= corte]
-    dados["atualizado"] = agora_utc().isoformat(timespec="minutes")
-    gravar_json(FICHEIRO, dados)
+    print(f"Escolhidas: {len(novas)}  |  custo estimado: {custo_estimado(uso, modelo)} USD")
+    for n in novas:
+        print(f"  • [{n['Tema']}] {n['Título']} ({n['Fonte']})")
+    base.acrescentar("Notícias", novas)
+    base.guardar()
 
     estado["vistas"] = (estado["vistas"] + [c["link"] for c in candidatos])[-4000:]
     gravar_json(ESTADO, estado)

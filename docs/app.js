@@ -68,18 +68,24 @@
       ver.href = "cursos.html" + (q.length ? "?" + q.join("&") : "");
     }
     botoesOpcoes(el("inicio-opcoes"), site.necessidades, escolhidas, atualizar);
-    preencherOnde(onde, site.locais, "");
+    preencherOnde(onde, site.locais, site.territorio_piloto || "");
     onde.addEventListener("change", atualizar);
+    atualizar();
 
-    carregar("dados/noticias.json").then(function (d) {
-      var itens = [];
-      (d.dias || []).forEach(function (dia) { dia.itens.forEach(function (n) { itens.push(n); }); });
-      el("inicio-noticias").innerHTML = itens.length
-        ? itens.slice(0, 5).map(function (n) { return noticiaHtml(n, false); }).join("")
-        : '<li class="vazio">As primeiras notícias aparecem aqui amanhã de manhã.</li>';
-    }).catch(function () {
-      el("inicio-noticias").innerHTML = '<li class="vazio">As primeiras notícias aparecem aqui em breve.</li>';
-    });
+    var caixa = el("inicio-ultimos");
+    carregar("dados/cursos.json").then(function (d) {
+      var hoje = new Date().toISOString().slice(0, 10);
+      var limite = new Date(Date.now() + 10 * 864e5).toISOString().slice(0, 10);
+      var ultimos = (d.cursos || []).filter(function (c) {
+        return c.inscricoes_ate && c.inscricoes_ate >= hoje && c.inscricoes_ate <= limite;
+      }).sort(function (a, b) { return a.inscricoes_ate.localeCompare(b.inscricoes_ate); }).slice(0, 5);
+      if (!ultimos.length) { caixa.parentNode.style.display = "none"; return; }
+      caixa.innerHTML = ultimos.map(function (c) {
+        var sitio = c.modalidade === "online" ? "On-line" : [c.cidade, c.regiao].filter(Boolean)[0] || "";
+        return '<li class="noticia"><h3><a href="' + esc(c.url) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
+          '<p class="meta">' + (sitio ? esc(sitio) + ". " : "") + "Inscrições até " + esc(dataBonita(c.inscricoes_ate)) + "</p></li>";
+      }).join("");
+    }).catch(function () { caixa.parentNode.style.display = "none"; });
   }
 
   // ------------------------------------------------------------ Cursos
@@ -102,16 +108,16 @@
 
     function cursoHtml(c) {
       var factos = [];
-      if (c.modalidade === "online") factos.push("Online");
+      if (c.modalidade === "online") factos.push("On-line");
       else {
         var partes = [c.cidade, c.regiao].filter(Boolean).filter(function (v, i, a) { return a.indexOf(v) === i; });
         var sitio = partes.join(", ") || nomesLocal[c.local] || "";
-        factos.push((c.modalidade === "misto" ? "Presencial e online" : "Presencial") + (sitio ? ": " + sitio : ""));
+        factos.push((c.modalidade === "misto" ? "Presencial e on-line" : "Presencial") + (sitio ? ": " + sitio : ""));
       }
       if (c.certificado === "gratuito") factos.push('<span class="bom">Certificado gratuito</span>');
       else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago</span>');
       if (c.inscricoes_ate) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
-      if (c.inicio) factos.push("Começa a " + esc(dataBonita(c.inicio)));
+      if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
       if (c.duracao) factos.push(esc(c.duracao));
       var factosHtml = factos.map(function (f) {
         var m = f.match(/^<span class="(\w+)">(.*)<\/span>$/);
@@ -125,7 +131,9 @@
         (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
-        '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver curso e inscrever-se</a></li>';
+        (c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
+          c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
+        '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver curso e se inscrever</a></li>';
     }
 
     function filtrar() {
@@ -148,10 +156,10 @@
       });
       var presenciais = res.filter(function (c) { return c.modalidade !== "online"; }).length;
       var resumo = res.length === 1 ? "1 curso" : res.length + " cursos";
-      if (o && o !== "online" && res.length) resumo += " (" + presenciais + (presenciais === 1 ? " presencial, " : " presenciais, ") + (res.length - presenciais) + " online)";
+      if (o && o !== "online" && res.length) resumo += " (" + presenciais + (presenciais === 1 ? " presencial, " : " presenciais, ") + (res.length - presenciais) + " on-line)";
       contagem.textContent = res.length ? resumo : "";
       lista.innerHTML = res.length ? res.map(cursoHtml).join("") :
-        '<li class="vazio">Não há cursos com estas opções neste momento. Experimente escolher menos opções ou "Mostrar tudo" em "Onde está?". A lista é atualizada todas as semanas.</li>';
+        '<li class="vazio">Não há cursos com essas opções no momento. Tente escolher menos opções ou "Mostrar tudo" em "Onde você está?". A lista é atualizada toda semana.</li>';
 
       var q = new URLSearchParams();
       if (escolhidas.length) q.set("quero", escolhidas.join(","));
@@ -160,11 +168,11 @@
     }
 
     botoesOpcoes(el("cursos-opcoes"), site.necessidades, escolhidas, filtrar);
-    preencherOnde(onde, site.locais, params.get("onde") || "");
+    preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : (site.territorio_piloto || ""));
     onde.addEventListener("change", filtrar);
     texto.addEventListener("input", filtrar);
 
-    lista.innerHTML = '<li class="discreto">A carregar os cursos…</li>';
+    lista.innerHTML = '<li class="discreto">Carregando os cursos…</li>';
     carregar("dados/cursos.json").then(function (d) {
       todos = d.cursos || [];
       filtrar();
@@ -194,7 +202,7 @@
           itens.map(function (n) { return noticiaHtml(n, false); }).join("") + "</ul>");
       });
       caixa.innerHTML = partes.length ? partes.join("") :
-        '<p class="vazio">Ainda não há notícias com este tema. Escolha "Todos os temas".</p>';
+        '<p class="vazio">Ainda não há notícias com esse tema. Escolha "Todos os temas".</p>';
     }
     tema.addEventListener("change", mostrar);
     carregar("dados/noticias.json").then(function (d) { dados = d; mostrar(); })

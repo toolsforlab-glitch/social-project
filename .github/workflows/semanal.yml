@@ -44,6 +44,11 @@ jobs:
         timeout-minutes: 20
         run: cd scripts && python3 verificar.py
 
+      - name: Verificar organizações e unidades (sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 verificar_organizacoes.py
+
       - name: Propostas de parceiros aceites
         if: ${{ always() }}
         run: cd scripts && python3 parceiros.py

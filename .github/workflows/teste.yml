@@ -35,29 +35,16 @@ jobs:
           git push -q || (git pull -q --rebase && git push -q)
           SH
           bash /tmp/guardar.sh inicio
-      - name: Notícias
-        timeout-minutes: 10
-        run: cd scripts && { echo "### NOTICIAS $(date -u +%T)"; python3 noticias.py; echo "saida=$?"; } >> ../logs/teste.txt 2>&1
-      - name: Guardar (notícias)
-        if: ${{ always() }}
-        run: bash /tmp/guardar.sh noticias
-      - name: Cursos
-        timeout-minutes: 25
-        env:
-          TAREFAS: ce-estado,ce-sistema-s,ce-noticias
-        run: cd scripts && { echo "### CURSOS $(date -u +%T)"; python3 cursos.py; echo "saida=$?"; } >> ../logs/teste.txt 2>&1
-      - name: Verificar e propostas
-        if: ${{ always() }}
+      # O passo a testar escolhe-se na variável PASSO (organizacoes | tudo); "organizacoes" não gasta Claude
+      - name: Verificar organizações
         timeout-minutes: 15
-        env:
-          MAX_VERIFICACOES: "10"
-        run: cd scripts && { echo "### VERIFICAR $(date -u +%T)"; python3 verificar.py; echo "### PARCEIROS"; python3 parceiros.py; } >> ../logs/teste.txt 2>&1
-      - name: Guardar (cursos)
+        run: cd scripts && { echo "### ORGANIZACOES $(date -u +%T)"; python3 verificar_organizacoes.py; echo "saida=$?"; } >> ../logs/teste.txt 2>&1
+      - name: Guardar (organizações)
         if: ${{ always() }}
-        run: bash /tmp/guardar.sh cursos
+        run: bash /tmp/guardar.sh organizacoes
       - name: Site e semanal
         if: ${{ always() }}
-        run: cd scripts && { echo "### SITE $(date -u +%T)"; python3 construir_site.py; echo "### SEMANAL"; python3 semanal.py; echo "fim $(date -u +%T)"; } >> ../logs/teste.txt 2>&1
+        run: cd scripts && { echo "### SITE $(date -u +%T)"; python3 construir_site.py; echo "fim $(date -u +%T)"; } >> ../logs/teste.txt 2>&1
       - name: Guardar (fim)
         if: ${{ always() }}
         run: bash /tmp/guardar.sh fim

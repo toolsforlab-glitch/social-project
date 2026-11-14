@@ -35,10 +35,13 @@ def exportar_dados(base, cfg):
     if "Organizações" in base.abas():
         for o in base.tabela("Organizações"):
             if (o.get("Estado") or "").strip() == "Publicado" and o.get("ID"):
-                unidades[o["ID"].strip()] = {k: o.get(c, "") for k, c in (
-                    ("nome", "Nome"), ("municipio", "Município"), ("bairro", "Bairro"), ("morada", "Morada"),
-                    ("telefone", "Telefone"), ("whatsapp", "WhatsApp"), ("horario", "Horário de atendimento"),
-                    ("o_que_levar", "O que levar"), ("site", "Site"))}
+                # cada dado só sai para o site se estiver comprovado na fonte ou revisto por uma pessoa
+                unidades[o["ID"].strip()] = {k: (o.get(c, "") if prova is None or comprovado(o, prova) else "")
+                                             for k, c, prova in (
+                    ("nome", "Nome", None), ("municipio", "Município", None), ("site", "Site", None),
+                    ("bairro", "Bairro", "bairro"), ("morada", "Morada", "morada"),
+                    ("telefone", "Telefone", "telefone"), ("whatsapp", "WhatsApp", "whatsapp"),
+                    ("horario", "Horário de atendimento", "horário"), ("o_que_levar", "O que levar", "o que levar"))}
     cursos = []
     for r in base.tabela("Cursos"):
         if not curso_no_site(r, cfg) or r.get("Local") not in locais or not r.get("Link"):

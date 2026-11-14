@@ -257,5 +257,49 @@ def registo_historico(r, tipo, resultado, depois, notas=""):
             "Notas": notas}
 
 
+# ---------- Prova a partir do texto bruto das páginas (sem modelo pelo meio) ----------
+import html as _html
+import unicodedata as _ud
+
+
+def texto_de_html(bruto):
+    """Texto visível de uma página HTML. Nunca usar resumos de modelos para preencher dados."""
+    if isinstance(bruto, bytes):
+        bruto = bruto.decode("utf-8", "replace")
+    bruto = re.sub(r"(?is)<(script|style|noscript|svg|head)[^>]*>.*?</\1>", " ", bruto)
+    bruto = re.sub(r"(?s)<[^>]+>", " ", bruto)
+    return re.sub(r"\s+", " ", _html.unescape(bruto)).strip()
+
+
+def _comparavel(texto):
+    """Normalização só para comparar: sem acentos, minúsculas, pontuação e espaços uniformes."""
+    t = _ud.normalize("NFKD", texto or "")
+    t = "".join(c for c in t if not _ud.combining(c)).lower()
+    t = t.replace("’", "'").replace("–", "-").replace("—", "-").replace("º", "o")
+    t = re.sub(r"\s*([,;:/().\-|])\s*", r"\1", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def valor_na_fonte(valor, textos, tipo="texto"):
+    """True se o valor aparece, tal como está, em pelo menos um dos textos das fontes."""
+    if not valor:
+        return None
+    if tipo in ("telefone", "cep"):
+        so_digitos = ["".join(re.findall(r"\d", t)) for t in textos]
+        partes = [p for p in re.split(r"/", str(valor)) if re.search(r"\d", p)]
+        return all(any("".join(re.findall(r"\d", p)) in d for d in so_digitos) for p in partes)
+    alvo = _comparavel(str(valor))
+    return any(alvo in _comparavel(t) for t in textos)
+
+
+def trecho(valor, texto, largura=70):
+    """Pequeno excerto do texto da fonte à volta do valor, para a coluna Evidência."""
+    a, b = _comparavel(texto), _comparavel(str(valor))
+    i = a.find(b)
+    if i < 0:
+        return ""
+    return a[max(0, i - largura): i + len(b) + largura].strip()
+
+
 def hoje_iso():
     return datetime.datetime.now(datetime.timezone.utc).date().isoformat()

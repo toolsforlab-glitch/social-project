@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, registo_historico, sim, visivel
+from base import texto_de_html, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json
 
 ABA = "Cursos"
@@ -44,10 +44,7 @@ Para cursos no Brasil escreve em português do Brasil; em Portugal, em portuguê
 
 
 def texto_da_pagina(url):
-    bruto = baixar(url, timeout=30).decode("utf-8", "replace")
-    bruto = re.sub(r"(?is)<(script|style|noscript|svg|head)[^>]*>.*?</\1>", " ", bruto)
-    bruto = re.sub(r"(?s)<[^>]+>", " ", bruto)
-    return re.sub(r"\s+", " ", html.unescape(bruto)).strip()[:MAX_CARACTERES]
+    return texto_de_html(baixar(url, timeout=30))[:MAX_CARACTERES]
 
 
 def main():

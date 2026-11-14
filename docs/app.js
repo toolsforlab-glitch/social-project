@@ -117,6 +117,8 @@
       if (c.certificado === "gratuito") factos.push('<span class="bom">Certificado gratuito</span>');
       else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago</span>');
       if (c.inscricoes_ate) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
+      else if (c.data_por_confirmar) factos.push('<span class="atencao">Confirme a data na página oficial</span>');
+      if (c.situacao === "Por confirmar") factos.push('<span class="atencao">Inscrições por confirmar</span>');
       if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
       if (c.duracao) factos.push(esc(c.duracao));
       var factosHtml = factos.map(function (f) {
@@ -133,7 +135,9 @@
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         (c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
           c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
-        '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver curso e se inscrever</a></li>';
+        '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver curso e se inscrever</a>' +
+        '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(dataBonita(c.verificado_em)) + ". " : "") +
+        "Confirme sempre na página oficial antes de ir.</p></li>";
     }
 
     function filtrar() {

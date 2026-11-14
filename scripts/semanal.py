@@ -31,7 +31,8 @@ def onde(c):
 
 
 def selecionar_cursos(cfg, dias=7):
-    cursos = ler_json("docs/dados/cursos.json", {"cursos": []})["cursos"]
+    # WhatsApp e cartaz chegam a muita gente: só levam cursos com inscrições abertas confirmadas
+    cursos = [c for c in ler_json("docs/dados/cursos.json", {"cursos": []})["cursos"] if c.get("situacao") == "Aberto" and not c.get("em_revisao")]
     hoje_txt = hoje_iso()
     corte = (hoje() - datetime.timedelta(days=dias)).isoformat()
     limite = (hoje() + datetime.timedelta(days=7)).isoformat()

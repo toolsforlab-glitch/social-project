@@ -103,6 +103,8 @@ def criar_cursos(base, cfg):
             "Como me inscrever": "\n".join(f"{i}. {s}" for i, s in enumerate((c.get("como_me_inscrever") or [])[:5], 1)),
             "Nota da verificação": "",
             **VERIFICACAO_INICIAL,
+            # proposta aceite por uma pessoa: conta como revista; a rotina não altera os campos importantes
+            "Revisto por pessoa": hoje_iso(), "Situação das inscrições": "Aberto",
         }
         novos.append(curso)
         alteracoes.append((p["_linha"], {"ID do curso criado": curso["ID"]}))

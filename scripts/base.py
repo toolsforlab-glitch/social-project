@@ -4,6 +4,7 @@ Em produção usa a conta de serviço (segredos GOOGLE_CREDENTIALS e FOLHA_ID).
 Para testes, com MODO_LOCAL=1, usa a cópia em dados_locais/folha.json.
 """
 import datetime
+import re
 import json
 import os
 
@@ -214,7 +215,30 @@ HISTORICO = "Histórico de verificações"
 # Valores iniciais das colunas de verificação, para cursos acabados de criar
 VERIFICACAO_INICIAL = {"Situação das inscrições": "Por confirmar", "Verificar automaticamente": "TRUE",
                        "Falhas seguidas do link": 0, "Impressão da página": "", "Página mudou em": "",
-                       "Próxima verificação": ""}
+                       "Próxima verificação": "", "Evidência": "", "Campos comprovados": "",
+                       "Revisto por pessoa": "", "Mudança a rever": "FALSE", "O que falta confirmar": ""}
+
+# Nomes usados na coluna "Campos comprovados"
+CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_ate": "data", "restricoes": "restrições"}
+
+
+def comprovado(r, campo):
+    """Um campo conta como comprovado se uma pessoa reviu o curso ou se a verificação guardou prova dele."""
+    if (r.get("Revisto por pessoa") or "").strip():
+        return True
+    return campo in [c.strip() for c in (r.get("Campos comprovados") or "").lower().split(",")]
+
+
+def _normal(texto):
+    texto = (texto or "").lower().replace("\u00a0", " ")
+    texto = re.sub(r"[\"'“”‘’«»]", "", texto)
+    return re.sub(r"\s+", " ", texto).strip()
+
+
+def citacao_valida(citacao, pagina):
+    """A citação tem de existir, quase letra a letra, no texto da página. Evita afirmações deduzidas."""
+    c = _normal(citacao)
+    return len(c) >= 8 and c in _normal(pagina)
 
 
 def curso_no_site(r, cfg):

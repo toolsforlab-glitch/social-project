@@ -6,7 +6,7 @@ import shutil
 import sys
 import time
 
-from base import Base, carregar_config, curso_no_site, visivel
+from base import Base, carregar_config, comprovado, curso_no_site, sim, visivel
 from comum import caminho, gravar_json
 
 PAGINAS = {
@@ -42,7 +42,13 @@ def exportar_dados(base, cfg):
             "pais": r.get("País", ""), "regiao": r.get("Região", ""), "cidade": r.get("Cidade", ""),
             "descricao": r.get("Descrição", ""), "necessidades": lista(r.get("Necessidades")),
             "exclusivo_para": r.get("Condição de acesso", ""), "requisitos": r.get("Requisitos", ""),
-            "certificado": r.get("Certificado", ""), "inscricoes_ate": r.get("Inscrições até", ""),
+            "certificado": r.get("Certificado", ""),
+            # uma data só aparece se estiver comprovada na página ou confirmada por uma pessoa
+            "inscricoes_ate": r.get("Inscrições até", "") if comprovado(r, "data") else "",
+            "data_por_confirmar": bool(r.get("Inscrições até")) and not comprovado(r, "data"),
+            "situacao": r.get("Situação das inscrições", "") or "Por confirmar",
+            "em_revisao": sim(r.get("Mudança a rever")),
+            "verificado_em": (r.get("Revisto por pessoa") or (r.get("Última verificação") if r.get("Nota da verificação") else "") or "")[:10],
             "inicio": r.get("Início", ""), "duracao": r.get("Duração", ""),
             "primeiro_visto": r.get("Primeiro visto", ""), "como_me_inscrever": passos(r.get("Como me inscrever")),
         })

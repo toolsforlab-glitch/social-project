@@ -38,6 +38,11 @@ usa o link da notícia.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
 
+NUNCA DEDUZAS. Cada campo só tem valor se a página o disser explicitamente para ESTE curso; senão é null. \
+Não uses a data de início das aulas nem datas de etapas de um edital como data limite de inscrição. \
+Não concluas que um curso é gratuito só porque a entidade costuma ter cursos gratuitos: nesse caso escreve \
+"Confirmar se é gratuito" nos requisitos. Não juntes dados de turmas ou ofertas diferentes no mesmo curso.
+
 Escreve em LINGUAGEM SIMPLES, para quem lê pouco:
 - "titulo": nome curto do curso, sem repetir a entidade nem siglas de programas (ex.: "Auxiliar de cozinha").
 - "descricao": 1 ou 2 frases com menos de 20 palavras cada, palavras do dia a dia, sem siglas sem explicação. \
@@ -212,6 +217,7 @@ def main():
                 "Primeiro visto": hoje_txt, "Última verificação": hoje_txt, "Origem": "rotina",
                 "Notas": " ".join(notas), "Como me inscrever": "", "Nota da verificação": "",
                 **VERIFICACAO_INICIAL,
+                "O que falta confirmar": "Ainda não verificado na página oficial.",
             })
             novos.append(curso)
             existentes["por_id"][curso["ID"]] = curso

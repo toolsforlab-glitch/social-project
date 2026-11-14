@@ -133,6 +133,17 @@
         (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
+        (c.onde_inscrever && c.onde_inscrever.length ? '<div class="onde"><p class="onde-titulo">Onde se inscrever</p><ul>' +
+          c.onde_inscrever.map(function (u) {
+            var linhas = ["<strong>" + esc(u.nome) + "</strong>"];
+            var morada = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
+            if (morada) linhas.push(esc(morada));
+            if (u.horario) linhas.push("Atendimento: " + esc(u.horario));
+            var contactos = [u.telefone ? "Telefone " + esc(u.telefone) : "", u.whatsapp ? "WhatsApp " + esc(u.whatsapp) : ""].filter(Boolean);
+            if (contactos.length) linhas.push(contactos.join(" · "));
+            if (u.o_que_levar) linhas.push("Leve: " + esc(u.o_que_levar));
+            return "<li>" + linhas.join("<br>") + "</li>";
+          }).join("") + "</ul></div>" : "") +
         (c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
           c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
         '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver curso e se inscrever</a>' +

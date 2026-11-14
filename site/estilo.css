@@ -128,3 +128,8 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .passos summary { cursor: pointer; font-weight: 700; color: var(--anil); padding: .3rem 0; }
 .passos ol { margin: .4rem 0 0; padding-left: 1.4rem; }
 .passos li { margin-bottom: .3rem; }
+
+.onde { margin: 0 0 .9rem; padding: .7rem .9rem; background: var(--anil-claro); border-radius: var(--raio); }
+.onde-titulo { margin: 0 0 .3rem; font-weight: 700; color: var(--anil); }
+.onde ul { margin: 0; padding: 0; list-style: none; }
+.onde li + li { margin-top: .6rem; }

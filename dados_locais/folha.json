@@ -42,7 +42,8 @@
    "Campos comprovados",
    "Revisto por pessoa",
    "Mudança a rever",
-   "O que falta confirmar"
+   "O que falta confirmar",
+   "Onde se inscrever"
   ],
   [
    "C-949362f8",
@@ -81,7 +82,8 @@
    "",
    "",
    "TRUE",
-   "Os dados da página não coincidem com os nossos (modalidade, início, requisitos) e a página não diz se é gratuito."
+   "Os dados da página não coincidem com os nossos (modalidade, início, requisitos) e a página não diz se é gratuito.",
+   ""
   ],
   [
    "C-ac9029b1",
@@ -120,6 +122,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -159,6 +162,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -198,7 +202,8 @@
    "",
    "",
    "TRUE",
-   "Parece presencial em Belo Horizonte, fora do piloto."
+   "Parece presencial em Belo Horizonte, fora do piloto.",
+   ""
   ],
   [
    "C-c575e970",
@@ -237,6 +242,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -276,6 +282,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -315,6 +322,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -354,6 +362,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -393,6 +402,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -432,6 +442,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -471,6 +482,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -510,7 +522,8 @@
    "",
    "",
    "TRUE",
-   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas."
+   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas.",
+   ""
   ],
   [
    "C-dcbfec54",
@@ -549,7 +562,8 @@
    "",
    "",
    "TRUE",
-   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas."
+   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas.",
+   ""
   ],
   [
    "C-fa5789f3",
@@ -588,6 +602,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ],
   [
@@ -627,7 +642,8 @@
    "",
    "",
    "TRUE",
-   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas."
+   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas.",
+   ""
   ],
   [
    "C-76f08ea6",
@@ -666,7 +682,8 @@
    "",
    "",
    "TRUE",
-   "A data 22/12 tinha sido deduzida das etapas do edital, não é a data de inscrição (apagada). A gratuidade deste curso não está confirmada."
+   "A data 22/12 tinha sido deduzida das etapas do edital, não é a data de inscrição (apagada). A gratuidade deste curso não está confirmada.",
+   ""
   ],
   [
    "C-a9231ddf",
@@ -705,7 +722,8 @@
    "",
    "",
    "TRUE",
-   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas."
+   "O curso não aparece na página lida (a lista tem 24 páginas): confirmar se está aberto e as datas.",
+   ""
   ],
   [
    "C-0fe8cad4",
@@ -744,7 +762,8 @@
    "",
    "",
    "TRUE",
-   "A turma começou a 03/11: confirmar se ainda aceita inscrições."
+   "A turma começou a 03/11: confirmar se ainda aceita inscrições.",
+   ""
   ],
   [
    "C-26602af1",
@@ -783,7 +802,8 @@
    "",
    "",
    "TRUE",
-   "Ainda não verificado: confirmar que é gratuito (a loja do Sebrae tem cursos pagos e gratuitos)."
+   "Ainda não verificado: confirmar que é gratuito (a loja do Sebrae tem cursos pagos e gratuitos).",
+   ""
   ],
   [
    "C-2dd3efcb",
@@ -822,7 +842,8 @@
    "",
    "",
    "TRUE",
-   "Ainda não verificado: confirmar que é gratuito (a loja do Sebrae tem cursos pagos e gratuitos)."
+   "Ainda não verificado: confirmar que é gratuito (a loja do Sebrae tem cursos pagos e gratuitos).",
+   ""
   ],
   [
    "C-a02fad3e",
@@ -861,7 +882,8 @@
    "",
    "",
    "TRUE",
-   "Ainda não verificado: confirmar que é gratuito (a loja do Sebrae tem cursos pagos e gratuitos)."
+   "Ainda não verificado: confirmar que é gratuito (a loja do Sebrae tem cursos pagos e gratuitos).",
+   ""
   ],
   [
    "C-1355ed91",
@@ -900,7 +922,8 @@
    "",
    "",
    "TRUE",
-   "Só para quem já estuda informática; o link é de uma notícia e falta a página oficial."
+   "Só para quem já estuda informática; o link é de uma notícia e falta a página oficial.",
+   ""
   ],
   [
    "C-17ff56c8",
@@ -939,6 +962,7 @@
    "",
    "",
    "FALSE",
+   "",
    ""
   ]
  ],
@@ -1319,15 +1343,33 @@
    "ID",
    "Estado",
    "Nome",
-   "Causa",
+   "Tipo",
+   "Entidade responsável",
+   "Papéis",
+   "Local",
    "País",
-   "Região",
-   "Cidade",
+   "Município",
+   "Bairro",
+   "Morada",
+   "CEP",
+   "Telefone",
+   "WhatsApp",
+   "Email",
    "Site",
+   "Horário de atendimento",
+   "O que levar",
+   "Acessibilidade",
+   "Causa",
    "Como ajudar",
-   "Contacto",
+   "Fonte",
+   "Evidência",
+   "Última verificação",
+   "Revisto por pessoa",
+   "Mudança a rever",
+   "O que falta confirmar",
    "Origem",
-   "Notas"
+   "Notas",
+   "Contacto interno (não aparece no site)"
   ]
  ],
  "Oportunidades": [

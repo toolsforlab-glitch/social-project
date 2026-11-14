@@ -30,6 +30,15 @@ def exportar_dados(base, cfg):
     locais = {l["id"] for l in cfg["cursos"]["locais"]}
     piloto = cfg.get("territorio_piloto", "")
     pais_piloto = "BR" if piloto.startswith("BR") else "PT" if piloto == "PT" else ""
+    # Unidades onde as pessoas se inscrevem (só as publicadas; o contacto interno nunca sai da folha)
+    unidades = {}
+    if "Organizações" in base.abas():
+        for o in base.tabela("Organizações"):
+            if (o.get("Estado") or "").strip() == "Publicado" and o.get("ID"):
+                unidades[o["ID"].strip()] = {k: o.get(c, "") for k, c in (
+                    ("nome", "Nome"), ("municipio", "Município"), ("bairro", "Bairro"), ("morada", "Morada"),
+                    ("telefone", "Telefone"), ("whatsapp", "WhatsApp"), ("horario", "Horário de atendimento"),
+                    ("o_que_levar", "O que levar"), ("site", "Site"))}
     cursos = []
     for r in base.tabela("Cursos"):
         if not curso_no_site(r, cfg) or r.get("Local") not in locais or not r.get("Link"):
@@ -48,6 +57,7 @@ def exportar_dados(base, cfg):
             "data_por_confirmar": bool(r.get("Inscrições até")) and not comprovado(r, "data"),
             "situacao": r.get("Situação das inscrições", "") or "Por confirmar",
             "em_revisao": sim(r.get("Mudança a rever")),
+            "onde_inscrever": [unidades[i] for i in lista(r.get("Onde se inscrever")) if i in unidades],
             "verificado_em": (r.get("Revisto por pessoa") or (r.get("Última verificação") if r.get("Nota da verificação") else "") or "")[:10],
             "inicio": r.get("Início", ""), "duracao": r.get("Duração", ""),
             "primeiro_visto": r.get("Primeiro visto", ""), "como_me_inscrever": passos(r.get("Como me inscrever")),

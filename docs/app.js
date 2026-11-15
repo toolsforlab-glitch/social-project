@@ -35,6 +35,14 @@
       return !t.inicio || t.inicio > h;
     });
   }
+  // turno pelo horário de início da turma: antes das 12h manhã, até às 18h tarde, depois noite
+  function turnosDe(c) {
+    if (!(c.turmas || []).length) return c.turnos || [];
+    return turmasAtuais(c).map(function (t) {
+      var h = parseInt((t.horario || "").split(":")[0], 10);
+      return isNaN(h) ? "" : h < 12 ? "Manhã" : h < 18 ? "Tarde" : "Noite";
+    }).filter(Boolean);
+  }
   function turmaHtml(t, comBotao) {
     var l = ["<strong>" + esc(t.unidade || (t.local && t.local.nome) || "") + "</strong>" + (t.cidade ? " (" + esc(t.cidade) + ")" : "")];
     var quando = [t.inicio ? dataCurtaG(t.inicio) + (t.fim ? " a " + dataCurtaG(t.fim) : "") : "", t.horario, t.dias]
@@ -257,7 +265,7 @@
         if (escolhidas.length && !c.necessidades.some(function (n) { return escolhidas.indexOf(n) >= 0; })) return false;
         if (o === "online" && c.modalidade !== "online") return false;
         if (o && o !== "online" && c.modalidade !== "online" && c.local !== o) return false;
-        if (barreiras.indexOf("noite") >= 0 && (c.turnos || []).indexOf("Noite") < 0) return false;
+        if (barreiras.indexOf("noite") >= 0 && turnosDe(c).indexOf("Noite") < 0) return false;
         if (barreiras.indexOf("sem_internet") >= 0 && c.internet !== "Não") return false;
         if (barreiras.indexOf("sem_escolaridade") >= 0 && ["Nenhuma", "Saber ler e escrever"].indexOf(c.escolaridade) < 0) return false;
         if (barreiras.indexOf("ajuda") >= 0 && (!c.ajuda || /^n[aã]o/i.test(c.ajuda))) return false;

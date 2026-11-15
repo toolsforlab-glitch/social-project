@@ -6,11 +6,12 @@ import collections
 import datetime
 import html
 import os
+import re
 import shutil
 import sys
 import time
 
-from base import Base, carregar_config, comprovado, curso_no_site, sim, visivel
+from base import Base, carregar_config, comprovado, curso_no_site, etiqueta_publico, sim, visivel
 from comum import caminho, gravar_json
 
 PAGINAS = {
@@ -85,6 +86,7 @@ def exportar_turmas(base, unidades, municipios):
                           "presencial" if "centec.org.br" in t["Link da turma"] else "pagina"),
             "info": t.get("Mais informações", "") if (t.get("Modo de inscrição") or "").strip() else "",
             "verificado_em": (t.get("Última verificação") or "")[:10],
+            "reserva": (t.get("Vagas reservadas") or "").strip(),
         })
     for lst in por_curso.values():
         lst.sort(key=lambda t: (t["prazo"] or t["inicio"] or "9999", t["unidade"]))
@@ -160,6 +162,15 @@ def exportar_dados(base, cfg):
             "antes": [i for i in lista(r.get("Antes de começar")) if i in ids_guias],
             **{k: valor_comprovado(r, c, p) for k, c, p in BARREIRAS},
         })
+        # etiquetas de vagas exclusivas ou reservadas: só com a frase da fonte (verificação ou edital)
+        frases = re.findall(r"público: «(.+?)»", r.get("Evidência") or "") if comprovado(r, "público") else []
+        frases += [t["reserva"] for t in turmas if t.get("reserva")]
+        etiquetas = {}
+        for f in frases:
+            texto = etiqueta_publico(f)
+            if texto and texto not in etiquetas:
+                etiquetas[texto] = f
+        cursos[-1]["etiquetas"] = [{"texto": k, "frase": v} for k, v in etiquetas.items()]
         cursos[-1]["turnos"] = lista(cursos[-1]["turnos"])
         try:
             cursos[-1]["idade_minima"] = int(float(cursos[-1]["idade_minima"])) if cursos[-1]["idade_minima"] else None

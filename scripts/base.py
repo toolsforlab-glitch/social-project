@@ -279,6 +279,41 @@ PERFIS_PALAVRAS = {
 }
 
 
+GRUPOS_TEXTO = {"mulheres": "mulheres", "populacao_negra": "pessoas negras",
+                "pessoas_com_deficiencia": "pessoas com deficiência", "migrantes_refugiados": "migrantes e refugiados",
+                "situacao_de_rua": "pessoas em situação de rua", "saida_sistema_prisional": "egressos do sistema prisional",
+                "jovens": "jovens", "50mais": "pessoas com 50 anos ou mais", "desempregados": "pessoas desempregadas"}
+
+
+def etiqueta_publico(frase):
+    """Etiqueta curta para o site a partir da frase da fonte, ex.: "Vagas reservadas para pessoas com deficiência".
+    É uma característica do curso (como o horário): só existe quando a fonte o diz, e ninguém tem de dizer quem é."""
+    t = (frase or "").lower()
+    nomes = []
+    for p in perfis_da_frase(frase):
+        if p == "lgbtqia":
+            nomes.append("pessoas trans e travestis" if "travesti" in t else
+                         "pessoas trans" if re.search(r"\btrans\b|transexua|transg", t) else "pessoas LGBTQIA+")
+        elif p == "rurais_indigenas_quilombolas":
+            nomes += [n for n, padrao in (("indígenas", r"ind[íi]gen"), ("quilombolas", r"quilombol"),
+                                          ("ciganos", r"cigan"), ("comunidades rurais", r"rura|do campo|ribeirinh"))
+                      if re.search(padrao, t)]
+        elif p == "mulheres" and re.search(r"mulher(es)?\s+trans", t) and not re.search(r"mulher(es)?(?!\s+trans)\b", t):
+            continue  # "mulheres trans": fica só "pessoas trans"
+        else:
+            nomes.append(GRUPOS_TEXTO[p])
+    if not nomes:
+        return ""
+    grupos = nomes[0] if len(nomes) == 1 else ", ".join(nomes[:-1]) + " e " + nomes[-1]
+    if re.search(r"exclusiv|somente|apenas|\bsó\b|unicamente", t):
+        return "Só para " + grupos
+    if re.search(r"reserv|\bcotas?\b", t):
+        return "Vagas reservadas para " + grupos
+    if re.search(r"prioridad|prefer[êe]nc|priorit", t):
+        return "Prioridade para " + grupos
+    return "Para " + grupos
+
+
 def perfis_da_frase(frase):
     """Perfis que a frase da fonte nomeia (ex.: "vagas reservadas a pessoas com deficiência" → pessoas_com_deficiencia)."""
     t = (frase or "").lower()

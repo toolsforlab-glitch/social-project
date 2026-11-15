@@ -220,6 +220,9 @@ def carregar_config(base):
     for r in base.tabela("Sites de confiança"):
         if sim(r.get("Ativo")) and r.get("Domínio"):
             dominios.setdefault(r["Local"], []).append(r["Domínio"].strip().lower())
+            # entidade onde uma pessoa confirmou que todos os cursos são gratuitos (coluna "Tudo gratuito")
+            if sim(r.get("Tudo gratuito")):
+                c.setdefault("dominios_gratuitos", set()).add(r["Domínio"].strip().lower())
             if "só para descobrir" in (r.get("Notas") or "").lower():
                 c.setdefault("dominios_descoberta", set()).add(r["Domínio"].strip().lower())
     c["dominios"] = dominios or c["dominios"]

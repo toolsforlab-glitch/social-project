@@ -6,7 +6,7 @@ import re
 import sys
 
 from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, registo_historico, sim, visivel
-from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json
+from comum import ErroClaude, baixar, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import e_pagina_do_curso, encontrar_pagina
 
 ABA = "Cursos"
@@ -67,17 +67,22 @@ página que o prova (letra a letra, até 25 palavras). Em todos os outros casos 
 página não diz, se diz outra coisa, se é preciso deduzir, ou se tens dúvida. Uma turma que já começou não prova \
 inscrições abertas. Não uses conhecimento geral.
 
+Uma afirmação que começa por "A página não fala em" é confirmada quando a página realmente não fala nisso \
+(frase: null); se falar, é "não confirmada" e copias a frase.
+
 Devolve só JSON entre <json></json>: {"afirmacoes": [{"n": 1, "veredicto": "confirmada" ou "não confirmada", \
 "frase": "..." ou null, "motivo": "..."}]}"""
 
 
-def auditar(cfg, r, pagina, data, hoje_txt):
+def auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade=False):
     """Segunda opinião, por outro modelo, antes de publicar sozinho. Devolve (passou, falhas, custo)."""
     modelo = cfg.get("modelo_auditoria") or "claude-sonnet-5-5"
     afirmacoes = [f"Esta página é sobre o curso «{r['Título']}».",
                   f"Hoje ({hoje_txt}) é possível inscrever-se ou começar este curso: inscrições abertas, "
-                  "acesso livre a qualquer momento, ou turma futura com inscrição.",
-                  "Este curso é gratuito para quem o frequenta."]
+                  "acesso livre a qualquer momento, ou turma futura com inscrição."]
+    # a gratuidade só é auditada na página quando não vem de uma entidade marcada como "Tudo gratuito"
+    afirmacoes.append("A página não fala em pagamento, mensalidade ou taxa para fazer este curso." if gratuito_por_entidade
+                      else "Este curso é gratuito para quem o frequenta.")
     if data:
         afirmacoes.append(f"O prazo para se inscrever termina a {data}.")
     if (r.get("Descrição") or "").strip():
@@ -102,7 +107,8 @@ def auditar(cfg, r, pagina, data, hoje_txt):
     falhas = []
     for i, a in enumerate(afirmacoes, 1):
         v = next((x for x in lista if isinstance(x, dict) and str(x.get("n")) == str(i)), {})
-        if v.get("veredicto") != "confirmada" or not citacao_valida(str(v.get("frase") or ""), pagina):
+        negativa = a.startswith("A página não fala em pagamento")  # não há frase para copiar numa ausência
+        if v.get("veredicto") != "confirmada" or not (negativa or citacao_valida(str(v.get("frase") or ""), pagina)):
             falhas.append(a[:90])
     return not falhas, falhas, custo
 
@@ -202,6 +208,14 @@ def main():
         if situacao != "incerto" and "situacao" not in provas:
             situacao = "incerto"
         gratuito = res.get("gratuito") if "gratuito" in provas else "incerto"
+        # Entidades marcadas por uma pessoa como "Tudo gratuito" (Sites de confiança): se a página deste curso
+        # não disser nada sobre o preço, vale a decisão da pessoa. Se a página disser que é pago, vale a página.
+        gratuito_por_entidade = (gratuito == "incerto" and dominio_permitido(
+            pagina_curso or r["Link"], cfg["cursos"].get("dominios_gratuitos", ())))
+        if gratuito_por_entidade:
+            gratuito = "sim"
+            provas["gratuito"] = "entidade marcada como «Tudo gratuito» em Sites de confiança, por uma pessoa"
+            em_falta = [x for x in em_falta if "gratuit" not in x.lower()]
         data = str(res.get("inscricoes_ate") or "")[:10] if "inscricoes_ate" in provas else ""
         contagem[situacao] += 1
 
@@ -264,7 +278,7 @@ def main():
         # Publicar sozinho: só com tudo comprovado, sem avisos, e depois de uma auditoria independente
         if (not revisto and r.get("Estado") == "Novo" and "Estado" not in campos and not motivos
                 and not sim(r.get("Mudança a rever")) and pagina_curso and situacao == "aberto" and gratuito == "sim"):
-            passou, falhas, custo = auditar(cfg, r, pagina, data, hoje_txt)
+            passou, falhas, custo = auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade)
             custo_total += custo
             if passou:
                 campos["Estado"] = "Publicado"

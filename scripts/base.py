@@ -60,7 +60,8 @@ class Base:
         from google.oauth2.service_account import Credentials
         credenciais = Credentials.from_service_account_info(
             json.loads(cred), scopes=["https://www.googleapis.com/auth/spreadsheets"])
-        self.folha = gspread.authorize(credenciais).open_by_key(folha)
+        # BackOffHTTPClient: quando o Google responde "demasiados pedidos por minuto" (429), espera e repete
+        self.folha = gspread.authorize(credenciais, http_client=gspread.BackOffHTTPClient).open_by_key(folha)
         self._cache = {}
         print("Base de dados: Google Sheets")
 

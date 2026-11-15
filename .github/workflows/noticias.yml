@@ -56,7 +56,16 @@ jobs:
         timeout-minutes: 15
         run: |
           (sudo apt-get update -qq && sudo apt-get install -y -qq antiword) > /dev/null || echo "antiword não instalado"
-          cd scripts && python3 senac_ma.py
+          cd scripts && SENAC_MA_DIAGNOSTICO=/tmp/senac_ma python3 senac_ma.py
+
+      - name: Guardar o diagnóstico do Senac Maranhão (7 dias, só para conferir)
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: senac-ma-diagnostico
+          path: /tmp/senac_ma
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: Atualizar o site a partir da folha
         if: ${{ always() }}
@@ -68,4 +77,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs estado
-          git diff --cached --quiet || (git commit -q -m "Notícias e site $(date -u +%F)" && (git push -q || (git pull -q --rebase && git push -q)))
+          git diff --cached --quiet || (git commit -q -m "Notícias e site $(date -u +%F)" && (git push -q || (git pull -q --rebase -X theirs && git push -q)))

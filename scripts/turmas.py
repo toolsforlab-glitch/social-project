@@ -359,7 +359,10 @@ def main(baixar_pagina=baixar_texto):
         else:
             cursos_psg.setdefault(chave(r.get("Título", "")), r["ID"].strip())
     unidades = mapa_unidades(base)
-    existentes = {(t.get("Link da turma") or "").rstrip("/"): t for t in base.tabela(ABA) if t.get("Link da turma")}
+    # só as turmas do Senac Ceará: o separador Turmas também guarda as do Centec e do Senac Maranhão,
+    # que têm o seu próprio leitor e não podem ser abertas como páginas do Senac PSG
+    existentes = {(t.get("Link da turma") or "").rstrip("/"): t for t in base.tabela(ABA)
+                  if "psg.ce.senac.br" in (t.get("Link da turma") or "")}
 
     # 1. percorrer a lista geral: turmas dos cursos da folha e turmas recentes de cursos que ainda não temos
     a_ver, pagina, lista_completa = {}, 1, False

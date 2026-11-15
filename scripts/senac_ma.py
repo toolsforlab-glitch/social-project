@@ -22,6 +22,7 @@ O selo "aberto/encerrado" da lista do Senac não é usado.
 import datetime
 import io
 import json
+import os
 import re
 import subprocess
 import sys
@@ -38,9 +39,11 @@ SITE = "https://ma.senac.br"
 LISTA = "https://ma.senac.br/editais-psg/"
 ENTIDADE = "Senac Maranhão (Programa Senac de Gratuidade)"
 ESTADO = "estado/senac_ma.json"
-DIAS_RECENTES = 40       # editais publicados há mais tempo do que isto já não são lidos pela primeira vez
+DIAS_RECENTES = 15       # inscrições duram 3 a 7 dias: editais mais antigos já não têm inscrição aberta
 MAX_POR_EXECUCAO = 12    # limite de documentos lidos com o Claude por execução (controla o custo)
 MAX_CARACTERES = 30000
+DIAGNOSTICO = os.environ.get("SENAC_MA_DIAGNOSTICO", "")  # pasta onde guardar texto e resposta de cada edital
+MAX_TENTATIVAS = 2       # um edital sem nada comprovado é relido uma vez; à segunda fica de lado
 
 SISTEMA = """Extrais dados de um edital oficial do Senac Maranhão (Programa Senac de Gratuidade) para uma base \
 de dados pública. Cada valor que devolves vai ser conferido por código no texto do edital: só conta se vier \
@@ -214,7 +217,10 @@ def main():
     lidos = 0
     for e in editais:
         chave_estado = f"{e.get('id')}|{e.get('updated_at')}"
-        if (e.get("published_at") or "")[:10] < corte or chave_estado in estado["tratados"]:
+        feito = estado["tratados"].get(chave_estado)
+        if (e.get("published_at") or "")[:10] < corte or (feito and (not isinstance(feito, dict)
+                                                                       or feito.get("tentativas", 0) >= MAX_TENTATIVAS
+                                                                       or feito.get("inscricao_ate"))):
             continue
         docs = e.get("documents") or []
         pagina = SITE + (e.get("path") or "")
@@ -254,6 +260,14 @@ def main():
             print(f"  ? edital {e.get('number')}: resposta ilegível; volta a tentar na próxima execução")
             continue
         edital, problemas = provar(res, texto, e.get("published_at") or "")
+        if DIAGNOSTICO:
+            os.makedirs(DIAGNOSTICO, exist_ok=True)
+            with open(os.path.join(DIAGNOSTICO, f"{e.get('id')}.json"), "w", encoding="utf-8") as f:
+                json.dump({"edital": e, "texto": texto, "resposta": resposta}, f, ensure_ascii=False, indent=1)
+        propostas = len(res.get("turmas") or [])
+        print(f"  edital nº {e.get('number')} ({(e.get('published_at') or '')[:10]}): inscrição "
+              f"{edital['ini'] or '?'} a {edital['fim'] or '?'}, modo {edital['modo'] or '?'}, "
+              f"{len(edital['turmas'])}/{propostas} cursos comprovados" + (f" | {'; '.join(problemas)}" if problemas else ""))
         for t in edital["turmas"]:
             link = f"{pagina}#{re.sub(r'[^a-z0-9]+', '-', chave(t['curso'] + ' ' + (t.get('horario') or ''))).strip('-')}"
             k = chave(t["curso"])
@@ -308,7 +322,9 @@ def main():
                           "Link da turma": link, "Primeiro visto": hoje, **campos})
             print(f"  + {t['curso'][:40]} | {t['cidade']} | inscrição até {edital['fim'] or '—'} | {situacao}"
                   + (f" | AUDITORIA: {'; '.join(p)}" if p else ""))
-        estado["tratados"][chave_estado] = hoje
+        estado["tratados"][chave_estado] = {
+            "data": hoje, "inscricao_ate": edital["fim"], "cursos": len(edital["turmas"]),
+            "tentativas": (feito.get("tentativas", 0) if isinstance(feito, dict) else 0) + 1}
         time.sleep(1)
 
     # situação das turmas já conhecidas: só pelas datas do documento

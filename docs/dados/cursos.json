@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-15T20:11",
+ "atualizado": "2026-11-15T20:17",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -3504,8 +3504,8 @@
    "id": "C-fff2b402",
    "titulo": "Assistente administrativo",
    "entidade": "Senac Maranhão (Programa Senac de Gratuidade)",
-   "url": "https://ma.senac.br/editais-psg/",
-   "pagina_propria": false,
+   "url": "https://ma.senac.br/editais_psg/edital-psg-no-168-2026-assistente-administrativo-sao-domingos-do-maranhao-ma/",
+   "pagina_propria": true,
    "local": "BR-MA",
    "modalidade": "presencial",
    "pais": "BR",
@@ -3527,7 +3527,7 @@
      "situacao": "Aberta",
      "link": "https://ma.senac.br/editais_psg/edital-psg-no-168-2026-assistente-administrativo-sao-domingos-do-maranhao-ma/#assistente-administrativo-13-00-17-00",
      "unidade": "CARRETA ESCOLA DE TECNOLOGIA DA INFORMAÇÃO E GESTÃO",
-     "cidade": "São Domingos do Maranhão",
+     "cidade": "SÃO DOMINGOS DO MARANHÃO/MA",
      "local": null,
      "inicio": "2026-11-23",
      "fim": "2027-01-26",

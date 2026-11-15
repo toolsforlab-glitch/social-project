@@ -51,6 +51,13 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 centec.py
 
+      - name: Editais do Senac Maranhão (documento oficial, Claude com prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: |
+          (sudo apt-get update -qq && sudo apt-get install -y -qq antiword) > /dev/null || echo "antiword não instalado"
+          cd scripts && python3 senac_ma.py
+
       - name: Atualizar o site a partir da folha
         if: ${{ always() }}
         run: cd scripts && python3 construir_site.py

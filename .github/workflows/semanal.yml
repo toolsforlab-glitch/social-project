@@ -79,6 +79,13 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 centec.py
 
+      - name: Editais do Senac Maranhão (documento oficial, Claude com prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: |
+          (sudo apt-get update -qq && sudo apt-get install -y -qq antiword) > /dev/null || echo "antiword não instalado"
+          cd scripts && python3 senac_ma.py
+
       - name: Atualizar o site
         if: ${{ always() }}
         run: cd scripts && python3 construir_site.py
@@ -96,5 +103,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs semanal
+          git add docs semanal estado
           git diff --cached --quiet || (git commit -q -m "Cursos e resumo $(date -u +%F)" && (git push -q || (git pull -q --rebase && git push -q)))

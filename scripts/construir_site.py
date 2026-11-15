@@ -30,7 +30,7 @@ BARREIRAS = [("idade_minima", "Idade mínima", "idade"), ("escolaridade", "Escol
 
 
 # Fontes acompanhadas turma a turma por código (turmas.py e centec.py)
-FONTES_COM_TURMAS = ("psg.ce.senac.br", "centec.org.br/cursos-formacao-inicial-continuada")
+FONTES_COM_TURMAS = ("psg.ce.senac.br", "centec.org.br/cursos-formacao-inicial-continuada", "ma.senac.br/editais-psg")
 
 
 def valor_comprovado(r, coluna, prova):
@@ -77,10 +77,13 @@ def exportar_turmas(base, unidades, municipios):
             "horario": t.get("Horário", ""), "dias": t.get("Dias", ""), "prazo": t.get("Prazo de inscrição", ""),
             "idade_minima": t.get("Idade mínima", ""), "escolaridade": t.get("Escolaridade", ""),
             "documentos": t.get("Documentos", ""), "local_texto": t.get("Local na fonte", ""),
-            "telefone": t.get("Mais informações", ""),
-            # como se faz a inscrição: na página da turma, no Centec Academy, ou presencialmente no local indicado
-            "inscricao": ("online" if "academy.centec.org.br" in t["Link da turma"] else
+            "telefone": "" if (t.get("Modo de inscrição") or "").strip() else t.get("Mais informações", ""),
+            # como se faz a inscrição: a coluna "Modo de inscrição" decide quando está preenchida; senão, pelo link
+            "inscricao": (("online" if t["Modo de inscrição"].strip() == "online" else "presencial")
+                          if (t.get("Modo de inscrição") or "").strip() else
+                          "online" if "academy.centec.org.br" in t["Link da turma"] else
                           "presencial" if "centec.org.br" in t["Link da turma"] else "pagina"),
+            "info": t.get("Mais informações", "") if (t.get("Modo de inscrição") or "").strip() else "",
             "verificado_em": (t.get("Última verificação") or "")[:10],
         })
     for lst in por_curso.values():

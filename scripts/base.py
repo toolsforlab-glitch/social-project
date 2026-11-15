@@ -107,8 +107,17 @@ class Base:
         if self.local:
             self.dados[aba].extend(linhas)
             return
-        self.folha.worksheet(aba).append_rows(
-            linhas, value_input_option="USER_ENTERED", insert_data_option="INSERT_ROWS", table_range="A1")
+        # escreve logo a seguir à última linha com conteúdo; linhas só com caixas por marcar (FALSE) contam como vazias
+        folha = self.folha.worksheet(aba)
+        valores = self.valores(aba)
+        ultima = max((n for n, linha in enumerate(valores, start=1)
+                      if any(str(c).strip() not in ("", "FALSE") for c in linha)), default=0)
+        falta = ultima + len(linhas) - folha.row_count
+        if falta > 0:
+            folha.add_rows(falta)
+        for i in range(0, len(linhas), 200):
+            folha.batch_update([{"range": f"A{ultima + 1 + i}", "values": linhas[i:i + 200]}],
+                               value_input_option="USER_ENTERED")
         self._cache.pop(aba, None)
 
     def atualizar(self, aba, alteracoes):

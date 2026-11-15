@@ -150,7 +150,7 @@ def ler_turma(pagina_html):
     unidade_cidade = limpo(m.group(1)) if m else ""
     m = re.search(r'(?s)<p class="item-content__info unit_name">(.*?)</p>', pagina_html)
     d["unidade"] = limpo(m.group(1)) if m else unidade_cidade.split("|")[0].strip()
-    d["cidade"] = unidade_cidade.split("|", 1)[1].strip() if "|" in unidade_cidade else ""
+    d["cidade"] = unidade_cidade.rsplit("|", 1)[1].strip() if "|" in unidade_cidade else ""
     datas = [limpo(x) for x in re.findall(r'(?s)<p class="item-content__info date_hour">(.*?)</p>', pagina_html)]
     d["inicio_texto"] = datas[0] if datas else ""
     d["fim_texto"] = datas[1] if len(datas) > 1 else ""

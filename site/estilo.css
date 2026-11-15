@@ -171,3 +171,8 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .turmas .botao { display: inline-block; margin-top: .4rem; }
 .turmas-ficha { padding-left: 1.1rem; }
 .turmas-ficha li + li { margin-top: .5rem; }
+
+/* "Onde você está?", "Cidade" e "Buscar por palavra" lado a lado em ecrãs largos; empilhados no telemóvel */
+.filtros-topo { display: grid; gap: 0 1.2rem; grid-template-columns: 1fr; }
+.filtros-topo .campo { max-width: none; }
+@media (min-width: 48rem) { .filtros-topo { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

@@ -3,10 +3,20 @@
 {{PARCEIROS}}
 
 <form id="cursos-filtros" onsubmit="return false">
+<div class="filtros-topo">
   <div class="campo">
     <label for="cursos-onde">Onde você está?</label>
     <select id="cursos-onde"></select>
   </div>
+  <div class="campo">
+    <label for="cursos-cidade">Cidade</label>
+    <select id="cursos-cidade"><option value="">Qualquer cidade</option></select>
+  </div>
+  <div class="campo">
+    <label for="cursos-texto">Buscar por palavra</label>
+    <input type="search" id="cursos-texto" placeholder="Ex.: cozinha, Excel">
+  </div>
+</div>
   <fieldset style="border:0;padding:0;margin:0">
     <legend style="font-weight:700;margin-bottom:.5rem;padding:0">O que você quer aprender?</legend>
     <ul class="opcoes" id="cursos-opcoes"></ul>
@@ -20,14 +30,6 @@
       <li><button type="button" class="opcao" data-barreira="ajuda" aria-pressed="false">Com ajuda de custo ou transporte</button></li>
     </ul>
   </fieldset>
-  <div class="campo">
-    <label for="cursos-cidade">Cidade</label>
-    <select id="cursos-cidade"><option value="">Qualquer cidade</option></select>
-  </div>
-  <div class="campo">
-    <label for="cursos-texto">Buscar por palavra</label>
-    <input type="search" id="cursos-texto" placeholder="Ex.: cozinha, Excel, inglês">
-  </div>
 </form>
 
 <p class="contagem" id="cursos-contagem" aria-live="polite"></p>

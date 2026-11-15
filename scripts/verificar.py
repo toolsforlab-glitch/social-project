@@ -100,6 +100,8 @@ def main():
     candidatos = [r for r in base.tabela(ABA)
                   if (visivel(r.get("Estado"), cfg) or r.get("Estado") in ("Novo", "Rever"))
                   and r.get("Local") in locais and r.get("Link")
+                  # os cursos do Senac PSG são acompanhados turma a turma por turmas.py, sem Claude
+                  and "psg.ce.senac.br" not in r["Link"]
                   and (r.get("Verificar automaticamente", "") == "" or sim(r.get("Verificar automaticamente")))
                   # durante um piloto, os cursos online de outros países não aparecem no site: não gastar com eles
                   and not (r.get("Local") == "online" and pais_piloto

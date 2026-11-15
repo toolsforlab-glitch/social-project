@@ -10,13 +10,19 @@ várias turmas, por isso o link do curso só podia apontar para a lista geral. E
 3. calcula a situação só a partir das datas da própria página:
    - com prazo de inscrição: Aberta até ao fim desse dia, depois Encerrada;
    - sem prazo: Por confirmar enquanto a turma não começou, depois Encerrada;
-4. grava tudo no separador "Turmas". Uma pessoa pode pôr Estado = Oculto para esconder uma turma.
+4. grava tudo no separador "Turmas". Uma pessoa pode pôr Estado = Oculto para esconder uma turma;
+5. quando aparece uma turma aberta de um curso que ainda não está na folha, cria o curso em Cursos com
+   Estado = Novo (uma pessoa aprova), com o título e a descrição copiados da página da turma e as regras
+   gerais do programa (renda, documentos) copiadas da página "Bolsas de estudos", confirmadas por código;
+6. atualiza a "Situação das inscrições" de cada curso do Senac PSG a partir das suas turmas.
 
 Regras:
 - Nada é deduzido nem resumido: cada valor vem do texto da página da turma (a coluna Evidência guarda-o).
 - Uma turma só é ligada a uma unidade da folha quando o nome na página é igual ao Nome ou a um dos
   "Nomes na fonte" da organização. Se não houver correspondência exata, fica só o nome da página.
 - Turmas novas só entram se ainda não estiverem encerradas.
+- Um curso com Estado = Oculto nunca é recriado nem recebe turmas.
+- As "Necessidades" de um curso novo vêm de uma tabela simples por área do Senac (é só para os filtros do site).
 - Se a página de uma turma deixar de abrir N vezes seguidas, a turma passa a Encerrada.
 """
 import datetime
@@ -28,7 +34,7 @@ import sys
 import time
 import unicodedata
 
-from base import HISTORICO, Base, carregar_config, numero
+from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, texto_de_html
 from comum import baixar
 
 ABA = "Turmas"
@@ -37,6 +43,24 @@ COLUNAS = ["ID", "Curso", "Estado", "Título na fonte", "Unidade na fonte", "Cid
            "Idade mínima", "Escolaridade", "Documentos", "Mais informações", "Situação", "Primeiro visto",
            "Última verificação", "Falhas seguidas", "Evidência", "Notas"]
 LISTA_PSG = "https://psg.ce.senac.br/oportunidades/"
+BOLSAS_PSG = "https://psg.ce.senac.br/bolsa-de-estudos/"
+ENTIDADE_PSG = "Senac Ceará (Programa Senac de Gratuidade)"
+DIAS_PARA_TRAS = 7  # turmas que começaram há mais tempo do que isto não são abertas para procurar cursos novos
+# Regras gerais do programa: (frase exata da página Bolsas de estudos, coluna, valor, nome em Campos comprovados)
+REGRAS_PSG = [
+    ("Ter renda familiar per capita de até dois salários mínimos.", "Renda máxima",
+     "Renda familiar por pessoa de até dois salários mínimos", "renda"),
+    ("Documentos necessários RG, CPF e valor da renda bruta familiar mensal.", "Documentos pedidos",
+     "RG, CPF e valor da renda bruta familiar mensal", "documentos"),
+    ("presencialmente na unidade Senac ou de forma online", "Precisa de internet", "Não", "internet"),
+]
+REGRA_APERFEICOAMENTO = ("Para cursos de aperfeiçoamento, é preciso ter certificação profissional, registro na CTPS, "
+                         "declaração de empresa ou autodeclaração.")
+# Área do Senac → necessidades do site (só para os filtros; todos são cursos de profissão)
+NECESSIDADES_POR_AREA = [("informatica", "tecnologia"), ("tecnologia", "tecnologia"), ("gestao", "negocio"),
+                         ("comercio", "negocio")]
+NECESSIDADES_POR_TITULO = [("mundo digital", "digital"), ("informatica basica", "digital"),
+                           ("empreended", "negocio"), ("negocio", "negocio")]
 MAX_PAGINAS = int(os.environ.get("TURMAS_MAX_PAGINAS", "40"))
 PAUSA = float(os.environ.get("TURMAS_PAUSA", "0.5"))
 FUSO_CEARA = datetime.timezone(datetime.timedelta(hours=-3))
@@ -73,6 +97,27 @@ def hoje_ceara():
     return datetime.datetime.now(FUSO_CEARA).date().isoformat()
 
 
+def id_curso(url, titulo):
+    """Igual ao de cursos.py, para a pesquisa semanal reconhecer o curso."""
+    return "C-" + hashlib.sha1((url + "|" + titulo.strip().lower()).encode()).hexdigest()[:8]
+
+
+def titulo_sem_codigo(t):
+    return re.sub(r"^\d{4}\.\d+\.\d+\s*[–—-]\s*", "", limpo(t)).strip()
+
+
+def necessidades(area, titulo):
+    ids = ["profissao", "emprego"]
+    a, t = chave(area), chave(titulo)
+    for palavra, nid in NECESSIDADES_POR_AREA:
+        if palavra in a and nid not in ids:
+            ids.append(nid)
+    for palavra, nid in NECESSIDADES_POR_TITULO:
+        if palavra in t and nid not in ids:
+            ids.append(nid)
+    return ", ".join(ids)
+
+
 def id_turma(link):
     return "T-" + hashlib.sha1(link.strip().rstrip("/").encode()).hexdigest()[:8]
 
@@ -87,7 +132,8 @@ def ler_lista(pagina_html):
         titulo = re.search(r"(?s)<h5>(.*?)</h5>", bloco)
         infos = [limpo(p) for p in re.findall(r'(?s)<div class="opportunities__info">.*?<p>(.*?)</p>', bloco)]
         if link and titulo:
-            caixas.append({"link": html.unescape(link.group(1)), "titulo": limpo(titulo.group(1)), "infos": infos})
+            caixas.append({"link": html.unescape(link.group(1)), "titulo": limpo(titulo.group(1)), "infos": infos,
+                           "inicio": next((data_iso(i) for i in infos if data_iso(i)), "")})
     return caixas
 
 
@@ -96,6 +142,10 @@ def ler_turma(pagina_html):
     d = {}
     m = re.search(r'(?s)<div class="content__title">\s*<h3>(.*?)</h3>', pagina_html)
     d["titulo"] = limpo(m.group(1)) if m else ""
+    m = re.search(r'(?s)<div class="content__categorie">\s*<small>(.*?)</small>', pagina_html)
+    d["area"] = limpo(m.group(1)) if m else ""
+    m = re.search(r'(?s)<div class="content__description">(.*?)</div>', pagina_html)
+    d["descricao"] = limpo(m.group(1)) if m else ""
     m = re.search(r'(?s)<span class="unit_name">(.*?)</span>', pagina_html)
     unidade_cidade = limpo(m.group(1)) if m else ""
     m = re.search(r'(?s)<p class="item-content__info unit_name">(.*?)</p>', pagina_html)
@@ -198,25 +248,70 @@ def mapa_unidades(base):
     return m
 
 
+def regras_do_programa(baixar_pagina):
+    """Regras gerais do PSG, só as que a página Bolsas de estudos diz letra a letra neste momento."""
+    try:
+        texto = texto_de_html(baixar_pagina(BOLSAS_PSG))
+    except Exception:  # noqa: BLE001
+        return {}, [], [], ""
+    campos, provados, frases = {}, [], []
+    for frase, coluna, valor, nome in REGRAS_PSG:
+        if citacao_valida(frase, texto):
+            campos[coluna] = valor
+            provados.append(nome)
+            frases.append(f"«{frase}»")
+    return campos, provados, frases, (REGRA_APERFEICOAMENTO if citacao_valida(REGRA_APERFEICOAMENTO, texto) else "")
+
+
+def curso_novo(d, hoje, regras):
+    campos_regra, provados, frases, regra_aperf = regras
+    titulo = titulo_sem_codigo(d["titulo"])
+    requisitos = []
+    if "Renda máxima" in campos_regra:
+        requisitos.append("Renda familiar de até 2 salários mínimos por pessoa")
+    if regra_aperf and chave(titulo).startswith("aperfeicoamento"):
+        requisitos.append("Curso de aperfeiçoamento: é preciso ter certificação profissional, registro na carteira "
+                          "de trabalho, declaração de empresa ou autodeclaração")
+        frases = frases + [f"«{regra_aperf}»"]
+    falta = [] if provados else ["Não foi possível ler as regras do programa na página Bolsas de estudos."]
+    if not d.get("descricao"):
+        falta.append("A página da turma não tem descrição do curso.")
+    return {
+        "ID": id_curso(LISTA_PSG, titulo), "Estado": "Novo", "Título": titulo[:200], "Entidade": ENTIDADE_PSG,
+        "Link": LISTA_PSG, "Local": "BR-CE", "Modalidade": "presencial", "País": "BR", "Região": "Ceará",
+        "Cidade": "", "Descrição": d.get("descricao", "")[:600], "Necessidades": necessidades(d.get("area", ""), titulo),
+        "Perfis": "todos", "Condição de acesso": "", "Requisitos": "; ".join(requisitos), "Certificado": "desconhecido",
+        "Inscrições até": "", "Início": "", "Duração": "", "Link verificado": "SIM", "Primeiro visto": hoje,
+        "Última verificação": hoje, "Origem": "turmas", "Notas": f"Área no Senac: {d.get('area', '')}".strip(),
+        "Como me inscrever": "", "Nota da verificação": f"{hoje}: curso criado a partir de uma turma aberta na lista do Senac.",
+        **VERIFICACAO_INICIAL,
+        "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE",
+        "Evidência": " | ".join(frases)[:1500], "Campos comprovados": ", ".join(provados),
+        "O que falta confirmar": " ".join(falta), "Antes de começar": "cpf" if "documentos" in provados else "",
+        **campos_regra,
+    }
+
+
 def main(baixar_pagina=baixar_texto):
     base = Base()
     carregar_config(base)
     garantir_aba(base)
     hoje = hoje_ceara()
     limite_falhas = 3
+    corte_lista = (datetime.date.fromisoformat(hoje) - datetime.timedelta(days=DIAS_PARA_TRAS)).isoformat()
 
-    cursos_psg = {}
-    for r in base.tabela("Cursos"):
-        if r.get("ID") and "psg.ce.senac.br" in (r.get("Link") or "") and r.get("Estado") != "Oculto":
+    cursos_psg, ocultos = {}, set()
+    linhas_cursos = [r for r in base.tabela("Cursos") if r.get("ID") and "psg.ce.senac.br" in (r.get("Link") or "")]
+    for r in linhas_cursos:
+        if r.get("Estado") == "Oculto":
+            ocultos.add(chave(r.get("Título", "")))
+        else:
             cursos_psg.setdefault(chave(r.get("Título", "")), r["ID"].strip())
-    if not cursos_psg:
-        print("Nenhum curso do Senac PSG na folha.")
-        return 0
     unidades = mapa_unidades(base)
     existentes = {(t.get("Link da turma") or "").rstrip("/"): t for t in base.tabela(ABA) if t.get("Link da turma")}
 
-    # 1. descobrir turmas na lista geral
-    encontradas, pagina = {}, 1
+    # 1. percorrer a lista geral: turmas dos cursos da folha e turmas recentes de cursos que ainda não temos
+    a_ver, pagina, lista_completa = {}, 1, False
     while pagina <= MAX_PAGINAS:
         url = LISTA_PSG if pagina == 1 else f"{LISTA_PSG}page/{pagina}/"
         try:
@@ -225,23 +320,30 @@ def main(baixar_pagina=baixar_texto):
             print(f"  lista, página {pagina}: não abriu ({type(e).__name__})")
             break
         if not caixas:
+            lista_completa = pagina > 1
             break
         for c in caixas:
-            curso = cursos_psg.get(chave(c["titulo"]))
-            if curso:
-                encontradas[c["link"].rstrip("/")] = curso
+            k, link = chave(c["titulo"]), c["link"].rstrip("/")
+            if k in ocultos or link in existentes:
+                continue
+            if not c["inicio"] or c["inicio"] >= corte_lista:
+                a_ver[link] = cursos_psg.get(k, "")
         pagina += 1
         time.sleep(PAUSA)
-    print(f"Lista do Senac PSG: {pagina - 1} páginas lidas, {len(encontradas)} turmas dos nossos cursos.")
+    print(f"Lista do Senac PSG: {pagina - 1} páginas lidas, {len(a_ver)} turmas recentes por abrir.")
 
-    # 2. abrir cada turma (novas e as que ainda não encerraram há mais de 30 dias)
+    # 2. turmas já conhecidas que ainda não encerraram há mais de 30 dias
     limite_antigas = (datetime.date.fromisoformat(hoje) - datetime.timedelta(days=30)).isoformat()
-    a_ver = dict(encontradas)
     for link, t in existentes.items():
         if t.get("Situação") != "Encerrada" or (t.get("Fim") or "9999") >= limite_antigas:
-            a_ver.setdefault(link, t.get("Curso", ""))
+            a_ver[link] = t.get("Curso", "")
 
-    novas, alteracoes, historico = [], [], []
+    regras = None
+    novas, alteracoes, historico, cursos_novos = [], [], [], []
+    por_abrir = set()
+    estado_final = {}  # link → (curso, situação, visível)
+    for link, t in existentes.items():
+        estado_final[link] = (t.get("Curso", ""), t.get("Situação", ""), t.get("Estado") != "Oculto")
     for link, curso in a_ver.items():
         t = existentes.get(link)
         try:
@@ -256,7 +358,10 @@ def main(baixar_pagina=baixar_texto):
                     campos["Situação"] = "Encerrada"
                     campos["Notas"] = f"A página da turma deixou de abrir ({n} vezes seguidas)."
                     historico.append(registo(t, "Turma", "página removida", campos["Notas"]))
+                    estado_final[link] = (t.get("Curso", ""), "Encerrada", False)
                 alteracoes.append((t["_linha"], campos))
+            elif curso:
+                por_abrir.add(curso)  # turma nova que não abriu: hoje não se conclui nada sobre este curso
             print(f"  ✗ {link}: {type(e).__name__}")
             time.sleep(PAUSA)
             continue
@@ -272,18 +377,66 @@ def main(baixar_pagina=baixar_texto):
                                          f"{campos['Unidade na fonte']}: prazo {campos['Prazo de inscrição'] or '—'}, "
                                          f"início {campos['Início'] or '—'}."))
             alteracoes.append((t["_linha"], campos))
+            estado_final[link] = (t.get("Curso", ""), campos["Situação"], t.get("Estado") != "Oculto")
         elif campos["Situação"] != "Encerrada":
+            k = chave(d["titulo"])
+            if k in ocultos:
+                continue
+            curso = curso or cursos_psg.get(k, "")
+            if not curso:
+                # curso que ainda não está na folha: criar, para uma pessoa aprovar
+                if regras is None:
+                    regras = regras_do_programa(baixar_pagina)
+                c = curso_novo(d, hoje, regras)
+                cursos_novos.append(c)
+                curso = cursos_psg[k] = c["ID"]
+                print(f"  + curso novo [Novo]: {c['Título']}")
             novas.append({"ID": id_turma(link), "Curso": curso, "Estado": "Publicado", "Link da turma": link + "/",
                           "Primeiro visto": hoje, **campos})
+            estado_final[link] = (curso, campos["Situação"], True)
         print(f"  {'+' if not t else '·'} {d['titulo'][:50]} | {d['unidade']} | prazo {d['prazo'] or '—'} | {campos['Situação']}")
         time.sleep(PAUSA)
 
+    # 3. situação de cada curso do Senac PSG, a partir das suas turmas (só com a lista lida até ao fim)
+    alteracoes_cursos = []
+    if lista_completa:
+        por_curso = {}
+        for curso, sit, visivel in estado_final.values():
+            if visivel:
+                por_curso.setdefault(curso, []).append(sit)
+        for r in linhas_cursos:
+            if (r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip()
+                    or r["ID"].strip() in por_abrir):
+                continue
+            sits = por_curso.get(r["ID"].strip(), [])
+            abertas = sits.count("Aberta")
+            nova = "Aberto" if abertas else "Por confirmar" if "Por confirmar" in sits else "Encerrado"
+            campos = {}
+            if nova != (r.get("Situação das inscrições") or ""):
+                campos["Situação das inscrições"] = nova
+                campos["Nota da verificação"] = (f"{hoje}: situação calculada pelas turmas do Senac "
+                                                 f"({abertas} com inscrições abertas).")
+                historico.append({**registo({"Curso": r["ID"], "Título na fonte": r.get("Título", ""),
+                                             "Situação": r.get("Situação das inscrições", "")}, "Turmas", nova,
+                                            campos["Nota da verificação"])})
+            if abertas:
+                campos["Última verificação"] = hoje
+                aviso = "Há turma nova com inscrições abertas: decidir se o curso volta a Publicado."
+                if r.get("Estado") == "Expirado" and aviso not in (r.get("O que falta confirmar") or ""):
+                    campos["Mudança a rever"] = "TRUE"
+                    campos["O que falta confirmar"] = (aviso + " " + (r.get("O que falta confirmar") or "")).strip()[:900]
+            if campos:
+                alteracoes_cursos.append((r["_linha"], campos))
+
     base.atualizar(ABA, alteracoes)
     base.acrescentar(ABA, novas)
+    base.atualizar("Cursos", alteracoes_cursos)
+    base.acrescentar("Cursos", cursos_novos)
     if historico and HISTORICO in base.abas():
         base.acrescentar(HISTORICO, historico)
     base.guardar()
-    print(f"\nTurmas: {len(novas)} novas, {len(alteracoes)} atualizadas.")
+    print(f"\nTurmas: {len(novas)} novas, {len(alteracoes)} atualizadas. Cursos: {len(cursos_novos)} novos, "
+          f"{len(alteracoes_cursos)} com situação atualizada.")
     return 0
 
 

@@ -45,7 +45,10 @@ def main():
         visto = (r.get("Última verificação") or r.get("Primeiro visto") or "")[:10]
         if not visto or visto >= corte:
             return False
-        return estado == "Expirado" or (r.get("Origem") == "turmas" and r.get("Situação das inscrições") == "Encerrado")
+        # cursos acompanhados turma a turma (Senac, Centec): sem turmas abertas há mais de N dias
+        por_turmas = r.get("Origem") == "turmas" or any(
+            f in (r.get("Link") or "") for f in ("psg.ce.senac.br", "centec.org.br/cursos-formacao"))
+        return estado == "Expirado" or (por_turmas and r.get("Situação das inscrições") == "Encerrado")
 
     n_turmas = mover(base, "Turmas", "Arquivo de turmas", turma_antiga, hoje)
     n_cursos = mover(base, "Cursos", "Arquivo de cursos", curso_antigo, hoje)

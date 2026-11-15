@@ -4,7 +4,8 @@ name: Atualizar o site
 on:
   push:
     branches: [main]
-    paths: ["site/**", "scripts/construir_site.py"]
+    # disparar/site.txt: alterar este ficheiro volta a gerar o site depois de editar a folha
+    paths: ["site/**", "scripts/construir_site.py", "disparar/site.txt"]
   workflow_dispatch:
 
 permissions:

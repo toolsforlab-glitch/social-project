@@ -358,8 +358,131 @@
     }).catch(function () { caixa.innerHTML = '<p class="vazio">Os guias aparecem aqui em breve.</p>'; });
   }
 
+  // ------------------------------------------------------------ Para quem encaminha
+  function encaminhar(site) {
+    var params = new URLSearchParams(location.search);
+    var cidade = el("kit-cidade"), comOnline = el("kit-online"), lista = el("kit-lista");
+    var acoes = el("kit-acoes"), copiado = el("kit-copiado");
+    var todos = [], guias = {}, atualizado = "";
+    var TURNO = { "Manhã": "de manhã", "Tarde": "à tarde", "Noite": "à noite" };
+    var base = (site.url_site || (location.origin + location.pathname.replace(/[^/]*$/, ""))).replace(/\/?$/, "/");
+
+    function cidadesDe(c) {
+      return [c.cidade].concat((c.onde_inscrever || []).map(function (u) { return u.municipio; })).filter(Boolean);
+    }
+    function dataCurta(iso) { var p = (iso || "").slice(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] : ""; }
+    function selecionados() {
+      var cid = cidade.value;
+      if (!cid) return [];
+      return todos.filter(function (c) {
+        if (c.situacao !== "Aberto" || c.em_revisao) return false;
+        if (c.modalidade === "online") return comOnline.checked;
+        return cidadesDe(c).indexOf(cid) >= 0;
+      }).sort(function (a, b) { return (a.modalidade === "online") - (b.modalidade === "online"); });
+    }
+    function unidadesDaCidade(c) {
+      var u = (c.onde_inscrever || []).filter(function (x) { return x.municipio === cidade.value; });
+      return u.length ? u : (c.onde_inscrever || []);
+    }
+    // o turno está guardado por curso; se o curso tem várias unidades e vários turnos, não se sabe qual é o desta cidade
+    function varia(c) { return (c.onde_inscrever || []).length > 1 && (c.turnos || []).length > 1; }
+    function turnoSeguro(c) {
+      return varia(c) ? "" : (c.turnos || []).map(function (t) { return TURNO[t]; }).filter(Boolean).join(" ou ");
+    }
+    function quemPode(c) {
+      var l = [];
+      if (c.idade_minima) l.push(c.idade_minima + " anos ou mais");
+      if (c.escolaridade && c.escolaridade !== "Nenhuma") l.push(c.escolaridade.toLowerCase());
+      if (c.renda) l.push(c.renda.charAt(0).toLowerCase() + c.renda.slice(1));
+      return l.join("; ");
+    }
+    function fichaHtml(c, i) {
+      var linhas = [];
+      unidadesDaCidade(c).forEach(function (u) {
+        var m = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
+        linhas.push("<li><strong>Onde:</strong> " + esc(u.nome) + (m ? ", " + esc(m) : "") + (u.horario ? ". " + esc(u.horario) : "") +
+          (u.telefone ? ". Telefone " + esc(u.telefone) : "") + "</li>");
+      });
+      if (c.modalidade === "online") linhas.push("<li><strong>Onde:</strong> pela internet</li>");
+      var quando = [c.inicio ? "começa em " + dataCurta(c.inicio) : "", turnoSeguro(c)].filter(Boolean).join(", ");
+      if (quando) linhas.push("<li><strong>Quando:</strong> " + esc(quando) + "</li>");
+      else if (varia(c)) linhas.push("<li><strong>Quando:</strong> o horário muda de unidade para unidade: confirme na unidade</li>");
+      if (c.inscricoes_ate) linhas.push("<li><strong>Inscrições até:</strong> " + esc(dataCurta(c.inscricoes_ate)) + "</li>");
+      var qp = quemPode(c); if (qp) linhas.push("<li><strong>Quem pode:</strong> " + esc(qp) + "</li>");
+      if (c.exclusivo_para) linhas.push("<li><strong>Atenção:</strong> " + esc(c.exclusivo_para) + "</li>");
+      var levar = [c.documentos].concat(unidadesDaCidade(c).map(function (u) { return u.o_que_levar; })).filter(Boolean);
+      if (levar.length) linhas.push("<li><strong>Levar:</strong> " + esc(levar[0].replace(/\.$/, "")) + "</li>");
+      var g = (c.antes || []).map(function (id) { return guias[id]; }).filter(Boolean);
+      if (g.length) linhas.push("<li><strong>Antes:</strong> " + g.map(function (x) { return esc(x.titulo); }).join(", ") + " (veja " + esc(base) + "antes.html)</li>");
+      return '<li class="ficha" data-i="' + i + '"><h2>' + esc(c.titulo) + '</h2>' +
+        (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
+        (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") + "<ul>" + linhas.join("") + "</ul>" +
+        '<p class="ficha-rodape">Mais informações: ' + esc(c.url) + "<br>" +
+        (c.modalidade === "online" ? "Confirme na página do curso antes de começar." : "Confirme na unidade antes de ir.") +
+        " Lista de " + esc(atualizado) + ".</p>" +
+        '<button type="button" class="botao secundario so-ecra" data-ficha="' + i + '">Imprimir só esta ficha</button></li>';
+    }
+    function mostrar() {
+      var sel = selecionados();
+      acoes.hidden = !sel.length;
+      if (!cidade.value) { lista.innerHTML = ""; return; }
+      lista.innerHTML = sel.length ?
+        '<p class="kit-titulo">Cursos gratuitos com inscrições abertas: ' + esc(cidade.value) + (comOnline.checked ? " e on-line" : "") +
+        ". Lista de " + esc(atualizado) + ".</p><ul class=\"fichas\">" + sel.map(function (c) { return fichaHtml(c, todos.indexOf(c)); }).join("") + "</ul>" :
+        '<p class="vazio">Neste momento não há cursos confirmados para ' + esc(cidade.value) + '. Marque "Incluir cursos on-line" ou volte na próxima semana.</p>';
+      var q = new URLSearchParams(); q.set("cidade", cidade.value); if (!comOnline.checked) q.set("online", "nao");
+      history.replaceState(null, "", location.pathname + "?" + q.toString());
+    }
+    function textoWhatsapp() {
+      var sel = selecionados();
+      var l = ["📚 *Cursos gratuitos em " + cidade.value + "* (lista de " + atualizado + ")", ""];
+      sel.forEach(function (c) {
+        l.push("✅ *" + c.titulo + "*");
+        var u = unidadesDaCidade(c)[0];
+        var det = [c.modalidade === "online" ? "On-line" : (u ? u.nome + (u.morada ? ", " + u.morada : "") : c.cidade),
+                   c.inicio ? "começa em " + dataCurta(c.inicio) : "",
+                   turnoSeguro(c)].filter(Boolean).join(" · ");
+        l.push(det);
+        if (c.documentos) l.push("Levar: " + c.documentos.replace(/\.$/, ""));
+        l.push(c.url, "");
+      });
+      l.push("Veja todos e se pode se inscrever: " + base + "cursos.html?cidade=" + encodeURIComponent(cidade.value));
+      l.push("Confirme na unidade ou na página do curso antes de ir.");
+      return l.join("\n");
+    }
+    function copiar(t, msg) {
+      (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { copiado.textContent = msg; })
+        .catch(function () { window.prompt("Copie o texto:", t); });
+    }
+    el("kit-imprimir").addEventListener("click", function () { window.print(); });
+    el("kit-whatsapp").addEventListener("click", function () { copiar(textoWhatsapp(), "Texto copiado. Cole no WhatsApp."); });
+    el("kit-link").addEventListener("click", function () { copiar(location.href, "Link copiado."); });
+    lista.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-ficha]"); if (!b) return;
+      var f = b.closest(".ficha"); f.classList.add("imprimir-esta"); document.body.classList.add("so-uma-ficha");
+      window.print();
+      setTimeout(function () { f.classList.remove("imprimir-esta"); document.body.classList.remove("so-uma-ficha"); }, 500);
+    });
+    cidade.addEventListener("change", mostrar);
+    comOnline.addEventListener("change", mostrar);
+    comOnline.checked = params.get("online") !== "nao";
+
+    Promise.all([carregar("dados/cursos.json"), carregar("dados/guias.json").catch(function () { return { guias: [] }; })]).then(function (r) {
+      todos = r[0].cursos || []; atualizado = r[0].atualizado ? dataCurta(r[0].atualizado.slice(0, 10)) + "/" + r[0].atualizado.slice(0, 4) : "";
+      (r[1].guias || []).forEach(function (g) { guias[g.id] = g; });
+      var cids = {};
+      todos.forEach(function (c) { if (c.modalidade !== "online" && c.situacao === "Aberto" && !c.em_revisao) cidadesDe(c).forEach(function (x) { cids[x] = 1; }); });
+      Object.keys(cids).sort(function (a, b) { return a.localeCompare(b, "pt"); }).forEach(function (x) {
+        var op = document.createElement("option"); op.value = x; op.textContent = x; cidade.appendChild(op);
+      });
+      if (params.get("cidade")) cidade.value = params.get("cidade");
+      mostrar();
+    }).catch(function () { lista.innerHTML = '<p class="vazio">Não foi possível carregar os cursos. Atualize a página daqui a pouco.</p>'; });
+  }
+
   carregar("dados/site.json").then(function (site) {
     if (pagina === "antes") { antes(); return; }
+    if (pagina === "encaminhar") { encaminhar(site); return; }
     if (pagina === "inicio") inicio(site);
     else if (pagina === "cursos") cursos(site);
     else if (pagina === "noticias") noticias(site);

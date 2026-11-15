@@ -14,6 +14,7 @@ PAGINAS = {
     "cursos.html": ("cursos", "Cursos gratuitos online e presenciais | {nome}"),
     "noticias.html": ("noticias", "Notícias do setor social | {nome}"),
     "antes.html": ("antes", "Antes de começar: CPF, conta gov.br e CadÚnico | {nome}"),
+    "encaminhar.html": ("encaminhar", "Para quem encaminha pessoas: lista e fichas para imprimir | {nome}"),
     "sobre.html": ("sobre", "Sobre | {nome}"),
 }
 
@@ -153,7 +154,7 @@ def main():
                        .replace("{{DESCRICAO}}", slogan)
                        .replace("{{NOME}}", nome).replace("{{SLOGAN}}", slogan)
                        .replace("{{PAGINA}}", pagina).replace("{{VERSAO}}", versao))
-        for p in ("cursos", "antes", "noticias", "sobre"):
+        for p in ("cursos", "antes", "encaminhar", "noticias", "sobre"):
             pagina_html = pagina_html.replace("{{ATUAL_%s}}" % p.upper(),
                                               ' aria-current="page"' if p == pagina else "")
         with open(os.path.join(docs, ficheiro), "w", encoding="utf-8") as f:
@@ -166,7 +167,7 @@ def main():
     gravar_json("docs/dados/site.json", {
         "nome": cfg["nome"], "territorio_piloto": cfg.get("territorio_piloto", ""),
         "necessidades": cfg["cursos"]["necessidades"], "locais": cfg["cursos"]["locais"],
-        "temas": cfg["noticias"]["temas"],
+        "temas": cfg["noticias"]["temas"], "url_site": cfg.get("url_site", ""),
     })
     n_cursos, n_noticias = exportar_dados(base, cfg)
     print(f"Site gerado em docs/: {n_cursos} cursos e {n_noticias} notícias visíveis.")

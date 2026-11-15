@@ -149,3 +149,19 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .guia ol li { margin-bottom: .5rem; }
 .guia-info { list-style: none; padding: .7rem .9rem; background: var(--anil-claro); border-radius: var(--raio); }
 .guia-info li + li { margin-top: .3rem; }
+
+.caixa { display: flex; gap: .5rem; align-items: center; font-weight: 400; }
+.kit-acoes { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1rem 0; }
+.kit-titulo { font-weight: 700; }
+.fichas { list-style: none; padding: 0; }
+.ficha { border: 2px dashed var(--pedra); border-radius: var(--raio); padding: .9rem 1rem; margin: 0 0 1rem; break-inside: avoid; }
+.ficha h2 { margin: 0 0 .2rem; font-size: 1.25rem; }
+.ficha ul { padding-left: 1.1rem; margin: .5rem 0; }
+.ficha li + li { margin-top: .25rem; }
+.ficha-rodape { font-size: .85rem; color: var(--tinta-suave); overflow-wrap: anywhere; }
+@media print {
+  .topo, .azulejo, .rodape, .saltar, form, .kit-acoes, .aviso, .so-ecra, main > h1, main > h1 + p { display: none !important; }
+  body { background: #fff; font-size: 12pt; }
+  .ficha { border: 1px dashed #777; }
+  body.so-uma-ficha .ficha:not(.imprimir-esta), body.so-uma-ficha .kit-titulo { display: none !important; }
+}

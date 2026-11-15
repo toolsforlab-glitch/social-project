@@ -1,0 +1,25 @@
+<h1>Para quem encaminha pessoas</h1>
+<p>Para equipes de CRAS, associações, escolas e lideranças comunitárias. Escolha o município e terá uma lista pronta para imprimir, salvar em PDF ou mandar pelo WhatsApp, e uma ficha de cada curso para entregar à pessoa.</p>
+
+<form id="kit-filtros" class="filtros" onsubmit="return false">
+  <div class="campo">
+    <label for="kit-cidade">Município</label>
+    <select id="kit-cidade"><option value="">Escolha o município</option></select>
+  </div>
+  <div class="campo">
+    <label class="caixa"><input type="checkbox" id="kit-online" checked> Incluir cursos on-line (para quem tem internet)</label>
+  </div>
+</form>
+
+<div class="kit-acoes" id="kit-acoes" hidden>
+  <button type="button" class="botao" id="kit-imprimir">Imprimir ou salvar em PDF</button>
+  <button type="button" class="botao secundario" id="kit-whatsapp">Copiar texto para o WhatsApp</button>
+  <button type="button" class="botao secundario" id="kit-link">Copiar link desta lista</button>
+  <p class="discreto" id="kit-copiado" aria-live="polite"></p>
+</div>
+
+<div id="kit-lista" class="kit-lista"></div>
+
+<div class="aviso">
+  <p><strong>Só entram cursos com inscrições abertas confirmadas e sem dúvidas pendentes.</strong> A lista muda toda semana: imprima de novo antes de usar. Peça sempre à pessoa para confirmar na unidade antes de ir.</p>
+</div>

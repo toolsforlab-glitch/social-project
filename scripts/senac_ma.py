@@ -148,6 +148,18 @@ def horario_curto(h):
     return f"{horas[0][0]:02d}:{horas[0][1]:02d} - {horas[1][0]:02d}:{horas[1][1]:02d}" if len(horas) == 2 else ""
 
 
+MINUSCULAS = {"de", "da", "do", "das", "dos", "e"}
+
+
+def nome_cidade(c):
+    """'SÃO DOMINGOS DO MARANHÃO/MA' → 'São Domingos do Maranhão' (o edital escreve a cidade de várias formas)."""
+    c = re.sub(r"\s*[/,–-]\s*MA\s*$", "", re.sub(r"\s+", " ", c or "").strip(), flags=re.I).strip(" -–/")
+    if c.isupper() or c.islower():
+        c = " ".join(p.lower() if i and p.lower() in MINUSCULAS else p.capitalize()
+                     for i, p in enumerate(c.split(" ")))
+    return c
+
+
 def horario_confirmado(h, frase):
     """Horário normalizado, só se as horas aparecerem na frase do Anexo I."""
     curto = horario_curto(h)
@@ -189,8 +201,7 @@ def provar(res, texto, publicado):
         if inicio and data_br(inicio) not in re.sub(r"\s", "", frase):
             inicio = ""
         cidade = str(t.get("cidade") or "").strip()
-        if cidade and chave(cidade) not in chave(texto):
-            cidade = ""
+        cidade = nome_cidade(cidade) if cidade and chave(cidade) in chave(texto) else ""
         turmas.append({**t, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
                        "fim_aulas": data_valida(t.get("fim_aulas")),
                        "horario": horario_confirmado(t.get("horario"), frase)})

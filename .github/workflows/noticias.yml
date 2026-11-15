@@ -3,6 +3,10 @@ name: Notícias do dia
 on:
   schedule:
     - cron: "17 9 * * *"   # todos os dias às 09:17 UTC (06:17 em Fortaleza)
+  # Para testar sem esperar pela hora marcada: alterar o ficheiro disparar/noticias.txt
+  push:
+    branches: [main]
+    paths: ["disparar/noticias.txt"]
   workflow_dispatch:
 
 permissions:

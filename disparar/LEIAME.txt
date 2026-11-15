@@ -1,0 +1,2 @@
+Alterar semanal.txt ou noticias.txt (por exemplo, escrever a data) e enviar para o GitHub faz correr a rotina
+correspondente de imediato. Serve para testar. As rotinas com Claude gastam dinheiro.

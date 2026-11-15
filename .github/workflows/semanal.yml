@@ -3,6 +3,10 @@ name: Cursos e resumo da semana
 on:
   schedule:
     - cron: "23 8 * * 1"   # todas as segundas-feiras às 08:23 UTC (05:23 em Fortaleza)
+  # Para testar sem esperar por segunda-feira: alterar o ficheiro disparar/semanal.txt
+  push:
+    branches: [main]
+    paths: ["disparar/semanal.txt"]
   workflow_dispatch:
     inputs:
       tarefas:

@@ -163,8 +163,8 @@ def provar(res, texto, publicado):
     """Fica só o que está escrito no documento. Devolve (dados limpos, problemas do edital)."""
     problemas = []
     insc = res.get("inscricao") if isinstance(res.get("inscricao"), dict) else {}
-    ini, fim, frase = data_valida(insc.get("inicio")), data_valida(insc.get("fim")), str(insc.get("frase") or "")
-    if not (ini and fim and citacao_valida(frase, texto) and data_br(fim)[:5] in frase.replace(" ", "")):
+    ini, fim, frase_insc = data_valida(insc.get("inicio")), data_valida(insc.get("fim")), str(insc.get("frase") or "")
+    if not (ini and fim and citacao_valida(frase_insc, texto) and data_br(fim)[:5] in frase_insc.replace(" ", "")):
         problemas.append("o período de inscrição não foi confirmado no documento")
         ini = fim = ""
     elif ini > fim:
@@ -194,7 +194,7 @@ def provar(res, texto, publicado):
         turmas.append({**t, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
                        "fim_aulas": data_valida(t.get("fim_aulas")),
                        "horario": horario_confirmado(t.get("horario"), frase)})
-    return {"ini": ini, "fim": fim, "frase_insc": frase if fim else "", "local": local, "modo": modo,
+    return {"ini": ini, "fim": fim, "frase_insc": frase_insc if fim else "", "local": local, "modo": modo,
             "gratuito": gratuito, "renda": renda, "turmas": turmas}, problemas
 
 
@@ -345,7 +345,7 @@ def main():
                 provados = ["internet"] + (["renda"] if edital["renda"] else [])
                 novo = {
                     "ID": id_curso(LISTA, titulo), "Estado": "Novo", "Título": titulo[:200], "Entidade": ENTIDADE,
-                    "Link": LISTA, "Local": "BR-MA", "Modalidade": "presencial", "País": "BR", "Região": "Maranhão",
+                    "Link": LISTA, "Página do curso": pagina, "Local": "BR-MA", "Modalidade": "presencial", "País": "BR", "Região": "Maranhão",
                     "Cidade": "", "Descrição": "", "Necessidades": necessidades("", titulo), "Perfis": "todos",
                     "Condição de acesso": "", "Requisitos": "", "Certificado": "desconhecido", "Inscrições até": "",
                     "Início": "", "Duração": str(t.get("carga_horaria") or ""), "Link verificado": "SIM",

@@ -31,7 +31,9 @@ Para trabalhar sem a folha (testes), `MODO_LOCAL=1` usa a cópia em `dados_locai
 
 `centec.py` faz o mesmo para a Rede CVT (Instituto Centec): lê da página oficial as turmas com inscrição on-line (Centec Academy) e presencial (local e telefone), audita cada cartão (as datas e o horário aparecem duas vezes e têm de coincidir) e cria e publica os cursos. O Centec não indica prazo: a turma conta como aberta enquanto estiver na lista oficial e não tiver começado.
 
-As turmas do Senac e do Centec (`turmas.py` e `centec.py`, sem Claude) são lidas todos os dias na rotina das notícias, à segunda na rotina semanal e sempre que se corre "Atualizar o site".
+`senac_ma.py` lê os editais do Programa Senac de Gratuidade do Maranhão (lista pública em ma.senac.br/editais-psg). Para cada edital recente tira o texto do documento oficial (PDF; Word antigo convertido pelo LibreOffice; Word novo), o Claude extrai o período de inscrição, o modo e o local de inscrição e cada curso do Anexo I, e o código confere cada frase no documento (a frase de cada curso tem de conter o nome e a data de início). Auditoria antes de publicar: datas coerentes, inscrição perto da data do edital, aulas depois da inscrição, horário com sentido, cidade escrita no documento; o que falha fica em Rever. A turma fica Aberta até ao fim do dia em que a inscrição termina. Um termo aditivo manda as turmas do edital alterado para Rever. O estado dos editais já lidos fica em `estado/senac_ma.json` (um edital sem cursos comprovados é relido uma vez).
+
+As turmas do Senac Ceará, do Centec e do Senac Maranhão (`turmas.py` e `centec.py` sem Claude; `senac_ma.py` com Claude) são lidas todos os dias na rotina das notícias, à segunda na rotina semanal e sempre que se corre "Atualizar o site".
 
 O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/` (`whatsapp.txt`, `cartaz.pdf`, `newsletter.html`).
 
@@ -78,4 +80,4 @@ Separador **Actions** → escolher a rotina → **Run workflow**. Na rotina sema
 
 ## Custo aproximado
 
-Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verificações (9 pesquisas ativas), ou seja perto de 7 USD por mês. Desligar pesquisas na aba Pesquisas de cursos reduz o custo.
+Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verificações (9 pesquisas ativas), ou seja perto de 7 USD por mês. Os editais do Senac Maranhão custam cerca de 0,03 USD por edital lido (uns três por semana). Desligar pesquisas na aba Pesquisas de cursos reduz o custo.

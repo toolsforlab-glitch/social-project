@@ -54,6 +54,10 @@ O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/
 | `FOLHA_ID` | O ID da folha (a parte do link entre `/d/` e `/edit`) | Sim |
 | `BREVO_API_KEY`, `BREVO_LISTA_ID`, `EMAIL_ADMIN` | Enviar a newsletter e o texto semanal por email | Não |
 
+## Ligar as rotinas
+
+As rotinas estão paradas até existir a variável **ROTINAS_ATIVAS = sim** (Settings → Secrets and variables → Actions → separador Variables). Antes de a criar, configure os segredos `ANTHROPIC_API_KEY`, `GOOGLE_CREDENTIALS` e `FOLHA_ID`.
+
 ## Correr à mão
 
 Separador **Actions** → escolher a rotina → **Run workflow**. Na rotina semanal pode indicar só algumas pesquisas (ex.: `ce-sistema-s,ce-estado`).

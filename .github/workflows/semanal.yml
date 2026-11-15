@@ -19,6 +19,8 @@ concurrency:
 
 jobs:
   semanal:
+    # As rotinas só correm depois de ligadas: variável ROTINAS_ATIVAS = sim (Settings > Secrets and variables > Actions > Variables)
+    if: ${{ vars.ROTINAS_ATIVAS == 'sim' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:

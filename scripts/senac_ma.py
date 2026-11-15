@@ -56,7 +56,8 @@ Regras:
 null nesse campo.
 - "modo": "presencial" se a inscrição é feita num local físico, "online" se é pela internet, "ambos" se o \
 edital disser as duas, null se não disser.
-- Em "turmas", uma entrada por curso e turno do Anexo I. "frase" é o texto da linha do Anexo I desse curso, \
+- Em "turmas", uma entrada por curso e turno do Anexo I ("PROGRAMAÇÃO DOS CURSOS E TURNOS"; a tabela pode \
+aparecer com cada célula numa linha). Se o edital tem cursos, "turmas" nunca vem vazio. "frase" é o texto da linha do Anexo I desse curso, \
 copiado tal como aparece no texto que recebes (começa no nome do curso e inclui a data de início das aulas).
 - "cidade": o município onde o curso decorre, como está escrito no edital.
 - "gratuidade": a frase exata do edital que diz que o curso é do Programa Senac de Gratuidade ou gratuito.
@@ -88,6 +89,18 @@ def texto_do_documento(dados, tipo):
         f.flush()
         return subprocess.run(["antiword", "-w", "0", f.name], capture_output=True, text=True,
                               timeout=60).stdout
+
+
+def recortar(texto):
+    """Os editais longos são cortados no meio, nunca no fim: o Anexo I (a tabela dos cursos) fica no fim."""
+    texto = re.sub(r"[ \t]+", " ", texto)
+    texto = re.sub(r"\n\s*\n+", "\n", texto)
+    if len(texto) <= MAX_CARACTERES:
+        return texto
+    anexo = [m.start() for m in re.finditer(r"ANEXO\s+I\b", texto)]
+    inicio_anexo = anexo[-1] if anexo else len(texto) - MAX_CARACTERES // 2
+    cauda = texto[inicio_anexo:inicio_anexo + MAX_CARACTERES // 2]
+    return texto[:MAX_CARACTERES - len(cauda)] + "\n[...]\n" + cauda
 
 
 def data_br(iso):
@@ -220,7 +233,7 @@ def main():
         feito = estado["tratados"].get(chave_estado)
         if (e.get("published_at") or "")[:10] < corte or (feito and (not isinstance(feito, dict)
                                                                        or feito.get("tentativas", 0) >= MAX_TENTATIVAS
-                                                                       or feito.get("inscricao_ate"))):
+                                                                       or feito.get("cursos"))):
             continue
         docs = e.get("documents") or []
         pagina = SITE + (e.get("path") or "")
@@ -239,7 +252,7 @@ def main():
         doc = docs[0]
         try:
             dados = baixar(SITE + doc["url"], timeout=60)
-            texto = texto_do_documento(dados, doc.get("mime_type", ""))[:MAX_CARACTERES]
+            texto = recortar(texto_do_documento(dados, doc.get("mime_type", "")))
         except Exception as ex:  # noqa: BLE001
             print(f"  ✗ edital {e.get('number')}: documento ilegível ({type(ex).__name__})")
             continue
@@ -265,6 +278,12 @@ def main():
             with open(os.path.join(DIAGNOSTICO, f"{e.get('id')}.json"), "w", encoding="utf-8") as f:
                 json.dump({"edital": e, "texto": texto, "resposta": resposta}, f, ensure_ascii=False, indent=1)
         propostas = len(res.get("turmas") or [])
+        if not edital["turmas"]:  # para se perceber no registo da execução porque não ficou nenhum curso
+            pos = texto.upper().rfind("ANEXO I")
+            print(f"    texto com {len(texto)} caracteres; Anexo I na posição {pos}: "
+                  + re.sub(r"\s+", " ", texto[pos:pos + 700] if pos >= 0 else texto[-700:]))
+            for t in (res.get("turmas") or [])[:3]:
+                print(f"    proposta não comprovada: {str(t)[:300]}")
         print(f"  edital nº {e.get('number')} ({(e.get('published_at') or '')[:10]}): inscrição "
               f"{edital['ini'] or '?'} a {edital['fim'] or '?'}, modo {edital['modo'] or '?'}, "
               f"{len(edital['turmas'])}/{propostas} cursos comprovados" + (f" | {'; '.join(problemas)}" if problemas else ""))

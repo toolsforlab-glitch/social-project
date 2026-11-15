@@ -7,6 +7,7 @@ import sys
 
 from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json
+from paginas import e_pagina_do_curso, encontrar_pagina
 
 ABA = "Cursos"
 MAX_POR_EXECUCAO = int(os.environ.get("MAX_VERIFICACOES", "60"))
@@ -61,6 +62,29 @@ def texto_da_pagina(url):
     return texto_de_html(baixar(url, timeout=30))[:MAX_CARACTERES]
 
 
+def pagina_do_curso(r, dominios):
+    """Página própria do curso (regras em paginas.py) e o texto a dar ao Claude.
+
+    Devolve (página do curso ou "", nota, texto). Se a página do curso não for encontrada, o texto é o do link.
+    """
+    atual = (r.get("Página do curso") or "").strip()
+    if atual:
+        try:
+            bruto = baixar(atual, timeout=30).decode("utf-8", "replace")
+            if e_pagina_do_curso(bruto, r["Título"]):
+                return atual, "", texto_de_html(bruto)[:MAX_CARACTERES]
+        except Exception:  # noqa: BLE001
+            pass
+    bruto = baixar(r["Link"], timeout=30).decode("utf-8", "replace")
+    pagina, nota = encontrar_pagina(r["Link"], bruto, r["Título"], dominios)
+    if pagina and pagina != r["Link"]:
+        try:
+            return pagina, nota, texto_de_html(baixar(pagina, timeout=30))[:MAX_CARACTERES]
+        except Exception:  # noqa: BLE001
+            return "", "a página do curso deixou de abrir", texto_de_html(bruto)[:MAX_CARACTERES]
+    return pagina, nota, texto_de_html(bruto)[:MAX_CARACTERES]
+
+
 def main():
     base = Base()
     cfg = carregar_config(base)
@@ -89,8 +113,9 @@ def main():
     historico = []
     alteracoes, custo_total, contagem = [], 0.0, {"aberto": 0, "encerrado": 0, "incerto": 0, "falhou": 0}
     for r in candidatos:
+        dominios = cfg["cursos"]["dominios"].get(r.get("Local"), [])
         try:
-            pagina = texto_da_pagina(r["Link"])
+            pagina_curso, nota_pagina, pagina = pagina_do_curso(r, dominios)
         except Exception as e:  # noqa: BLE001
             contagem["falhou"] += 1
             alteracoes.append((r["_linha"], {"Nota da verificação": f"{hoje_txt}: não foi possível abrir a página ({type(e).__name__})."}))
@@ -98,7 +123,7 @@ def main():
             continue
         dados = {k: r.get(k, "") for k in ("Título", "Entidade", "Local", "Cidade", "Descrição", "Requisitos",
                                             "Inscrições até", "Início")}
-        pedido = (f"Data de hoje: {hoje_txt}.\n\nDados do curso: {dados}\n\nLink: {r['Link']}\n\n"
+        pedido = (f"Data de hoje: {hoje_txt}.\n\nDados do curso: {dados}\n\nLink: {pagina_curso or r['Link']}\n\n"
                   f"Texto da página:\n{pagina}")
         try:
             texto, uso = claude(modelo, SISTEMA, pedido, max_tokens=4000)
@@ -131,7 +156,7 @@ def main():
         # mantém provas registadas à mão (ex.: "unidades") e junta as novas
         outros = [c.strip() for c in (r.get("Campos comprovados") or "").split(",")
                   if c.strip() and c.strip() not in CAMPOS_PROVA.values()]
-        campos = {"Última verificação": hoje_txt, "Nota da verificação": f"{hoje_txt}: {res.get('nota') or ''}".strip(),
+        campos = {"Página do curso": pagina_curso, "Última verificação": hoje_txt, "Nota da verificação": f"{hoje_txt}: {res.get('nota') or ''}".strip(),
                   "Próxima verificação": "",
                   "Evidência": " | ".join(f"{CAMPOS_PROVA[k]}: «{v}»" for k, v in provas.items())[:1500],
                   "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas])}
@@ -150,7 +175,8 @@ def main():
                 motivos.append("Revisto por pessoa, mas a página indica que pode não ser gratuito.")
         else:
             campos["Situação das inscrições"] = nova_situacao
-            if passos and not r.get("Como me inscrever"):
+            pagina_nova = pagina_curso and pagina_curso != (r.get("Página do curso") or "").strip()
+            if passos and (not r.get("Como me inscrever") or pagina_nova):
                 campos["Como me inscrever"] = "\n".join(f"{i}. {p.strip()}" for i, p in enumerate(passos[:5], 1))
             if data and not r.get("Inscrições até"):
                 campos["Inscrições até"] = data
@@ -181,6 +207,8 @@ def main():
                 motivos.append("Estava Aberto e a página já não o confirma.")
         if gratuito == "incerto":
             em_falta.append("A página não diz se este curso é gratuito.")
+        if not pagina_curso and "psg.ce.senac.br" not in r["Link"]:
+            em_falta.append("Falta a página própria do curso: " + nota_pagina)
         if motivos:
             campos["Mudança a rever"] = "TRUE"
         frases = [f if f.endswith((".", "!", "?")) else f + "." for f in motivos + em_falta]

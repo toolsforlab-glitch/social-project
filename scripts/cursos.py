@@ -32,8 +32,10 @@ regularmente (ex.: matrículas todos os meses) conta como disponível se a pági
 diz nos requisitos quando costumam abrir as inscrições.
 3. É de nível iniciante ou não exige formação anterior difícil (indica os requisitos que existirem).
 4. É de uma entidade de confiança (organismo público, universidade, instituto federal, Sistema S, ONG reconhecida).
-5. O link veio dos resultados da pesquisa e leva a pessoa à inscrição: a página do curso, de um edital ou da \
-oferta da entidade. Se só encontraste o curso numa notícia, procura a página oficial; se não a encontrares, \
+5. O link veio dos resultados da pesquisa e é a página PRÓPRIA deste curso (ou desta turma, ou do edital deste \
+curso), onde a pessoa se inscreve. Não uses a página geral com a lista de cursos, a página inicial do campus ou \
+uma página de pesquisa: abre a lista e usa o link do curso. Exceção: no Senac PSG (psg.ce.senac.br) usa a lista \
+de oportunidades, porque as turmas de cada curso são lidas à parte. Se só encontraste o curso numa notícia, procura a página oficial; se não a encontrares, \
 usa o link da notícia.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.

@@ -22,6 +22,39 @@
     });
   }
   function el(id) { return document.getElementById(id); }
+  function hojeIso() {
+    var d = new Date();
+    return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+  }
+  function dataCurtaG(iso) { var p = (iso || "").slice(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] : ""; }
+  // Turmas lidas das páginas oficiais: some quando passa o prazo ou, sem prazo, quando a turma começa
+  function turmasAtuais(c) {
+    var h = hojeIso();
+    return (c.turmas || []).filter(function (t) {
+      if (t.prazo) return t.prazo >= h;
+      return !t.inicio || t.inicio > h;
+    });
+  }
+  function turmaHtml(t, comBotao) {
+    var l = ["<strong>" + esc(t.unidade || (t.local && t.local.nome) || "") + "</strong>" + (t.cidade ? " (" + esc(t.cidade) + ")" : "")];
+    var quando = [t.inicio ? dataCurtaG(t.inicio) + (t.fim ? " a " + dataCurtaG(t.fim) : "") : "", t.horario, t.dias]
+      .filter(Boolean).join(" · ");
+    if (quando) l.push(esc(quando));
+    l.push(t.prazo ? '<span class="prazo">Inscrições até ' + esc(dataBonita(t.prazo)) + "</span>"
+                   : '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>');
+    var quem = [t.idade_minima ? t.idade_minima + " anos ou mais" : "", t.escolaridade ? "Escolaridade: " + t.escolaridade.replace(/\.$/, "") : ""]
+      .filter(Boolean).join(" · ");
+    if (quem) l.push(esc(quem));
+    if (t.documentos) l.push("Documentos: " + esc(t.documentos.replace(/\.$/, "")));
+    var u = t.local;
+    if (u) {
+      var morada = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
+      if (morada) l.push(esc(morada));
+      if (u.telefone) l.push("Telefone " + esc(u.telefone));
+    }
+    if (comBotao) l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">Ver esta turma e se inscrever</a>');
+    return "<li>" + l.join("<br>") + "</li>";
+  }
 
   function preencherOnde(select, locais, valor) {
     var html = '<option value="">Mostrar tudo</option>';
@@ -157,6 +190,8 @@
     }
 
     function cursoHtml(c, i) {
+      var turmas = turmasAtuais(c);
+      var temTurmas = (c.turmas || []).length > 0;
       var factos = [];
       if (c.modalidade === "online") factos.push("On-line");
       else {
@@ -166,11 +201,15 @@
       }
       if (c.certificado === "gratuito") factos.push('<span class="bom">Certificado gratuito</span>');
       else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago</span>');
-      if (c.inscricoes_ate) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
-      else if (c.data_por_confirmar) factos.push('<span class="atencao">Confirme a data na página oficial</span>');
-      if (c.situacao === "Por confirmar") factos.push('<span class="atencao">Inscrições por confirmar</span>');
-      if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
-      (c.turnos || []).forEach(function (t) { if (TURNO[t]) factos.push(TURNO[t]); });
+      if (temTurmas) {
+        factos.push('<span class="bom">' + (turmas.length === 1 ? "1 turma com inscrições abertas" : turmas.length + " turmas com inscrições abertas") + "</span>");
+      } else {
+        if (c.inscricoes_ate) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
+        else if (c.data_por_confirmar) factos.push('<span class="atencao">Confirme a data na página oficial</span>');
+        if (c.situacao === "Por confirmar") factos.push('<span class="atencao">Inscrições por confirmar</span>');
+        if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
+        (c.turnos || []).forEach(function (t) { if (TURNO[t]) factos.push(TURNO[t]); });
+      }
       if (c.ajuda) factos.push('<span class="bom">' + esc(c.ajuda) + "</span>");
       if (c.duracao) factos.push(esc(c.duracao));
       var factosHtml = factos.map(function (f) {
@@ -181,13 +220,17 @@
       if (c.exclusivo_para) condicoes.push(esc(c.exclusivo_para));
       if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
       if (c.documentos) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
-      return '<li class="curso"><h3><a href="' + esc(c.url) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
+      var linkTitulo = turmas.length === 1 ? turmas[0].link : c.url;
+      return '<li class="curso"><h3><a href="' + esc(linkTitulo) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         posso(c, i) + antesHtml(c) +
-        (c.onde_inscrever && c.onde_inscrever.length ? '<div class="onde"><p class="onde-titulo">Onde se inscrever</p><ul>' +
+        (temTurmas ? '<div class="onde turmas"><p class="onde-titulo">Turmas com inscrições abertas</p><ul>' +
+          turmas.map(function (t) { return turmaHtml(t, true); }).join("") + "</ul>" +
+          '<p class="discreto">Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.</p></div>' :
+        c.onde_inscrever && c.onde_inscrever.length ? '<div class="onde"><p class="onde-titulo">Onde se inscrever</p><ul>' +
           c.onde_inscrever.map(function (u) {
             var linhas = ["<strong>" + esc(u.nome) + "</strong>"];
             var morada = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
@@ -198,9 +241,11 @@
             if (u.o_que_levar) linhas.push("Leve: " + esc(u.o_que_levar));
             return "<li>" + linhas.join("<br>") + "</li>";
           }).join("") + "</ul></div>" : "") +
-        (c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
+        (!temTurmas && c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
           c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
-        '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver curso e se inscrever</a>' +
+        (temTurmas ? '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver outras turmas na página oficial</a>'
+                   : '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
+                     (c.pagina_propria ? "Ver curso e se inscrever" : "Procurar este curso na página oficial") + "</a>") +
         '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(dataBonita(c.verificado_em)) + ". " : "") +
         "Confirme sempre na página oficial antes de ir.</p></li>";
     }
@@ -245,6 +290,7 @@
     }
 
     function cidadesDe(c) {
+      if ((c.turmas || []).length) return turmasAtuais(c).map(function (t) { return t.cidade; }).filter(Boolean);
       var l = [c.cidade].concat((c.onde_inscrever || []).map(function (u) { return u.municipio; }));
       return l.filter(Boolean);
     }
@@ -368,7 +414,11 @@
     var base = (site.url_site || (location.origin + location.pathname.replace(/[^/]*$/, ""))).replace(/\/?$/, "/");
 
     function cidadesDe(c) {
+      if ((c.turmas || []).length) return turmasAtuais(c).map(function (t) { return t.cidade; }).filter(Boolean);
       return [c.cidade].concat((c.onde_inscrever || []).map(function (u) { return u.municipio; })).filter(Boolean);
+    }
+    function turmasDaCidade(c) {
+      return turmasAtuais(c).filter(function (t) { return t.cidade === cidade.value; });
     }
     function dataCurta(iso) { var p = (iso || "").slice(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] : ""; }
     function selecionados() {
@@ -398,6 +448,16 @@
     }
     function fichaHtml(c, i) {
       var linhas = [];
+      var tc = turmasDaCidade(c);
+      if (tc.length) {
+        return '<li class="ficha" data-i="' + i + '"><h2>' + esc(c.titulo) + '</h2>' +
+          (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
+          (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
+          '<ul class="turmas-ficha">' + tc.map(function (t) { return turmaHtml(t, false).replace("<li>", "<li>Turma: "); }).join("") + "</ul>" +
+          '<p class="ficha-rodape">Inscrição: ' + tc.map(function (t) { return esc(t.link); }).join("<br>") + "<br>" +
+          "Confirme na unidade antes de ir. Lista de " + esc(atualizado) + ".</p>" +
+          '<button type="button" class="botao secundario so-ecra" data-ficha="' + i + '">Imprimir só esta ficha</button></li>';
+      }
       unidadesDaCidade(c).forEach(function (u) {
         var m = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
         linhas.push("<li><strong>Onde:</strong> " + esc(u.nome) + (m ? ", " + esc(m) : "") + (u.horario ? ". " + esc(u.horario) : "") +
@@ -438,6 +498,17 @@
       var l = ["📚 *Cursos gratuitos em " + cidade.value + "* (lista de " + atualizado + ")", ""];
       sel.forEach(function (c) {
         l.push("✅ *" + c.titulo + "*");
+        var tc = turmasDaCidade(c);
+        if (tc.length) {
+          tc.forEach(function (t) {
+            l.push([t.unidade, t.inicio ? "de " + dataCurta(t.inicio) + (t.fim ? " a " + dataCurta(t.fim) : "") : "", t.horario]
+              .filter(Boolean).join(" · "));
+            if (t.prazo) l.push("Inscrições até " + dataCurta(t.prazo));
+            l.push(t.link);
+          });
+          l.push("");
+          return;
+        }
         var u = unidadesDaCidade(c)[0];
         var det = [c.modalidade === "online" ? "On-line" : (u ? u.nome + (u.morada ? ", " + u.morada : "") : c.cidade),
                    c.inicio ? "começa em " + dataCurta(c.inicio) : "",

@@ -1,5 +1,6 @@
 """Gera o site estático em docs/ a partir da folha (só conteúdos visíveis e locais ativos)."""
 import collections
+import datetime
 import html
 import os
 import shutil
@@ -41,6 +42,40 @@ def passos(valor):
     return [l.split(". ", 1)[1] if l[:2].rstrip(".").isdigit() and ". " in l else l for l in linhas]
 
 
+def exportar_turmas(base, unidades):
+    """Turmas por curso, lidas das páginas oficiais por turmas.py. Só saem as que não encerraram.
+
+    Devolve ({ID do curso: [turmas]}, leitura_recente). O dicionário inclui os cursos com turmas na folha,
+    mesmo encerradas, para se saber que o curso é acompanhado por turma. leitura_recente indica que a rotina
+    das turmas correu nos últimos 3 dias; só então um curso do Senac PSG sem turmas abertas sai do site.
+    """
+    por_curso = {}
+    if "Turmas" not in base.abas():
+        return por_curso, False
+    linhas = base.tabela("Turmas")
+    # a leitura das turmas só conta como completa se correu há pouco tempo
+    recente = (datetime.date.today() - datetime.timedelta(days=3)).isoformat()
+    leitura_recente = any((t.get("Última verificação") or "") >= recente for t in linhas)
+    for t in linhas:
+        curso = (t.get("Curso") or "").strip()
+        if not curso or not t.get("Link da turma"):
+            continue
+        situacao = (t.get("Situação") or "").strip()
+        unidade = unidades.get((t.get("Unidade") or "").strip())
+        por_curso.setdefault(curso, []).append({
+            "visivel": situacao in ("Aberta", "Por confirmar") and (t.get("Estado") or "").strip() != "Oculto",
+            "situacao": situacao, "link": t["Link da turma"].strip(),
+            "unidade": t.get("Unidade na fonte", ""), "cidade": (unidade or {}).get("municipio") or t.get("Cidade", ""),
+            "local": unidade, "inicio": t.get("Início", ""), "fim": t.get("Fim", ""),
+            "horario": t.get("Horário", ""), "dias": t.get("Dias", ""), "prazo": t.get("Prazo de inscrição", ""),
+            "idade_minima": t.get("Idade mínima", ""), "escolaridade": t.get("Escolaridade", ""),
+            "documentos": t.get("Documentos", ""), "verificado_em": (t.get("Última verificação") or "")[:10],
+        })
+    for lst in por_curso.values():
+        lst.sort(key=lambda t: (t["prazo"] or t["inicio"] or "9999", t["unidade"]))
+    return por_curso, leitura_recente
+
+
 def exportar_dados(base, cfg):
     locais = {l["id"] for l in cfg["cursos"]["locais"]}
     piloto = cfg.get("territorio_piloto", "")
@@ -69,6 +104,7 @@ def exportar_dados(base, cfg):
                               "verificado_em": (g.get("Revisto por pessoa") or g.get("Última verificação") or "")[:10]})
     gravar_json("docs/dados/guias.json", {"atualizado": time.strftime("%Y-%m-%dT%H:%M"), "guias": guias})
     ids_guias = {g["id"] for g in guias}
+    turmas_por_curso, turmas_recentes = exportar_turmas(base, unidades)
 
     cursos = []
     for r in base.tabela("Cursos"):
@@ -76,9 +112,18 @@ def exportar_dados(base, cfg):
             continue
         if r.get("Local") == "online" and pais_piloto and r.get("País") not in (pais_piloto, "Internacional"):
             continue
+        # cursos com turmas acompanhadas: a situação vem das páginas das turmas, não da página geral
+        acompanhadas = turmas_por_curso.get(r.get("ID", "").strip())
+        if acompanhadas is None and turmas_recentes and "psg.ce.senac.br" in r["Link"]:
+            acompanhadas = []  # curso do Senac PSG sem nenhuma turma aberta na lista oficial
+        turmas = [t for t in (acompanhadas or []) if t["visivel"]]
+        if acompanhadas is not None and not turmas:
+            continue  # todas as turmas conhecidas já encerraram
         cursos.append({
             "id": r.get("ID", ""), "titulo": r.get("Título", ""), "entidade": r.get("Entidade", ""),
-            "url": r["Link"], "local": r.get("Local", ""), "modalidade": r.get("Modalidade", ""),
+            # o botão leva à página própria do curso quando ela foi encontrada e confirmada (paginas.py)
+            "url": (r.get("Página do curso") or "").strip() or r["Link"],
+            "pagina_propria": bool((r.get("Página do curso") or "").strip()), "local": r.get("Local", ""), "modalidade": r.get("Modalidade", ""),
             "pais": r.get("País", ""), "regiao": r.get("Região", ""), "cidade": r.get("Cidade", ""),
             "descricao": r.get("Descrição", ""), "necessidades": lista(r.get("Necessidades")),
             "exclusivo_para": r.get("Condição de acesso", ""), "requisitos": r.get("Requisitos", ""),
@@ -86,7 +131,9 @@ def exportar_dados(base, cfg):
             # uma data só aparece se estiver comprovada na página ou confirmada por uma pessoa
             "inscricoes_ate": r.get("Inscrições até", "") if comprovado(r, "data") else "",
             "data_por_confirmar": bool(r.get("Inscrições até")) and not comprovado(r, "data"),
-            "situacao": r.get("Situação das inscrições", "") or "Por confirmar",
+            "situacao": ("Aberto" if any(t["situacao"] == "Aberta" for t in turmas) else "Por confirmar") if turmas
+                        else (r.get("Situação das inscrições", "") or "Por confirmar"),
+            "turmas": [{k: v for k, v in t.items() if k != "visivel"} for t in turmas],
             "em_revisao": sim(r.get("Mudança a rever")),
             "onde_inscrever": [unidades[i] for i in lista(r.get("Onde se inscrever")) if i in unidades],
             "verificado_em": (r.get("Revisto por pessoa") or (r.get("Última verificação") if r.get("Nota da verificação") else "") or "")[:10],

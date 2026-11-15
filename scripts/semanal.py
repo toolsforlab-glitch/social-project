@@ -34,6 +34,18 @@ def selecionar_cursos(cfg, dias=7):
     # WhatsApp e cartaz chegam a muita gente: só levam cursos com inscrições abertas confirmadas
     cursos = [c for c in ler_json("docs/dados/cursos.json", {"cursos": []})["cursos"] if c.get("situacao") == "Aberto" and not c.get("em_revisao")]
     hoje_txt = hoje_iso()
+    # cursos com turmas: só contam as turmas ainda abertas, e a data é o prazo mais próximo entre elas
+    com_turmas = []
+    for c in cursos:
+        if c.get("turmas"):
+            c["turmas"] = [t for t in c["turmas"] if (t.get("prazo") or "") >= hoje_txt
+                           or (not t.get("prazo") and (t.get("inicio") or "") > hoje_txt)]
+            if not c["turmas"]:
+                continue
+            prazos = sorted(t["prazo"] for t in c["turmas"] if t.get("prazo"))
+            c["inscricoes_ate"] = prazos[0] if prazos else ""
+        com_turmas.append(c)
+    cursos = com_turmas
     corte = (hoje() - datetime.timedelta(days=dias)).isoformat()
     limite = (hoje() + datetime.timedelta(days=7)).isoformat()
     piloto = cfg.get("territorio_piloto", "")
@@ -52,6 +64,15 @@ def texto_whatsapp(cfg, ultimos, novos):
     linhas = [f"📚 *Cursos gratuitos{(' no ' + piloto) if piloto else ''}*", ""]
 
     def bloco(c):
+        if c.get("turmas"):
+            out = [f"✅ *{c['titulo']}*"]
+            for t in c["turmas"][:3]:
+                partes = [t.get("unidade", ""), data_curta(t["inicio"]) if t.get("inicio") else "", t.get("horario", ""),
+                          f"inscrições até {data_curta(t['prazo'])}" if t.get("prazo") else ""]
+                out += [" · ".join(x for x in partes if x), t["link"]]
+            if len(c["turmas"]) > 3:
+                out.append(f"Mais turmas: {c['url']}")
+            return out + [""]
         detalhe = onde(c)
         if c.get("inscricoes_ate"):
             detalhe += f" · inscrições até {data_curta(c['inscricoes_ate'])}"

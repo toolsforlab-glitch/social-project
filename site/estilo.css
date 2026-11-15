@@ -165,3 +165,9 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
   .ficha { border: 1px dashed #777; }
   body.so-uma-ficha .ficha:not(.imprimir-esta), body.so-uma-ficha .kit-titulo { display: none !important; }
 }
+
+/* Turmas lidas das páginas oficiais */
+.turmas .prazo { font-weight: 700; color: var(--anil); }
+.turmas .botao { display: inline-block; margin-top: .4rem; }
+.turmas-ficha { padding-left: 1.1rem; }
+.turmas-ficha li + li { margin-top: .5rem; }

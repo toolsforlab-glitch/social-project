@@ -19,7 +19,7 @@ jobs:
     # As rotinas só correm depois de ligadas: variável ROTINAS_ATIVAS = sim (Settings > Secrets and variables > Actions > Variables)
     if: ${{ vars.ROTINAS_ATIVAS == 'sim' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     env:
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       FOLHA_ID: ${{ secrets.FOLHA_ID }}
@@ -29,6 +29,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
+      - name: Turmas do Senac (páginas oficiais, sem Claude)
+        timeout-minutes: 15
+        run: cd scripts && python3 turmas.py || echo 'Turmas não atualizadas'
+
       - name: Gerar o site a partir da folha
         run: cd scripts && python3 construir_site.py
       - name: Publicar

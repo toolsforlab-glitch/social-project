@@ -25,7 +25,9 @@ Para trabalhar sem a folha (testes), `MODO_LOCAL=1` usa a cópia em `dados_locai
 |---|---|---|
 | **Notícias do dia** (`noticias.yml`) | Todos os dias, 09:17 UTC | Escolhe e resume as notícias, trata propostas aceites e atualiza o site |
 | **Cursos e resumo da semana** (`semanal.yml`) | Segundas, 08:23 UTC | Pesquisa cursos → verifica cada página e escreve o passo a passo de inscrição → verifica as organizações → propostas de parceiros → site → texto do WhatsApp, cartaz em PDF com QR code e newsletter |
-| **Atualizar o site** (`site.yml`) | Quando muda a pasta `site/`, ou à mão depois de editar a folha | Volta a gerar as páginas a partir da folha |
+| **Atualizar o site** (`site.yml`) | Quando muda a pasta `site/`, ou à mão depois de editar a folha | Lê as turmas do Senac e volta a gerar as páginas a partir da folha |
+
+As turmas do Senac (`turmas.py`, sem Claude) são lidas todos os dias na rotina das notícias, à segunda na rotina semanal e sempre que se corre "Atualizar o site".
 
 O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/` (`whatsapp.txt`, `cartaz.pdf`, `newsletter.html`).
 
@@ -35,10 +37,13 @@ O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/
 - **O que facilita para você?** Filtros "À noite", "Sem precisar de internet", "Sem escolaridade exigida", "Com ajuda de custo" e "Cidade". Só entram cursos em que isso está comprovado.
 - **Antes de começar:** guias para tirar o CPF, criar e subir a conta gov.br e fazer o CadÚnico, ligados aos cursos que os exigem.
 - **Onde se inscrever:** morada, horário de matrículas e o que levar, da unidade mais próxima.
+- **Botão que leva ao curso, não a uma lista:** cada curso aponta para a sua página própria (`paginas.py`, coluna "Página do curso"). No Senac PSG, cada curso mostra as turmas abertas, cada uma com a sua página e o prazo de inscrição (`turmas.py`, separador "Turmas").
 
 ## Como se evita informação errada
 
 - **O que a página oficial não diz fica vazio.** O Claude nunca deduz datas, gratuidade, requisitos ou contactos.
+- **Página própria do curso.** O botão do site só diz "Ver curso e se inscrever" quando a página do curso foi confirmada por código (o título do curso está no título da página). Sem ela, diz "Procurar este curso na página oficial".
+- **Turmas pelas datas da própria página.** Uma turma do Senac está Aberta até ao fim do dia do prazo de inscrição que a página indica; sem prazo, até começar. O selo "Inscrições abertas" da lista não conta.
 - **Prova por código.** Nos cursos, cada afirmação importante exige a frase exata da página, e o script confirma que ela existe (`verificar.py`). Nas organizações, cada dado é procurado no texto bruto da fonte (`verificar_organizacoes.py`, sem Claude).
 - **Resumos não são fonte.** Ferramentas que resumem páginas servem para descobrir, nunca para preencher a folha.
 - **A rotina marca, uma pessoa decide.** "Mudança a rever" só é desmarcada por uma pessoa; "Revisto por pessoa" impede a rotina de alterar campos importantes.

@@ -166,7 +166,8 @@ def exportar_dados(base, cfg):
 
     temas = cfg["noticias"]["temas"]
     dias = collections.OrderedDict()
-    noticias = sorted((r for r in base.tabela("Notícias") if visivel(r.get("Estado"), cfg) and r.get("Data")),
+    noticias = sorted((r for r in base.tabela("Notícias") if visivel(r.get("Estado"), cfg) and r.get("Data")
+                       and (r.get("Região") or "").strip() == "Brasil"),  # o site só mostra notícias do Brasil
                       key=lambda r: r["Data"], reverse=True)
     for r in noticias:
         dias.setdefault(r["Data"][:10], []).append({

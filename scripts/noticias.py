@@ -19,7 +19,11 @@ MAX_POR_FONTE = 15
 
 SISTEMA = """És o editor de notícias de um site em português que liga pessoas a informação e oportunidades \
 no setor social. Os leitores são sobretudo pessoas que trabalham ou fazem voluntariado em ONGs, associações \
-e fundações, em Portugal, no Brasil e noutros países de língua portuguesa.
+e fundações no Brasil.
+
+Escolhe APENAS notícias sobre o Brasil: factos que acontecem no Brasil ou que dizem diretamente respeito a pessoas \
+ou organizações no Brasil. Uma notícia internacional só entra se o texto disser qual é o efeito no Brasil. Se \
+nenhuma candidata for sobre o Brasil, devolve uma lista vazia.
 
 Escolhe as notícias mais úteis e relevantes sobre: ajuda humanitária, pobreza e desenvolvimento, filantropia \
 e financiamento, gestão de ONGs, direitos humanos, educação, saúde global, clima com impacto social, \
@@ -29,10 +33,10 @@ Regras:
 - Dá prioridade a factos novos e com impacto (decisões, dados, crises, financiamento, políticas, estudos).
 - Se a mesma história aparece em várias fontes, escolhe só uma.
 - Evita publicidade, angariações de fundos de uma só organização, eventos sem interesse geral e textos sem informação.
-- Equilibra temas e regiões; inclui pelo menos uma notícia de Portugal ou do Brasil quando houver boas candidatas.
+- Equilibra os temas e as regiões do Brasil.
 - Evita notícias locais de interesse restrito (uma cidade, um condado ou uma organização pequena nos EUA ou noutro país), \
-exceto quando têm relevância nacional em Portugal ou no Brasil, ou ensinam algo útil a qualquer ONG.
-- Escreve em português neutro, compreensível em Portugal e no Brasil, sem regionalismos.
+exceto quando têm relevância nacional ou ensinam algo útil a qualquer ONG.
+- Escreve em português do Brasil, simples e claro.
 - O título e o resumo são escritos por ti, com as tuas palavras: não copies frases do original. \
 O resumo tem 1 ou 2 frases curtas e diz o essencial. Não acrescentes factos que não estejam no texto dado.
 - Sem pormenores gráficos de violência."""
@@ -117,11 +121,11 @@ def main():
                      + "\n".join(f"- {t}" for t in recentes) + "\n\n") if recentes else ""
     pedido = (
         f"Data de hoje: {hoje().isoformat()}.\n\n{ja_publicadas}Notícias candidatas:\n\n{lista}\n\n"
-        f"Escolhe entre 5 e {cfg['max_por_dia']} notícias (menos só se não houver mais candidatas relevantes). "
+        f"Escolhe até {cfg['max_por_dia']} notícias sobre o Brasil (menos, ou nenhuma, se não houver candidatas relevantes). "
         f"Temas possíveis: {', '.join(temas)}.\n"
         "Não expliques a escolha. Responde só com JSON entre <json></json>, uma lista na ordem de importância, assim:\n"
         '<json>[{"id": "...", "titulo": "título em português", "resumo": "1-2 frases", '
-        '"tema": "um dos temas", "regiao": "Mundo, Portugal, Brasil, África, Europa, Américas, Ásia ou Médio Oriente"}]</json>')
+        '"tema": "um dos temas", "regiao": "Brasil"}]</json>')
     modelo = cfg_total.get("modelo_noticias", "claude-haiku-5-5")
     try:
         texto, uso = claude(modelo, SISTEMA, pedido, max_tokens=12000)
@@ -138,8 +142,10 @@ def main():
         c = por_id.get(str(s.get("id")))
         if not c or not s.get("titulo") or not s.get("resumo") or s.get("tema") not in temas:
             continue
+        if (s.get("regiao") or "").strip() != "Brasil":
+            continue  # o site só mostra notícias do Brasil
         novas.append({
-            "ID": "N-" + hashlib.sha1(c["link"].encode()).hexdigest()[:8], "Estado": "Novo", "Data": dia,
+            "ID": "N-" + hashlib.sha1(c["link"].encode()).hexdigest()[:8], "Estado": "Publicado", "Data": dia,
             "Título": s["titulo"].strip(), "Resumo": s["resumo"].strip(), "Tema": s["tema"],
             "Região": s.get("regiao") or "", "Fonte": c["fonte"], "Idioma original": c["idioma"],
             "Link": c["link"], "Notas": "",

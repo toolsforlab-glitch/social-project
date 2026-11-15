@@ -239,7 +239,12 @@ def main():
             continue
         fim = ler_data(r.get("Inscrições até"))
         visto = ler_data(r.get("Última verificação")) or ler_data(r.get("Primeiro visto"))
-        if (fim and fim < hoje_txt) or (r.get("Origem") == "rotina" and visto and visto < corte):
+        # sem prazo de inscrição, um curso com data de início já passada também expira (não se aplica aos
+        # cursos acompanhados turma a turma, Senac e Centec, que têm regra própria)
+        por_turmas = any(f in (r.get("Link") or "") for f in ("psg.ce.senac.br", "centec.org.br/cursos-formacao"))
+        inicio = ler_data(r.get("Início"))
+        comecou = not fim and inicio and inicio < hoje_txt and not por_turmas
+        if (fim and fim < hoje_txt) or comecou or (r.get("Origem") == "rotina" and visto and visto < corte):
             alteracoes.append((r["_linha"], {"Estado": "Expirado"}))
             expirados += 1
 

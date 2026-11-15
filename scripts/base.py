@@ -120,6 +120,31 @@ class Base:
                                value_input_option="USER_ENTERED")
         self._cache.pop(aba, None)
 
+    def remover_linhas(self, aba, linhas):
+        """Apaga linhas inteiras (números de linha da folha). De baixo para cima, para os números não mudarem."""
+        linhas = sorted(set(linhas), reverse=True)
+        if not linhas:
+            return
+        if self.local:
+            for n in linhas:
+                del self.dados[aba][n - 1]
+            return
+        folha = self.folha.worksheet(aba)
+        for n in linhas:
+            folha.delete_rows(n)
+        self._cache.pop(aba, None)
+
+    def criar_aba(self, aba, cabecalho):
+        if aba in self.abas():
+            return
+        if self.local:
+            self.dados[aba] = [list(cabecalho)]
+            return
+        folha = self.folha.add_worksheet(title=aba, rows=200, cols=len(cabecalho))
+        folha.batch_update([{"range": "A1", "values": [list(cabecalho)]}], value_input_option="USER_ENTERED")
+        folha.freeze(rows=1)
+        self._cache.pop(aba, None)
+
     def atualizar(self, aba, alteracoes):
         """alteracoes: lista de (número da linha, {coluna: valor})."""
         alteracoes = [(n, c) for n, c in alteracoes if c]

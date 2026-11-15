@@ -55,6 +55,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 verificar_organizacoes.py
 
+      - name: Arquivar cursos e turmas terminados (sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 5
+        run: cd scripts && python3 arquivar.py
+
       - name: Auditar e publicar os guias Antes de começar
         if: ${{ always() }}
         timeout-minutes: 10

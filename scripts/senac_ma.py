@@ -31,7 +31,7 @@ import time
 import zipfile
 import html as _html
 
-from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, sim
+from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, perfis_da_frase, sim
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
 from turmas import ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, necessidades, registo
 
@@ -64,11 +64,13 @@ copiado tal como aparece no texto que recebes (começa no nome do curso e inclui
 - "cidade": o município onde o curso decorre, como está escrito no edital.
 - "gratuidade": a frase exata do edital que diz que o curso é do Programa Senac de Gratuidade ou gratuito.
 - "renda": a frase exata com o critério de renda, se existir.
+- "reserva": a frase exata que reserva vagas ou dá prioridade a um grupo de pessoas (ex.: pessoas com deficiência, \
+mulheres, pessoas negras, quilombolas), se existir; senão null.
 
 Devolve só JSON entre <json></json>:
 {"inscricao": {"inicio": "AAAA-MM-DD", "fim": "AAAA-MM-DD", "frase": "..."} ou null,
  "modo": "presencial|online|ambos" ou null, "local_inscricao": "..." ou null, "frase_local": "..." ou null,
- "gratuidade": "..." ou null, "renda": "..." ou null,
+ "gratuidade": "..." ou null, "renda": "..." ou null, "reserva": "..." ou null,
  "turmas": [{"curso": "...", "cidade": "...", "inicio_aulas": "AAAA-MM-DD" ou null, "fim_aulas": "AAAA-MM-DD" ou null,
    "horario": "..." ou null, "dias": "..." ou null, "vagas": "..." ou null, "carga_horaria": "..." ou null,
    "local_curso": "..." ou null, "frase": "..."}]}"""
@@ -190,6 +192,9 @@ def provar(res, texto, publicado):
         modo = ""  # inscrição presencial sem local comprovado não serve a ninguém
     gratuito = citacao_valida(str(res.get("gratuidade") or ""), texto) and "gratuid" in str(res.get("gratuidade")).lower()
     renda = str(res.get("renda") or "") if citacao_valida(str(res.get("renda") or ""), texto) else ""
+    reserva = str(res.get("reserva") or "") if citacao_valida(str(res.get("reserva") or ""), texto) else ""
+    if not perfis_da_frase(reserva):
+        reserva = ""  # a frase tem de nomear um grupo que conhecemos
     turmas = []
     for t in res.get("turmas") or []:
         if not isinstance(t, dict):
@@ -206,7 +211,7 @@ def provar(res, texto, publicado):
                        "fim_aulas": data_valida(t.get("fim_aulas")),
                        "horario": horario_confirmado(t.get("horario"), frase)})
     return {"ini": ini, "fim": fim, "frase_insc": frase_insc if fim else "", "local": local, "modo": modo,
-            "gratuito": gratuito, "renda": renda, "turmas": turmas}, problemas
+            "gratuito": gratuito, "renda": renda, "reserva": reserva, "turmas": turmas}, problemas
 
 
 def auditar(t, edital, problemas_edital):
@@ -338,6 +343,7 @@ def main():
                 "Mais informações": (f"Inscrições de {data_br(edital['ini'])} a {data_br(edital['fim'])}"
                                      if edital["fim"] else ""),
                 "Local na fonte": edital["local"], "Modo de inscrição": edital["modo"], "Situação": situacao,
+                "Vagas reservadas": edital["reserva"][:300],
                 "Última verificação": hoje, "Falhas seguidas": 0,
                 "Evidência": (f"«{edital['frase_insc']}» | «{t['frase']}»"
                               + (f" | local: «{edital['local']}»" if edital["local"] else ""))[:900],
@@ -357,7 +363,8 @@ def main():
                 novo = {
                     "ID": id_curso(LISTA, titulo), "Estado": "Novo", "Título": titulo[:200], "Entidade": ENTIDADE,
                     "Link": LISTA, "Página do curso": pagina, "Local": "BR-MA", "Modalidade": "presencial", "País": "BR", "Região": "Maranhão",
-                    "Cidade": "", "Descrição": "", "Necessidades": necessidades("", titulo), "Perfis": "todos",
+                    "Cidade": "", "Descrição": "", "Necessidades": necessidades("", titulo),
+                    "Perfis": ", ".join(perfis_da_frase(edital["reserva"])) or "todos",
                     "Condição de acesso": "", "Requisitos": "", "Certificado": "desconhecido", "Inscrições até": "",
                     "Início": "", "Duração": str(t.get("carga_horaria") or ""), "Link verificado": "SIM",
                     "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "turmas", "Notas": "",

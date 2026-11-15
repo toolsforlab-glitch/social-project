@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, registo_historico, sim, visivel
+from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import e_pagina_do_curso, encontrar_pagina
 
@@ -45,6 +45,10 @@ que há inscrição presencial e o curso é presencial; senão null.
 - "ajuda_custo": ajuda em dinheiro, vale-transporte, lanche ou material oferecido, como está na página; senão null. \
 "Bolsa de estudo" que só significa curso gratuito NÃO é ajuda de custo.
 - "documentos": documentos pedidos para a inscrição, como estão na página; senão null.
+- "publico": lista de ids da lista de perfis dada no pedido, SÓ quando a página diz que o curso é feito para esse \
+grupo, só aceita esse grupo, ou reserva vagas ou dá prioridade a esse grupo; senão []. Nunca deduzas pelo tema do \
+curso: um curso de manicure não é "para mulheres" e um curso sobre migrações não é "para migrantes" se a página não \
+o disser. A evidência é a frase que diz para quem é o curso ou para quem são as vagas.
 - "evidencias": objeto com as frases exatas para cada um dos campos acima (null quando não houver).
 
 ATENÇÃO a rótulos enganadores: alguns sites mostram "Inscrições abertas" em turmas que já começaram ou terminaram. \
@@ -183,6 +187,7 @@ def main():
         dados = {k: r.get(k, "") for k in ("Título", "Entidade", "Local", "Cidade", "Descrição", "Requisitos",
                                             "Inscrições até", "Início")}
         pedido = (f"Data de hoje: {hoje_txt}.\n\nDados do curso: {dados}\n\nLink: {pagina_curso or r['Link']}\n\n"
+                  f"Lista de perfis (ids): {', '.join(p for p in cfg['cursos']['perfis_internos'] if p != 'todos')}.\n\n"
                   f"Texto da página:\n{pagina}")
         try:
             texto, uso = claude(modelo, SISTEMA, pedido, max_tokens=4000)
@@ -227,6 +232,13 @@ def main():
                   "Próxima verificação": "",
                   "Evidência": " | ".join(f"{CAMPOS_PROVA[k]}: «{v}»" for k, v in provas.items())[:1500],
                   "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas])}
+        # públicos prioritários: só os que a frase da página nomeia; sem frase, o curso é para todos
+        if not (r.get("Revisto por pessoa") or "").strip():
+            nomeados = perfis_da_frase(provas.get("publico", ""))
+            publico = [p for p in (res.get("publico") or []) if p in nomeados and p in cfg["cursos"]["perfis_internos"]]
+            novo = ", ".join(publico) or "todos"
+            if novo != ((r.get("Perfis") or "").strip() or "todos"):
+                campos["Perfis"] = novo
         motivos = []
         if rejeitadas:
             motivos.append("O Claude afirmou " + ", ".join(rejeitadas) + " sem frase da página que o prove (ignorado).")

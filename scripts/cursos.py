@@ -60,7 +60,9 @@ pessoas vulneráveis", "para pobres"); descreve o curso.
 - "requisitos": o que é preciso para entrar (ex.: "Ter CPF", "Ter 16 anos ou mais", "Ter o ensino fundamental"), ou null.
 - "certificado": "gratuito", "pago", "sem certificado" ou "desconhecido".
 - "necessidades": ids da lista dada a que o curso responde (um ou mais).
-- "perfis": ids da lista interna de perfis a quem o curso serve bem (um ou mais; "todos" se for geral).
+- "perfis": ids da lista interna de perfis SÓ se a página disser que o curso é feito para esse grupo, só o aceita, \
+ou reserva vagas ou dá prioridade a esse grupo; senão ["todos"]. Nunca deduzas pelo tema do curso. (A verificação \
+confirma depois com a frase da página e apaga o que não estiver escrito.)
 - Datas no formato AAAA-MM-DD, ou null se não souberes. Não inventes nada."""
 
 CAMPOS = ["titulo", "entidade", "url", "modalidade", "pais", "regiao", "cidade", "descricao", "exclusivo_para",

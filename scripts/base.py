@@ -260,7 +260,29 @@ VERIFICACAO_INICIAL = {"Situação das inscrições": "Por confirmar", "Verifica
 CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_ate": "data", "restricoes": "restrições",
                 "idade_minima": "idade", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
                 "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
-                "ajuda_custo": "ajuda", "documentos": "documentos"}
+                "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público"}
+
+# Públicos prioritários: um perfil só fica num curso quando a frase da fonte (que diz para quem é o curso ou para
+# quem há vagas reservadas) contém uma destas palavras. É a segunda barreira, por código, contra perfis deduzidos.
+PERFIS_PALAVRAS = {
+    "mulheres": r"\bmulher",
+    "lgbtqia": r"lgbt|\btrans\b|transexua|transg[êe]ner|travesti|n[ãa]o.bin[áa]ri",
+    "populacao_negra": r"\bnegr[oa]s?\b|popula[çc][ãa]o negra|\bpret[oa]s\b|\bpard[oa]s\b|afrodescend|igualdade racial",
+    "rurais_indigenas_quilombolas": r"ind[íi]gen|quilombol|ribeirinh|\bciganos?\b|comunidades? rura|do campo\b",
+    "pessoas_com_deficiencia": r"defici[êe]ncia|\bpcd\b",
+    "migrantes_refugiados": r"migrant|imigrant|refugiad|estrangeir",
+    "situacao_de_rua": r"situa[çc][ãa]o de rua|sem.abrigo",
+    "saida_sistema_prisional": r"egress[oa]s? do sistema|prisional|privad[oa]s? de liberdade|apenad",
+    "jovens": r"\bjove(m|ns)\b|primeiro emprego",
+    "50mais": r"\b(50|60) anos ou mais|maiores de (50|60)",
+    "desempregados": r"desempregad|desocupad",
+}
+
+
+def perfis_da_frase(frase):
+    """Perfis que a frase da fonte nomeia (ex.: "vagas reservadas a pessoas com deficiência" → pessoas_com_deficiencia)."""
+    t = (frase or "").lower()
+    return [p for p, padrao in PERFIS_PALAVRAS.items() if re.search(padrao, t)]
 # coluna da folha onde fica cada dado extra (só é escrito se estiver comprovado e a coluna estiver vazia)
 COLUNAS_BARREIRAS = {"idade_minima": "Idade mínima", "escolaridade_minima": "Escolaridade mínima",
                      "renda_maxima": "Renda máxima", "prioridade_cadunico": "Prioridade CadÚnico", "turnos": "Turno",

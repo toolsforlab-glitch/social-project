@@ -176,3 +176,4 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .filtros-topo { display: grid; gap: 0 1.2rem; grid-template-columns: 1fr; }
 .filtros-topo .campo { max-width: none; }
 @media (min-width: 48rem) { .filtros-topo { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.campo[hidden] { display: none; }

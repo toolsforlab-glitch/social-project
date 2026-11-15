@@ -305,7 +305,7 @@
       contagem.textContent = res.length ? resumo : "";
       notaBarreiras.hidden = !barreiras.length;
       lista.innerHTML = res.length ? res.map(function (c) { return cursoHtml(c, todos.indexOf(c)); }).join("") :
-        '<li class="vazio">Não há cursos com essas opções no momento. Tente escolher menos opções ou "Mostrar tudo" em "Onde você está?". A lista é atualizada toda semana.</li>';
+        '<li class="vazio">Não há cursos com essas opções no momento. Tente escolher menos opções ou "Mostrar tudo" em "Onde você está?". A lista é atualizada todo dia.</li>';
 
       var q = new URLSearchParams();
       if (escolhidas.length) q.set("quero", escolhidas.join(","));
@@ -365,6 +365,9 @@
     // cidades do território escolhido em "Onde você está?": a capital primeiro, depois as outras por ordem alfabética
     function preencherCidades(escolhida) {
       var o = onde.value, cidades = {};
+      // cursos on-line não têm cidade: o campo Cidade some e deixa de filtrar
+      cidade.closest(".campo").hidden = o === "online";
+      if (o === "online") escolhida = "";
       todos.forEach(function (c) {
         if (c.modalidade === "online" || (o && o !== "online" && c.local !== o)) return;
         cidadesDe(c).forEach(function (x) { cidades[x] = 1; });
@@ -524,7 +527,7 @@
       lista.innerHTML = sel.length ?
         '<p class="kit-titulo">Cursos gratuitos com inscrições abertas: ' + esc(cidade.value) + (comOnline.checked ? " e on-line" : "") +
         ". Lista de " + esc(atualizado) + ".</p><ul class=\"fichas\">" + sel.map(function (c) { return fichaHtml(c, todos.indexOf(c)); }).join("") + "</ul>" :
-        '<p class="vazio">Neste momento não há cursos confirmados para ' + esc(cidade.value) + '. Marque "Incluir cursos on-line" ou volte na próxima semana.</p>';
+        '<p class="vazio">Neste momento não há cursos confirmados para ' + esc(cidade.value) + '. Marque "Incluir cursos on-line" ou volte daqui a alguns dias.</p>';
       var q = new URLSearchParams(); q.set("cidade", cidade.value); if (!comOnline.checked) q.set("online", "nao");
       history.replaceState(null, "", location.pathname + "?" + q.toString());
     }

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-15T19:56",
+ "atualizado": "2026-11-15T20:11",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -3499,6 +3499,67 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+  },
+  {
+   "id": "C-fff2b402",
+   "titulo": "Assistente administrativo",
+   "entidade": "Senac Maranhão (Programa Senac de Gratuidade)",
+   "url": "https://ma.senac.br/editais-psg/",
+   "pagina_propria": false,
+   "local": "BR-MA",
+   "modalidade": "presencial",
+   "pais": "BR",
+   "regiao": "Maranhão",
+   "cidade": "",
+   "descricao": "",
+   "necessidades": [
+    "profissao",
+    "emprego"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "",
+   "certificado": "desconhecido",
+   "inscricoes_ate": "",
+   "data_por_confirmar": false,
+   "situacao": "Aberto",
+   "turmas": [
+    {
+     "situacao": "Aberta",
+     "link": "https://ma.senac.br/editais_psg/edital-psg-no-168-2026-assistente-administrativo-sao-domingos-do-maranhao-ma/#assistente-administrativo-13-00-17-00",
+     "unidade": "CARRETA ESCOLA DE TECNOLOGIA DA INFORMAÇÃO E GESTÃO",
+     "cidade": "São Domingos do Maranhão",
+     "local": null,
+     "inicio": "2026-11-23",
+     "fim": "2027-01-26",
+     "horario": "13:00 - 17:00",
+     "dias": "Segunda a sexta",
+     "prazo": "2026-11-16",
+     "idade_minima": "",
+     "escolaridade": "",
+     "documentos": "",
+     "local_texto": "Sala do Empreendedor da Secretaria Municipal de Agropecuária e Agricultura Familiar - Rua 31 de Janeiro S/Nº - Centro – São Domingos do Maranhão",
+     "telefone": "",
+     "inscricao": "presencial",
+     "info": "Inscrições de 11/11/2026 a 16/11/2026",
+     "verificado_em": "2026-11-15"
+    }
+   ],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-15",
+   "inicio": "",
+   "duracao": "160",
+   "primeiro_visto": "2026-11-15",
+   "como_me_inscrever": [],
+   "antes": [],
+   "idade_minima": null,
+   "escolaridade": "",
+   "renda": "cuja renda familiar mensal per capita não ultrapasse 02 (dois) salários mínimos federais",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "Não",
+   "ajuda": "",
+   "documentos": ""
   }
  ]
 }

@@ -33,6 +33,10 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 turmas.py || echo 'Turmas não atualizadas'
 
+      - name: Turmas do Centec (página oficial, sem Claude)
+        timeout-minutes: 10
+        run: cd scripts && python3 centec.py || echo 'Centec não atualizado'
+
       - name: Gerar o site a partir da folha
         run: cd scripts && python3 construir_site.py
       - name: Publicar

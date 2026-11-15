@@ -38,6 +38,9 @@ uma página de pesquisa: abre a lista e usa o link do curso. Exceção: no Senac
 de oportunidades, porque as turmas de cada curso são lidas à parte. Se só encontraste o curso numa notícia, procura a página oficial; se não a encontrares, \
 usa o link da notícia.
 
+Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) nem da Rede CVT / Centec \
+(centec.org.br): esses são lidos à parte, diretamente das páginas oficiais.
+
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
 
 NUNCA DEDUZAS. Cada campo só tem valor se a página o disser explicitamente para ESTE curso; senão é null. \

@@ -29,7 +29,9 @@ Para trabalhar sem a folha (testes), `MODO_LOCAL=1` usa a cópia em `dados_locai
 
 `turmas.py` também cria em Cursos, com Estado **Novo**, cada curso do Senac que tenha uma turma aberta e ainda não esteja na folha (título e descrição copiados da página da turma; regras do programa copiadas da página "Bolsas de estudos"). O curso é publicado sozinho quando tem uma turma aberta aprovada na auditoria. Os cursos do Senac PSG deixam de passar pela verificação com Claude.
 
-As turmas do Senac (`turmas.py`, sem Claude) são lidas todos os dias na rotina das notícias, à segunda na rotina semanal e sempre que se corre "Atualizar o site".
+`centec.py` faz o mesmo para a Rede CVT (Instituto Centec): lê da página oficial as turmas com inscrição on-line (Centec Academy) e presencial (local e telefone), audita cada cartão (as datas e o horário aparecem duas vezes e têm de coincidir) e cria e publica os cursos. O Centec não indica prazo: a turma conta como aberta enquanto estiver na lista oficial e não tiver começado.
+
+As turmas do Senac e do Centec (`turmas.py` e `centec.py`, sem Claude) são lidas todos os dias na rotina das notícias, à segunda na rotina semanal e sempre que se corre "Atualizar o site".
 
 O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/` (`whatsapp.txt`, `cartaz.pdf`, `newsletter.html`).
 

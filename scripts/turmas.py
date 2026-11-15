@@ -47,7 +47,7 @@ ABA = "Turmas"
 COLUNAS = ["ID", "Curso", "Estado", "Título na fonte", "Unidade na fonte", "Cidade", "Unidade", "Link da turma",
            "Link de matrícula", "Início", "Fim", "Horário", "Dias", "Carga horária", "Vagas", "Prazo de inscrição",
            "Idade mínima", "Escolaridade", "Documentos", "Mais informações", "Situação", "Primeiro visto",
-           "Última verificação", "Falhas seguidas", "Evidência", "Notas", "Auditoria"]
+           "Última verificação", "Falhas seguidas", "Evidência", "Notas", "Auditoria", "Local na fonte"]
 LISTA_PSG = "https://psg.ce.senac.br/oportunidades/"
 BOLSAS_PSG = "https://psg.ce.senac.br/bolsa-de-estudos/"
 ENTIDADE_PSG = "Senac Ceará (Programa Senac de Gratuidade)"

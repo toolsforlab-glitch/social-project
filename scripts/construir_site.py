@@ -26,6 +26,10 @@ BARREIRAS = [("idade_minima", "Idade mínima", "idade"), ("escolaridade", "Escol
              ("ajuda", "Ajuda de custo ou transporte", "ajuda"), ("documentos", "Documentos pedidos", "documentos")]
 
 
+# Fontes acompanhadas turma a turma por código (turmas.py e centec.py)
+FONTES_COM_TURMAS = ("psg.ce.senac.br", "centec.org.br/cursos-formacao-inicial-continuada")
+
+
 def valor_comprovado(r, coluna, prova):
     v = str(r.get(coluna) or "").strip()
     if not v or v == "Não indicado" or not comprovado(r, prova):
@@ -42,7 +46,7 @@ def passos(valor):
     return [l.split(". ", 1)[1] if l[:2].rstrip(".").isdigit() and ". " in l else l for l in linhas]
 
 
-def exportar_turmas(base, unidades):
+def exportar_turmas(base, unidades, municipios):
     """Turmas por curso, lidas das páginas oficiais por turmas.py. Só saem as que não encerraram.
 
     Devolve ({ID do curso: [turmas]}, leitura_recente). O dicionário inclui os cursos com turmas na folha,
@@ -65,11 +69,16 @@ def exportar_turmas(base, unidades):
         por_curso.setdefault(curso, []).append({
             "visivel": situacao in ("Aberta", "Por confirmar") and (t.get("Estado") or "").strip() == "Publicado",
             "situacao": situacao, "link": t["Link da turma"].strip(),
-            "unidade": t.get("Unidade na fonte", ""), "cidade": (unidade or {}).get("municipio") or t.get("Cidade", ""),
+            "unidade": t.get("Unidade na fonte", ""), "cidade": municipios.get((t.get("Unidade") or "").strip()) or t.get("Cidade", ""),
             "local": unidade, "inicio": t.get("Início", ""), "fim": t.get("Fim", ""),
             "horario": t.get("Horário", ""), "dias": t.get("Dias", ""), "prazo": t.get("Prazo de inscrição", ""),
             "idade_minima": t.get("Idade mínima", ""), "escolaridade": t.get("Escolaridade", ""),
-            "documentos": t.get("Documentos", ""), "verificado_em": (t.get("Última verificação") or "")[:10],
+            "documentos": t.get("Documentos", ""), "local_texto": t.get("Local na fonte", ""),
+            "telefone": t.get("Mais informações", ""),
+            # como se faz a inscrição: na página da turma, no Centec Academy, ou presencialmente no local indicado
+            "inscricao": ("online" if "academy.centec.org.br" in t["Link da turma"] else
+                          "presencial" if "centec.org.br" in t["Link da turma"] else "pagina"),
+            "verificado_em": (t.get("Última verificação") or "")[:10],
         })
     for lst in por_curso.values():
         lst.sort(key=lambda t: (t["prazo"] or t["inicio"] or "9999", t["unidade"]))
@@ -104,7 +113,10 @@ def exportar_dados(base, cfg):
                               "verificado_em": (g.get("Revisto por pessoa") or g.get("Última verificação") or "")[:10]})
     gravar_json("docs/dados/guias.json", {"atualizado": time.strftime("%Y-%m-%dT%H:%M"), "guias": guias})
     ids_guias = {g["id"] for g in guias}
-    turmas_por_curso, turmas_recentes = exportar_turmas(base, unidades)
+    # o município de uma unidade oficial pode aparecer mesmo antes de a unidade estar revista
+    municipios = ({o["ID"].strip(): (o.get("Município") or "").strip() for o in base.tabela("Organizações") if o.get("ID")}
+                  if "Organizações" in base.abas() else {})
+    turmas_por_curso, turmas_recentes = exportar_turmas(base, unidades, municipios)
 
     cursos = []
     for r in base.tabela("Cursos"):
@@ -114,7 +126,7 @@ def exportar_dados(base, cfg):
             continue
         # cursos com turmas acompanhadas: a situação vem das páginas das turmas, não da página geral
         acompanhadas = turmas_por_curso.get(r.get("ID", "").strip())
-        if acompanhadas is None and turmas_recentes and "psg.ce.senac.br" in r["Link"]:
+        if acompanhadas is None and turmas_recentes and any(f in r["Link"] for f in FONTES_COM_TURMAS):
             acompanhadas = []  # curso do Senac PSG sem nenhuma turma aberta na lista oficial
         turmas = [t for t in (acompanhadas or []) if t["visivel"]]
         if acompanhadas is not None and not turmas:

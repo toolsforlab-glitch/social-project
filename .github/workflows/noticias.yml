@@ -55,7 +55,7 @@ jobs:
         if: ${{ always() }}
         timeout-minutes: 15
         run: |
-          (sudo apt-get update -qq && sudo apt-get install -y -qq antiword) > /dev/null || echo "antiword não instalado"
+          (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends libreoffice-writer-nogui antiword) > /dev/null 2>&1 || echo "conversores de Word não instalados"
           cd scripts && SENAC_MA_DIAGNOSTICO=/tmp/senac_ma python3 senac_ma.py
 
       - name: Guardar o diagnóstico do Senac Maranhão (7 dias, só para conferir)

@@ -29,6 +29,7 @@ import sys
 import tempfile
 import time
 import zipfile
+import html as _html
 
 from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, sim
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
@@ -57,7 +58,8 @@ null nesse campo.
 - "modo": "presencial" se a inscrição é feita num local físico, "online" se é pela internet, "ambos" se o \
 edital disser as duas, null se não disser.
 - Em "turmas", uma entrada por curso e turno do Anexo I ("PROGRAMAÇÃO DOS CURSOS E TURNOS"; a tabela pode \
-aparecer com cada célula numa linha). Se o edital tem cursos, "turmas" nunca vem vazio. "frase" é o texto da linha do Anexo I desse curso, \
+aparecer com as células separadas por " | " numa só linha: copia a linha com os " | "). Se o edital tem \
+cursos, "turmas" nunca vem vazio. "frase" é o texto da linha do Anexo I desse curso, \
 copiado tal como aparece no texto que recebes (começa no nome do curso e inclui a data de início das aulas).
 - "cidade": o município onde o curso decorre, como está escrito no edital.
 - "gratuidade": a frase exata do edital que diz que o curso é do Programa Senac de Gratuidade ou gratuito.
@@ -80,15 +82,37 @@ def texto_do_documento(dados, tipo):
         from pypdf import PdfReader
         return "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(dados)).pages)
     if dados[:4] == b"PK\x03\x04":  # .docx
-        with zipfile.ZipFile(io.BytesIO(dados)) as z:
-            xml = z.read("word/document.xml").decode("utf-8", "replace")
-        xml = re.sub(r"</w:p>|</w:tc>", "\n", xml)
-        return re.sub(r"<[^>]+>", "", xml)
-    with tempfile.NamedTemporaryFile(suffix=".doc") as f:  # Word antigo: precisa do antiword
-        f.write(dados)
-        f.flush()
-        return subprocess.run(["antiword", "-w", "0", f.name], capture_output=True, text=True,
-                              timeout=60).stdout
+        return texto_docx(dados)
+    # Word antigo (.doc): o LibreOffice converte para .docx sem perder as linhas das tabelas (o antiword perde
+    # as linhas do Anexo I quando a tabela tem um título em células unidas); o antiword fica como recurso
+    with tempfile.TemporaryDirectory() as pasta:
+        origem = os.path.join(pasta, "edital.doc")
+        with open(origem, "wb") as f:
+            f.write(dados)
+        try:
+            subprocess.run(["soffice", "--headless", "--convert-to", "docx", "--outdir", pasta, origem],
+                           capture_output=True, timeout=120)
+            with open(os.path.join(pasta, "edital.docx"), "rb") as f:
+                return texto_docx(f.read())
+        except (OSError, subprocess.SubprocessError):
+            return subprocess.run(["antiword", "-w", "0", origem], capture_output=True, text=True,
+                                  timeout=60).stdout
+
+
+def texto_docx(dados):
+    """Texto de um .docx com cada linha de tabela numa só linha (células separadas por " | ")."""
+    with zipfile.ZipFile(io.BytesIO(dados)) as z:
+        xml = z.read("word/document.xml").decode("utf-8", "replace")
+
+    def linha(m):
+        celulas = re.findall(r"<w:tc\b.*?</w:tc>", m.group(0), flags=re.S)
+        return " | ".join(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"</w:p>", " ", c))).strip()
+                          for c in celulas) + "\n"
+    xml = re.sub(r"<w:tr\b.*?</w:tr>", linha, xml, flags=re.S)
+    xml = re.sub(r"<w:tab/>", " ", xml)
+    xml = re.sub(r"</w:p>", "\n", xml)
+    texto = re.sub(r"<[^>]+>", "", xml)
+    return _html.unescape(texto)
 
 
 def recortar(texto):
@@ -129,9 +153,8 @@ def horario_confirmado(h, frase):
     curto = horario_curto(h)
     if not curto:
         return ""
-    horas = re.findall(r"\d{1,2}", re.sub(r"\d{1,2}/\d{1,2}/\d{2,5}", " ", frase))
-    a, b = curto[:2].lstrip("0") or "0", curto[8:10].lstrip("0") or "0"
-    return curto if a in horas and b in horas else ""
+    horas = {int(x) for x in re.findall(r"\d{1,2}", re.sub(r"\d{1,2}/\d{1,2}/\d{2,5}", " ", frase))}
+    return curto if int(curto[:2]) in horas and int(curto[8:10]) in horas else ""
 
 
 # ------------------------------------------------------------------ prova e auditoria

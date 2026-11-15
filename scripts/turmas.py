@@ -231,6 +231,11 @@ def auditar(d, pagina_html):
     m = re.search(r"(\d{1,2})\s*anos", separador("Idade mínima"), re.I)
     if (m.group(1) if m else "") != d.get("idade", ""):
         problemas.append("a segunda leitura não confirma a idade mínima")
+    # o link de matrícula traz o código do recurso financeiro: 1 nas turmas do Programa Senac de Gratuidade
+    m = re.search(r"recursofinanceiroid=(\d+)", d.get("matricula", ""))
+    if m and m.group(1) != "1":
+        problemas.append("o link de matrícula indica outro recurso financeiro (código " + m.group(1)
+                         + "): pode não ser uma turma do Programa Senac de Gratuidade, com outras regras")
     # 2. coerência
     ini, fim, prazo = d.get("inicio", ""), d.get("fim", ""), d.get("prazo", "")
     if not ini:

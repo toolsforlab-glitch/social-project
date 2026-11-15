@@ -58,7 +58,8 @@
       .filter(Boolean).join(" · ");
     if (quem) l.push(esc(quem));
     if (t.documentos) l.push("Documentos: " + esc(t.documentos.replace(/\.$/, "")));
-    var u = t.local;
+    // turma com local de inscrição próprio (Centec presencial): não mostrar também a morada da unidade
+    var u = (t.inscricao === "presencial" && t.local_texto) ? null : t.local;
     if (u) {
       var morada = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
       if (morada) l.push(esc(morada));
@@ -232,7 +233,8 @@
       var condicoes = [];
       if (c.exclusivo_para) condicoes.push(esc(c.exclusivo_para));
       if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
-      if (c.documentos) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
+      // com turmas, os documentos são os de cada turma
+      if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
       var linkTitulo = turmas.length === 1 ? turmas[0].link : c.url;
       return '<li class="curso"><h3><a href="' + esc(linkTitulo) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +

@@ -86,20 +86,25 @@ def auditar(cfg, r, pagina, data, hoje_txt):
         afirmacoes.append(f"Para entrar é preciso: {r['Requisitos']}")
     pedido = ("Afirmações:\n" + "\n".join(f"{i}. {a}" for i, a in enumerate(afirmacoes, 1))
               + f"\n\nTexto da página oficial:\n{pagina}")
-    try:
-        texto, uso = claude(modelo, AUDITOR, pedido, max_tokens=1500)
-    except ErroClaude as e:
-        return False, [f"a auditoria não correu ({e})"], 0.0
-    res = extrair_json(texto)
-    lista = res.get("afirmacoes") if isinstance(res, dict) else None
+    lista, custo = None, 0.0
+    for _ in range(2):  # resposta ilegível: tenta outra vez
+        try:
+            texto, uso = claude(modelo, AUDITOR, pedido, max_tokens=4000)
+        except ErroClaude as e:
+            return False, [f"a auditoria não correu ({e})"], custo
+        custo += custo_estimado(uso, modelo)
+        res = extrair_json(texto)
+        lista = res.get("afirmacoes") if isinstance(res, dict) else None
+        if isinstance(lista, list):
+            break
     if not isinstance(lista, list):
-        return False, ["a auditoria não devolveu uma resposta legível"], custo_estimado(uso, modelo)
+        return False, ["a auditoria não devolveu uma resposta legível (volta a tentar na próxima semana)"], custo
     falhas = []
     for i, a in enumerate(afirmacoes, 1):
         v = next((x for x in lista if isinstance(x, dict) and str(x.get("n")) == str(i)), {})
         if v.get("veredicto") != "confirmada" or not citacao_valida(str(v.get("frase") or ""), pagina):
             falhas.append(a[:90])
-    return not falhas, falhas, custo_estimado(uso, modelo)
+    return not falhas, falhas, custo
 
 
 def texto_da_pagina(url):

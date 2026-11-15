@@ -143,7 +143,9 @@ def procurar_existente(curso, existentes):
     if cid in existentes["por_id"]:
         return existentes["por_id"][cid]
     for r in existentes["por_link"].get(curso["Link"], []):
-        if difflib.SequenceMatcher(None, r["Título"].lower(), curso["Título"].lower()).ratio() >= 0.8:
+        a, b = r["Título"].lower().strip(), curso["Título"].lower().strip()
+        # mesmo link e título parecido, ou um título dentro do outro: é o mesmo curso
+        if difflib.SequenceMatcher(None, a, b).ratio() >= 0.8 or (len(min(a, b, key=len)) >= 12 and (a in b or b in a)):
             return r
     return None
 

@@ -57,11 +57,16 @@ def evidencias_em_falta(g, pagina):
 def auditar(modelo, afirmacoes, pagina):
     pedido = ("Afirmações do guia:\n" + "\n".join(f"{i}. {a}" for i, a in enumerate(afirmacoes, 1))
               + f"\n\nTexto da página oficial:\n{pagina}")
-    texto, uso = claude(modelo, AUDITOR, pedido, max_tokens=3000)
-    res = extrair_json(texto)
-    lista = res.get("afirmacoes") if isinstance(res, dict) else None
+    lista, custo = None, 0.0
+    for _ in range(2):  # uma resposta ilegível é uma falha técnica: tenta outra vez, e não conta como reprovação
+        texto, uso = claude(modelo, AUDITOR, pedido, max_tokens=8000)
+        custo += custo_estimado(uso, modelo)
+        res = extrair_json(texto)
+        lista = res.get("afirmacoes") if isinstance(res, dict) else None
+        if isinstance(lista, list):
+            break
     if not isinstance(lista, list):
-        return ["a auditoria não devolveu uma resposta legível"], custo_estimado(uso, modelo)
+        raise ErroClaude("a auditoria não devolveu uma resposta legível")
     falhas = []
     for i, a in enumerate(afirmacoes, 1):
         v = next((x for x in lista if isinstance(x, dict) and str(x.get("n")) == str(i)), {})
@@ -70,7 +75,7 @@ def auditar(modelo, afirmacoes, pagina):
             falhas.append(f"«{a[:60]}…»: {str(v.get('motivo') or 'não confirmada')[:140]}")
         elif not frases or not all(citacao_valida(f, pagina) for f in frases):
             falhas.append(f"«{a[:60]}…»: a frase indicada pelo auditor não está na página")
-    return falhas, custo_estimado(uso, modelo)
+    return falhas, custo
 
 
 def main():

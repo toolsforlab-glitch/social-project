@@ -58,6 +58,50 @@ Para cursos no Brasil escreve em português do Brasil; em Portugal, em portuguê
 - "nota": uma frase curta a explicar o que verificaste."""
 
 
+AUDITOR = """És um auditor independente. Um site público, lido por pessoas com poucos recursos, vai publicar um \
+curso. Recebes o texto da página oficial e uma lista numerada de afirmações que o site vai fazer. Não foste tu \
+que as escreveste e o teu trabalho é procurar erros.
+
+Para cada afirmação responde "confirmada" só se a página o disser explicitamente, e copia a frase EXATA da \
+página que o prova (letra a letra, até 25 palavras). Em todos os outros casos responde "não confirmada": se a \
+página não diz, se diz outra coisa, se é preciso deduzir, ou se tens dúvida. Uma turma que já começou não prova \
+inscrições abertas. Não uses conhecimento geral.
+
+Devolve só JSON entre <json></json>: {"afirmacoes": [{"n": 1, "veredicto": "confirmada" ou "não confirmada", \
+"frase": "..." ou null, "motivo": "..."}]}"""
+
+
+def auditar(cfg, r, pagina, data, hoje_txt):
+    """Segunda opinião, por outro modelo, antes de publicar sozinho. Devolve (passou, falhas, custo)."""
+    modelo = cfg.get("modelo_auditoria") or "claude-sonnet-5-5"
+    afirmacoes = [f"Esta página é sobre o curso «{r['Título']}».",
+                  f"Hoje ({hoje_txt}) é possível inscrever-se ou começar este curso: inscrições abertas, "
+                  "acesso livre a qualquer momento, ou turma futura com inscrição.",
+                  "Este curso é gratuito para quem o frequenta."]
+    if data:
+        afirmacoes.append(f"O prazo para se inscrever termina a {data}.")
+    if (r.get("Descrição") or "").strip():
+        afirmacoes.append(f"O curso ensina isto: {r['Descrição']}")
+    if (r.get("Requisitos") or "").strip():
+        afirmacoes.append(f"Para entrar é preciso: {r['Requisitos']}")
+    pedido = ("Afirmações:\n" + "\n".join(f"{i}. {a}" for i, a in enumerate(afirmacoes, 1))
+              + f"\n\nTexto da página oficial:\n{pagina}")
+    try:
+        texto, uso = claude(modelo, AUDITOR, pedido, max_tokens=1500)
+    except ErroClaude as e:
+        return False, [f"a auditoria não correu ({e})"], 0.0
+    res = extrair_json(texto)
+    lista = res.get("afirmacoes") if isinstance(res, dict) else None
+    if not isinstance(lista, list):
+        return False, ["a auditoria não devolveu uma resposta legível"], custo_estimado(uso, modelo)
+    falhas = []
+    for i, a in enumerate(afirmacoes, 1):
+        v = next((x for x in lista if isinstance(x, dict) and str(x.get("n")) == str(i)), {})
+        if v.get("veredicto") != "confirmada" or not citacao_valida(str(v.get("frase") or ""), pagina):
+            falhas.append(a[:90])
+    return not falhas, falhas, custo_estimado(uso, modelo)
+
+
 def texto_da_pagina(url):
     return texto_de_html(baixar(url, timeout=30))[:MAX_CARACTERES]
 
@@ -211,6 +255,17 @@ def main():
             em_falta.append("A página não diz se este curso é gratuito.")
         if not pagina_curso and "psg.ce.senac.br" not in r["Link"]:
             em_falta.append("Falta a página própria do curso: " + nota_pagina)
+        # Publicar sozinho: só com tudo comprovado, sem avisos, e depois de uma auditoria independente
+        if (not revisto and r.get("Estado") == "Novo" and "Estado" not in campos and not motivos
+                and not sim(r.get("Mudança a rever")) and pagina_curso and situacao == "aberto" and gratuito == "sim"):
+            passou, falhas, custo = auditar(cfg, r, pagina, data, hoje_txt)
+            custo_total += custo
+            if passou:
+                campos["Estado"] = "Publicado"
+                campos["Nota da verificação"] += " Auditoria independente: tudo confirmado; publicado automaticamente."
+                print(f"    ↑ publicado depois da auditoria: {r['Título']}")
+            else:
+                em_falta.append("A auditoria independente não confirmou: " + "; ".join(falhas))
         if motivos:
             campos["Mudança a rever"] = "TRUE"
         frases = [f if f.endswith((".", "!", "?")) else f + "." for f in motivos + em_falta]

@@ -27,7 +27,7 @@ Para trabalhar sem a folha (testes), `MODO_LOCAL=1` usa a cópia em `dados_locai
 | **Cursos e resumo da semana** (`semanal.yml`) | Segundas, 08:23 UTC | Pesquisa cursos → verifica cada página e escreve o passo a passo de inscrição → verifica as organizações → propostas de parceiros → site → texto do WhatsApp, cartaz em PDF com QR code e newsletter |
 | **Atualizar o site** (`site.yml`) | Quando muda a pasta `site/`, ou à mão depois de editar a folha | Lê as turmas do Senac e volta a gerar as páginas a partir da folha |
 
-`turmas.py` também cria em Cursos, com Estado **Novo**, cada curso do Senac que tenha uma turma aberta e ainda não esteja na folha (título e descrição copiados da página da turma; regras do programa copiadas da página "Bolsas de estudos"). Uma pessoa aprova mudando para Publicado. Os cursos do Senac PSG deixam de passar pela verificação com Claude.
+`turmas.py` também cria em Cursos, com Estado **Novo**, cada curso do Senac que tenha uma turma aberta e ainda não esteja na folha (título e descrição copiados da página da turma; regras do programa copiadas da página "Bolsas de estudos"). O curso é publicado sozinho quando tem uma turma aberta aprovada na auditoria. Os cursos do Senac PSG deixam de passar pela verificação com Claude.
 
 As turmas do Senac (`turmas.py`, sem Claude) são lidas todos os dias na rotina das notícias, à segunda na rotina semanal e sempre que se corre "Atualizar o site".
 
@@ -46,6 +46,7 @@ O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/
 - **O que a página oficial não diz fica vazio.** O Claude nunca deduz datas, gratuidade, requisitos ou contactos.
 - **Página própria do curso.** O botão do site só diz "Ver curso e se inscrever" quando a página do curso foi confirmada por código (o título do curso está no título da página). Sem ela, diz "Procurar este curso na página oficial".
 - **Turmas pelas datas da própria página.** Uma turma do Senac está Aberta até ao fim do dia do prazo de inscrição que a página indica; sem prazo, até começar. O selo "Inscrições abertas" da lista não conta.
+- **Publicação com auditoria independente.** Nada é publicado só porque uma leitura o diz. Turmas do Senac: a página é lida duas vezes por métodos diferentes, as leituras têm de coincidir e as datas têm de fazer sentido; as que passam são publicadas, as outras ficam em Rever com o motivo (coluna Auditoria). Cursos encontrados na web: depois da verificação, um segundo modelo (`modelo_auditoria`), que não escreveu os dados, tem de confirmar cada afirmação com a frase exata da página, e o código confere as frases; só então o curso passa de Novo a Publicado. Oculto e Rever postos por uma pessoa nunca são alterados.
 - **Prova por código.** Nos cursos, cada afirmação importante exige a frase exata da página, e o script confirma que ela existe (`verificar.py`). Nas organizações, cada dado é procurado no texto bruto da fonte (`verificar_organizacoes.py`, sem Claude).
 - **Resumos não são fonte.** Ferramentas que resumem páginas servem para descobrir, nunca para preencher a folha.
 - **A rotina marca, uma pessoa decide.** "Mudança a rever" só é desmarcada por uma pessoa; "Revisto por pessoa" impede a rotina de alterar campos importantes.

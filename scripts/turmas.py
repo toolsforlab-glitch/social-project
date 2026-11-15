@@ -14,7 +14,13 @@ várias turmas, por isso o link do curso só podia apontar para a lista geral. E
 5. quando aparece uma turma aberta de um curso que ainda não está na folha, cria o curso em Cursos com
    Estado = Novo (uma pessoa aprova), com o título e a descrição copiados da página da turma e as regras
    gerais do programa (renda, documentos) copiadas da página "Bolsas de estudos", confirmadas por código;
-6. atualiza a "Situação das inscrições" de cada curso do Senac PSG a partir das suas turmas.
+6. atualiza a "Situação das inscrições" de cada curso do Senac PSG a partir das suas turmas;
+7. AUDITORIA INDEPENDENTE de cada turma, antes de publicar: a página é lida uma segunda vez por outro método
+   (texto visível e ordem dos separadores, em vez dos identificadores do HTML) e as duas leituras têm de
+   coincidir; depois verifica-se se as datas e o horário fazem sentido. Só as turmas que passam ficam
+   Publicado; as outras ficam em Rever, com o motivo na coluna Auditoria, e não aparecem no site;
+8. um curso criado pelas turmas passa sozinho de Novo a Publicado quando tem pelo menos uma turma aberta
+   aprovada na auditoria, descrição e as regras do programa comprovadas.
 
 Regras:
 - Nada é deduzido nem resumido: cada valor vem do texto da página da turma (a coluna Evidência guarda-o).
@@ -34,14 +40,14 @@ import sys
 import time
 import unicodedata
 
-from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, texto_de_html
+from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, sim, texto_de_html
 from comum import baixar
 
 ABA = "Turmas"
 COLUNAS = ["ID", "Curso", "Estado", "Título na fonte", "Unidade na fonte", "Cidade", "Unidade", "Link da turma",
            "Link de matrícula", "Início", "Fim", "Horário", "Dias", "Carga horária", "Vagas", "Prazo de inscrição",
            "Idade mínima", "Escolaridade", "Documentos", "Mais informações", "Situação", "Primeiro visto",
-           "Última verificação", "Falhas seguidas", "Evidência", "Notas"]
+           "Última verificação", "Falhas seguidas", "Evidência", "Notas", "Auditoria"]
 LISTA_PSG = "https://psg.ce.senac.br/oportunidades/"
 BOLSAS_PSG = "https://psg.ce.senac.br/bolsa-de-estudos/"
 ENTIDADE_PSG = "Senac Ceará (Programa Senac de Gratuidade)"
@@ -202,6 +208,45 @@ def evidencia(d):
     return " | ".join(partes)[:900]
 
 
+def auditar(d, pagina_html):
+    """Segunda leitura da página, por outro método, e controlo de coerência. Devolve a lista de problemas."""
+    problemas = []
+    texto = texto_de_html(pagina_html)
+    # 1. segunda leitura: texto visível e posição dos separadores
+    m = re.search(r"Data início:\s*(\d{1,2}/\d{1,2}/\d{4})", texto)
+    if (data_iso(m.group(1)) if m else "") != d.get("inicio", ""):
+        problemas.append("a segunda leitura não confirma a data de início")
+    m = re.search(r"Data final:\s*(\d{1,2}/\d{1,2}/\d{4})", texto)
+    if (data_iso(m.group(1)) if m else "") != d.get("fim", ""):
+        problemas.append("a segunda leitura não confirma a data final")
+    if d.get("unidade") and chave("Unidade: " + d["unidade"]) not in chave(texto):
+        problemas.append("a segunda leitura não confirma a unidade")
+    titulos = [limpo(x) for x in re.findall(r'(?s)class="tab-header-item[^"]*"\s*>(.*?)</div>', pagina_html)]
+    conteudos = [limpo(x) for x in re.findall(r'(?s)class="tab-content-item[^"]*"\s*>(.*?)</div>', pagina_html)]
+
+    def separador(nome):
+        return conteudos[titulos.index(nome)] if nome in titulos and titulos.index(nome) < len(conteudos) else ""
+    if data_iso(separador("Prazo para inscrição")) != d.get("prazo", ""):
+        problemas.append("a segunda leitura não confirma o prazo de inscrição")
+    m = re.search(r"(\d{1,2})\s*anos", separador("Idade mínima"), re.I)
+    if (m.group(1) if m else "") != d.get("idade", ""):
+        problemas.append("a segunda leitura não confirma a idade mínima")
+    # 2. coerência
+    ini, fim, prazo = d.get("inicio", ""), d.get("fim", ""), d.get("prazo", "")
+    if not ini:
+        problemas.append("a página não tem data de início")
+    if not d.get("unidade"):
+        problemas.append("a página não indica a unidade")
+    if ini and fim and fim < ini:
+        problemas.append(f"a data final ({fim}) é anterior ao início ({ini})")
+    h = re.match(r"(\d{1,2}):(\d{2}) - (\d{1,2}):(\d{2})", d.get("horario", ""))
+    if h and (int(h.group(1)) < 5 or (int(h.group(1)), int(h.group(2))) >= (int(h.group(3)), int(h.group(4)))):
+        problemas.append(f"o horário ({d['horario']}) não faz sentido")
+    if ini and prazo and prazo > (datetime.date.fromisoformat(ini) + datetime.timedelta(days=14)).isoformat():
+        problemas.append(f"o prazo de inscrição ({prazo}) é mais de duas semanas depois do início ({ini})")
+    return problemas
+
+
 def campos_da_turma(d, unidades):
     unidade_id = unidades.get(chave(d.get("unidade", "")), "")
     return {
@@ -343,13 +388,15 @@ def main(baixar_pagina=baixar_texto):
     por_abrir = set()
     estado_final = {}  # link → (curso, situação, visível)
     for link, t in existentes.items():
-        estado_final[link] = (t.get("Curso", ""), t.get("Situação", ""), t.get("Estado") != "Oculto")
+        estado_final[link] = (t.get("Curso", ""), t.get("Situação", ""), t.get("Estado") == "Publicado")
     for link, curso in a_ver.items():
         t = existentes.get(link)
         try:
-            d = ler_turma(baixar_pagina(link + "/"))
+            bruto = baixar_pagina(link + "/")
+            d = ler_turma(bruto)
             if not d["titulo"] and not d["inicio"]:
                 raise ValueError("página sem dados de turma")
+            problemas = auditar(d, bruto)
         except Exception as e:  # noqa: BLE001
             if t:
                 n = int(numero(t.get("Falhas seguidas"), 0)) + 1
@@ -369,7 +416,15 @@ def main(baixar_pagina=baixar_texto):
         campos["Situação"] = situacao(d, hoje)
         campos["Última verificação"] = hoje
         campos["Falhas seguidas"] = 0
+        campos["Auditoria"] = (f"{hoje}: não passou: " + "; ".join(problemas) + ".") if problemas else \
+            f"{hoje}: ok (duas leituras iguais; datas e horário coerentes)."
         if t:
+            # a rotina só mexe no Estado que ela própria pôs: Publicado ↔ Rever. Oculto é de uma pessoa.
+            if problemas and t.get("Estado") == "Publicado":
+                campos["Estado"] = "Rever"
+                historico.append(registo(t, "Auditoria", "Rever", campos["Auditoria"]))
+            elif not problemas and t.get("Estado") == "Rever" and "não passou" in (t.get("Auditoria") or ""):
+                campos["Estado"] = "Publicado"
             mudou = {k: v for k, v in campos.items() if str(t.get(k, "")) != str(v)}
             mudou.pop("Última verificação", None)
             if "Situação" in mudou or "Prazo de inscrição" in mudou or "Início" in mudou:
@@ -377,7 +432,8 @@ def main(baixar_pagina=baixar_texto):
                                          f"{campos['Unidade na fonte']}: prazo {campos['Prazo de inscrição'] or '—'}, "
                                          f"início {campos['Início'] or '—'}."))
             alteracoes.append((t["_linha"], campos))
-            estado_final[link] = (t.get("Curso", ""), campos["Situação"], t.get("Estado") != "Oculto")
+            estado_final[link] = (t.get("Curso", ""), campos["Situação"],
+                                  campos.get("Estado", t.get("Estado")) == "Publicado")
         elif campos["Situação"] != "Encerrada":
             k = chave(d["titulo"])
             if k in ocultos:
@@ -391,19 +447,37 @@ def main(baixar_pagina=baixar_texto):
                 cursos_novos.append(c)
                 curso = cursos_psg[k] = c["ID"]
                 print(f"  + curso novo [Novo]: {c['Título']}")
-            novas.append({"ID": id_turma(link), "Curso": curso, "Estado": "Publicado", "Link da turma": link + "/",
-                          "Primeiro visto": hoje, **campos})
-            estado_final[link] = (curso, campos["Situação"], True)
+            novas.append({"ID": id_turma(link), "Curso": curso, "Estado": "Rever" if problemas else "Publicado",
+                          "Link da turma": link + "/", "Primeiro visto": hoje, **campos})
+            estado_final[link] = (curso, campos["Situação"], not problemas)
         print(f"  {'+' if not t else '·'} {d['titulo'][:50]} | {d['unidade']} | prazo {d['prazo'] or '—'} | {campos['Situação']}")
         time.sleep(PAUSA)
 
     # 3. situação de cada curso do Senac PSG, a partir das suas turmas (só com a lista lida até ao fim)
     alteracoes_cursos = []
+    por_curso = {}
+    for curso, sit, visivel in estado_final.values():
+        if visivel:
+            por_curso.setdefault(curso, []).append(sit)
+
+    # 3a. publicar sozinho o curso criado pelas turmas que tem turma aberta aprovada na auditoria
+    def pode_publicar(c):
+        return (c.get("Estado") == "Novo" and c.get("Origem") == "turmas" and not sim(c.get("Mudança a rever"))
+                and "Aberta" in por_curso.get(str(c.get("ID", "")).strip(), [])
+                and len((c.get("Descrição") or "").strip()) >= 30 and "renda" in (c.get("Campos comprovados") or ""))
+    nota_pub = f"{hoje}: publicado automaticamente: turma aberta aprovada na auditoria independente."
+    publicados = set()
+    for c in cursos_novos:
+        if pode_publicar(c):
+            c["Estado"], c["Nota da verificação"] = "Publicado", nota_pub
+    for r in linhas_cursos:
+        if pode_publicar(r):
+            publicados.add(r["ID"])
+            alteracoes_cursos.append((r["_linha"], {"Estado": "Publicado", "Nota da verificação": nota_pub}))
+            historico.append(registo({"Curso": r["ID"], "Título na fonte": r.get("Título", ""), "Situação": "Novo"},
+                                     "Auditoria", "Publicado", nota_pub))
+
     if lista_completa:
-        por_curso = {}
-        for curso, sit, visivel in estado_final.values():
-            if visivel:
-                por_curso.setdefault(curso, []).append(sit)
         for r in linhas_cursos:
             if (r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip()
                     or r["ID"].strip() in por_abrir):
@@ -414,11 +488,12 @@ def main(baixar_pagina=baixar_texto):
             campos = {}
             if nova != (r.get("Situação das inscrições") or ""):
                 campos["Situação das inscrições"] = nova
-                campos["Nota da verificação"] = (f"{hoje}: situação calculada pelas turmas do Senac "
-                                                 f"({abertas} com inscrições abertas).")
-                historico.append({**registo({"Curso": r["ID"], "Título na fonte": r.get("Título", ""),
-                                             "Situação": r.get("Situação das inscrições", "")}, "Turmas", nova,
-                                            campos["Nota da verificação"])})
+                if r["ID"] not in publicados:
+                    campos["Nota da verificação"] = (f"{hoje}: situação calculada pelas turmas do Senac "
+                                                     f"({abertas} com inscrições abertas).")
+                historico.append(registo({"Curso": r["ID"], "Título na fonte": r.get("Título", ""),
+                                          "Situação": r.get("Situação das inscrições", "")}, "Turmas", nova,
+                                         f"{abertas} turmas com inscrições abertas."))
             if abertas:
                 campos["Última verificação"] = hoje
                 aviso = "Há turma nova com inscrições abertas: decidir se o curso volta a Publicado."

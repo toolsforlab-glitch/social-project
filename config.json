@@ -9,6 +9,7 @@
   },
   "modelo_noticias": "claude-haiku-5-5",
   "modelo_cursos": "claude-haiku-5-5",
+  "modelo_auditoria": "claude-sonnet-5-5",
   "precos_por_milhao_tokens": {
     "claude-haiku-5-5": [
       1,

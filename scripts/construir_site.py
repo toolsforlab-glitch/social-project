@@ -63,7 +63,7 @@ def exportar_turmas(base, unidades):
         situacao = (t.get("Situação") or "").strip()
         unidade = unidades.get((t.get("Unidade") or "").strip())
         por_curso.setdefault(curso, []).append({
-            "visivel": situacao in ("Aberta", "Por confirmar") and (t.get("Estado") or "").strip() != "Oculto",
+            "visivel": situacao in ("Aberta", "Por confirmar") and (t.get("Estado") or "").strip() == "Publicado",
             "situacao": situacao, "link": t["Link da turma"].strip(),
             "unidade": t.get("Unidade na fonte", ""), "cidade": (unidade or {}).get("municipio") or t.get("Cidade", ""),
             "local": unidade, "inicio": t.get("Início", ""), "fim": t.get("Fim", ""),

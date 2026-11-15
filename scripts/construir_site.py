@@ -1,4 +1,7 @@
-"""Gera o site estático em docs/ a partir da folha (só conteúdos visíveis e locais ativos)."""
+"""Gera o site estático em docs/ a partir da folha (só conteúdos visíveis e locais ativos).
+
+Unidades e guias só saem com Estado = Publicado, dado pelas rotinas de auditoria ou por uma pessoa.
+"""
 import collections
 import datetime
 import html

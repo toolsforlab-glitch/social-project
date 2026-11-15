@@ -37,6 +37,10 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 centec.py || echo 'Centec não atualizado'
 
+      - name: Verificar e publicar unidades (sem Claude)
+        timeout-minutes: 10
+        run: cd scripts && python3 verificar_organizacoes.py || echo 'Unidades não verificadas'
+
       - name: Gerar o site a partir da folha
         run: cd scripts && python3 construir_site.py
       - name: Publicar

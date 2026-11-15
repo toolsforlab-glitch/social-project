@@ -51,6 +51,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 verificar_organizacoes.py
 
+      - name: Auditar e publicar os guias Antes de começar
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 guias.py
+
       - name: Propostas de parceiros aceites
         if: ${{ always() }}
         run: cd scripts && python3 parceiros.py

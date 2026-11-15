@@ -11,6 +11,8 @@ Regras (ver também o separador "Como usar"):
 - Um dado que estava comprovado e deixou de aparecer marca a organização para rever.
 - Se a fonte não abre, nada é alterado; só depois de N falhas seguidas a organização vai para rever.
 - Organizações revistas por uma pessoa continuam a ser verificadas, mas a rotina apenas avisa.
+- Uma unidade Nova é publicada sozinha quando a morada está comprovada na página oficial, não tinha
+  "Mudança a rever" marcada e nenhum dado desapareceu. No site só aparecem os campos comprovados.
 """
 import os
 import re
@@ -109,6 +111,13 @@ def main():
             novo = " ".join(motivos)
             campos["O que falta confirmar"] = novo if not anterior or novo in anterior else f"{novo} {anterior}"[:900]
             contagem["a_rever"] += 1
+        # Publicar sozinha: unidade Nova, sem aviso por resolver, com a morada comprovada na página oficial e
+        # sem dados que tenham desaparecido. No site só saem os campos comprovados.
+        if (r.get("Estado") == "Novo" and not sim(r.get("Mudança a rever")) and not (r.get("Revisto por pessoa") or "").strip()
+                and "morada" in provados and not sumiram and not falhas):
+            campos["Estado"] = "Publicado"
+            historico.append({**registo(r, "Auditoria", "Publicado", "Publicada automaticamente: comprovado na página oficial: "
+                                        + ", ".join(provados) + "."), "Estado depois": "Publicado"})
         if sumiram or set(provados) != antes:
             historico.append(registo(r, "Página", "a rever" if motivos else "ok",
                                      " ".join(motivos) or "Campos comprovados: " + ", ".join(provados)))

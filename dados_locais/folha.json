@@ -4092,7 +4092,9 @@
    "Revisto por pessoa",
    "Mudança a rever",
    "O que falta confirmar",
-   "Notas"
+   "Notas",
+   "Auditoria",
+   "Impressão da auditoria"
   ],
   [
    "cpf",

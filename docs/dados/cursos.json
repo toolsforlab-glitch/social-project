@@ -1,12 +1,12 @@
 {
- "atualizado": "2026-11-15T03:32",
+ "atualizado": "2026-11-15T03:46",
  "cursos": [
   {
    "id": "C-ac9029b1",
    "titulo": "Educação financeira pessoal",
    "entidade": "Escola Virtual de Governo (EV.G)",
    "url": "https://www.gov.br/pt-br/servicos/aprender-educacao-financeira-pessoal-no-aprender-valor",
-   "pagina_propria": false,
+   "pagina_propria": true,
    "local": "online",
    "modalidade": "online",
    "pais": "BR",
@@ -23,19 +23,22 @@
    "data_por_confirmar": false,
    "situacao": "Aberto",
    "turmas": [],
-   "em_revisao": false,
+   "em_revisao": true,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-11",
    "como_me_inscrever": [
-    "Entre no site Aprender Valor (aprendervalor.bcb.gov.br) com a sua Conta gov.br de nível prata ou ouro.",
+    "Acesse o site Aprender Valor.",
     "Clique em \"Acessar Plataforma\", no canto superior direito.",
-    "No menu superior, escolha \"Formações\" e depois \"Educação Financeira Pessoal\".",
-    "O curso abre pela Escola Virtual de Governo (EV.G). Siga as instruções na tela para começar."
+    "Entre com a sua conta gov.br, nível prata ou ouro.",
+    "No menu superior, clique em Formações e escolha \"Educação Financeira Pessoal\".",
+    "O acesso ao curso será pela Escola Virtual de Governo. Para dúvidas, use o Fale Conosco da página."
    ],
-   "antes": [],
+   "antes": [
+    "govbr"
+   ],
    "idade_minima": null,
    "escolaridade": "",
    "renda": "",
@@ -43,14 +46,14 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Conta gov.br nível prata ou ouro"
+   "documentos": ""
   },
   {
    "id": "C-2204a779",
    "titulo": "Gestão de finanças pessoais",
    "entidade": "Banco Central do Brasil (acesso pela Escola Virtual de Governo)",
    "url": "https://www.gov.br/pt-br/servicos/aprender-a-administrar-suas-financas-pessoais",
-   "pagina_propria": false,
+   "pagina_propria": true,
    "local": "online",
    "modalidade": "online",
    "pais": "BR",
@@ -65,19 +68,19 @@
    "certificado": "desconhecido",
    "inscricoes_ate": "",
    "data_por_confirmar": false,
-   "situacao": "Aberto",
+   "situacao": "Por confirmar",
    "turmas": [],
-   "em_revisao": false,
+   "em_revisao": true,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "Em média 20 horas",
    "primeiro_visto": "2026-11-11",
    "como_me_inscrever": [
-    "Acesse o Portal da Escola Virtual de Governo (EV.G) e crie seu cadastro com e-mail, CPF e os seus dados pessoais.",
-    "Confirme seu cadastro pelo link que chega no seu e-mail.",
-    "No portal, pesquise por \"Gestão de Finanças Pessoais\", abra a página do curso e clique em \"Inscreva-se\".",
-    "Entre com seu e-mail ou CPF e sua senha e comece o curso. Você tem 30 dias para terminar todos os módulos (cerca de 20 horas)."
+    "Entre no Portal da Escola Virtual de Governo (EV.G) e faça o cadastro: \"Cadastrar-se no Portal da Escola Virtual de Governo (EV.G)\".",
+    "No portal, pesquise \"Gestão de Finanças Pessoais\", abra o curso e clique em \"Inscreva-se\".",
+    "Depois de inscrito, você terá 30 dias para completar todos os módulos do curso.",
+    "Para dúvidas, contacte pelo e-mail educacaofinanceira@bcb.gov.br ou pelo Fale Conosco da EV.G."
    ],
    "antes": [],
    "idade_minima": null,
@@ -87,7 +90,7 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "CPF, e-mail e cadastro na Escola Virtual de Governo (EV.G)"
+   "documentos": ""
   },
   {
    "id": "C-dcbfec54",

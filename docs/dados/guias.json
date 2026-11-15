@@ -1,4 +1,22 @@
 {
- "atualizado": "2026-11-15T03:32",
- "guias": []
+ "atualizado": "2026-11-15T03:46",
+ "guias": [
+  {
+   "id": "govbr",
+   "titulo": "Criar a conta gov.br e subir para prata",
+   "para_que": "O nível da conta gov.br decide que serviços digitais do governo você pode usar. Alguns cursos on-line pedem para entrar com a conta gov.br.",
+   "passos": [
+    "Crie a conta gov.br pelo formulário na internet, ou pessoalmente numa agência do INSS ou numa unidade do Balcão gov.br. Ela começa no nível bronze.",
+    "Para subir para prata, abra o aplicativo gov.br e toque em \"Aumentar nível\" na tela de Início. No site, entre na conta e procure \"Selos de Confiabilidade\".",
+    "Escolha uma forma: reconhecimento facial com a foto da sua carteira de motorista (CNH), ou validação pelo internet banking de um banco credenciado.",
+    "Se usar o banco, ative antes no banco o envio de mensagens para o seu celular, para receber o código.",
+    "Para chegar a ouro: reconhecimento facial com a foto da Justiça Eleitoral, leitura do QR Code da nova Carteira de Identidade Nacional, ou certificado digital."
+   ],
+   "onde": "Aplicativo gov.br ou site gov.br. Para criar a conta pessoalmente: agências do INSS e unidades do Balcão gov.br",
+   "custo": "",
+   "tempo": "",
+   "fonte": "https://www.gov.br/governodigital/pt-br/identidade/conta-gov-br/niveis-da-conta-govbr",
+   "verificado_em": "2026-11-15"
+  }
+ ]
 }

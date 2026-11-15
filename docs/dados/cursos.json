@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-15T03:00",
+ "atualizado": "2026-11-15T03:20",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -118,7 +118,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-1835-assistente-de-suporte-e-manutencao-de-computadores/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-16",
      "fim": "2027-02-23",
      "horario": "08:00 - 12:00",
@@ -130,12 +140,24 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "onde_inscrever": [
+    {
+     "nome": "Senac Fortaleza – Centro",
+     "municipio": "Fortaleza",
+     "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+     "bairro": "Centro",
+     "morada": "Av. Tristão Gonçalves, 1245",
+     "telefone": "(85) 3270-5400",
+     "whatsapp": "",
+     "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+     "o_que_levar": ""
+    }
+   ],
+   "verificado_em": "2026-11-15",
    "inicio": "2026-11-16",
    "duracao": "",
    "primeiro_visto": "2026-11-11",
@@ -185,7 +207,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/bolos-recheios-e-coberturas-7/",
      "unidade": "Senac Quixadá",
      "cidade": "Quixadá",
-     "local": null,
+     "local": {
+      "nome": "Senac Quixadá",
+      "municipio": "Quixadá",
+      "site": "https://www.ce.senac.br/unidades/quixada/",
+      "bairro": "Alto São Francisco",
+      "morada": "Rua Presidente Kennedy, 188",
+      "telefone": "(88) 3582-7793 / (88) 99779-0011",
+      "whatsapp": "",
+      "horario": "Matrículas: 8h às 22h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-23",
      "horario": "18:00 - 22:00",
@@ -197,14 +229,24 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://psg.ce.senac.br/oportunidade/2026-10-239-bolos-recheios-e-coberturas/",
      "unidade": "Senac Iguatu",
      "cidade": "Iguatu",
-     "local": null,
+     "local": {
+      "nome": "Senac Iguatu",
+      "municipio": "Iguatu",
+      "site": "https://www.ce.senac.br/unidades/iguatu/",
+      "bairro": "Centro",
+      "morada": "Rua 13 de Maio, 1134",
+      "telefone": "(88) 3582-7750 / (88) 99205-8252",
+      "whatsapp": "",
+      "horario": "Matrículas: 7h30 às 21h30",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-24",
      "fim": "2026-11-27",
      "horario": "12:00 - 17:00",
@@ -216,12 +258,35 @@
      "local_texto": "",
      "telefone": "(88) 99205-8552",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "onde_inscrever": [
+    {
+     "nome": "Senac Quixadá",
+     "municipio": "Quixadá",
+     "site": "https://www.ce.senac.br/unidades/quixada/",
+     "bairro": "Alto São Francisco",
+     "morada": "Rua Presidente Kennedy, 188",
+     "telefone": "(88) 3582-7793 / (88) 99779-0011",
+     "whatsapp": "",
+     "horario": "Matrículas: 8h às 22h",
+     "o_que_levar": ""
+    },
+    {
+     "nome": "Senac Iguatu",
+     "municipio": "Iguatu",
+     "site": "https://www.ce.senac.br/unidades/iguatu/",
+     "bairro": "Centro",
+     "morada": "Rua 13 de Maio, 1134",
+     "telefone": "(88) 3582-7750 / (88) 99205-8252",
+     "whatsapp": "",
+     "horario": "Matrículas: 7h30 às 21h30",
+     "o_que_levar": ""
+    }
+   ],
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-11",
@@ -268,7 +333,19 @@
    "situacao": "Aberto",
    "turmas": [],
    "em_revisao": true,
-   "onde_inscrever": [],
+   "onde_inscrever": [
+    {
+     "nome": "IFCE – Campus Aracati",
+     "municipio": "Aracati",
+     "site": "https://ifce.edu.br/aracati",
+     "bairro": "Aeroporto",
+     "morada": "Rodovia CE-040, km 137,1, s/n",
+     "telefone": "",
+     "whatsapp": "",
+     "horario": "",
+     "o_que_levar": ""
+    }
+   ],
    "verificado_em": "2026-11-14",
    "inicio": "",
    "duracao": "",
@@ -479,7 +556,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/unhas-artisticas/",
      "unidade": "Senac Quixadá",
      "cidade": "Quixadá",
-     "local": null,
+     "local": {
+      "nome": "Senac Quixadá",
+      "municipio": "Quixadá",
+      "site": "https://www.ce.senac.br/unidades/quixada/",
+      "bairro": "Alto São Francisco",
+      "morada": "Rua Presidente Kennedy, 188",
+      "telefone": "(88) 3582-7793 / (88) 99779-0011",
+      "whatsapp": "",
+      "horario": "Matrículas: 8h às 22h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-12-07",
      "fim": "2026-12-11",
      "horario": "08:00 - 12:00",
@@ -491,12 +578,12 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -539,7 +626,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/tecnicas-de-servicos-de-manicure-2/",
      "unidade": "Senac Quixadá",
      "cidade": "Quixadá",
-     "local": null,
+     "local": {
+      "nome": "Senac Quixadá",
+      "municipio": "Quixadá",
+      "site": "https://www.ce.senac.br/unidades/quixada/",
+      "bairro": "Alto São Francisco",
+      "morada": "Rua Presidente Kennedy, 188",
+      "telefone": "(88) 3582-7793 / (88) 99779-0011",
+      "whatsapp": "",
+      "horario": "Matrículas: 8h às 22h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -551,12 +648,12 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -600,7 +697,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-1333-empreendedorismo-e-negocios-de-oportunidades/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-30",
      "horario": "18:00 - 22:00",
@@ -612,12 +719,12 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -660,7 +767,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-10-241-pizzas-doces-e-salgadas/",
      "unidade": "Senac Iguatu",
      "cidade": "Iguatu",
-     "local": null,
+     "local": {
+      "nome": "Senac Iguatu",
+      "municipio": "Iguatu",
+      "site": "https://www.ce.senac.br/unidades/iguatu/",
+      "bairro": "Centro",
+      "morada": "Rua 13 de Maio, 1134",
+      "telefone": "(88) 3582-7750 / (88) 99205-8252",
+      "whatsapp": "",
+      "horario": "Matrículas: 7h30 às 21h30",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-17",
      "fim": "2026-11-24",
      "horario": "17:00 - 22:00",
@@ -672,12 +789,12 @@
      "local_texto": "",
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -721,7 +838,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-1633-a-arte-de-se-comunicar-e-de-vender-mais/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-26",
      "horario": "18:00 - 22:00",
@@ -733,12 +860,12 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -781,7 +908,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-12-376-instalacao-eletrica-predial/",
      "unidade": "Senac Sobral",
      "cidade": "Sobral",
-     "local": null,
+     "local": {
+      "nome": "Senac Sobral",
+      "municipio": "Sobral",
+      "site": "http://www.ce.senac.br/unidades/sobral/",
+      "bairro": "Centro",
+      "morada": "R. Dr. João do Monte, 980",
+      "telefone": "(88) 3677-8700 / (88) 99468-9288",
+      "whatsapp": "",
+      "horario": "Matrículas: 7h30 às 20h30",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-10",
      "horario": "07:30 - 11:30",
@@ -793,12 +930,12 @@
      "local_texto": "",
      "telefone": "(88) 99454-9703",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -841,7 +978,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-27-126-cabeleireiro/",
      "unidade": "Senac Cedro",
      "cidade": "Cedro",
-     "local": null,
+     "local": {
+      "nome": "Senac Cedro",
+      "municipio": "Cedro",
+      "site": "https://www.ce.senac.br/unidades/cedro/",
+      "bairro": "Centro",
+      "morada": "Rua Adauto Castelo, 222",
+      "telefone": "(88) 3582-7798",
+      "whatsapp": "",
+      "horario": "Matrículas: 8h às 21h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-23",
      "fim": "2027-04-13",
      "horario": "18:00 - 22:00",
@@ -853,12 +1000,12 @@
      "local_texto": "",
      "telefone": "(88) 99675-9215",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -901,7 +1048,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-10-229-costura-de-moda-intima/",
      "unidade": "Senac Iguatu",
      "cidade": "Iguatu",
-     "local": null,
+     "local": {
+      "nome": "Senac Iguatu",
+      "municipio": "Iguatu",
+      "site": "https://www.ce.senac.br/unidades/iguatu/",
+      "bairro": "Centro",
+      "morada": "Rua 13 de Maio, 1134",
+      "telefone": "(88) 3582-7750 / (88) 99205-8252",
+      "whatsapp": "",
+      "horario": "Matrículas: 7h30 às 21h30",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-24",
      "fim": "2026-12-16",
      "horario": "13:00 - 17:00",
@@ -913,12 +1070,12 @@
      "local_texto": "",
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -961,7 +1118,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-10-228-costura-em-malharia/",
      "unidade": "Senac Iguatu",
      "cidade": "Iguatu",
-     "local": null,
+     "local": {
+      "nome": "Senac Iguatu",
+      "municipio": "Iguatu",
+      "site": "https://www.ce.senac.br/unidades/iguatu/",
+      "bairro": "Centro",
+      "morada": "Rua 13 de Maio, 1134",
+      "telefone": "(88) 3582-7750 / (88) 99205-8252",
+      "whatsapp": "",
+      "horario": "Matrículas: 7h30 às 21h30",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-16",
      "fim": "2026-12-08",
      "horario": "17:00 - 22:00",
@@ -973,12 +1140,12 @@
      "local_texto": "",
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1021,7 +1188,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-1750-costureiro/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-16",
      "fim": "2027-01-28",
      "horario": "08:00 - 12:00",
@@ -1033,12 +1210,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1081,7 +1258,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-1317-nr-12-seguranca-no-trabalho-em-maquinas-e-equipamentos/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-12-12",
      "fim": "2026-12-19",
      "horario": "08:00 - 17:00",
@@ -1093,12 +1280,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1141,7 +1328,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-1313-higiene-ocupacional-aplicada-agentes-quimicos/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-12-12",
      "fim": "2026-12-19",
      "horario": "08:00 - 16:00",
@@ -1153,12 +1350,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1201,7 +1398,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/modelista-2/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-09",
      "fim": "2027-02-12",
      "horario": "18:00 - 22:00",
@@ -1213,14 +1420,24 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-842-modelista/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-23",
      "fim": "2027-02-26",
      "horario": "08:00 - 12:00",
@@ -1232,12 +1449,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1281,7 +1498,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-1334-assistente-financeiro/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-30",
      "fim": "2027-02-05",
      "horario": "08:00 - 12:00",
@@ -1293,12 +1520,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1342,7 +1569,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-944-assistente-de-recursos-humanos/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-16",
      "fim": "2027-01-25",
      "horario": "18:00 - 22:00",
@@ -1354,12 +1591,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1402,7 +1639,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-07-71-pizzaiolo/",
      "unidade": "Senac Centro",
      "cidade": "Fortaleza",
-     "local": null,
+     "local": {
+      "nome": "Senac Fortaleza – Centro",
+      "municipio": "Fortaleza",
+      "site": "http://www.ce.senac.br/unidades/fortaleza/centro/",
+      "bairro": "Centro",
+      "morada": "Av. Tristão Gonçalves, 1245",
+      "telefone": "(85) 3270-5400",
+      "whatsapp": "",
+      "horario": "Para fins de matrícula e informações presenciais na Unidade: 7h30 as 19h30 de segunda a sexta-feira, exceto feriados, e, aos sábados de 8h as 12h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-23",
      "fim": "2027-01-28",
      "horario": "08:00 - 12:00",
@@ -1414,12 +1661,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1462,7 +1709,17 @@
      "link": "https://psg.ce.senac.br/oportunidade/2026-19-285-costura-em-cama-mesa-e-banho/",
      "unidade": "Senac Quixadá",
      "cidade": "Quixadá",
-     "local": null,
+     "local": {
+      "nome": "Senac Quixadá",
+      "municipio": "Quixadá",
+      "site": "https://www.ce.senac.br/unidades/quixada/",
+      "bairro": "Alto São Francisco",
+      "morada": "Rua Presidente Kennedy, 188",
+      "telefone": "(88) 3582-7793 / (88) 99779-0011",
+      "whatsapp": "",
+      "horario": "Matrículas: 8h às 22h",
+      "o_que_levar": ""
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-18",
      "horario": "18:00 - 22:00",
@@ -1474,12 +1731,12 @@
      "local_texto": "",
      "telefone": "(88) 99779-0011",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1534,7 +1791,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5406",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
@@ -1553,12 +1810,12 @@
      "local_texto": "",
      "telefone": "(85) 3270-5406",
      "inscricao": "pagina",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "",
    "primeiro_visto": "2026-11-14",
@@ -1601,7 +1858,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3438",
      "unidade": "CVT BOA VIAGEM",
      "cidade": "Boa Viagem",
-     "local": null,
+     "local": {
+      "nome": "CVT Boa Viagem",
+      "municipio": "Boa Viagem",
+      "site": "https://www.centec.org.br/unidades/cvt-boa-viagem/",
+      "bairro": "Rodagem",
+      "morada": "Rua David Vieira da Silva, s/n",
+      "telefone": "(88) 99651-0062",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-30",
      "horario": "18:00 - 22:00",
@@ -1613,12 +1880,12 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -1661,7 +1928,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3439",
      "unidade": "CVT BOA VIAGEM",
      "cidade": "Boa Viagem",
-     "local": null,
+     "local": {
+      "nome": "CVT Boa Viagem",
+      "municipio": "Boa Viagem",
+      "site": "https://www.centec.org.br/unidades/cvt-boa-viagem/",
+      "bairro": "Rodagem",
+      "morada": "Rua David Vieira da Silva, s/n",
+      "telefone": "(88) 99651-0062",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-30",
      "horario": "13:00 - 17:00",
@@ -1673,14 +1950,24 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://academy.centec.org.br/enrol/index.php?id=3443",
      "unidade": "CVT FORTIM",
      "cidade": "Fortim",
-     "local": null,
+     "local": {
+      "nome": "CVT Fortim",
+      "municipio": "Fortim",
+      "site": "https://www.centec.org.br/unidades/cvt-fortim/",
+      "bairro": "Centro",
+      "morada": "Rua João Martins de Sousa,nº33",
+      "telefone": "(88) 99651-0014",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "13:00 - 17:00",
@@ -1692,14 +1979,24 @@
      "local_texto": "RUA JOÃO MARTINS DE SOUSA, 33",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://academy.centec.org.br/enrol/index.php?id=3446",
      "unidade": "CVT JUCÁS",
      "cidade": "Jucás",
-     "local": null,
+     "local": {
+      "nome": "CVT Jucás",
+      "municipio": "Jucás",
+      "site": "https://www.centec.org.br/unidades/cvt-jucas/",
+      "bairro": "N. S. de Fátima",
+      "morada": "Rua Antônio Palácio Cavalcante, nº113",
+      "telefone": "(88) 99651-0077",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -1711,12 +2008,12 @@
      "local_texto": "RUA ANTÔNIO PALÁCIO CAVALCANTE, 113, NOSSA SENHORA DE FÁTIMA",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -1759,7 +2056,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3440",
      "unidade": "CVT BOA VIAGEM",
      "cidade": "Boa Viagem",
-     "local": null,
+     "local": {
+      "nome": "CVT Boa Viagem",
+      "municipio": "Boa Viagem",
+      "site": "https://www.centec.org.br/unidades/cvt-boa-viagem/",
+      "bairro": "Rodagem",
+      "morada": "Rua David Vieira da Silva, s/n",
+      "telefone": "(88) 99651-0062",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-30",
      "horario": "18:00 - 22:00",
@@ -1771,14 +2078,24 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://academy.centec.org.br/enrol/index.php?id=3454",
      "unidade": "CVT VIÇOSA",
      "cidade": "Viçosa do Ceará",
-     "local": null,
+     "local": {
+      "nome": "CVT Viçosa do Ceará",
+      "municipio": "Viçosa do Ceará",
+      "site": "https://www.centec.org.br/unidades/cvt-vicosa-do-ceara/",
+      "bairro": "Centro",
+      "morada": "Rua Professor Valdevino de Alencar, nº 243",
+      "telefone": "(88) 99651-0015",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "08:00 - 12:00",
@@ -1790,12 +2107,12 @@
      "local_texto": "RUA PROFESSOR VALDEVINO DE ALENCAR, No 243",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -1838,7 +2155,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3447",
      "unidade": "CVT JUCÁS",
      "cidade": "Jucás",
-     "local": null,
+     "local": {
+      "nome": "CVT Jucás",
+      "municipio": "Jucás",
+      "site": "https://www.centec.org.br/unidades/cvt-jucas/",
+      "bairro": "N. S. de Fátima",
+      "morada": "Rua Antônio Palácio Cavalcante, nº113",
+      "telefone": "(88) 99651-0077",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "13:00 - 17:00",
@@ -1850,12 +2177,12 @@
      "local_texto": "RUA ANTÔNIO PALÁCIO CAVALCANTE, 113, NOSSA SENHORA DE FÁTIMA",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -1898,7 +2225,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3486",
      "unidade": "CVT LIMOEIRO",
      "cidade": "Limoeiro do Norte",
-     "local": null,
+     "local": {
+      "nome": "CVT Limoeiro do Norte",
+      "municipio": "Limoeiro do Norte",
+      "site": "https://www.centec.org.br/unidades/cvt-limoeiro-do-norte/",
+      "bairro": "Centro",
+      "morada": "Rua Cônego Bessa",
+      "telefone": "(88) 99651-0029",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-12-07",
      "horario": "14:00 - 16:30",
@@ -1910,14 +2247,24 @@
      "local_texto": "Rua Cônego Bessa, 2381, Centro, Limoeiro Do Norte",
      "telefone": "(88) 99651-0029",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://academy.centec.org.br/enrol/index.php?id=3448",
      "unidade": "CVT MARANGUAPE",
      "cidade": "Maranguape",
-     "local": null,
+     "local": {
+      "nome": "CVT Maranguape",
+      "municipio": "Maranguape",
+      "site": "https://www.centec.org.br/unidades/cvt-maranguape/",
+      "bairro": "Centro",
+      "morada": "Rua Walter Lopes, 149",
+      "telefone": "(85) 99911-0134",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-30",
      "fim": "2026-12-16",
      "horario": "18:00 - 21:00",
@@ -1929,12 +2276,12 @@
      "local_texto": "RUA WALTER LOPES, 149- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -1977,7 +2324,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3450",
      "unidade": "CVT PIQUET CARNEIRO",
      "cidade": "Piquet Carneiro",
-     "local": null,
+     "local": {
+      "nome": "CVT Piquet Carneiro",
+      "municipio": "Piquet Carneiro",
+      "site": "https://www.centec.org.br/unidades/cvt-piquet-carneiro/",
+      "bairro": "Centro",
+      "morada": "Rua Zacarias Pinheiro da Silva, s/nº",
+      "telefone": "(88) 99651-0081",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "13:00 - 17:00",
@@ -1989,14 +2346,24 @@
      "local_texto": "RUA ZACARIAS PINHEIRO S/N, CENTRO.",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://academy.centec.org.br/enrol/index.php?id=3451",
      "unidade": "CVT PIQUET CARNEIRO",
      "cidade": "Piquet Carneiro",
-     "local": null,
+     "local": {
+      "nome": "CVT Piquet Carneiro",
+      "municipio": "Piquet Carneiro",
+      "site": "https://www.centec.org.br/unidades/cvt-piquet-carneiro/",
+      "bairro": "Centro",
+      "morada": "Rua Zacarias Pinheiro da Silva, s/nº",
+      "telefone": "(88) 99651-0081",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -2008,12 +2375,12 @@
      "local_texto": "RUA ZACARIAS PINHEIRO S/N, CENTRO.",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2056,7 +2423,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3453",
      "unidade": "CVT SANTA QUITERIA",
      "cidade": "Santa Quitéria",
-     "local": null,
+     "local": {
+      "nome": "CVT Santa Quitéria",
+      "municipio": "Santa Quitéria",
+      "site": "https://www.centec.org.br/unidades/cvt-santa-quiteria/",
+      "bairro": "Afonso Walter Magalhães Pinto",
+      "morada": "Av. José Emidio Sales, nº 152",
+      "telefone": "(88) 99651-0082",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "13:00 - 17:00",
@@ -2068,12 +2445,12 @@
      "local_texto": "AV. EMIDIO SALES, 152- AFONSO WALTER MAGALHÃES PINTO",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2116,7 +2493,17 @@
      "link": "https://academy.centec.org.br/enrol/index.php?id=3471",
      "unidade": "CVT IPU",
      "cidade": "Ipu",
-     "local": null,
+     "local": {
+      "nome": "CVT Ipu",
+      "municipio": "Ipu",
+      "site": "https://www.centec.org.br/unidades/cvt-ipu/",
+      "bairro": "Caixa D'Água",
+      "morada": "Rua Cel. Milton Carvalho, s/nº",
+      "telefone": "(88) 99651-0071",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-14",
      "horario": "18:00 - 20:30",
@@ -2128,12 +2515,12 @@
      "local_texto": "AVENIDA MILTON CARVALHO, SEM NÚMERO, CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2188,12 +2575,12 @@
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2248,12 +2635,12 @@
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "telefone": "3066-7000",
      "inscricao": "online",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2296,7 +2683,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-limoeiro-2026-11-16-13-00-17-00",
      "unidade": "CVT LIMOEIRO",
      "cidade": "Limoeiro do Norte",
-     "local": null,
+     "local": {
+      "nome": "CVT Limoeiro do Norte",
+      "municipio": "Limoeiro do Norte",
+      "site": "https://www.centec.org.br/unidades/cvt-limoeiro-do-norte/",
+      "bairro": "Centro",
+      "morada": "Rua Cônego Bessa",
+      "telefone": "(88) 99651-0029",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-27",
      "horario": "13:00 - 17:00",
@@ -2308,7 +2705,7 @@
      "local_texto": "Rua Cônego Bessa, 2381, Centro, Limoeiro do Norte",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
@@ -2327,14 +2724,24 @@
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-iguatu-2026-11-24-18-00-22-00",
      "unidade": "CVT IGUATU",
      "cidade": "Iguatu",
-     "local": null,
+     "local": {
+      "nome": "CVT Iguatu",
+      "municipio": "Iguatu",
+      "site": "https://www.centec.org.br/unidades/cvt-iguatu/",
+      "bairro": "Santo Antônio",
+      "morada": "Av. Dário Rabêlo, s/n",
+      "telefone": "(88) 99651-0043",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-24",
      "fim": "2026-12-07",
      "horario": "18:00 - 22:00",
@@ -2346,14 +2753,24 @@
      "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-maranguape-2026-11-30-18-00-21-00",
      "unidade": "CVT MARANGUAPE",
      "cidade": "Maranguape",
-     "local": null,
+     "local": {
+      "nome": "CVT Maranguape",
+      "municipio": "Maranguape",
+      "site": "https://www.centec.org.br/unidades/cvt-maranguape/",
+      "bairro": "Centro",
+      "morada": "Rua Walter Lopes, 149",
+      "telefone": "(85) 99911-0134",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-30",
      "fim": "2026-12-16",
      "horario": "18:00 - 21:00",
@@ -2365,12 +2782,12 @@
      "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2413,7 +2830,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#excelencia-no-atendimento-ao-cliente-cvt-acarau-2026-11-16-13-00-17-00",
      "unidade": "CVT ACARAÚ",
      "cidade": "Acaraú",
-     "local": null,
+     "local": {
+      "nome": "CVT Acaraú",
+      "municipio": "Acaraú",
+      "site": "https://www.centec.org.br/unidades/cvt-acarau/",
+      "bairro": "Rodagem",
+      "morada": "Av. José Giffoni da Silveira, nº1000",
+      "telefone": "(88) 99651-0059",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-30",
      "horario": "13:00 - 17:00",
@@ -2425,12 +2852,12 @@
      "local_texto": "AVENIDA GIFFONNE DA SILVEIRA",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2474,7 +2901,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#fundamentos-em-empreendedorismo-cvt-boa-viagem-2026-11-16-18-00-22-00",
      "unidade": "CVT BOA VIAGEM",
      "cidade": "Boa Viagem",
-     "local": null,
+     "local": {
+      "nome": "CVT Boa Viagem",
+      "municipio": "Boa Viagem",
+      "site": "https://www.centec.org.br/unidades/cvt-boa-viagem/",
+      "bairro": "Rodagem",
+      "morada": "Rua David Vieira da Silva, s/n",
+      "telefone": "(88) 99651-0062",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-30",
      "horario": "18:00 - 22:00",
@@ -2486,12 +2923,12 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2534,7 +2971,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#ferramentas-digitais-cvt-fortim-2026-11-23-18-00-22-00",
      "unidade": "CVT FORTIM",
      "cidade": "Fortim",
-     "local": null,
+     "local": {
+      "nome": "CVT Fortim",
+      "municipio": "Fortim",
+      "site": "https://www.centec.org.br/unidades/cvt-fortim/",
+      "bairro": "Centro",
+      "morada": "Rua João Martins de Sousa,nº33",
+      "telefone": "(88) 99651-0014",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -2546,12 +2993,12 @@
      "local_texto": "RUA JOÃO MARTINS DE SOUSA, 33",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2594,7 +3041,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#praticas-administrativas-cvt-fortim-2026-11-23-18-00-22-00",
      "unidade": "CVT FORTIM",
      "cidade": "Fortim",
-     "local": null,
+     "local": {
+      "nome": "CVT Fortim",
+      "municipio": "Fortim",
+      "site": "https://www.centec.org.br/unidades/cvt-fortim/",
+      "bairro": "Centro",
+      "morada": "Rua João Martins de Sousa,nº33",
+      "telefone": "(88) 99651-0014",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -2606,14 +3063,24 @@
      "local_texto": "RUA JOÃO MARTINS DE SOUSA,33",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     },
     {
      "situacao": "Aberta",
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#praticas-administrativas-cvt-iguatu-2026-11-23-18-00-22-00",
      "unidade": "CVT IGUATU",
      "cidade": "Iguatu",
-     "local": null,
+     "local": {
+      "nome": "CVT Iguatu",
+      "municipio": "Iguatu",
+      "site": "https://www.centec.org.br/unidades/cvt-iguatu/",
+      "bairro": "Santo Antônio",
+      "morada": "Av. Dário Rabêlo, s/n",
+      "telefone": "(88) 99651-0043",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -2625,12 +3092,12 @@
      "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2673,7 +3140,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-em-instalacoes-eletricas-cvt-fortim-2026-11-23-18-00-22-00",
      "unidade": "CVT FORTIM",
      "cidade": "Fortim",
-     "local": null,
+     "local": {
+      "nome": "CVT Fortim",
+      "municipio": "Fortim",
+      "site": "https://www.centec.org.br/unidades/cvt-fortim/",
+      "bairro": "Centro",
+      "morada": "Rua João Martins de Sousa,nº33",
+      "telefone": "(88) 99651-0014",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -2685,12 +3162,12 @@
      "local_texto": "VILA CAJUEIRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2733,7 +3210,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#agentes-de-inteligencia-artificial-e-automacoes-cvt-jucas-2026-11-16-18-00-22-00",
      "unidade": "CVT JUCÁS",
      "cidade": "Jucás",
-     "local": null,
+     "local": {
+      "nome": "CVT Jucás",
+      "municipio": "Jucás",
+      "site": "https://www.centec.org.br/unidades/cvt-jucas/",
+      "bairro": "N. S. de Fátima",
+      "morada": "Rua Antônio Palácio Cavalcante, nº113",
+      "telefone": "(88) 99651-0077",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-16",
      "fim": "2026-11-27",
      "horario": "18:00 - 22:00",
@@ -2745,12 +3232,12 @@
      "local_texto": "RUA ALAMEDA JOSÉ QUINTINO, 174, PRADO-CEDTEC",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2793,7 +3280,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#elaboracao-de-pratos-e-sobremesas-natalina-cvt-quixere-2026-11-30-13-00-17-00",
      "unidade": "CVT QUIXERÉ",
      "cidade": "Quixeré",
-     "local": null,
+     "local": {
+      "nome": "CVT Quixeré",
+      "municipio": "Quixeré",
+      "site": "https://www.centec.org.br/unidades/cvt-quixere/",
+      "bairro": "Centro",
+      "morada": "Rua Padre Zacarias, nº 450",
+      "telefone": "(88) 99651-0027",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-30",
      "fim": "2026-12-11",
      "horario": "13:00 - 17:00",
@@ -2805,12 +3302,12 @@
      "local_texto": "RUA PADRE ZACARIAS, 450",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2853,7 +3350,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#excel-basico-cvt-limoeiro-2026-11-23-18-00-22-00",
      "unidade": "CVT LIMOEIRO",
      "cidade": "Limoeiro do Norte",
-     "local": null,
+     "local": {
+      "nome": "CVT Limoeiro do Norte",
+      "municipio": "Limoeiro do Norte",
+      "site": "https://www.centec.org.br/unidades/cvt-limoeiro-do-norte/",
+      "bairro": "Centro",
+      "morada": "Rua Cônego Bessa",
+      "telefone": "(88) 99651-0029",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-23",
      "fim": "2026-12-04",
      "horario": "18:00 - 22:00",
@@ -2865,12 +3372,12 @@
      "local_texto": "RUA CÔNEGO BESSA, 2381, CENTRO, LIMOEIRO DO NORTE",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",
@@ -2913,7 +3420,17 @@
      "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-em-recursos-humanos-cvt-maranguape-2026-11-30-13-00-17-00",
      "unidade": "CVT MARANGUAPE",
      "cidade": "Maranguape",
-     "local": null,
+     "local": {
+      "nome": "CVT Maranguape",
+      "municipio": "Maranguape",
+      "site": "https://www.centec.org.br/unidades/cvt-maranguape/",
+      "bairro": "Centro",
+      "morada": "Rua Walter Lopes, 149",
+      "telefone": "(85) 99911-0134",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
      "inicio": "2026-11-30",
      "fim": "2026-12-11",
      "horario": "13:00 - 17:00",
@@ -2925,12 +3442,12 @@
      "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
-     "verificado_em": "2026-11-14"
+     "verificado_em": "2026-11-15"
     }
    ],
    "em_revisao": false,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-14",
+   "verificado_em": "2026-11-15",
    "inicio": "",
    "duracao": "40h/aula",
    "primeiro_visto": "2026-11-14",

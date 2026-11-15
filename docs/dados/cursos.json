@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-15T22:20",
+ "atualizado": "2026-11-15T22:49",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -46,7 +46,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": ""
+   "documentos": "",
+   "etiquetas": []
   },
   {
    "id": "C-2204a779",
@@ -90,7 +91,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "CPF, e-mail e cadastro na Escola Virtual de Governo (EV.G)"
+   "documentos": "CPF, e-mail e cadastro na Escola Virtual de Governo (EV.G)",
+   "etiquetas": []
   },
   {
    "id": "C-dcbfec54",
@@ -144,7 +146,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -181,7 +184,8 @@
    ],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-fa5789f3",
@@ -234,7 +238,8 @@
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -264,7 +269,8 @@
      "telefone": "(88) 99205-8552",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -313,7 +319,8 @@
    ],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-76f08ea6",
@@ -370,7 +377,8 @@
    "turnos": [],
    "internet": "",
    "ajuda": "",
-   "documentos": ""
+   "documentos": "",
+   "etiquetas": []
   },
   {
    "id": "C-a9231ddf",
@@ -413,7 +421,8 @@
      "telefone": "(88) 99962-6531",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -439,7 +448,8 @@
    ],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal. Para cursos de aperfeiçoamento, é preciso ter certificação profissional, registro na CTPS, declaração de empresa ou autodeclaração."
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal. Para cursos de aperfeiçoamento, é preciso ter certificação profissional, registro na CTPS, declaração de empresa ou autodeclaração.",
+   "etiquetas": []
   },
   {
    "id": "C-0fe8cad4",
@@ -492,7 +502,8 @@
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -522,7 +533,8 @@
      "telefone": "(85) 3270-5875",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -566,7 +578,8 @@
    ],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-d3002f62",
@@ -619,7 +632,8 @@
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -637,7 +651,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-81407c38",
@@ -690,7 +705,8 @@
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -708,7 +724,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-72a8f105",
@@ -762,7 +779,8 @@
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -780,7 +798,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-83784e23",
@@ -833,7 +852,8 @@
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -851,7 +871,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-d52be937",
@@ -905,7 +926,8 @@
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -923,7 +945,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-1978e69c",
@@ -976,7 +999,8 @@
      "telefone": "(88) 99454-9703",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -994,7 +1018,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-14117737",
@@ -1047,7 +1072,8 @@
      "telefone": "(88) 99675-9215",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1065,7 +1091,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-05063745",
@@ -1118,7 +1145,8 @@
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1136,7 +1164,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-e60a579a",
@@ -1189,7 +1218,8 @@
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1207,7 +1237,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-5e97b4a5",
@@ -1260,7 +1291,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1278,7 +1310,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-932cc024",
@@ -1331,7 +1364,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1349,7 +1383,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-998f6482",
@@ -1402,7 +1437,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1420,7 +1456,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-7fcf0c3c",
@@ -1473,7 +1510,8 @@
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -1503,7 +1541,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1521,7 +1560,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-2de39e02",
@@ -1575,7 +1615,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1593,7 +1634,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-6b691f3d",
@@ -1647,7 +1689,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1665,7 +1708,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-f72d43ba",
@@ -1718,7 +1762,8 @@
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1736,7 +1781,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-e971d121",
@@ -1789,7 +1835,8 @@
      "telefone": "(88) 99779-0011",
      "inscricao": "pagina",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1807,7 +1854,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "RG, CPF e valor da renda bruta familiar mensal"
+   "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
   },
   {
    "id": "C-485e5d39",
@@ -1860,7 +1908,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -1878,7 +1927,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-b4a0b075",
@@ -1931,7 +1981,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -1961,7 +2012,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -1991,7 +2043,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2009,7 +2062,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-30813ad5",
@@ -2062,7 +2116,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -2092,7 +2147,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2110,7 +2166,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-a0ec6563",
@@ -2163,7 +2220,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2181,7 +2239,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-1c54d19f",
@@ -2234,7 +2293,8 @@
      "telefone": "(88) 99651-0029",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -2264,7 +2324,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2282,7 +2343,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-e393a066",
@@ -2335,7 +2397,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -2365,7 +2428,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2383,7 +2447,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-17cb1c83",
@@ -2436,7 +2501,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2454,7 +2520,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-73b0f8ce",
@@ -2507,7 +2574,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2525,7 +2593,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-cea3c9bb",
@@ -2578,7 +2647,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2596,7 +2666,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-63705b5e",
@@ -2649,7 +2720,8 @@
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2667,7 +2739,8 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-5fa91c58",
@@ -2720,7 +2793,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -2750,7 +2824,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -2780,7 +2855,8 @@
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -2810,7 +2886,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2828,7 +2905,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-08e590e9",
@@ -2881,7 +2959,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2899,7 +2978,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-5a0041ff",
@@ -2953,7 +3033,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -2971,7 +3052,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-965d0a2c",
@@ -3024,7 +3106,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3042,7 +3125,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-50ce7a69",
@@ -3095,7 +3179,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     },
     {
      "situacao": "Aberta",
@@ -3125,7 +3210,8 @@
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3143,7 +3229,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-a898c5cd",
@@ -3196,7 +3283,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3214,7 +3302,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-f6959c36",
@@ -3267,7 +3356,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3285,7 +3375,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-9bf82116",
@@ -3338,7 +3429,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3356,7 +3448,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-d5a7a632",
@@ -3409,7 +3502,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3427,7 +3521,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-4ae3e898",
@@ -3480,7 +3575,8 @@
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3498,7 +3594,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)"
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": []
   },
   {
    "id": "C-fff2b402",
@@ -3541,7 +3638,8 @@
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 11/11/2026 a 16/11/2026",
-     "verificado_em": "2026-11-15"
+     "verificado_em": "2026-11-15",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -3559,7 +3657,8 @@
    "turnos": [],
    "internet": "Não",
    "ajuda": "",
-   "documentos": ""
+   "documentos": "",
+   "etiquetas": []
   }
  ]
 }

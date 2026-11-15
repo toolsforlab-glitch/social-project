@@ -235,6 +235,7 @@
         if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
         (c.turnos || []).forEach(function (t) { if (TURNO[t]) factos.push(TURNO[t]); });
       }
+      (c.etiquetas || []).forEach(function (e) { factos.push('<span class="publico">' + esc(e.texto) + "</span>"); });
       if (c.ajuda) factos.push('<span class="bom">' + esc(c.ajuda) + "</span>");
       if (c.duracao) factos.push(esc(c.duracao));
       var factosHtml = factos.map(function (f) {
@@ -243,6 +244,7 @@
       }).join("");
       var condicoes = [];
       if (c.exclusivo_para) condicoes.push(esc(c.exclusivo_para));
+      (c.etiquetas || []).forEach(function (e) { condicoes.push("Sobre as vagas, a fonte diz: «" + esc(e.frase.replace(/[.\s]+$/, "")) + "»"); });
       if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
       // com turmas, os documentos são os de cada turma
       if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
@@ -287,6 +289,7 @@
         if (barreiras.indexOf("sem_internet") >= 0 && c.internet !== "Não") return false;
         if (barreiras.indexOf("sem_escolaridade") >= 0 && ["Nenhuma", "Saber ler e escrever"].indexOf(c.escolaridade) < 0) return false;
         if (barreiras.indexOf("ajuda") >= 0 && (!c.ajuda || /^n[aã]o/i.test(c.ajuda))) return false;
+        if (barreiras.indexOf("reservadas") >= 0 && !(c.etiquetas || []).length) return false;
         if (cidade.value && c.modalidade !== "online" && cidadesDe(c).indexOf(cidade.value) < 0) return false;
         if (t) {
           var alvo = semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" "));
@@ -508,6 +511,7 @@
       if (c.inscricoes_ate) linhas.push("<li><strong>Inscrições até:</strong> " + esc(dataCurta(c.inscricoes_ate)) + "</li>");
       var qp = quemPode(c); if (qp) linhas.push("<li><strong>Quem pode:</strong> " + esc(qp) + "</li>");
       if (c.exclusivo_para) linhas.push("<li><strong>Atenção:</strong> " + esc(c.exclusivo_para) + "</li>");
+      (c.etiquetas || []).forEach(function (e) { linhas.push("<li><strong>Vagas:</strong> " + esc(e.texto) + "</li>"); });
       var levar = [c.documentos].concat(unidadesDaCidade(c).map(function (u) { return u.o_que_levar; })).filter(Boolean);
       if (levar.length) linhas.push("<li><strong>Levar:</strong> " + esc(levar[0].replace(/\.$/, "")) + "</li>");
       var g = (c.antes || []).map(function (id) { return guias[id]; }).filter(Boolean);

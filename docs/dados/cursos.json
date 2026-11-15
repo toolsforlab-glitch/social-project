@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-15T18:18",
+ "atualizado": "2026-11-15T19:30",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -143,6 +143,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -232,6 +233,7 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -261,6 +263,7 @@
      "local_texto": "",
      "telefone": "(88) 99205-8552",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -409,6 +412,7 @@
      "local_texto": "",
      "telefone": "(88) 99962-6531",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -487,6 +491,7 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -516,6 +521,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5875",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -612,6 +618,7 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -682,6 +689,7 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -753,6 +761,7 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -823,6 +832,7 @@
      "local_texto": "",
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -894,6 +904,7 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -964,6 +975,7 @@
      "local_texto": "",
      "telefone": "(88) 99454-9703",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1034,6 +1046,7 @@
      "local_texto": "",
      "telefone": "(88) 99675-9215",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1104,6 +1117,7 @@
      "local_texto": "",
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1174,6 +1188,7 @@
      "local_texto": "",
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1244,6 +1259,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1314,6 +1330,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1384,6 +1401,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1454,6 +1472,7 @@
      "local_texto": "",
      "telefone": "",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -1483,6 +1502,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1554,6 +1574,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1625,6 +1646,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1695,6 +1717,7 @@
      "local_texto": "",
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1765,6 +1788,7 @@
      "local_texto": "",
      "telefone": "(88) 99779-0011",
      "inscricao": "pagina",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1835,6 +1859,7 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -1905,6 +1930,7 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -1934,6 +1960,7 @@
      "local_texto": "RUA JOÃO MARTINS DE SOUSA, 33",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -1963,6 +1990,7 @@
      "local_texto": "RUA ANTÔNIO PALÁCIO CAVALCANTE, 113, NOSSA SENHORA DE FÁTIMA",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2033,6 +2061,7 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -2062,6 +2091,7 @@
      "local_texto": "RUA PROFESSOR VALDEVINO DE ALENCAR, No 243",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2132,6 +2162,7 @@
      "local_texto": "RUA ANTÔNIO PALÁCIO CAVALCANTE, 113, NOSSA SENHORA DE FÁTIMA",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2202,6 +2233,7 @@
      "local_texto": "Rua Cônego Bessa, 2381, Centro, Limoeiro Do Norte",
      "telefone": "(88) 99651-0029",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -2231,6 +2263,7 @@
      "local_texto": "RUA WALTER LOPES, 149- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2301,6 +2334,7 @@
      "local_texto": "RUA ZACARIAS PINHEIRO S/N, CENTRO.",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -2330,6 +2364,7 @@
      "local_texto": "RUA ZACARIAS PINHEIRO S/N, CENTRO.",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2400,6 +2435,7 @@
      "local_texto": "AV. EMIDIO SALES, 152- AFONSO WALTER MAGALHÃES PINTO",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2470,6 +2506,7 @@
      "local_texto": "AVENIDA MILTON CARVALHO, SEM NÚMERO, CENTRO",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2540,6 +2577,7 @@
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2610,6 +2648,7 @@
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "telefone": "3066-7000",
      "inscricao": "online",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2680,6 +2719,7 @@
      "local_texto": "Rua Cônego Bessa, 2381, Centro, Limoeiro do Norte",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -2709,6 +2749,7 @@
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -2738,6 +2779,7 @@
      "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -2767,6 +2809,7 @@
      "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2837,6 +2880,7 @@
      "local_texto": "AVENIDA GIFFONNE DA SILVEIRA",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2908,6 +2952,7 @@
      "local_texto": "RUA DAVID VIEIRA DA SILVA, 191- CENTRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -2978,6 +3023,7 @@
      "local_texto": "RUA JOÃO MARTINS DE SOUSA, 33",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -3048,6 +3094,7 @@
      "local_texto": "RUA JOÃO MARTINS DE SOUSA,33",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     },
     {
@@ -3077,6 +3124,7 @@
      "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -3147,6 +3195,7 @@
      "local_texto": "VILA CAJUEIRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -3217,6 +3266,7 @@
      "local_texto": "RUA ALAMEDA JOSÉ QUINTINO, 174, PRADO-CEDTEC",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -3287,6 +3337,7 @@
      "local_texto": "RUA PADRE ZACARIAS, 450",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -3357,6 +3408,7 @@
      "local_texto": "RUA CÔNEGO BESSA, 2381, CENTRO, LIMOEIRO DO NORTE",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],
@@ -3427,6 +3479,7 @@
      "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
      "telefone": "3066-7000",
      "inscricao": "presencial",
+     "info": "",
      "verificado_em": "2026-11-15"
     }
    ],

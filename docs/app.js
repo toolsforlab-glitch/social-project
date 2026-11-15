@@ -51,7 +51,8 @@
     l.push(t.prazo ? '<span class="prazo">Inscrições até ' + esc(dataBonita(t.prazo)) + "</span>"
            : t.inscricao === "pagina" ? '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>'
            : '<span class="prazo">Inscrições abertas. O prazo não está indicado: inscreva-se antes de a turma começar</span>');
-    if (t.inscricao === "online") l.push("Aulas on-line ao vivo. Inscrição pela internet.");
+    if (t.info) l.push(esc(t.info));
+    if (t.inscricao === "online") l.push(t.info ? "Inscrição pela internet." : "Aulas on-line ao vivo. Inscrição pela internet.");
     if (t.inscricao === "presencial") l.push("Inscrição presencial" + (t.local_texto ? " em: " + esc(t.local_texto) : " na unidade"));
     if (t.inscricao !== "pagina" && t.telefone) l.push("Dúvidas: " + esc(t.telefone));
     var quem = [t.idade_minima ? t.idade_minima + " anos ou mais" : "", t.escolaridade ? (t.inscricao === "pagina" ? "Escolaridade: " : "Requisito: ") + t.escolaridade.replace(/\.$/, "") : ""]
@@ -66,7 +67,7 @@
       if (u.telefone) l.push("Telefone " + esc(u.telefone));
     }
     if (comBotao) l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' +
-      (t.inscricao === "online" ? "Fazer a inscrição on-line" : t.inscricao === "presencial" ? "Ver na lista oficial do Centec" : "Ver esta turma e se inscrever") + "</a>");
+      (t.inscricao === "online" ? "Fazer a inscrição on-line" : t.inscricao === "presencial" ? "Ver na página oficial" : "Ver esta turma e se inscrever") + "</a>");
     return "<li>" + l.join("<br>") + "</li>";
   }
 

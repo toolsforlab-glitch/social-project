@@ -1,6 +1,16 @@
 (function () {
   "use strict";
 
+  // capitais dos territórios: aparecem primeiro nas listas de cidades
+  var CAPITAIS = ["Fortaleza", "São Luís", "Rio Branco", "Lisboa"];
+  function ordenarCidades(lista) {
+    return lista.slice().sort(function (a, b) {
+      var ca = CAPITAIS.indexOf(a), cb = CAPITAIS.indexOf(b);
+      if (ca >= 0 || cb >= 0) return (ca < 0 ? 99 : ca) - (cb < 0 ? 99 : cb);
+      return a.localeCompare(b, "pt");
+    });
+  }
+
   var pagina = document.body.getAttribute("data-pagina");
   var MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
                "setembro", "outubro", "novembro", "dezembro"];
@@ -349,20 +359,29 @@
 
     botoesOpcoes(el("cursos-opcoes"), site.necessidades, escolhidas, filtrar);
     preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : (site.territorio_piloto || ""));
-    onde.addEventListener("change", filtrar);
+    onde.addEventListener("change", function () { preencherCidades(cidade.value); filtrar(); });
     texto.addEventListener("input", filtrar);
+
+    // cidades do território escolhido em "Onde você está?": a capital primeiro, depois as outras por ordem alfabética
+    function preencherCidades(escolhida) {
+      var o = onde.value, cidades = {};
+      todos.forEach(function (c) {
+        if (c.modalidade === "online" || (o && o !== "online" && c.local !== o)) return;
+        cidadesDe(c).forEach(function (x) { cidades[x] = 1; });
+      });
+      cidade.innerHTML = '<option value="">Qualquer cidade</option>';
+      ordenarCidades(Object.keys(cidades)).forEach(function (x) {
+        var op = document.createElement("option"); op.value = x; op.textContent = x;
+        if (escolhida === x) op.selected = true;
+        cidade.appendChild(op);
+      });
+    }
 
     lista.innerHTML = '<li class="discreto">Carregando os cursos…</li>';
     Promise.all([carregar("dados/cursos.json"), carregar("dados/guias.json").catch(function () { return { guias: [] }; })]).then(function (r) {
       todos = r[0].cursos || [];
       (r[1].guias || []).forEach(function (g) { guiasPorId[g.id] = g; });
-      var cidades = {};
-      todos.forEach(function (c) { if (c.modalidade !== "online") cidadesDe(c).forEach(function (x) { cidades[x] = 1; }); });
-      Object.keys(cidades).sort(function (a, b) { return a.localeCompare(b, "pt"); }).forEach(function (x) {
-        var op = document.createElement("option"); op.value = x; op.textContent = x;
-        if (params.get("cidade") === x) op.selected = true;
-        cidade.appendChild(op);
-      });
+      preencherCidades(params.get("cidade") || "");
       filtrar();
     }).catch(function () {
       lista.innerHTML = '<li class="vazio">Não foi possível carregar os cursos. Atualize a página daqui a pouco.</li>';
@@ -559,7 +578,7 @@
       (r[1].guias || []).forEach(function (g) { guias[g.id] = g; });
       var cids = {};
       todos.forEach(function (c) { if (c.modalidade !== "online" && c.situacao === "Aberto" && !c.em_revisao) cidadesDe(c).forEach(function (x) { cids[x] = 1; }); });
-      Object.keys(cids).sort(function (a, b) { return a.localeCompare(b, "pt"); }).forEach(function (x) {
+      ordenarCidades(Object.keys(cids)).forEach(function (x) {
         var op = document.createElement("option"); op.value = x; op.textContent = x; cidade.appendChild(op);
       });
       if (params.get("cidade")) cidade.value = params.get("cidade");

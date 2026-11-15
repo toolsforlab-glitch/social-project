@@ -279,9 +279,10 @@ def main():
                 json.dump({"edital": e, "texto": texto, "resposta": resposta}, f, ensure_ascii=False, indent=1)
         propostas = len(res.get("turmas") or [])
         if not edital["turmas"]:  # para se perceber no registo da execução porque não ficou nenhum curso
-            pos = texto.upper().rfind("ANEXO I")
+            m = list(re.finditer(r"ANEXO\s+I\b", texto.upper()))
+            pos = m[-1].start() if m else -1
             print(f"    texto com {len(texto)} caracteres; Anexo I na posição {pos}: "
-                  + re.sub(r"\s+", " ", texto[pos:pos + 700] if pos >= 0 else texto[-700:]))
+                  + re.sub(r"\s+", " ", texto[pos:pos + 1500] if pos >= 0 else texto[-1500:]))
             for t in (res.get("turmas") or [])[:3]:
                 print(f"    proposta não comprovada: {str(t)[:300]}")
         print(f"  edital nº {e.get('number')} ({(e.get('published_at') or '')[:10]}): inscrição "

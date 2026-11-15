@@ -49,8 +49,12 @@
       .filter(Boolean).join(" · ");
     if (quando) l.push(esc(quando));
     l.push(t.prazo ? '<span class="prazo">Inscrições até ' + esc(dataBonita(t.prazo)) + "</span>"
-                   : '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>');
-    var quem = [t.idade_minima ? t.idade_minima + " anos ou mais" : "", t.escolaridade ? "Escolaridade: " + t.escolaridade.replace(/\.$/, "") : ""]
+           : t.inscricao === "pagina" ? '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>'
+           : '<span class="prazo">Inscrições abertas. O prazo não está indicado: inscreva-se antes de a turma começar</span>');
+    if (t.inscricao === "online") l.push("Aulas on-line ao vivo. Inscrição pela internet.");
+    if (t.inscricao === "presencial") l.push("Inscrição presencial" + (t.local_texto ? " em: " + esc(t.local_texto) : " na unidade"));
+    if (t.inscricao !== "pagina" && t.telefone) l.push("Dúvidas: " + esc(t.telefone));
+    var quem = [t.idade_minima ? t.idade_minima + " anos ou mais" : "", t.escolaridade ? (t.inscricao === "pagina" ? "Escolaridade: " : "Requisito: ") + t.escolaridade.replace(/\.$/, "") : ""]
       .filter(Boolean).join(" · ");
     if (quem) l.push(esc(quem));
     if (t.documentos) l.push("Documentos: " + esc(t.documentos.replace(/\.$/, "")));
@@ -60,7 +64,8 @@
       if (morada) l.push(esc(morada));
       if (u.telefone) l.push("Telefone " + esc(u.telefone));
     }
-    if (comBotao) l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">Ver esta turma e se inscrever</a>');
+    if (comBotao) l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' +
+      (t.inscricao === "online" ? "Fazer a inscrição on-line" : t.inscricao === "presencial" ? "Ver na lista oficial do Centec" : "Ver esta turma e se inscrever") + "</a>");
     return "<li>" + l.join("<br>") + "</li>";
   }
 
@@ -237,7 +242,7 @@
         posso(c, i) + antesHtml(c) +
         (temTurmas ? '<div class="onde turmas"><p class="onde-titulo">Turmas com inscrições abertas</p><ul>' +
           turmas.map(function (t) { return turmaHtml(t, true); }).join("") + "</ul>" +
-          '<p class="discreto">Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.</p></div>' :
+          (turmas.some(function (t) { return t.inscricao === "pagina"; }) ? '<p class="discreto">Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.</p>' : "") + "</div>" :
         c.onde_inscrever && c.onde_inscrever.length ? '<div class="onde"><p class="onde-titulo">Onde se inscrever</p><ul>' +
           c.onde_inscrever.map(function (u) {
             var linhas = ["<strong>" + esc(u.nome) + "</strong>"];

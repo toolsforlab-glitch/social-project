@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-16T15:17",
+ "atualizado": "2026-11-16T15:29",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -3669,6 +3669,69 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": []
+  },
+  {
+   "id": "C-849ee036",
+   "titulo": "Assistência de enfermagem materno-infantil",
+   "entidade": "Senac Acre (Programa Senac de Gratuidade)",
+   "url": "https://portal.ac.senac.br/psg/assets/arquivos/Edital_PSG_144_2026_presencial_CEP_CZS_vagas_unidade_Escola_Borges_Aquino_Porto_Walter.pdf",
+   "pagina_propria": true,
+   "local": "BR-AC",
+   "modalidade": "presencial",
+   "pais": "BR",
+   "regiao": "Acre",
+   "cidade": "",
+   "descricao": "",
+   "necessidades": [
+    "profissao",
+    "emprego"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "",
+   "certificado": "desconhecido",
+   "inscricoes_ate": "",
+   "data_por_confirmar": false,
+   "situacao": "Aberto",
+   "turmas": [
+    {
+     "situacao": "Aberta",
+     "link": "https://portal.ac.senac.br/psg/assets/arquivos/Edital_PSG_144_2026_presencial_CEP_CZS_vagas_unidade_Escola_Borges_Aquino_Porto_Walter.pdf#assistencia-de-enfermagem-materno-infantil-13-00-17-00",
+     "unidade": "Escola Borges de Aquino, Rua Beira Rio, nº s/n, Centro, Porto Walter (AC)",
+     "cidade": "Porto Walter",
+     "local": null,
+     "inicio": "2026-12-01",
+     "fim": "",
+     "horario": "13:00 - 17:00",
+     "dias": "",
+     "prazo": "2026-12-01",
+     "idade_minima": "",
+     "escolaridade": "",
+     "documentos": "",
+     "local_texto": "Escola Borges de Aquino, situada na Rua Beira Rio, nº s/n, Centro, município de Porto Walter (AC)",
+     "telefone": "",
+     "inscricao": "presencial",
+     "info": "Inscrições de 16/11/2026 a 01/12/2026",
+     "verificado_em": "2026-11-16",
+     "reserva": ""
+    }
+   ],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-16",
+   "inicio": "",
+   "duracao": "24",
+   "primeiro_visto": "2026-11-16",
+   "como_me_inscrever": [],
+   "antes": [],
+   "idade_minima": null,
+   "escolaridade": "",
+   "renda": "O Programa SENAC de Gratuidade – PSG, destinam-se a pessoas de baixa renda – cuja renda familiar mensal per capita não ultrapasse a 02 (dois) salários mínimos federais.",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "Não",
+   "ajuda": "",
+   "documentos": "",
    "etiquetas": []
   }
  ]

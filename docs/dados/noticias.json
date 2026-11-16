@@ -1,6 +1,65 @@
 {
- "atualizado": "2026-11-16T13:50",
+ "atualizado": "2026-11-16T13:55",
  "dias": [
+  {
+   "data": "2026-11-16",
+   "itens": [
+    {
+     "titulo": "Censo GIFE expõe desigualdade racial em equipes e governança do investimento social",
+     "resumo": "Durante o Mês da Filantropia Negra, em São Paulo, representantes do investimento social privado debateram equidade racial e a presença de lideranças negras nas decisões. Dados do Censo GIFE mostram desigualdades na composição das equipes e na governança das organizações.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "GIFE",
+     "idioma_original": "pt",
+     "link": "https://gife.org.br/filantropia-negra-isp-equidade-racial/#utm_source=rss&utm_medium=rss&utm_campaign=filantropia-negra-isp-equidade-racial"
+    },
+    {
+     "titulo": "58% dos adolescentes relatam crises de ansiedade ou pânico, aponta estudo",
+     "resumo": "Um estudo indica que mais da metade dos adolescentes já teve crises de ansiedade ou pânico. Os jovens enfrentam silêncio, incompreensão e dificuldade em encontrar espaços seguros de escuta.",
+     "tema": "saude",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/alerta-58-dos-adolescentes-relatam-crises-de-ansiedade-ou-panico/"
+    },
+    {
+     "titulo": "Autoritarismo avança em 44 países e preocupa também o Brasil",
+     "resumo": "Um estudo internacional aponta o crescimento do autoritarismo e o enfraquecimento de instituições democráticas em 44 países. No Brasil, o relatório associa o problema à polarização política, à desconfiança institucional e à violência ligada a divergências ideológicas.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/avanco-do-autoritarismo-ameaca-a-democracia-em-44-paises-e-acende-alerta-global/"
+    },
+    {
+     "titulo": "Educação infantil precisa de cooperação entre governos e monitoramento de políticas",
+     "resumo": "Especialistas reunidos no 3.º Simpósio Internacional de Educação Infantil, em São Paulo, defenderam mais cooperação entre governos. Também pediram o acompanhamento das políticas para transformar diretrizes em ações concretas.",
+     "tema": "educacao",
+     "regiao": "Brasil",
+     "fonte": "GIFE",
+     "idioma_original": "pt",
+     "link": "https://gife.org.br/educacao-infantil-cooperacao-governos-monitoramento-de-politicas/#utm_source=rss&utm_medium=rss&utm_campaign=educacao-infantil-cooperacao-governos-monitoramento-de-politicas"
+    },
+    {
+     "titulo": "Edital de até R$ 50 mil para projetos contra a poluição plástica no Nordeste",
+     "resumo": "Organizações da sociedade civil e empresas do Nordeste podem inscrever projetos gratuitamente até 23 de novembro. A chamada oferece também capacitações e mentorias.",
+     "tema": "ambiente",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/edital-oferece-ate-r-50-mil-para-projetos-contra-poluicao-plastica-no-nordeste/"
+    },
+    {
+     "titulo": "Maíra Junqueira assume a direção regional da Fundação Ford no Brasil",
+     "resumo": "A Fundação Ford nomeou Maíra Junqueira como nova diretora regional no Brasil, sucedendo Átila Roque, que concluiu o seu mandato. Ela está na instituição desde 2019, onde era diretora de programa.",
+     "tema": "gestao",
+     "regiao": "Brasil",
+     "fonte": "GIFE",
+     "idioma_original": "pt",
+     "link": "https://gife.org.br/fundacao-ford-anuncia-maira-junqueira-como-nova-diretora-regional-no-brasil/#utm_source=rss&utm_medium=rss&utm_campaign=fundacao-ford-anuncia-maira-junqueira-como-nova-diretora-regional-no-brasil"
+    }
+   ]
+  },
   {
    "data": "2026-11-15",
    "itens": [

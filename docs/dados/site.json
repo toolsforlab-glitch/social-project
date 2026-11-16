@@ -59,6 +59,10 @@
   {
    "id": "BR-CE",
    "rotulo": "Brasil – Ceará"
+  },
+  {
+   "id": "BR-AC",
+   "rotulo": "Brasil – Acre"
   }
  ],
  "temas": {

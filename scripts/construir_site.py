@@ -32,7 +32,7 @@ BARREIRAS = [("idade_minima", "Idade mínima", "idade"), ("escolaridade", "Escol
 
 # Fontes acompanhadas turma a turma por código (turmas.py e centec.py)
 FONTES_COM_TURMAS = ("psg.ce.senac.br", "centec.org.br/cursos-formacao-inicial-continuada", "ma.senac.br/editais-psg",
-                     "portal.ac.senac.br/psg")
+                     "portal.ac.senac.br/psg", "fiema.org.br/editais/11")
 
 
 def valor_comprovado(r, coluna, prova):

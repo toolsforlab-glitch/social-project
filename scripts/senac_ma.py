@@ -47,7 +47,14 @@ FONTES = [
     {"nome": "Senac AC", "uf": "AC", "local": "BR-AC", "regiao": "Acre",
      "entidade": "Senac Acre (Programa Senac de Gratuidade)", "estado": "estado/senac_ac.json",
      "lista": "https://portal.ac.senac.br/psg/editais", "prefixo_turma": "https://portal.ac.senac.br/psg/assets/arquivos/"},
+    {"nome": "Senai MA", "uf": "MA", "local": "BR-MA", "regiao": "Maranhão",
+     "entidade": "Senai Maranhão (Programa SENAI de Gratuidade Regimental)", "estado": "estado/senai_ma.json",
+     "programa": "Programa SENAI de Gratuidade Regimental", "listar": "senai_ma",
+     "lista": "https://www.fiema.org.br/editais/11/Processos+Seletivos+-+Alunos",
+     "prefixo_turma": "https://www.fiema.org.br/edital/"},
 ]
+MESES = {m: i + 1 for i, m in enumerate(["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
+                                          "setembro", "outubro", "novembro", "dezembro"])}
 MAX_RECENTES_SEM_DATA = 20  # Acre: a lista não tem datas; só os 20 editais mais recentes do ano entram
 DIAS_RECENTES = 15       # inscrições duram 3 a 7 dias: editais mais antigos já não têm inscrição aberta
 MAX_POR_EXECUCAO = 12    # limite de documentos lidos com o Claude por execução (controla o custo)
@@ -203,7 +210,8 @@ def provar(res, texto, publicado):
     gratuito = citacao_valida(str(res.get("gratuidade") or ""), texto) and "gratuid" in str(res.get("gratuidade")).lower()
     if not gratuito:
         # o nome do programa está escrito no próprio documento: a prova é o texto, conferido por código
-        m = re.search(r"[^.\n]{0,80}programa\s+senac\s+de\s+gratuidade[^.\n]{0,80}", texto, flags=re.I)
+        m = re.search(r"[^.\n]{0,80}(?:programa\s+senac\s+de\s+gratuidade|gratuidade\s+regimental)[^.\n]{0,80}",
+                      texto, flags=re.I)
         if m:
             gratuito, res["gratuidade"] = True, re.sub(r"\s+", " ", m.group(0)).strip()
     renda = str(res.get("renda") or "") if citacao_valida(str(res.get("renda") or ""), texto) else ""
@@ -304,6 +312,41 @@ def listar_ac(fonte):
     return editais
 
 
+def data_por_extenso(t):
+    """'5 de outubro de 2026' → '2026-10-05'."""
+    m = re.search(r"(\d{1,2})\s+de\s+([a-zç]+)\s+de\s+(\d{4})", (t or "").lower())
+    return f"{m.group(3)}-{MESES[m.group(2)]:02d}-{int(m.group(1)):02d}" if m and m.group(2) in MESES else ""
+
+
+def listar_senai_ma(fonte):
+    """Senai Maranhão: a lista «Processos Seletivos – Alunos» (fiema.org.br) dá o código, a data de publicação e o
+    período de inscrição de cada edital. Só entram os do Programa SENAI de Gratuidade Regimental com inscrição ainda
+    aberta; o documento (PDF) está na página de cada edital."""
+    html = baixar(fonte["lista"] + "?page=1&per-page=30", timeout=60).decode("utf-8", "replace")
+    hoje = hoje_ceara()
+    editais = []
+    padrao = (r'<a href="(/edital/(\d+)/[^"]+)" title="([^"]+)">.*?C[óo]digo:</strong>\s*([^<]+)<br.*?'
+              r'Data de Publica[çc][ãa]o: </strong>\s*([^<]+)<br.*?Data de In[íi]cio: </strong>\s*([^<]+?)\s*<br.*?'
+              r'Data Fim: </strong>\s*([^<]+?)\s*<br')
+    for caminho, num, titulo, codigo, pub, ini, fim in re.findall(padrao, html, flags=re.S):
+        titulo = _html.unescape(titulo)
+        ini, fim, pub = data_por_extenso(ini), data_por_extenso(fim), data_por_extenso(pub)
+        if "GRATUIDADE" not in titulo.upper() or not fim or fim < hoje:
+            continue
+        pagina = "https://www.fiema.org.br" + caminho
+        detalhe = baixar(pagina, timeout=60).decode("utf-8", "replace")
+        pdfs = re.findall(r'href="(/uploads/edital/\d+/[^"]+\.pdf)"', detalhe, flags=re.I)
+        if not pdfs:
+            continue
+        editais.append({"id": f"senai-ma-{num}", "updated_at": pdfs[0].rsplit("/", 1)[-1],
+                        "number": _html.unescape(codigo).strip(), "published_at": pub, "title": titulo,
+                        "pagina": pagina, "padrao": re.escape(f"/edital/{num}/"), "aditivo": False,
+                        "periodo_lista": (ini, fim),
+                        "documents": [{"type": "edital", "mime_type": "application/pdf",
+                                       "url": "https://www.fiema.org.br" + pdfs[0]}]})
+    return editais
+
+
 def numero_alterado(n):
     m = re.match(r"(\d+)", str(n or ""))
     return m.group(1) if m else ""
@@ -323,7 +366,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = (listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []
@@ -375,7 +418,9 @@ def correr(fonte):
             estado["tratados"][chave_estado] = hoje
             continue
         try:
-            resposta, uso = claude(modelo, SISTEMA.replace("Senac Maranhão", fonte["entidade"].split(" (")[0]), f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
+            sistema = SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", fonte["entidade"]).replace(
+                "Programa Senac de Gratuidade", fonte.get("programa", "Programa Senac de Gratuidade"))
+            resposta, uso = claude(modelo, sistema, f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
                                    max_tokens=6000)
         except ErroClaude as ex:
             print(f"  ERRO no Claude (edital {e.get('number')}): {ex}")
@@ -387,6 +432,10 @@ def correr(fonte):
             print(f"  ? edital {e.get('number')}: resposta ilegível; volta a tentar na próxima execução")
             continue
         edital, problemas = provar(res, texto, e.get("published_at") or "")
+        if e.get("periodo_lista") and edital["fim"] and edital["fim"] != e["periodo_lista"][1]:
+            # segunda prova: a lista oficial também diz até quando há inscrição; têm de coincidir
+            problemas.append(f"o fim da inscrição no documento ({edital['fim']}) não coincide com a lista oficial "
+                             f"({e['periodo_lista'][1]})")
         if DIAGNOSTICO:
             os.makedirs(DIAGNOSTICO, exist_ok=True)
             with open(os.path.join(DIAGNOSTICO, f"{e.get('id')}.json"), "w", encoding="utf-8") as f:

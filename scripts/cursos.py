@@ -39,7 +39,8 @@ de oportunidades, porque as turmas de cada curso são lidas à parte. Se só enc
 usa o link da notícia.
 
 Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) nem da Rede CVT / Centec \
-(centec.org.br), nem editais do Programa Senac de Gratuidade do Maranhão (ma.senac.br) e do Acre (portal.ac.senac.br): esses são lidos à \
+(centec.org.br), nem editais do Programa Senac de Gratuidade do Maranhão (ma.senac.br) e do Acre (portal.ac.senac.br), nem editais do Programa SENAI de Gratuidade \
+Regimental do Maranhão (fiema.org.br): esses são lidos à \
 parte, diretamente das páginas e documentos oficiais.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
@@ -102,8 +103,10 @@ def pedido_para(tarefa, cfg):
         f"Data de hoje: {hoje().isoformat()}.\n\nProcura: {tarefa['pedido']}.\n{onde}\n\n"
         f"Lista de necessidades (ids): {necessidades}.\nLista interna de perfis (ids): {perfis}.\n\n"
         f"Devolve no máximo {cfg['max_por_pesquisa']} cursos, os melhores e mais úteis. "
-        "Se não encontrares nenhum que cumpra as regras, devolve uma lista vazia.\n"
-        "Não escrevas explicações nem listas de candidatos recusados: responde só com o JSON entre "
+        "Se não encontrares nenhum que cumpra as regras, devolve uma lista vazia e, antes do JSON, uma única linha "
+        "começada por MOTIVO: com a razão principal (por exemplo: só havia inscrições já fechadas; os sites "
+        "oficiais não abriram; só encontrei cursos pagos; só notícias sem página oficial).\n"
+        "Não escrevas outras explicações nem listas de candidatos recusados: responde só com o JSON entre "
         "<json></json>, uma lista de objetos com estes campos:\n" + ", ".join(CAMPOS))
 
 
@@ -197,6 +200,9 @@ def main():
             print(f"  Sem JSON válido. Fim da resposta: {texto[-400:]!r}")
             continue
         print(f"  {len(lista)} propostos | {uso.get('pesquisas_web', 0)} pesquisas | custo ≈ {custo} USD")
+        if not lista:
+            motivo = re.search(r"MOTIVO:\s*(.+)", texto)
+            print(f"  motivo: {motivo.group(1).strip()[:300] if motivo else 'não indicado'}")
         for c in lista:
             curso, motivo = normalizar(c, t, cfg, dominios)
             if not curso:
@@ -245,7 +251,8 @@ def main():
         # sem prazo de inscrição, um curso com data de início já passada também expira (não se aplica aos
         # cursos acompanhados turma a turma, Senac e Centec, que têm regra própria)
         por_turmas = any(f in (r.get("Link") or "") for f in ("psg.ce.senac.br", "centec.org.br/cursos-formacao",
-                                                               "ma.senac.br/editais-psg", "portal.ac.senac.br/psg"))
+                                                               "ma.senac.br/editais-psg", "portal.ac.senac.br/psg",
+                                                 "fiema.org.br/editais/11"))
         inicio = ler_data(r.get("Início"))
         comecou = not fim and inicio and inicio < hoje_txt and not por_turmas
         if (fim and fim < hoje_txt) or comecou or (r.get("Origem") == "rotina" and visto and visto < corte):

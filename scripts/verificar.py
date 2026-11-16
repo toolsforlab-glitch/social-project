@@ -296,6 +296,25 @@ def main():
                 motivos.append("A página indica que pode não ser gratuito: passou a Rever.")
             if r.get("Situação das inscrições") == "Aberto" and situacao == "incerto":
                 motivos.append("Estava Aberto e a página já não o confirma.")
+            # Regra do responsável (16/11/2026): o que não se consegue comprovar sai da base em vez de ficar à espera.
+            # 1) veio de uma notícia e não há página oficial do curso; 2) a página oficial foi lida e não diz que é
+            # gratuito. Uma página que não se conseguiu ler (vazia, sem o nome do curso) não conta: fica para depois.
+            descoberta = cfg["cursos"].get("dominios_descoberta", set())
+            de_noticia = dominio_permitido(r["Link"], descoberta)
+            pagina_oficial = bool(pagina_curso) and not dominio_permitido(pagina_curso, descoberta)
+            alvo = chave_titulo(titulo_curto(r["Título"]))
+            pagina_lida = len(pagina) > 1500 and len(alvo) >= 5 and alvo in chave_titulo(pagina)
+            fora = ""
+            if "Estado" not in campos and r.get("Estado") in ("Novo", "Rever") and r.get("Origem") != "turmas":
+                if de_noticia and not pagina_oficial:
+                    fora = "veio de uma notícia e não se encontrou a página oficial do curso"
+                elif (pagina_oficial or not de_noticia) and pagina_lida and gratuito == "incerto":
+                    fora = "a página oficial não diz que o curso é gratuito"
+            if fora:
+                campos["Estado"] = "Oculto"
+                campos["Notas"] = (f"{hoje_txt}: posto de fora automaticamente: {fora}."
+                                   + (" " + r["Notas"] if r.get("Notas") else ""))[:900]
+                print(f"    ⨯ posto de fora: {r['Título']} ({fora})")
         if gratuito == "incerto":
             em_falta.append("A página não diz se este curso é gratuito.")
         if not pagina_curso and "psg.ce.senac.br" not in r["Link"]:

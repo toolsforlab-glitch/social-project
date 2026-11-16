@@ -39,7 +39,7 @@ de oportunidades, porque as turmas de cada curso são lidas à parte. Se só enc
 usa o link da notícia.
 
 Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) nem da Rede CVT / Centec \
-(centec.org.br), nem editais do Programa Senac de Gratuidade do Maranhão (ma.senac.br): esses são lidos à \
+(centec.org.br), nem editais do Programa Senac de Gratuidade do Maranhão (ma.senac.br) e do Acre (portal.ac.senac.br): esses são lidos à \
 parte, diretamente das páginas e documentos oficiais.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
@@ -245,7 +245,7 @@ def main():
         # sem prazo de inscrição, um curso com data de início já passada também expira (não se aplica aos
         # cursos acompanhados turma a turma, Senac e Centec, que têm regra própria)
         por_turmas = any(f in (r.get("Link") or "") for f in ("psg.ce.senac.br", "centec.org.br/cursos-formacao",
-                                                               "ma.senac.br/editais-psg"))
+                                                               "ma.senac.br/editais-psg", "portal.ac.senac.br/psg"))
         inicio = ler_data(r.get("Início"))
         comecou = not fim and inicio and inicio < hoje_txt and not por_turmas
         if (fim and fim < hoje_txt) or comecou or (r.get("Origem") == "rotina" and visto and visto < corte):

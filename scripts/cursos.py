@@ -153,7 +153,27 @@ def procurar_existente(curso, existentes):
         # mesmo link e título parecido, ou um título dentro do outro: é o mesmo curso
         if difflib.SequenceMatcher(None, a, b).ratio() >= 0.8 or (len(min(a, b, key=len)) >= 12 and (a in b or b in a)):
             return r
+    # o mesmo curso noticiado por dois jornais (links diferentes): mesmo local, mesma entidade e um título
+    # que começa pelo outro ("Inglês" / "Inglês para iniciantes")
+    marcas = _marcas(curso.get("Entidade"))
+    b = curso["Título"].lower().strip()
+    for r in existentes.get("todos", []):
+        if r.get("Local") != curso.get("Local") or r.get("Estado") in ("Expirado",) or not marcas & _marcas(r.get("Entidade")):
+            continue
+        a = r["Título"].lower().strip()
+        if a == b or (len(min(a, b, key=len)) >= 6 and (a.startswith(b) or b.startswith(a))):
+            return r
     return None
+
+
+_GENERICAS = {"instituto", "federal", "estadual", "educação", "educacao", "profissional", "tecnológica", "tecnologica",
+              "governo", "prefeitura", "secretaria", "escola", "virtual", "programa", "acre", "ceará", "ceara",
+              "maranhão", "maranhao", "brasil", "nacional", "centro", "fundação", "fundacao", "serviço", "servico"}
+
+
+def _marcas(entidade):
+    """Palavras que identificam a entidade (siglas e nomes próprios), sem as genéricas."""
+    return {p for p in re.findall(r"[a-zà-ú]{4,}", (entidade or "").lower()) if p not in _GENERICAS}
 
 
 def main():
@@ -164,7 +184,8 @@ def main():
     descoberta = cfg.get("dominios_descoberta", set())
 
     registos = base.tabela(ABA)
-    existentes = {"por_id": {r["ID"]: r for r in registos if r.get("ID")}, "por_link": {}}
+    existentes = {"por_id": {r["ID"]: r for r in registos if r.get("ID")}, "por_link": {},
+                  "todos": [r for r in registos if r.get("ID")]}
     for r in registos:
         existentes["por_link"].setdefault(r.get("Link", ""), []).append(r)
 
@@ -238,6 +259,7 @@ def main():
             novos.append(curso)
             existentes["por_id"][curso["ID"]] = curso
             existentes["por_link"].setdefault(curso["Link"], []).append(curso)
+            existentes["todos"].append(curso)
             print(f"  + [{curso['Estado']}] {curso['Título']} — {curso['Entidade']}")
 
     # expirar: inscrições passadas, ou cursos da rotina que deixaram de aparecer há muito tempo

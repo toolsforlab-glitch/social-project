@@ -190,15 +190,19 @@ def main():
         pedido = (f"Data de hoje: {hoje_txt}.\n\nDados do curso: {dados}\n\nLink: {pagina_curso or r['Link']}\n\n"
                   f"Lista de perfis (ids): {', '.join(p for p in cfg['cursos']['perfis_internos'] if p != 'todos')}.\n\n"
                   f"Texto da página:\n{pagina}")
-        try:
-            texto, uso = claude(modelo, SISTEMA, pedido, max_tokens=4000)
-        except ErroClaude as e:
-            print(f"  ERRO no Claude: {e}")
-            continue
-        custo_total += custo_estimado(uso, modelo)
-        res = extrair_json(texto)
+        res, texto = None, ""
+        for tentativa in range(2):  # resposta cortada ou sem JSON: uma segunda tentativa, com mais espaço
+            try:
+                texto, uso = claude(modelo, SISTEMA, pedido, max_tokens=8000 if tentativa else 6000)
+            except ErroClaude as e:
+                print(f"  ERRO no Claude: {e}")
+                break
+            custo_total += custo_estimado(uso, modelo)
+            res = extrair_json(texto)
+            if isinstance(res, dict):
+                break
         if not isinstance(res, dict):
-            print(f"  ? {r['Título']}: resposta sem JSON")
+            print(f"  ? {r['Título']}: resposta sem JSON (fim: {texto[-150:]!r})")
             continue
         ev = res.get("evidencias") if isinstance(res.get("evidencias"), dict) else {}
         provas, rejeitadas = {}, []

@@ -164,7 +164,8 @@ MINUSCULAS = {"de", "da", "do", "das", "dos", "e"}
 
 def nome_cidade(c):
     """'SÃO DOMINGOS DO MARANHÃO/MA' → 'São Domingos do Maranhão' (o edital escreve a cidade de várias formas)."""
-    c = re.sub(r"\s*[/,–-]\s*(MA|AC|Ma|Ac)\s*$", "", re.sub(r"\s+", " ", c or "").strip()).strip(" -–/")
+    c = re.sub(r"\s*[/,–-]\s*(MA|AC|Maranh[ãa]o|Acre)\s*$", "", re.sub(r"\s+", " ", c or "").strip(),
+               flags=re.I).strip(" -–/")
     if c.isupper() or c.islower():
         c = " ".join(p.lower() if i and p.lower() in MINUSCULAS else p.capitalize()
                      for i, p in enumerate(c.split(" ")))
@@ -200,6 +201,11 @@ def provar(res, texto, publicado):
     if modo in ("presencial", "ambos") and not local:
         modo = ""  # inscrição presencial sem local comprovado não serve a ninguém
     gratuito = citacao_valida(str(res.get("gratuidade") or ""), texto) and "gratuid" in str(res.get("gratuidade")).lower()
+    if not gratuito:
+        # o nome do programa está escrito no próprio documento: a prova é o texto, conferido por código
+        m = re.search(r"[^.\n]{0,80}programa\s+senac\s+de\s+gratuidade[^.\n]{0,80}", texto, flags=re.I)
+        if m:
+            gratuito, res["gratuidade"] = True, re.sub(r"\s+", " ", m.group(0)).strip()
     renda = str(res.get("renda") or "") if citacao_valida(str(res.get("renda") or ""), texto) else ""
     reserva = str(res.get("reserva") or "") if citacao_valida(str(res.get("reserva") or ""), texto) else ""
     if not perfis_da_frase(reserva):
@@ -334,6 +340,7 @@ def correr(fonte):
                   if (t.get("Link da turma") or "").startswith(fonte["prefixo_turma"])}
 
     novas, alteracoes, cursos_novos, historico, custo = [], [], [], [], 0.0
+    gratuidade_provada = {}
     lidos = 0
     for e in editais:
         chave_estado = f"{e.get('id')}|{e.get('updated_at')}"
@@ -426,6 +433,8 @@ def correr(fonte):
             if situacao != "Aberta":
                 continue
             curso = cursos.get(k)
+            if curso and edital["gratuito"]:
+                gratuidade_provada[curso] = str(res.get("gratuidade"))
             if not curso:
                 titulo = re.sub(r"\s+", " ", t["curso"]).strip()
                 titulo = titulo[:1].upper() + titulo[1:].lower() if titulo.isupper() else titulo
@@ -487,11 +496,18 @@ def correr(fonte):
         if r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip():
             continue
         campos = {}
+        comprovados = r.get("Campos comprovados") or ""
+        frase = gratuidade_provada.get(r["ID"].strip())
+        if frase and "gratuito" not in comprovados:
+            comprovados = ", ".join(["gratuito"] + [c for c in comprovados.split(", ") if c])
+            campos.update({"Campos comprovados": comprovados,
+                           "Evidência": f"gratuito: «{frase}»" + (" | " + r["Evidência"] if r.get("Evidência") else ""),
+                           "O que falta confirmar": ""})
         nova = "Aberto" if abertas.get(r["ID"].strip()) else "Encerrado"
         if nova != r.get("Situação das inscrições"):
             campos["Situação das inscrições"] = nova
         if (r.get("Estado") == "Novo" and r.get("Origem") == "turmas" and abertas.get(r["ID"].strip())
-                and "gratuito" in (r.get("Campos comprovados") or "") and not sim(r.get("Mudança a rever"))):
+                and "gratuito" in comprovados and not sim(r.get("Mudança a rever"))):
             campos.update({"Estado": "Publicado", "Nota da verificação": nota})
         if campos:
             alteracoes_cursos.append((r["_linha"], campos))

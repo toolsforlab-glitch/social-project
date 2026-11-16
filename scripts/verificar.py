@@ -7,7 +7,7 @@ import sys
 
 from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, claude, custo_estimado, dominio_permitido, extrair_json
-from paginas import chave, e_pagina_do_curso, encontrar_pagina, titulo_curto
+from paginas import chave as chave_titulo, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
 ABA = "Cursos"
 MAX_POR_EXECUCAO = int(os.environ.get("MAX_VERIFICACOES", "60"))
@@ -132,8 +132,8 @@ def pagina_do_curso(r, dominios):
             dados = baixar(atual, timeout=30)
             if dados[:4] == b"%PDF":  # o edital em PDF é a página própria do curso
                 texto = texto_de_html(dados)
-                alvo = chave(titulo_curto(r["Título"]))
-                if len(alvo) >= 5 and alvo in chave(texto):
+                alvo = chave_titulo(titulo_curto(r["Título"]))
+                if len(alvo) >= 5 and alvo in chave_titulo(texto):
                     return atual, "", texto[:MAX_CARACTERES]
             else:
                 bruto = dados.decode("utf-8", "replace")

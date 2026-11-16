@@ -164,7 +164,7 @@ MINUSCULAS = {"de", "da", "do", "das", "dos", "e"}
 
 def nome_cidade(c):
     """'SÃO DOMINGOS DO MARANHÃO/MA' → 'São Domingos do Maranhão' (o edital escreve a cidade de várias formas)."""
-    c = re.sub(r"\s*[/,–-]\s*(MA|AC|Maranh[ãa]o|Acre)\s*$", "", re.sub(r"\s+", " ", c or "").strip(),
+    c = re.sub(r"\s*(?:[/,–-]\s*|\()(MA|AC|Maranh[ãa]o|Acre)\)?\s*$", "", re.sub(r"\s+", " ", c or "").strip(),
                flags=re.I).strip(" -–/")
     if c.isupper() or c.islower():
         c = " ".join(p.lower() if i and p.lower() in MINUSCULAS else p.capitalize()

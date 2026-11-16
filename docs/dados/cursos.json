@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-16T19:42",
+ "atualizado": "2026-11-16T20:47",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -46,7 +46,7 @@
    "turnos": [],
    "internet": "Sim",
    "ajuda": "",
-   "documentos": "",
+   "documentos": "Conta gov.br nível prata ou ouro",
    "etiquetas": []
   },
   {
@@ -4478,9 +4478,9 @@
    "certificado": "desconhecido",
    "inscricoes_ate": "",
    "data_por_confirmar": false,
-   "situacao": "Aberto",
+   "situacao": "Por confirmar",
    "turmas": [],
-   "em_revisao": false,
+   "em_revisao": true,
    "onde_inscrever": [],
    "verificado_em": "2026-11-16",
    "inicio": "",

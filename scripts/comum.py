@@ -5,6 +5,7 @@ import os
 import re
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -169,10 +170,43 @@ def verificar_link(url, timeout=25):
     return 0
 
 
+_CONTEXTOS = {}
+
+
+def _contexto_com_intermedio(host):
+    """Alguns sites (ex.: fiema.org.br) não enviam o certificado intermédio. Em vez de desligar a verificação,
+    vai-se buscar o intermédio ao endereço que o próprio certificado indica (AIA) e verifica-se com ele."""
+    if host in _CONTEXTOS:
+        return _CONTEXTOS[host]
+    import ssl
+    from cryptography import x509
+    from cryptography.hazmat.primitives.serialization import Encoding
+    from cryptography.x509.oid import AuthorityInformationAccessOID, ExtensionOID
+    folha = x509.load_pem_x509_certificate(ssl.get_server_certificate((host, 443), timeout=20).encode())
+    aia = folha.extensions.get_extension_for_oid(ExtensionOID.AUTHORITY_INFORMATION_ACCESS).value
+    urls = [d.access_location.value for d in aia if d.access_method == AuthorityInformationAccessOID.CA_ISSUERS]
+    dados = urllib.request.urlopen(urls[0], timeout=20).read()
+    try:
+        intermedio = x509.load_der_x509_certificate(dados)
+    except ValueError:
+        intermedio = x509.load_pem_x509_certificate(dados)
+    contexto = ssl.create_default_context()
+    contexto.load_verify_locations(cadata=intermedio.public_bytes(Encoding.PEM).decode())
+    _CONTEXTOS[host] = contexto
+    return contexto
+
+
 def baixar(url, timeout=30):
     req = urllib.request.Request(url, headers={"User-Agent": AGENTE, "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read()
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.read()
+    except urllib.error.URLError as e:
+        if "CERTIFICATE_VERIFY_FAILED" not in str(e):
+            raise
+        contexto = _contexto_com_intermedio(urllib.parse.urlparse(url).hostname)
+        with urllib.request.urlopen(req, timeout=timeout, context=contexto) as r:
+            return r.read()
 
 
 def dominio_permitido(url, dominios):

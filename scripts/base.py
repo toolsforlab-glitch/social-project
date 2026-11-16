@@ -368,7 +368,13 @@ import unicodedata as _ud
 
 
 def texto_de_html(bruto):
-    """Texto visível de uma página HTML. Nunca usar resumos de modelos para preencher dados."""
+    """Texto visível de uma página HTML (ou de um PDF, como os editais). Nunca usar resumos de modelos para preencher
+    dados."""
+    if isinstance(bruto, bytes) and bruto[:4] == b"%PDF":
+        import io
+        from pypdf import PdfReader
+        texto = "\n".join((pagina.extract_text() or "") for pagina in PdfReader(io.BytesIO(bruto)).pages)
+        return re.sub(r"\s+", " ", texto).strip()
     if isinstance(bruto, bytes):
         bruto = bruto.decode("utf-8", "replace")
     bruto = re.sub(r"(?is)<(script|style|noscript|svg|head)[^>]*>.*?</\1>", " ", bruto)

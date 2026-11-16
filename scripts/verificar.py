@@ -308,7 +308,9 @@ def main():
             if "Estado" not in campos and r.get("Estado") in ("Novo", "Rever") and r.get("Origem") != "turmas":
                 if de_noticia and not pagina_oficial:
                     fora = "veio de uma notícia e não se encontrou a página oficial do curso"
-                elif (pagina_oficial or not de_noticia) and pagina_lida and gratuito == "incerto":
+                elif ((pagina_oficial or not de_noticia) and pagina_lida and gratuito == "incerto"
+                      and str(res.get("gratuito") or "").lower() != "sim"):
+                    # se o Claude leu "gratuito" mas a frase não se confirmou no texto, fica para uma pessoa ver
                     fora = "a página oficial não diz que o curso é gratuito"
             if fora:
                 campos["Estado"] = "Oculto"

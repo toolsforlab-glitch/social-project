@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-16T19:02",
+ "atualizado": "2026-11-16T19:42",
  "dias": [
   {
    "data": "2026-11-16",
@@ -66,6 +66,15 @@
      "fonte": "GIFE",
      "idioma_original": "pt",
      "link": "https://gife.org.br/super-el-nino-urgencia-da-adaptacao-climatica/#utm_source=rss&utm_medium=rss&utm_campaign=super-el-nino-urgencia-da-adaptacao-climatica"
+    },
+    {
+     "titulo": "Trinta escolas públicas de 12 estados e do DF disputam a final do Prêmio Liga STEAM",
+     "resumo": "Projetos de educadores e alunos de escolas públicas chegaram à final do Prêmio Nacional Liga STEAM. Os vencedores serão anunciados em 23 de novembro, em Belo Horizonte.",
+     "tema": "educacao",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/trinta-escolas-publicas-de-doze-estados-e-distrito-federal-estao-na-final-do-premio-nacional-liga-steam/"
     }
    ]
   },

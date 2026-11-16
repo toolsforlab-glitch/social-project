@@ -427,14 +427,14 @@ def correr(fonte):
                 "Auditoria": (f"{hoje}: não passou: " + "; ".join(p) + ".") if p else
                 f"{hoje}: ok (frases conferidas no documento do edital; datas e horário coerentes).",
             }
+            if edital["gratuito"] and (existentes.get(link, {}).get("Curso") or cursos.get(k)):
+                gratuidade_provada[(existentes.get(link, {}).get("Curso") or cursos.get(k)).strip()] = str(res.get("gratuidade"))
             if link in existentes:
                 alteracoes.append((existentes[link]["_linha"], campos))
                 continue
             if situacao != "Aberta":
                 continue
             curso = cursos.get(k)
-            if curso and edital["gratuito"]:
-                gratuidade_provada[curso] = str(res.get("gratuidade"))
             if not curso:
                 titulo = re.sub(r"\s+", " ", t["curso"]).strip()
                 titulo = titulo[:1].upper() + titulo[1:].lower() if titulo.isupper() else titulo

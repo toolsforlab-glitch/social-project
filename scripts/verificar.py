@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
+from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import chave as chave_titulo, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
@@ -49,6 +49,11 @@ que há inscrição presencial e o curso é presencial; senão null.
 grupo, só aceita esse grupo, ou reserva vagas ou dá prioridade a esse grupo; senão []. Nunca deduzas pelo tema do \
 curso: um curso de manicure não é "para mulheres" e um curso sobre migrações não é "para migrantes" se a página não \
 o disser. A evidência é a frase que diz para quem é o curso ou para quem são as vagas.
+- "acessibilidade": "sim" SÓ quando a página diz que o curso oferece, a quem o frequenta, um recurso de \
+acessibilidade para pessoas com deficiência: intérprete ou tradutor de Libras, local acessível (rampa, elevador, \
+acesso para cadeirantes), material em braile, audiodescrição, legendas, tecnologia assistiva ou leitor de tela; \
+senão null. Um curso DE Libras ou SOBRE acessibilidade não conta (é o tema, não um recurso). A evidência é a \
+frase que diz que o recurso existe.
 - "evidencias": objeto com as frases exatas para cada um dos campos acima (null quando não houver).
 
 ATENÇÃO a rótulos enganadores: alguns sites mostram "Inscrições abertas" em turmas que já começaram ou terminaram. \
@@ -220,6 +225,10 @@ def main():
                 provas[chave] = str(frase).strip()
             elif frase:
                 rejeitadas.append(CAMPOS_PROVA[chave])
+        # acessibilidade: a frase tem de nomear um recurso concreto (segunda barreira, por código)
+        if "acessibilidade" in provas and (str(res.get("acessibilidade") or "").lower() != "sim"
+                                           or not etiquetas_acessibilidade(provas["acessibilidade"])):
+            provas.pop("acessibilidade")
         em_falta = [str(x).strip() for x in (res.get("em_falta") or []) if str(x).strip()]
 
         # Sem prova não há afirmação

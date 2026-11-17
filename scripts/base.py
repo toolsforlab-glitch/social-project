@@ -260,7 +260,29 @@ VERIFICACAO_INICIAL = {"Situação das inscrições": "Por confirmar", "Verifica
 CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_ate": "data", "restricoes": "restrições",
                 "idade_minima": "idade", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
                 "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
-                "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público"}
+                "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público",
+                "acessibilidade": "acessibilidade"}
+
+# Acessibilidade para pessoas com deficiência: uma etiqueta só existe quando a frase da fonte nomeia o recurso.
+# Um curso DE Libras ou SOBRE acessibilidade não conta (isso é o tema, não um recurso oferecido a quem estuda).
+ACESSIBILIDADE = [
+    ("Com intérprete de Libras", r"int[ée]rprete|tradutor[a-z]*\W+(?:\w+\W+){0,3}libras|libras\W+(?:\w+\W+){0,3}(?:int[ée]rprete|tradu)"),
+    ("Local acessível", r"(?:local|espa[çc]o|ambiente|pr[ée]dio|sala|instala[çc][õo]es|unidade)s?\s+(?:\w+\s+){0,2}acess[íi]ve(?:l|is)"
+                        r"|acessibilidade arquitet|\brampas?\b|elevador|cadeirantes?|mobilidade reduzida"),
+    ("Material em braile", r"braile|braille"),
+    ("Com audiodescrição", r"audiodescri"),
+    ("Com legendas", r"legendas?\b|legendad"),
+    ("Recursos de acessibilidade", r"tecnologias? assistivas?|leitor(?:es)? de tela|recursos? de acessibilidade|\bledor\b"),
+]
+NEGACAO_ACESSIBILIDADE = r"\bn[ãa]o\s+(?:h[áa]|tem|possui|oferece|disp[õo]e|conta|garante)|\bsem\s+(?:int[ée]rprete|acessibilidade|legenda)"
+
+
+def etiquetas_acessibilidade(frase):
+    """Etiquetas de acessibilidade que a frase da fonte nomeia, ex.: "Com intérprete de Libras". Frase negativa: nenhuma."""
+    t = (frase or "").lower()
+    if not t or re.search(NEGACAO_ACESSIBILIDADE, t):
+        return []
+    return [texto for texto, padrao in ACESSIBILIDADE if re.search(padrao, t)]
 
 # Públicos prioritários: um perfil só fica num curso quando a frase da fonte (que diz para quem é o curso ou para
 # quem há vagas reservadas) contém uma destas palavras. É a segunda barreira, por código, contra perfis deduzidos.

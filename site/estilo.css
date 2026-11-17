@@ -178,3 +178,5 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 @media (min-width: 48rem) { .filtros-topo { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .campo[hidden] { display: none; }
 .factos li.publico { background: #f1e9fb; color: #4f2a86; }
+
+.factos li.acessivel{background:#e3f1f8;color:#14506e}

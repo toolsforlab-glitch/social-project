@@ -11,7 +11,7 @@ import shutil
 import sys
 import time
 
-from base import Base, carregar_config, comprovado, curso_no_site, etiqueta_publico, sim, visivel
+from base import Base, carregar_config, comprovado, curso_no_site, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
 from comum import caminho, gravar_json
 
 PAGINAS = {
@@ -173,6 +173,13 @@ def exportar_dados(base, cfg):
             if texto and texto not in etiquetas:
                 etiquetas[texto] = f
         cursos[-1]["etiquetas"] = [{"texto": k, "frase": v} for k, v in etiquetas.items()]
+        # acessibilidade para pessoas com deficiência: só com a frase da fonte que nomeia o recurso
+        acess = {}
+        for f in (re.findall(r"acessibilidade: «(.+?)»", r.get("Evidência") or "")
+                  if comprovado(r, "acessibilidade") else []):
+            for texto in etiquetas_acessibilidade(f):
+                acess.setdefault(texto, f)
+        cursos[-1]["acessibilidade"] = [{"texto": k, "frase": v} for k, v in acess.items()]
         cursos[-1]["turnos"] = lista(cursos[-1]["turnos"])
         try:
             cursos[-1]["idade_minima"] = int(float(cursos[-1]["idade_minima"])) if cursos[-1]["idade_minima"] else None

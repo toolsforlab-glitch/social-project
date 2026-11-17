@@ -34,7 +34,8 @@ import urllib.parse
 import zipfile
 import html as _html
 
-from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, perfis_da_frase, sim
+from base import (HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, etiquetas_acessibilidade,
+                  perfis_da_frase, sim)
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
 from turmas import ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, necessidades, registo
 
@@ -98,11 +99,14 @@ copiado tal como aparece no texto que recebes (começa no nome do curso e inclui
 - "renda": a frase exata com o critério de renda, se existir.
 - "reserva": a frase exata que reserva vagas ou dá prioridade a um grupo de pessoas (ex.: pessoas com deficiência, \
 mulheres, pessoas negras, quilombolas), se existir; senão null.
+- "acessibilidade": a frase exata que diz que o curso oferece um recurso de acessibilidade para pessoas com \
+deficiência (intérprete de Libras, local acessível, material em braile, audiodescrição, tecnologia assistiva), se \
+existir; senão null. Atendimento especial só para fazer a prova de seleção não conta.
 
 Devolve só JSON entre <json></json>:
 {"inscricao": {"inicio": "AAAA-MM-DD", "fim": "AAAA-MM-DD", "frase": "..."} ou null,
  "modo": "presencial|online|ambos" ou null, "local_inscricao": "..." ou null, "frase_local": "..." ou null,
- "gratuidade": "..." ou null, "renda": "..." ou null, "reserva": "..." ou null,
+ "gratuidade": "..." ou null, "renda": "..." ou null, "reserva": "..." ou null, "acessibilidade": "..." ou null,
  "turmas": [{"curso": "...", "cidade": "...", "inicio_aulas": "AAAA-MM-DD" ou null, "fim_aulas": "AAAA-MM-DD" ou null,
    "horario": "..." ou null, "dias": "..." ou null, "vagas": "..." ou null, "carga_horaria": "..." ou null,
    "local_curso": "..." ou null, "frase": "..."}]}"""
@@ -251,8 +255,14 @@ def provar(res, texto, publicado, continua=False):
             gratuito, res["gratuidade"] = True, re.sub(r"\s+", " ", m.group(0)).strip()
     renda = str(res.get("renda") or "") if citacao_valida(str(res.get("renda") or ""), texto) else ""
     reserva = str(res.get("reserva") or "") if citacao_valida(str(res.get("reserva") or ""), texto) else ""
-    if not perfis_da_frase(reserva):
-        reserva = ""  # a frase tem de nomear um grupo que conhecemos
+    if (not perfis_da_frase(reserva) or "( )" in reserva
+            or not re.search(r"reserv|\bcotas?\b|priorid|prefer[êe]nc|exclusiv|destinad|somente|apenas", reserva, flags=re.I)):
+        # a frase tem de nomear um grupo que conhecemos e dizer que há vagas para ele (a pergunta da ficha de
+        # inscrição «Você é pessoa com deficiência? ( ) sim ( ) não» não é uma reserva de vagas)
+        reserva = ""
+    acess = str(res.get("acessibilidade") or "")
+    if not (citacao_valida(acess, texto) and etiquetas_acessibilidade(acess)):
+        acess = ""  # a frase tem de estar no documento e nomear um recurso concreto
     turmas = []
     for t in res.get("turmas") or []:
         if not isinstance(t, dict):
@@ -270,7 +280,7 @@ def provar(res, texto, publicado, continua=False):
                        "horario": horario_confirmado(t.get("horario"), frase)})
     return {"ini": ini, "fim": fim, "ate_vagas": ate_vagas, "frase_insc": frase_insc if (fim or ate_vagas) else "",
             "local": local, "modo": modo,
-            "gratuito": gratuito, "renda": renda, "reserva": reserva, "turmas": turmas}, problemas
+            "gratuito": gratuito, "renda": renda, "reserva": reserva, "acessibilidade": acess, "turmas": turmas}, problemas
 
 
 def auditar(t, edital, problemas_edital):
@@ -511,7 +521,7 @@ def correr(fonte):
                   if (t.get("Link da turma") or "").startswith(fonte["prefixo_turma"])}
 
     novas, alteracoes, cursos_novos, historico, custo = [], [], [], [], 0.0
-    gratuidade_provada = {}
+    gratuidade_provada, acessibilidade_provada = {}, {}
     lidos = 0
     for e in editais:
         chave_estado = f"{e.get('id')}|{e.get('updated_at')}"
@@ -654,6 +664,8 @@ def correr(fonte):
             }
             if edital["gratuito"] and (existentes.get(link, {}).get("Curso") or cursos.get(k)):
                 gratuidade_provada[(existentes.get(link, {}).get("Curso") or cursos.get(k)).strip()] = str(res.get("gratuidade"))
+            if edital["acessibilidade"] and (existentes.get(link, {}).get("Curso") or cursos.get(k)):
+                acessibilidade_provada[(existentes.get(link, {}).get("Curso") or cursos.get(k)).strip()] = edital["acessibilidade"]
             if link in existentes:
                 if p and existentes[link].get("Estado") == "Publicado":
                     # releitura (ex.: saiu um comunicado) que já não passa na auditoria: a turma volta a Rever
@@ -682,8 +694,10 @@ def correr(fonte):
                     "Nota da verificação": f"{hoje}: curso criado a partir do edital nº {e.get('number')} do {fonte['nome']}.",
                     "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE",
                     "Evidência": (f"gratuito: «{res.get('gratuidade')}»" if edital["gratuito"] else "")
-                    + (f" | renda: «{edital['renda']}»" if edital["renda"] else ""),
-                    "Campos comprovados": ", ".join((["gratuito"] if edital["gratuito"] else []) + provados),
+                    + (f" | renda: «{edital['renda']}»" if edital["renda"] else "")
+                    + (f" | acessibilidade: «{edital['acessibilidade']}»" if edital["acessibilidade"] else ""),
+                    "Campos comprovados": ", ".join((["gratuito"] if edital["gratuito"] else []) + provados
+                                                    + (["acessibilidade"] if edital["acessibilidade"] else [])),
                     "Renda máxima": edital["renda"][:200], "Precisa de internet": "Não" if edital["modo"] == "presencial" else "",
                     "O que falta confirmar": "" if edital["gratuito"] else "O edital não confirmou a gratuidade.",
                 }
@@ -734,6 +748,12 @@ def correr(fonte):
             campos.update({"Campos comprovados": comprovados,
                            "Evidência": f"gratuito: «{frase}»" + (" | " + r["Evidência"] if r.get("Evidência") else ""),
                            "O que falta confirmar": ""})
+        frase_acess = acessibilidade_provada.get(r["ID"].strip())
+        if frase_acess and "acessibilidade" not in comprovados.split(", "):
+            comprovados = ", ".join([c for c in comprovados.split(", ") if c] + ["acessibilidade"])
+            evid = campos.get("Evidência", r.get("Evidência") or "")
+            campos.update({"Campos comprovados": comprovados,
+                           "Evidência": (evid + " | " if evid else "") + f"acessibilidade: «{frase_acess}»"})
         nova = "Aberto" if abertas.get(r["ID"].strip()) else "Encerrado"
         if nova != r.get("Situação das inscrições"):
             campos["Situação das inscrições"] = nova

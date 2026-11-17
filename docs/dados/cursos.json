@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-17T21:30",
+ "atualizado": "2026-11-17T21:45",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -47,7 +47,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-2204a779",
@@ -92,7 +93,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "CPF, e-mail e cadastro na Escola Virtual de Governo (EV.G)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-dcbfec54",
@@ -185,7 +187,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-fa5789f3",
@@ -320,7 +323,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-a9231ddf",
@@ -391,7 +395,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal. Para cursos de aperfeiçoamento, é preciso ter certificação profissional, registro na CTPS, declaração de empresa ou autodeclaração.",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-0fe8cad4",
@@ -490,7 +495,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-d3002f62",
@@ -563,7 +569,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-81407c38",
@@ -636,7 +643,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-72a8f105",
@@ -710,7 +718,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-83784e23",
@@ -783,7 +792,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-d52be937",
@@ -857,7 +867,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-1978e69c",
@@ -930,7 +941,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-14117737",
@@ -1003,7 +1015,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-05063745",
@@ -1076,7 +1089,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-e60a579a",
@@ -1149,7 +1163,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-5e97b4a5",
@@ -1222,7 +1237,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-932cc024",
@@ -1295,7 +1311,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-998f6482",
@@ -1368,7 +1385,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-7fcf0c3c",
@@ -1472,7 +1490,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-2de39e02",
@@ -1546,7 +1565,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-6b691f3d",
@@ -1620,7 +1640,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-f72d43ba",
@@ -1693,7 +1714,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-e971d121",
@@ -1766,7 +1788,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-b4a0b075",
@@ -1870,7 +1893,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-30813ad5",
@@ -1943,7 +1967,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-a0ec6563",
@@ -2016,7 +2041,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-1c54d19f",
@@ -2089,7 +2115,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-e393a066",
@@ -2193,7 +2220,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-17cb1c83",
@@ -2266,7 +2294,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-73b0f8ce",
@@ -2339,7 +2368,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-cea3c9bb",
@@ -2412,7 +2442,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-63705b5e",
@@ -2485,7 +2516,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-5fa91c58",
@@ -2620,7 +2652,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-965d0a2c",
@@ -2693,7 +2726,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-50ce7a69",
@@ -2797,7 +2831,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-a898c5cd",
@@ -2870,7 +2905,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-9bf82116",
@@ -2943,7 +2979,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-d5a7a632",
@@ -3016,7 +3053,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-4ae3e898",
@@ -3089,7 +3127,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-0a80a35c",
@@ -3162,7 +3201,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-f8acea15",
@@ -3236,7 +3276,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-9ecf4c4a",
@@ -3309,7 +3350,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-2f691367",
@@ -3413,7 +3455,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-b01eb1bd",
@@ -3486,7 +3529,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-457a38cf",
@@ -3654,7 +3698,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-e72c7ec8",
@@ -3759,7 +3804,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-9c659a51",
@@ -3927,7 +3973,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-6b6019d9",
@@ -4011,7 +4058,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-69f59e3e",
@@ -4055,7 +4103,7 @@
      "inscricao": "presencial",
      "info": "Inscrições de 11/11/2026 a 19/11/2026",
      "verificado_em": "2026-11-16",
-     "reserva": "e trabalhadores– empregados ou desempregados –, priorizando-se aqueles que satisfizerem as duas condições: aluno e trabalhador."
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -4074,12 +4122,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": [
-    {
-     "texto": "Para pessoas desempregadas",
-     "frase": "e trabalhadores– empregados ou desempregados –, priorizando-se aqueles que satisfizerem as duas condições: aluno e trabalhador."
-    }
-   ]
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-849ee036",
@@ -4142,7 +4186,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-6f926d1f",
@@ -4188,7 +4233,8 @@
    "internet": "Sim",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-02861052",
@@ -4251,7 +4297,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   },
   {
    "id": "C-3af2e800",
@@ -4314,7 +4361,8 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "",
-   "etiquetas": []
+   "etiquetas": [],
+   "acessibilidade": []
   }
  ]
 }

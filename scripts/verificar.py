@@ -34,6 +34,8 @@ futura com inscrição), "encerrado" (a página diz que as inscrições terminar
 - "restricoes": quem pode entrar (idade, renda, escolaridade, morada, já ser estudante…), só se a página o \
 disser; senão null.
 - "idade_minima": número, só se a página indicar idade mínima; senão null.
+- "idade_maxima": número, só se a página indicar uma idade máxima para entrar (ex.: "de 15 a 29 anos" → 29, \
+"até 24 anos incompletos" → 23); senão null.
 - "escolaridade_minima": uma de "Nenhuma", "Saber ler e escrever", "Fundamental incompleto", "Fundamental completo", \
 "Médio incompleto", "Médio completo", "Superior", só se a página o disser; senão null.
 - "renda_maxima": limite de renda, como está na página (ex.: "Renda familiar por pessoa de até dois salários mínimos"); senão null.
@@ -294,8 +296,11 @@ def main():
                     v = v if v in ESCOLARIDADES else ""
                 elif chave in ("prioridade_cadunico", "precisa_internet"):
                     v = {"sim": "Sim", "não": "Não", "nao": "Não"}.get(str(v or "").lower(), "")
-                elif chave == "idade_minima":
-                    v = str(int(v)) if isinstance(v, (int, float)) or str(v or "").isdigit() else ""
+                elif chave in ("idade_minima", "idade_maxima"):
+                    v = str(int(v)) if (isinstance(v, (int, float)) or str(v or "").isdigit()) and 5 <= int(v) <= 120 else ""
+                    # a idade tem de estar escrita na frase da página
+                    if v and v not in re.findall(r"\d+", provas.get(chave, "")) and str(int(v) + 1) not in re.findall(r"\d+", provas.get(chave, "")):
+                        v = ""
                 if v:
                     campos[coluna] = str(v)[:300]
             if situacao == "encerrado" and r.get("Estado") in ("Novo", "Publicado"):

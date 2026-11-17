@@ -258,7 +258,7 @@ VERIFICACAO_INICIAL = {"Situação das inscrições": "Por confirmar", "Verifica
 
 # Nomes usados na coluna "Campos comprovados"
 CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_ate": "data", "restricoes": "restrições",
-                "idade_minima": "idade", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
+                "idade_minima": "idade", "idade_maxima": "idade máxima", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
                 "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
                 "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público",
                 "acessibilidade": "acessibilidade"}
@@ -295,8 +295,9 @@ PERFIS_PALAVRAS = {
     "migrantes_refugiados": r"migrant|imigrant|refugiad|estrangeir",
     "situacao_de_rua": r"situa[çc][ãa]o de rua|sem.abrigo",
     "saida_sistema_prisional": r"egress[oa]s? do sistema|prisional|privad[oa]s? de liberdade|apenad",
-    "jovens": r"\bjove(m|ns)\b|primeiro emprego",
-    "50mais": r"\b(50|60) anos ou mais|maiores de (50|60)",
+    "jovens": r"\bjove(m|ns)\b|primeiro emprego|juventude",
+    "50mais": r"\b(50|60) anos ou mais|maiores de (50|60)|a partir d[eo]s? (50|60) anos|acima d[eo]s? (50|60) anos"
+              r"|terceira idade|pessoas? idosas?|\bidos[oa]s\b|\b60\+",
     "desempregados": r"desempregad|desocupad",
 }
 
@@ -322,6 +323,9 @@ def etiqueta_publico(frase):
                       if re.search(padrao, t)]
         elif p == "mulheres" and re.search(r"mulher(es)?\s+trans", t) and not re.search(r"mulher(es)?(?!\s+trans)\b", t):
             continue  # "mulheres trans": fica só "pessoas trans"
+        elif p == "50mais":
+            nomes.append("pessoas com 60 anos ou mais" if re.search(r"\b60\b", t) else
+                         "pessoas idosas" if re.search(r"idos|terceira idade", t) else GRUPOS_TEXTO[p])
         else:
             nomes.append(GRUPOS_TEXTO[p])
     if not nomes:
@@ -336,12 +340,21 @@ def etiqueta_publico(frase):
     return "Para " + grupos
 
 
+def etiqueta_idade(minima, maxima):
+    """Etiqueta para cursos só para uma faixa de idade, a partir das idades comprovadas na fonte."""
+    if maxima and maxima <= 29:
+        return f"Para jovens de {minima} a {maxima} anos" if minima else f"Para jovens até {maxima} anos"
+    if minima and minima >= 60 and not maxima:
+        return f"Para pessoas com {minima} anos ou mais"
+    return ""
+
+
 def perfis_da_frase(frase):
     """Perfis que a frase da fonte nomeia (ex.: "vagas reservadas a pessoas com deficiência" → pessoas_com_deficiencia)."""
     t = (frase or "").lower()
     return [p for p, padrao in PERFIS_PALAVRAS.items() if re.search(padrao, t)]
 # coluna da folha onde fica cada dado extra (só é escrito se estiver comprovado e a coluna estiver vazia)
-COLUNAS_BARREIRAS = {"idade_minima": "Idade mínima", "escolaridade_minima": "Escolaridade mínima",
+COLUNAS_BARREIRAS = {"idade_minima": "Idade mínima", "idade_maxima": "Idade máxima", "escolaridade_minima": "Escolaridade mínima",
                      "renda_maxima": "Renda máxima", "prioridade_cadunico": "Prioridade CadÚnico", "turnos": "Turno",
                      "precisa_internet": "Precisa de internet", "ajuda_custo": "Ajuda de custo ou transporte",
                      "documentos": "Documentos pedidos"}

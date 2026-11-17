@@ -11,20 +11,20 @@ import shutil
 import sys
 import time
 
-from base import Base, carregar_config, comprovado, curso_no_site, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
+from base import Base, carregar_config, comprovado, curso_no_site, etiqueta_idade, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
 from comum import caminho, gravar_json
 
 PAGINAS = {
     "index.html": ("inicio", "{nome}: cursos gratuitos e informação útil"),
     "cursos.html": ("cursos", "Cursos gratuitos online e presenciais | {nome}"),
     "noticias.html": ("noticias", "Notícias do setor social | {nome}"),
-    "antes.html": ("antes", "Antes de começar: CPF, conta gov.br e CadÚnico | {nome}"),
+    "antes.html": ("antes", "Antes de começar: CPF, conta gov.br, CadÚnico e Jovem Aprendiz | {nome}"),
     "encaminhar.html": ("encaminhar", "Para quem encaminha pessoas: lista e fichas para imprimir | {nome}"),
     "sobre.html": ("sobre", "Sobre | {nome}"),
 }
 
 # Dados sobre quem pode entrar e as barreiras; só saem para o site se estiverem comprovados
-BARREIRAS = [("idade_minima", "Idade mínima", "idade"), ("escolaridade", "Escolaridade mínima", "escolaridade"),
+BARREIRAS = [("idade_minima", "Idade mínima", "idade"), ("idade_maxima", "Idade máxima", "idade máxima"), ("escolaridade", "Escolaridade mínima", "escolaridade"),
              ("renda", "Renda máxima", "renda"), ("cadunico", "Prioridade CadÚnico", "cadunico"),
              ("turnos", "Turno", "turno"), ("internet", "Precisa de internet", "internet"),
              ("ajuda", "Ajuda de custo ou transporte", "ajuda"), ("documentos", "Documentos pedidos", "documentos")]
@@ -181,10 +181,16 @@ def exportar_dados(base, cfg):
                 acess.setdefault(texto, f)
         cursos[-1]["acessibilidade"] = [{"texto": k, "frase": v} for k, v in acess.items()]
         cursos[-1]["turnos"] = lista(cursos[-1]["turnos"])
-        try:
-            cursos[-1]["idade_minima"] = int(float(cursos[-1]["idade_minima"])) if cursos[-1]["idade_minima"] else None
-        except ValueError:
-            cursos[-1]["idade_minima"] = None
+        for campo in ("idade_minima", "idade_maxima"):
+            try:
+                cursos[-1][campo] = int(float(cursos[-1][campo])) if cursos[-1][campo] else None
+            except ValueError:
+                cursos[-1][campo] = None
+        # curso só para uma faixa de idade (ex.: 15 a 29 anos, 60 anos ou mais): etiqueta com a frase da fonte
+        idade = etiqueta_idade(cursos[-1]["idade_minima"], cursos[-1]["idade_maxima"])
+        if idade and idade not in [e["texto"] for e in cursos[-1]["etiquetas"]]:
+            frase = " ".join(re.findall(r"idade(?: máxima)?: «(.+?)»", r.get("Evidência") or ""))
+            cursos[-1]["etiquetas"].append({"texto": idade, "frase": frase or idade})
     gravar_json("docs/dados/cursos.json", {"atualizado": time.strftime("%Y-%m-%dT%H:%M"), "cursos": cursos})
 
     temas = cfg["noticias"]["temas"]

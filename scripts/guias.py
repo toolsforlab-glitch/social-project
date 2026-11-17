@@ -19,7 +19,7 @@ from base import HISTORICO, Base, carregar_config, citacao_valida, hoje_iso, sim
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json
 
 ABA = "Antes de começar"
-MAX_CARACTERES = 20000
+MAX_CARACTERES = 150000  # o Manual da Aprendizagem (MTE) tem as respostas a meio do documento
 CAMPOS = [("Onde fazer", "Onde se faz: "), ("Quanto custa", "Quanto custa: "), ("Quanto tempo leva", "Quanto tempo leva: ")]
 
 AUDITOR = """És um auditor independente. Um site público, lido por pessoas com poucos recursos, vai publicar um \

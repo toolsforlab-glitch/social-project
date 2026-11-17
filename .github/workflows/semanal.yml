@@ -3,6 +3,7 @@ name: Cursos e resumo da semana
 on:
   schedule:
     - cron: "23 8 * * 1"   # todas as segundas-feiras às 08:23 UTC (05:23 em Fortaleza)
+    - cron: "23 14 * * 1"  # reserva às 14:23 UTC: só corre se a das 08:23 ainda não correu
   # Para testar sem esperar por segunda-feira: alterar o ficheiro disparar/semanal.txt
   push:
     branches: [main]
@@ -16,15 +17,32 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
-concurrency:
-  group: projeto-social
-  cancel-in-progress: false
+# Sem fila partilhada: o GitHub só guarda uma rotina à espera por fila e cancela a anterior.
+# A ordem entre rotinas é dada por scripts/vez.py (job "vez").
 
 jobs:
-  semanal:
-    # As rotinas só correm depois de ligadas: variável ROTINAS_ATIVAS = sim (Settings > Secrets and variables > Actions > Variables)
+  vez:
     if: ${{ vars.ROTINAS_ATIVAS == 'sim' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    outputs:
+      salta: ${{ steps.vez.outputs.salta }}
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Esperar que acabem as rotinas anteriores (folha e repositório partilhados)
+        run: python3 scripts/vez.py esperar
+      - name: "Disparo de reserva: já correu hoje?"
+        id: vez
+        run: python3 scripts/vez.py ja-correu schedule
+
+  semanal:
+    needs: vez
+    # As rotinas só correm depois de ligadas: variável ROTINAS_ATIVAS = sim (Settings > Secrets and variables > Actions > Variables)
+    if: ${{ vars.ROTINAS_ATIVAS == 'sim' && needs.vez.outputs.salta != 'sim' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:

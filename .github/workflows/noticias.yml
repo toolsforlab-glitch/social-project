@@ -3,6 +3,7 @@ name: Notícias do dia
 on:
   schedule:
     - cron: "17 9 * * *"   # todos os dias às 09:17 UTC (06:17 em Fortaleza)
+    - cron: "17 13 * * *"  # reserva às 13:17 UTC: só corre se a das 09:17 ainda não correu (o GitHub atrasa horas)
   # Para testar sem esperar pela hora marcada: alterar o ficheiro disparar/noticias.txt
   push:
     branches: [main]
@@ -11,15 +12,32 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
-concurrency:
-  group: projeto-social
-  cancel-in-progress: false
+# Sem fila partilhada: o GitHub só guarda uma rotina à espera por fila e cancela a anterior.
+# A ordem entre rotinas é dada por scripts/vez.py (job "vez").
 
 jobs:
-  diario:
-    # As rotinas só correm depois de ligadas: variável ROTINAS_ATIVAS = sim (Settings > Secrets and variables > Actions > Variables)
+  vez:
     if: ${{ vars.ROTINAS_ATIVAS == 'sim' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    outputs:
+      salta: ${{ steps.vez.outputs.salta }}
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Esperar que acabem as rotinas anteriores (folha e repositório partilhados)
+        run: python3 scripts/vez.py esperar
+      - name: "Disparo de reserva: já correu hoje?"
+        id: vez
+        run: python3 scripts/vez.py ja-correu schedule,workflow_dispatch
+
+  diario:
+    needs: vez
+    # As rotinas só correm depois de ligadas: variável ROTINAS_ATIVAS = sim (Settings > Secrets and variables > Actions > Variables)
+    if: ${{ vars.ROTINAS_ATIVAS == 'sim' && needs.vez.outputs.salta != 'sim' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:

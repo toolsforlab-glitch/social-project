@@ -63,6 +63,10 @@
   {
    "id": "BR-AC",
    "rotulo": "Brasil – Acre"
+  },
+  {
+   "id": "BR-PI",
+   "rotulo": "Brasil – Piauí"
   }
  ],
  "temas": {

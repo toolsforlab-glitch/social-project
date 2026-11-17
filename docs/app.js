@@ -2,7 +2,7 @@
   "use strict";
 
   // capitais dos territórios: aparecem primeiro nas listas de cidades
-  var CAPITAIS = ["Fortaleza", "São Luís", "Rio Branco", "Lisboa"];
+  var CAPITAIS = ["Fortaleza", "São Luís", "Rio Branco", "Teresina", "Lisboa"];
   function ordenarCidades(lista) {
     return lista.slice().sort(function (a, b) {
       var ca = CAPITAIS.indexOf(a), cb = CAPITAIS.indexOf(b);

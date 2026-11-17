@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-17T20:56",
+ "atualizado": "2026-11-17T21:09",
  "guias": [
   {
    "id": "govbr",
@@ -16,7 +16,7 @@
    "custo": "",
    "tempo": "",
    "fonte": "https://www.gov.br/governodigital/pt-br/identidade/conta-gov-br/niveis-da-conta-govbr",
-   "verificado_em": "2026-11-16"
+   "verificado_em": "2026-11-17"
   },
   {
    "id": "cadunico",
@@ -33,7 +33,7 @@
    "custo": "Grátis",
    "tempo": "Cerca de 1 hora de entrevista",
    "fonte": "https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal",
-   "verificado_em": "2026-11-16"
+   "verificado_em": "2026-11-17"
   }
  ]
 }

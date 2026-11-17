@@ -16,8 +16,9 @@ LOCALIZACAO = {
     "BR-MA": {"type": "approximate", "country": "BR", "region": "Maranhão", "city": "São Luís", "timezone": "America/Fortaleza"},
     "BR-CE": {"type": "approximate", "country": "BR", "region": "Ceará", "city": "Fortaleza", "timezone": "America/Fortaleza"},
     "BR-AC": {"type": "approximate", "country": "BR", "region": "Acre", "city": "Rio Branco", "timezone": "America/Rio_Branco"},
+    "BR-PI": {"type": "approximate", "country": "BR", "region": "Piauí", "city": "Teresina", "timezone": "America/Fortaleza"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.
@@ -39,8 +40,9 @@ de oportunidades, porque as turmas de cada curso são lidas à parte. Se só enc
 usa o link da notícia.
 
 Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) nem da Rede CVT / Centec \
-(centec.org.br), nem editais do Programa Senac de Gratuidade do Maranhão (ma.senac.br) e do Acre (portal.ac.senac.br), nem editais do Programa SENAI de Gratuidade \
-Regimental do Maranhão (fiema.org.br): esses são lidos à \
+(centec.org.br), nem editais do Programa Senac de Gratuidade do Maranhão (ma.senac.br), do Acre (portal.ac.senac.br) e do Piauí \
+(psg.pi.senac.br), nem editais do Programa SENAI de Gratuidade Regimental do Maranhão (fiema.org.br) e do Piauí \
+(fiepi.com.br, cursos técnicos de gratuidade): esses são lidos à \
 parte, diretamente das páginas e documentos oficiais.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.
@@ -274,7 +276,8 @@ def main():
         # cursos acompanhados turma a turma, Senac e Centec, que têm regra própria)
         por_turmas = any(f in (r.get("Link") or "") for f in ("psg.ce.senac.br", "centec.org.br/cursos-formacao",
                                                                "ma.senac.br/editais-psg", "portal.ac.senac.br/psg",
-                                                 "fiema.org.br/editais/11"))
+                                                 "fiema.org.br/editais/11", "psg.pi.senac.br",
+                                                 "cursos-nivel-medio-senai-gratuidade"))
         inicio = ler_data(r.get("Início"))
         comecou = not fim and inicio and inicio < hoje_txt and not por_turmas
         if (fim and fim < hoje_txt) or comecou or (r.get("Origem") == "rotina" and visto and visto < corte):

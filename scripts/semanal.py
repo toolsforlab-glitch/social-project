@@ -13,7 +13,7 @@ from base import Base, carregar_config, hoje_iso
 from comum import caminho, hoje, ler_json
 
 BREVO = "https://api.brevo.com/v3"
-NOMES = {"BR-CE": "Ceará", "BR-MA": "Maranhão", "BR-AC": "Acre", "PT": "Portugal"}
+NOMES = {"BR-CE": "Ceará", "BR-MA": "Maranhão", "BR-AC": "Acre", "BR-PI": "Piauí", "PT": "Portugal"}
 
 
 def data_curta(iso):

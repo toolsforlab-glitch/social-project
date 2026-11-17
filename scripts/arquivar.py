@@ -49,7 +49,8 @@ def main():
         por_turmas = r.get("Origem") == "turmas" or any(
             f in (r.get("Link") or "") for f in ("psg.ce.senac.br", "centec.org.br/cursos-formacao",
                                                  "ma.senac.br/editais-psg", "portal.ac.senac.br/psg",
-                                                 "fiema.org.br/editais/11"))
+                                                 "fiema.org.br/editais/11", "psg.pi.senac.br",
+                                                 "cursos-nivel-medio-senai-gratuidade"))
         return estado == "Expirado" or (por_turmas and r.get("Situação das inscrições") == "Encerrado")
 
     n_turmas = mover(base, "Turmas", "Arquivo de turmas", turma_antiga, hoje)

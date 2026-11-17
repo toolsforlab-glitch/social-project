@@ -52,6 +52,22 @@ FONTES = [
      "programa": "Programa SENAI de Gratuidade Regimental", "listar": "senai_ma",
      "lista": "https://www.fiema.org.br/editais/11/Processos+Seletivos+-+Alunos",
      "prefixo_turma": "https://www.fiema.org.br/edital/"},
+    {"nome": "Senac PI", "uf": "PI", "local": "BR-PI", "regiao": "Piauí",
+     "entidade": "Senac Piauí (Programa Senac de Gratuidade)", "estado": "estado/senac_pi.json",
+     "listar": "senac_pi", "lista": "https://psg.pi.senac.br/vagas/",
+     "prefixo_turma": "https://psg.pi.senac.br/media/", "anexo": r"ANEXO\s+II\b", "max_caracteres": 48000, "inscricao_continua": True,
+     "nota": "Neste Senac os cursos estão no ANEXO II (o Anexo I é a ficha de inscrição). A inscrição costuma ser "
+             "«a partir do dia X até o limite de vagas»: nesse caso devolve inscricao.inicio = X, inscricao.fim = null "
+             "e em inscricao.frase a frase do cronograma (Anexo III) com «limite de vagas». Se no fim do texto houver "
+             "COMUNICADOS DE ALTERAÇÃO, eles mudam o edital: para um curso alterado usa as datas novas e, em «frase», "
+             "a frase do comunicado com o nome do curso e o novo período."},
+    {"nome": "Senai PI", "uf": "PI", "local": "BR-PI", "regiao": "Piauí",
+     "entidade": "SENAI Piauí (Programa SENAI de Gratuidade Regimental)", "estado": "estado/senai_pi.json",
+     "programa": "Programa SENAI de Gratuidade Regimental", "listar": "senai_pi",
+     "lista": "https://fiepi.com.br/servicos/cursos-nivel-medio-senai-gratuidade/",
+     "prefixo_turma": "https://fiepi.com.br/media/uploads/",
+     "nota": "Se no fim do texto houver RETIFICAÇÕES, elas mudam o edital: usa as datas retificadas e, nessa "
+             "informação, a frase da retificação."},
 ]
 MESES = {m: i + 1 for i, m in enumerate(["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
                                           "setembro", "outubro", "novembro", "dezembro"])}
@@ -133,16 +149,16 @@ def texto_docx(dados):
     return _html.unescape(texto)
 
 
-def recortar(texto):
-    """Os editais longos são cortados no meio, nunca no fim: o Anexo I (a tabela dos cursos) fica no fim."""
+def recortar(texto, anexo_regex=r"ANEXO\s+I\b", maximo=MAX_CARACTERES):
+    """Os editais longos são cortados no meio, nunca no fim: o anexo com a tabela dos cursos fica no fim."""
     texto = re.sub(r"[ \t]+", " ", texto)
     texto = re.sub(r"\n\s*\n+", "\n", texto)
-    if len(texto) <= MAX_CARACTERES:
+    if len(texto) <= maximo:
         return texto
-    anexo = [m.start() for m in re.finditer(r"ANEXO\s+I\b", texto)]
-    inicio_anexo = anexo[-1] if anexo else len(texto) - MAX_CARACTERES // 2
-    cauda = texto[inicio_anexo:inicio_anexo + MAX_CARACTERES // 2]
-    return texto[:MAX_CARACTERES - len(cauda)] + "\n[...]\n" + cauda
+    anexo = [m.start() for m in re.finditer(anexo_regex, texto)]
+    inicio_anexo = anexo[-1] if anexo else len(texto) - maximo // 2
+    cauda = texto[inicio_anexo:inicio_anexo + maximo // 2]
+    return texto[:maximo - len(cauda)] + "\n[...]\n" + cauda
 
 
 def data_br(iso):
@@ -160,6 +176,19 @@ def data_valida(iso):
         return ""
 
 
+def data_na_frase(iso, frase):
+    """A data está escrita na frase? Aceita «07/09/2026», «07/09» e «07 de setembro de 2026»."""
+    try:
+        d = datetime.date.fromisoformat(str(iso))
+    except (TypeError, ValueError):
+        return False
+    compacta = re.sub(r"\s", "", frase)
+    if re.search(rf"(?<!\d)0?{d.day}/0?{d.month}(?!\d)", compacta):
+        return True
+    mes = [m for m, i in MESES.items() if i == d.month][0]
+    return bool(re.search(rf"\b0?{d.day}\s*(?:º|°)?\s+de\s+{mes}", frase.lower()))
+
+
 def horario_curto(h):
     m = re.findall(r"(\d{1,2})\s*(?:[:hH]\s*(\d{2}))?", h or "")
     horas = [(int(a), int(b or 0)) for a, b in m if a and int(a) <= 23][:2]
@@ -171,7 +200,7 @@ MINUSCULAS = {"de", "da", "do", "das", "dos", "e"}
 
 def nome_cidade(c):
     """'SÃO DOMINGOS DO MARANHÃO/MA' → 'São Domingos do Maranhão' (o edital escreve a cidade de várias formas)."""
-    c = re.sub(r"\s*(?:[/,–-]\s*|\()(MA|AC|Maranh[ãa]o|Acre)\)?\s*$", "", re.sub(r"\s+", " ", c or "").strip(),
+    c = re.sub(r"\s*(?:[/,–-]\s*|\()(MA|AC|PI|Maranh[ãa]o|Acre|Piau[íi])\)?\s*$", "", re.sub(r"\s+", " ", c or "").strip(),
                flags=re.I).strip(" -–/")
     if c.isupper() or c.islower():
         c = " ".join(p.lower() if i and p.lower() in MINUSCULAS else p.capitalize()
@@ -190,12 +219,18 @@ def horario_confirmado(h, frase):
 
 # ------------------------------------------------------------------ prova e auditoria
 
-def provar(res, texto, publicado):
-    """Fica só o que está escrito no documento. Devolve (dados limpos, problemas do edital)."""
+def provar(res, texto, publicado, continua=False):
+    """Fica só o que está escrito no documento. Devolve (dados limpos, problemas do edital).
+    continua=True: o edital pode dizer «a partir do dia X até o limite de vagas» (sem dia de fim); então a
+    inscrição de cada turma vale até à véspera do início das aulas, e a frase tem de dizer «limite de vagas»."""
     problemas = []
     insc = res.get("inscricao") if isinstance(res.get("inscricao"), dict) else {}
     ini, fim, frase_insc = data_valida(insc.get("inicio")), data_valida(insc.get("fim")), str(insc.get("frase") or "")
-    if not (ini and fim and citacao_valida(frase_insc, texto) and data_br(fim)[:5] in frase_insc.replace(" ", "")):
+    ate_vagas = bool(continua and not fim and ini and citacao_valida(frase_insc, texto)
+                     and re.search(r"limite\s+de\s+vagas", frase_insc, flags=re.I) and data_na_frase(ini, frase_insc))
+    if ate_vagas:
+        pass
+    elif not (ini and fim and citacao_valida(frase_insc, texto) and data_br(fim)[:5] in frase_insc.replace(" ", "")):
         problemas.append("o período de inscrição não foi confirmado no documento")
         ini = fim = ""
     elif ini > fim:
@@ -226,24 +261,25 @@ def provar(res, texto, publicado):
         inicio = data_valida(t.get("inicio_aulas"))
         if not curso or not citacao_valida(frase, texto) or chave(curso) not in chave(frase):
             continue
-        if inicio and data_br(inicio) not in re.sub(r"\s", "", frase):
+        if inicio and not data_na_frase(inicio, frase):
             inicio = ""
         cidade = str(t.get("cidade") or "").strip()
         cidade = nome_cidade(cidade) if cidade and chave(cidade) in chave(texto) else ""
         turmas.append({**t, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
                        "fim_aulas": data_valida(t.get("fim_aulas")),
                        "horario": horario_confirmado(t.get("horario"), frase)})
-    return {"ini": ini, "fim": fim, "frase_insc": frase_insc if fim else "", "local": local, "modo": modo,
+    return {"ini": ini, "fim": fim, "ate_vagas": ate_vagas, "frase_insc": frase_insc if (fim or ate_vagas) else "",
+            "local": local, "modo": modo,
             "gratuito": gratuito, "renda": renda, "reserva": reserva, "turmas": turmas}, problemas
 
 
 def auditar(t, edital, problemas_edital):
     p = list(problemas_edital)
-    if not edital["fim"]:
+    if not edital["fim"] and not edital.get("ate_vagas"):
         p.append("sem período de inscrição comprovado")
     if not t["inicio_aulas"]:
         p.append("sem data de início das aulas comprovada")
-    elif edital["fim"] and t["inicio_aulas"] < edital["ini"]:
+    elif edital["ini"] and t["inicio_aulas"] < edital["ini"]:
         p.append(f"as aulas começam ({t['inicio_aulas']}) antes de abrir a inscrição ({edital['ini']})")
     if t.get("fim_aulas") and t["inicio_aulas"] and t["fim_aulas"] < t["inicio_aulas"]:
         p.append(f"o fim das aulas ({t['fim_aulas']}) é anterior ao início ({t['inicio_aulas']})")
@@ -347,6 +383,98 @@ def listar_senai_ma(fonte):
     return editais
 
 
+def listar_senac_pi(fonte):
+    """Senac Piauí: a página «Consulta de vagas» (psg.pi.senac.br/vagas/) tem um cartão por documento: editais do
+    Programa Senac de Gratuidade e comunicados de alteração ou de cancelamento de um edital. Não tem datas.
+    O edital é lido com os seus comunicados (que mudam datas de cursos); um edital cancelado não é lido e as suas
+    turmas passam a Rever. Os editais do Programa Senac Aprendiz ficam de fora (as vagas são das empresas)."""
+    html = baixar(fonte["lista"], timeout=60).decode("utf-8", "replace")
+    cartoes = re.findall(r'<h5 class="card-title">(.*?)</h5>.*?href="([^"]+)"', html, flags=re.S)
+    if not cartoes:
+        raise ValueError("nenhum cartão de edital na página")
+    ano = hoje_ceara()[:4]
+    grupos = {}
+    for titulo, href in cartoes:
+        titulo = _html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", titulo))).strip()
+        if re.search(r"aprendiz", titulo, flags=re.I):
+            continue
+        m = re.search(r"EDITAL\D*?N\s*[ºo°]\s*0*(\d+)[\s\-/.]+(\d{4})", titulo, flags=re.I)
+        if not m or m.group(2) != ano:
+            continue
+        url = href if href.startswith("http") else "https://psg.pi.senac.br" + href
+        g = grupos.setdefault(int(m.group(1)), {"edital": "", "titulo": "", "avisos": [], "cancelado": False})
+        if re.match(r"\s*COMUNICADO", titulo, flags=re.I):
+            g["avisos"].append(url)
+            g["cancelado"] = g["cancelado"] or bool(re.search(r"cancelamento", titulo, flags=re.I))
+        elif not g["edital"]:
+            g["edital"], g["titulo"] = url, titulo
+    editais = []
+    for n, g in sorted(grupos.items(), reverse=True):
+        if not g["edital"]:
+            continue
+        editais.append({"id": f"senac-pi-{ano}-{n}", "number": f"{n:03d}", "published_at": "",
+                        "updated_at": g["edital"].rsplit("/", 1)[-1] + f"|{len(g['avisos'])}",
+                        "title": g["titulo"], "pagina": g["edital"], "padrao": re.escape(g["edital"]),
+                        "aditivo": False, "cancelado": g["cancelado"], "avisos": sorted(g["avisos"]),
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": g["edital"]}]})
+    return editais
+
+
+def datas_do_texto(t, ano_padrao):
+    """Todas as datas escritas num texto: «23/03/2026» e «13 de Novembro de 2026» (sem ano: o ano seguinte escrito)."""
+    datas = set()
+    for d, m, a in re.findall(r"(\d{1,2})/(\d{1,2})/(\d{4})", t):
+        try:
+            datas.add(datetime.date(int(a), int(m), int(d)).isoformat())
+        except ValueError:
+            pass
+    for d, mes, a in re.findall(r"(\d{1,2})\s+de\s+([a-zçA-ZÇ]+)(?:\s+de\s+(\d{4}))?", t):
+        mes = mes.lower()
+        if mes in MESES:
+            try:
+                datas.add(datetime.date(int(a or ano_padrao), MESES[mes], int(d)).isoformat())
+            except ValueError:
+                pass
+    return datas
+
+
+def listar_senai_pi(fonte):
+    """SENAI Piauí: a página dos cursos técnicos de gratuidade (fiepi.com.br) tem um bloco por processo seletivo,
+    separado por uma linha, com o período de inscrição escrito no bloco, o edital, as retificações e as listas de
+    aprovados. Só entram os blocos com alguma data de hoje em diante; o período vem sempre do próprio edital e tem
+    de coincidir com uma data escrita no bloco (segunda prova)."""
+    html = baixar(fonte["lista"], timeout=60).decode("utf-8", "replace")
+    inicio = html.find('id="id_div_content"')
+    if inicio < 0:
+        raise ValueError("conteúdo da página não encontrado")
+    inicio = html.find(">", inicio) + 1
+    fim = html.find("</main>", inicio)
+    hoje = hoje_ceara()
+    editais = []
+    for bloco in re.split(r"<hr\s*/?>", re.sub(r"<h2.*?</h2>", " ", html[inicio:fim if fim > 0 else None], flags=re.S)):
+        texto = _html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", bloco))).strip()
+        datas = datas_do_texto(texto, hoje[:4])
+        if not datas or max(datas) < hoje:
+            continue
+        docs = [("https://fiepi.com.br" + h if h.startswith("/") else h,
+                 _html.unescape(re.sub(r"<[^>]+>", "", r)).strip())
+                for h, r in re.findall(r'<a href="([^"]+\.pdf)"[^>]*>(.*?)</a>', bloco, flags=re.S | re.I)]
+        edital = next((u for u, r in docs if re.search(r"edital", r, flags=re.I)
+                       and not re.search(r"retific|lista|aprovad|cancel|resultado", r, flags=re.I)), "")
+        if not edital:
+            continue
+        avisos = [u for u, r in docs if re.search(r"retific|errata|aditivo|cancel|prorroga", r, flags=re.I)]
+        m_titulo = re.match(r"(.{10,150}?)\s+O\s+(?:SERVI|DIRETOR|SENAI)", texto, flags=re.I)
+        titulo = (m_titulo.group(1) if m_titulo else texto[:150]).strip()
+        num = re.sub(r"[^a-z0-9]+", "-", edital.rsplit("/", 1)[-1].lower())[:60]
+        editais.append({"id": f"senai-pi-{num}", "number": num, "published_at": "",
+                        "updated_at": edital.rsplit("/", 1)[-1] + f"|{len(avisos)}",
+                        "title": titulo, "pagina": edital, "padrao": re.escape(edital), "aditivo": False,
+                        "avisos": avisos, "datas_pagina": sorted(datas),
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": edital}]})
+    return editais
+
+
 def numero_alterado(n):
     m = re.match(r"(\d+)", str(n or ""))
     return m.group(1) if m else ""
@@ -366,7 +494,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []
@@ -404,12 +532,29 @@ def correr(fonte):
                     historico.append(registo(t, fonte["nome"], "Rever", nota))
             estado["tratados"][chave_estado] = hoje
             continue
+        # edital cancelado por comunicado: não se lê, e as turmas que já existiam vão para Rever
+        if e.get("cancelado"):
+            nota = f"{hoje}: saiu um comunicado de cancelamento do edital nº {e.get('number')}; confirmar antes de publicar."
+            for link, t in existentes.items():
+                if re.search(e["padrao"], link, flags=re.I) and t.get("Estado") == "Publicado":
+                    alteracoes.append((t["_linha"], {"Estado": "Rever", "Notas": nota}))
+                    historico.append(registo(t, fonte["nome"], "Rever", nota))
+            estado["tratados"][chave_estado] = hoje
+            print(f"  · edital nº {e.get('number')}: cancelado por comunicado, não foi lido")
+            continue
         if not docs or lidos >= MAX_POR_EXECUCAO:
             continue
         doc = docs[0]
         try:
             dados = baixar(doc["url"], timeout=60)
-            texto = recortar(texto_do_documento(dados, doc.get("mime_type", "")))
+            texto = recortar(texto_do_documento(dados, doc.get("mime_type", "")), fonte.get("anexo", r"ANEXO\s+I\b"),
+                             fonte.get("max_caracteres", MAX_CARACTERES))
+            # comunicados e retificações publicados depois do edital: lidos juntos, no fim do texto
+            texto_avisos = ""
+            for url in e.get("avisos") or []:
+                t_aviso = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
+                texto_avisos += f"\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n{t_aviso.strip()}"
+            texto += texto_avisos
         except Exception as ex:  # noqa: BLE001
             print(f"  ✗ edital {e.get('number')}: documento ilegível ({type(ex).__name__})")
             continue
@@ -420,6 +565,8 @@ def correr(fonte):
         try:
             sistema = SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", fonte["entidade"]).replace(
                 "Programa Senac de Gratuidade", fonte.get("programa", "Programa Senac de Gratuidade"))
+            if fonte.get("nota"):
+                sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {fonte['nota']}\n\nDevolve só JSON")
             resposta, uso = claude(modelo, sistema, f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
                                    max_tokens=6000)
         except ErroClaude as ex:
@@ -431,7 +578,10 @@ def correr(fonte):
         if not isinstance(res, dict):
             print(f"  ? edital {e.get('number')}: resposta ilegível; volta a tentar na próxima execução")
             continue
-        edital, problemas = provar(res, texto, e.get("published_at") or "")
+        edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False))
+        if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:
+            # segunda prova: a página oficial também escreve o período de inscrição
+            problemas.append(f"o fim da inscrição no documento ({edital['fim']}) não aparece na página oficial")
         if e.get("periodo_lista") and edital["fim"] and edital["fim"] != e["periodo_lista"][1]:
             # segunda prova: a lista oficial também diz até quando há inscrição; têm de coincidir
             problemas.append(f"o fim da inscrição no documento ({edital['fim']}) não coincide com a lista oficial "
@@ -459,15 +609,29 @@ def correr(fonte):
             p = auditar(t, edital, problemas)
             if e.get("tem_aviso"):
                 p.append("o edital tem aviso de prorrogação ou alteração: confirmar prazos e vagas")
-            situacao = "Aberta" if edital["fim"] and hoje <= edital["fim"] else "Encerrada"
+            if texto_avisos:
+                cursos_nos_avisos = [x for x in edital["turmas"] if chave(x["curso"]) in chave(texto_avisos)]
+                if not cursos_nos_avisos:
+                    p.append("o edital tem comunicado ou retificação: confirmar prazos e vagas")
+                elif k in chave(texto_avisos) and not citacao_valida(t["frase"], texto_avisos):
+                    p.append("um comunicado altera este curso e as datas não vieram do comunicado: confirmar")
+            prazo = edital["fim"]
+            if edital.get("ate_vagas"):
+                # «até o limite de vagas»: a turma deixa de aparecer na véspera do início das aulas
+                prazo = ((datetime.date.fromisoformat(t["inicio_aulas"]) - datetime.timedelta(days=1)).isoformat()
+                         if t["inicio_aulas"] else "")
+            situacao = "Aberta" if prazo and hoje <= prazo else "Encerrada"
             campos = {
                 "Título na fonte": t["curso"], "Unidade na fonte": t.get("local_curso") or "", "Cidade": t["cidade"],
                 "Unidade": "", "Link de matrícula": "", "Início": t["inicio_aulas"], "Fim": t.get("fim_aulas") or "",
                 "Horário": t.get("horario") or "", "Dias": str(t.get("dias") or ""), "Vagas": str(t.get("vagas") or ""),
-                "Carga horária": str(t.get("carga_horaria") or ""), "Prazo de inscrição": edital["fim"],
+                "Carga horária": str(t.get("carga_horaria") or ""), "Prazo de inscrição": prazo,
                 "Idade mínima": "", "Escolaridade": "", "Documentos": "",
                 "Mais informações": (f"Inscrições de {data_br(edital['ini'])} a {data_br(edital['fim'])}"
-                                     if edital["fim"] else ""),
+                                     if edital["fim"] else
+                                     f"Inscrições a partir de {data_br(edital['ini'])}, até o limite de vagas "
+                                     f"(a turma sai do site quando as aulas começam, a {data_br(t['inicio_aulas'])})"
+                                     if edital.get("ate_vagas") and t["inicio_aulas"] else ""),
                 "Local na fonte": edital["local"], "Modo de inscrição": edital["modo"], "Situação": situacao,
                 "Vagas reservadas": edital["reserva"][:300],
                 "Última verificação": hoje, "Falhas seguidas": 0,
@@ -479,7 +643,12 @@ def correr(fonte):
             if edital["gratuito"] and (existentes.get(link, {}).get("Curso") or cursos.get(k)):
                 gratuidade_provada[(existentes.get(link, {}).get("Curso") or cursos.get(k)).strip()] = str(res.get("gratuidade"))
             if link in existentes:
-                alteracoes.append((existentes[link]["_linha"], campos))
+                if p and existentes[link].get("Estado") == "Publicado":
+                    # releitura (ex.: saiu um comunicado) que já não passa na auditoria: a turma volta a Rever
+                    alteracoes.append((existentes[link]["_linha"], {**campos, "Estado": "Rever"}))
+                    historico.append(registo(existentes[link], fonte["nome"], "Rever", campos["Auditoria"]))
+                else:
+                    alteracoes.append((existentes[link]["_linha"], campos))
                 continue
             if situacao != "Aberta":
                 continue
@@ -510,10 +679,11 @@ def correr(fonte):
                 curso = cursos[k] = novo["ID"]
             novas.append({"ID": id_turma(link), "Curso": curso, "Estado": "Rever" if p else "Publicado",
                           "Link da turma": link, "Primeiro visto": hoje, **campos})
-            print(f"  + {t['curso'][:40]} | {t['cidade']} | inscrição até {edital['fim'] or '—'} | {situacao}"
+            print(f"  + {t['curso'][:40]} | {t['cidade']} | inscrição até {prazo or '—'} | {situacao}"
                   + (f" | AUDITORIA: {'; '.join(p)}" if p else ""))
         estado["tratados"][chave_estado] = {
-            "data": hoje, "inscricao_ate": edital["fim"], "cursos": len(edital["turmas"]),
+            "data": hoje, "inscricao_ate": edital["fim"] or ("até o limite de vagas" if edital.get("ate_vagas") else ""),
+            "cursos": len(edital["turmas"]),
             "tentativas": (feito.get("tentativas", 0) if isinstance(feito, dict) else 0) + 1}
         time.sleep(1)
 

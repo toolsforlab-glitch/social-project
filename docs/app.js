@@ -181,6 +181,7 @@
     function perguntas(c) {
       var q = [];
       if (c.idade_minima) q.push({ p: "Você tem " + c.idade_minima + " anos ou mais?", nao: "O curso pede idade mínima de " + c.idade_minima + " anos." });
+      if (c.idade_maxima) q.push({ p: "Você tem " + c.idade_maxima + " anos ou menos?", nao: "O curso é para pessoas com até " + c.idade_maxima + " anos." });
       if (c.escolaridade && ESCOLARIDADE[c.escolaridade]) q.push({ p: ESCOLARIDADE[c.escolaridade], nao: "O curso pede: " + c.escolaridade.toLowerCase() + "." });
       if (c.renda) {
         if (/dois sal[aá]rios/i.test(c.renda)) q.push({
@@ -486,7 +487,9 @@
     }
     function quemPode(c) {
       var l = [];
-      if (c.idade_minima) l.push(c.idade_minima + " anos ou mais");
+      if (c.idade_minima && c.idade_maxima) l.push("de " + c.idade_minima + " a " + c.idade_maxima + " anos");
+      else if (c.idade_minima) l.push(c.idade_minima + " anos ou mais");
+      else if (c.idade_maxima) l.push("até " + c.idade_maxima + " anos");
       if (c.escolaridade && c.escolaridade !== "Nenhuma") l.push(c.escolaridade.toLowerCase());
       if (c.renda) l.push(c.renda.charAt(0).toLowerCase() + c.renda.slice(1));
       return l.join("; ");

@@ -585,7 +585,10 @@ def correr(fonte):
             except ErroClaude as ex:
                 print(f"  ERRO no Claude (edital {e.get('number')}, segunda leitura): {ex}")
         if not isinstance(res, dict):
-            print(f"  ? edital {e.get('number')}: resposta ilegível; volta a tentar na próxima execução")
+            tentativas = (feito.get("tentativas", 0) if isinstance(feito, dict) else 0) + 1
+            estado["tratados"][chave_estado] = {"data": hoje, "inscricao_ate": "", "cursos": 0, "tentativas": tentativas}
+            print(f"  ? edital {e.get('number')}: resposta ilegível (tentativa {tentativas} de {MAX_TENTATIVAS}; "
+                  f"{len(resposta)} caracteres, fim: {re.sub(chr(10), ' ', resposta[-200:])})")
             continue
         edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False))
         if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:

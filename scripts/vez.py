@@ -46,8 +46,9 @@ def esperar():
         antes = []
         try:
             for rotina in ROTINAS:
-                for estado in ("in_progress", "queued", "waiting"):
-                    antes += [f"{rotina} #{c['id']}" for c in corridas(rotina, status=estado) if c["id"] < minha]
+                # sem filtro de estado na pergunta: o filtro do GitHub atrasa e não vê rotinas que acabaram de começar
+                antes += [f"{rotina} #{c['id']}" for c in corridas(rotina)
+                          if c["id"] < minha and c.get("status") not in ("completed", None)]
         except Exception as e:  # noqa: BLE001
             print(f"Não foi possível ver as outras rotinas ({type(e).__name__}); segue.")
             return

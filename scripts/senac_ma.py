@@ -575,6 +575,15 @@ def correr(fonte):
         lidos += 1
         custo += custo_estimado(uso, modelo)
         res = extrair_json(resposta)
+        if not isinstance(res, dict) and "</json>" not in resposta:
+            # edital com muitos cursos: a resposta foi cortada a meio; lê-se outra vez com mais espaço
+            try:
+                resposta, uso = claude(modelo, sistema, f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
+                                       max_tokens=16000)
+                custo += custo_estimado(uso, modelo)
+                res = extrair_json(resposta)
+            except ErroClaude as ex:
+                print(f"  ERRO no Claude (edital {e.get('number')}, segunda leitura): {ex}")
         if not isinstance(res, dict):
             print(f"  ? edital {e.get('number')}: resposta ilegível; volta a tentar na próxima execução")
             continue

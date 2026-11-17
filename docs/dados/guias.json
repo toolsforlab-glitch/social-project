@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-17T23:04",
+ "atualizado": "2026-11-17T23:20",
  "guias": [
   {
    "id": "govbr",
@@ -33,6 +33,24 @@
    "custo": "Grátis",
    "tempo": "Cerca de 1 hora de entrevista",
    "fonte": "https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal",
+   "verificado_em": "2026-11-17"
+  },
+  {
+   "id": "jovem-aprendiz",
+   "titulo": "Conseguir uma vaga de Jovem Aprendiz",
+   "para_que": "Jovem Aprendiz é um contrato de trabalho com uma empresa, que inclui um curso de aprendizagem. Quem escolhe o aprendiz é a empresa: por isso as vagas de aprendiz não aparecem neste site como cursos.",
+   "passos": [
+    "Pode ser aprendiz quem tem de 14 a 24 anos incompletos. Se ainda não terminou o ensino médio, precisa estar matriculado e frequentando a escola.",
+    "Pessoas com deficiência também podem ser aprendizes, e para elas não há idade máxima.",
+    "Quem escolhe o aprendiz é a empresa. A lei dá prioridade a adolescentes de 14 a 17 anos e a jovens em situação de vulnerabilidade.",
+    "O contrato pode durar até dois anos.",
+    "O aprendiz recebe pelo menos o salário-mínimo-hora, contando também as horas do curso, e tem direito ao vale-transporte.",
+    "Em regra, a jornada não passa de seis horas por dia."
+   ],
+   "onde": "",
+   "custo": "",
+   "tempo": "",
+   "fonte": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/aprendizagem-profissional/arquivos-aprendizagem-profissional/manual-da-aprendizagem-profissional-semlogo-1.pdf",
    "verificado_em": "2026-11-17"
   }
  ]

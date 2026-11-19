@@ -1,6 +1,74 @@
 {
- "atualizado": "2026-11-18T18:11",
+ "atualizado": "2026-11-19T18:24",
  "dias": [
+  {
+   "data": "2026-11-19",
+   "itens": [
+    {
+     "titulo": "Corte Interamericana vai julgar negação de cirurgia de afirmação de gênero pelo SUS",
+     "resumo": "A Corte IDH analisa a queixa de Luiza Melinho, que acusa o Estado brasileiro de negar a cirurgia pelo SUS após anos de acompanhamento médico. O caso começou em 1997, na Unicamp.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/direito-de-transexual-cirurgia-sera-julgada-em-corte-internacional"
+    },
+    {
+     "titulo": "Violência doméstica atinge 34% das mulheres negras, mostra pesquisa",
+     "resumo": "Levantamento do DataSenado indica que 34% das mulheres negras sofreram violência doméstica ou familiar nos 12 meses anteriores, contra 30% das mulheres brancas.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/violencia-domestica-atinge-34-das-mulheres-negras-aponta-pesquisa"
+    },
+    {
+     "titulo": "Trinta países aderem à Declaração de Belém contra o racismo ambiental",
+     "resumo": "A ministra da Igualdade Racial afirmou que o documento, proposto na COP30, busca ampliar o diálogo sobre racismo, meio ambiente e clima. O governo quer ampliar as adesões.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/trinta-paises-aderiram-%C3%A0-declaracao-de-combate-ao-racismo-ambiental"
+    },
+    {
+     "titulo": "Guia orienta passageiros a denunciar racismo em aeroportos e voos",
+     "resumo": "Material lançado pela Anac e por ministérios, com a Abear e a ABR Aeroportos, ajuda passageiros e trabalhadores da aviação a identificar e denunciar casos de racismo.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/guia-orienta-passageiros-agirem-em-casos-de-racismo-em-aeroportos"
+    },
+    {
+     "titulo": "Comissão da OAB debate propostas legislativas para o terceiro setor",
+     "resumo": "A Comissão de Direito do Terceiro Setor da OAB discute projetos de lei que visam fortalecer o segmento.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "OAB",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPWGY3M2F4bjNQLWl5V0VvNEw1T0EwUmVNRXBQMlB6RFhJdUhGUWt6dTNsNkJhZlRtNEI2Wi1EakdRNnQ3ZGg1eHdpemh3RUdsRUtIY3BxczhMMHJOTlRxc29hMm9pVXZaTWl1UGY2aEpOR2RYYmxWclF4LWhsT2ozQWZtR1RzUVJ4cWh2WFR6eXpRRGc0SDFtZUMtN3JtWnduNnptQXZ5REwwQlYyalBRZ1dMWjctYTVWZ3dsM05haFhOYXpRR3NNR2xrQQ?oc=5"
+    },
+    {
+     "titulo": "TCE-SP detalha regras de prestação de contas do terceiro setor",
+     "resumo": "O Tribunal de Contas paulista aborda pontos como regulamentos internos, pesquisa de preços e vantajosidade nas prestações de contas de organizações sociais.",
+     "tema": "gestao",
+     "regiao": "Brasil",
+     "fonte": "Tribunal de Contas do Estado de São Paulo",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxONzh4S2ZrVk5LODliWUlSN0EwNElVRWFHWHE5M1Y3MjdfRV9jTmowZW5tUlZuYjl0V0xoeHhkRWd5RVBOTkZiYUIxVl9vZmtuTzZueG9IY01xMnBPNTFzZWUteDRGdVRkOFlISmhkbTdiWlpwWWhESDJwZjNzZ3J3T2liOTg0YzdzaUYzeHFSSlktYVBVRUd0Y1VfU3lwQXpVUV9qNXB6S3E1RVhPU1UtNFducm9Tdw?oc=5"
+    },
+    {
+     "titulo": "Caruaru conclui primeiro ciclo de iniciativa de apoio ao terceiro setor",
+     "resumo": "A prefeitura concluiu a primeira etapa de uma iniciativa com capacitações e orientações para entidades do terceiro setor.",
+     "tema": "gestao",
+     "regiao": "Brasil",
+     "fonte": "Blog do Finfa",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOTjFnTTFpaTRJX2ZIbWw2QW52UzZyMDJGRjYySFpXcG0zeExQeTR1VzEyZGlPcE4yLU1ydEFBUjFYZTRMMUtQZWVZWV81UktCbUhCYzNWV0t2NVV4Zlk0c2F5UkRRMXhGOUdidElvcmJQQ243bVJ2cHhidll3U0Y2YkVjeVE0bVh0MkpKSmU5YVVkVnVNWndjZklhYzQ1X3FORmNKOUlrSWZiTU1zeEw0UThTeXZMcjJZdzBHQkhGaEdnSzJjM2ZHREEydVZ4LWJ4R2J1ZkswMVhNVWRPdVhoYlR2a2FtR0pnb01Ec0pVQmlISHZWakZoRlpn?oc=5"
+    }
+   ]
+  },
   {
    "data": "2026-11-18",
    "itens": [

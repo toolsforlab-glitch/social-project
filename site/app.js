@@ -162,6 +162,20 @@
     }
   }
 
+  // Nota do destino em texto simples (para a ficha impressa e o texto do WhatsApp)
+  function notaSimples(d, emTurma) {
+    if (!d || d.tipo === "curso" && !d.conta) return "";
+    return destinoBotao(d, emTurma, "").nota.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&#39;/g, "'");
+  }
+  // O título do curso só é uma ligação quando leva à página DO curso ou DA turma (nunca a uma lista, a uma página de
+  // acesso ou a um PDF): nos outros casos, quem quer se inscrever usa os botões, que dizem para onde levam.
+  function linkDoTitulo(c, turmas) {
+    if (turmas.length === 1) return (turmas[0].destino || {}).tipo === "curso" ? turmas[0].link : "";
+    if ((c.turmas || []).length) return "";
+    return (c.destino || {}).tipo === "curso" ? c.url : "";
+  }
+  function idCartao(c, i) { return "curso-" + (c.id ? String(c.id).replace(/[^\w-]/g, "") : i); }
+
   function preencherOnde(select, locais, valor) {
     var html = '<option value="">Mostrar tudo</option>';
     locais.forEach(function (l) {
@@ -221,7 +235,7 @@
       if (!ultimos.length) { caixa.parentNode.style.display = "none"; return; }
       caixa.innerHTML = ultimos.map(function (c) {
         var sitio = c.modalidade === "online" ? "On-line" : [c.cidade, c.regiao].filter(Boolean)[0] || "";
-        return '<li class="noticia"><h3><a href="' + esc(c.url) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
+        return '<li class="noticia"><h3><a href="cursos.html#' + idCartao(c, 0) + '">' + esc(c.titulo) + "</a></h3>" +
           '<p class="meta">' + (sitio ? esc(sitio) + ". " : "") + "Inscrições até " + esc(dataBonita(c.inscricoes_ate)) + "</p></li>";
       }).join("");
     }).catch(function () { caixa.parentNode.style.display = "none"; });
@@ -335,8 +349,8 @@
       if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
       // com turmas, os documentos são os de cada turma
       if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
-      var linkTitulo = turmas.length === 1 ? turmas[0].link : c.url;
-      return '<li class="curso" id="curso-' + i + '"><h3><a href="' + esc(linkTitulo) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
+      var linkTitulo = linkDoTitulo(c, turmas);
+      return '<li class="curso" id="' + idCartao(c, i) + '"><h3>' + (linkTitulo ? '<a href="' + esc(linkTitulo) + '" rel="noopener">' + esc(c.titulo) + "</a>" : esc(c.titulo)) + "</h3>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
@@ -408,7 +422,7 @@
         caixaBreve.hidden = !breves.length || barreiras.indexOf("fecha_breve") >= 0;
         el("cursos-breve-lista").innerHTML = breves.map(function (c) {
           var sitio = c.modalidade === "online" ? "On-line" : cidadesDe(c).filter(function (v, i, a) { return a.indexOf(v) === i; }).slice(0, 3).join(", ") || c.cidade || "";
-          return '<li><a href="#curso-' + todos.indexOf(c) + '">' + esc(c.titulo) + "</a> " +
+          return '<li><a href="#' + idCartao(c, todos.indexOf(c)) + '">' + esc(c.titulo) + "</a> " +
             '<span class="discreto">' + (sitio ? esc(sitio) + ". " : "") + esc(quandoTermina(prazoProximo(c)).replace(/^Últimos? dias?: i/, "I")) + "</span></li>";
         }).join("");
       }
@@ -494,6 +508,11 @@
       (r[1].guias || []).forEach(function (g) { guiasPorId[g.id] = g; });
       preencherCidades(params.get("cidade") || "");
       filtrar();
+      // vindo da página inicial (#curso-…): ir ao cartão desse curso
+      if (location.hash && /^#curso-/.test(location.hash)) {
+        var alvo = document.getElementById(location.hash.slice(1));
+        if (alvo) { alvo.scrollIntoView(); alvo.classList.add("destacado"); }
+      }
     }).catch(function () {
       lista.innerHTML = '<li class="vazio">Não foi possível carregar os cursos. Atualize a página daqui a pouco.</li>';
     });
@@ -602,7 +621,7 @@
           (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
           (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
           '<ul class="turmas-ficha">' + tc.map(function (t) { return turmaHtml(t, false).replace("<li>", "<li>Turma: "); }).join("") + "</ul>" +
-          '<p class="ficha-rodape">Inscrição: ' + tc.map(function (t) { return esc(t.link); }).join("<br>") + "<br>" +
+          '<p class="ficha-rodape">Inscrição: ' + tc.map(function (t) { var n = notaSimples(t.destino, true); return esc(t.link) + (n ? " (" + esc(n) + ")" : ""); }).join("<br>") + "<br>" +
           "Confirme na unidade antes de ir. Lista de " + esc(atualizado) + ".</p>" +
           '<button type="button" class="botao secundario so-ecra" data-ficha="' + i + '">Imprimir só esta ficha</button></li>';
       }
@@ -627,7 +646,7 @@
       return '<li class="ficha" data-i="' + i + '"><h2>' + esc(c.titulo) + '</h2>' +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") + "<ul>" + linhas.join("") + "</ul>" +
-        '<p class="ficha-rodape">Mais informações: ' + esc(c.url) + "<br>" +
+        '<p class="ficha-rodape">Mais informações: ' + esc(c.url) + (notaSimples(c.destino, false) ? " (" + esc(notaSimples(c.destino, false)) + ")" : "") + "<br>" +
         (c.modalidade === "online" ? "Confirme na página do curso antes de começar." : "Confirme na unidade antes de ir.") +
         " Lista de " + esc(atualizado) + ".</p>" +
         '<button type="button" class="botao secundario so-ecra" data-ficha="' + i + '">Imprimir só esta ficha</button></li>';
@@ -655,6 +674,7 @@
               .filter(Boolean).join(" · "));
             if (t.prazo) l.push("Inscrições até " + dataCurta(t.prazo));
             l.push(t.link);
+            if (notaSimples(t.destino, true)) l.push(notaSimples(t.destino, true));
           });
           l.push("");
           return;
@@ -665,7 +685,9 @@
                    turnoSeguro(c)].filter(Boolean).join(" · ");
         l.push(det);
         if (c.documentos) l.push("Levar: " + c.documentos.replace(/\.$/, ""));
-        l.push(c.url, "");
+        l.push(c.url);
+        if (notaSimples(c.destino, false)) l.push(notaSimples(c.destino, false));
+        l.push("");
       });
       l.push("Veja todos e se pode se inscrever: " + base + "cursos.html?cidade=" + encodeURIComponent(cidade.value));
       l.push("Confirme na unidade ou na página do curso antes de ir.");

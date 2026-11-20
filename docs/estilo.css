@@ -212,3 +212,6 @@ a.lembrar::after { content: none !important; }
 .marca-escolhida { background: #eef3fb; padding: .5rem .75rem; border-radius: 6px; }
 .botao.pequeno { padding: .3rem .7rem; font-size: .95rem; margin-left: .5rem; }
 .so-leitor { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* «Em resumo:» antes de uma descrição reescrita pela rotina */
+.descricao .rotulo { font-weight: 600; }

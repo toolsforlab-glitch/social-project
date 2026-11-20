@@ -88,9 +88,7 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 /* Listas */
 .lista { list-style: none; padding: 0; margin: 0; }
 .curso, .noticia { padding: 1.1rem 0 1.2rem; border-bottom: 1px solid var(--pedra); }
-.curso h3 { margin-bottom: .25rem; }
-.curso h3 a { text-decoration: none; }
-.curso h3 a:hover { text-decoration: underline; }
+.curso h3 { margin-bottom: .25rem; color: var(--tinta); }
 .entidade { color: var(--tinta-suave); font-size: 1rem; margin-bottom: .5rem; }
 .factos { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: .5rem 0 .8rem; padding: 0; list-style: none; font-size: .95rem; }
 .factos li { background: var(--anil-claro); color: var(--anil-escuro); padding: .15rem .6rem; border-radius: 6px; }
@@ -99,8 +97,8 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .condicao { font-size: 1rem; margin: 0 0 .6rem; }
 
 .noticia h3 { font-size: 1.15rem; margin-bottom: .3rem; }
-.noticia h3 a { text-decoration: none; color: var(--tinta); }
-.noticia h3 a:hover { color: var(--anil); text-decoration: underline; }
+.noticia h3 a { color: var(--anil); text-decoration: underline; }
+.noticia h3 a:hover { color: var(--anil-escuro); }
 .noticia .meta { font-size: .95rem; color: var(--tinta-suave); margin: 0; }
 .dia { margin-top: 2rem; font-size: 1.1rem; color: var(--tinta-suave); font-weight: 700; }
 
@@ -125,7 +123,7 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 
 .passos { margin: 0 0 .9rem; }
 .verificado { margin: .6rem 0 0; font-size: .85rem; color: var(--tinta-suave); }
-.passos summary { cursor: pointer; font-weight: 700; color: var(--anil); padding: .3rem 0; }
+.passos summary { cursor: pointer; font-weight: 700; color: var(--tinta); padding: .3rem 0; }
 .passos ol { margin: .4rem 0 0; padding-left: 1.4rem; }
 .passos li { margin-bottom: .3rem; }
 
@@ -135,7 +133,7 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .onde li + li { margin-top: .6rem; }
 
 .posso { margin: 0 0 .9rem; padding: .6rem .9rem; border: 2px solid var(--anil-claro); border-radius: var(--raio); }
-.posso summary { cursor: pointer; font-weight: 700; color: var(--anil); }
+.posso summary { cursor: pointer; font-weight: 700; color: var(--tinta); }
 .posso ol { margin: .4rem 0 0; padding-left: 1.3rem; }
 .posso li p { margin: .5rem 0 .3rem; }
 .simnao { display: flex; gap: .5rem; }
@@ -194,3 +192,9 @@ a.lembrar::before { content: "🗓 "; }
 .turmas .guia-link { display: block; margin-top: .4rem; font-size: .95rem; color: var(--tinta-suave); }
 .curso > .guia-link { font-size: .95rem; color: var(--tinta-suave); margin: .75rem 0 .25rem; }
 .curso.destacado { outline: 3px solid #c2410c; outline-offset: 4px; }
+
+/* Ligações: o texto que é ligação está sempre sublinhado e a azul; o que não é ligação nunca está.
+   Ligações para fora do site levam a seta ↗ (abre o site de outra entidade). Ações são botões. */
+main a:not(.botao):not(.marca) { text-decoration: underline; text-decoration-thickness: 1px; }
+main a[href^="http"]:not(.botao)::after { content: " ↗"; font-size: .85em; text-decoration: none; display: inline-block; margin-left: .1em; }
+a.lembrar::after { content: none !important; }

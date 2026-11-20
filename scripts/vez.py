@@ -72,7 +72,8 @@ def ja_correu(eventos):
     minha = int(os.environ["GITHUB_RUN_ID"])
     try:
         feitas = [c for c in corridas(rotina, status="success", created=f">={hoje}")
-                  if c["id"] != minha and c.get("event") in eventos and c.get("created_at", "")[:10] == hoje]
+                  if c["id"] != minha and c.get("event") in eventos and c.get("created_at", "")[:10] == hoje
+                  and not str(c.get("display_title") or "").startswith("Só:")]  # corridas parciais não contam
     except Exception as e:  # noqa: BLE001
         print(f"Não foi possível ver as corridas de hoje ({type(e).__name__}); corre por segurança.")
         return

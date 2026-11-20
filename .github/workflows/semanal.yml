@@ -1,4 +1,6 @@
 name: Cursos e resumo da semana
+# corrida só com algumas pesquisas: nome «Só: …», para não contar como a corrida semanal completa (scripts/vez.py)
+run-name: "${{ inputs.tarefas && format('Só: {0}', inputs.tarefas) || 'Cursos e resumo da semana' }}"
 
 on:
   schedule:
@@ -37,7 +39,7 @@ jobs:
         run: python3 scripts/vez.py esperar
       - name: "Disparo de reserva: já correu hoje?"
         id: vez
-        run: python3 scripts/vez.py ja-correu schedule
+        run: python3 scripts/vez.py ja-correu schedule,workflow_dispatch
 
   semanal:
     needs: vez

@@ -11,7 +11,7 @@ import shutil
 import sys
 import time
 
-from base import Base, carregar_config, comprovado, curso_no_site, etiqueta_idade, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
+from base import DESCRICAO_PAGINA, Base, carregar_config, comprovado, curso_no_site, etiqueta_idade, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
 from comum import caminho, gravar_json
 from paginas import destino_fixo, ler_destino
 
@@ -36,6 +36,17 @@ FONTES_COM_TURMAS = ("psg.ce.senac.br", "centec.org.br/cursos-formacao-inicial-c
                      "portal.ac.senac.br/psg", "fiema.org.br/editais/11", "psg.pi.senac.br",
                                                  "cursos-nivel-medio-senai-gratuidade")
 
+
+
+def origem_descricao(r):
+    """«pagina» quando a descrição foi copiada da página oficial; «resumo» quando foi reescrita (o site mostra
+    «Em resumo:»). Linhas antigas sem a coluna: só os cursos do Senac Ceará (turmas.py) copiam o texto da página."""
+    if not (r.get("Descrição") or "").strip():
+        return ""
+    origem = (r.get("Origem da descrição") or "").strip()
+    if origem:
+        return "pagina" if origem == DESCRICAO_PAGINA else "resumo"
+    return "pagina" if r.get("Origem") == "turmas" and "psg.ce.senac.br" in (r.get("Link") or "") else "resumo"
 
 def valor_comprovado(r, coluna, prova):
     v = str(r.get(coluna) or "").strip()
@@ -175,7 +186,7 @@ def exportar_dados(base, cfg):
             "pagina_propria": bool((r.get("Página do curso") or "").strip()), "local": r.get("Local", ""), "modalidade": r.get("Modalidade", ""),
             "destino": destino_do_curso(r),
             "pais": r.get("País", ""), "regiao": r.get("Região", ""), "cidade": r.get("Cidade", ""),
-            "descricao": r.get("Descrição", ""), "necessidades": lista(r.get("Necessidades")),
+            "descricao": r.get("Descrição", ""), "descricao_origem": origem_descricao(r), "necessidades": lista(r.get("Necessidades")),
             "exclusivo_para": r.get("Condição de acesso", ""), "requisitos": r.get("Requisitos", ""),
             "certificado": r.get("Certificado", ""),
             # uma data só aparece se estiver comprovada na página ou confirmada por uma pessoa

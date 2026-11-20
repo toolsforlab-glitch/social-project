@@ -256,12 +256,17 @@ VERIFICACAO_INICIAL = {"Situação das inscrições": "Por confirmar", "Verifica
                        "Próxima verificação": "", "Evidência": "", "Campos comprovados": "",
                        "Revisto por pessoa": "", "Mudança a rever": "FALSE", "O que falta confirmar": ""}
 
+# Coluna "Origem da descrição": "Texto da página" (copiado letra a letra da página oficial) ou "Resumo"
+# (reescrito em linguagem simples; no site aparece com «Em resumo:»). Um resumo só diz o que se aprende
+# com o que a página diz, e para que serve só quando a página o disser (regra do responsável, 20/11/2026).
+DESCRICAO_PAGINA, DESCRICAO_RESUMO = "Texto da página", "Resumo"
+
 # Nomes usados na coluna "Campos comprovados"
 CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_ate": "data", "restricoes": "restrições",
                 "idade_minima": "idade", "idade_maxima": "idade máxima", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
                 "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
                 "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público",
-                "acessibilidade": "acessibilidade"}
+                "acessibilidade": "acessibilidade", "conteudo": "conteúdo", "para_que_serve": "para que serve"}
 
 # Acessibilidade para pessoas com deficiência: uma etiqueta só existe quando a frase da fonte nomeia o recurso.
 # Um curso DE Libras ou SOBRE acessibilidade não conta (isso é o tema, não um recurso oferecido a quem estuda).

@@ -5,7 +5,7 @@
 """
 import sys
 
-from base import VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso
+from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso
 from comum import ErroClaude, claude, extrair_json
 from cursos import id_curso, ler_data
 
@@ -25,7 +25,8 @@ MAPA = [  # coluna de Propostas ← palavras que aparecem na pergunta do formul�
 SISTEMA = """Organizas propostas de cursos gratuitos enviadas por organizações sociais, para um site público. \
 Usa só a informação dada. Escreve em linguagem simples (frases curtas, palavras do dia a dia), em português \
 do Brasil para cursos no Brasil e de Portugal para cursos em Portugal. Nunca rotules as pessoas.
-Responde só com JSON entre <json></json> com: titulo, descricao (1-2 frases), modalidade (online, presencial \
+Responde só com JSON entre <json></json> com: titulo, descricao (o que se aprende, \
+numa frase, só com os temas da proposta; para que serve só se a proposta o disser), modalidade (online, presencial \
 ou misto), local (um id da lista dada), regiao, cidade, necessidades (ids), perfis (ids), exclusivo_para, \
 requisitos, certificado (gratuito, pago, sem certificado ou desconhecido), inscricoes_ate (AAAA-MM-DD ou null), \
 inicio (AAAA-MM-DD ou null), duracao, como_me_inscrever (lista de 3 a 5 passos curtos)."""
@@ -93,6 +94,7 @@ def criar_cursos(base, cfg):
             "Modalidade": c.get("modalidade") or "presencial", "País": "PT" if local == "PT" else "BR",
             "Região": c.get("regiao") or "", "Cidade": c.get("cidade") or p.get("Cidade", ""),
             "Descrição": c.get("descricao") or "",
+            "Origem da descrição": DESCRICAO_RESUMO if c.get("descricao") else "",
             "Necessidades": ", ".join(c.get("necessidades") or []), "Perfis": ", ".join(c.get("perfis") or []) or "todos",
             "Condição de acesso": c.get("exclusivo_para") or "", "Requisitos": c.get("requisitos") or "",
             "Certificado": c.get("certificado") or "desconhecido",

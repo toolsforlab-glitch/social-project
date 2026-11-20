@@ -181,6 +181,12 @@
     if (!d || d.tipo === "curso" && !d.conta) return "";
     return destinoBotao(d, emTurma, "").nota.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&#39;/g, "'");
   }
+  // Descrição: um texto reescrito pela rotina mostra-se como resumo; o texto copiado da página oficial, sem rótulo.
+  function descricaoHtml(c) {
+    if (!c.descricao) return "";
+    return '<p class="descricao">' + (c.descricao_origem === "pagina" ? "" : '<span class="rotulo">Em resumo:</span> ') +
+      esc(c.descricao) + "</p>";
+  }
   function idCartao(c, i) { return "curso-" + (c.id ? String(c.id).replace(/[^\w-]/g, "") : i); }
 
   function preencherOnde(select, locais, valor) {
@@ -368,7 +374,7 @@
       // que dizem para onde levam.
       return '<li class="curso" id="' + idCartao(c, i) + '"><h3>' + esc(c.titulo) + "</h3>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
-        (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
+        descricaoHtml(c) +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         posso(c, i) + antesHtml(c) +
@@ -668,7 +674,7 @@
       if (tc.length) {
         return '<li class="ficha" data-i="' + i + '"><h2>' + esc(c.titulo) + '</h2>' +
           (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
-          (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
+          descricaoHtml(c) +
           '<ul class="turmas-ficha">' + tc.map(function (t) { return turmaHtml(t, false).replace("<li>", "<li>Turma: "); }).join("") + "</ul>" +
           '<p class="ficha-rodape">Inscrição: ' + tc.map(function (t) { var n = notaSimples(t.destino, true); return esc(t.link) + (n ? " (" + esc(n) + ")" : ""); }).join("<br>") + "<br>" +
           "Confirme na unidade antes de ir. Lista de " + esc(atualizado) + ".</p>" +
@@ -694,7 +700,7 @@
       if (g.length) linhas.push("<li><strong>Antes:</strong> " + g.map(function (x) { return esc(x.titulo); }).join(", ") + " (veja " + esc(base) + "antes.html)</li>");
       return '<li class="ficha" data-i="' + i + '"><h2>' + esc(c.titulo) + '</h2>' +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
-        (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") + "<ul>" + linhas.join("") + "</ul>" +
+        descricaoHtml(c) + "<ul>" + linhas.join("") + "</ul>" +
         '<p class="ficha-rodape">Mais informações: ' + esc(c.url) + (notaSimples(c.destino, false) ? " (" + esc(notaSimples(c.destino, false)) + ")" : "") + "<br>" +
         (c.modalidade === "online" ? "Confirme na página do curso antes de começar." : "Confirme na unidade antes de ir.") +
         " Lista de " + esc(atualizado) + ".</p>" +

@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
+from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import chave as chave_titulo, destino_do_link, destino_texto, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
@@ -59,6 +59,13 @@ frase que diz que o recurso existe.
 - "conta": nome da conta ou plataforma em que é preciso entrar (ou criar conta) para fazer a inscrição, como está \
 na página (ex.: "conta gov.br", "Centec Academy", "Escola Virtual"), SÓ se a página o disser; senão null. A evidência \
 é a frase que diz que é preciso entrar, criar conta ou fazer login para se inscrever.
+- "conteudo": uma frase curta, em palavras do dia a dia, a dizer o que se aprende neste curso, SÓ com os temas \
+que a página nomeia (não acrescentes temas nem exemplos). Começa por um verbo (ex.: "Aprenda o básico de redes \
+sociais e do pacote Office."). Se a página não disser o que se aprende, null. A evidência é a frase da página \
+que nomeia esses temas.
+- "para_que_serve": uma frase curta sobre para que serve o curso (ex.: trabalhar como…, preparar para…), SÓ se \
+a página o disser com essas ideias; senão null. Nunca escrevas utilidades que a página não diz (ex.: "ajuda no \
+dia a dia", "abre portas no mercado"). A evidência é a frase da página que o diz.
 - "evidencias": objeto com as frases exatas para cada um dos campos acima (null quando não houver).
 
 ATENÇÃO a rótulos enganadores: alguns sites mostram "Inscrições abertas" em turmas que já começaram ou terminaram. \
@@ -219,7 +226,7 @@ def main():
             alteracoes.append((r["_linha"], {"Nota da verificação": f"{hoje_txt}: não foi possível abrir a página ({type(e).__name__})."}))
             print(f"  ✗ {r['Título']}: página não abriu ({type(e).__name__})")
             continue
-        dados = {k: r.get(k, "") for k in ("Título", "Entidade", "Local", "Cidade", "Descrição", "Requisitos",
+        dados = {k: r.get(k, "") for k in ("Título", "Entidade", "Local", "Cidade", "Requisitos",
                                             "Inscrições até", "Início")}
         pedido = (f"Data de hoje: {hoje_txt}.\n\nDados do curso: {dados}\n\nLink: {pagina_curso or r['Link']}\n\n"
                   f"Lista de perfis (ids): {', '.join(p for p in cfg['cursos']['perfis_internos'] if p != 'todos')}.\n\n"
@@ -302,6 +309,18 @@ def main():
             pagina_nova = pagina_curso and pagina_curso != (r.get("Página do curso") or "").strip()
             if passos and (not r.get("Como me inscrever") or pagina_nova):
                 campos["Como me inscrever"] = "\n".join(f"{i}. {p.strip()}" for i, p in enumerate(passos[:5], 1))
+            # descrição: um resumo só com o que a página diz que se aprende (e para que serve, se o disser).
+            # Sem frase da página sobre o conteúdo, um resumo antigo sai (pode ter coisas deduzidas).
+            if (r.get("Origem da descrição") or "") != DESCRICAO_PAGINA:
+                partes = [str(res.get(k) or "").strip() for k in ("conteudo", "para_que_serve") if k in provas]
+                partes = [x if x.endswith((".", "!", "?")) else x + "." for x in partes if x]
+                if "conteudo" in provas and partes:
+                    nova = " ".join(partes)[:400]
+                    if nova != (r.get("Descrição") or "").strip() or (r.get("Origem da descrição") or "") != DESCRICAO_RESUMO:
+                        campos["Descrição"], campos["Origem da descrição"] = nova, DESCRICAO_RESUMO
+                elif (r.get("Descrição") or "").strip():
+                    campos["Descrição"], campos["Origem da descrição"] = "", ""
+                    em_falta.append("A página não diz claramente o que se aprende: a descrição foi retirada.")
             if data and not r.get("Inscrições até"):
                 campos["Inscrições até"] = data
             elif r.get("Inscrições até") and "inscricoes_ate" not in provas:
@@ -360,7 +379,8 @@ def main():
         # Publicar sozinho: só com tudo comprovado, sem avisos, e depois de uma auditoria independente
         if (not revisto and r.get("Estado") == "Novo" and "Estado" not in campos and not motivos
                 and not sim(r.get("Mudança a rever")) and pagina_curso and situacao == "aberto" and gratuito == "sim"):
-            passou, falhas, custo = auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade)
+            passou, falhas, custo = auditar(cfg, dict(r, **{k: v for k, v in campos.items() if k == "Descrição"}),
+                                            pagina, data, hoje_txt, gratuito_por_entidade)
             custo_total += custo
             if passou:
                 campos["Estado"] = "Publicado"

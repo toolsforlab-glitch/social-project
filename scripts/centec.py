@@ -23,7 +23,7 @@ import time
 import urllib.parse
 import urllib.request
 
-from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, sim, texto_de_html
+from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, sim, texto_de_html
 from comum import AGENTE, baixar
 from turmas import (ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, limpo, mapa_unidades,
                     necessidades, registo)
@@ -171,6 +171,7 @@ def curso_novo(c, link_curso, hoje, regras, descricao_ok):
         "Link": link_curso, "Local": "BR-CE", "Modalidade": "online" if c["online"] else "presencial", "País": "BR",
         "Região": "Ceará", "Cidade": "",
         "Descrição": (f"Curso de qualificação profissional da Rede CVT, com {c['carga']}." if descricao_ok and c["carga"] else ""),
+        "Origem da descrição": DESCRICAO_RESUMO if descricao_ok and c["carga"] else "",
         "Necessidades": necessidades("", titulo), "Perfis": "todos", "Condição de acesso": "",
         "Requisitos": "Ter 16 anos ou mais" if "idade" in provados else "", "Certificado": "desconhecido",
         "Inscrições até": "", "Início": "", "Duração": c["carga"], "Link verificado": "SIM", "Primeiro visto": hoje,

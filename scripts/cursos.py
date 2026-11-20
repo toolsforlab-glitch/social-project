@@ -7,7 +7,7 @@ import os
 import re
 import sys
 
-from base import VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso
+from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso
 from comum import ErroClaude, claude, custo_estimado, dominio_permitido, extrair_json, hoje, verificar_link
 
 ABA = "Cursos"
@@ -54,8 +54,10 @@ Não concluas que um curso é gratuito só porque a entidade costuma ter cursos 
 
 Escreve em LINGUAGEM SIMPLES, para quem lê pouco:
 - "titulo": nome curto do curso, sem repetir a entidade nem siglas de programas (ex.: "Auxiliar de cozinha").
-- "descricao": 1 ou 2 frases com menos de 20 palavras cada, palavras do dia a dia, sem siglas sem explicação. \
-Diz o que se aprende e para que serve. Para cursos no Brasil escreve em português do Brasil; em Portugal, \
+- "descricao": 1 frase com menos de 20 palavras, palavras do dia a dia, sem siglas sem explicação, a dizer o \
+que se aprende SÓ com os temas que a fonte nomeia (não acrescentes temas). Acrescenta uma 2.ª frase sobre para \
+que serve o curso SÓ se a fonte o disser; nunca escrevas utilidades que a fonte não diz (ex.: "ajuda no dia a \
+dia", "abre portas no mercado"). Para cursos no Brasil escreve em português do Brasil; em Portugal, \
 em português de Portugal; online, em português neutro. Nunca rotules as pessoas (não escrevas "para \
 pessoas vulneráveis", "para pobres"); descreve o curso.
 - "exclusivo_para": se o curso só aceita um grupo (ex.: "Só para mulheres", "Dos 18 aos 29 anos", \
@@ -137,6 +139,7 @@ def normalizar(c, tarefa, cfg, dominios):
         "Local": local, "Modalidade": modalidade, "País": pais,
         "Região": c.get("regiao") or "", "Cidade": c.get("cidade") or "",
         "Descrição": (c.get("descricao") or "").strip()[:400],
+        "Origem da descrição": DESCRICAO_RESUMO if (c.get("descricao") or "").strip() else "",
         "Necessidades": ", ".join(n for n in (c.get("necessidades") or []) if n in ids_nec),
         "Perfis": ", ".join(p for p in (c.get("perfis") or []) if p in cfg["perfis_internos"]) or "todos",
         "Condição de acesso": c.get("exclusivo_para") or "", "Requisitos": c.get("requisitos") or "",

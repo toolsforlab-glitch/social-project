@@ -40,7 +40,7 @@ import sys
 import time
 import unicodedata
 
-from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, sim, texto_de_html
+from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, sim, texto_de_html
 from comum import baixar
 
 ABA = "Turmas"
@@ -330,7 +330,8 @@ def curso_novo(d, hoje, regras):
     return {
         "ID": id_curso(LISTA_PSG, titulo), "Estado": "Novo", "Título": titulo[:200], "Entidade": ENTIDADE_PSG,
         "Link": LISTA_PSG, "Local": "BR-CE", "Modalidade": "presencial", "País": "BR", "Região": "Ceará",
-        "Cidade": "", "Descrição": d.get("descricao", "")[:600], "Necessidades": necessidades(d.get("area", ""), titulo),
+        "Cidade": "", "Descrição": d.get("descricao", "")[:600],
+        "Origem da descrição": DESCRICAO_PAGINA if d.get("descricao") else "", "Necessidades": necessidades(d.get("area", ""), titulo),
         "Perfis": "todos", "Condição de acesso": "", "Requisitos": "; ".join(requisitos), "Certificado": "desconhecido",
         "Inscrições até": "", "Início": "", "Duração": "", "Link verificado": "SIM", "Primeiro visto": hoje,
         "Última verificação": hoje, "Origem": "turmas", "Notas": f"Área no Senac: {d.get('area', '')}".strip(),

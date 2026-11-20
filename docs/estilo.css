@@ -190,3 +190,5 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .breve li { margin: .25rem 0; }
 a.lembrar { display: inline-block; margin-top: .5rem; font-size: .95rem; }
 a.lembrar::before { content: "🗓 "; }
+
+.turmas .guia-link { display: block; margin-top: .4rem; font-size: .95rem; color: var(--tinta-suave); }

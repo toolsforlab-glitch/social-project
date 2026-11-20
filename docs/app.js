@@ -119,8 +119,25 @@
       if (morada) l.push(esc(morada));
       if (u.telefone) l.push("Telefone " + esc(u.telefone));
     }
-    if (comBotao) l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' +
-      (t.inscricao === "online" ? "Fazer a inscrição on-line" : t.inscricao === "presencial" ? "Ver na página oficial" : "Ver esta turma e se inscrever") + "</a>");
+    if (comBotao) {
+      // Dizer exatamente o que a pessoa vai encontrar ao clicar: o link nem sempre abre a página da turma.
+      var academy = /^https:\/\/academy\.centec\.org\.br\//.test(t.link);
+      var listaCentec = /^https:\/\/www\.centec\.org\.br\//.test(t.link);
+      var edital = /\.pdf(#|$)/i.test(t.link);
+      var rotulo = academy ? "Entrar no Centec Academy e se inscrever"
+                 : listaCentec ? "Abrir a lista de cursos do Centec"
+                 : edital ? "Ver o edital (PDF)"
+                 : t.inscricao === "online" ? "Fazer a inscrição on-line"
+                 : t.inscricao === "presencial" ? "Ver na página oficial" : "Ver esta turma e se inscrever";
+      if (academy) l.push('<span class="guia-link">O botão abre a página de acesso do Centec Academy. Entre com o seu CPF e senha. ' +
+        "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). " +
+        "Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez neste botão.</span>");
+      if (listaCentec) l.push('<span class="guia-link">O botão abre a lista geral de cursos do Centec, não a turma. ' +
+        (t.titulo_fonte ? "Na lista, procure «" + esc(t.titulo_fonte) + "». " : "") +
+        "A inscrição é feita na unidade, com o CPF.</span>");
+      if (edital) l.push('<span class="guia-link">O botão abre o edital completo. Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.</span>');
+      l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' + rotulo + "</a>");
+    }
     if (comBotao && tituloCurso) l.push(lembrarHtml(tituloCurso, t.prazo, t.link, [t.unidade, t.cidade].filter(Boolean).join(", ")));
     return "<li>" + l.join("<br>") + "</li>";
   }
@@ -321,7 +338,8 @@
           }).join("") + "</ul></div>" : "") +
         (!temTurmas && c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
           c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
-        (temTurmas ? '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver outras turmas na página oficial</a>'
+        (temTurmas ? '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
+                     (/centec\.org\.br/.test(c.url) ? "Ver todos os cursos do Centec" : /\.pdf/i.test(c.url) ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>"
                    : '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
                      (c.pagina_propria ? "Ver curso e se inscrever" : "Procurar este curso na página oficial") + "</a>") +
         (!temTurmas ? lembrarHtml(c.titulo, c.inscricoes_ate, c.url, c.modalidade === "online" ? "On-line" : c.cidade) : "") +

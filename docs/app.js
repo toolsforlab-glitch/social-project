@@ -167,13 +167,6 @@
     if (!d || d.tipo === "curso" && !d.conta) return "";
     return destinoBotao(d, emTurma, "").nota.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&#39;/g, "'");
   }
-  // O título do curso só é uma ligação quando leva à página DO curso ou DA turma (nunca a uma lista, a uma página de
-  // acesso ou a um PDF): nos outros casos, quem quer se inscrever usa os botões, que dizem para onde levam.
-  function linkDoTitulo(c, turmas) {
-    if (turmas.length === 1) return (turmas[0].destino || {}).tipo === "curso" ? turmas[0].link : "";
-    if ((c.turmas || []).length) return "";
-    return (c.destino || {}).tipo === "curso" ? c.url : "";
-  }
   function idCartao(c, i) { return "curso-" + (c.id ? String(c.id).replace(/[^\w-]/g, "") : i); }
 
   function preencherOnde(select, locais, valor) {
@@ -349,8 +342,9 @@
       if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
       // com turmas, os documentos são os de cada turma
       if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
-      var linkTitulo = linkDoTitulo(c, turmas);
-      return '<li class="curso" id="' + idCartao(c, i) + '"><h3>' + (linkTitulo ? '<a href="' + esc(linkTitulo) + '" rel="noopener">' + esc(c.titulo) + "</a>" : esc(c.titulo)) + "</h3>" +
+      // O título nunca é uma ligação (igual em todos os cursos): para ir ao site oficial usam-se os botões,
+      // que dizem para onde levam.
+      return '<li class="curso" id="' + idCartao(c, i) + '"><h3>' + esc(c.titulo) + "</h3>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +

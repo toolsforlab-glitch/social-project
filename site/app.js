@@ -11,6 +11,20 @@
     });
   }
 
+  // Ligações para fora do site abrem noutra aba, para a pessoa não perder o lugar onde estava.
+  function marcarExternos(raiz) {
+    [].forEach.call((raiz || document).querySelectorAll('a[href^="http"]'), function (a) {
+      if (a.host === location.host || a.getAttribute("target")) return;
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener");
+      if (!a.querySelector(".so-leitor")) a.insertAdjacentHTML("beforeend", '<span class="so-leitor"> (abre noutra aba)</span>');
+    });
+  }
+  marcarExternos(document);
+  new MutationObserver(function (lista) {
+    lista.forEach(function (m) { [].forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1) marcarExternos(n.parentNode || n); }); });
+  }).observe(document.body, { childList: true, subtree: true });
+
   var pagina = document.body.getAttribute("data-pagina");
   var MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
                "setembro", "outubro", "novembro", "dezembro"];
@@ -245,6 +259,7 @@
     var todos = [];
     var guiasPorId = {};
     var barreiras = (params.get("facilita") || "").split(",").filter(Boolean);
+    var marcaEscolhida = params.get("marca") || "";
     var cidade = el("cursos-cidade");
     var notaBarreiras = el("cursos-nota-barreiras");
     var rotulos = {};
@@ -307,16 +322,19 @@
       var turmas = turmasAtuais(c);
       var temTurmas = (c.turmas || []).length > 0;
       var factos = [];
-      if (c.modalidade === "online") factos.push("On-line");
+      // marcas que filtram a lista quando se clica: data-filtro="tipo:valor" (onde, facilita ou marca)
+      function marca(cls, txt, filtro) { return '<span class="' + cls + '" data-filtro="' + esc(filtro) + '">' + esc(txt) + "</span>"; }
+      if (c.modalidade === "online") factos.push(marca("local", "On-line", "onde:online"));
       else {
         var partes = [c.cidade, c.regiao].filter(Boolean).filter(function (v, i, a) { return a.indexOf(v) === i; });
         var sitio = partes.join(", ") || nomesLocal[c.local] || "";
-        factos.push((c.modalidade === "misto" ? "Presencial e on-line" : "Presencial") + (sitio ? ": " + sitio : ""));
+        var txtLocal = (c.modalidade === "misto" ? "Presencial e on-line" : "Presencial") + (sitio ? ": " + sitio : "");
+        factos.push(c.local ? marca("local", txtLocal, "onde:" + c.local) : txtLocal);
       }
-      if (c.certificado === "gratuito") factos.push('<span class="bom">Certificado gratuito</span>');
+      if (c.certificado === "gratuito") factos.push(marca("bom", "Certificado gratuito", "marca:cert-gratuito"));
       else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago</span>');
       var breve = terminaEmBreve(c);
-      if (breve) factos.unshift('<span class="urgente">' + esc(quandoTermina(prazoProximo(c))) + "</span>");
+      if (breve) factos.unshift(marca("urgente", quandoTermina(prazoProximo(c)), "facilita:fecha_breve"));
       if (temTurmas) {
         factos.push('<span class="bom">' + (turmas.length === 1 ? "1 turma com inscrições abertas" : turmas.length + " turmas com inscrições abertas") + "</span>");
       } else {
@@ -324,13 +342,17 @@
         else if (c.data_por_confirmar) factos.push('<span class="atencao">Confirme a data na página oficial</span>');
         if (c.situacao === "Por confirmar") factos.push('<span class="atencao">Inscrições por confirmar</span>');
         if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
-        (c.turnos || []).forEach(function (t) { if (TURNO[t]) factos.push(TURNO[t]); });
+        (c.turnos || []).forEach(function (t) { if (TURNO[t]) factos.push(t === "Noite" ? marca("local", TURNO[t], "facilita:noite") : TURNO[t]); });
       }
-      (c.etiquetas || []).forEach(function (e) { factos.push('<span class="publico">' + esc(e.texto) + "</span>"); });
-      (c.acessibilidade || []).forEach(function (e) { factos.push('<span class="acessivel">' + esc(e.texto) + "</span>"); });
-      if (c.ajuda) factos.push('<span class="bom">' + esc(c.ajuda) + "</span>");
+      (c.etiquetas || []).forEach(function (e) { factos.push(marca("publico", e.texto, "marca:pub:" + e.texto)); });
+      (c.acessibilidade || []).forEach(function (e) { factos.push(marca("acessivel", e.texto, "marca:acc:" + e.texto)); });
+      if (c.ajuda && !/^n[aã]o/i.test(c.ajuda)) factos.push(marca("bom", c.ajuda, "facilita:ajuda"));
+      else if (c.ajuda) factos.push('<span class="bom">' + esc(c.ajuda) + "</span>");
       if (c.duracao) factos.push(esc(c.duracao));
       var factosHtml = factos.map(function (f) {
+        var mf = f.match(/^<span class="(\w+)" data-filtro="([^"]*)">(.*)<\/span>$/);
+        if (mf) return '<li class="' + mf[1] + ' filtravel"><button type="button" class="filtro" data-filtro="' + mf[2] +
+          '" title="Mostrar só os cursos assim">' + mf[3] + "</button></li>";
         var m = f.match(/^<span class="(\w+)">(.*)<\/span>$/);
         return m ? '<li class="' + m[1] + '">' + m[2] + "</li>" : "<li>" + (f.indexOf("<") >= 0 ? f : esc(f)) + "</li>";
       }).join("");
@@ -392,6 +414,7 @@
         if (barreiras.indexOf("reservadas") >= 0 && !(c.etiquetas || []).length) return false;
         if (barreiras.indexOf("acessivel") >= 0 && !(c.acessibilidade || []).length) return false;
         if (barreiras.indexOf("fecha_breve") >= 0 && !terminaEmBreve(c)) return false;
+        if (marcaEscolhida && marcasDe(c).indexOf(marcaEscolhida) < 0) return false;
         if (cidade.value && c.modalidade !== "online" && cidadesDe(c).indexOf(cidade.value) < 0) return false;
         if (t) {
           var alvo = semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" "));
@@ -427,10 +450,23 @@
       if (escolhidas.length) q.set("quero", escolhidas.join(","));
       if (o) q.set("onde", o);
       if (barreiras.length) q.set("facilita", barreiras.join(","));
+      if (marcaEscolhida) q.set("marca", marcaEscolhida);
+      var aviso = el("cursos-marca");
+      if (aviso) {
+        aviso.hidden = !marcaEscolhida;
+        aviso.innerHTML = marcaEscolhida ? "A mostrar só os cursos com: <strong>" + esc(textoMarca(marcaEscolhida)) + "</strong> " +
+          '<button type="button" class="botao secundario pequeno" id="cursos-marca-limpar">Mostrar todos os cursos</button>' : "";
+      }
       if (cidade.value) q.set("cidade", cidade.value);
       history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q.toString() : ""));
     }
 
+    function marcasDe(c) {
+      return (c.certificado === "gratuito" ? ["cert-gratuito"] : [])
+        .concat((c.etiquetas || []).map(function (e) { return "pub:" + e.texto; }))
+        .concat((c.acessibilidade || []).map(function (e) { return "acc:" + e.texto; }));
+    }
+    function textoMarca(m) { return m === "cert-gratuito" ? "Certificado gratuito" : m.replace(/^(pub|acc):/, ""); }
     function cidadesDe(c) {
       if ((c.turmas || []).length) return turmasAtuais(c).map(function (t) { return t.cidade; }).filter(Boolean);
       var l = [c.cidade].concat((c.onde_inscrever || []).map(function (u) { return u.municipio; }));
@@ -449,6 +485,25 @@
       filtrar();
     });
     cidade.addEventListener("change", filtrar);
+    // clicar numa marca do curso (ex.: On-line, Certificado gratuito, Para mulheres) filtra a lista por ela
+    lista.addEventListener("click", function (ev) {
+      var f = ev.target.closest("button.filtro");
+      if (!f) return;
+      var partes = f.getAttribute("data-filtro").split(":"), tipo = partes.shift(), valor = partes.join(":");
+      if (tipo === "onde") { onde.value = valor; preencherCidades(""); }
+      else if (tipo === "facilita") {
+        if (barreiras.indexOf(valor) < 0) barreiras.push(valor);
+        [].forEach.call(ulBarreiras.querySelectorAll("button"), function (b) {
+          b.setAttribute("aria-pressed", barreiras.indexOf(b.getAttribute("data-barreira")) >= 0);
+        });
+      } else if (tipo === "marca") marcaEscolhida = valor;
+      filtrar();
+      contagem.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    document.addEventListener("click", function (ev) {
+      if (ev.target.id !== "cursos-marca-limpar") return;
+      marcaEscolhida = ""; filtrar();
+    });
     lista.addEventListener("click", function (ev) {
       var b = ev.target.closest(".posso button.opcao");
       if (!b) return;

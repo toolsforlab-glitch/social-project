@@ -40,7 +40,7 @@ import sys
 import time
 import unicodedata
 
-from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, sim, texto_de_html
+from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, frase_de_gratuidade, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, sim, texto_de_html
 from comum import baixar
 
 ABA = "Turmas"
@@ -311,6 +311,11 @@ def regras_do_programa(baixar_pagina):
             campos[coluna] = valor
             provados.append(nome)
             frases.append(f"«{frase}»")
+    # gratuidade: só uma frase da página que diga que não há custo (o nome do programa não chega; regra de 20/11/2026)
+    frase_g = frase_de_gratuidade(texto)
+    if frase_g:
+        provados.append("gratuito")
+        frases.append(f"gratuito: «{frase_g}»")
     return campos, provados, frases, (REGRA_APERFEICOAMENTO if citacao_valida(REGRA_APERFEICOAMENTO, texto) else "")
 
 
@@ -496,6 +501,15 @@ def main(baixar_pagina=baixar_texto):
             abertas = sits.count("Aberta")
             nova = "Aberto" if abertas else "Por confirmar" if "Por confirmar" in sits else "Encerrado"
             campos = {}
+            # gratuidade escrita na página Bolsas de estudos do Senac Ceará (se não houver: «Gratuidade por confirmar»)
+            if "gratuito" not in (r.get("Campos comprovados") or ""):
+                if regras is None:
+                    regras = regras_do_programa(baixar_pagina)
+                frase_g = next((f for f in regras[2] if f.startswith("gratuito: «")), "")
+                if frase_g:
+                    campos["Campos comprovados"] = ", ".join(
+                        [c.strip() for c in (r.get("Campos comprovados") or "").split(",") if c.strip()] + ["gratuito"])
+                    campos["Evidência"] = (frase_g + " | " + (r.get("Evidência") or "")).strip(" |")[:1500]
             if nova != (r.get("Situação das inscrições") or ""):
                 campos["Situação das inscrições"] = nova
                 if r["ID"] not in publicados:

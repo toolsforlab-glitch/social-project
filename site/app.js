@@ -181,6 +181,7 @@
     if (!d || d.tipo === "curso" && !d.conta) return "";
     return destinoBotao(d, emTurma, "").nota.replace(/<[^>]+>/g, "").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&#39;/g, "'");
   }
+  var GRATUIDADE_AVISO = "A página oficial não diz por escrito que este curso é gratuito: confirme antes de se inscrever";
   // Descrição: um texto reescrito pela rotina mostra-se como resumo; o texto copiado da página oficial, sem rótulo.
   function descricaoHtml(c) {
     if (!c.descricao) return "";
@@ -339,6 +340,8 @@
       }
       if (c.certificado === "gratuito") factos.push(marca("bom", "Certificado gratuito", "marca:cert-gratuito"));
       else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago</span>');
+      // regra do projeto: gratuidade só com frase da página que diga que não há custo; sem ela, avisa-se
+      if (c.gratuidade_comprovada === false) factos.push(marca("atencao", "Gratuidade por confirmar", "marca:grat-confirmar"));
       var breve = terminaEmBreve(c);
       if (breve) factos.unshift(marca("urgente", quandoTermina(prazoProximo(c)), "facilita:fecha_breve"));
       if (temTurmas) {
@@ -367,6 +370,7 @@
       (c.etiquetas || []).forEach(function (e) { condicoes.push("Sobre as vagas, a fonte diz: «" + esc(e.frase.replace(/[.\s]+$/, "")) + "»"); });
       var frasesAcess = (c.acessibilidade || []).map(function (e) { return e.frase; }).filter(function (f, i, a) { return a.indexOf(f) === i; });
       frasesAcess.forEach(function (f) { condicoes.push("Sobre acessibilidade, a fonte diz: «" + esc(f.replace(/[.\s]+$/, "")) + "»"); });
+      if (c.gratuidade_comprovada === false) condicoes.push(GRATUIDADE_AVISO);
       if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
       // com turmas, os documentos são os de cada turma
       if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
@@ -469,10 +473,13 @@
 
     function marcasDe(c) {
       return (c.certificado === "gratuito" ? ["cert-gratuito"] : [])
+        .concat(c.gratuidade_comprovada === false ? ["grat-confirmar"] : [])
         .concat((c.etiquetas || []).map(function (e) { return "pub:" + e.texto; }))
         .concat((c.acessibilidade || []).map(function (e) { return "acc:" + e.texto; }));
     }
-    function textoMarca(m) { return m === "cert-gratuito" ? "Certificado gratuito" : m.replace(/^(pub|acc):/, ""); }
+    function textoMarca(m) {
+      return m === "cert-gratuito" ? "Certificado gratuito" : m === "grat-confirmar" ? "Gratuidade por confirmar" : m.replace(/^(pub|acc):/, "");
+    }
     function cidadesDe(c) {
       if ((c.turmas || []).length) return turmasAtuais(c).map(function (t) { return t.cidade; }).filter(Boolean);
       var l = [c.cidade].concat((c.onde_inscrever || []).map(function (u) { return u.municipio; }));
@@ -692,6 +699,7 @@
       if (c.inscricoes_ate) linhas.push("<li><strong>Inscrições até:</strong> " + esc(dataCurta(c.inscricoes_ate)) + "</li>");
       var qp = quemPode(c); if (qp) linhas.push("<li><strong>Quem pode:</strong> " + esc(qp) + "</li>");
       if (c.exclusivo_para) linhas.push("<li><strong>Atenção:</strong> " + esc(c.exclusivo_para) + "</li>");
+      if (c.gratuidade_comprovada === false) linhas.push("<li><strong>Atenção:</strong> " + GRATUIDADE_AVISO + "</li>");
       (c.etiquetas || []).forEach(function (e) { linhas.push("<li><strong>Vagas:</strong> " + esc(e.texto) + "</li>"); });
       if ((c.acessibilidade || []).length) linhas.push("<li><strong>Acessibilidade:</strong> " + esc(c.acessibilidade.map(function (e) { return e.texto; }).join(", ")) + "</li>");
       var levar = [c.documentos].concat(unidadesDaCidade(c).map(function (u) { return u.o_que_levar; })).filter(Boolean);

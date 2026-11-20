@@ -16,6 +16,9 @@ BREVO = "https://api.brevo.com/v3"
 NOMES = {"BR-CE": "Ceará", "BR-MA": "Maranhão", "BR-AC": "Acre", "BR-PI": "Piauí", "PT": "Portugal"}
 
 
+# regra do projeto (20/11/2026): sem frase oficial que diga que não há custo, avisa-se em todo o lado
+GRATUIDADE_AVISO = "⚠️ Gratuidade por confirmar: a página oficial não o diz por escrito."
+
 def data_curta(iso):
     return f"{iso[8:10]}/{iso[5:7]}" if iso and len(iso) >= 10 else ""
 
@@ -65,7 +68,7 @@ def texto_whatsapp(cfg, ultimos, novos):
 
     def bloco(c):
         if c.get("turmas"):
-            out = [f"✅ *{c['titulo']}*"]
+            out = [f"✅ *{c['titulo']}*"] + ([GRATUIDADE_AVISO] if c.get("gratuidade_comprovada") is False else [])
             for t in c["turmas"][:3]:
                 partes = [t.get("unidade", ""), data_curta(t["inicio"]) if t.get("inicio") else "", t.get("horario", ""),
                           f"inscrições até {data_curta(t['prazo'])}" if t.get("prazo") else ""]
@@ -76,7 +79,7 @@ def texto_whatsapp(cfg, ultimos, novos):
         detalhe = onde(c)
         if c.get("inscricoes_ate"):
             detalhe += f" · inscrições até {data_curta(c['inscricoes_ate'])}"
-        out = [f"✅ *{c['titulo']}*", detalhe]
+        out = [f"✅ *{c['titulo']}*", detalhe] + ([GRATUIDADE_AVISO] if c.get("gratuidade_comprovada") is False else [])
         if c.get("exclusivo_para"):
             out.append(c["exclusivo_para"])
         out += [c["url"], ""]
@@ -141,6 +144,8 @@ def cartaz_pdf(cfg, ultimos, novos, destino):
         detalhe = onde(c) or ""
         if c.get("inscricoes_ate"):
             detalhe += f"  ·  inscrições até {data_curta(c['inscricoes_ate'])}"
+        if c.get("gratuidade_comprovada") is False:
+            detalhe += "  ·  gratuidade por confirmar"
         pdf.setFont("Helvetica", 13)
         pdf.drawString(58, y - 19, detalhe[:80])
         y -= 52
@@ -188,7 +193,9 @@ def html_newsletter(cfg, noticias, cursos):
                 f'<p style="margin:0 0 4px"><a href="{html.escape(c["url"])}" style="color:#1d3f8f;font-weight:bold;'
                 f'text-decoration:none">{html.escape(c["titulo"])}</a></p>'
                 f'<p style="margin:0 0 16px">{html.escape(c.get("descricao") or "")} '
-                f'<span style="color:#4a5163">({html.escape(onde(c))})</span></p>')
+                f'<span style="color:#4a5163">({html.escape(onde(c))})</span>'
+                + (f' <strong>{html.escape(GRATUIDADE_AVISO)}</strong>' if c.get("gratuidade_comprovada") is False else "")
+                + '</p>')
     if noticias:
         partes.append('<h2 style="color:#1d3f8f;font-size:20px;margin:24px 0 8px">Notícias do setor social</h2>')
         for n in noticias:

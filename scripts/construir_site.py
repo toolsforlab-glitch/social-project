@@ -11,7 +11,7 @@ import shutil
 import sys
 import time
 
-from base import DESCRICAO_PAGINA, Base, carregar_config, comprovado, curso_no_site, etiqueta_idade, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
+from base import DESCRICAO_PAGINA, Base, gratuidade_comprovada, carregar_config, comprovado, curso_no_site, etiqueta_idade, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
 from comum import caminho, gravar_json
 from paginas import destino_fixo, ler_destino
 
@@ -186,7 +186,9 @@ def exportar_dados(base, cfg):
             "pagina_propria": bool((r.get("Página do curso") or "").strip()), "local": r.get("Local", ""), "modalidade": r.get("Modalidade", ""),
             "destino": destino_do_curso(r),
             "pais": r.get("País", ""), "regiao": r.get("Região", ""), "cidade": r.get("Cidade", ""),
-            "descricao": r.get("Descrição", ""), "descricao_origem": origem_descricao(r), "necessidades": lista(r.get("Necessidades")),
+            "descricao": r.get("Descrição", ""), "descricao_origem": origem_descricao(r),
+            # sem frase da página que diga que não há custo: o site mostra «Gratuidade por confirmar»
+            "gratuidade_comprovada": gratuidade_comprovada(r), "necessidades": lista(r.get("Necessidades")),
             "exclusivo_para": r.get("Condição de acesso", ""), "requisitos": r.get("Requisitos", ""),
             "certificado": r.get("Certificado", ""),
             # uma data só aparece se estiver comprovada na página ou confirmada por uma pessoa

@@ -266,7 +266,7 @@ CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_at
                 "idade_minima": "idade", "idade_maxima": "idade máxima", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
                 "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
                 "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público",
-                "acessibilidade": "acessibilidade", "conteudo": "conteúdo", "para_que_serve": "para que serve"}
+                "acessibilidade": "acessibilidade", "conteudo": "conteúdo", "para_que_serve": "para que serve", "programa": "programa"}
 
 # Acessibilidade para pessoas com deficiência: uma etiqueta só existe quando a frase da fonte nomeia o recurso.
 # Um curso DE Libras ou SOBRE acessibilidade não conta (isso é o tema, não um recurso oferecido a quem estuda).
@@ -365,6 +365,43 @@ COLUNAS_BARREIRAS = {"idade_minima": "Idade mínima", "idade_maxima": "Idade má
                      "documentos": "Documentos pedidos"}
 ESCOLARIDADES = ["Nenhuma", "Saber ler e escrever", "Fundamental incompleto", "Fundamental completo",
                  "Médio incompleto", "Médio completo", "Superior"]
+
+
+# Gratuidade: só conta uma frase que diga que o curso não tem custo («gratuito», «gratuitamente», «sem custo»,
+# «bolsa integral»…). O nome do programa («Programa Senac de Gratuidade») não serve: concluir que o curso é
+# gratuito pelo nome é dedução (regra do responsável, 20/11/2026). Sem frase, o site mostra «Gratuidade por confirmar».
+_GRATUIDADE = re.compile(r"gratuit|sem\s+(qualquer\s+)?(custo|pagamento|cobran|[ôo]nus|mensalidade|taxa)|custo\s+zero|"
+                         r"bolsas?\s+(de\s+estudos?\s+)?(integra|100\s*%)|n[ãa]o\s+(h[áa]|haver[áa]|ser[áa])\s+"
+                         r"(cobrad|cobran|custo|taxa)", re.I)
+_GRATUIDADE_NEGADA = re.compile(r"n[ãa]o\s+(é|são|e|sao|será|serão)\s+gratuit", re.I)
+
+
+def gratuidade_explicita(frase):
+    """True se a frase diz, com palavras suas, que não há custo (e não o nega)."""
+    frase = frase or ""
+    return bool(_GRATUIDADE.search(frase)) and not _GRATUIDADE_NEGADA.search(frase)
+
+
+def frase_de_gratuidade(texto):
+    """A primeira frase do texto que diz explicitamente que não há custo, tal como está escrita (ou "")."""
+    for frase in re.split(r"(?<=[.;!?])\s+|\n+", texto or ""):
+        frase = re.sub(r"\s+", " ", frase).strip()
+        if 8 <= len(frase) <= 400 and gratuidade_explicita(frase):
+            return frase
+    return ""
+
+
+def gratuidade_comprovada(r):
+    """Gratuidade com prova: revista por uma pessoa, entidade marcada «Tudo gratuito» por uma pessoa, ou uma frase
+    guardada na Evidência que diz explicitamente que não há custo."""
+    if (r.get("Revisto por pessoa") or "").strip():
+        return True
+    if not comprovado(r, "gratuito"):
+        return False
+    evidencia = r.get("Evidência") or ""
+    if "Tudo gratuito" in evidencia:
+        return True
+    return any(gratuidade_explicita(f) for f in re.findall(r"«([^»]*)»", evidencia))
 
 
 def comprovado(r, campo):

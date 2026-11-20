@@ -34,7 +34,7 @@ import urllib.parse
 import zipfile
 import html as _html
 
-from base import (HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, etiquetas_acessibilidade,
+from base import (HISTORICO, frase_de_gratuidade, gratuidade_comprovada, gratuidade_explicita, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, etiquetas_acessibilidade,
                   perfis_da_frase, sim)
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
 from turmas import ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, necessidades, registo
@@ -79,6 +79,8 @@ MAX_CARACTERES = 30000
 DIAGNOSTICO = os.environ.get("SENAC_MA_DIAGNOSTICO", "")  # pasta onde guardar texto e resposta de cada edital
 MAX_TENTATIVAS = 2       # um edital sem nada comprovado é relido uma vez; à segunda fica de lado
 
+SEM_FRASE_GRATUIDADE = "O edital não diz por escrito que o curso é gratuito (só nomeia o Programa Senac de Gratuidade)."
+
 SISTEMA = """Extrais dados de um edital oficial do Senac Maranhão (Programa Senac de Gratuidade) para uma base \
 de dados pública. Cada valor que devolves vai ser conferido por código no texto do edital: só conta se vier \
 acompanhado da frase EXATA do documento (copiada letra a letra, sem corrigir erros, até 40 palavras).
@@ -95,7 +97,8 @@ aparecer com as células separadas por " | " numa só linha: copia a linha com o
 cursos, "turmas" nunca vem vazio. "frase" é o texto da linha do Anexo I desse curso, \
 copiado tal como aparece no texto que recebes (começa no nome do curso e inclui a data de início das aulas).
 - "cidade": o município onde o curso decorre, como está escrito no edital.
-- "gratuidade": a frase exata do edital que diz que o curso é do Programa Senac de Gratuidade ou gratuito.
+- "gratuidade": a frase exata do edital que diz que o curso é gratuito ou sem custo para quem estuda (ex.: \
+"gratuito", "sem custo", "bolsa integral"). O nome do programa sozinho não serve; se não houver, null.
 - "renda": a frase exata com o critério de renda, se existir.
 - "reserva": a frase exata que reserva vagas ou dá prioridade a um grupo de pessoas (ex.: pessoas com deficiência, \
 mulheres, pessoas negras, quilombolas), se existir; senão null.
@@ -246,13 +249,16 @@ def provar(res, texto, publicado, continua=False):
     modo = res.get("modo") if res.get("modo") in ("presencial", "online", "ambos") else ""
     if modo in ("presencial", "ambos") and not local:
         modo = ""  # inscrição presencial sem local comprovado não serve a ninguém
-    gratuito = citacao_valida(str(res.get("gratuidade") or ""), texto) and "gratuid" in str(res.get("gratuidade")).lower()
+    # gratuidade: só uma frase que diga que não há custo; o nome do programa não chega (regra de 20/11/2026)
+    gratuito = citacao_valida(str(res.get("gratuidade") or ""), texto) and gratuidade_explicita(str(res.get("gratuidade")))
     if not gratuito:
-        # o nome do programa está escrito no próprio documento: a prova é o texto, conferido por código
-        m = re.search(r"[^.\n]{0,80}(?:programa\s+senac\s+de\s+gratuidade|gratuidade\s+regimental)[^.\n]{0,80}",
-                      texto, flags=re.I)
-        if m:
-            gratuito, res["gratuidade"] = True, re.sub(r"\s+", " ", m.group(0)).strip()
+        frase = frase_de_gratuidade(texto)
+        if frase:
+            gratuito, res["gratuidade"] = True, frase
+    # o nome do programa no edital (não prova a gratuidade; serve para publicar com «Gratuidade por confirmar»)
+    m = re.search(r"[^.\n]{0,80}(?:programa\s+senac\s+de\s+gratuidade|gratuidade\s+regimental)[^.\n]{0,80}",
+                  texto, flags=re.I)
+    res["programa"] = re.sub(r"\s+", " ", m.group(0)).strip() if m else ""
     renda = str(res.get("renda") or "") if citacao_valida(str(res.get("renda") or ""), texto) else ""
     reserva = str(res.get("reserva") or "") if citacao_valida(str(res.get("reserva") or ""), texto) else ""
     if (not perfis_da_frase(reserva) or "( )" in reserva
@@ -693,13 +699,15 @@ def correr(fonte):
                     "Como me inscrever": "", **VERIFICACAO_INICIAL,
                     "Nota da verificação": f"{hoje}: curso criado a partir do edital nº {e.get('number')} do {fonte['nome']}.",
                     "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE",
-                    "Evidência": (f"gratuito: «{res.get('gratuidade')}»" if edital["gratuito"] else "")
+                    "Evidência": (f"gratuito: «{res.get('gratuidade')}»" if edital["gratuito"]
+                                  else f"programa: «{res.get('programa')}»" if res.get("programa") else "")
                     + (f" | renda: «{edital['renda']}»" if edital["renda"] else "")
                     + (f" | acessibilidade: «{edital['acessibilidade']}»" if edital["acessibilidade"] else ""),
-                    "Campos comprovados": ", ".join((["gratuito"] if edital["gratuito"] else []) + provados
+                    "Campos comprovados": ", ".join((["gratuito"] if edital["gratuito"] else
+                                                     ["programa"] if res.get("programa") else []) + provados
                                                     + (["acessibilidade"] if edital["acessibilidade"] else [])),
                     "Renda máxima": edital["renda"][:200], "Precisa de internet": "Não" if edital["modo"] == "presencial" else "",
-                    "O que falta confirmar": "" if edital["gratuito"] else "O edital não confirmou a gratuidade.",
+                    "O que falta confirmar": "" if edital["gratuito"] else SEM_FRASE_GRATUIDADE,
                 }
                 cursos_novos.append(novo)
                 curso = cursos[k] = novo["ID"]
@@ -732,9 +740,10 @@ def correr(fonte):
     for curso, sit, est in turmas_finais.values():
         if est == "Publicado" and sit == "Aberta":
             abertas[curso] = abertas.get(curso, 0) + 1
-    nota = f"{hoje}: publicado automaticamente: turma aberta aprovada na auditoria e gratuidade escrita no edital."
+    nota = (f"{hoje}: publicado automaticamente: turma aberta aprovada na auditoria e edital do Programa Senac de "
+            "Gratuidade (sem frase de gratuidade, o site mostra «Gratuidade por confirmar»).")
     for n in cursos_novos:
-        if abertas.get(n["ID"]) and "gratuito" in n["Campos comprovados"]:
+        if abertas.get(n["ID"]) and ("gratuito" in n["Campos comprovados"] or "programa" in n["Campos comprovados"]):
             n["Estado"], n["Nota da verificação"] = "Publicado", nota
     alteracoes_cursos = []
     for r in linhas_cursos:
@@ -742,6 +751,16 @@ def correr(fonte):
             continue
         campos = {}
         comprovados = r.get("Campos comprovados") or ""
+        # gratuidade gravada antes da regra de 20/11/2026 só com o nome do programa: passa a «programa»
+        lista_prov = [c.strip() for c in comprovados.split(",") if c.strip()]
+        if "gratuito" in lista_prov and not gratuidade_comprovada(r):
+            lista_prov = ["programa" if c == "gratuito" else c for c in lista_prov]
+            comprovados = ", ".join(dict.fromkeys(lista_prov))
+            falta = (r.get("O que falta confirmar") or "").strip()
+            campos.update({"Campos comprovados": comprovados,
+                           "Evidência": (r.get("Evidência") or "").replace("gratuito: «", "programa: «"),
+                           "O que falta confirmar": (SEM_FRASE_GRATUIDADE + " " + falta).strip()[:900]
+                           if SEM_FRASE_GRATUIDADE not in falta else falta})
         frase = gratuidade_provada.get(r["ID"].strip())
         if frase and "gratuito" not in comprovados:
             comprovados = ", ".join(["gratuito"] + [c for c in comprovados.split(", ") if c])
@@ -758,7 +777,7 @@ def correr(fonte):
         if nova != r.get("Situação das inscrições"):
             campos["Situação das inscrições"] = nova
         if (r.get("Estado") == "Novo" and r.get("Origem") == "turmas" and abertas.get(r["ID"].strip())
-                and "gratuito" in comprovados and not sim(r.get("Mudança a rever"))):
+                and ("gratuito" in comprovados or "programa" in comprovados) and not sim(r.get("Mudança a rever"))):
             campos.update({"Estado": "Publicado", "Nota da verificação": nota})
         if campos:
             alteracoes_cursos.append((r["_linha"], campos))

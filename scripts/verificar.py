@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
+from base import DESCRICAO_PAGINA, gratuidade_explicita, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import chave as chave_titulo, destino_do_link, destino_texto, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
@@ -253,6 +253,10 @@ def main():
                 provas[chave] = str(frase).strip()
             elif frase:
                 rejeitadas.append(CAMPOS_PROVA[chave])
+        # gratuidade: a frase tem de dizer que não há custo (o nome de um programa não chega)
+        if "gratuito" in provas and not gratuidade_explicita(provas["gratuito"]):
+            del provas["gratuito"]
+            rejeitadas.append(CAMPOS_PROVA["gratuito"])
         # acessibilidade: a frase tem de nomear um recurso concreto (segunda barreira, por código)
         if "acessibilidade" in provas and (str(res.get("acessibilidade") or "").lower() != "sim"
                                            or not etiquetas_acessibilidade(provas["acessibilidade"])):

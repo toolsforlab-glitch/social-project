@@ -101,3 +101,107 @@ def encontrar_pagina(link, bruto, titulo, dominios, abrir=None):
     if len(confirmadas) > 1:
         return "", f"a página geral tem {len(confirmadas)} páginas para este curso (várias turmas)"
     return "", "o link leva a uma página geral e a página deste curso não foi confirmada"
+
+
+# ------------------------------------------------------------------ destino do link
+# Regra do projeto: quem clica num botão do site tem de saber que página vai abrir. Cada link é classificado
+# e o site escreve o botão e uma nota a partir desta classificação (ver construir_site.py e app.js):
+#   curso      a página do próprio curso ou turma (o título do curso está no título ou cabeçalho da página)
+#   acesso     uma página de entrada (login): é preciso entrar com uma conta antes de ver a inscrição
+#   lista      uma lista geral onde o curso aparece: o site diz o nome exato a procurar
+#   pdf        um documento PDF (edital): o site diz onde estão os cursos
+#   formulario um formulário de inscrição (Google Forms, Microsoft Forms, etc.)
+#   inicio     a página inicial do site: o site diz o nome a procurar
+#   geral      uma página que não fala deste curso: não serve, o curso não é publicado sozinho
+FORMULARIOS = ("docs.google.com/forms", "forms.gle", "forms.office.com", "forms.microsoft.com", "typeform.com",
+               "jotform.com", "survio.com", "pesquisa.", "formulario")
+ACESSO_URL = r"/(login|signin|sign-in|sign_in|entrar|acessar|acesso|auth|sso|oauth|cas/login)(/|\.php|\?|$)"
+
+
+def destino_do_link(url_final, bruto, titulo):
+    """Devolve (tipo, nome a procurar na página ou "")."""
+    if isinstance(bruto, bytes):
+        if bruto[:4] == b"%PDF":
+            return "pdf", ""
+        bruto = bruto.decode("utf-8", "replace")
+    url = (url_final or "").lower()
+    if re.search(r"\.pdf($|[?#])", url):
+        return "pdf", ""
+    if any(f in url for f in FORMULARIOS):
+        return "formulario", ""
+    caminho = urllib.parse.urlparse(url).path
+    so_texto = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", bruto)
+    pede_senha = re.search(r'(?i)<input[^>]+type=["\']?password', bruto) and len(chave(so_texto)) < 4000
+    if re.search(ACESSO_URL, caminho) or pede_senha:
+        return "acesso", ""
+    if e_pagina_do_curso(bruto, titulo):
+        return "curso", ""
+    alvo = chave(titulo_curto(titulo))
+    if len(alvo) >= 6:
+        # o nome tal como está escrito na página (texto de uma ligação ou de um título que contém o curso)
+        for bloco in re.findall(r"(?is)<(?:a|h[1-6]|strong|b)\b[^>]*>(.*?)</(?:a|h[1-6]|strong|b)>", so_texto):
+            texto = re.sub(r"\s+", " ", _html.unescape(re.sub(r"(?s)<[^>]+>", " ", bloco))).strip()
+            if alvo in chave(texto) and len(texto) <= 200:
+                return ("inicio" if caminho in ("", "/") else "lista"), texto
+        if alvo in chave(so_texto):
+            return ("inicio" if caminho in ("", "/") else "lista"), titulo_curto(titulo)
+    return "geral", ""
+
+
+def destino_texto(tipo, procurar="", conta="", frase=""):
+    """Forma escrita na coluna «Destino do link» (legível na folha e lida de volta por ler_destino)."""
+    partes = [tipo]
+    if procurar:
+        partes.append(f"procurar: «{procurar}»")
+    if conta:
+        partes.append(f"conta: {conta}")
+    if frase:
+        partes.append(f"frase: «{frase}»")
+    return " | ".join(partes)
+
+
+def ler_destino(texto):
+    d = {"tipo": "", "procurar": "", "conta": "", "frase": ""}
+    for i, parte in enumerate((texto or "").split(" | ")):
+        parte = parte.strip()
+        if i == 0:
+            d["tipo"] = parte
+        elif ": " in parte:
+            k, v = parte.split(": ", 1)
+            if k in d:
+                d[k] = v.strip().strip("«»")
+    return d
+
+
+# Fontes lidas por leitores próprios (turmas): o destino de cada link é conhecido e foi confirmado abrindo o
+# link sem sessão iniciada. REGRA: uma fonte nova de turmas só entra com a sua linha nesta tabela; sem ela,
+# construir_site.py avisa e o site mostra só «Ver na página oficial».
+DESTINOS_FONTES = [
+    # Centec Academy: o link de inscrição da turma abre primeiro a página de acesso (CPF e senha) - 20/11/2026
+    (r"^https://academy\.centec\.org\.br/", {
+        "tipo": "acesso", "conta": "Centec Academy",
+        "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e "
+                "telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão."}),
+    # Centec presencial: não há página por turma, só a lista geral; inscrição na unidade com o CPF - 20/11/2026
+    (r"^https://www\.centec\.org\.br/", {
+        "tipo": "lista", "nota": "A inscrição é feita na unidade, com o CPF."}),
+    # Editais do Senac e do SENAI (MA, AC, PI): o link abre o PDF do edital
+    (r"\.pdf($|[?#])", {
+        "tipo": "pdf", "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim."}),
+    # Senac Ceará: página da própria turma, com o botão «matricule-se»
+    (r"^https://psg\.ce\.senac\.br/oportunidade/", {
+        "tipo": "curso", "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na "
+                                 "unidade dentro do prazo."}),
+    (r"^https://psg\.ce\.senac\.br/", {"tipo": "lista", "nota": ""}),
+]
+
+
+def destino_fixo(link, procurar=""):
+    """Destino de um link de uma fonte conhecida (tabela acima), ou None se a fonte não estiver na tabela."""
+    for padrao, d in DESTINOS_FONTES:
+        if re.search(padrao, link or "", flags=re.I):
+            r = {"tipo": d["tipo"], "conta": d.get("conta", ""), "nota": d.get("nota", ""), "procurar": "", "frase": ""}
+            if d["tipo"] in ("lista", "inicio"):
+                r["procurar"] = procurar
+            return r
+    return None

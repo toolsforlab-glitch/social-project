@@ -209,6 +209,21 @@ def baixar(url, timeout=30):
             return r.read()
 
 
+def baixar_final(url, timeout=30):
+    """Como baixar(), mas devolve também o endereço onde se chegou depois dos redirecionamentos
+    (ex.: um link de inscrição que, sem sessão iniciada, vai parar à página de acesso)."""
+    req = urllib.request.Request(url, headers={"User-Agent": AGENTE, "Accept": "*/*"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.read(), r.geturl()
+    except urllib.error.URLError as e:
+        if "CERTIFICATE_VERIFY_FAILED" not in str(e):
+            raise
+        contexto = _contexto_com_intermedio(urllib.parse.urlparse(url).hostname)
+        with urllib.request.urlopen(req, timeout=timeout, context=contexto) as r:
+            return r.read(), r.geturl()
+
+
 def dominio_permitido(url, dominios):
     m = re.match(r"https?://([^/:?#]+)", url or "")
     if not m:

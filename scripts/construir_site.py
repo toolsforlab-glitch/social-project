@@ -13,6 +13,7 @@ import time
 
 from base import Base, carregar_config, comprovado, curso_no_site, etiqueta_idade, etiqueta_publico, etiquetas_acessibilidade, sim, visivel
 from comum import caminho, gravar_json
+from paginas import destino_fixo, ler_destino
 
 PAGINAS = {
     "index.html": ("inicio", "{nome}: cursos gratuitos e informação útil"),
@@ -52,6 +53,24 @@ def passos(valor):
     return [l.split(". ", 1)[1] if l[:2].rstrip(".").isdigit() and ". " in l else l for l in linhas]
 
 
+def destino_do_curso(r):
+    """Para onde leva o botão do curso: coluna «Destino do link» (verificar.py) ou a tabela das fontes."""
+    url = (r.get("Página do curso") or "").strip() or r["Link"]
+    d = ler_destino(r.get("Destino do link"))
+    if d["tipo"]:
+        d["nota"] = ""
+        fixo = destino_fixo(url)
+        if fixo and not d["conta"]:
+            d["nota"] = fixo["nota"]
+        return d
+    fixo = destino_fixo(url, r.get("Título", ""))
+    if fixo:
+        return fixo
+    if (r.get("Página do curso") or "").strip():
+        return {"tipo": "curso", "conta": "", "nota": "", "procurar": "", "frase": ""}
+    return None
+
+
 def exportar_turmas(base, unidades, municipios):
     """Turmas por curso, lidas das páginas oficiais por turmas.py. Só saem as que não encerraram.
 
@@ -81,6 +100,8 @@ def exportar_turmas(base, unidades, municipios):
             "idade_minima": t.get("Idade mínima", ""), "escolaridade": t.get("Escolaridade", ""),
             "documentos": t.get("Documentos", ""), "local_texto": t.get("Local na fonte", ""),
             "titulo_fonte": t.get("Título na fonte", ""),
+            # para onde leva o botão da turma (tabela DESTINOS_FONTES em paginas.py)
+            "destino": destino_fixo(t["Link da turma"].strip(), t.get("Título na fonte", "")),
             "telefone": "" if (t.get("Modo de inscrição") or "").strip() else t.get("Mais informações", ""),
             # como se faz a inscrição: a coluna "Modo de inscrição" decide quando está preenchida; senão, pelo link
             "inscricao": (("online" if t["Modo de inscrição"].strip() == "online" else "presencial")
@@ -91,6 +112,11 @@ def exportar_turmas(base, unidades, municipios):
             "verificado_em": (t.get("Última verificação") or "")[:10],
             "reserva": (t.get("Vagas reservadas") or "").strip(),
         })
+    sem_destino = sorted({re.sub(r"^(https?://[^/]+).*", r"\1", x["link"]) for lst in por_curso.values()
+                          for x in lst if x["visivel"] and not x["destino"]})
+    if sem_destino:
+        print("AVISO: turmas de fontes sem destino conhecido (acrescentar a DESTINOS_FONTES em paginas.py): "
+              + ", ".join(sem_destino))
     for lst in por_curso.values():
         lst.sort(key=lambda t: (t["prazo"] or t["inicio"] or "9999", t["unidade"]))
     return por_curso, leitura_recente
@@ -147,6 +173,7 @@ def exportar_dados(base, cfg):
             # o botão leva à página própria do curso quando ela foi encontrada e confirmada (paginas.py)
             "url": (r.get("Página do curso") or "").strip() or r["Link"],
             "pagina_propria": bool((r.get("Página do curso") or "").strip()), "local": r.get("Local", ""), "modalidade": r.get("Modalidade", ""),
+            "destino": destino_do_curso(r),
             "pais": r.get("País", ""), "regiao": r.get("Região", ""), "cidade": r.get("Cidade", ""),
             "descricao": r.get("Descrição", ""), "necessidades": lista(r.get("Necessidades")),
             "exclusivo_para": r.get("Condição de acesso", ""), "requisitos": r.get("Requisitos", ""),

@@ -6,8 +6,8 @@ import re
 import sys
 
 from base import texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
-from comum import ErroClaude, baixar, claude, custo_estimado, dominio_permitido, extrair_json
-from paginas import chave as chave_titulo, e_pagina_do_curso, encontrar_pagina, titulo_curto
+from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json
+from paginas import chave as chave_titulo, destino_do_link, destino_texto, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
 ABA = "Cursos"
 MAX_POR_EXECUCAO = int(os.environ.get("MAX_VERIFICACOES", "60"))
@@ -56,6 +56,9 @@ acessibilidade para pessoas com deficiência: intérprete ou tradutor de Libras,
 acesso para cadeirantes), material em braile, audiodescrição, legendas, tecnologia assistiva ou leitor de tela; \
 senão null. Um curso DE Libras ou SOBRE acessibilidade não conta (é o tema, não um recurso). A evidência é a \
 frase que diz que o recurso existe.
+- "conta": nome da conta ou plataforma em que é preciso entrar (ou criar conta) para fazer a inscrição, como está \
+na página (ex.: "conta gov.br", "Centec Academy", "Escola Virtual"), SÓ se a página o disser; senão null. A evidência \
+é a frase que diz que é preciso entrar, criar conta ou fazer login para se inscrever.
 - "evidencias": objeto com as frases exatas para cada um dos campos acima (null quando não houver).
 
 ATENÇÃO a rótulos enganadores: alguns sites mostram "Inscrições abertas" em turmas que já começaram ou terminaram. \
@@ -126,6 +129,22 @@ def auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade=False):
 
 def texto_da_pagina(url):
     return texto_de_html(baixar(url, timeout=30))[:MAX_CARACTERES]
+
+
+def destino_do_curso_verificado(r, pagina_curso, res, ev, pagina):
+    """Classifica o destino do botão do curso e a conta exigida, só com prova (frase da página)."""
+    conta, frase = str(res.get("conta") or "").strip(), str((ev or {}).get("conta") or "").strip()
+    if not (conta and frase and chave_titulo(conta) and citacao_valida(frase, pagina) and re.search(
+            r"(?i)login|entrar|entre com|acess|conta|cadastr|senha|inscrev", frase)):
+        conta, frase = "", ""
+    if pagina_curso:
+        return destino_texto("curso", conta=conta, frase=frase)
+    try:
+        bruto, final = baixar_final(r["Link"], timeout=30)
+        tipo, procurar = destino_do_link(final, bruto, r["Título"])
+    except Exception:  # noqa: BLE001
+        return ""
+    return destino_texto(tipo, procurar, conta, frase)
 
 
 def pagina_do_curso(r, dominios):
@@ -256,6 +275,8 @@ def main():
                   "Próxima verificação": "",
                   "Evidência": " | ".join(f"{CAMPOS_PROVA[k]}: «{v}»" for k, v in provas.items())[:1500],
                   "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas])}
+        # para onde leva o botão do site (regra em paginas.py): a página do curso, ou o que o link abre de facto
+        campos["Destino do link"] = destino_do_curso_verificado(r, pagina_curso, res, ev, pagina)
         # públicos prioritários: só os que a frase da página nomeia; sem frase, o curso é para todos
         if not (r.get("Revisto por pessoa") or "").strip():
             nomeados = perfis_da_frase(provas.get("publico", ""))

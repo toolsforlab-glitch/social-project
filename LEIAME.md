@@ -3,7 +3,16 @@
 Site com cursos gratuitos e informação útil, começando por um piloto no **Ceará** (mais cursos on-line do Brasil). Tudo é gerido numa folha do Google Sheets e publicado sozinho pelo GitHub Actions, com o Claude (API da Anthropic) a pesquisar, verificar e escrever em linguagem simples.
 
 
-**Botões que dizem para onde levam** (site): quando o link oficial não abre a página da turma, o botão diz o que a pessoa vai encontrar. Centec on-line: «Entrar no Centec Academy e se inscrever», com o aviso de que abre a página de acesso (CPF e senha, ou «Criar uma conta») e só depois a inscrição na turma. Centec presencial: «Abrir a lista de cursos do Centec», com o nome exato a procurar na lista e a indicação de que a inscrição é na unidade com o CPF. Editais (PDF): «Ver o edital (PDF)», com a indicação de que os cursos estão na tabela do anexo.
+**Destino dos links: cada botão diz que página abre** (regra do projeto; `paginas.py`). Quem clica tem de cair no lugar que o botão anuncia e saber o que fazer lá. Cada link tem um destino:
+- `curso`: a página do próprio curso ou turma (o título do curso está no título ou no cabeçalho da página). Botão «Ver o curso e se inscrever» / «Ver esta turma e se inscrever».
+- `acesso`: uma página de entrada (login). Botão «Entrar no … e se inscrever», com a nota de que abre a página de acesso e não o curso.
+- `lista`: uma lista geral onde o curso aparece. Botão «Abrir a lista de cursos», com o nome exato a procurar, copiado da página.
+- `pdf`: o edital em PDF. Botão «Ver o edital (PDF)», com a indicação de onde estão os cursos.
+- `formulario`: um formulário de inscrição. Botão «Abrir o formulário de inscrição».
+- `inicio`: a página inicial do site. Botão «Abrir o site oficial», com o nome a procurar.
+- `geral`: uma página que não fala do curso. Não serve: o curso não é publicado sozinho (falta a página própria) e, se estiver publicado à mão, o site avisa para confirmar com a entidade.
+Além do destino, regista-se a **conta** exigida para a inscrição (ex.: conta gov.br, Escola Virtual), só com a frase da página como prova; o site diz «Para se inscrever, é preciso entrar com uma conta …» e, para a conta gov.br, aponta para o guia em Antes de começar.
+Procedimento para cursos novos: `verificar.py` classifica o destino de cada curso (coluna «Destino do link» em Cursos, ex.: `lista | procurar: «…» | conta: … | frase: «…»`), abrindo o link e seguindo os redirecionamentos (um link que vai parar a uma página de entrada é `acesso`). Procedimento para fontes novas de turmas: cada fonte tem de ter a sua linha na tabela `DESTINOS_FONTES` (`paginas.py`), confirmada abrindo o link sem sessão iniciada; sem ela, `construir_site.py` mostra um AVISO no registo e o site só diz «Ver na página oficial».
 
 **Prazos a terminar** (site): os cursos cujas inscrições acabam nos próximos 3 dias (prazo comprovado do curso ou da turma) têm a marca «Últimos dias», aparecem no bloco «Terminam em breve» no topo da lista e no filtro «Inscrições a terminar nos próximos 3 dias». O botão «Lembrar-me do prazo no calendário» descarrega um evento .ics no dia do fim das inscrições, com aviso na véspera ao meio-dia; fica no telemóvel da pessoa e o site não guarda nenhum dado.
 

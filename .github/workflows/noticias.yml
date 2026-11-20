@@ -85,6 +85,13 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
+      - name: Segunda opinião do GPT para dúvidas de gratuidade (o código prova)
+        timeout-minutes: 15
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        if: ${{ always() }}
+        run: cd scripts && python3 consultar_gpt.py || echo 'GPT não consultado'
+
       - name: Atualizar o site a partir da folha
         if: ${{ always() }}
         run: cd scripts && python3 construir_site.py

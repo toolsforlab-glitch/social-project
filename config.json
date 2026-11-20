@@ -276,5 +276,10 @@
     "max_cursos_whatsapp": 6,
     "newsletter_remetente_nome": "Projeto Social",
     "newsletter_remetente_email": ""
+  },
+  "gpt": {
+    "modelo": "gpt-5.5",
+    "max_consultas": 10,
+    "nota": "Segunda opinião do GPT (scripts/consultar_gpt.py): só aponta link e frase; o código prova. Precisa do segredo OPENAI_API_KEY."
   }
 }

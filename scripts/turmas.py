@@ -51,6 +51,10 @@ COLUNAS = ["ID", "Curso", "Estado", "Título na fonte", "Unidade na fonte", "Cid
            "Modo de inscrição", "Vagas reservadas"]
 LISTA_PSG = "https://psg.ce.senac.br/oportunidades/"
 BOLSAS_PSG = "https://psg.ce.senac.br/bolsa-de-estudos/"
+# Gratuidade do programa, escrita na página oficial do Senac Ceará (as páginas das turmas e a de Bolsas de estudos
+# não o dizem por escrito). Verificada letra a letra, por código, em cada leitura (regra de 20/11/2026).
+PAGINA_GRATUIDADE_PSG = "https://www.ce.senac.br/programa-senac-de-gratuidade/"
+FRASE_GRATUIDADE_PSG = "O Senac oferta vagas gratuitas para pessoas de baixa renda por meio do Programa Senac Gratuidade"
 ENTIDADE_PSG = "Senac Ceará (Programa Senac de Gratuidade)"
 DIAS_PARA_TRAS = 7  # turmas que começaram há mais tempo do que isto não são abertas para procurar cursos novos
 # Regras gerais do programa: (frase exata da página Bolsas de estudos, coluna, valor, nome em Campos comprovados)
@@ -313,9 +317,15 @@ def regras_do_programa(baixar_pagina):
             frases.append(f"«{frase}»")
     # gratuidade: só uma frase da página que diga que não há custo (o nome do programa não chega; regra de 20/11/2026)
     frase_g = frase_de_gratuidade(texto)
+    if not frase_g:
+        try:
+            if citacao_valida(FRASE_GRATUIDADE_PSG, texto_de_html(baixar_pagina(PAGINA_GRATUIDADE_PSG))):
+                frase_g = FRASE_GRATUIDADE_PSG
+        except Exception:  # noqa: BLE001
+            print(f"  ? não foi possível ler {PAGINA_GRATUIDADE_PSG}")
     if frase_g:
         provados.append("gratuito")
-        frases.append(f"gratuito: «{frase_g}»")
+        frases.append(f"gratuito: «{frase_g}» ({PAGINA_GRATUIDADE_PSG if frase_g == FRASE_GRATUIDADE_PSG else BOLSAS_PSG})")
     return campos, provados, frases, (REGRA_APERFEICOAMENTO if citacao_valida(REGRA_APERFEICOAMENTO, texto) else "")
 
 

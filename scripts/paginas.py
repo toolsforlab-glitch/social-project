@@ -193,6 +193,10 @@ DESTINOS_FONTES = [
         "tipo": "curso", "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na "
                                  "unidade dentro do prazo."}),
     (r"^https://psg\.ce\.senac\.br/", {"tipo": "lista", "nota": ""}),
+    # Senac Maranhão: página do edital do curso, com «Documentos» e o botão «Inscrição» em «Quer participar?» - 20/11/2026
+    (r"^https://ma\.senac\.br/editais_psg/", {
+        "tipo": "curso", "nota": "É a página do edital deste curso: em «Quer participar?» está o botão «Inscrição» e "
+                                 "em «Documentos» está o edital completo."}),
 ]
 
 

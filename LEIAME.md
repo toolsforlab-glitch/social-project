@@ -3,6 +3,8 @@
 Site com cursos gratuitos e informação útil, começando por um piloto no **Ceará** (mais cursos on-line do Brasil). Tudo é gerido numa folha do Google Sheets e publicado sozinho pelo GitHub Actions, com o Claude (API da Anthropic) a pesquisar, verificar e escrever em linguagem simples.
 
 
+**Prazos a terminar** (site): os cursos cujas inscrições acabam nos próximos 3 dias (prazo comprovado do curso ou da turma) têm a marca «Últimos dias», aparecem no bloco «Terminam em breve» no topo da lista e no filtro «Inscrições a terminar nos próximos 3 dias». O botão «Lembrar-me do prazo no calendário» descarrega um evento .ics no dia do fim das inscrições, com aviso na véspera ao meio-dia; fica no telemóvel da pessoa e o site não guarda nenhum dado.
+
 **Ordem entre rotinas e disparo de reserva** (`scripts/vez.py`, job "vez" no início de cada rotina). As rotinas já não partilham uma fila do GitHub (que só guarda uma rotina à espera e cancela a anterior): cada rotina espera que acabem as rotinas do projeto que começaram antes dela (até 45 minutos) e só depois corre. Os horários marcados chegam com horas de atraso, por isso a rotina diária tem um segundo horário às 13:17 UTC e a semanal às 14:23 UTC de segunda; num disparo marcado, se a rotina já correu com sucesso nesse dia, o disparo de reserva não faz nada. Disparos à mão correm sempre.
 
 ## Onde se gere tudo: a folha

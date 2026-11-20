@@ -45,6 +45,48 @@
       return !t.inicio || t.inicio > h;
     });
   }
+  // Prazos a terminar: dias que faltam até ao fim das inscrições (0 = hoje). Só com prazo comprovado.
+  var DIAS_ALERTA = 3;
+  function diasAte(iso) {
+    if (!iso) return null;
+    var p = iso.slice(0, 10).split("-"), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    var h = new Date(); h = new Date(h.getFullYear(), h.getMonth(), h.getDate());
+    return Math.round((d - h) / 864e5);
+  }
+  function prazoProximo(c) {
+    var turmas = turmasAtuais(c);
+    var prazos = (c.turmas || []).length ? turmas.map(function (t) { return t.prazo; }).filter(Boolean)
+                                          : (c.inscricoes_ate ? [c.inscricoes_ate] : []);
+    prazos = prazos.filter(function (x) { var n = diasAte(x); return n !== null && n >= 0; }).sort();
+    return prazos[0] || "";
+  }
+  function terminaEmBreve(c) { var n = diasAte(prazoProximo(c)); return n !== null && n >= 0 && n <= DIAS_ALERTA; }
+  function quandoTermina(iso) {
+    var n = diasAte(iso);
+    return n === 0 ? "Último dia: inscrições até hoje" : n === 1 ? "Últimos dias: inscrições até amanhã"
+         : "Últimos dias: inscrições até " + dataCurtaG(iso);
+  }
+  // «Lembrar-me»: evento de calendário (.ics) no dia do fim das inscrições, com aviso na véspera ao meio-dia.
+  // Fica no telemóvel da pessoa: o site não guarda nenhum dado.
+  function icsTexto(t) { return String(t || "").replace(/\\/g, "\\\\").replace(/([,;])/g, "\\$1").replace(/\r?\n/g, "\\n"); }
+  function lembrarHtml(titulo, prazo, link, sitio) {
+    if (!prazo || !(diasAte(prazo) >= 1)) return "";
+    var d = prazo.slice(0, 10).replace(/-/g, "");
+    var p = prazo.slice(0, 10).split("-"), fim = new Date(+p[0], +p[1] - 1, +p[2] + 1);
+    var dfim = fim.getFullYear() + ("0" + (fim.getMonth() + 1)).slice(-2) + ("0" + fim.getDate()).slice(-2);
+    var agora = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z";
+    var resumo = "Último dia de inscrição: " + titulo;
+    var ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Cursos gratuitos//PT-BR", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+      "UID:" + d + "-" + Math.abs(String(titulo + link).split("").reduce(function (a, ch) { return (a * 31 + ch.charCodeAt(0)) | 0; }, 7)) + "@cursos-gratuitos",
+      "DTSTAMP:" + agora, "DTSTART;VALUE=DATE:" + d, "DTEND;VALUE=DATE:" + dfim,
+      "SUMMARY:" + icsTexto(resumo),
+      "DESCRIPTION:" + icsTexto((sitio ? sitio + ". " : "") + "Inscreva-se até hoje. Confirme na página oficial: " + link),
+      "URL:" + link, "BEGIN:VALARM", "ACTION:DISPLAY", "TRIGGER:-PT12H",
+      "DESCRIPTION:" + icsTexto("Amanhã é o último dia de inscrição: " + titulo), "END:VALARM", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+    var nome = "inscricao-" + titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").slice(0, 40) + ".ics";
+    return '<a class="lembrar" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '" download="' + esc(nome) + '">' +
+      "Lembrar-me do prazo no calendário</a>";
+  }
   // turno pelo horário de início da turma: antes das 12h manhã, até às 18h tarde, depois noite
   function turnosDe(c) {
     if (!(c.turmas || []).length) return c.turnos || [];
@@ -53,12 +95,13 @@
       return isNaN(h) ? "" : h < 12 ? "Manhã" : h < 18 ? "Tarde" : "Noite";
     }).filter(Boolean);
   }
-  function turmaHtml(t, comBotao) {
+  function turmaHtml(t, comBotao, tituloCurso) {
     var l = ["<strong>" + esc(t.unidade || (t.local && t.local.nome) || "") + "</strong>" + (t.cidade ? " (" + esc(t.cidade) + ")" : "")];
     var quando = [t.inicio ? dataCurtaG(t.inicio) + (t.fim ? " a " + dataCurtaG(t.fim) : "") : "", t.horario, t.dias]
       .filter(Boolean).join(" · ");
     if (quando) l.push(esc(quando));
-    l.push(t.prazo ? '<span class="prazo">Inscrições até ' + esc(dataBonita(t.prazo)) + "</span>"
+    var urgente = t.prazo && diasAte(t.prazo) >= 0 && diasAte(t.prazo) <= DIAS_ALERTA;
+    l.push(t.prazo ? '<span class="prazo' + (urgente ? ' urgente' : '') + '">' + (urgente ? esc(quandoTermina(t.prazo)) : "Inscrições até " + esc(dataBonita(t.prazo))) + "</span>"
            : t.inscricao === "pagina" ? '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>'
            : '<span class="prazo">Inscrições abertas. O prazo não está indicado: inscreva-se antes de a turma começar</span>');
     if (t.info) l.push(esc(t.info));
@@ -78,6 +121,7 @@
     }
     if (comBotao) l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' +
       (t.inscricao === "online" ? "Fazer a inscrição on-line" : t.inscricao === "presencial" ? "Ver na página oficial" : "Ver esta turma e se inscrever") + "</a>");
+    if (comBotao && tituloCurso) l.push(lembrarHtml(tituloCurso, t.prazo, t.link, [t.unidade, t.cidade].filter(Boolean).join(", ")));
     return "<li>" + l.join("<br>") + "</li>";
   }
 
@@ -227,10 +271,12 @@
       }
       if (c.certificado === "gratuito") factos.push('<span class="bom">Certificado gratuito</span>');
       else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago</span>');
+      var breve = terminaEmBreve(c);
+      if (breve) factos.unshift('<span class="urgente">' + esc(quandoTermina(prazoProximo(c))) + "</span>");
       if (temTurmas) {
         factos.push('<span class="bom">' + (turmas.length === 1 ? "1 turma com inscrições abertas" : turmas.length + " turmas com inscrições abertas") + "</span>");
       } else {
-        if (c.inscricoes_ate) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
+        if (c.inscricoes_ate && !breve) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
         else if (c.data_por_confirmar) factos.push('<span class="atencao">Confirme a data na página oficial</span>');
         if (c.situacao === "Por confirmar") factos.push('<span class="atencao">Inscrições por confirmar</span>');
         if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
@@ -253,14 +299,14 @@
       // com turmas, os documentos são os de cada turma
       if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
       var linkTitulo = turmas.length === 1 ? turmas[0].link : c.url;
-      return '<li class="curso"><h3><a href="' + esc(linkTitulo) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
+      return '<li class="curso" id="curso-' + i + '"><h3><a href="' + esc(linkTitulo) + '" rel="noopener">' + esc(c.titulo) + "</a></h3>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         (c.descricao ? "<p>" + esc(c.descricao) + "</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         posso(c, i) + antesHtml(c) +
         (temTurmas ? '<div class="onde turmas"><p class="onde-titulo">Turmas com inscrições abertas</p><ul>' +
-          turmas.map(function (t) { return turmaHtml(t, true); }).join("") + "</ul>" +
+          turmas.map(function (t) { return turmaHtml(t, true, c.titulo); }).join("") + "</ul>" +
           (turmas.some(function (t) { return t.inscricao === "pagina"; }) ? '<p class="discreto">Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.</p>' : "") + "</div>" :
         c.onde_inscrever && c.onde_inscrever.length ? '<div class="onde"><p class="onde-titulo">Onde se inscrever</p><ul>' +
           c.onde_inscrever.map(function (u) {
@@ -278,6 +324,7 @@
         (temTurmas ? '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">Ver outras turmas na página oficial</a>'
                    : '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
                      (c.pagina_propria ? "Ver curso e se inscrever" : "Procurar este curso na página oficial") + "</a>") +
+        (!temTurmas ? lembrarHtml(c.titulo, c.inscricoes_ate, c.url, c.modalidade === "online" ? "On-line" : c.cidade) : "") +
         '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(dataBonita(c.verificado_em)) + ". " : "") +
         "Confirme sempre na página oficial antes de ir.</p></li>";
     }
@@ -295,6 +342,7 @@
         if (barreiras.indexOf("ajuda") >= 0 && (!c.ajuda || /^n[aã]o/i.test(c.ajuda))) return false;
         if (barreiras.indexOf("reservadas") >= 0 && !(c.etiquetas || []).length) return false;
         if (barreiras.indexOf("acessivel") >= 0 && !(c.acessibilidade || []).length) return false;
+        if (barreiras.indexOf("fecha_breve") >= 0 && !terminaEmBreve(c)) return false;
         if (cidade.value && c.modalidade !== "online" && cidadesDe(c).indexOf(cidade.value) < 0) return false;
         if (t) {
           var alvo = semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" "));
@@ -312,6 +360,17 @@
       if (o && o !== "online" && res.length) resumo += " (" + presenciais + (presenciais === 1 ? " presencial, " : " presenciais, ") + (res.length - presenciais) + " on-line)";
       contagem.textContent = res.length ? resumo : "";
       notaBarreiras.hidden = !barreiras.length;
+      // «Terminam em breve»: no topo, os cursos desta escolha cujas inscrições acabam nos próximos 3 dias
+      var breves = res.filter(terminaEmBreve).sort(function (a, b) { return prazoProximo(a).localeCompare(prazoProximo(b)); });
+      var caixaBreve = el("cursos-breve");
+      if (caixaBreve) {
+        caixaBreve.hidden = !breves.length || barreiras.indexOf("fecha_breve") >= 0;
+        el("cursos-breve-lista").innerHTML = breves.map(function (c) {
+          var sitio = c.modalidade === "online" ? "On-line" : cidadesDe(c).filter(function (v, i, a) { return a.indexOf(v) === i; }).slice(0, 3).join(", ") || c.cidade || "";
+          return '<li><a href="#curso-' + todos.indexOf(c) + '">' + esc(c.titulo) + "</a> " +
+            '<span class="discreto">' + (sitio ? esc(sitio) + ". " : "") + esc(quandoTermina(prazoProximo(c)).replace(/^Últimos? dias?: i/, "I")) + "</span></li>";
+        }).join("");
+      }
       lista.innerHTML = res.length ? res.map(function (c) { return cursoHtml(c, todos.indexOf(c)); }).join("") :
         '<li class="vazio">Não há cursos com essas opções no momento. Tente escolher menos opções ou "Mostrar tudo" em "Onde você está?". A lista é atualizada todo dia.</li>';
 

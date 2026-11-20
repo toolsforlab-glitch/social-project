@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-20T23:13",
+ "atualizado": "2026-11-20T23:50",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -136,7 +136,7 @@
    "cidade": "",
    "descricao": "Aprende a fazer bolos, recheios e coberturas. Serve para trabalhar em confeitaria ou começar um negócio de doces.",
    "descricao_origem": "resumo",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "negocio"
@@ -259,7 +259,7 @@
    "cidade": "",
    "descricao": "Se você é manicure e pedicure, busque um novo diferencial competitivo: aprenda técnicas de pintura artística de unhas, utilizando métodos de embelezamento de mãos e pés, seguindo as tendências da moda. Faça arte nas unhas das suas clientes",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -351,7 +351,7 @@
    "cidade": "",
    "descricao": "Apresenta técnicas de serviço de manicure a profissionais para atuar e intervir em seu campo de trabalho, com foco em resultados.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -443,7 +443,7 @@
    "cidade": "",
    "descricao": "Este curso tem como objetivo desenvolver conhecimentos e habilidades básicas necessárias para realização de instalações elétricas prediais de baixa tensão.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -535,7 +535,7 @@
    "cidade": "",
    "descricao": "O segmento de beleza no Brasil é um dos três maiores do mundo. Para ganhar destaque dentro de um setor dinâmico e competitivo, é preciso ser um profissional completo. Neste curso , você aprenderá as técnicas mais modernas de beleza capilar, tratamento, corte, escova, penteado, coloração, descoloração, ondulação e alisamento com perfeição e habilidade. O Senac é referência na área e você poderá tornar-se um profissional de excelência. Matricule-se agora e vem ser Senac!",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -627,7 +627,7 @@
    "cidade": "",
    "descricao": "A diferença de uma peça íntima está nos detalhes e no acabamento. Para dominar tudo isso e se destacar, aprenda todo o processo de montagem de peças íntimas, seguindo as tendências da moda.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -719,7 +719,7 @@
    "cidade": "",
    "descricao": "Aperfeiçoa profissionais para operar, inspecionar, manter ou supervisionar, de forma segura, máquinas e equipamentos, obedecendo às normas, leis e procedimentos de segurança do trabalho, promovendo a percepção das responsabilidades inerentes ao uso seguro desses dispositivos no ambiente de trabalho.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -811,7 +811,7 @@
    "cidade": "",
    "descricao": "Este curso tem como objetivo aperfeiçoar profissionais para aplicar os princípios de avaliação e medição do agente químicos, visando o Gerenciamento de Riscos Ocupacionais, caracterização de insalubridade e aposentadoria especial.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -903,7 +903,7 @@
    "cidade": "",
    "descricao": "Nem só estilistas movem o mundo da moda. Os modelistas atuam em qualquer segmento do setor e são responsáveis pela confecção de moldes de roupas femininas e masculinas. Podem trabalhar para as marcas e confecções, bem como autônomo. Oportunidades não faltam! Matricule-se agora e vem ser Senac!",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -995,7 +995,7 @@
    "cidade": "",
    "descricao": "A área financeira desempenha um papel vital no funcionamento da economia global, sendo o alicerce que sustenta as operações de empresas e organizações. Composta por uma variedade de ocupações, desempenha um papel crítico na tomada de decisões estratégicas e na garantia da estabilidade financeira.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego",
@@ -1088,7 +1088,7 @@
    "cidade": "",
    "descricao": "Qualifica o participante no preparo de massas, molhos e recheios para a fabricação de pizzas empanificadoras, restaurantes, hotéis ou buffets, de acordo, com as normas de higiene e manipulação de alimentos.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -1180,7 +1180,7 @@
    "cidade": "",
    "descricao": "Aperfeiçoar o profissional nas técnicas de costura em tecido plano, utilizando variações e diferentes recortes na confecção de peças de cama, mesa e banho.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -3060,7 +3060,7 @@
    "cidade": "",
    "descricao": "Capacita o participante para executar serviços de manutenção preventiva e corretiva de instalações elétricas de baixa tensão, de acordo com as normas de segurança",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -3152,7 +3152,7 @@
    "cidade": "",
    "descricao": "O papel do assistente de logística é fundamental para o eficaz funcionamento dos principais processos da empresa, sendo uma das ocupações mais requisitadas no mercado do trabalho. Aprenda sobre distribuição de mercadorias, fornecendo as informações necessárias para a tomada de decisões importantes sobre operações logísticas. Matricule-se agora e vem ser Senac!",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego",
@@ -3245,7 +3245,7 @@
    "cidade": "",
    "descricao": "Aperfeiçoa o profissional para a implementação da NR 10 nas medidas de proteção à segurança e à saúde dos trabalhadores em instalações e serviços com eletricidade.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -3337,7 +3337,7 @@
    "cidade": "",
    "descricao": "Este curso tem como objetivo compreender, valorizar e aplicar técnicas relacionadas à produção e comercialização desse prato tradicional cearense, fortalecendo sua relevância cultural e ampliando seu potencial econômico.",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -3468,7 +3468,7 @@
    "cidade": "",
    "descricao": "A comida afetiva é aquela que os sabores despertam sensações de familiaridade e conforto, através das memórias. Os pratos que vão à mesa do cearense você aprende no Senac. São receitas típicas da nossa culinária, que convidam a conhecer melhor a diversidade dos insumos regionais e diversos modos de preparo que só vão enriquecer seu menu. Matricule-se agora e vem ser Senac!",
    "descricao_origem": "pagina",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"

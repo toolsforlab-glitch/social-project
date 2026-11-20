@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-20T16:08",
+ "atualizado": "2026-11-20T16:26",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -9,6 +9,13 @@
    "pagina_propria": true,
    "local": "online",
    "modalidade": "online",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "conta gov.br (nível prata ou ouro)",
+    "frase": "Você precisa ter uma conta nível Prata ou Ouro para acessar este serviço.",
+    "nota": ""
+   },
    "pais": "BR",
    "regiao": "",
    "cidade": "",
@@ -59,6 +66,13 @@
    "pagina_propria": true,
    "local": "online",
    "modalidade": "online",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "conta gov.br",
+    "frase": "Você precisa ter uma conta nível Bronze, Prata ou Ouro para acessar este serviço.",
+    "nota": ""
+   },
    "pais": "BR",
    "regiao": "",
    "cidade": "",
@@ -106,6 +120,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Bolos, Recheios e Coberturas",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -147,6 +168,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "Bolos, Recheios e Coberturas",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -213,6 +241,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Unhas Artísticas",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -254,6 +289,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "Unhas Artísticas",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -289,6 +331,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Técnicas de Serviços de Manicure",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -330,6 +379,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "Técnicas de Serviços de Manicure",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -365,6 +421,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Instalação elétrica predial",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -406,6 +469,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.12.376 – Instalação elétrica predial",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(88) 99454-9703",
      "inscricao": "pagina",
      "info": "",
@@ -441,6 +511,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Cabeleireiro",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -482,6 +559,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.27.126 – Cabeleireiro",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(88) 99675-9215",
      "inscricao": "pagina",
      "info": "",
@@ -517,6 +601,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Costura de Moda Íntima",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -558,6 +649,13 @@
      "documentos": "Requisito/conhecimentos específicos: ter curso de Costureiro ou experiência comprovada na área. Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.10.229 – Costura de Moda Íntima",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(88) 99205-8252",
      "inscricao": "pagina",
      "info": "",
@@ -593,6 +691,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "NR 12 – Segurança no Trabalho em Máquinas e Equipamentos",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -634,6 +739,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.07.1317 – NR 12 – Segurança no Trabalho em Máquinas e Equipamentos",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
@@ -669,6 +781,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Higiene Ocupacional Aplicada: Agentes Químicos",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -710,6 +829,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.07.1313 – Higiene Ocupacional Aplicada: Agentes Químicos",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
@@ -745,6 +871,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Modelista",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -786,6 +919,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.07.842 – Modelista",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
@@ -821,6 +961,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Assistente Financeiro",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -863,6 +1010,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.07.1334 – Assistente Financeiro",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
@@ -898,6 +1052,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Pizzaiolo",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -939,6 +1100,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.07.71 – Pizzaiolo",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(85) 3270-5401",
      "inscricao": "pagina",
      "info": "",
@@ -974,6 +1142,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Costura em Cama, Mesa e Banho",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1015,6 +1190,13 @@
      "documentos": "Comprovante de RG, CPF e residência.",
      "local_texto": "",
      "titulo_fonte": "2026.19.285 – Costura em Cama, Mesa e Banho",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "(88) 99779-0011",
      "inscricao": "pagina",
      "info": "",
@@ -1050,6 +1232,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Ferramentas Digitais",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1091,6 +1280,13 @@
      "documentos": "",
      "local_texto": "RUA JOÃO MARTINS DE SOUSA, 33",
      "titulo_fonte": "FERRAMENTAS DIGITAIS - CVT FORTIM",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1123,6 +1319,13 @@
      "documentos": "",
      "local_texto": "RUA ANTÔNIO PALÁCIO CAVALCANTE, 113, NOSSA SENHORA DE FÁTIMA",
      "titulo_fonte": "FERRAMENTAS DIGITAIS - CVT JUCÁS",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1158,6 +1361,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Técnicas de Negociação e Vendas",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1199,6 +1409,13 @@
      "documentos": "",
      "local_texto": "RUA PROFESSOR VALDEVINO DE ALENCAR, No 243",
      "titulo_fonte": "TÉCNICAS DE NEGOCIAÇÃO E VENDAS - CVT VIÇOSA",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1234,6 +1451,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Agentes de Inteligência Artificial e Automações",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1275,6 +1499,13 @@
      "documentos": "",
      "local_texto": "RUA ANTÔNIO PALÁCIO CAVALCANTE, 113, NOSSA SENHORA DE FÁTIMA",
      "titulo_fonte": "AGENTES DE INTELIGÊNCIA ARTIFICIAL E AUTOMAÇÕES - CVT JUCÁS",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1310,6 +1541,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Práticas Administrativas",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1351,6 +1589,13 @@
      "documentos": "",
      "local_texto": "RUA WALTER LOPES, 149- CENTRO",
      "titulo_fonte": "PRÁTICAS ADMINISTRATIVAS - CVT MARANGUAPE",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1386,6 +1631,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Fundamentos em Cibersegurança",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1427,6 +1679,13 @@
      "documentos": "",
      "local_texto": "RUA ZACARIAS PINHEIRO S/N, CENTRO.",
      "titulo_fonte": "FUNDAMENTOS EM CIBERSEGURANÇA - CVT PIQUET CARNEIRO",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1459,6 +1718,13 @@
      "documentos": "",
      "local_texto": "RUA ZACARIAS PINHEIRO S/N, CENTRO.",
      "titulo_fonte": "FUNDAMENTOS EM CIBERSEGURANÇA - CVT PIQUET CARNEIRO",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1494,6 +1760,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Introdução ao ChatGPT e Aplicações de IA Generatica",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1535,6 +1808,13 @@
      "documentos": "",
      "local_texto": "AV. EMIDIO SALES, 152- AFONSO WALTER MAGALHÃES PINTO",
      "titulo_fonte": "INTRODUÇÃO AO CHATGPT E APLICAÇÕES DE IA GENERATICA - CVT SANTA QUITERIA",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1570,6 +1850,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Noções de Liderança e Gestão de Pessoas",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1611,6 +1898,13 @@
      "documentos": "",
      "local_texto": "AVENIDA MILTON CARVALHO, SEM NÚMERO, CENTRO",
      "titulo_fonte": "NOÇÕES DE LIDERANÇA E GESTÃO DE PESSOAS - CVT IPU",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1646,6 +1940,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Noções de Informática",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1687,6 +1988,13 @@
      "documentos": "",
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT MARACANAÚ",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1722,6 +2030,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "online",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Excel Intermediário",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1763,6 +2078,13 @@
      "documentos": "",
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "titulo_fonte": "EXCEL INTERMEDIÁRIO - CVT MARACANAÚ",
+     "destino": {
+      "tipo": "acesso",
+      "conta": "Centec Academy",
+      "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "online",
      "info": "",
@@ -1798,6 +2120,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Noções de Informática",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1839,6 +2168,13 @@
      "documentos": "",
      "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
      "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT MARACANAÚ - 23/11 a 04/12/2026 - 8h às 12h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "NOÇÕES DE INFORMÁTICA - CVT MARACANAÚ - 23/11 a 04/12/2026 - 8h às 12h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -1871,6 +2207,13 @@
      "documentos": "",
      "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
      "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 24/11 a 07/12/26 - 18h às 22h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 24/11 a 07/12/26 - 18h às 22h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
      "info": "",
@@ -1903,6 +2246,13 @@
      "documentos": "",
      "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
      "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT MARANGUAPE - 30/11 a 16/12/2026 - 18h às 21h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "NOÇÕES DE INFORMÁTICA - CVT MARANGUAPE - 30/11 a 16/12/2026 - 18h às 21h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -1938,6 +2288,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Ferramentas Digitais",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -1979,6 +2336,13 @@
      "documentos": "",
      "local_texto": "RUA JOÃO MARTINS DE SOUSA, 33",
      "titulo_fonte": "FERRAMENTAS DIGITAIS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "FERRAMENTAS DIGITAIS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -2014,6 +2378,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Práticas Administrativas",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2055,6 +2426,13 @@
      "documentos": "",
      "local_texto": "RUA JOÃO MARTINS DE SOUSA,33",
      "titulo_fonte": "PRÁTICAS ADMINISTRATIVAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "PRÁTICAS ADMINISTRATIVAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -2087,6 +2465,13 @@
      "documentos": "",
      "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
      "titulo_fonte": "PRÁTICAS ADMINISTRATIVAS - CVT IGUATU - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "PRÁTICAS ADMINISTRATIVAS - CVT IGUATU - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "(88) 9 96510043",
      "inscricao": "presencial",
      "info": "",
@@ -2122,6 +2507,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Noções em Instalações Elétricas",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2163,6 +2555,13 @@
      "documentos": "",
      "local_texto": "VILA CAJUEIRO",
      "titulo_fonte": "NOÇÕES EM INSTALAÇÕES ELÉTRICAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "NOÇÕES EM INSTALAÇÕES ELÉTRICAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -2198,6 +2597,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Elaboração de Pratos e Sobremesas Natalina",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2239,6 +2645,13 @@
      "documentos": "",
      "local_texto": "RUA PADRE ZACARIAS, 450",
      "titulo_fonte": "ELABORAÇÃO DE PRATOS E SOBREMESAS NATALINA - CVT QUIXERÉ - 30/11 a 11/12/2026 - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "ELABORAÇÃO DE PRATOS E SOBREMESAS NATALINA - CVT QUIXERÉ - 30/11 a 11/12/2026 - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -2274,6 +2687,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Excel Básico",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2315,6 +2735,13 @@
      "documentos": "",
      "local_texto": "RUA CÔNEGO BESSA, 2381, CENTRO, LIMOEIRO DO NORTE",
      "titulo_fonte": "EXCEL BÁSICO - CVT LIMOEIRO - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "EXCEL BÁSICO - CVT LIMOEIRO - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -2347,6 +2774,13 @@
      "documentos": "",
      "local_texto": "RUA PROFESSOR VALDEVINO DE ALENCAR, No 243",
      "titulo_fonte": "EXCEL BÁSICO - CVT VIÇOSA DO CEARÁ - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "EXCEL BÁSICO - CVT VIÇOSA DO CEARÁ - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "(88)996510015",
      "inscricao": "presencial",
      "info": "",
@@ -2382,6 +2816,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Noções em Recursos Humanos",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2423,6 +2864,13 @@
      "documentos": "",
      "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
      "titulo_fonte": "NOÇÕES EM RECURSOS HUMANOS - CVT MARANGUAPE - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "NOÇÕES EM RECURSOS HUMANOS - CVT MARANGUAPE - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
+      "frase": ""
+     },
      "telefone": "3066-7000",
      "inscricao": "presencial",
      "info": "",
@@ -2458,6 +2906,13 @@
    "pagina_propria": true,
    "local": "BR-MA",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "conta": "",
+    "nota": "",
+    "procurar": "",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Maranhão",
    "cidade": "",
@@ -2489,6 +2944,7 @@
      "documentos": "",
      "local_texto": "Centro de Educação Profissional de Bacabal",
      "titulo_fonte": "Assistente Administrativo",
+     "destino": null,
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 17/11/2026 a 25/11/2026",
@@ -2524,6 +2980,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Eletricista Instalador Predial de Baixa Tensão",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2565,6 +3028,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "Eletricista Instalador Predial de Baixa Tensão",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -2600,6 +3070,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Assistente de Logística",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2642,6 +3119,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "Assistente de Logística",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -2677,6 +3161,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "NR 10 – Segurança em instalações e serviços em eletricidade",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2718,6 +3209,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "NR 10 – Segurança em instalações e serviços em eletricidade",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -2753,6 +3251,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Pratinho",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2794,6 +3299,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "Pratinho",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -2826,6 +3338,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "Pratinho",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -2861,6 +3380,13 @@
    "pagina_propria": false,
    "local": "BR-CE",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "",
+    "procurar": "Cozinha Regional",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
@@ -2902,6 +3428,13 @@
      "documentos": "Comprovante de RG, CPF e residência",
      "local_texto": "",
      "titulo_fonte": "Cozinha Regional",
+     "destino": {
+      "tipo": "curso",
+      "conta": "",
+      "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "pagina",
      "info": "",
@@ -2937,6 +3470,13 @@
    "pagina_propria": true,
    "local": "BR-AC",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "pdf",
+    "conta": "",
+    "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+    "procurar": "",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Acre",
    "cidade": "",
@@ -2968,6 +3508,13 @@
      "documentos": "",
      "local_texto": "Unidade Operativa do Senac no Palácio do Comércio, Avenida Ceará, nº 3258 1º Andar, Bairro Abrão Alab, Rio Branco/AC",
      "titulo_fonte": "Operar Sistemas Operacionais Cliente, Aplicativos de Escritório e Periféricos",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
@@ -2990,6 +3537,13 @@
      "documentos": "",
      "local_texto": "Unidade Operativa do Senac no Palácio do Comércio, Avenida Ceará, nº 3258 1º Andar, Bairro Abrão Alab, Rio Branco/AC",
      "titulo_fonte": "Operar Sistemas Operacionais Cliente, Aplicativos de Escritório e Periféricos",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
@@ -3012,6 +3566,13 @@
      "documentos": "",
      "local_texto": "Unidade Operativa do Senac no Palácio do Comércio, Avenida Ceará, nº 3258 1º Andar, Bairro Abrão Alab, Rio Branco/AC",
      "titulo_fonte": "Operar Sistemas Operacionais Cliente, Aplicativos de Escritório e Periféricos",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
@@ -3034,6 +3595,13 @@
      "documentos": "",
      "local_texto": "Unidade Operativa do Senac no Palácio do Comércio, Avenida Ceará, nº 3258 1º Andar, Bairro Abrão Alab, Rio Branco/AC",
      "titulo_fonte": "Operar Sistemas Operacionais Cliente, Aplicativos de Escritório e Periféricos",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
@@ -3056,6 +3624,13 @@
      "documentos": "",
      "local_texto": "Escola Professora Clícia Gadelha situada na Estrada São Francisco, nº 1968, Bairro Vitória, na cidade de Rio Branco/AC",
      "titulo_fonte": "Operar Sistemas Operacionais Cliente, Aplicativos de Escritório e Periféricos",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
@@ -3078,6 +3653,13 @@
      "documentos": "",
      "local_texto": "Escola Professora Clícia Gadelha situada na Estrada São Francisco, nº 1968, Bairro Vitória, na cidade de Rio Branco/AC",
      "titulo_fonte": "Operar Sistemas Operacionais Cliente, Aplicativos de Escritório e Periféricos",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
@@ -3113,6 +3695,13 @@
    "pagina_propria": true,
    "local": "BR-AC",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "pdf",
+    "conta": "",
+    "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+    "procurar": "",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Acre",
    "cidade": "",
@@ -3144,6 +3733,13 @@
      "documentos": "",
      "local_texto": "Unidade Operativa do Senac Centro de Educação Profissional-CEP, situada na Avenida Lauro Müller, Nº. 1930, Bairro Artur Maia, no município de Cruzeiro do Sul/Acre",
      "titulo_fonte": "Instalar e configurar componentes de hardware",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 23/11/2026",
@@ -3166,6 +3762,13 @@
      "documentos": "",
      "local_texto": "Unidade Operativa do Senac Centro de Educação Profissional-CEP, Avenida Lauro Müller, Nº. 1930, Bairro Artur Maia, Cruzeiro do Sul/Acre",
      "titulo_fonte": "Instalar e configurar componentes de hardware",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 23/11/2026",
@@ -3188,6 +3791,13 @@
      "documentos": "",
      "local_texto": "Escola Borges de Aquino, situada na Rua Beira Rio, nº s/n, Centro, município de Porto Walter (AC)",
      "titulo_fonte": "Instalar e Configurar Componentes de Hardware",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 01/12/2026",
@@ -3223,6 +3833,13 @@
    "pagina_propria": true,
    "local": "BR-AC",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "pdf",
+    "conta": "",
+    "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+    "procurar": "",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Acre",
    "cidade": "",
@@ -3254,6 +3871,13 @@
      "documentos": "",
      "local_texto": "Secretaria Municipal de Assistência Social, Rua Anselmo Maia, nº 2015, bairro José Martins, no município de Mâncio Lima, Estado do Acre (AC)",
      "titulo_fonte": "Design Thinking",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 17/11/2026 a 01/12/2026",
@@ -3276,6 +3900,13 @@
      "documentos": "",
      "local_texto": "Secretaria Municipal de Assistência Social, localizada na Rua Anselmo Maia, nº 2015, bairro José Martins, no município de Mâncio Lima, Estado do Acre (AC)",
      "titulo_fonte": "Design Thinking",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 13/11/2026 a 01/12/2026",
@@ -3298,6 +3929,13 @@
      "documentos": "",
      "local_texto": "Escola Borges de Aquino, situada na Rua Beira Rio, nº s/n, Centro, município de Porto Walter (AC)",
      "titulo_fonte": "Design Thinking",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 01/12/2026",
@@ -3333,6 +3971,13 @@
    "pagina_propria": true,
    "local": "BR-AC",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "pdf",
+    "conta": "",
+    "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+    "procurar": "",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Acre",
    "cidade": "",
@@ -3364,6 +4009,13 @@
      "documentos": "",
      "local_texto": "Unidade Operativa do Senac no Bosque, Rua Alvorada, nº 777, Bairro Bosque, Rio Branco/AC",
      "titulo_fonte": "Manicure e Pedicure",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 11/11/2026 a 19/11/2026",
@@ -3399,6 +4051,13 @@
    "pagina_propria": true,
    "local": "BR-AC",
    "modalidade": "presencial",
+   "destino": {
+    "tipo": "pdf",
+    "conta": "",
+    "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+    "procurar": "",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "Acre",
    "cidade": "",
@@ -3430,6 +4089,13 @@
      "documentos": "",
      "local_texto": "Escola Borges de Aquino, situada na Rua Beira Rio, nº s/n, Centro, município de Porto Walter (AC)",
      "titulo_fonte": "Assistência de enfermagem materno-infantil",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 01/12/2026",
@@ -3465,6 +4131,13 @@
    "pagina_propria": true,
    "local": "online",
    "modalidade": "online",
+   "destino": {
+    "tipo": "curso",
+    "conta": "",
+    "nota": "",
+    "procurar": "",
+    "frase": ""
+   },
    "pais": "BR",
    "regiao": "",
    "cidade": "",

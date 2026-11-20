@@ -120,26 +120,46 @@
       if (u.telefone) l.push("Telefone " + esc(u.telefone));
     }
     if (comBotao) {
-      // Dizer exatamente o que a pessoa vai encontrar ao clicar: o link nem sempre abre a página da turma.
-      var academy = /^https:\/\/academy\.centec\.org\.br\//.test(t.link);
-      var listaCentec = /^https:\/\/www\.centec\.org\.br\//.test(t.link);
-      var edital = /\.pdf(#|$)/i.test(t.link);
-      var rotulo = academy ? "Entrar no Centec Academy e se inscrever"
-                 : listaCentec ? "Abrir a lista de cursos do Centec"
-                 : edital ? "Ver o edital (PDF)"
-                 : t.inscricao === "online" ? "Fazer a inscrição on-line"
-                 : t.inscricao === "presencial" ? "Ver na página oficial" : "Ver esta turma e se inscrever";
-      if (academy) l.push('<span class="guia-link">O botão abre a página de acesso do Centec Academy. Entre com o seu CPF e senha. ' +
-        "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e telefone). " +
-        "Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez neste botão.</span>");
-      if (listaCentec) l.push('<span class="guia-link">O botão abre a lista geral de cursos do Centec, não a turma. ' +
-        (t.titulo_fonte ? "Na lista, procure «" + esc(t.titulo_fonte) + "». " : "") +
-        "A inscrição é feita na unidade, com o CPF.</span>");
-      if (edital) l.push('<span class="guia-link">O botão abre o edital completo. Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.</span>');
-      l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' + rotulo + "</a>");
+      var b = destinoBotao(t.destino, true, t.inscricao);
+      if (b.nota) l.push('<span class="guia-link">' + b.nota + "</span>");
+      l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' + esc(b.rotulo) + "</a>");
     }
     if (comBotao && tituloCurso) l.push(lembrarHtml(tituloCurso, t.prazo, t.link, [t.unidade, t.cidade].filter(Boolean).join(", ")));
     return "<li>" + l.join("<br>") + "</li>";
+  }
+
+  // Botão e nota a partir do destino do link (paginas.py: curso, acesso, lista, pdf, formulario, inicio, geral).
+  // Regra do projeto: quem clica tem de saber que página vai abrir e o que fazer lá.
+  function destinoBotao(d, emTurma, inscricao) {
+    d = d || {};
+    var conta = d.conta || "";
+    var govbr = /gov\.br/i.test(conta);
+    var extra = d.nota ? " " + esc(d.nota) : "";
+    var umaConta = /^conta\b/i.test(conta) ? "uma " + conta : "uma conta em " + conta;
+    var precisaConta = conta && d.tipo !== "acesso" ? " Para se inscrever, é preciso entrar com " + esc(umaConta) + "." +
+      (govbr ? ' Veja como criar a conta e subir de nível em <a href="antes.html">Antes de começar</a>.' : "") : "";
+    switch (d.tipo) {
+      case "curso":
+        return { rotulo: emTurma ? "Ver esta turma e se inscrever" : "Ver o curso e se inscrever", nota: (precisaConta + extra).trim() };
+      case "acesso":
+        return { rotulo: "Entrar no " + (conta || "site") + " e se inscrever",
+                 nota: "O botão abre a página de acesso" + (conta ? " do " + esc(conta) : "") + ", não o curso. Entre com a sua conta." +
+                       (d.nota ? extra : " Se ainda não tem conta, é preciso criar uma nessa página. Depois de entrar, clique outra vez no botão.") };
+      case "lista":
+        return { rotulo: "Abrir a lista de cursos", nota: "O botão abre uma lista geral, não o curso. " +
+                 (d.procurar ? "Na lista, procure «" + esc(d.procurar) + "»." : "Na lista, procure o nome do curso.") + precisaConta + extra };
+      case "inicio":
+        return { rotulo: "Abrir o site oficial", nota: "O botão abre a página inicial do site, não o curso. " +
+                 (d.procurar ? "Procure «" + esc(d.procurar) + "»." : "Procure o nome do curso.") + precisaConta + extra };
+      case "pdf":
+        return { rotulo: "Ver o edital (PDF)", nota: "O botão abre o documento completo, em PDF." + extra };
+      case "formulario":
+        return { rotulo: "Abrir o formulário de inscrição", nota: "O botão abre o formulário de inscrição deste curso." + precisaConta + extra };
+      case "geral":
+        return { rotulo: "Ver na página oficial", nota: "A página oficial não mostra este curso diretamente: confirme com a entidade antes de ir." };
+      default:
+        return { rotulo: inscricao === "online" ? "Fazer a inscrição on-line" : emTurma ? "Ver na página oficial" : "Procurar este curso na página oficial", nota: "" };
+    }
   }
 
   function preencherOnde(select, locais, valor) {
@@ -324,7 +344,7 @@
         posso(c, i) + antesHtml(c) +
         (temTurmas ? '<div class="onde turmas"><p class="onde-titulo">Turmas com inscrições abertas</p><ul>' +
           turmas.map(function (t) { return turmaHtml(t, true, c.titulo); }).join("") + "</ul>" +
-          (turmas.some(function (t) { return t.inscricao === "pagina"; }) ? '<p class="discreto">Na página da turma, use o botão «matricule-se» e entregue os documentos na unidade dentro do prazo.</p>' : "") + "</div>" :
+"</div>" :
         c.onde_inscrever && c.onde_inscrever.length ? '<div class="onde"><p class="onde-titulo">Onde se inscrever</p><ul>' +
           c.onde_inscrever.map(function (u) {
             var linhas = ["<strong>" + esc(u.nome) + "</strong>"];
@@ -339,9 +359,12 @@
         (!temTurmas && c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
           c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
         (temTurmas ? '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
-                     (/centec\.org\.br/.test(c.url) ? "Ver todos os cursos do Centec" : /\.pdf/i.test(c.url) ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>"
-                   : '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
-                     (c.pagina_propria ? "Ver curso e se inscrever" : "Procurar este curso na página oficial") + "</a>") +
+                     ((c.destino || {}).tipo === "lista" ? "Ver a lista completa de cursos" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>"
+                   : (function () {
+                       var b = destinoBotao(c.destino, false, "");
+                       return (b.nota ? '<p class="guia-link">' + b.nota + "</p>" : "") +
+                         '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' + esc(b.rotulo) + "</a>";
+                     })()) +
         (!temTurmas ? lembrarHtml(c.titulo, c.inscricoes_ate, c.url, c.modalidade === "online" ? "On-line" : c.cidade) : "") +
         '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(dataBonita(c.verificado_em)) + ". " : "") +
         "Confirme sempre na página oficial antes de ir.</p></li>";

@@ -80,6 +80,7 @@ def exportar_turmas(base, unidades, municipios):
             "horario": t.get("Horário", ""), "dias": t.get("Dias", ""), "prazo": t.get("Prazo de inscrição", ""),
             "idade_minima": t.get("Idade mínima", ""), "escolaridade": t.get("Escolaridade", ""),
             "documentos": t.get("Documentos", ""), "local_texto": t.get("Local na fonte", ""),
+            "titulo_fonte": t.get("Título na fonte", ""),
             "telefone": "" if (t.get("Modo de inscrição") or "").strip() else t.get("Mais informações", ""),
             # como se faz a inscrição: a coluna "Modo de inscrição" decide quando está preenchida; senão, pelo link
             "inscricao": (("online" if t["Modo de inscrição"].strip() == "online" else "presencial")

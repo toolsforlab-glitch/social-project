@@ -130,14 +130,14 @@
 
   // Botão e nota a partir do destino do link (paginas.py: curso, acesso, lista, pdf, formulario, inicio, geral).
   // Regra do projeto: quem clica tem de saber que página vai abrir e o que fazer lá.
-  function destinoBotao(d, emTurma, inscricao) {
+  function destinoBotao(d, emTurma, inscricao, jaTemGuiaGovbr) {
     d = d || {};
     var conta = d.conta || "";
     var govbr = /gov\.br/i.test(conta);
     var extra = d.nota ? " " + esc(d.nota) : "";
     var umaConta = /^conta\b/i.test(conta) ? "uma " + conta : "uma conta em " + conta;
     var precisaConta = conta && d.tipo !== "acesso" ? " Para se inscrever, é preciso entrar com " + esc(umaConta) + "." +
-      (govbr ? ' Veja como criar a conta e subir de nível em <a href="antes.html">Antes de começar</a>.' : "") : "";
+      (govbr && !jaTemGuiaGovbr ? ' Veja como criar a conta e subir de nível em <a href="antes.html#govbr">Antes de começar</a>.' : "") : "";
     switch (d.tipo) {
       case "curso":
         return { rotulo: emTurma ? "Ver esta turma e se inscrever" : "Ver o curso e se inscrever", nota: (precisaConta + extra).trim() };
@@ -361,7 +361,7 @@
         (temTurmas ? '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
                      ((c.destino || {}).tipo === "lista" ? "Ver a lista completa de cursos" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>"
                    : (function () {
-                       var b = destinoBotao(c.destino, false, "");
+                       var b = destinoBotao(c.destino, false, "", (c.antes || []).indexOf("govbr") >= 0);
                        return (b.nota ? '<p class="guia-link">' + b.nota + "</p>" : "") +
                          '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' + esc(b.rotulo) + "</a>";
                      })()) +

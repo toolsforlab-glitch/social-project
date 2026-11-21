@@ -17,7 +17,7 @@
       if (a.host === location.host || a.getAttribute("target")) return;
       a.setAttribute("target", "_blank");
       a.setAttribute("rel", "noopener");
-      if (!a.querySelector(".so-leitor")) a.insertAdjacentHTML("beforeend", '<span class="so-leitor"> (abre noutra aba)</span>');
+      if (!a.querySelector(".so-leitor")) a.insertAdjacentHTML("beforeend", '<span class="so-leitor"> (abre em outra aba)</span>');
     });
   }
   marcarExternos(document);
@@ -99,7 +99,7 @@
       "DESCRIPTION:" + icsTexto("Amanhã é o último dia de inscrição: " + titulo), "END:VALARM", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
     var nome = "inscricao-" + titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").slice(0, 40) + ".ics";
     return '<a class="lembrar" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '" download="' + esc(nome) + '">' +
-      "Lembrar-me do prazo no calendário</a>";
+      "Adicionar o prazo à agenda do celular</a>";
   }
   // turno pelo horário de início da turma: antes das 12h manhã, até às 18h tarde, depois noite
   function turnosDe(c) {
@@ -117,7 +117,7 @@
     var urgente = t.prazo && diasAte(t.prazo) >= 0 && diasAte(t.prazo) <= DIAS_ALERTA;
     l.push(t.prazo ? '<span class="prazo' + (urgente ? ' urgente' : '') + '">' + (urgente ? esc(quandoTermina(t.prazo)) : "Inscrições até " + esc(dataBonita(t.prazo))) + "</span>"
            : t.inscricao === "pagina" ? '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>'
-           : '<span class="prazo">Inscrições abertas. O prazo não está indicado: inscreva-se antes de a turma começar</span>');
+           : '<span class="prazo">Inscrições abertas. O prazo não está indicado: inscreva-se antes do início da turma</span>');
     if (t.info) l.push(esc(t.info));
     if (t.inscricao === "online") l.push(t.info ? "Inscrição pela internet." : "Aulas on-line ao vivo. Inscrição pela internet.");
     if (t.inscricao === "presencial") l.push("Inscrição presencial" + (t.local_texto ? " em: " + esc(t.local_texto) : " na unidade"));
@@ -161,10 +161,10 @@
                        (d.nota ? extra : " Se ainda não tem conta, é preciso criar uma nessa página. Depois de entrar, clique outra vez no botão.") };
       case "lista":
         return { rotulo: "Abrir a lista de cursos", nota: "O botão abre uma lista geral, não o curso. " +
-                 (d.procurar ? "Na lista, procure «" + esc(d.procurar) + "»." : "Na lista, procure o nome do curso.") + precisaConta + extra };
+                 (d.procurar ? "Na lista, procure “" + esc(d.procurar) + "”." : "Na lista, procure o nome do curso.") + precisaConta + extra };
       case "inicio":
         return { rotulo: "Abrir o site oficial", nota: "O botão abre a página inicial do site, não o curso. " +
-                 (d.procurar ? "Procure «" + esc(d.procurar) + "»." : "Procure o nome do curso.") + precisaConta + extra };
+                 (d.procurar ? "Procure “" + esc(d.procurar) + "”." : "Procure o nome do curso.") + precisaConta + extra };
       case "pdf":
         return { rotulo: "Ver o edital (PDF)", nota: "O botão abre o documento completo, em PDF." + extra };
       case "formulario":
@@ -367,9 +367,9 @@
       }).join("");
       var condicoes = [];
       if (c.exclusivo_para) condicoes.push(esc(c.exclusivo_para));
-      (c.etiquetas || []).forEach(function (e) { condicoes.push("Sobre as vagas, a fonte diz: «" + esc(e.frase.replace(/[.\s]+$/, "")) + "»"); });
+      (c.etiquetas || []).forEach(function (e) { condicoes.push("Sobre as vagas, a fonte diz: “" + esc(e.frase.replace(/[.\s]+$/, "")) + "”"); });
       var frasesAcess = (c.acessibilidade || []).map(function (e) { return e.frase; }).filter(function (f, i, a) { return a.indexOf(f) === i; });
-      frasesAcess.forEach(function (f) { condicoes.push("Sobre acessibilidade, a fonte diz: «" + esc(f.replace(/[.\s]+$/, "")) + "»"); });
+      frasesAcess.forEach(function (f) { condicoes.push("Sobre acessibilidade, a fonte diz: “" + esc(f.replace(/[.\s]+$/, "")) + "”"); });
       if (c.gratuidade_comprovada === false) condicoes.push(GRATUIDADE_AVISO);
       if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
       // com turmas, os documentos são os de cada turma
@@ -464,7 +464,7 @@
       var aviso = el("cursos-marca");
       if (aviso) {
         aviso.hidden = !marcaEscolhida;
-        aviso.innerHTML = marcaEscolhida ? "A mostrar só os cursos com: <strong>" + esc(textoMarca(marcaEscolhida)) + "</strong> " +
+        aviso.innerHTML = marcaEscolhida ? "Mostrando só os cursos com: <strong>" + esc(textoMarca(marcaEscolhida)) + "</strong> " +
           '<button type="button" class="botao secundario pequeno" id="cursos-marca-limpar">Mostrar todos os cursos</button>' : "";
       }
       if (cidade.value) q.set("cidade", cidade.value);

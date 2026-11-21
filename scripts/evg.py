@@ -171,6 +171,10 @@ def main():
         campos["Inscrições até"] = p["prazo"] if p["aberto"] else ""
         if faq["certificado"]:
             campos["Certificado"] = "gratuito"
+        if not (r.get("Descrição") or "").strip():  # sem descrição: a apresentação oficial do curso, tal como está
+            apresentacao = " ".join(re.split(r"(?<=[.!?])\s+", sem_html(det.get("tx_apresentacao")))[:2])[:500]
+            if apresentacao:
+                campos["Descrição"], campos["Origem da descrição"] = apresentacao, DESCRICAO_PAGINA
         if r.get("Estado") == "Novo" and p["aberto"] and faq["gratuito"] and p["publico_aberto"] and not sim(r.get("Mudança a rever")):
             campos["Estado"] = "Publicado"
             campos["Nota da verificação"] = (f"{hoje}: publicado automaticamente: inscrições abertas, gratuidade e "

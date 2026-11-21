@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-21T01:17",
+ "atualizado": "2026-11-21T01:41",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -27,8 +27,8 @@
    ],
    "exclusivo_para": "",
    "requisitos": "",
-   "certificado": "",
-   "certificado_comprovado": false,
+   "certificado": "gratuito",
+   "certificado_comprovado": true,
    "inscricoes_ate": "",
    "data_por_confirmar": false,
    "situacao": "Aberto",
@@ -87,11 +87,11 @@
    ],
    "exclusivo_para": "",
    "requisitos": "Ter e-mail ou CPF para criar o acesso",
-   "certificado": "",
-   "certificado_comprovado": false,
+   "certificado": "gratuito",
+   "certificado_comprovado": true,
    "inscricoes_ate": "",
    "data_por_confirmar": false,
-   "situacao": "Por confirmar",
+   "situacao": "Aberto",
    "turmas": [],
    "em_revisao": true,
    "onde_inscrever": [],

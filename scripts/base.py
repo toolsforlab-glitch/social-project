@@ -394,13 +394,16 @@ def frase_de_gratuidade(texto):
 
 # Provas encontradas pelo GPT (consultar_gpt.py) e conferidas por código, guardadas na Evidência assim:
 #   rótulo: «frase» (link; encontrada pelo GPT, conferida por código)
+# ou, para sites que os servidores do GitHub não conseguem abrir (gov.br), conferidas no navegador do responsável:
+#   rótulo: «frase» (link; encontrada no navegador (Chrome), conferida por código)
 MARCA_GPT = "encontrada pelo GPT, conferida por código"
-_PROVA_GPT = re.compile(r"([\wçãáéíóúâêô ]+): «([^»]*)» \((https?://[^;)\s]+); " + MARCA_GPT + r"\)")
+MARCA_NAVEGADOR = "encontrada no navegador (Chrome), conferida por código"
+_PROVA_GPT = re.compile(r"([\wçãáéíóúâêô ]+): «([^»]*)» \((https?://[^;)\s]+); ([^»|]*?conferida por código)\)")
 
 
 def provas_do_gpt(evidencia):
     """[(rótulo, frase, link, texto inteiro do item)] das provas do GPT guardadas na Evidência."""
-    return [(m.group(1).strip(), m.group(2), m.group(3), m.group(0)) for m in _PROVA_GPT.finditer(evidencia or "")]
+    return [(m.group(1).strip(), m.group(2), m.group(3), m.group(0).strip()) for m in _PROVA_GPT.finditer(evidencia or "")]
 
 
 def certificado_da_frase(valor, frase):

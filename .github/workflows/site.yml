@@ -57,7 +57,7 @@ jobs:
       - name: Segunda opinião do GPT para dúvidas de gratuidade (o código prova)
         timeout-minutes: 15
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.SOCIAL_PROJECT }}
         run: cd scripts && python3 consultar_gpt.py || echo 'GPT não consultado'
 
       - name: Gerar o site a partir da folha

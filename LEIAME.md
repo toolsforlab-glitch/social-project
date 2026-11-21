@@ -96,7 +96,7 @@ O site fica em `docs/` (GitHub Pages). O resumo da semana fica em `docs/semanal/
 | `GOOGLE_CREDENTIALS` | Chave JSON da conta de serviço do Google com acesso de edição à folha | Sim |
 | `FOLHA_ID` | O ID da folha (a parte do link entre `/d/` e `/edit`) | Sim |
 | `BREVO_API_KEY`, `BREVO_LISTA_ID`, `EMAIL_ADMIN` | Enviar a newsletter e o texto semanal por email | Não |
-| `OPENAI_API_KEY` | Segunda opinião do GPT nas dúvidas de gratuidade (`consultar_gpt.py`); a API é cobrada à parte da assinatura do ChatGPT | Não |
+| `OPENAI_API_KEY` (ou `SOCIAL_PROJECT`, o nome usado no repositório) | Segunda opinião do GPT nas dúvidas de gratuidade (`consultar_gpt.py`); a API é cobrada à parte da assinatura do ChatGPT | Não |
 
 ## Ligar as rotinas
 

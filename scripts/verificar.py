@@ -211,6 +211,8 @@ def main():
                   and "cursos-nivel-medio-senai-gratuidade" not in r["Link"]
                   # Escola Virtual de Governo: lida pela API oficial em evg.py (as páginas só abrem no navegador)
                   and "escolavirtual.gov.br" not in r["Link"] + (r.get("Página do curso") or "")
+                  # Fundação Bradesco: lida do catálogo oficial em bradesco.py
+                  and "ev.org.br" not in r["Link"] + (r.get("Página do curso") or "")
                   and (r.get("Verificar automaticamente", "") == "" or sim(r.get("Verificar automaticamente")))
                   # durante um piloto, os cursos online de outros países não aparecem no site: não gastar com eles
                   and not (r.get("Local") == "online" and pais_piloto

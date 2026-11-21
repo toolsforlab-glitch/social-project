@@ -90,6 +90,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 evg.py || echo 'EV.G não lida'
 
+      - name: Cursos da Fundação Bradesco (catálogo oficial, prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 bradesco.py || echo 'Fundação Bradesco não lida'
+
       - name: Auditoria do GPT nas dúvidas (o código prova)
         timeout-minutes: 15
         env:

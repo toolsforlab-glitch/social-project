@@ -199,6 +199,12 @@ DESTINOS_FONTES = [
         "tipo": "curso", "conta": "Escola Virtual de Governo",
         "nota": "Na página do curso, clique em “Inscreva-se”. Para se inscrever, entre ou crie conta na Escola "
                 "Virtual de Governo (a página diz: “Entre ou crie sua conta para realizar a inscrição”)."}),
+    # Escola Virtual da Fundação Bradesco: página própria do curso, com o botão "Quero me matricular" - 21/11/2026
+    (r"^https://www\.ev\.org\.br/(cursos|trilhas-de-conhecimento)/", {
+        "tipo": "curso", "conta": "Escola Virtual da Fundação Bradesco",
+        "nota": "Na página do curso, clique em “Quero me matricular”. É preciso entrar ou criar uma conta na Escola "
+                "Virtual da Fundação Bradesco (nome, telefone e e-mail). O curso não tem data para começar: você "
+                "estuda no seu ritmo."}),
     (r"^https://ma\.senac\.br/editais_psg/", {
         "tipo": "curso", "nota": "É a página do edital deste curso: em “Quer participar?” está o botão “Inscrição” e "
                                  "em “Documentos” está o edital completo."}),

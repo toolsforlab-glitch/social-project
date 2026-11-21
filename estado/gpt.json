@@ -16,5 +16,14 @@
   "resolvidas": 0,
   "tokens_entrada": 0,
   "tokens_saida": 0
+ },
+ {
+  "quando": "2026-11-21 09:49",
+  "usado": false,
+  "motivo": "nenhuma dúvida por perguntar nesta ronda",
+  "perguntas": 0,
+  "resolvidas": 0,
+  "tokens_entrada": 0,
+  "tokens_saida": 0
  }
 ]

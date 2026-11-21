@@ -1,9 +1,16 @@
-name: Só verificar os cursos (manual)
-# Corre só a verificação dos cursos (verificar.py) e reconstrói o site, sem pesquisas novas, sem newsletter e sem
-# WhatsApp. Serve para testar mudanças na verificação sem esperar pela rotina semanal de segunda-feira.
+name: Correr um passo (manual)
+run-name: "Só: ${{ inputs.passo }}"
+# Corre só um passo (por omissão, a verificação dos cursos) e reconstrói o site, sem pesquisas novas, sem newsletter
+# e sem WhatsApp. Serve para testar mudanças sem esperar pelas rotinas diária e semanal.
 
 on:
   workflow_dispatch:
+    inputs:
+      passo:
+        description: "Passo a correr"
+        type: choice
+        options: [verificar.py, evg.py, consultar_gpt.py, turmas.py, senac_ma.py, centec.py]
+        default: verificar.py
 
 permissions:
   contents: write
@@ -28,6 +35,7 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       FOLHA_ID: ${{ secrets.FOLHA_ID }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.SOCIAL_PROJECT }}
       PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
@@ -36,9 +44,9 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
 
-      - name: Verificar cursos
+      - name: Correr o passo escolhido
         timeout-minutes: 25
-        run: cd scripts && python3 verificar.py
+        run: cd scripts && python3 "${{ inputs.passo || 'verificar.py' }}"
 
       - name: Gerar o site a partir da folha
         if: ${{ always() }}
@@ -50,4 +58,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs estado
-          git diff --cached --quiet || (git commit -q -m "Cursos verificados" && (git push -q || (git pull -q --rebase -X theirs && git push -q)))
+          git diff --cached --quiet || (git commit -q -m "Passo manual: ${{ inputs.passo }}" && (git push -q || (git pull -q --rebase -X theirs && git push -q)))

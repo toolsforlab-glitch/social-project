@@ -194,6 +194,11 @@ DESTINOS_FONTES = [
                                  "unidade dentro do prazo."}),
     (r"^https://psg\.ce\.senac\.br/", {"tipo": "lista", "nota": ""}),
     # Senac Maranhão: página do edital do curso, com «Documentos» e o botão «Inscrição» em «Quer participar?» - 20/11/2026
+    # Escola Virtual de Governo: página própria do curso (lida pela API em evg.py), com «Inscreva-se» - 21/11/2026
+    (r"^https://www\.escolavirtual\.gov\.br/cursos/", {
+        "tipo": "curso", "conta": "Escola Virtual de Governo",
+        "nota": "Na página do curso, clique em «Inscreva-se». Para se inscrever, entre ou crie conta na Escola "
+                "Virtual de Governo (a página diz: «Entre ou crie sua conta para realizar a inscrição»)."}),
     (r"^https://ma\.senac\.br/editais_psg/", {
         "tipo": "curso", "nota": "É a página do edital deste curso: em «Quer participar?» está o botão «Inscrição» e "
                                  "em «Documentos» está o edital completo."}),

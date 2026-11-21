@@ -208,6 +208,8 @@ def main():
                   and "ma.senac.br/editais-psg" not in r["Link"] and "portal.ac.senac.br/psg" not in r["Link"]
                   and "fiema.org.br/editais/11" not in r["Link"] and "psg.pi.senac.br" not in r["Link"]
                   and "cursos-nivel-medio-senai-gratuidade" not in r["Link"]
+                  # Escola Virtual de Governo: lida pela API oficial em evg.py (as páginas só abrem no navegador)
+                  and "escolavirtual.gov.br" not in r["Link"] + (r.get("Página do curso") or "")
                   and (r.get("Verificar automaticamente", "") == "" or sim(r.get("Verificar automaticamente")))
                   # durante um piloto, os cursos online de outros países não aparecem no site: não gastar com eles
                   and not (r.get("Local") == "online" and pais_piloto

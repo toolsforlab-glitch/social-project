@@ -85,6 +85,11 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
+      - name: Cursos da Escola Virtual de Governo (API oficial, prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 evg.py || echo 'EV.G não lida'
+
       - name: Segunda opinião do GPT para dúvidas de gratuidade (o código prova)
         timeout-minutes: 15
         env:

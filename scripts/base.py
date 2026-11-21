@@ -271,7 +271,14 @@ CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_at
                 "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
                 "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público",
                 "acessibilidade": "acessibilidade", "conteudo": "conteúdo", "para_que_serve": "para que serve", "programa": "programa",
-                "certificado": "certificado"}
+                "certificado": "certificado", "sob_demanda": "sob demanda"}
+# Curso sob demanda (sem datas, começa quando a pessoa quiser): a frase ou o botão para se matricular ou começar já
+# conta como inscrições abertas, desde que a página não diga que encerraram (regra do responsável, 21/11/2026).
+ACAO_SOB_DEMANDA = re.compile(r"matricul|inscrev|inscri[çc][ãa]o|comece|come[çc]ar|iniciar|acessar o curso|acesso "
+                              r"(imediato|livre)|no seu (pr[óo]prio )?ritmo|a qualquer (momento|hora)|sob demanda|"
+                              r"autoinstrucional|em qualquer hor[áa]rio", re.I)
+ENCERRADO = re.compile(r"inscri[çc][õo]es\s+(est[ãa]o\s+)?encerrad|esgotad|curso\s+(foi\s+)?encerrad|"
+                       r"n[ãa]o\s+h[áa]\s+vagas|indispon[íi]vel", re.I)
 
 # Acessibilidade para pessoas com deficiência: uma etiqueta só existe quando a frase da fonte nomeia o recurso.
 # Um curso DE Libras ou SOBRE acessibilidade não conta (isso é o tema, não um recurso oferecido a quem estuda).

@@ -31,7 +31,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from base import (CAMPOS_PROVA, HISTORICO, MARCA_GPT, Base, carregar_config, certificado_da_frase, citacao_valida, curso_no_site,
+from base import (ACAO_SOB_DEMANDA, CAMPOS_PROVA, gratuidade_comprovada, sim, HISTORICO, MARCA_GPT, Base, carregar_config, certificado_da_frase, citacao_valida, curso_no_site,
                   gratuidade_explicita, registo_historico, texto_de_html)
 from comum import baixar_final, dominio_permitido, extrair_json, gravar_json, ler_json
 
@@ -47,7 +47,8 @@ PERGUNTAS = {
                 'integral"). O nome do programa sozinho (ex.: "Programa Senac de Gratuidade") não serve.',
     "situacao": '"situacao": se as inscrições deste curso estão abertas ou encerradas HOJE ({hoje}); valor "aberto" '
                 'ou "encerrado", com a frase que o diz (ex.: "inscrições abertas", "inscreva-se", "inscrições '
-                'encerradas").',
+                'encerradas"). Um curso sob demanda, sem datas, que se pode começar ou fazer a matrícula agora '
+                '(botão ou frase como "Quero me matricular", "Comece agora", "faça no seu ritmo"), conta como "aberto".',
     "inscricoes_ate": '"inscricoes_ate": a data-limite de inscrição; valor no formato AAAA-MM-DD, com a frase onde '
                       'essa data está escrita.',
     "certificado": '"certificado": se o curso dá certificado e se é gratuito; valor "gratuito", "pago" ou "sem '
@@ -113,7 +114,7 @@ def valor_diz(campo, valor, frase):
     if campo == "gratuito":
         return ("sim", "") if gratuidade_explicita(frase) else ("", "a frase não diz que não há custo")
     if campo == "situacao":
-        if valor == "aberto" and ABERTO.search(frase) and not ENCERRADO.search(frase):
+        if valor == "aberto" and (ABERTO.search(frase) or ACAO_SOB_DEMANDA.search(frase)) and not ENCERRADO.search(frase):
             return "Aberto", ""
         if valor == "encerrado" and ENCERRADO.search(frase):
             return "Encerrado", ""
@@ -217,6 +218,19 @@ def main():
                   and not (r.get("Revisto por pessoa") or "").strip()
                   and (forcar or not consultado_ha_pouco(r, hoje, consultas, no_site[r["ID"]] == ["certificado"]))]
     # primeiro os cursos com dúvidas mais importantes (gratuidade, situação, data), depois os só de certificado
+    # Cursos com "Mudança a rever" marcada pelas rotinas (situação ou gratuidade em dúvida): na dúvida, o GPT audita
+    # e, se o código confirmar tudo, a marca sai sozinha (regra do responsável, 21/11/2026).
+    ja = {r["ID"] for r, _ in candidatos}
+    for r in linhas:
+        if (r.get("ID") in ja or not sim(r.get("Mudança a rever")) or r.get("Estado") not in ("Novo", "Publicado")
+                or (r.get("Revisto por pessoa") or "").strip() or not r.get("Link")
+                or (not forcar and consultado_ha_pouco(r, hoje, consultas))):
+            continue
+        comp = [c.strip() for c in (r.get("Campos comprovados") or "").split(",")]
+        duv = ([] if r.get("Situação das inscrições") == "Aberto" and "situação" in comp else ["situacao"]) + \
+              ([] if gratuidade_comprovada(r) else ["gratuito"])
+        if duv:
+            candidatos.append((r, duv))
     candidatos.sort(key=lambda x: min(ORDEM.index(d) for d in x[1]))
     print(f"Cursos com dúvidas: {len(candidatos)} (máximo {maximo} perguntas); modelo {modelo}")
     alteracoes, historico, respostas, paginas, erro_conta = [], [], {}, {}, ""
@@ -282,6 +296,14 @@ def main():
             falta = (f"[{MARCA}{hoje.isoformat()}: " + "; ".join(f.replace("]", ")") for f in falhas) + "] "
                      + falta).strip()
         campos["O que falta confirmar"] = falta[:900]
+        if sim(r.get("Mudança a rever")) and not falhas and evid_novas:
+            campos["Mudança a rever"] = "FALSE"
+            nota = f"{hoje.isoformat()}: “Mudança a rever” desmarcada depois da auditoria do GPT, conferida por código."
+            if r.get("Estado") == "Novo" and campos.get("Situação das inscrições", r.get("Situação das inscrições")) == "Aberto":
+                campos["Estado"] = "Publicado"
+                nota += " Publicado: inscrições abertas e gratuidade comprovadas."
+            campos["Nota da verificação"] = (nota + " " + (r.get("Nota da verificação") or ""))[:900]
+            historico.append(registo_historico(r, "GPT + código", "Mudança a rever desmarcada", campos, nota))
         alteracoes.append((r["_linha"], campos))
     base.atualizar("Cursos", alteracoes)
     gravar_json("estado/gpt_consultas.json", consultas)

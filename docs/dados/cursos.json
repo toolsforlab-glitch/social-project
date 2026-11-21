@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-21T00:26",
+ "atualizado": "2026-11-21T00:33",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -2978,7 +2978,7 @@
    "cidade": "",
    "descricao": "",
    "descricao_origem": "",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -3560,7 +3560,7 @@
    "cidade": "",
    "descricao": "",
    "descricao_origem": "",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -3787,7 +3787,7 @@
    "cidade": "",
    "descricao": "",
    "descricao_origem": "",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -3927,7 +3927,7 @@
    "cidade": "",
    "descricao": "",
    "descricao_origem": "",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -4067,7 +4067,7 @@
    "cidade": "",
    "descricao": "",
    "descricao_origem": "",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"

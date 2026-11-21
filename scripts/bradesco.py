@@ -67,10 +67,12 @@ def ler_curso(url, botao):
     duracao = re.search(r"Duração\s*(\d+\s*h)", texto)
     idade = re.search(r"Idade m[íi]nima\s*(\d{1,2})", texto)
     descricao = ""
-    m = re.search(r"Favoritar\s+(.{40,900}?)(?:Matricule-se|Quero me matricular|Conteúdo|Objetivo|$)", texto, flags=re.S)
+    m = re.search(r"Favoritar(.{0,4000})", html, flags=re.S)
     if m:
-        frases = re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", m.group(1)).strip())
-        descricao = " ".join(f for f in frases[:2] if not re.search(r"matricule|inscreva", f, re.I))[:500]
+        seg = re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", m.group(1)))).strip()
+        seg = re.split(r"Matricule-se|Quero me matricular|Conteúdo programático|Conteúdo do curso|Para quem é", seg)[0]
+        frases = [f for f in re.split(r"(?<=[.!?])\s+", seg) if len(f) > 15 and not re.search(r"matricul|inscreva", f, re.I)]
+        descricao = " ".join(frases[:2])[:500]
     return {"url": url, "titulo": titulo, "aberto": bool(botao) and citacao_valida(botao, texto),
             "duracao": f"{int(re.sub(r'\D', '', duracao.group(1)))} horas" if duracao else "", "idade": idade.group(1) if idade else "",
             "descricao": descricao, "texto": texto}

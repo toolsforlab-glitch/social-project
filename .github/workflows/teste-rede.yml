@@ -1,0 +1,15 @@
+name: Teste de rede (temporário)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rede:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in "https://api-evg.enap.gov.br/v1/cursos/slug/como-trabalhar-com-computadores-e-dispositivos-moveis" \
+                   "https://api-evg.enap.gov.br/v1/busca?resource_type=curso&limit=1" \
+                   "https://www.escolavirtual.gov.br/faq" "https://www.gov.br/pt-br/servicos/aprender-a-administrar-suas-financas-pessoais" \
+                   "https://sebrae.com.br/sites/PortalSebrae/cursosonline" "https://www.ev.org.br/cursos" ; do
+            code=$(curl -s -o /tmp/o -w "%{http_code}" -m 30 -A "Mozilla/5.0" "$u"); echo "$code $(wc -c < /tmp/o) $u"; head -c 200 /tmp/o | tr '\n' ' '; echo; done

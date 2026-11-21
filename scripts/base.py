@@ -372,8 +372,8 @@ ESCOLARIDADES = ["Nenhuma", "Saber ler e escrever", "Fundamental incompleto", "F
 # «bolsa integral»…). O nome do programa («Programa Senac de Gratuidade») não serve: concluir que o curso é
 # gratuito pelo nome é dedução (regra do responsável, 20/11/2026). Sem frase, o site mostra «Gratuidade por confirmar».
 _GRATUIDADE = re.compile(r"gratuit|sem\s+(qualquer\s+)?(custo|pagamento|cobran|[ôo]nus|mensalidade|taxa)|custo\s+zero|"
-                         r"bolsas?\s+(de\s+estudos?\s+)?(integra|100\s*%)|n[ãa]o\s+(h[áa]|haver[áa]|ser[áa])\s+"
-                         r"(cobrad|cobran|custo|taxa)", re.I)
+                         r"bolsas?\s+(de\s+estudos?\s+)?(integra|100\s*%)|n[ãa]o\s+(h[áa]|haver[áa]|ser[áa]|tem|possui|ter[áa])\s+"
+                         r"(nenhum(a)?\s+|qualquer\s+)?(cobrad|cobran|custo|taxa)", re.I)
 _GRATUIDADE_NEGADA = re.compile(r"n[ãa]o\s+(é|são|e|sao|será|serão)\s+gratuit", re.I)
 
 
@@ -401,6 +401,26 @@ _PROVA_GPT = re.compile(r"([\wçãáéíóúâêô ]+): «([^»]*)» \((https?:/
 def provas_do_gpt(evidencia):
     """[(rótulo, frase, link, texto inteiro do item)] das provas do GPT guardadas na Evidência."""
     return [(m.group(1).strip(), m.group(2), m.group(3), m.group(0)) for m in _PROVA_GPT.finditer(evidencia or "")]
+
+
+def certificado_da_frase(valor, frase):
+    """Certificado só com frase que fale de certificado e diga como é: «gratuito» (não há custo), «pago» ou «sem
+    certificado». Devolve o valor confirmado pela frase, ou "" (a regra vale para o Claude e para o GPT)."""
+    valor, frase = str(valor or "").strip().lower(), frase or ""
+    if "certificad" not in frase.lower():
+        return ""
+    # o certificado tem de ser o que é gratuito: «certificado gratuito», «o certificado é emitido gratuitamente»;
+    # «curso gratuito e com certificado» não chega (é o curso que é gratuito)
+    if valor == "gratuito" and gratuidade_explicita(frase) and re.search(
+            r"certifica\w*(\s+\S+){0,5}?\s+(gratuit|sem\s+(qualquer\s+)?(custo|[ôo]nus|taxa|cobran)|isent|"
+            r"n[ãa]o\s+(tem|possui|ter[áa]|h[áa])\s+(nenhum(a)?\s+|qualquer\s+)?(custo|taxa|cobran))", frase, re.I):
+        return "gratuito"
+    if valor == "pago" and re.search(r"\bpag[oa]\b|taxa|r\$|valor\s+de", frase, re.I):
+        return "pago"
+    if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa])\s+"
+                                                 r"(direito\s+a\s+)?certificad|sem\s+certificad", frase, re.I):
+        return "sem certificado"
+    return ""
 
 
 def gratuidade_comprovada(r):

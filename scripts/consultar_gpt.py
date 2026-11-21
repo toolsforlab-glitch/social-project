@@ -31,7 +31,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from base import (CAMPOS_PROVA, HISTORICO, MARCA_GPT, Base, carregar_config, citacao_valida, curso_no_site,
+from base import (CAMPOS_PROVA, HISTORICO, MARCA_GPT, Base, carregar_config, certificado_da_frase, citacao_valida, curso_no_site,
                   gratuidade_explicita, registo_historico, texto_de_html)
 from comum import baixar_final, dominio_permitido, extrair_json, gravar_json, ler_json
 
@@ -121,16 +121,8 @@ def valor_diz(campo, valor, frase):
     if campo == "inscricoes_ate":
         return (valor[:10], "") if data_na_frase(valor[:10], frase) else ("", "a data não está escrita na frase")
     if campo == "certificado":
-        if "certificad" not in frase.lower():
-            return "", "a frase não fala de certificado"
-        if valor == "gratuito" and gratuidade_explicita(frase):
-            return "gratuito", ""
-        if valor == "pago" and re.search(r"\bpag[oa]\b|taxa|r\$|valor\s+de", frase, re.I):
-            return "pago", ""
-        if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa])\s+"
-                                                     r"(direito\s+a\s+)?certificad|sem\s+certificad", frase, re.I):
-            return "sem certificado", ""
-        return "", "a frase não diz se o certificado é gratuito, pago ou inexistente"
+        v = certificado_da_frase(valor, frase)
+        return (v, "") if v else ("", "a frase não diz se o certificado é gratuito, pago ou inexistente")
     return "", "campo desconhecido"
 
 

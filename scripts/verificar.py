@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import DESCRICAO_PAGINA, gratuidade_explicita, provas_do_gpt, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
+from base import DESCRICAO_PAGINA, certificado_da_frase, gratuidade_explicita, provas_do_gpt, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import chave as chave_titulo, destino_do_link, destino_texto, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
@@ -30,6 +30,9 @@ Devolve JSON entre <json></json> com:
 futura com inscrição), "encerrado" (a página diz que as inscrições terminaram ou o curso acabou) ou "incerto" \
 (tudo o resto, incluindo quando o curso não aparece na página).
 - "gratuito": "sim" ou "não" só se a página o disser para ESTE curso; senão "incerto".
+- "certificado": "gratuito", "pago" ou "sem certificado", só se a página falar do certificado e disser como é \
+(ex.: "certificado gratuito", "emissão do certificado sem custo", "taxa de R$ 20 pelo certificado"); senão null. \
+A evidência é a frase que fala do certificado.
 - "inscricoes_ate": data AAAA-MM-DD só se a página indicar a data limite de INSCRIÇÃO; senão null.
 - "restricoes": quem pode entrar (idade, renda, escolaridade, morada, já ser estudante…), só se a página o \
 disser; senão null.
@@ -253,6 +256,11 @@ def main():
                 provas[chave] = str(frase).strip()
             elif frase:
                 rejeitadas.append(CAMPOS_PROVA[chave])
+        # certificado: a frase tem de falar do certificado e dizer como é (regra comum com o GPT)
+        cert = certificado_da_frase(res.get("certificado"), provas.get("certificado", "")) if "certificado" in provas else ""
+        if "certificado" in provas and not cert:
+            del provas["certificado"]
+            rejeitadas.append(CAMPOS_PROVA["certificado"])
         # gratuidade: a frase tem de dizer que não há custo (o nome de um programa não chega)
         if "gratuito" in provas and not gratuidade_explicita(provas["gratuito"]):
             del provas["gratuito"]
@@ -329,6 +337,8 @@ def main():
                 motivos.append("Revisto por pessoa, mas a página indica que pode não ser gratuito.")
         else:
             campos["Situação das inscrições"] = nova_situacao
+            if cert:
+                campos["Certificado"] = cert
             pagina_nova = pagina_curso and pagina_curso != (r.get("Página do curso") or "").strip()
             if passos and (not r.get("Como me inscrever") or pagina_nova):
                 campos["Como me inscrever"] = "\n".join(f"{i}. {p.strip()}" for i, p in enumerate(passos[:5], 1))

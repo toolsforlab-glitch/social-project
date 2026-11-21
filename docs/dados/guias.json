@@ -1,12 +1,12 @@
 {
- "atualizado": "2026-11-21T20:45",
+ "atualizado": "2026-11-21T20:50",
  "guias": [
   {
    "id": "govbr",
    "titulo": "Criar a conta gov.br e subir para prata",
    "para_que": "O nível da conta gov.br decide que serviços digitais do governo você pode usar. Alguns cursos on-line pedem para entrar com a conta gov.br.",
    "passos": [
-    "Crie a conta gov.br pelo formulário na internet, ou pessoalmente numa agência do INSS ou numa unidade do Balcão gov.br. Ela começa no nível bronze.",
+    "Crie a conta gov.br pelo formulário na internet, ou pessoalmente em uma agência do INSS ou em uma unidade do Balcão gov.br. Ela começa no nível bronze.",
     "Para subir para prata, abra o aplicativo gov.br e toque em \"Aumentar nível\" na tela de Início. No site, entre na conta e procure \"Selos de Confiabilidade\".",
     "Escolha uma forma: reconhecimento facial com a foto da sua carteira de motorista (CNH), ou validação pelo internet banking de um banco credenciado.",
     "Se usar o banco, ative antes no banco o envio de mensagens para o seu celular, para receber o código.",
@@ -23,11 +23,11 @@
    "titulo": "Fazer o Cadastro Único (CadÚnico)",
    "para_que": "O Cadastro Único é o primeiro passo para vários programas sociais, como o Bolsa Família, a Tarifa Social de Energia Elétrica e o ID Jovem. Famílias com renda de até meio salário mínimo por pessoa devem se cadastrar.",
    "passos": [
-    "É de graça e é feito pessoalmente, num posto de atendimento da cidade onde você mora. Se não souber onde, procure o CRAS ou o setor do Bolsa Família.",
+    "É de graça e é feito pessoalmente, em um posto de atendimento da cidade onde você mora. Se não souber onde, procure o CRAS ou o setor do Bolsa Família.",
     "Vai uma pessoa da família com mais de 16 anos (de preferência mulher), que responde por todos. Não é preciso a família inteira ir.",
     "Leve: documento com foto (identidade ou carteira de trabalho), o seu CPF ou título de eleitor, e comprovante de residência. Sem comprovante, você faz uma declaração dizendo onde mora.",
     "Leve também um documento de cada pessoa da família: CPF, certidão de nascimento ou casamento, identidade, carteira de trabalho ou título de eleitor. É importante levar os CPFs de todos.",
-    "A entrevista demora mais ou menos uma hora. Se faltar algum documento, a prefeitura tem de fazer o cadastro mesmo assim, mas ele fica incompleto até você entregar o que falta."
+    "A entrevista demora mais ou menos uma hora. Se faltar algum documento, a prefeitura tem que fazer o cadastro mesmo assim, mas ele fica incompleto até você entregar o que falta."
    ],
    "onde": "Posto do Cadastro Único ou CRAS da sua cidade",
    "custo": "Grátis",

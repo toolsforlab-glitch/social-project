@@ -12,6 +12,7 @@ necessidades de cada um. Os que passam são publicados sozinhos; cursos já na p
 ou «Revisto por pessoa» não mudam de Estado. A verificação semanal não toca nestes cursos.
 """
 import hashlib
+from html import unescape
 import re
 import sys
 import urllib.parse
@@ -61,8 +62,8 @@ def chave(url):
 def ler_curso(url, botao):
     html = obter(url)
     texto = texto_de_html(html.encode())
-    m = re.search(r"<title>\s*([^<]{3,200}?)\s*-\s*Fundação Bradesco", html, flags=re.I)
-    titulo = re.sub(r"\s+", " ", m.group(1)).strip() if m else ""
+    m = re.search(r"<title>([^<]{3,300})</title>", html, flags=re.I)
+    titulo = re.split(r"\s+-\s+Funda[çc][ãa]o Bradesco", re.sub(r"\s+", " ", unescape(m.group(1))).strip())[0] if m else ""
     duracao = re.search(r"Duração\s*(\d+\s*h)", texto)
     idade = re.search(r"Idade m[íi]nima\s*(\d{1,2})", texto)
     descricao = ""

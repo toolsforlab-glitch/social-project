@@ -98,12 +98,13 @@ Devolve só JSON entre <json></json>: {"afirmacoes": [{"n": 1, "veredicto": "con
 "frase": "..." ou null, "motivo": "..."}]}"""
 
 
-def auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade=False):
+def auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade=False, botao_por_entidade=""):
     """Segunda opinião, por outro modelo, antes de publicar sozinho. Devolve (passou, falhas, custo)."""
     modelo = cfg.get("modelo_auditoria") or "claude-sonnet-5-5"
     afirmacoes = [f"Esta página é sobre o curso «{r['Título']}».",
-                  f"Hoje ({hoje_txt}) é possível inscrever-se ou começar este curso: inscrições abertas, "
-                  "acesso livre a qualquer momento, ou turma futura com inscrição."]
+                  (f"A página deste curso mostra o botão «{botao_por_entidade}»." if botao_por_entidade else
+                   f"Hoje ({hoje_txt}) é possível inscrever-se ou começar este curso: inscrições abertas, "
+                   "acesso livre a qualquer momento, ou turma futura com inscrição.")]
     # a gratuidade só é auditada na página quando não vem de uma entidade marcada como "Tudo gratuito"
     afirmacoes.append("A página não fala em pagamento, mensalidade ou taxa para fazer este curso." if gratuito_por_entidade
                       else "Este curso é gratuito para quem o frequenta.")
@@ -277,6 +278,14 @@ def main():
         situacao = res.get("situacao") if res.get("situacao") in ("aberto", "encerrado") else "incerto"
         if situacao != "incerto" and "situacao" not in provas:
             situacao = "incerto"
+        # Entidades onde uma pessoa confirmou (Sites de confiança) que o botão de inscrição na página quer dizer
+        # inscrições abertas: com esse botão na página deste curso, e sem a página dizer que encerraram, vale a regra.
+        botao = next((t for d, t in cfg["cursos"].get("botao_inscricao", {}).items()
+                      if dominio_permitido(pagina_curso or r["Link"], [d])), "")
+        situacao_por_entidade = bool(situacao == "incerto" and botao and citacao_valida(botao, pagina))
+        if situacao_por_entidade:
+            situacao = "aberto"
+            provas["situacao"] = botao
         gratuito = res.get("gratuito") if "gratuito" in provas else "incerto"
         # Entidades marcadas por uma pessoa como "Tudo gratuito" (Sites de confiança): se a página deste curso
         # não disser nada sobre o preço, vale a decisão da pessoa. Se a página disser que é pago, vale a página.
@@ -315,6 +324,9 @@ def main():
                                           + list(mantidas.values()))[:1500],
                   "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas]
                                                   + [CAMPOS_PROVA[k] for k in mantidas])}
+        if situacao_por_entidade:
+            campos["Nota da verificação"] += (f" Inscrições abertas pela regra de Sites de confiança: a página mostra o botão "
+                                              f"«{botao}» (regra marcada por uma pessoa).")
         # para onde leva o botão do site (regra em paginas.py): a página do curso, ou o que o link abre de facto
         campos["Destino do link"] = destino_do_curso_verificado(r, pagina_curso, res, ev, pagina)
         # públicos prioritários: só os que a frase da página nomeia; sem frase, o curso é para todos
@@ -415,7 +427,8 @@ def main():
         if (not revisto and r.get("Estado") == "Novo" and "Estado" not in campos and not motivos
                 and not sim(r.get("Mudança a rever")) and pagina_curso and situacao == "aberto" and gratuito == "sim"):
             passou, falhas, custo = auditar(cfg, dict(r, **{k: v for k, v in campos.items() if k == "Descrição"}),
-                                            pagina, data, hoje_txt, gratuito_por_entidade)
+                                            pagina, data, hoje_txt, gratuito_por_entidade,
+                                            botao if situacao_por_entidade else "")
             custo_total += custo
             if passou:
                 campos["Estado"] = "Publicado"

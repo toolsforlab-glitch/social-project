@@ -224,6 +224,10 @@ def carregar_config(base):
             # entidade onde uma pessoa confirmou que todos os cursos são gratuitos (coluna "Tudo gratuito")
             if sim(r.get("Tudo gratuito")):
                 c.setdefault("dominios_gratuitos", set()).add(r["Domínio"].strip().lower())
+            # entidade onde uma pessoa confirmou que um curso com este botão na página tem inscrições abertas
+            # (coluna "Inscrição aberta quando a página mostra"; ex.: Fundação Bradesco, «Quero me matricular»)
+            if (r.get("Inscrição aberta quando a página mostra") or "").strip():
+                c.setdefault("botao_inscricao", {})[r["Domínio"].strip().lower()] = r["Inscrição aberta quando a página mostra"].strip()
             if "só para descobrir" in (r.get("Notas") or "").lower():
                 c.setdefault("dominios_descoberta", set()).add(r["Domínio"].strip().lower())
     c["dominios"] = dominios or c["dominios"]

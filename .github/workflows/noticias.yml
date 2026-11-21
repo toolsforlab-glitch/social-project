@@ -95,6 +95,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 bradesco.py || echo 'Fundação Bradesco não lida'
 
+      - name: Cursos on-line do Sebrae (catálogo oficial, prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 20
+        run: cd scripts && python3 sebrae.py || echo 'Sebrae não lido'
+
       - name: Auditoria do GPT nas dúvidas (o código prova)
         timeout-minutes: 15
         env:

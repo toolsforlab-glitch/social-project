@@ -225,6 +225,8 @@ def main():
                   and "escolavirtual.gov.br" not in r["Link"] + (r.get("Página do curso") or "")
                   # Fundação Bradesco: lida do catálogo oficial em bradesco.py
                   and "ev.org.br" not in r["Link"] + (r.get("Página do curso") or "")
+                  # Sebrae: lido do catálogo oficial em sebrae.py
+                  and "loja.sebrae.com.br" not in r["Link"] + (r.get("Página do curso") or "")
                   and (r.get("Verificar automaticamente", "") == "" or sim(r.get("Verificar automaticamente")))
                   # durante um piloto, os cursos online de outros países não aparecem no site: não gastar com eles
                   and not (r.get("Local") == "online" and pais_piloto

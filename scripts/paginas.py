@@ -205,6 +205,11 @@ DESTINOS_FONTES = [
         "nota": "Na página do curso, clique em “Quero me matricular”. É preciso entrar ou criar uma conta na Escola "
                 "Virtual da Fundação Bradesco (nome, telefone e e-mail). O curso não tem data para começar: você "
                 "estuda no seu ritmo."}),
+    # Sebrae: página própria do curso na loja, com preço R$ 0,00 e o botão "Comprar" - 21/11/2026
+    (r"^https://loja\.sebrae\.com\.br/[a-z0-9-]+-(?:\d{9,}|a0[a-z0-9]{14,})/?$", {
+        "tipo": "curso", "conta": "Sebrae",
+        "nota": "Na página do curso, o preço é R$ 0,00 (Gratuito). O botão diz “Comprar”, mas não se paga nada: "
+                "é assim que se faz a inscrição. É preciso entrar ou criar uma conta no Sebrae."}),
     (r"^https://ma\.senac\.br/editais_psg/", {
         "tipo": "curso", "nota": "É a página do edital deste curso: em “Quer participar?” está o botão “Inscrição” e "
                                  "em “Documentos” está o edital completo."}),

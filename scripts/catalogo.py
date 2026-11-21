@@ -14,7 +14,9 @@ Para cada catálogo:
    que corre a seguir na mesma rotina) lê cada página, aplica todas as regras (gratuidade com frase; sob demanda só
    com frase da página; auditoria independente) e publica os que passam.
 
-Os catálogos com leitor próprio (Fundação Bradesco: bradesco.py; Escola Virtual de Governo: evg.py) não são lidos aqui.
+Os catálogos com leitor próprio (Fundação Bradesco: bradesco.py; Escola Virtual de Governo: evg.py; Sebrae: sebrae.py;
+Senac, SENAI e Centec, com turmas: turmas.py, senac_ma.py, centec.py) não são lidos aqui: na aba, a Origem dessas linhas
+começa por "leitor próprio".
 """
 import hashlib
 import re
@@ -27,7 +29,7 @@ from base import VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso, sim, text
 from comum import claude, custo_estimado, extrair_json
 
 ABA = "Catálogos"
-COM_LEITOR_PROPRIO = ("ev.org.br", "escolavirtual.gov.br")
+COM_LEITOR_PROPRIO = ("ev.org.br", "escolavirtual.gov.br", "loja.sebrae.com.br")
 MAX_PAGINAS, MAX_LINKS, MAX_NOVOS = 20, 300, 40
 NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
                 "dinheiro", "direitos"]
@@ -113,7 +115,8 @@ def main():
     alt_cat, novos, custo = [], [], 0.0
     for cat in catalogos:
         dominio = (cat.get("Domínio") or "").strip().lower()
-        if not sim(cat.get("Ativo")) or not dominio or any(dominio.endswith(d) for d in COM_LEITOR_PROPRIO):
+        if (not sim(cat.get("Ativo")) or not dominio or any(dominio.endswith(d) for d in COM_LEITOR_PROPRIO)
+                or (cat.get("Origem") or "").strip().lower().startswith("leitor próprio")):
             continue
         lista, padrao = (cat.get("Página da lista") or "").strip(), (cat.get("Padrão dos links") or "").strip()
         campos_cat = {"Última leitura": hoje}

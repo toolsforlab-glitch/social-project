@@ -3,6 +3,7 @@ e escreve o passo a passo de inscrição em linguagem simples."""
 import html
 import os
 import re
+import urllib.parse
 import sys
 
 from base import ACAO_SOB_DEMANDA, DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, gratuidade_explicita, provas_do_gpt, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
@@ -195,6 +196,12 @@ def pagina_do_curso(r, dominios):
 
 def main():
     base = Base()
+    # instituições com catálogo a varrer (aba "Catálogos"); uma nova com curso claramente sob demanda entra sozinha
+    try:
+        dominios_catalogo = {(c.get("Domínio") or "").strip().lower() for c in base.tabela("Catálogos")}
+    except Exception:  # noqa: BLE001
+        dominios_catalogo = None
+    novos_catalogos = {}
     cfg = carregar_config(base)
     if not cfg.get("verificar_cursos", True):
         print("Verificação desligada na Configuração.")
@@ -305,6 +312,13 @@ def main():
             situacao = "aberto"
             provas["situacao"] = frase_sd
             situacao_por_entidade, botao = True, frase_sd
+            host = (urllib.parse.urlparse(pagina_curso or r["Link"]).hostname or "").lower()
+            dom = ".".join(host.split(".")[-3:] if host.endswith(".br") else host.split(".")[-2:])
+            if dominios_catalogo is not None and dom and not any(dom.endswith(d) or d.endswith(dom) for d in dominios_catalogo if d):
+                novos_catalogos.setdefault(dom, {
+                    "Ativo": "TRUE", "Domínio": dom, "Entidade": r.get("Entidade", ""), "Local": r.get("Local") or "online",
+                    "Página da lista": "", "Padrão dos links": "", "Origem": "automático",
+                    "Notas": f"Curso sob demanda encontrado a {hoje_txt}: {pagina_curso or r['Link']}"})
         gratuito = res.get("gratuito") if "gratuito" in provas else "incerto"
         # Entidades marcadas por uma pessoa como "Tudo gratuito" (Sites de confiança): se a página deste curso
         # não disser nada sobre o preço, vale a decisão da pessoa. Se a página disser que é pago, vale a página.
@@ -467,6 +481,9 @@ def main():
         print(f"  {marca} {r['Título']}: {res.get('nota')}")
 
     base.atualizar(ABA, alteracoes)
+    if novos_catalogos:
+        base.acrescentar("Catálogos", list(novos_catalogos.values()))
+        print(f"Instituições novas com cursos sob demanda (catálogo a varrer): {', '.join(novos_catalogos)}")
     if HISTORICO in base.abas():
         base.acrescentar(HISTORICO, historico)
     base.guardar()

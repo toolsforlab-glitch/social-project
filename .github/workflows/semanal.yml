@@ -65,6 +65,11 @@ jobs:
           TAREFAS: ${{ inputs.tarefas }}
         run: cd scripts && python3 cursos.py
 
+      - name: Varrer os catálogos das instituições com cursos sob demanda
+        if: ${{ always() }}
+        timeout-minutes: 20
+        run: cd scripts && python3 catalogo.py || echo 'catálogos não lidos'
+
       - name: Verificar cursos e escrever o passo a passo
         if: ${{ always() }}
         timeout-minutes: 20

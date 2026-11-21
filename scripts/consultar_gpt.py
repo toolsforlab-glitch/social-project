@@ -26,7 +26,7 @@ import urllib.request
 
 from base import (HISTORICO, Base, carregar_config, citacao_valida, curso_no_site, gratuidade_comprovada,
                   gratuidade_explicita, registo_historico, texto_de_html)
-from comum import baixar_final, dominio_permitido, extrair_json
+from comum import baixar_final, dominio_permitido, extrair_json, ler_json
 
 URL_OPENAI = "https://api.openai.com/v1/responses"
 MARCA = "GPT consultado em "
@@ -103,7 +103,11 @@ def main():
     forcar = os.environ.get("GPT_FORCAR", "") == "1"  # ignora o intervalo entre consultas (testes)
     hoje = datetime.date.today()
     linhas = base.tabela("Cursos")
-    candidatos = [r for r in linhas if curso_no_site(r, cfg) and not (r.get("Revisto por pessoa") or "").strip()
+    # só os cursos que o site mostra hoje com «Gratuidade por confirmar» (docs/dados/cursos.json)
+    no_site = {c.get("id") for c in ler_json("docs/dados/cursos.json", {"cursos": []}).get("cursos", [])
+               if c.get("gratuidade_comprovada") is False}
+    candidatos = [r for r in linhas if r.get("ID") in no_site and curso_no_site(r, cfg)
+                  and not (r.get("Revisto por pessoa") or "").strip()
                   and not gratuidade_comprovada(r) and (forcar or not consultado_ha_pouco(r, hoje))]
     print(f"Cursos com gratuidade por confirmar a consultar: {len(candidatos)} (máximo {maximo}); modelo {modelo}")
     alteracoes, historico, por_link, tokens = [], [], {}, {"input_tokens": 0, "output_tokens": 0}

@@ -33,11 +33,12 @@ import urllib.request
 
 from base import (CAMPOS_PROVA, HISTORICO, MARCA_GPT, Base, carregar_config, citacao_valida, curso_no_site,
                   gratuidade_explicita, registo_historico, texto_de_html)
-from comum import baixar_final, dominio_permitido, extrair_json, ler_json
+from comum import baixar_final, dominio_permitido, extrair_json, gravar_json, ler_json
 
 URL_OPENAI = "https://api.openai.com/v1/responses"
 MARCA = "GPT consultado em "
 DIAS_ENTRE_CONSULTAS = 7
+DIAS_CERTIFICADO = 30
 ORDEM = ["gratuito", "situacao", "inscricoes_ate", "certificado"]
 
 PERGUNTAS = {
@@ -176,15 +177,34 @@ def duvidas_do_curso(c):
     return d
 
 
-def consultado_ha_pouco(r, hoje):
+def consultado_ha_pouco(r, hoje, so_certificado=False):
+    """Uma semana entre perguntas; um mês quando a única dúvida é o certificado (pesa pouco e custa o mesmo)."""
     m = re.search(MARCA + r"(\d{4}-\d{2}-\d{2})", r.get("O que falta confirmar") or "")
-    return bool(m) and (hoje - datetime.date.fromisoformat(m.group(1))).days < DIAS_ENTRE_CONSULTAS
+    dias = DIAS_CERTIFICADO if so_certificado else DIAS_ENTRE_CONSULTAS
+    return bool(m) and (hoje - datetime.date.fromisoformat(m.group(1))).days < dias
+
+
+def registar_uso(usado, motivo, perguntas=0, resolvidas=0, tokens=None):
+    """Regista cada ronda em estado/gpt.json (o resumo semanal diz se o GPT foi usado ou não) e no resumo do GitHub."""
+    tokens = tokens or {}
+    entrada = {"quando": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M"), "usado": usado,
+               "motivo": motivo, "perguntas": perguntas, "resolvidas": resolvidas,
+               "tokens_entrada": int(tokens.get("input_tokens") or 0), "tokens_saida": int(tokens.get("output_tokens") or 0)}
+    registo = ler_json("estado/gpt.json", [])
+    gravar_json("estado/gpt.json", (registo + [entrada])[-120:])
+    linha = (f"GPT usado: {perguntas} pergunta(s), {resolvidas} dúvida(s) resolvida(s) com prova, "
+             f"{entrada['tokens_entrada']} tokens de entrada e {entrada['tokens_saida']} de saída." if usado
+             else f"GPT não usado: {motivo}.")
+    print(linha)
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+            f.write(f"### Auditoria do GPT\n\n{linha}\n")
 
 
 def main():
     chave = os.environ.get("OPENAI_API_KEY", "").strip()
     if not chave:
-        print("Sem OPENAI_API_KEY: auditoria do GPT desligada.")
+        registar_uso(False, "sem chave da OpenAI (segredo OPENAI_API_KEY ou SOCIAL_PROJECT)")
         return
     base = Base()
     cfg = carregar_config(base)
@@ -197,16 +217,18 @@ def main():
                for c in ler_json("docs/dados/cursos.json", {"cursos": []}).get("cursos", [])}
     linhas = base.tabela("Cursos")
     candidatos = [(r, no_site[r["ID"]]) for r in linhas if no_site.get(r.get("ID")) and curso_no_site(r, cfg)
-                  and not (r.get("Revisto por pessoa") or "").strip() and (forcar or not consultado_ha_pouco(r, hoje))]
+                  and not (r.get("Revisto por pessoa") or "").strip()
+                  and (forcar or not consultado_ha_pouco(r, hoje, no_site[r["ID"]] == ["certificado"]))]
     # primeiro os cursos com dúvidas mais importantes (gratuidade, situação, data), depois os só de certificado
     candidatos.sort(key=lambda x: min(ORDEM.index(d) for d in x[1]))
     print(f"Cursos com dúvidas: {len(candidatos)} (máximo {maximo} perguntas); modelo {modelo}")
-    alteracoes, historico, respostas, paginas = [], [], {}, {}
+    alteracoes, historico, respostas, paginas, erro_conta = [], [], {}, {}, ""
     tokens, perguntas, provados = {"input_tokens": 0, "output_tokens": 0}, 0, 0
     for r, duvidas in candidatos:
         link = (r.get("Página do curso") or "").strip() or r["Link"]
         dominio = dominio_oficial(link)
-        chave_resp = (link, tuple(duvidas))
+        especificas = any(d in ("situacao", "inscricoes_ate") for d in duvidas)
+        chave_resp = (link, tuple(duvidas), r["Título"] if especificas else "")
         if chave_resp not in respostas:  # cursos do mesmo edital com as mesmas dúvidas: uma só pergunta
             if perguntas >= maximo:
                 break
@@ -222,6 +244,7 @@ def main():
             except urllib.error.HTTPError as e:
                 print(f"  ! OpenAI respondeu {e.code}: {e.read()[:300]!r}")
                 if e.code in (401, 403, 429):
+                    erro_conta = f"a OpenAI recusou o pedido ({e.code})"
                     break
                 continue
             except Exception as e:  # noqa: BLE001
@@ -266,8 +289,11 @@ def main():
     if historico:
         base.acrescentar(HISTORICO, historico)
     base.guardar()
-    print(f"Perguntas ao GPT: {perguntas}; dúvidas resolvidas com prova: {provados}; "
-          f"tokens: {tokens['input_tokens']} de entrada, {tokens['output_tokens']} de saída.")
+    if tokens["input_tokens"]:
+        registar_uso(True, erro_conta, perguntas, provados, tokens)
+    else:
+        registar_uso(False, erro_conta or ("nenhuma dúvida por perguntar nesta ronda" if not candidatos
+                                           else "sem resposta da OpenAI"))
 
 
 if __name__ == "__main__":

@@ -223,6 +223,20 @@ def brevo(metodo, rota, corpo):
         raise RuntimeError(f"Brevo {e.code}: {e.read().decode('utf-8', 'replace')[:300]}")
 
 
+
+def resumo_gpt(dias=7):
+    """Diz se o GPT (auditor das dúvidas, consultar_gpt.py) foi usado nos últimos dias, a partir de estado/gpt.json."""
+    limite = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=dias)).strftime("%Y-%m-%d %H:%M")
+    rondas = [e for e in ler_json("estado/gpt.json", []) if e.get("quando", "") >= limite]
+    usadas = [e for e in rondas if e.get("usado")]
+    if not usadas:
+        motivo = rondas[-1]["motivo"] if rondas else "não correu nenhuma ronda"
+        return f"Auditoria do GPT: não usado nesta semana ({motivo})."
+    soma = lambda k: sum(int(e.get(k) or 0) for e in usadas)  # noqa: E731
+    return (f"Auditoria do GPT: usado em {len(usadas)} de {len(rondas)} rondas; {soma('perguntas')} perguntas; "
+            f"{soma('resolvidas')} dúvidas resolvidas com prova; {soma('tokens_entrada')} tokens de entrada e "
+            f"{soma('tokens_saida')} de saída (custo exato na página Usage da OpenAI).")
+
 def main():
     base = Base()
     cfg = carregar_config(base)
@@ -243,11 +257,13 @@ def main():
     print("Publicação para o WhatsApp:\n")
     print(wa)
     print(f"\nCartaz: docs/semanal/cartaz.pdf | newsletter: {len(noticias)} notícias, {len(ultimos + novos)} cursos")
+    gpt_semana = resumo_gpt()
+    print(gpt_semana)
 
     semana = (hoje() - datetime.timedelta(days=hoje().weekday())).isoformat()
     if semana not in {r.get("Semana (segunda-feira)") for r in base.tabela("Métricas")}:
         base.acrescentar("Métricas", [{"Semana (segunda-feira)": semana, "Cursos novos": len(novos) + len(ultimos),
-                                       "Notas": f"{total} cursos visíveis no site"}])
+                                       "Notas": f"{total} cursos visíveis no site. {gpt_semana}"}])
     base.guardar()
 
     if not os.environ.get("BREVO_API_KEY"):
@@ -263,7 +279,8 @@ def main():
                 "sender": remetente, "to": [{"email": admin}],
                 "subject": f"Publicação para o canal de WhatsApp ({hoje().strftime('%d/%m')})",
                 "textContent": "Copie o texto abaixo e cole-o no canal de WhatsApp:\n\n" + wa +
-                               f"\n\nCartaz para imprimir: {cfg['url_site'].rstrip('/')}/semanal/cartaz.pdf"})
+                               f"\n\nCartaz para imprimir: {cfg['url_site'].rstrip('/')}/semanal/cartaz.pdf"
+                               f"\n\n{gpt_semana}"})
             print("Publicação de WhatsApp enviada por email ao administrador.")
         except RuntimeError as e:
             print(f"Falhou o email ao administrador: {e}")

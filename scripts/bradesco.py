@@ -33,7 +33,7 @@ Brasil a encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer
 Escola Virtual da Fundação Bradesco. Escolha os que servem a qualquer pessoa que quer aprender ou trabalhar (deixe de \
 fora os pensados só para professores, gestores de empresas, ONGs ou profissionais de áreas muito específicas). Para \
 cada escolhido, indique as necessidades (ids da lista dada). Responda só com JSON entre <json></json>: \
-[{"url": "…", "necessidades": ["id", ...]}]."""
+[{"n": número do curso na lista, "necessidades": ["id", ...]}]."""
 
 
 def obter(url):
@@ -140,12 +140,15 @@ def main():
     novos_lidos = [d for u, d in lidos.items() if chave(u) not in por_chave and d["aberto"] and d["titulo"]]
     novos, custo = [], 0.0
     if novos_lidos:
-        lista = "\n".join(f"{d['url'][:150]} | {d['titulo'][:150]} | {d['descricao'][:200]}" for d in novos_lidos)
+        lista = "\n".join(f"{i} | {d['titulo'][:150]} | {d['descricao'][:200]}" for i, d in enumerate(novos_lidos, 1))
         texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                            f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (url | título | descrição):\n{lista}",
+                            f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | título | descrição):\n{lista}",
                             max_tokens=5000)
         custo += custo_estimado(uso, cfg["modelo_cursos"])
-        escolha = {x.get("url"): x for x in (extrair_json(texto) or []) if isinstance(x, dict)}
+        escolha = {}
+        for x in (extrair_json(texto) or []):
+            if isinstance(x, dict) and str(x.get("n", "")).isdigit() and 1 <= int(x["n"]) <= len(novos_lidos):
+                escolha[novos_lidos[int(x["n"]) - 1]["url"]] = x
         print(f"Cursos novos com botão de matrícula: {len(novos_lidos)}; o Claude escolheu {len(escolha)}.")
         for d in novos_lidos:
             x = escolha.get(d["url"])

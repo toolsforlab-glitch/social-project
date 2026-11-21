@@ -72,7 +72,7 @@ def ler_curso(url, botao):
         frases = re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", m.group(1)).strip())
         descricao = " ".join(f for f in frases[:2] if not re.search(r"matricule|inscreva", f, re.I))[:500]
     return {"url": url, "titulo": titulo, "aberto": bool(botao) and citacao_valida(botao, texto),
-            "duracao": duracao.group(1).replace(" ", "") if duracao else "", "idade": idade.group(1) if idade else "",
+            "duracao": f"{int(re.sub(r'\D', '', duracao.group(1)))} horas" if duracao else "", "idade": idade.group(1) if idade else "",
             "descricao": descricao, "texto": texto}
 
 
@@ -123,8 +123,8 @@ def main():
         campos = {"Situação das inscrições": "Aberto" if d["aberto"] else "Por confirmar", "Evidência": evid,
                   "Campos comprovados": ", ".join(outros + comp), "Página do curso": u, "Última verificação": hoje,
                   "Verificar automaticamente": "FALSE", "Destino do link": ""}
-        if d["duracao"] and not r.get("Duração"):
-            campos["Duração"] = d["duracao"].replace("h", " horas")
+        if d["duracao"] and (not r.get("Duração") or r.get("Origem") == "bradesco"):
+            campos["Duração"] = d["duracao"]
         if not (r.get("Descrição") or "").strip() and d["descricao"]:
             campos["Descrição"], campos["Origem da descrição"] = d["descricao"], DESCRICAO_PAGINA
         if r.get("Estado") == "Novo" and d["aberto"] and not sim(r.get("Mudança a rever")):
@@ -163,7 +163,7 @@ def main():
                 "Descrição": d["descricao"], "Origem da descrição": DESCRICAO_PAGINA if d["descricao"] else "",
                 "Necessidades": ", ".join(nec), "Perfis": "todos", "Condição de acesso": "",
                 "Requisitos": f"Ter {d['idade']} anos ou mais" if d["idade"] else "", "Certificado": "desconhecido",
-                "Inscrições até": "", "Início": "", "Duração": d["duracao"].replace("h", " horas") if d["duracao"] else "",
+                "Inscrições até": "", "Início": "", "Duração": d["duracao"],
                 "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "bradesco",
                 "Notas": "", "Como me inscrever": "", **VERIFICACAO_INICIAL,
                 "Nota da verificação": (f"{hoje}: publicado automaticamente: página própria do curso com o botão "

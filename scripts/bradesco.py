@@ -61,7 +61,7 @@ def chave(url):
 def ler_curso(url, botao):
     html = obter(url)
     texto = texto_de_html(html.encode())
-    m = re.search(r"<title>\s*(.*?)\s*-\s*Fundação Bradesco", html, flags=re.S | re.I)
+    m = re.search(r"<title>\s*([^<]{3,200}?)\s*-\s*Fundação Bradesco", html, flags=re.I)
     titulo = re.sub(r"\s+", " ", m.group(1)).strip() if m else ""
     duracao = re.search(r"Duração\s*(\d+\s*h)", texto)
     idade = re.search(r"Idade m[íi]nima\s*(\d{1,2})", texto)
@@ -139,7 +139,7 @@ def main():
     novos_lidos = [d for u, d in lidos.items() if chave(u) not in por_chave and d["aberto"] and d["titulo"]]
     novos, custo = [], 0.0
     if novos_lidos:
-        lista = "\n".join(f"{d['url']} | {d['titulo']} | {d['descricao'][:200]}" for d in novos_lidos)
+        lista = "\n".join(f"{d['url'][:150]} | {d['titulo'][:150]} | {d['descricao'][:200]}" for d in novos_lidos)
         texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
                             f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (url | título | descrição):\n{lista}",
                             max_tokens=5000)

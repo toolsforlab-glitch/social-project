@@ -29,10 +29,10 @@ Devolve JSON entre <json></json> com:
 - "situacao": "aberto" (a página diz que as inscrições estão abertas, que o acesso é livre, ou indica uma turma \
 futura com inscrição), "encerrado" (a página diz que as inscrições terminaram ou o curso acabou) ou "incerto" \
 (tudo o resto, incluindo quando o curso não aparece na página).
-- "sob_demanda": true se a página mostra que ESTE curso se pode começar ou fazer a matrícula agora, sem datas de \
-turma nem prazo (curso sob demanda, no ritmo da pessoa: botão ou frase como "Quero me matricular", "Inscreva-se", \
-"Comece agora", "acesso imediato", "faça no seu ritmo"), e nada diz que encerrou; senão false. A evidência é o texto \
-exato do botão ou da frase.
+- "sob_demanda": true só se a página DIZ com palavras que ESTE curso é sob demanda, sem datas de turma nem prazo \
+(ex.: "faça no seu ritmo", "comece quando quiser", "acesso imediato", "curso autoinstrucional", "você pode se \
+inscrever a qualquer momento"), e nada diz que encerrou; um botão "Inscreva-se" sozinho não chega; senão false. A \
+evidência é a frase exata da página que o diz.
 - "gratuito": "sim" ou "não" só se a página o disser para ESTE curso; senão "incerto".
 - "certificado": "gratuito", "pago" ou "sem certificado", só se a página falar do certificado e disser como é \
 (ex.: "certificado gratuito", "emissão do certificado sem custo", "taxa de R$ 20 pelo certificado"); senão null. \
@@ -106,8 +106,8 @@ def auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade=False, botao_p
     """Segunda opinião, por outro modelo, antes de publicar sozinho. Devolve (passou, falhas, custo)."""
     modelo = cfg.get("modelo_auditoria") or "claude-sonnet-5-5"
     afirmacoes = [f"Esta página é sobre o curso «{r['Título']}».",
-                  (f"A página deste curso mostra «{botao_por_entidade}» para se matricular ou começar agora "
-                   "(curso sob demanda, sem datas de turma)." if botao_por_entidade else
+                  (f"A página deste curso mostra «{botao_por_entidade}», e o curso não tem datas de turma nem prazo "
+                   "(curso sob demanda)." if botao_por_entidade else
                    f"Hoje ({hoje_txt}) é possível inscrever-se ou começar este curso: inscrições abertas, "
                    "acesso livre a qualquer momento, ou turma futura com inscrição.")]
     # a gratuidade só é auditada na página quando não vem de uma entidade marcada como "Tudo gratuito"
@@ -296,7 +296,9 @@ def main():
         # Curso sob demanda (regra do responsável, 21/11/2026): sem datas, com botão ou frase para se matricular ou
         # começar já, e sem nada a dizer que encerrou, conta como inscrições abertas.
         frase_sd = provas.get("sob_demanda", "")
-        if not (res.get("sob_demanda") is True and ACAO_SOB_DEMANDA.search(frase_sd) and not ENCERRADO.search(pagina)):
+        com_datas = bool(res.get("inscricoes_ate") or res.get("inicio") or res.get("turmas"))
+        if not (res.get("sob_demanda") is True and ACAO_SOB_DEMANDA.search(frase_sd) and not com_datas
+                and not ENCERRADO.search(pagina)):
             provas.pop("sob_demanda", None)
             frase_sd = ""
         if situacao == "incerto" and frase_sd:
@@ -342,8 +344,8 @@ def main():
                   "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas]
                                                   + [CAMPOS_PROVA[k] for k in mantidas])}
         if situacao_por_entidade:
-            campos["Nota da verificação"] += (f" Inscrições abertas: curso sob demanda, sem datas; a página mostra "
-                                              f"“{botao}” para se matricular ou começar agora.")
+            campos["Nota da verificação"] += (f" Inscrições abertas: curso sob demanda, sem datas (a página diz "
+                                              f"“{botao}”).")
         # para onde leva o botão do site (regra em paginas.py): a página do curso, ou o que o link abre de facto
         campos["Destino do link"] = destino_do_curso_verificado(r, pagina_curso, res, ev, pagina)
         # públicos prioritários: só os que a frase da página nomeia; sem frase, o curso é para todos

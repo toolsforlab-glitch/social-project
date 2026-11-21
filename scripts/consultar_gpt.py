@@ -47,8 +47,8 @@ PERGUNTAS = {
                 'integral"). O nome do programa sozinho (ex.: "Programa Senac de Gratuidade") não serve.',
     "situacao": '"situacao": se as inscrições deste curso estão abertas ou encerradas HOJE ({hoje}); valor "aberto" '
                 'ou "encerrado", com a frase que o diz (ex.: "inscrições abertas", "inscreva-se", "inscrições '
-                'encerradas"). Um curso sob demanda, sem datas, que se pode começar ou fazer a matrícula agora '
-                '(botão ou frase como "Quero me matricular", "Comece agora", "faça no seu ritmo"), conta como "aberto".',
+                'encerradas"). Um curso CLARAMENTE sob demanda, sem datas, conta como "aberto" se a página o disser com '
+                'palavras (ex.: "faça no seu ritmo", "comece quando quiser", "acesso imediato"); um botão sozinho não chega.',
     "inscricoes_ate": '"inscricoes_ate": a data-limite de inscrição; valor no formato AAAA-MM-DD, com a frase onde '
                       'essa data está escrita.',
     "certificado": '"certificado": se o curso dá certificado e se é gratuito; valor "gratuito", "pago" ou "sem '

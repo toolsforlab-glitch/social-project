@@ -272,11 +272,15 @@ CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_at
                 "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público",
                 "acessibilidade": "acessibilidade", "conteudo": "conteúdo", "para_que_serve": "para que serve", "programa": "programa",
                 "certificado": "certificado", "sob_demanda": "sob demanda"}
-# Curso sob demanda (sem datas, começa quando a pessoa quiser): a frase ou o botão para se matricular ou começar já
-# conta como inscrições abertas, desde que a página não diga que encerraram (regra do responsável, 21/11/2026).
-ACAO_SOB_DEMANDA = re.compile(r"matricul|inscrev|inscri[çc][ãa]o|comece|come[çc]ar|iniciar|acessar o curso|acesso "
-                              r"(imediato|livre)|no seu (pr[óo]prio )?ritmo|a qualquer (momento|hora)|sob demanda|"
-                              r"autoinstrucional|em qualquer hor[áa]rio", re.I)
+# Curso sob demanda (regra do responsável, 21/11/2026): só para cursos CLARAMENTE sob demanda. A página do curso tem
+# de o dizer com palavras suas (no seu ritmo, a qualquer momento, sob demanda, acesso imediato, autoinstrucional…);
+# um botão "Inscreva-se" sozinho não chega. Nesses cursos não se exige a frase "inscrições abertas", desde que o
+# curso não tenha datas de turma ou prazo e a página não diga que encerrou. Exceção: entidades em que uma pessoa
+# marcou o botão em Sites de confiança (coluna "Inscrição aberta quando a página mostra", ex.: Fundação Bradesco).
+ACAO_SOB_DEMANDA = re.compile(r"no seu (pr[óo]prio )?ritmo|a qualquer (momento|hora)|sob demanda|autoinstrucional|"
+                              r"acesso (imediato|livre)|comece (quando|agora|j[áa])|quando (voc[êe] )?quiser|"
+                              r"em qualquer hor[áa]rio|inscri[çc][õo]es permanentes|fluxo cont[íi]nuo|"
+                              r"pode se inscrever a qualquer|sem data (de|para) (in[íi]cio|come[çc]ar)", re.I)
 ENCERRADO = re.compile(r"inscri[çc][õo]es\s+(est[ãa]o\s+)?encerrad|esgotad|curso\s+(foi\s+)?encerrad|"
                        r"n[ãa]o\s+h[áa]\s+vagas|indispon[íi]vel", re.I)
 

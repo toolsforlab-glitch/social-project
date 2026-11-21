@@ -35,9 +35,9 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
-      - name: Esperar que acabem as rotinas anteriores (folha e repositório partilhados)
+      - name: Esperar que acabem as rotinas anteriores (planilha e repositório compartilhados)
         run: python3 scripts/vez.py esperar
-      - name: "Disparo de reserva: já correu hoje?"
+      - name: "Disparo de reserva: já rodou hoje?"
         id: vez
         run: python3 scripts/vez.py ja-correu schedule,workflow_dispatch
 
@@ -85,7 +85,7 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 guias.py
 
-      - name: Propostas de parceiros aceites
+      - name: Propostas de parceiros aceitas
         if: ${{ always() }}
         run: cd scripts && python3 parceiros.py
 

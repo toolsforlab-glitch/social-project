@@ -53,19 +53,19 @@ def esperar():
             print(f"Não foi possível ver as outras rotinas ({type(e).__name__}); segue.")
             return
         if not antes:
-            print("Nenhuma rotina anterior a correr: segue.")
+            print("Nenhuma rotina anterior rodando: segue.")
             return
         if time.time() - inicio > ESPERA_MAXIMA:
-            print(f"Ainda a correr ao fim de {ESPERA_MAXIMA // 60} minutos: {', '.join(antes)}. Segue mesmo assim.")
+            print(f"Ainda rodando depois de {ESPERA_MAXIMA // 60} minutos: {', '.join(antes)}. Segue mesmo assim.")
             return
-        print(f"À espera de: {', '.join(sorted(set(antes)))}")
+        print(f"Esperando: {', '.join(sorted(set(antes)))}")
         time.sleep(INTERVALO)
 
 
 def ja_correu(eventos):
     saida = os.environ.get("GITHUB_OUTPUT")
     if os.environ.get("GITHUB_EVENT_NAME") != "schedule":
-        print("Disparo à mão ou por alteração: corre sempre.")
+        print("Disparo à mão ou por alteração: roda sempre.")
         return
     rotina = os.environ["GITHUB_WORKFLOW_REF"].split("@")[0].rsplit("/", 1)[-1]
     hoje = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
@@ -75,15 +75,15 @@ def ja_correu(eventos):
                   if c["id"] != minha and c.get("event") in eventos and c.get("created_at", "")[:10] == hoje
                   and not str(c.get("display_title") or "").startswith("Só:")]  # corridas parciais não contam
     except Exception as e:  # noqa: BLE001
-        print(f"Não foi possível ver as corridas de hoje ({type(e).__name__}); corre por segurança.")
+        print(f"Não foi possível ver as execuções de hoje ({type(e).__name__}); roda por segurança.")
         return
     if feitas:
-        print(f"{rotina} já correu hoje com sucesso (#{feitas[0]['id']}, {feitas[0]['event']}): este disparo de reserva não faz nada.")
+        print(f"{rotina} já rodou hoje com sucesso (#{feitas[0]['id']}, {feitas[0]['event']}): este disparo de reserva não faz nada.")
         if saida:
             with open(saida, "a") as f:
                 f.write("salta=sim\n")
     else:
-        print(f"{rotina} ainda não correu hoje com sucesso: corre agora.")
+        print(f"{rotina} ainda não rodou hoje com sucesso: roda agora.")
 
 
 if __name__ == "__main__":

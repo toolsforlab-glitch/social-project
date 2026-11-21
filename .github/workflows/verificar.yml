@@ -1,13 +1,13 @@
-name: Correr um passo (manual)
+name: Rodar um passo (manual)
 run-name: "Só: ${{ inputs.passo }}"
-# Corre só um passo (por omissão, a verificação dos cursos) e reconstrói o site, sem pesquisas novas, sem newsletter
+# Roda só um passo (por omissão, a verificação dos cursos) e reconstrói o site, sem pesquisas novas, sem newsletter
 # e sem WhatsApp. Serve para testar mudanças sem esperar pelas rotinas diária e semanal.
 
 on:
   workflow_dispatch:
     inputs:
       passo:
-        description: "Passo a correr"
+        description: "Passo para rodar"
         type: choice
         options: [verificar.py, evg.py, consultar_gpt.py, turmas.py, senac_ma.py, centec.py, pt_br.py]
         default: verificar.py
@@ -24,7 +24,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
-      - name: Esperar que acabem as rotinas anteriores (folha e repositório partilhados)
+      - name: Esperar que acabem as rotinas anteriores (planilha e repositório compartilhados)
         run: python3 scripts/vez.py esperar
 
   verificar:
@@ -44,11 +44,11 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
 
-      - name: Correr o passo escolhido
+      - name: Rodar o passo escolhido
         timeout-minutes: 25
         run: cd scripts && python3 "${{ inputs.passo || 'verificar.py' }}"
 
-      - name: Gerar o site a partir da folha
+      - name: Gerar o site a partir da planilha
         if: ${{ always() }}
         run: cd scripts && python3 construir_site.py
 

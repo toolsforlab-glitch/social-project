@@ -1,6 +1,6 @@
 """Passa para português do Brasil os textos já gravados na folha que o site e o responsável leem (21/11/2026).
 
-Corre à mão (rotina «Correr um passo», passo pt_br.py). O Claude reescreve cada texto em pt-BR sem mudar o sentido,
+Roda à mão (rotina “Rodar um passo”, passo pt_br.py). O Claude reescreve cada texto em pt-BR sem mudar o sentido,
 e o código confere antes de gravar: as citações entre «» (frases copiadas das páginas oficiais), os links e os números
 têm de ficar iguais, e o tamanho não pode mudar muito. A coluna Evidência nunca é tocada, nem as descrições copiadas
 letra a letra da página oficial («Origem da descrição» = Texto da página).

@@ -24,7 +24,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
-      - name: Esperar que acabem as rotinas anteriores (folha e repositório partilhados)
+      - name: Esperar que acabem as rotinas anteriores (planilha e repositório compartilhados)
         run: python3 scripts/vez.py esperar
 
   site:
@@ -54,13 +54,13 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 verificar_organizacoes.py || echo 'Unidades não verificadas'
 
-      - name: Segunda opinião do GPT para dúvidas de gratuidade (o código prova)
+      - name: Auditoria do GPT nas dúvidas (o código prova)
         timeout-minutes: 15
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.SOCIAL_PROJECT }}
         run: cd scripts && python3 consultar_gpt.py || echo 'GPT não consultado'
 
-      - name: Gerar o site a partir da folha
+      - name: Gerar o site a partir da planilha
         run: cd scripts && python3 construir_site.py
       - name: Publicar
         run: |

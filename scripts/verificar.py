@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-from base import DESCRICAO_PAGINA, gratuidade_explicita, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
+from base import DESCRICAO_PAGINA, gratuidade_explicita, provas_do_gpt, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import chave as chave_titulo, destino_do_link, destino_texto, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
@@ -279,13 +279,32 @@ def main():
         data = str(res.get("inscricoes_ate") or "")[:10] if "inscricoes_ate" in provas else ""
         contagem[situacao] += 1
 
+        # provas encontradas pelo GPT e conferidas por código (consultar_gpt.py): voltam a ser conferidas no link
+        # guardado e ficam enquanto a frase lá estiver (só para campos que esta leitura não provou)
+        rotulo_chave = {v: k for k, v in CAMPOS_PROVA.items()}
+        mantidas = {}
+        for rotulo, frase_gpt, url_gpt, item in provas_do_gpt(r.get("Evidência")):
+            k = rotulo_chave.get(rotulo)
+            if not k or k in provas or k in mantidas:
+                continue
+            try:
+                if citacao_valida(frase_gpt, texto_de_html(baixar(url_gpt, timeout=30))):
+                    mantidas[k] = item
+            except Exception:  # noqa: BLE001
+                pass
+        if "gratuito" in mantidas:
+            em_falta = [x for x in em_falta if "gratuit" not in x.lower()]
+        if situacao == "incerto" and "situacao" in mantidas:
+            situacao = {"Aberto": "aberto", "Encerrado": "encerrado"}.get(r.get("Situação das inscrições"), "incerto")
         # mantém provas registadas à mão (ex.: "unidades") e junta as novas
         outros = [c.strip() for c in (r.get("Campos comprovados") or "").split(",")
                   if c.strip() and c.strip() not in CAMPOS_PROVA.values()]
         campos = {"Página do curso": pagina_curso, "Última verificação": hoje_txt, "Nota da verificação": f"{hoje_txt}: {res.get('nota') or ''}".strip(),
                   "Próxima verificação": "",
-                  "Evidência": " | ".join(f"{CAMPOS_PROVA[k]}: «{v}»" for k, v in provas.items())[:1500],
-                  "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas])}
+                  "Evidência": " | ".join([f"{CAMPOS_PROVA[k]}: «{v}»" for k, v in provas.items()]
+                                          + list(mantidas.values()))[:1500],
+                  "Campos comprovados": ", ".join(outros + [CAMPOS_PROVA[k] for k in provas]
+                                                  + [CAMPOS_PROVA[k] for k in mantidas])}
         # para onde leva o botão do site (regra em paginas.py): a página do curso, ou o que o link abre de facto
         campos["Destino do link"] = destino_do_curso_verificado(r, pagina_curso, res, ev, pagina)
         # públicos prioritários: só os que a frase da página nomeia; sem frase, o curso é para todos
@@ -327,7 +346,7 @@ def main():
                     em_falta.append("A página não diz claramente o que se aprende: a descrição foi retirada.")
             if data and not r.get("Inscrições até"):
                 campos["Inscrições até"] = data
-            elif r.get("Inscrições até") and "inscricoes_ate" not in provas:
+            elif r.get("Inscrições até") and "inscricoes_ate" not in provas and "inscricoes_ate" not in mantidas:
                 motivos.append(f"A data {r['Inscrições até']} não está confirmada na página.")
             # dados de elegibilidade e barreiras: só com prova, e sem apagar o que já lá está
             for chave, coluna in COLUNAS_BARREIRAS.items():
@@ -376,7 +395,7 @@ def main():
                 campos["Notas"] = (f"{hoje_txt}: posto de fora automaticamente: {fora}."
                                    + (" " + r["Notas"] if r.get("Notas") else ""))[:900]
                 print(f"    ⨯ posto de fora: {r['Título']} ({fora})")
-        if gratuito == "incerto":
+        if gratuito == "incerto" and "gratuito" not in mantidas:
             em_falta.append("A página não diz se este curso é gratuito.")
         if not pagina_curso and "psg.ce.senac.br" not in r["Link"]:
             em_falta.append("Falta a página própria do curso: " + nota_pagina)

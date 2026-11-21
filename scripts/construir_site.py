@@ -190,7 +190,9 @@ def exportar_dados(base, cfg):
             # sem frase da página que diga que não há custo: o site mostra «Gratuidade por confirmar»
             "gratuidade_comprovada": gratuidade_comprovada(r), "necessidades": lista(r.get("Necessidades")),
             "exclusivo_para": r.get("Condição de acesso", ""), "requisitos": r.get("Requisitos", ""),
-            "certificado": r.get("Certificado", ""),
+            # o certificado só aparece com prova (frase da página, ou GPT conferido por código) ou revisto por pessoa
+            "certificado": r.get("Certificado", "") if comprovado(r, "certificado") else "",
+            "certificado_comprovado": comprovado(r, "certificado"),
             # uma data só aparece se estiver comprovada na página ou confirmada por uma pessoa
             "inscricoes_ate": r.get("Inscrições até", "") if comprovado(r, "data") else "",
             "data_por_confirmar": bool(r.get("Inscrições até")) and not comprovado(r, "data"),

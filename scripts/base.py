@@ -266,7 +266,8 @@ CAMPOS_PROVA = {"situacao": "situação", "gratuito": "gratuito", "inscricoes_at
                 "idade_minima": "idade", "idade_maxima": "idade máxima", "escolaridade_minima": "escolaridade", "renda_maxima": "renda",
                 "prioridade_cadunico": "cadunico", "turnos": "turno", "precisa_internet": "internet",
                 "ajuda_custo": "ajuda", "documentos": "documentos", "publico": "público",
-                "acessibilidade": "acessibilidade", "conteudo": "conteúdo", "para_que_serve": "para que serve", "programa": "programa"}
+                "acessibilidade": "acessibilidade", "conteudo": "conteúdo", "para_que_serve": "para que serve", "programa": "programa",
+                "certificado": "certificado"}
 
 # Acessibilidade para pessoas com deficiência: uma etiqueta só existe quando a frase da fonte nomeia o recurso.
 # Um curso DE Libras ou SOBRE acessibilidade não conta (isso é o tema, não um recurso oferecido a quem estuda).
@@ -389,6 +390,17 @@ def frase_de_gratuidade(texto):
         if 8 <= len(frase) <= 400 and gratuidade_explicita(frase):
             return frase
     return ""
+
+
+# Provas encontradas pelo GPT (consultar_gpt.py) e conferidas por código, guardadas na Evidência assim:
+#   rótulo: «frase» (link; encontrada pelo GPT, conferida por código)
+MARCA_GPT = "encontrada pelo GPT, conferida por código"
+_PROVA_GPT = re.compile(r"([\wçãáéíóúâêô ]+): «([^»]*)» \((https?://[^;)\s]+); " + MARCA_GPT + r"\)")
+
+
+def provas_do_gpt(evidencia):
+    """[(rótulo, frase, link, texto inteiro do item)] das provas do GPT guardadas na Evidência."""
+    return [(m.group(1).strip(), m.group(2), m.group(3), m.group(0)) for m in _PROVA_GPT.finditer(evidencia or "")]
 
 
 def gratuidade_comprovada(r):

@@ -1,18 +1,25 @@
-"""Segunda opinião do GPT (OpenAI) para tirar dúvidas que a rotina não conseguiu provar. Hoje: gratuidade.
+"""O GPT (OpenAI) como auditor das informações duvidosas do site.
 
-Regra do projeto: o GPT só APONTA onde pode estar a resposta (link e frase); quem prova é o código.
-Para cada curso visível no site cuja gratuidade não está comprovada (o site mostra «Gratuidade por confirmar»):
+Regra do projeto: o GPT só APONTA onde pode estar a resposta (valor, frase e link); quem prova é o código.
+Para cada curso que o site mostra hoje (docs/dados/cursos.json) e que tem dúvidas, por esta ordem:
 
-1. pergunta ao GPT, com pesquisa na web limitada ao domínio oficial da entidade do curso, por uma frase que diga
-   explicitamente que o curso (ou as vagas do programa) é gratuito, e pelo link dessa frase;
-2. o código abre o link e só aceita se:
-   - o link é do domínio oficial da entidade (o mesmo domínio do link do curso, ex.: ac.senac.br);
+  gratuito       o site mostra «Gratuidade por confirmar»
+  situacao       inscrições «Por confirmar» (cursos sem turmas)
+  inscricoes_ate data de inscrição sem prova, ou situação por confirmar (cursos sem turmas)
+  certificado    o certificado (gratuito, pago, sem certificado) não está comprovado
+
+1. pergunta ao GPT, com pesquisa na web limitada ao domínio oficial da entidade do curso, por uma frase que
+   responda a cada dúvida, e pelo link dessa frase (uma pergunta por curso, com todas as dúvidas dele);
+2. o código abre cada link e só aceita se:
+   - o link (e para onde redireciona) é do domínio oficial da entidade (o mesmo do link do curso, ex.: ac.senac.br);
    - a frase existe letra a letra no texto da página (citacao_valida);
-   - a frase diz que não há custo (gratuidade_explicita: o nome do programa não chega);
-3. se passar, grava a frase na Evidência («gratuito: «…» (link) — encontrada pelo GPT, conferida por código») e
-   «gratuito» em Campos comprovados; se não passar, regista a consulta em «O que falta confirmar» e só volta a
-   perguntar passados DIAS_ENTRE_CONSULTAS dias.
+   - a frase diz o que se afirma: gratuidade explícita (o nome do programa não chega); «inscrições abertas» ou
+     «encerradas»; a data escrita na própria frase; «certificado» com gratuito, pago ou sem certificado;
+3. o que passa fica na Evidência («rótulo: «frase» (link; encontrada pelo GPT, conferida por código)»), em Campos
+   comprovados e na coluna do campo; o que não passa fica em «O que falta confirmar» com o motivo, e o curso só
+   volta a ser perguntado passados DIAS_ENTRE_CONSULTAS dias.
 
+A verificação semanal (verificar.py) volta a conferir estas frases no link guardado e mantém-nas enquanto lá estiverem.
 Sem o segredo OPENAI_API_KEY, o script não faz nada. Cursos com «Revisto por pessoa» nunca são alterados.
 """
 import datetime
@@ -24,27 +31,48 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from base import (HISTORICO, Base, carregar_config, citacao_valida, curso_no_site, gratuidade_comprovada,
+from base import (CAMPOS_PROVA, HISTORICO, MARCA_GPT, Base, carregar_config, citacao_valida, curso_no_site,
                   gratuidade_explicita, registo_historico, texto_de_html)
 from comum import baixar_final, dominio_permitido, extrair_json, ler_json
 
 URL_OPENAI = "https://api.openai.com/v1/responses"
 MARCA = "GPT consultado em "
 DIAS_ENTRE_CONSULTAS = 7
+ORDEM = ["gratuito", "situacao", "inscricoes_ate", "certificado"]
 
-PEDIDO = """Preciso de uma prova escrita, não de uma conclusão.
+PERGUNTAS = {
+    "gratuito": '"gratuito": uma frase que diga, com essas palavras, que este curso, ou as vagas do programa a que '
+                'ele pertence, é gratuito (ex.: "gratuito", "vagas gratuitas", "sem custo", "sem ônus", "bolsa '
+                'integral"). O nome do programa sozinho (ex.: "Programa Senac de Gratuidade") não serve.',
+    "situacao": '"situacao": se as inscrições deste curso estão abertas ou encerradas HOJE ({hoje}); valor "aberto" '
+                'ou "encerrado", com a frase que o diz (ex.: "inscrições abertas", "inscreva-se", "inscrições '
+                'encerradas").',
+    "inscricoes_ate": '"inscricoes_ate": a data-limite de inscrição; valor no formato AAAA-MM-DD, com a frase onde '
+                      'essa data está escrita.',
+    "certificado": '"certificado": se o curso dá certificado e se é gratuito; valor "gratuito", "pago" ou "sem '
+                   'certificado", com a frase que fala do certificado.',
+}
+
+PEDIDO = """Preciso de provas escritas, não de conclusões.
 Curso: {titulo}
 Entidade: {entidade}
 Página ou edital do curso: {link}
 
-Procure numa página OFICIAL desta entidade (domínio {dominio}) uma frase que diga, com essas palavras, que este \
-curso, ou as vagas do programa a que ele pertence, é gratuito (ex.: "gratuito", "vagas gratuitas", "sem custo", \
-"bolsa integral"). Procure primeiro na própria página ou edital do curso e depois na página do programa no site \
-da entidade. Não servem notícias, blogs nem sites de terceiros. O nome do programa sozinho (ex.: "Programa Senac \
-de Gratuidade") não serve. Não deduza.
+Procure em páginas OFICIAIS desta entidade (domínio {dominio}): primeiro na própria página ou edital do curso, \
+depois na página do programa no site da entidade. Não servem notícias, blogs nem sites de terceiros. Não deduza.
+Para cada pergunta abaixo, copie a frase EXATA, letra a letra, sem resumir, e o link exato da página onde está:
+{perguntas}
 
-Responda só com JSON entre <json></json>: {{"url": "link exato da página onde está a frase", "frase": "a frase \
-copiada letra a letra, sem resumir"}}. Se não encontrar, responda <json>{{"url": null, "frase": null}}</json>."""
+Responda só com JSON entre <json></json>, com uma chave por pergunta, assim:
+{{"chave": {{"valor": "…ou null", "frase": "…", "url": "…"}}}}
+Quando não encontrar uma frase para uma pergunta, ponha {{"valor": null, "frase": null, "url": null}} nessa chave."""
+
+ABERTO = re.compile(r"inscri[çc][õo]es\s+(est[ãa]o\s+|j[áa]\s+est[ãa]o\s+)?abertas|matr[íi]culas?\s+abertas|"
+                    r"inscreva-se|matricule-se|fa[çc]a\s+(a\s+sua\s+|sua\s+)?inscri[çc][ãa]o|"
+                    r"(curso|inscri[çc][ãa]o)\s+(é\s+)?(aberto|aberta)|acesso\s+(livre|imediato)", re.I)
+ENCERRADO = re.compile(r"encerrad|esgotad|finalizad|inscri[çc][õo]es\s+fechadas|n[ãa]o\s+h[áa]\s+vagas", re.I)
+MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro",
+         "novembro", "dezembro"]
 
 
 def dominio_oficial(link):
@@ -59,30 +87,93 @@ def gpt(modelo, pedido, dominio, chave):
              "tools": [{"type": "web_search", "filters": {"allowed_domains": [dominio]}}]}
     req = urllib.request.Request(URL_OPENAI, data=json.dumps(corpo).encode(), method="POST",
                                  headers={"Content-Type": "application/json", "Authorization": f"Bearer {chave}"})
-    with urllib.request.urlopen(req, timeout=180) as r:
+    with urllib.request.urlopen(req, timeout=240) as r:
         resp = json.load(r)
     texto = "".join(c.get("text", "") for item in resp.get("output", []) if item.get("type") == "message"
                     for c in item.get("content", []) if c.get("type") == "output_text")
     return texto, resp.get("usage", {})
 
 
-def conferir(url, frase, dominio):
-    """Prova por código. Devolve (ok, motivo)."""
-    if not url or not frase:
-        return False, "o GPT não encontrou frase"
-    if not dominio_permitido(url, [dominio]):
-        return False, f"link fora do domínio oficial ({url})"
-    if not gratuidade_explicita(frase):
-        return False, f"a frase não diz que não há custo («{frase[:120]}»)"
+def data_na_frase(iso, frase):
+    """A data tem de estar escrita na frase (dd/mm/aaaa, dd/mm, dd.mm.aaaa ou «d de mês»)."""
     try:
-        bruto, final = baixar_final(url, timeout=40)
-    except Exception as e:  # noqa: BLE001
-        return False, f"não foi possível abrir o link ({str(e)[:80]})"
-    if not dominio_permitido(final, [dominio]):
-        return False, f"o link redireciona para fora do domínio oficial ({final})"
-    if not citacao_valida(frase, texto_de_html(bruto)):
-        return False, "a frase não está na página indicada"
-    return True, ""
+        d = datetime.date.fromisoformat(iso)
+    except (TypeError, ValueError):
+        return False
+    f = frase.lower()
+    formas = [f"{d.day:02d}/{d.month:02d}", f"{d.day}/{d.month:02d}", f"{d.day:02d}.{d.month:02d}",
+              f"{d.day} de {MESES[d.month - 1]}", f"{d.day:02d} de {MESES[d.month - 1]}", d.isoformat()]
+    return any(x in f for x in formas)
+
+
+def valor_diz(campo, valor, frase):
+    """O código confere que a frase diz o que se afirma. Devolve (valor normalizado, motivo se falhar)."""
+    valor = str(valor or "").strip().lower()
+    if campo == "gratuito":
+        return ("sim", "") if gratuidade_explicita(frase) else ("", "a frase não diz que não há custo")
+    if campo == "situacao":
+        if valor == "aberto" and ABERTO.search(frase) and not ENCERRADO.search(frase):
+            return "Aberto", ""
+        if valor == "encerrado" and ENCERRADO.search(frase):
+            return "Encerrado", ""
+        return "", "a frase não diz se as inscrições estão abertas ou encerradas"
+    if campo == "inscricoes_ate":
+        return (valor[:10], "") if data_na_frase(valor[:10], frase) else ("", "a data não está escrita na frase")
+    if campo == "certificado":
+        if "certificad" not in frase.lower():
+            return "", "a frase não fala de certificado"
+        if valor == "gratuito" and gratuidade_explicita(frase):
+            return "gratuito", ""
+        if valor == "pago" and re.search(r"\bpag[oa]\b|taxa|r\$|valor\s+de", frase, re.I):
+            return "pago", ""
+        if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa])\s+"
+                                                     r"(direito\s+a\s+)?certificad|sem\s+certificad", frase, re.I):
+            return "sem certificado", ""
+        return "", "a frase não diz se o certificado é gratuito, pago ou inexistente"
+    return "", "campo desconhecido"
+
+
+def conferir(campo, resposta, dominio, paginas):
+    """Prova por código de uma resposta do GPT. Devolve (valor, frase, url, motivo)."""
+    resposta = resposta if isinstance(resposta, dict) else {}
+    url = str(resposta.get("url") or "").strip()
+    frase = re.sub(r"\s+", " ", str(resposta.get("frase") or "")).strip()
+    if not url or not frase:
+        return "", frase, url, "o GPT não encontrou frase"
+    if not dominio_permitido(url, [dominio]):
+        return "", frase, url, f"link fora do domínio oficial ({url[:80]})"
+    valor, motivo = valor_diz(campo, resposta.get("valor"), frase)
+    if motivo:
+        return "", frase, url, f"{motivo} («{frase[:100]}»)"
+    if url not in paginas:
+        try:
+            bruto, final = baixar_final(url, timeout=40)
+            paginas[url] = texto_de_html(bruto) if dominio_permitido(final, [dominio]) else None
+        except Exception as e:  # noqa: BLE001
+            paginas[url] = f"ERRO {str(e)[:60]}"
+    texto = paginas[url]
+    if texto is None:
+        return "", frase, url, "o link redireciona para fora do domínio oficial"
+    if texto.startswith("ERRO "):
+        return "", frase, url, f"não foi possível abrir o link ({texto[5:]})"
+    if not citacao_valida(frase, texto):
+        return "", frase, url, "a frase não está na página indicada"
+    return valor, frase, url, ""
+
+
+def duvidas_do_curso(c):
+    """Dúvidas de um curso tal como o site o mostra (docs/dados/cursos.json)."""
+    d = []
+    if c.get("gratuidade_comprovada") is False:
+        d.append("gratuito")
+    if not c.get("turmas"):
+        if c.get("situacao") == "Por confirmar":
+            d.append("situacao")
+        if c.get("data_por_confirmar") or c.get("situacao") == "Por confirmar":
+            d.append("inscricoes_ate")
+    if c.get("certificado_comprovado") is False:
+        d.append("certificado")
+    return d
 
 
 def consultado_ha_pouco(r, hoje):
@@ -93,7 +184,7 @@ def consultado_ha_pouco(r, hoje):
 def main():
     chave = os.environ.get("OPENAI_API_KEY", "").strip()
     if not chave:
-        print("Sem OPENAI_API_KEY: segunda opinião do GPT desligada.")
+        print("Sem OPENAI_API_KEY: auditoria do GPT desligada.")
         return
     base = Base()
     cfg = carregar_config(base)
@@ -102,25 +193,32 @@ def main():
     maximo = int(os.environ.get("GPT_MAX_CONSULTAS", conf.get("max_consultas", 10)))
     forcar = os.environ.get("GPT_FORCAR", "") == "1"  # ignora o intervalo entre consultas (testes)
     hoje = datetime.date.today()
+    no_site = {c.get("id"): duvidas_do_curso(c)
+               for c in ler_json("docs/dados/cursos.json", {"cursos": []}).get("cursos", [])}
     linhas = base.tabela("Cursos")
-    # só os cursos que o site mostra hoje com «Gratuidade por confirmar» (docs/dados/cursos.json)
-    no_site = {c.get("id") for c in ler_json("docs/dados/cursos.json", {"cursos": []}).get("cursos", [])
-               if c.get("gratuidade_comprovada") is False}
-    candidatos = [r for r in linhas if r.get("ID") in no_site and curso_no_site(r, cfg)
-                  and not (r.get("Revisto por pessoa") or "").strip()
-                  and not gratuidade_comprovada(r) and (forcar or not consultado_ha_pouco(r, hoje))]
-    print(f"Cursos com gratuidade por confirmar a consultar: {len(candidatos)} (máximo {maximo}); modelo {modelo}")
-    alteracoes, historico, por_link, tokens = [], [], {}, {"input_tokens": 0, "output_tokens": 0}
-    for r in candidatos[:maximo]:
+    candidatos = [(r, no_site[r["ID"]]) for r in linhas if no_site.get(r.get("ID")) and curso_no_site(r, cfg)
+                  and not (r.get("Revisto por pessoa") or "").strip() and (forcar or not consultado_ha_pouco(r, hoje))]
+    # primeiro os cursos com dúvidas mais importantes (gratuidade, situação, data), depois os só de certificado
+    candidatos.sort(key=lambda x: min(ORDEM.index(d) for d in x[1]))
+    print(f"Cursos com dúvidas: {len(candidatos)} (máximo {maximo} perguntas); modelo {modelo}")
+    alteracoes, historico, respostas, paginas = [], [], {}, {}
+    tokens, perguntas, provados = {"input_tokens": 0, "output_tokens": 0}, 0, 0
+    for r, duvidas in candidatos:
         link = (r.get("Página do curso") or "").strip() or r["Link"]
         dominio = dominio_oficial(link)
-        if link not in por_link:  # cursos do mesmo edital: uma só pergunta
+        chave_resp = (link, tuple(duvidas))
+        if chave_resp not in respostas:  # cursos do mesmo edital com as mesmas dúvidas: uma só pergunta
+            if perguntas >= maximo:
+                break
+            pedido = PEDIDO.format(titulo=r["Título"], entidade=r.get("Entidade", ""), link=link, dominio=dominio,
+                                   perguntas="\n".join("- " + PERGUNTAS[d].format(hoje=hoje.isoformat())
+                                                       for d in duvidas))
             try:
-                texto, uso = gpt(modelo, PEDIDO.format(titulo=r["Título"], entidade=r.get("Entidade", ""), link=link,
-                                                      dominio=dominio), dominio, chave)
+                perguntas += 1
+                texto, uso = gpt(modelo, pedido, dominio, chave)
                 for k in tokens:
                     tokens[k] += int(uso.get(k) or 0)
-                res = extrair_json(texto) or {}
+                respostas[chave_resp] = extrair_json(texto) or {}
             except urllib.error.HTTPError as e:
                 print(f"  ! OpenAI respondeu {e.code}: {e.read()[:300]!r}")
                 if e.code in (401, 403, 429):
@@ -129,29 +227,46 @@ def main():
             except Exception as e:  # noqa: BLE001
                 print(f"  ! {r['Título']}: {e}")
                 continue
-            url, frase = str(res.get("url") or "").strip(), re.sub(r"\s+", " ", str(res.get("frase") or "")).strip()
-            por_link[link] = (url, frase, *conferir(url, frase, dominio))
-        url, frase, ok, motivo = por_link[link]
-        falta = re.sub(MARCA + r"\d{4}-\d{2}-\d{2}[^.]*\.\s*", "", r.get("O que falta confirmar") or "").strip()
-        if ok:
-            comprovados = [c.strip() for c in (r.get("Campos comprovados") or "").split(",") if c.strip()]
-            comprovados = ["gratuito"] + [c for c in comprovados if c not in ("gratuito", "programa")]
-            falta = re.sub(r"O edital não diz por escrito que o curso é gratuito[^.]*\.\s*", "", falta).strip()
-            evid = f"gratuito: «{frase}» ({url}; encontrada pelo GPT, conferida por código)"
-            campos = {"Campos comprovados": ", ".join(comprovados),
-                      "Evidência": (evid + " | " + (r.get("Evidência") or "")).strip(" |")[:1500],
-                      "O que falta confirmar": falta[:900]}
-            print(f"  ✓ {r['Título']}: «{frase[:90]}» ({url})")
-            historico.append(registo_historico(r, "GPT + código", "Gratuidade comprovada", {}, f"«{frase[:200]}» {url}"))
-        else:
-            campos = {"O que falta confirmar": (f"{MARCA}{hoje.isoformat()}: {motivo}. " + falta).strip()[:900]}
-            print(f"  ✗ {r['Título']}: {motivo}")
+        res = respostas[chave_resp]
+        comprovados = [c.strip() for c in (r.get("Campos comprovados") or "").split(",") if c.strip()]
+        evid_novas, campos, falhas = [], {}, []
+        for d in duvidas:
+            valor, frase, url, motivo = conferir(d, res.get(d), dominio, paginas)
+            rotulo = CAMPOS_PROVA[d]
+            if motivo:
+                falhas.append(f"{rotulo}: {motivo}")
+                continue
+            provados += 1
+            evid_novas.append(f"{rotulo}: «{frase}» ({url}; {MARCA_GPT})")
+            tirar = {rotulo, "programa"} if d == "gratuito" else {rotulo}
+            comprovados = [c for c in comprovados if c not in tirar] + [rotulo]
+            if d == "situacao":
+                campos["Situação das inscrições"] = valor
+            elif d == "inscricoes_ate":
+                campos["Inscrições até"] = valor
+            elif d == "certificado":
+                campos["Certificado"] = valor
+            print(f"  ✓ {r['Título'][:50]} | {rotulo} = {valor} | «{frase[:80]}» ({url[:70]})")
+            historico.append(registo_historico(r, "GPT + código", f"{rotulo} comprovado: {valor}", campos,
+                                               f"«{frase[:200]}» {url}"))
+        for f in falhas:
+            print(f"  ✗ {r['Título'][:50]} | {f}")
+        falta = re.sub(r"\[" + MARCA + r"\d{4}-\d{2}-\d{2}:[^\]]*\]\s*", "", r.get("O que falta confirmar") or "").strip()
+        if evid_novas:
+            if any(e.startswith("gratuito:") for e in evid_novas):
+                falta = re.sub(r"O edital não diz por escrito que o curso é gratuito[^.]*\.\s*", "", falta).strip()
+            campos["Campos comprovados"] = ", ".join(dict.fromkeys(comprovados))
+            campos["Evidência"] = (" | ".join(evid_novas) + " | " + (r.get("Evidência") or "")).strip(" |")[:1500]
+        if falhas:
+            falta = (f"[{MARCA}{hoje.isoformat()}: " + "; ".join(f.replace("]", ")") for f in falhas) + "] "
+                     + falta).strip()
+        campos["O que falta confirmar"] = falta[:900]
         alteracoes.append((r["_linha"], campos))
     base.atualizar("Cursos", alteracoes)
     if historico:
         base.acrescentar(HISTORICO, historico)
     base.guardar()
-    print(f"Consultas: {len(por_link)}; comprovados: {sum(1 for v in por_link.values() if v[2])}; "
+    print(f"Perguntas ao GPT: {perguntas}; dúvidas resolvidas com prova: {provados}; "
           f"tokens: {tokens['input_tokens']} de entrada, {tokens['output_tokens']} de saída.")
 
 

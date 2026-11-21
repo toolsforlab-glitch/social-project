@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-21T01:41",
+ "atualizado": "2026-11-21T01:51",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -33,7 +33,7 @@
    "data_por_confirmar": false,
    "situacao": "Aberto",
    "turmas": [],
-   "em_revisao": true,
+   "em_revisao": false,
    "onde_inscrever": [],
    "verificado_em": "2026-11-17",
    "inicio": "",
@@ -93,7 +93,7 @@
    "data_por_confirmar": false,
    "situacao": "Aberto",
    "turmas": [],
-   "em_revisao": true,
+   "em_revisao": false,
    "onde_inscrever": [],
    "verificado_em": "2026-11-17",
    "inicio": "",

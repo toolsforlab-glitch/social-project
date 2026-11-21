@@ -7,5 +7,14 @@
   "resolvidas": 0,
   "tokens_entrada": 84402,
   "tokens_saida": 5331
+ },
+ {
+  "quando": "2026-11-21 01:51",
+  "usado": false,
+  "motivo": "nenhuma dúvida por perguntar nesta ronda",
+  "perguntas": 0,
+  "resolvidas": 0,
+  "tokens_entrada": 0,
+  "tokens_saida": 0
  }
 ]

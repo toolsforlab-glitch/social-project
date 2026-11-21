@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-21T00:54",
+ "atualizado": "2026-11-21T01:17",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -4180,14 +4180,14 @@
    "destino": {
     "tipo": "curso",
     "procurar": "",
-    "conta": "conta da Escola Virtual da Fundação Bradesco",
-    "frase": "Conta criada para a utilização das funcionalidades da Plataforma, pela qual é possível a inscrição nos cursos disponibilizados",
+    "conta": "Escola Virtual",
+    "frase": "Para acesso aos cursos on-line, o ALUNO deverá realizar o cadastro prévio completo no site",
     "nota": ""
    },
    "pais": "BR",
    "regiao": "",
    "cidade": "",
-   "descricao": "Aprenda o básico de redes sociais e do pacote Office da Microsoft. Ajuda a usar a internet e programas de escritório no dia a dia.",
+   "descricao": "Aprenda os conceitos básicos de Redes Sociais e do Pacote Office, da Microsoft.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -4203,7 +4203,7 @@
    "turmas": [],
    "em_revisao": true,
    "onde_inscrever": [],
-   "verificado_em": "2026-11-17",
+   "verificado_em": "2026-11-21",
    "inicio": "",
    "duracao": "6 horas",
    "primeiro_visto": "2026-11-16",

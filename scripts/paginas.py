@@ -180,8 +180,8 @@ DESTINOS_FONTES = [
     # Centec Academy: o link de inscrição da turma abre primeiro a página de acesso (CPF e senha) - 20/11/2026
     (r"^https://academy\.centec\.org\.br/", {
         "tipo": "acesso", "conta": "Centec Academy",
-        "nota": "Se ainda não tem conta, clique em «Criar uma conta» (são pedidos CPF, RG, e-mail, endereço e "
-                "telefone). Depois de entrar, abre-se a inscrição nesta turma; se não abrir, clique outra vez no botão."}),
+        "nota": "Se ainda não tem conta, clique em “Criar uma conta” (são pedidos CPF, RG, e-mail, endereço e "
+                "telefone). Depois de entrar, a inscrição nesta turma vai abrir; se não abrir, clique de novo no botão."}),
     # Centec presencial: não há página por turma, só a lista geral; inscrição na unidade com o CPF - 20/11/2026
     (r"^https://www\.centec\.org\.br/", {
         "tipo": "lista", "nota": "A inscrição é feita na unidade, com o CPF."}),
@@ -190,18 +190,18 @@ DESTINOS_FONTES = [
         "tipo": "pdf", "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim."}),
     # Senac Ceará: página da própria turma, com o botão «matricule-se»
     (r"^https://psg\.ce\.senac\.br/oportunidade/", {
-        "tipo": "curso", "nota": "Na página da turma, use o botão «matricule-se» e entregue os documentos na "
+        "tipo": "curso", "nota": "Na página da turma, use o botão “matricule-se” e entregue os documentos na "
                                  "unidade dentro do prazo."}),
     (r"^https://psg\.ce\.senac\.br/", {"tipo": "lista", "nota": ""}),
     # Senac Maranhão: página do edital do curso, com «Documentos» e o botão «Inscrição» em «Quer participar?» - 20/11/2026
     # Escola Virtual de Governo: página própria do curso (lida pela API em evg.py), com «Inscreva-se» - 21/11/2026
     (r"^https://www\.escolavirtual\.gov\.br/cursos/", {
         "tipo": "curso", "conta": "Escola Virtual de Governo",
-        "nota": "Na página do curso, clique em «Inscreva-se». Para se inscrever, entre ou crie conta na Escola "
-                "Virtual de Governo (a página diz: «Entre ou crie sua conta para realizar a inscrição»)."}),
+        "nota": "Na página do curso, clique em “Inscreva-se”. Para se inscrever, entre ou crie conta na Escola "
+                "Virtual de Governo (a página diz: “Entre ou crie sua conta para realizar a inscrição”)."}),
     (r"^https://ma\.senac\.br/editais_psg/", {
-        "tipo": "curso", "nota": "É a página do edital deste curso: em «Quer participar?» está o botão «Inscrição» e "
-                                 "em «Documentos» está o edital completo."}),
+        "tipo": "curso", "nota": "É a página do edital deste curso: em “Quer participar?” está o botão “Inscrição” e "
+                                 "em “Documentos” está o edital completo."}),
 ]
 
 

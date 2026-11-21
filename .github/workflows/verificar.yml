@@ -9,7 +9,7 @@ on:
       passo:
         description: "Passo a correr"
         type: choice
-        options: [verificar.py, evg.py, consultar_gpt.py, turmas.py, senac_ma.py, centec.py]
+        options: [verificar.py, evg.py, consultar_gpt.py, turmas.py, senac_ma.py, centec.py, pt_br.py]
         default: verificar.py
 
 permissions:

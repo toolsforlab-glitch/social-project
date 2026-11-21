@@ -741,7 +741,7 @@ def correr(fonte):
         if est == "Publicado" and sit == "Aberta":
             abertas[curso] = abertas.get(curso, 0) + 1
     nota = (f"{hoje}: publicado automaticamente: turma aberta aprovada na auditoria e edital do Programa Senac de "
-            "Gratuidade (sem frase de gratuidade, o site mostra «Gratuidade por confirmar»).")
+            "Gratuidade (sem frase de gratuidade, o site mostra “Gratuidade por confirmar”).")
     for n in cursos_novos:
         if abertas.get(n["ID"]) and ("gratuito" in n["Campos comprovados"] or "programa" in n["Campos comprovados"]):
             n["Estado"], n["Nota da verificação"] = "Publicado", nota

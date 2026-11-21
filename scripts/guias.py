@@ -72,9 +72,9 @@ def auditar(modelo, afirmacoes, pagina):
         v = next((x for x in lista if isinstance(x, dict) and str(x.get("n")) == str(i)), {})
         frases = [str(f) for f in (v.get("frases") or []) if str(f).strip()]
         if v.get("veredicto") != "confirmada":
-            falhas.append(f"«{a[:60]}…»: {str(v.get('motivo') or 'não confirmada')[:140]}")
+            falhas.append(f"“{a[:60]}…”: {str(v.get('motivo') or 'não confirmada')[:140]}")
         elif not frases or not all(citacao_valida(f, pagina) for f in frases):
-            falhas.append(f"«{a[:60]}…»: a frase indicada pelo auditor não está na página")
+            falhas.append(f"“{a[:60]}…”: a frase indicada pelo auditor não está na página")
     return falhas, custo
 
 
@@ -111,7 +111,7 @@ def main():
         else:
             falta = evidencias_em_falta(g, pagina)
             if falta:
-                problemas.append("frases da Evidência que já não estão na página: " + "; ".join(f"«{f}»" for f in falta[:4]))
+                problemas.append("frases da Evidência que não estão mais na página: " + "; ".join(f"“{f}”" for f in falta[:4]))
             else:
                 try:
                     falhas, custo = auditar(modelo, afirmacoes, pagina)

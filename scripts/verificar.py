@@ -34,7 +34,7 @@ futura com inscrição), "encerrado" (a página diz que as inscrições terminar
 (ex.: "certificado gratuito", "emissão do certificado sem custo", "taxa de R$ 20 pelo certificado"); senão null. \
 A evidência é a frase que fala do certificado.
 - "inscricoes_ate": data AAAA-MM-DD só se a página indicar a data limite de INSCRIÇÃO; senão null.
-- "restricoes": quem pode entrar (idade, renda, escolaridade, morada, já ser estudante…), só se a página o \
+- "restricoes": quem pode entrar (idade, renda, escolaridade, endereço, já ser estudante…), só se a página o \
 disser; senão null.
 - "idade_minima": número, só se a página indicar idade mínima; senão null.
 - "idade_maxima": número, só se a página indicar uma idade máxima para entrar (ex.: "de 15 a 29 anos" → 29, \
@@ -77,7 +77,7 @@ Compara sempre as datas da turma com a data de hoje: uma turma que já começou 
 (ex.: "Não diz até quando são as inscrições").
 - "como_me_inscrever": 3 a 5 passos curtos, em linguagem muito simples, só com o que a página explica (onde ir, \
 que documentos levar, até quando). Se a página não explicar como se inscrever, devolve um único passo: \
-"A página não explica como se inscrever: contacte a entidade." seguido do contacto, se a página o tiver. \
+"A página não explica como se inscrever: entre em contato com a entidade." seguido do contato, se a página o tiver. \
 Para cursos no Brasil escreve em português do Brasil; em Portugal, em português de Portugal.
 - "nota": uma frase curta a explicar o que verificaste."""
 
@@ -121,7 +121,7 @@ def auditar(cfg, r, pagina, data, hoje_txt, gratuito_por_entidade=False, botao_p
         try:
             texto, uso = claude(modelo, AUDITOR, pedido, max_tokens=4000)
         except ErroClaude as e:
-            return False, [f"a auditoria não correu ({e})"], custo
+            return False, [f"a auditoria não foi feita ({e})"], custo
         custo += custo_estimado(uso, modelo)
         res = extrair_json(texto)
         lista = res.get("afirmacoes") if isinstance(res, dict) else None
@@ -293,7 +293,7 @@ def main():
             pagina_curso or r["Link"], cfg["cursos"].get("dominios_gratuitos", ())))
         if gratuito_por_entidade:
             gratuito = "sim"
-            provas["gratuito"] = "entidade marcada como «Tudo gratuito» em Sites de confiança, por uma pessoa"
+            provas["gratuito"] = "entidade marcada como “Tudo gratuito” em Sites de confiança, por uma pessoa"
             em_falta = [x for x in em_falta if "gratuit" not in x.lower()]
         data = str(res.get("inscricoes_ate") or "")[:10] if "inscricoes_ate" in provas else ""
         contagem[situacao] += 1
@@ -326,7 +326,7 @@ def main():
                                                   + [CAMPOS_PROVA[k] for k in mantidas])}
         if situacao_por_entidade:
             campos["Nota da verificação"] += (f" Inscrições abertas pela regra de Sites de confiança: a página mostra o botão "
-                                              f"«{botao}» (regra marcada por uma pessoa).")
+                                              f"“{botao}” (regra marcada por uma pessoa).")
         # para onde leva o botão do site (regra em paginas.py): a página do curso, ou o que o link abre de facto
         campos["Destino do link"] = destino_do_curso_verificado(r, pagina_curso, res, ev, pagina)
         # públicos prioritários: só os que a frase da página nomeia; sem frase, o curso é para todos
@@ -397,7 +397,7 @@ def main():
                 campos["Estado"] = "Rever"
                 motivos.append("A página indica que pode não ser gratuito: passou a Rever.")
             if r.get("Situação das inscrições") == "Aberto" and situacao == "incerto":
-                motivos.append("Estava Aberto e a página já não o confirma.")
+                motivos.append("Estava Aberto e a página não confirma mais isso.")
             # Regra do responsável (16/11/2026): o que não se consegue comprovar sai da base em vez de ficar à espera.
             # 1) veio de uma notícia e não há página oficial do curso; 2) a página oficial foi lida e não diz que é
             # gratuito. Uma página que não se conseguiu ler (vazia, sem o nome do curso) não conta: fica para depois.

@@ -17,7 +17,7 @@ NOMES = {"BR-CE": "Ceará", "BR-MA": "Maranhão", "BR-AC": "Acre", "BR-PI": "Pia
 
 
 # regra do projeto (20/11/2026): sem frase oficial que diga que não há custo, avisa-se em todo o lado
-GRATUIDADE_AVISO = "⚠️ Gratuidade por confirmar: a página oficial não o diz por escrito."
+GRATUIDADE_AVISO = "⚠️ Gratuidade por confirmar: a página oficial não diz isso por escrito."
 
 def data_curta(iso):
     return f"{iso[8:10]}/{iso[5:7]}" if iso and len(iso) >= 10 else ""
@@ -230,10 +230,10 @@ def resumo_gpt(dias=7):
     rondas = [e for e in ler_json("estado/gpt.json", []) if e.get("quando", "") >= limite]
     usadas = [e for e in rondas if e.get("usado")]
     if not usadas:
-        motivo = rondas[-1]["motivo"] if rondas else "não correu nenhuma ronda"
+        motivo = rondas[-1]["motivo"] if rondas else "nenhuma rodada foi executada"
         return f"Auditoria do GPT: não usado nesta semana ({motivo})."
     soma = lambda k: sum(int(e.get(k) or 0) for e in usadas)  # noqa: E731
-    return (f"Auditoria do GPT: usado em {len(usadas)} de {len(rondas)} rondas; {soma('perguntas')} perguntas; "
+    return (f"Auditoria do GPT: usado em {len(usadas)} de {len(rondas)} rodadas; {soma('perguntas')} perguntas; "
             f"{soma('resolvidas')} dúvidas resolvidas com prova; {soma('tokens_entrada')} tokens de entrada e "
             f"{soma('tokens_saida')} de saída (custo exato na página Usage da OpenAI).")
 
@@ -278,12 +278,12 @@ def main():
             brevo("POST", "/smtp/email", {
                 "sender": remetente, "to": [{"email": admin}],
                 "subject": f"Publicação para o canal de WhatsApp ({hoje().strftime('%d/%m')})",
-                "textContent": "Copie o texto abaixo e cole-o no canal de WhatsApp:\n\n" + wa +
+                "textContent": "Copie o texto abaixo e cole no canal de WhatsApp:\n\n" + wa +
                                f"\n\nCartaz para imprimir: {cfg['url_site'].rstrip('/')}/semanal/cartaz.pdf"
                                f"\n\n{gpt_semana}"})
             print("Publicação de WhatsApp enviada por email ao administrador.")
         except RuntimeError as e:
-            print(f"Falhou o email ao administrador: {e}")
+            print(f"O e-mail ao administrador falhou: {e}")
             falhou = 1
     lista = os.environ.get("BREVO_LISTA_ID", "").strip()
     if lista and (noticias or ultimos or novos):
@@ -294,7 +294,7 @@ def main():
             brevo("POST", f"/emailCampaigns/{campanha['id']}/sendNow", {})
             print("Newsletter enviada.")
         except (RuntimeError, KeyError, ValueError) as e:
-            print(f"Falhou o envio da newsletter: {e}")
+            print(f"O envio da newsletter falhou: {e}")
             falhou = 1
     return falhou
 

@@ -89,9 +89,22 @@ def somar_uso(total, uso):
     return total
 
 
+# Regra do responsável (21/11/2026): tudo o que as rotinas escrevem para o site e para a folha é em português do
+# Brasil. Vai no fim de todas as instruções ao Claude.
+IDIOMA = """
+
+IDIOMA: todos os textos que você escrever (descrições, notas, passos de inscrição, resumos, motivos, títulos de \
+notícias) devem estar em português do Brasil (pt-BR), com vocabulário, ortografia e construções do Brasil: \
+"você", "celular", "contato", "registro", "equipe", "tela", "arquivo", "endereço", "ônibus", "fato", "acessar", \
+"compartilhar", "em outra" (não "noutra"), gerúndio ("está fazendo", não "está a fazer"), pronomes antes do verbo \
+("se inscrever", "a inscrição se abre") e aspas "assim" (não «assim»). Nunca use formas de Portugal. As frases \
+copiadas das páginas oficiais (evidências e citações) ficam exatamente como estão na página."""
+
+
 def claude(modelo, sistema, pedido, max_tokens=4000, ferramentas=None, max_continuacoes=4):
     """Pede uma resposta ao Claude. Devolve (texto, uso). Trata as pausas longas da pesquisa web."""
     mensagens = [{"role": "user", "content": pedido}]
+    sistema = (sistema or "") + IDIOMA
     uso_total = {}
     textos = []
     for _ in range(max_continuacoes + 1):

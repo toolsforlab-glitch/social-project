@@ -137,7 +137,7 @@ def conferir(campo, resposta, dominio, paginas):
         return "", frase, url, f"link fora do domínio oficial ({url[:80]})"
     valor, motivo = valor_diz(campo, resposta.get("valor"), frase)
     if motivo:
-        return "", frase, url, f"{motivo} («{frase[:100]}»)"
+        return "", frase, url, f"{motivo} (“{frase[:100]}”)"
     if url not in paginas:
         try:
             bruto, final = baixar_final(url, timeout=40)
@@ -291,7 +291,7 @@ def main():
     if tokens["input_tokens"]:
         registar_uso(True, erro_conta, perguntas, provados, tokens)
     else:
-        registar_uso(False, erro_conta or ("nenhuma dúvida por perguntar nesta ronda" if not candidatos
+        registar_uso(False, erro_conta or ("nenhuma dúvida para perguntar nesta rodada" if not candidatos
                                            else "sem resposta da OpenAI"))
 
 

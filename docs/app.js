@@ -283,6 +283,7 @@
     var guiasPorId = {};
     var barreiras = (params.get("facilita") || "").split(",").filter(Boolean);
     var marcaEscolhida = params.get("marca") || "";
+    var marcaSumiu = "";  // marca de um link antigo que já nenhum curso tem
     var cidade = el("cursos-cidade");
     var notaBarreiras = el("cursos-nota-barreiras");
     var rotulos = {};
@@ -479,9 +480,10 @@
       if (marcaEscolhida) q.set("marca", marcaEscolhida);
       var aviso = el("cursos-marca");
       if (aviso) {
-        aviso.hidden = !marcaEscolhida;
+        aviso.hidden = !marcaEscolhida && !marcaSumiu;
         aviso.innerHTML = marcaEscolhida ? "Mostrando só os cursos com: <strong>" + esc(textoMarca(marcaEscolhida)) + "</strong> " +
-          '<button type="button" class="botao secundario pequeno" id="cursos-marca-limpar">Mostrar todos os cursos</button>' : "";
+          '<button type="button" class="botao secundario pequeno" id="cursos-marca-limpar">Mostrar todos os cursos</button>' :
+          marcaSumiu ? "Nenhum curso tem mais a marca <strong>" + esc(marcaSumiu) + "</strong>, por isso mostramos todos os cursos." : "";
       }
       if (cidade.value) q.set("cidade", cidade.value);
       history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q.toString() : ""));
@@ -525,13 +527,13 @@
         [].forEach.call(ulBarreiras.querySelectorAll("button"), function (b) {
           b.setAttribute("aria-pressed", barreiras.indexOf(b.getAttribute("data-barreira")) >= 0);
         });
-      } else if (tipo === "marca") marcaEscolhida = valor;
+      } else if (tipo === "marca") { marcaEscolhida = valor; marcaSumiu = ""; }
       filtrar();
       contagem.scrollIntoView({ behavior: "smooth", block: "start" });
     });
     document.addEventListener("click", function (ev) {
       if (ev.target.id !== "cursos-marca-limpar") return;
-      marcaEscolhida = ""; filtrar();
+      marcaEscolhida = ""; marcaSumiu = ""; filtrar();
     });
     lista.addEventListener("click", function (ev) {
       var b = ev.target.closest(".posso button.opcao");
@@ -583,6 +585,10 @@
     lista.innerHTML = '<li class="discreto">Carregando os cursos…</li>';
     Promise.all([carregar("dados/cursos.json"), carregar("dados/guias.json").catch(function () { return { guias: [] }; })]).then(function (r) {
       todos = r[0].cursos || [];
+      // link com uma marca que nenhum curso tem mais (ex.: todas as gratuidades já confirmadas): mostrar todos e dizer porquê
+      if (marcaEscolhida && !todos.some(function (c) { return marcasDe(c).indexOf(marcaEscolhida) >= 0; })) {
+        marcaSumiu = textoMarca(marcaEscolhida); marcaEscolhida = "";
+      }
       (r[1].guias || []).forEach(function (g) { guiasPorId[g.id] = g; });
       preencherCidades(params.get("cidade") || "");
       filtrar();

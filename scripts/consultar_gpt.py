@@ -169,11 +169,15 @@ def duvidas_do_curso(c):
     return d
 
 
-def consultado_ha_pouco(r, hoje, so_certificado=False):
-    """Uma semana entre perguntas; um mês quando a única dúvida é o certificado (pesa pouco e custa o mesmo)."""
-    m = re.search(MARCA + r"(\d{4}-\d{2}-\d{2})", r.get("O que falta confirmar") or "")
+def consultado_ha_pouco(r, hoje, consultas, so_certificado=False):
+    """Uma semana entre perguntas; um mês quando a única dúvida é o certificado (pesa pouco e custa o mesmo).
+    A data da última pergunta fica em estado/gpt_consultas.json (a nota na folha pode ser reescrita por outras rotinas)."""
+    ultima = consultas.get(r.get("ID", ""))
+    if not ultima:
+        m = re.search(MARCA + r"(\d{4}-\d{2}-\d{2})", r.get("O que falta confirmar") or "")
+        ultima = m.group(1) if m else ""
     dias = DIAS_CERTIFICADO if so_certificado else DIAS_ENTRE_CONSULTAS
-    return bool(m) and (hoje - datetime.date.fromisoformat(m.group(1))).days < dias
+    return bool(ultima) and (hoje - datetime.date.fromisoformat(ultima)).days < dias
 
 
 def registar_uso(usado, motivo, perguntas=0, resolvidas=0, tokens=None):
@@ -208,9 +212,10 @@ def main():
     no_site = {c.get("id"): duvidas_do_curso(c)
                for c in ler_json("docs/dados/cursos.json", {"cursos": []}).get("cursos", [])}
     linhas = base.tabela("Cursos")
+    consultas = ler_json("estado/gpt_consultas.json", {})
     candidatos = [(r, no_site[r["ID"]]) for r in linhas if no_site.get(r.get("ID")) and curso_no_site(r, cfg)
                   and not (r.get("Revisto por pessoa") or "").strip()
-                  and (forcar or not consultado_ha_pouco(r, hoje, no_site[r["ID"]] == ["certificado"]))]
+                  and (forcar or not consultado_ha_pouco(r, hoje, consultas, no_site[r["ID"]] == ["certificado"]))]
     # primeiro os cursos com dúvidas mais importantes (gratuidade, situação, data), depois os só de certificado
     candidatos.sort(key=lambda x: min(ORDEM.index(d) for d in x[1]))
     print(f"Cursos com dúvidas: {len(candidatos)} (máximo {maximo} perguntas); modelo {modelo}")
@@ -243,6 +248,7 @@ def main():
                 print(f"  ! {r['Título']}: {e}")
                 continue
         res = respostas[chave_resp]
+        consultas[r["ID"]] = hoje.isoformat()
         comprovados = [c.strip() for c in (r.get("Campos comprovados") or "").split(",") if c.strip()]
         evid_novas, campos, falhas = [], {}, []
         for d in duvidas:
@@ -278,6 +284,7 @@ def main():
         campos["O que falta confirmar"] = falta[:900]
         alteracoes.append((r["_linha"], campos))
     base.atualizar("Cursos", alteracoes)
+    gravar_json("estado/gpt_consultas.json", consultas)
     if historico:
         base.acrescentar(HISTORICO, historico)
     base.guardar()

@@ -239,19 +239,35 @@
     onde.addEventListener("change", atualizar);
     atualizar();
 
-    var caixa = el("inicio-ultimos");
-    carregar("dados/cursos.json").then(function (d) {
-      var hoje = new Date().toISOString().slice(0, 10);
-      var limite = new Date(Date.now() + 10 * 864e5).toISOString().slice(0, 10);
-      var ultimos = (d.cursos || []).filter(function (c) {
-        return c.inscricoes_ate && c.inscricoes_ate >= hoje && c.inscricoes_ate <= limite;
-      }).sort(function (a, b) { return a.inscricoes_ate.localeCompare(b.inscricoes_ate); }).slice(0, 5);
-      if (!ultimos.length) { caixa.parentNode.style.display = "none"; return; }
+    // "Inscrições terminando": cursos do lugar escolhido cujo prazo mais próximo (turma ou curso) acaba nos
+    // próximos 10 dias. Sem nenhum, diz isso (em vez de deixar o bloco vazio) e leva à lista completa.
+    var caixa = el("inicio-ultimos"), todos = null;
+    function desenharUltimos() {
+      if (!todos) return;
+      var o = onde.value;
+      var ultimos = todos.filter(function (c) {
+        if (o === "online" && c.modalidade !== "online") return false;
+        if (o && o !== "online" && c.modalidade !== "online" && c.local !== o) return false;
+        var n = diasAte(prazoProximo(c));
+        return n !== null && n >= 0 && n <= 10;
+      }).sort(function (a, b) { return prazoProximo(a).localeCompare(prazoProximo(b)); }).slice(0, 5);
+      if (!ultimos.length) {
+        caixa.innerHTML = '<li class="vazio">' + (o === "online"
+          ? "Nenhum curso on-line com inscrições terminando nos próximos 10 dias. Os cursos on-line costumam ficar abertos por mais tempo."
+          : "Nenhum curso com inscrições terminando nos próximos 10 dias neste lugar.") +
+          ' <a href="' + ver.getAttribute("href") + '">Ver todos os cursos</a></li>';
+        return;
+      }
       caixa.innerHTML = ultimos.map(function (c) {
         var sitio = c.modalidade === "online" ? "On-line" : [c.cidade, c.regiao].filter(Boolean)[0] || "";
-        return '<li class="noticia"><h3><a href="cursos.html#' + idCartao(c, 0) + '">' + esc(c.titulo) + "</a></h3>" +
-          '<p class="meta">' + (sitio ? esc(sitio) + ". " : "") + "Inscrições até " + esc(dataBonita(c.inscricoes_ate)) + "</p></li>";
+        return '<li class="noticia"><h3><a href="cursos.html' + (o ? "?onde=" + o : "") + "#" + idCartao(c, 0) + '">' + esc(c.titulo) + "</a></h3>" +
+          '<p class="meta">' + (sitio ? esc(sitio) + ". " : "") + "Inscrições até " + esc(dataBonita(prazoProximo(c))) + "</p></li>";
       }).join("");
+    }
+    onde.addEventListener("change", desenharUltimos);
+    carregar("dados/cursos.json").then(function (d) {
+      todos = d.cursos || [];
+      desenharUltimos();
     }).catch(function () { caixa.parentNode.style.display = "none"; });
   }
 

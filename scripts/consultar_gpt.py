@@ -192,8 +192,9 @@ def registar_uso(usado, motivo, perguntas=0, resolvidas=0, tokens=None):
                "tokens_entrada": int(tokens.get("input_tokens") or 0), "tokens_saida": int(tokens.get("output_tokens") or 0)}
     registo = ler_json("estado/gpt.json", [])
     gravar_json("estado/gpt.json", (registo + [entrada])[-120:])
-    linha = (f"GPT usado: {perguntas} pergunta(s), {resolvidas} dúvida(s) resolvida(s) com prova, "
-             f"{entrada['tokens_entrada']} tokens de entrada e {entrada['tokens_saida']} de saída." if usado
+    custo = (f", {entrada['tokens_entrada']} tokens de entrada e {entrada['tokens_saida']} de saída"
+             if entrada["tokens_entrada"] else " (ChatGPT da assinatura, sem custo de API)")
+    linha = (f"GPT usado: {perguntas} pergunta(s), {resolvidas} dúvida(s) resolvida(s) com prova{custo}." if usado
              else f"GPT não usado: {motivo}.")
     print(linha)
     if os.environ.get("GITHUB_STEP_SUMMARY"):

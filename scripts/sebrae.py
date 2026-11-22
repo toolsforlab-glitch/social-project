@@ -6,9 +6,12 @@ de cursos do site só mostra 12 por vez e o resto vem por JavaScript, e o robots
 
 - o preço e a etiqueta de gratuidade («R$ 0,00 Gratuito»), que provam a gratuidade com frase da própria página;
 - a forma de execução, na tabela «Mais Informações» da página («Forma de Execução: Curso autoinstrucional»). Só estes
-  cursos são CLARAMENTE sob demanda (regra do responsável, 21/11/2026): a página o diz com palavras suas. Os cursos
-  que a página chama só de «Curso online» não têm frase que diga que se começa a qualquer momento: não entram;
-  o número deles fica no registro da rodada, para uma pessoa decidir;
+  cursos são CLARAMENTE sob demanda pela própria página (regra do responsável, 21/11/2026);
+- os cursos que a página chama só de «Curso online» (não «Ao vivo») entram pela regra que o responsável marcou em
+  Sites de confiança a 22/11/2026 (loja.sebrae.com.br, «Curso online»): com «R$ 0,00 Gratuito», «Em estoque» e
+  sem datas de turma na página, são autoinstrucionais com inscrições abertas. A base escrita são os Termos de Uso da
+  Loja, item 7.3 «CURSOS ONLINE (autoinstrucionais)»: o código confere essa frase a cada rodada e, se ela sair dos
+  termos (ou a regra sair de Sites de confiança), estes cursos deixam de estar provados e voltam para Novo;
 - o título, a duração («Duração 10h»), o perfil (público) e o começo da descrição.
 
 O Sebrae tem muitos cursos em duas páginas iguais (a versão antiga “… - chatbot” e a nova, com o mesmo texto): o
@@ -37,8 +40,15 @@ from comum import claude, custo_estimado, extrair_json
 
 SITE = "https://loja.sebrae.com.br"
 ESTADO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "estado", "sebrae.json")
+LOTE = 80  # cursos por pergunta ao Claude
 DIAS_RECUSA = 90  # um curso que o Claude deixou de fora só volta a ser perguntado depois deste tempo
 MAPA = SITE + "/sitemap.xml"
+TERMOS = SITE + "/termo-de-uso-loja-sebrae"
+FRASES_TERMOS = ["CURSOS ONLINE (autoinstrucionais)",
+                 "Os cursos online da modalidade autoinstrucional (por interfaces conversacionais automatizadas ou por "
+                 "ambiente educacional) são oferecidos pelo Sebrae Nacional."]
+DATAS = re.compile(r"\b\d{1,2}/\d{1,2}/\d{2,4}\b|\b\d{1,2} de (janeiro|fevereiro|mar[çc]o|abril|maio|junho|julho|agosto|"
+                   r"setembro|outubro|novembro|dezembro)\b", re.I)
 PRODUTO = re.compile(r"^https://loja\.sebrae\.com\.br/[a-z0-9-]+-(?:\d{9,}|a0[a-z0-9]{14,})/?$", re.I)
 ENTIDADE = "Sebrae (cursos online)"
 MARCA = "lida na página oficial, conferida por código"
@@ -112,7 +122,10 @@ def ler_curso(url):
     frase_forma = f"Forma de Execução {forma}" if forma else ""
     autoinstrucional = (forma.lower() == "curso autoinstrucional" and citacao_valida(frase_forma, texto)
                         and not ENCERRADO.search(area) and em_estoque)
-    return {"url": url, "titulo": titulo, "rotulo": rotulo, "forma": forma, "perfil": perfil, "texto": texto,
+    rot = rotulo.lower()
+    online_regra = (rot.startswith("curso online /") and "ao vivo" not in rot and em_estoque
+                    and not DATAS.search(area) and not ENCERRADO.search(area))
+    return {"url": url, "titulo": titulo, "online_regra": online_regra, "via_regra": False, "rotulo": rotulo, "forma": forma, "perfil": perfil, "texto": texto,
             "gratis": bool(frase_gratis) and citacao_valida(frase_gratis, texto), "frase_gratis": frase_gratis,
             "aberto": autoinstrucional, "frase_forma": frase_forma,
             "duracao": f"{int(duracao.group(1))} horas" if duracao else "", "descricao": descricao}
@@ -124,21 +137,42 @@ def _sem_acentos(t):
     return re.sub(r"[^a-z0-9 ]", " ", "".join(c for c in t if not unicodedata.combining(c)).lower())
 
 
-def chave_curso(d):
-    """O mesmo curso em duas páginas tem a mesma descrição; sem descrição, o título sem “chatbot” e sem “curso”."""
+VAZIAS = {"a", "o", "as", "os", "de", "do", "da", "dos", "das", "e", "em", "para", "seu", "sua", "um", "uma", "no", "na"}
+
+
+def chaves_curso(d):
+    """O mesmo curso em duas páginas tem a mesma descrição ou o mesmo título (sem “chatbot”, “curso” e palavras vazias)."""
+    chaves = []
     desc = " ".join(_sem_acentos(d["descricao"]).split())[:90]
     if len(desc) >= 40:
-        return "d:" + desc
+        chaves.append("d:" + desc)
     tit = re.sub(r"\b(chatbot|curso de gestao|curso)\b", " ", _sem_acentos(d["titulo"]))
-    return "t:" + " ".join(tit.split())
+    tit = " ".join(p for p in tit.split() if p not in VAZIAS)
+    if len(tit) >= 8:
+        chaves.append("t:" + tit)
+    return chaves
 
 
 def agrupar(lidos):
-    """{url: url da página que fica} para os cursos repetidos; fica a página nova (código a0…) ou a primeira."""
+    """{url: url da página que fica} para os cursos repetidos; fica a página nova (código a0…) ou a primeira.
+    Duas páginas são o mesmo curso se partilham a descrição ou o título (e, por arrasto, os grupos juntam-se)."""
+    pai = {}
+
+    def raiz(x):
+        while pai.setdefault(x, x) != x:
+            pai[x] = pai[pai[x]]
+            x = pai[x]
+        return x
+
+    for u, d in lidos.items():
+        if d["aberto"] and d["gratis"]:
+            raiz(u)
+            for k in chaves_curso(d):
+                pai[raiz(u)] = raiz(k)
     grupos = {}
     for u, d in lidos.items():
         if d["aberto"] and d["gratis"]:
-            grupos.setdefault(chave_curso(d), []).append(u)
+            grupos.setdefault(raiz(u), []).append(u)
     fica = {}
     for us in grupos.values():
         melhor = sorted(us, key=lambda u: (not re.search(r"-a0[a-z0-9]{14,}/?$", u), "chatbot" in u, u))[0]
@@ -161,12 +195,26 @@ def guardar_estado(est):
         json.dump(est, f, ensure_ascii=False, indent=1, sort_keys=True)
 
 
+def nota_publicado(d, hoje):
+    if d["via_regra"]:
+        return (f"{hoje}: publicado automaticamente: a página diz “{d['frase_gratis']}” e “Curso online”, sem datas de "
+                f"turma; regra do responsável para a loja do Sebrae (Sites de confiança), com base nos Termos de Uso, "
+                f"item 7.3 “CURSOS ONLINE (autoinstrucionais)” (conferido por código).")
+    return (f"{hoje}: publicado automaticamente: a página diz “{d['frase_gratis']}” e “{d['frase_forma']}” "
+            f"(conferido por código).")
+
+
 def provas(d):
     ev, comp = [], []
     if d["gratis"]:
         ev.append(f"gratuito: «{d['frase_gratis']}» ({d['url']}; {MARCA})")
         comp.append("gratuito")
-    if d["aberto"]:
+    if d["via_regra"]:
+        ev.append(f"situação: «Curso online» ({d['url']}; {MARCA}; sem datas de turma; regra marcada por uma pessoa "
+                  f"em Sites de confiança)")
+        ev.append(f"situação: «{FRASES_TERMOS[1]}» ({TERMOS}; {MARCA}; Termos de Uso da Loja, item 7.3)")
+        comp.append("situação")
+    elif d["aberto"]:
         ev.append(f"situação: «{d['frase_forma']}» ({d['url']}; {MARCA}; curso claramente sob demanda, sem turma "
                   f"nem prazo de inscrição na página)")
         comp += ["situação", "sob demanda"]
@@ -192,9 +240,23 @@ def main():
         except Exception as e:  # noqa: BLE001
             falhas += 1
             print(f"  ! {u}: {e}")
+    regra = cfg["cursos"].get("botao_inscricao", {}).get("loja.sebrae.com.br", "").strip().lower() == "curso online"
+    termos_ok = False
+    if regra:
+        try:
+            pagina_termos = texto_de_html(obter(TERMOS).encode())
+            termos_ok = all(citacao_valida(f, pagina_termos) for f in FRASES_TERMOS)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ! Termos de Uso: {e}")
+    print(f"Regra “Curso online” em Sites de confiança: {'sim' if regra else 'não'}; frase do item 7.3 nos Termos de "
+          f"Uso: {'conferida' if termos_ok else 'NÃO conferida'}.")
+    for d in lidos.values():
+        if not d["aberto"] and regra and termos_ok and d["online_regra"] and d["gratis"]:
+            d["aberto"] = d["via_regra"] = True
     contagem = {}
     for d in lidos.values():
-        k = ("gratuito" if d["gratis"] else "sem gratuidade provada") + " | " + (d["forma"] or d["rotulo"].split(" / ")[0] or "sem rótulo")
+        k = (("gratuito" if d["gratis"] else "sem gratuidade provada") + " | " + (d["forma"] or d["rotulo"].split(" / ")[0] or "sem rótulo")
+             + (" | aberto pela regra" if d["via_regra"] else " | aberto pela página" if d["aberto"] else " | não provado"))
         contagem[k] = contagem.get(k, 0) + 1
     for k, n in sorted(contagem.items(), key=lambda x: -x[1]):
         print(f"  {n:4d}  {k}")
@@ -228,14 +290,13 @@ def main():
         provado = d["aberto"] and d["gratis"]
         if r.get("Estado") == "Novo" and provado and not sim(r.get("Mudança a rever")):
             campos["Estado"] = "Publicado"
-            campos["Nota da verificação"] = (f"{hoje}: publicado automaticamente: a página diz “{d['frase_gratis']}” "
-                                             f"e “{d['frase_forma']}” (conferido por código).")
+            campos["Nota da verificação"] = nota_publicado(d, hoje)
             historico.append(registo_historico(r, "Catálogo Sebrae", "Publicado", campos, u))
         elif r.get("Estado") == "Publicado" and not provado:
             campos["Estado"] = "Novo"
             campos["Nota da verificação"] = (f"{hoje}: voltou para Novo: a página já não mostra "
-                                             + ("a gratuidade" if not d["gratis"] else "que é autoinstrucional")
-                                             + " (conferido por código).")
+                                             + ("a gratuidade" if not d["gratis"] else "que é autoinstrucional (ou a "
+                                                "regra “Curso online” deixou de valer)") + " (conferido por código).")
             historico.append(registo_historico(r, "Catálogo Sebrae", "Despublicado", campos, u))
         alteracoes.append((r["_linha"], campos))
     # 2. cursos novos: só os gratuitos E autoinstrucionais; o Claude escolhe os úteis para o público do site
@@ -244,21 +305,33 @@ def main():
                    and fica.get(u, u) == u and recusados.get(u, "") < corte]
     novos, custo = [], 0.0
     if novos_lidos:
-        lista = "\n".join(f"{i} | {d['titulo'][:150]} | público: {d['perfil'][:120] or '—'} | {d['descricao'][:200]}"
-                          for i, d in enumerate(novos_lidos, 1))
-        texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                            f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | título | público | "
-                            f"descrição):\n{lista}", max_tokens=8000)
-        custo += custo_estimado(uso, cfg["modelo_cursos"])
-        escolha = {}
-        for x in (extrair_json(texto) or []):
-            if isinstance(x, dict) and str(x.get("n", "")).isdigit() and 1 <= int(x["n"]) <= len(novos_lidos):
-                escolha[novos_lidos[int(x["n"]) - 1]["url"]] = x
-        print(f"Cursos novos gratuitos e autoinstrucionais: {len(novos_lidos)}; o Claude escolheu {len(escolha)}.")
+        escolha, respondidos = {}, set()
+        for ini in range(0, len(novos_lidos), LOTE):
+            lote = novos_lidos[ini:ini + LOTE]
+            lista = "\n".join(f"{i} | {d['titulo'][:150]} | público: {d['perfil'][:120] or '—'} | {d['descricao'][:200]}"
+                              for i, d in enumerate(lote, 1))
+            try:
+                texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
+                                    f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | título | público | "
+                                    f"descrição):\n{lista}", max_tokens=6000)
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! Claude, lote {ini // LOTE + 1}: {e}")
+                continue
+            custo += custo_estimado(uso, cfg["modelo_cursos"])
+            resposta = extrair_json(texto)
+            if not isinstance(resposta, list):
+                print(f"  ! lote {ini // LOTE + 1}: resposta sem JSON; estes cursos voltam a ser perguntados na próxima rodada")
+                continue
+            respondidos.update(d["url"] for d in lote)  # só estes contam como “deixados de fora” se não forem escolhidos
+            for x in resposta:
+                if isinstance(x, dict) and str(x.get("n", "")).isdigit() and 1 <= int(x["n"]) <= len(lote):
+                    escolha[lote[int(x["n"]) - 1]["url"]] = x
+        print(f"Cursos novos gratuitos com inscrição aberta provada: {len(novos_lidos)}; o Claude escolheu {len(escolha)}.")
         for d in novos_lidos:
             x = escolha.get(d["url"])
             if not x:
-                recusados[d["url"]] = hoje
+                if d["url"] in respondidos:
+                    recusados[d["url"]] = hoje
                 continue
             recusados.pop(d["url"], None)
             evid, comp = provas(d)
@@ -272,14 +345,11 @@ def main():
                 "Certificado": "desconhecido", "Inscrições até": "", "Início": "", "Duração": d["duracao"],
                 "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "sebrae",
                 "Notas": "", "Como me inscrever": "", **VERIFICACAO_INICIAL,
-                "Nota da verificação": (f"{hoje}: publicado automaticamente: a página diz “{d['frase_gratis']}” e "
-                                        f"“{d['frase_forma']}” (conferido por código)."),
+                "Nota da verificação": nota_publicado(d, hoje),
                 "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE", "Evidência": evid,
                 "Campos comprovados": ", ".join(comp), "Página do curso": d["url"]})
             print(f"  + {d['titulo'][:60]} | {d['duracao']}")
-    so_online = sum(1 for d in lidos.values() if d["gratis"] and not d["aberto"])
-    print(f"Gratuitos mas sem frase de sob demanda (a página só diz “{'Curso online'}”): {so_online} — não entram; "
-          f"uma pessoa decide se há regra para eles.")
+    print(f"Gratuitos mas sem prova de inscrição aberta: {sum(1 for d in lidos.values() if d['gratis'] and not d['aberto'])}.")
     base.atualizar("Cursos", alteracoes)
     if novos:
         base.acrescentar("Cursos", novos)

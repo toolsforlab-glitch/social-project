@@ -79,5 +79,14 @@
   "resolvidas": 3,
   "tokens_entrada": 52960,
   "tokens_saida": 3486
+ },
+ {
+  "quando": "2026-11-22 02:14",
+  "usado": true,
+  "motivo": "pergunta única: certificado dos cursos online (Sebrae, Fundação Bradesco)",
+  "perguntas": 2,
+  "resolvidas": 5,
+  "tokens_entrada": 99468,
+  "tokens_saida": 4562
  }
 ]

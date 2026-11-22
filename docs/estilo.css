@@ -218,3 +218,14 @@ a.lembrar::after { content: none !important; }
 
 /* «Em resumo:» antes de uma descrição reescrita pela rotina */
 .descricao .rotulo { font-weight: 600; }
+
+/* Página de cursos: em ecrãs largos, filtros empilhados numa coluna à esquerda e a lista à direita (como nas bases
+   de dados de artigos); no celular fica tudo numa coluna, como antes */
+@media (min-width: 64rem) {
+  body[data-pagina="cursos"] .dentro { max-width: 78rem; }
+  .cursos-grade { display: grid; grid-template-columns: 19rem minmax(0, 1fr); gap: 0 2.75rem; align-items: start; }
+  .cursos-lado { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; padding-right: .5rem; }
+  .cursos-lado .filtros-topo { grid-template-columns: 1fr; }
+  .cursos-lado .opcoes { flex-direction: column; align-items: flex-start; }
+  .cursos-resultados .contagem { margin-top: 0; }
+}

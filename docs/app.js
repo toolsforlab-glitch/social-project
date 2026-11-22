@@ -26,6 +26,17 @@
   }).observe(document.body, { childList: true, subtree: true });
 
   var pagina = document.body.getAttribute("data-pagina");
+  // Medição (Google Analytics): só envia se a pessoa aceitou os cookies (ver o bloco do aviso, mais abaixo).
+  function medir(nome, dados) {
+    if (!window.__gaLigado || typeof window.gtag !== "function") return;
+    dados = dados || {}; dados.pagina = pagina;
+    window.gtag("event", nome, dados);
+  }
+  // texto digitado na busca: curto e sem nada que pareça e-mail, telefone ou documento (ninguém deve ser identificável)
+  function termoSeguro(s) {
+    s = (s || "").toLowerCase().replace(/\s+/g, " ").trim().slice(0, 40);
+    return /@|\d{4,}/.test(s) ? "" : s;
+  }
   var MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
                "setembro", "outubro", "novembro", "dezembro"];
 
@@ -505,6 +516,7 @@
       var resumo = res.length === 1 ? "1 curso" : res.length + " cursos";
       if (o && o !== "online" && res.length) resumo += res.length === 1 ? " presencial" : " presenciais";
       contagem.textContent = res.length ? resumo : "";
+      medirBusca(texto.value, res.length);
       // filtros ativos, visíveis no topo da lista (na coluna da esquerda podem ficar fora da vista), cada um com ✕
       var ativos = [];
       escolhidas.forEach(function (id) {
@@ -597,6 +609,28 @@
       filtrar();
     });
     cidade.addEventListener("change", filtrar);
+    // Medição: o que as pessoas procuram (e não encontram) e que filtros usam
+    var ultimaBusca = "", relogioBusca = null;
+    function medirBusca(valor, n) {
+      clearTimeout(relogioBusca);
+      relogioBusca = setTimeout(function () {
+        var termo = termoSeguro(valor);
+        if (termo.length < 2 || termo === ultimaBusca) return;
+        ultimaBusca = termo;
+        var dados = { termo: termo, resultados: n, estado: onde.value || "todos" };
+        medir("busca", dados);
+        if (!n) medir("busca_sem_resultado", { termo: termo, estado: onde.value || "todos" });
+      }, 1500);
+    }
+    function nomeOpcao(sel) { var o = sel.options[sel.selectedIndex]; return o ? o.textContent.trim() : sel.value; }
+    onde.addEventListener("change", function () { medir("filtro", { filtro: "estado", valor: nomeOpcao(onde) }); });
+    cidade.addEventListener("change", function () { if (cidade.value) medir("filtro", { filtro: "cidade", valor: cidade.value, estado: nomeOpcao(onde) }); });
+    if (duracao) duracao.addEventListener("change", function () { if (duracao.value) medir("filtro", { filtro: "duracao", valor: duracao.value }); });
+    if (certificado) certificado.addEventListener("change", function () { if (certificado.checked) medir("filtro", { filtro: "certificado", valor: "gratuito" }); });
+    ulBarreiras.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button.opcao");
+      if (b && b.getAttribute("aria-pressed") === "true") medir("filtro", { filtro: "facilita", valor: b.getAttribute("data-barreira") });
+    });
     var caixaAtivosEv = el("cursos-ativos");
     if (caixaAtivosEv) caixaAtivosEv.addEventListener("click", function (ev) {
       var b = ev.target.closest("button[data-tirar]");
@@ -635,6 +669,8 @@
       var f = ev.target.closest("button.filtro");
       if (!f) return;
       var partes = f.getAttribute("data-filtro").split(":"), tipo = partes.shift(), valor = partes.join(":");
+      // botão «Ver os cursos on-line» de um estado sem cursos presenciais (medir antes de mudar o filtro)
+      if (f.classList.contains("botao") && valor === "online") medir("ver_online_sem_presencial", { estado: nomeOpcao(onde) });
       if (tipo === "onde") { onde.value = valor; preencherCidades(""); }
       else if (tipo === "facilita") {
         if (barreiras.indexOf(valor) < 0) barreiras.push(valor);
@@ -911,6 +947,7 @@
     });
     cidade.addEventListener("change", mostrar);
     comOnline.addEventListener("change", mostrar);
+    cidade.addEventListener("change", function () { if (cidade.value) medir("montar_lista", { cidade: cidade.value }); });
     comOnline.checked = params.get("online") !== "nao";
 
     Promise.all([carregar("dados/cursos.json"), carregar("dados/guias.json").catch(function () { return { guias: [] }; })]).then(function (r) {
@@ -939,7 +976,7 @@
     function gravar(v) { try { localStorage.setItem(CHAVE, v); } catch (e) {} }
     var ligado = false;
     function ligar() {
-      window["ga-disable-" + id] = false;
+      window["ga-disable-" + id] = false; window.__gaLigado = true;
       if (ligado) return; ligado = true;
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
@@ -950,7 +987,7 @@
       document.head.appendChild(s);
     }
     function desligar() {
-      window["ga-disable-" + id] = true;
+      window["ga-disable-" + id] = true; window.__gaLigado = false;
       document.cookie.split(";").forEach(function (c) {
         var n = c.split("=")[0].trim();
         if (/^_ga/.test(n)) {
@@ -973,14 +1010,24 @@
         if (v === "sim") ligar(); else desligar();
         return;
       }
-      // Quem aceitou: contar os cliques que levam à inscrição e os lembretes de prazo
-      if (!ligado || window["ga-disable-" + id]) return;
-      var a = ev.target.closest("a.botao, a.lembrar");
-      if (!a) return;
-      var curso = a.closest(".curso"), h = curso && curso.querySelector("h2");
-      var dados = { curso: h ? h.textContent.trim().slice(0, 100) : "", pagina: pagina };
-      if (a.classList.contains("lembrar")) window.gtag("event", "lembrete_prazo", dados);
-      else { try { dados.destino = new URL(a.href, location.href).hostname; } catch (e) {} window.gtag("event", "abrir_inscricao", dados); }
+      // Quem aceitou: cliques que interessam (inscrição, lembretes, gov.br, fichas, canais)
+      if (!window.__gaLigado) return;
+      var curso = ev.target.closest(".curso, .ficha"), h = curso && curso.querySelector("h2, h3");
+      var nomeCurso = h ? h.textContent.trim().slice(0, 100) : "";
+      var a = ev.target.closest("a"), bt = ev.target.closest("button");
+      if (a && a.classList.contains("lembrar")) { medir("lembrete_prazo", { curso: nomeCurso }); return; }
+      if (a && /(^|\/)antes\.html#govbr$/.test(a.getAttribute("href") || "")) { medir("ver_passo_govbr", { curso: nomeCurso }); return; }
+      if (a && /whatsapp\.com/i.test(a.href)) { medir("abrir_canal_whatsapp", {}); return; }
+      if (a && a.closest(".aviso") && /envie o curso/i.test(a.textContent)) { medir("abrir_formulario_parceiros", {}); return; }
+      if (a && a.closest(".guia")) { var g = a.closest(".guia"); medir("abrir_fonte_guia", { guia: g.id }); return; }
+      if (a && a.classList.contains("botao") && curso) {
+        var dest = ""; try { dest = new URL(a.href, location.href).hostname; } catch (e) {}
+        medir("abrir_inscricao", { curso: nomeCurso, destino: dest }); return;
+      }
+      if (bt && bt.hasAttribute("data-ficha")) { medir("imprimir_ficha", { curso: nomeCurso }); return; }
+      if (bt && bt.id === "kit-imprimir") { medir("imprimir_lista", {}); return; }
+      if (bt && bt.id === "kit-whatsapp") { medir("copiar_texto_whatsapp", {}); return; }
+      if (bt && bt.id === "kit-link") { medir("copiar_link_lista", {}); return; }
     });
     var escolha = ler();
     if (escolha === "sim") ligar();

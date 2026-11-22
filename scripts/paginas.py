@@ -208,9 +208,9 @@ DESTINOS_FONTES = [
     # Sebrae: página própria do curso na loja, com "Gratuito" e o botão "Inscreva-se agora" (visto no navegador,
     # 22/11/2026; o botão é desenhado por JavaScript). A loja pode abrir na versão do estado (ex.: sp.loja.sebrae.com.br).
     (r"^https://loja\.sebrae\.com\.br/[a-z0-9-]+-(?:\d{9,}|a0[a-z0-9]{14,})/?$", {
-        "tipo": "curso", "conta": "Sebrae",
-        "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma "
-                "conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso."}),
+        "tipo": "curso", "conta": "conta Sebrae",
+        "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja "
+                "do Sebrae do seu estado: é o mesmo curso."}),
     (r"^https://ma\.senac\.br/editais_psg/", {
         "tipo": "curso", "nota": "É a página do edital deste curso: em “Quer participar?” está o botão “Inscrição” e "
                                  "em “Documentos” está o edital completo."}),

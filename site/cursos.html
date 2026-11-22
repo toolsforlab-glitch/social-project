@@ -2,6 +2,8 @@
 <p>Cursos sem custo, on-line ou presenciais. A lista é atualizada todo dia.</p>
 {{PARCEIROS}}
 
+<div class="cursos-grade">
+<aside class="cursos-lado" aria-label="Filtros">
 <form id="cursos-filtros" onsubmit="return false">
 <div class="filtros-topo">
   <div class="campo">
@@ -46,7 +48,8 @@
     </ul>
   </fieldset>
 </form>
-
+</aside>
+<div class="cursos-resultados">
 <p class="contagem" id="cursos-contagem" aria-live="polite"></p>
 <p class="marca-escolhida" id="cursos-marca" hidden></p>
 <p class="discreto" id="cursos-nota-barreiras" hidden>Mostramos só os cursos em que isso está confirmado na página oficial. Outros cursos podem servir: desfaça a escolha para ver todos.</p>
@@ -59,4 +62,6 @@
 
 <div class="aviso">
   <p><strong>Antes de se inscrever:</strong> abra a página do curso e confira datas, requisitos e se o certificado também é gratuito. Se um link não funcionar, o curso pode já ter terminado.</p>
+</div>
+</div>
 </div>

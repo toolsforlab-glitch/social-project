@@ -242,3 +242,12 @@ a.lembrar::after { content: none !important; }
 .filtro-ativo { font: inherit; font-size: .92rem; background: var(--anil); color: #fff; border: 0; border-radius: 999px; padding: .3rem .75rem; cursor: pointer; }
 .filtro-ativo:hover { filter: brightness(1.15); }
 .filtro-limpar { font: inherit; font-size: .92rem; background: none; border: 0; color: var(--anil); text-decoration: underline; cursor: pointer; padding: .3rem .4rem; }
+
+/* Aviso de cookies (Google Analytics só com consentimento; os dois botões com o mesmo destaque) */
+.aviso-cookies { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: #fff; border-top: 3px solid var(--anil);
+  box-shadow: 0 -2px 10px rgba(20, 45, 104, .15); max-height: 60vh; overflow-y: auto; }
+.aviso-cookies .dentro { padding-top: .8rem; padding-bottom: .8rem; }
+.aviso-cookies p { margin: 0 0 .6rem; font-size: 1rem; }
+.aviso-cookies .aviso-cookies-botoes { margin: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.aviso-cookies .botao { padding: .6rem 1.4rem; }
+@media print { .aviso-cookies { display: none !important; } }

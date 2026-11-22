@@ -926,6 +926,67 @@
     }).catch(function () { lista.innerHTML = '<p class="vazio">Não foi possível carregar os cursos. Atualize a página daqui a pouco.</p>'; });
   }
 
+  // Google Analytics só com consentimento (LGPD; decisão do responsável, 22/11/2026).
+  // Sem ID configurado (config.json → google_analytics) não aparece aviso nem se carrega nada.
+  // Antes de a pessoa aceitar, nenhum script do Google é carregado e nenhum cookie é gravado.
+  (function () {
+    var id = document.body.getAttribute("data-ga") || "";
+    var aviso = document.getElementById("aviso-cookies");
+    var mudar = document.querySelectorAll('[data-cookies="mudar"]');
+    if (!/^G-[A-Z0-9]+$/.test(id) || !aviso) { mudar.forEach(function (b) { b.hidden = true; }); return; }
+    var CHAVE = "cookies-analytics";
+    function ler() { try { return localStorage.getItem(CHAVE); } catch (e) { return null; } }
+    function gravar(v) { try { localStorage.setItem(CHAVE, v); } catch (e) {} }
+    var ligado = false;
+    function ligar() {
+      window["ga-disable-" + id] = false;
+      if (ligado) return; ligado = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date());
+      window.gtag("config", id);
+      var s = document.createElement("script"); s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+      document.head.appendChild(s);
+    }
+    function desligar() {
+      window["ga-disable-" + id] = true;
+      document.cookie.split(";").forEach(function (c) {
+        var n = c.split("=")[0].trim();
+        if (/^_ga/.test(n)) {
+          document.cookie = n + "=; Max-Age=0; path=/";
+          document.cookie = n + "=; Max-Age=0; path=/; domain=" + location.hostname;
+          document.cookie = n + "=; Max-Age=0; path=/; domain=." + location.hostname;
+        }
+      });
+    }
+    function mostrarAviso(sim) {
+      aviso.hidden = !sim;
+      document.body.style.paddingBottom = sim ? aviso.offsetHeight + "px" : "";
+    }
+    document.addEventListener("click", function (ev) {
+      var b = ev.target.closest("[data-cookies]");
+      if (b) {
+        var v = b.getAttribute("data-cookies");
+        if (v === "mudar") { mostrarAviso(true); aviso.querySelector("button").focus(); return; }
+        gravar(v); mostrarAviso(false);
+        if (v === "sim") ligar(); else desligar();
+        return;
+      }
+      // Quem aceitou: contar os cliques que levam à inscrição e os lembretes de prazo
+      if (!ligado || window["ga-disable-" + id]) return;
+      var a = ev.target.closest("a.botao, a.lembrar");
+      if (!a) return;
+      var curso = a.closest(".curso"), h = curso && curso.querySelector("h2");
+      var dados = { curso: h ? h.textContent.trim().slice(0, 100) : "", pagina: pagina };
+      if (a.classList.contains("lembrar")) window.gtag("event", "lembrete_prazo", dados);
+      else { try { dados.destino = new URL(a.href, location.href).hostname; } catch (e) {} window.gtag("event", "abrir_inscricao", dados); }
+    });
+    var escolha = ler();
+    if (escolha === "sim") ligar();
+    else if (escolha !== "nao") mostrarAviso(true);
+  })();
+
   carregar("dados/site.json").then(function (site) {
     if (pagina === "antes") { antes(); return; }
     if (pagina === "encaminhar") { encaminhar(site); return; }

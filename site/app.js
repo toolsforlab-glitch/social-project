@@ -416,7 +416,7 @@
       if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
       // O título nunca é uma ligação (igual em todos os cursos): para ir ao site oficial usam-se os botões,
       // que dizem para onde levam.
-      return '<li class="curso" id="' + idCartao(c, i) + '"><h3>' + esc(c.titulo) + "</h3>" +
+      return '<li class="curso" id="' + idCartao(c, i) + '"><h2>' + esc(c.titulo) + "</h2>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         descricaoHtml(c) +
         '<ul class="factos">' + factosHtml + "</ul>" +

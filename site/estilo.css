@@ -1,5 +1,7 @@
 /* Paleta: anil de azulejo (comum a Portugal e ao Brasil), cal, girassol.
-   Tipo: Atkinson Hyperlegible, desenhada para leitura fácil, inclusive com baixa visão. */
+   Tipo: as fontes do próprio aparelho (nada para baixar): funciona em qualquer navegador e em celulares simples,
+   com internet fraca ou cara (pedido do responsável, 22/11/2026). Ordem: Windows (Segoe UI), Android (Roboto),
+   iPhone/Mac (-apple-system), Linux (Noto Sans, Liberation Sans, DejaVu Sans), e por fim Arial e a sans-serif genérica. */
 :root {
   --anil: #1d3f8f;
   --anil-escuro: #142d68;
@@ -20,7 +22,8 @@ body {
   margin: 0;
   background: var(--cal);
   color: var(--tinta);
-  font-family: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial,
+    "Liberation Sans", "DejaVu Sans", sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
 }
@@ -90,11 +93,11 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .curso, .noticia { padding: 1.1rem 0 1.2rem; border-bottom: 1px solid var(--pedra); }
 /* lista de cursos: separação mais marcada entre um curso e o seguinte (pedido do responsável, 22/11/2026) */
 .lista > .curso { padding: 1.6rem 0 1.8rem; border-bottom: 2px solid #9aa3b6; }
-.curso h3 { margin-bottom: .25rem; color: var(--tinta); }
+.curso h2 { margin-top: 0; margin-bottom: .25rem; color: var(--tinta); }
 .entidade { color: var(--tinta-suave); font-size: 1rem; margin-bottom: .5rem; }
 .factos { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: .5rem 0 .8rem; padding: 0; list-style: none; font-size: .95rem; }
 .factos li { background: var(--anil-claro); color: var(--anil-escuro); padding: .15rem .6rem; border-radius: 6px; }
-.factos li.bom { background: #e5f3ea; color: var(--folha); }
+.factos li.bom { background: #e5f3ea; color: #1f6640; }
 .factos li.atencao { background: #fff4d6; color: #6b4e00; }
 .condicao { font-size: 1rem; margin: 0 0 .6rem; }
 
@@ -205,8 +208,8 @@ main a[href^="http"]:not(.botao)::after { content: " ↗"; font-size: .85em; tex
 a.lembrar::after { content: none !important; }
 
 /* Nome do curso grande: é o começo da informação de cada curso */
-.curso h3 { font-size: 1.55rem; line-height: 1.25; margin-bottom: .3rem; }
-@media (min-width: 48rem) { .curso h3 { font-size: 1.75rem; } }
+.curso h2 { font-size: 1.55rem; line-height: 1.25; margin-bottom: .3rem; }
+@media (min-width: 48rem) { .curso h2 { font-size: 1.75rem; } }
 /* Marcas que filtram a lista: são botões (sublinhado pontilhado e cursor de mão); as outras marcas não */
 .factos li.filtravel { padding: 0; }
 .factos button.filtro { all: unset; cursor: pointer; padding: .15rem .55rem; display: inline-block;

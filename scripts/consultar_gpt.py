@@ -41,6 +41,7 @@ URL_OPENAI = "https://api.openai.com/v1/responses"
 MARCA = "GPT consultado em "
 DIAS_ENTRE_CONSULTAS = 7
 DIAS_CERTIFICADO = 30
+POR_ENTIDADE_CERT = 2  # perguntas só de certificado da mesma entidade em cada texto (para variar as entidades)
 ORDEM = ["gratuito", "situacao", "inscricoes_ate", "certificado"]
 
 PERGUNTAS = {
@@ -226,8 +227,13 @@ def candidatos_do_dia(base, cfg, linhas, hoje, consultas, forcar):
 
 def perguntas_agrupadas(candidatos, maximo):
     """[{n, link, dominio, duvidas, titulo, entidade, ids}] — cursos do mesmo edital com as mesmas dúvidas: uma pergunta."""
-    grupos = {}
+    grupos, so_cert = {}, {}
     for r, duvidas in candidatos:
+        if duvidas == ["certificado"]:  # só certificado: no máximo POR_ENTIDADE_CERT perguntas da mesma entidade por texto
+            dom = dominio_oficial((r.get("Página do curso") or "").strip() or r["Link"])
+            if so_cert.get(dom, 0) >= POR_ENTIDADE_CERT:
+                continue
+            so_cert[dom] = so_cert.get(dom, 0) + 1
         link = (r.get("Página do curso") or "").strip() or r["Link"]
         especificas = any(d in ("situacao", "inscricoes_ate") for d in duvidas)
         chave = (link, tuple(duvidas), r["Título"] if especificas else "")

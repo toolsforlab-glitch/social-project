@@ -525,7 +525,9 @@
       var breves = res.filter(terminaEmBreve).sort(function (a, b) { return prazoProximo(a).localeCompare(prazoProximo(b)); });
       var caixaBreve = el("cursos-breve");
       if (caixaBreve) {
-        caixaBreve.hidden = !breves.length || barreiras.indexOf("fecha_breve") >= 0;
+        // só aparece quando há algum filtro escolhido; na entrada (Mostrar tudo, sem filtros) fica escondido
+        var algumFiltro = !!o || ativos.length > 0 || !!marcaEscolhida;
+        caixaBreve.hidden = !algumFiltro || !breves.length || barreiras.indexOf("fecha_breve") >= 0;
         el("cursos-breve-lista").innerHTML = breves.map(function (c) {
           var sitio = c.modalidade === "online" ? "On-line" : cidadesDe(c).filter(function (v, i, a) { return a.indexOf(v) === i; }).slice(0, 3).join(", ") || c.cidade || "";
           return '<li><a href="#' + idCartao(c, todos.indexOf(c)) + '">' + esc(c.titulo) + "</a> " +
@@ -662,7 +664,8 @@
     });
 
     botoesOpcoes(el("cursos-opcoes"), site.necessidades, escolhidas, filtrar);
-    preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : (site.territorio_piloto || ""));
+    // ao entrar na busca sem filtros no link, o padrão é «Mostrar tudo» (pedido do responsável, 22/11/2026)
+    preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : "");
     onde.addEventListener("change", function () { preencherCidades(cidade.value); filtrar(); });
     texto.addEventListener("input", filtrar);
     if (certificado) certificado.addEventListener("change", filtrar);

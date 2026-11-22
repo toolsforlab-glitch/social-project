@@ -433,6 +433,10 @@ def certificado_da_frase(valor, frase):
             r"certifica\w*(\s+\S+){0,5}?\s+(gratuit|sem\s+(qualquer\s+)?(custo|[ôo]nus|taxa|cobran)|isent|"
             r"n[ãa]o\s+(tem|possui|ter[áa]|h[áa])\s+(nenhum(a)?\s+|qualquer\s+)?(custo|taxa|cobran))", frase, re.I):
         return "gratuito"
+    # «você não paga nada nem para fazer o curso, nem para emitir o certificado» (FAQ da Fundação Bradesco, 22/11/2026)
+    if valor == "gratuito" and re.search(r"n[ãa]o\s+(paga|pagar[áa]?|cobra|[ée]\s+cobrad\w*)\s+(nada|nenhum\w*|qualquer)"
+                                        r"[^.]{0,80}?certificad", frase, re.I):
+        return "gratuito"
     if valor == "pago" and re.search(r"\bpag[oa]\b|taxa|r\$|valor\s+de", frase, re.I):
         return "pago"
     if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa])\s+"

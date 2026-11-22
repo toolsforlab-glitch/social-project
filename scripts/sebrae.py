@@ -34,7 +34,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-from base import (DESCRICAO_PAGINA, ENCERRADO, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
+from base import (DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
                   hoje_iso, registo_historico, sim, texto_de_html)
 from comum import claude, custo_estimado, extrair_json
 
@@ -122,13 +122,16 @@ def ler_curso(url):
     frase_forma = f"Forma de Execução {forma}" if forma else ""
     autoinstrucional = (forma.lower() == "curso autoinstrucional" and citacao_valida(frase_forma, texto)
                         and not ENCERRADO.search(area) and em_estoque)
-    rot = rotulo.lower()
+    rot = re.sub(r"\s+", " ", rotulo).strip().lower()
+    # certificado: frase da área do próprio curso que diga que o CERTIFICADO é gratuito
+    frase_cert = next((f.strip() for f in re.split(r"(?<=[.!?])\s+", area)
+                       if certificado_da_frase("gratuito", f) and citacao_valida(f.strip(), texto)), "")
     m_data, m_enc = DATAS.search(area), ENCERRADO.search(area)
-    motivo_regra = ("não é “Curso online”" if not rot.startswith("curso online /") else "ao vivo" if "ao vivo" in rot
+    motivo_regra = ("não é “Curso online”" if not (rot == "curso online" or rot.startswith("curso online /")) else "ao vivo" if "ao vivo" in rot
                     else "fora de estoque" if not em_estoque else f"data na página («{m_data.group(0)}»)" if m_data
                     else f"página diz «{m_enc.group(0)}»" if m_enc else "")
     online_regra = not motivo_regra
-    return {"url": url, "titulo": titulo, "online_regra": online_regra, "motivo_regra": motivo_regra, "via_regra": False, "rotulo": rotulo, "forma": forma, "perfil": perfil, "texto": texto,
+    return {"url": url, "titulo": titulo, "online_regra": online_regra, "frase_cert": frase_cert[:300], "motivo_regra": motivo_regra, "via_regra": False, "rotulo": rotulo, "forma": forma, "perfil": perfil, "texto": texto,
             "gratis": bool(frase_gratis) and citacao_valida(frase_gratis, texto), "frase_gratis": frase_gratis,
             "aberto": autoinstrucional, "frase_forma": frase_forma,
             "duracao": f"{int(duracao.group(1))} horas" if duracao else "", "descricao": descricao}
@@ -212,6 +215,9 @@ def provas(d):
     if d["gratis"]:
         ev.append(f"gratuito: «{d['frase_gratis']}» ({d['url']}; {MARCA})")
         comp.append("gratuito")
+    if d["frase_cert"]:
+        ev.append(f"certificado: «{d['frase_cert']}» ({d['url']}; {MARCA})")
+        comp.append("certificado")
     if d["via_regra"]:
         ev.append(f"situação: «Curso online» ({d['url']}; {MARCA}; sem datas de turma; regra marcada por uma pessoa "
                   f"em Sites de confiança)")
@@ -289,10 +295,12 @@ def main():
             continue
         evid, comp = provas(d)
         outros = [c.strip() for c in (r.get("Campos comprovados") or "").split(",")
-                  if c.strip() and c.strip() not in ("situação", "gratuito", "sob demanda")]
+                  if c.strip() and c.strip() not in ("situação", "gratuito", "sob demanda", "certificado")]
         campos = {"Situação das inscrições": "Aberto" if d["aberto"] and d["gratis"] else "Por confirmar",
                   "Evidência": evid, "Campos comprovados": ", ".join(outros + comp), "Página do curso": u,
                   "Última verificação": hoje, "Verificar automaticamente": "FALSE", "Destino do link": ""}
+        if d["frase_cert"]:
+            campos["Certificado"] = "gratuito"
         if d["duracao"] and (not r.get("Duração") or r.get("Origem") == "sebrae"):
             campos["Duração"] = d["duracao"]
         if not (r.get("Descrição") or "").strip() and d["descricao"]:
@@ -352,13 +360,15 @@ def main():
                 "Local": "online", "Modalidade": "online", "País": "BR", "Região": "", "Cidade": "",
                 "Descrição": d["descricao"], "Origem da descrição": DESCRICAO_PAGINA if d["descricao"] else "",
                 "Necessidades": ", ".join(nec), "Perfis": "todos", "Condição de acesso": "", "Requisitos": "",
-                "Certificado": "desconhecido", "Inscrições até": "", "Início": "", "Duração": d["duracao"],
-                "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "sebrae",
+                "Certificado": "gratuito" if d["frase_cert"] else "desconhecido", "Inscrições até": "", "Início": "",
+                "Duração": d["duracao"], "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje,
+                "Origem": "sebrae",
                 "Notas": "", "Como me inscrever": "", **VERIFICACAO_INICIAL,
                 "Nota da verificação": nota_publicado(d, hoje),
                 "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE", "Evidência": evid,
                 "Campos comprovados": ", ".join(comp), "Página do curso": d["url"]})
             print(f"  + {d['titulo'][:60]} | {d['duracao']}")
+    print(f"Páginas com frase de certificado gratuito: {sum(1 for d in lidos.values() if d['frase_cert'])} de {len(lidos)}.")
     print(f"Gratuitos mas sem prova de inscrição aberta: {sum(1 for d in lidos.values() if d['gratis'] and not d['aberto'])}.")
     base.atualizar("Cursos", alteracoes)
     if novos:

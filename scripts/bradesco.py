@@ -18,7 +18,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-from base import (DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
+from base import (DESCRICAO_PAGINA, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
                   hoje_iso, registo_historico, sim, texto_de_html)
 from comum import claude, custo_estimado, extrair_json
 
@@ -26,6 +26,10 @@ SITE = "https://www.ev.org.br"
 LISTAS = ["/cursos?pagina={n}", "/trilhas-de-conhecimento?pagina={n}"]
 ENTIDADE = "Fundação Bradesco (Escola Virtual)"
 MARCA = "lida na página oficial, conferida por código"
+# Perguntas frequentes da Escola Virtual (encontrada pelo GPT a 22/11/2026, conferida por código a cada rodada)
+FAQ = SITE + "/faq"
+FRASE_CERTIFICADO = ("Na Escola Virtual da Fundação Bradesco você não paga nada nem para fazer o curso, nem para "
+                     "emitir o certificado.")
 NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
                 "dinheiro", "direitos"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
@@ -78,8 +82,24 @@ def ler_curso(url, botao):
             "descricao": descricao, "texto": texto}
 
 
+def certificado_faq():
+    """A frase das perguntas frequentes sobre o certificado, se ainda lá estiver."""
+    try:
+        if certificado_da_frase("gratuito", FRASE_CERTIFICADO) and citacao_valida(FRASE_CERTIFICADO, texto_de_html(obter(FAQ).encode())):
+            return True
+    except Exception as e:  # noqa: BLE001
+        print(f"  ! perguntas frequentes: {e}")
+    return False
+
+
+CERT_OK = None
+
+
 def provas(d, botao):
     ev, comp = [], []
+    if CERT_OK:
+        ev.append(f"certificado: «{FRASE_CERTIFICADO}» ({FAQ}; {MARCA}; perguntas frequentes da Escola Virtual)")
+        comp.append("certificado")
     if d["aberto"]:
         ev.append(f"situação: «{botao}» ({d['url']}; {MARCA}; regra de Sites de confiança marcada por uma pessoa)")
         comp.append("situação")
@@ -100,6 +120,9 @@ def main():
         print("Sites de confiança: falta a regra «Tudo gratuito» ou o botão de inscrição do ev.org.br; nada a fazer.")
         return
     hoje = hoje_iso()
+    global CERT_OK
+    CERT_OK = certificado_faq()
+    print(f"Certificado gratuito nas perguntas frequentes: {'conferido' if CERT_OK else 'NÃO conferido'}.")
     urls = catalogo()
     print(f"Catálogo da Fundação Bradesco: {len(urls)} cursos e trilhas.")
     linhas = base.tabela("Cursos")
@@ -121,10 +144,12 @@ def main():
             continue
         evid, comp = provas(d, botao)
         outros = [c.strip() for c in (r.get("Campos comprovados") or "").split(",")
-                  if c.strip() and c.strip() not in ("situação", "gratuito", "idade")]
+                  if c.strip() and c.strip() not in ("situação", "gratuito", "idade", "certificado")]
         campos = {"Situação das inscrições": "Aberto" if d["aberto"] else "Por confirmar", "Evidência": evid,
                   "Campos comprovados": ", ".join(outros + comp), "Página do curso": u, "Última verificação": hoje,
                   "Verificar automaticamente": "FALSE", "Destino do link": ""}
+        if CERT_OK:
+            campos["Certificado"] = "gratuito"
         if d["duracao"] and (not r.get("Duração") or r.get("Origem") == "bradesco"):
             campos["Duração"] = d["duracao"]
         if not (r.get("Descrição") or "").strip() and d["descricao"]:
@@ -164,7 +189,8 @@ def main():
                 "Local": "online", "Modalidade": "online", "País": "BR", "Região": "", "Cidade": "",
                 "Descrição": d["descricao"], "Origem da descrição": DESCRICAO_PAGINA if d["descricao"] else "",
                 "Necessidades": ", ".join(nec), "Perfis": "todos", "Condição de acesso": "",
-                "Requisitos": f"Ter {d['idade']} anos ou mais" if d["idade"] else "", "Certificado": "desconhecido",
+                "Requisitos": f"Ter {d['idade']} anos ou mais" if d["idade"] else "",
+                "Certificado": "gratuito" if CERT_OK else "desconhecido",
                 "Inscrições até": "", "Início": "", "Duração": d["duracao"],
                 "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "bradesco",
                 "Notas": "", "Como me inscrever": "", **VERIFICACAO_INICIAL,

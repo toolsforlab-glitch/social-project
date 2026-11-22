@@ -23,7 +23,7 @@ import time
 import urllib.parse
 import urllib.request
 
-from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, sim, texto_de_html
+from base import registar_pendencia, DESCRICAO_PAGINA, DESCRICAO_RESUMO, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, sim, texto_de_html
 from comum import AGENTE, baixar
 from turmas import (ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, limpo, mapa_unidades,
                     necessidades, registo)
@@ -206,10 +206,15 @@ def main(pedir_pagina=pedir, ler_pagina=None):
             time.sleep(0.5)
     except Exception as e:  # noqa: BLE001
         print(f"Centec: a página não abriu ({type(e).__name__}: {e}). Nada foi alterado.")
+        registar_pendencia(base, f"Centec (Rede CVT): a lista de cursos não abriu ({type(e).__name__}).",
+                           "Se a página abre no seu navegador e se a lista mudou de endereço.", PAGINA, origem="centec.py")
         return 0
     print(f"Centec: {n_online} turmas on-line e {len(cartoes) - n_online} presenciais na lista oficial.")
     if not cartoes:
         print("Lista vazia: nada foi alterado (pode ser uma falha da página).")
+        registar_pendencia(base, "Centec (Rede CVT): a lista oficial de cursos veio vazia.",
+                           "Se há cursos na página no seu navegador (pode ser uma falha da página ou mudança no site).",
+                           PAGINA, origem="centec.py")
         return 0
 
     regras = regras_da_pagina(texto_pagina)

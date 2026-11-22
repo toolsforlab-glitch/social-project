@@ -34,7 +34,7 @@ import urllib.parse
 import zipfile
 import html as _html
 
-from base import (HISTORICO, frase_de_gratuidade, gratuidade_comprovada, gratuidade_explicita, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, etiquetas_acessibilidade,
+from base import (registar_pendencia, HISTORICO, frase_de_gratuidade, gratuidade_comprovada, gratuidade_explicita, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, etiquetas_acessibilidade,
                   perfis_da_frase, sim)
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
 from turmas import ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, necessidades, registo
@@ -514,6 +514,9 @@ def correr(fonte):
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []
+        registar_pendencia(base, f"{fonte['nome']}: a lista oficial de editais não abriu ({type(e).__name__}).",
+                           "Se a página abre no seu navegador e se os editais mudaram de endereço.", fonte["lista"],
+                           origem="senac_ma.py")
     corte = (datetime.date.fromisoformat(hoje) - datetime.timedelta(days=DIAS_RECENTES)).isoformat()
 
     linhas_cursos = [r for r in base.tabela("Cursos") if r.get("ID") and (r.get("Link") or "").startswith(fonte["lista"])]

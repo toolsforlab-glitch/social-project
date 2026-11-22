@@ -546,3 +546,25 @@ def trecho(valor, texto, largura=70):
 
 def hoje_iso():
     return datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+
+
+# Aba "Pendências para verificar" (regra do responsável, 22/11/2026): SEMPRE que uma rotina encontra um problema que
+# uma pessoa tem de ver (uma fonte que não abre, uma lista oficial vazia, uma página que mudou de endereço), fica uma
+# linha nesta aba com o que verificar e os links. Não se repete: se já houver uma linha aberta (Feito por marcar)
+# com o mesmo Link 1, só se atualiza "Visto pela última vez".
+PENDENCIAS = "Pendências para verificar"
+
+
+def registar_pendencia(base, problema, verificar, link1, link2="", origem="rotina"):
+    hoje = datetime.date.today().isoformat()
+    try:
+        abertas = [r for r in base.tabela(PENDENCIAS) if not sim(r.get("Feito")) and (r.get("Link 1") or "").strip() == link1]
+        if abertas:
+            base.atualizar(PENDENCIAS, [(abertas[0]["_linha"], {"Visto pela última vez": hoje})])
+        else:
+            base.acrescentar(PENDENCIAS, [{"Feito": "FALSE", "Aberta em": hoje, "Visto pela última vez": hoje,
+                                           "Problema": problema[:500], "O que verificar": verificar[:500],
+                                           "Link 1": link1, "Link 2": link2, "Origem": origem, "Notas": ""}])
+        print(f"  → pendência registada: {problema[:90]}")
+    except Exception as e:  # noqa: BLE001
+        print(f"  ! não foi possível registar a pendência ({e})")

@@ -34,7 +34,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-from base import (DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
+from base import (registar_pendencia, DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
                   hoje_iso, registo_historico, sim, texto_de_html)
 from comum import claude, custo_estimado, extrair_json
 
@@ -234,7 +234,16 @@ def main():
     base = Base()
     cfg = carregar_config(base)
     hoje = hoje_iso()
-    urls = catalogo()
+    try:
+        urls = catalogo()
+    except Exception as e:  # noqa: BLE001
+        urls = []
+        print(f"  ! catálogo: {e}")
+    if not urls:
+        registar_pendencia(base, "Sebrae: o catálogo oficial (mapa do site) não abriu ou veio vazio.",
+                           "Se o catálogo abre no seu navegador e se mudou de endereço.", 'https://loja.sebrae.com.br/sitemap.xml',
+                           origem="sebrae.py")
+        return 0
     print(f"Catálogo do Sebrae (mapa do site): {len(urls)} páginas de produtos.")
     linhas = base.tabela("Cursos")
     por_chave = {}

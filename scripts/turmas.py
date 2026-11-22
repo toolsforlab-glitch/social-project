@@ -40,7 +40,7 @@ import sys
 import time
 import unicodedata
 
-from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, frase_de_gratuidade, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, sim, texto_de_html
+from base import registar_pendencia, DESCRICAO_PAGINA, DESCRICAO_RESUMO, frase_de_gratuidade, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, numero, sim, texto_de_html
 from comum import baixar
 
 ABA = "Turmas"
@@ -388,6 +388,10 @@ def main(baixar_pagina=baixar_texto):
             caixas = ler_lista(baixar_pagina(url))
         except Exception as e:  # noqa: BLE001
             print(f"  lista, página {pagina}: não abriu ({type(e).__name__})")
+            if pagina == 1:
+                registar_pendencia(base, f"Senac Ceará (PSG): a lista de oportunidades não abriu ({type(e).__name__}).",
+                                   "Se a página abre no seu navegador e se a lista mudou de endereço.", LISTA_PSG,
+                                   origem="turmas.py")
             break
         if not caixas:
             lista_completa = pagina > 1

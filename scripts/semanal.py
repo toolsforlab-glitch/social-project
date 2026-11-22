@@ -9,7 +9,7 @@ import sys
 import urllib.error
 import urllib.request
 
-from base import Base, carregar_config, hoje_iso
+from base import PENDENCIAS, sim, Base, carregar_config, hoje_iso
 from comum import caminho, hoje, ler_json
 
 BREVO = "https://api.brevo.com/v3"
@@ -258,6 +258,13 @@ def main():
     print(wa)
     print(f"\nCartaz: docs/semanal/cartaz.pdf | newsletter: {len(noticias)} notícias, {len(ultimos + novos)} cursos")
     gpt_semana = resumo_gpt()
+    try:  # pendências que uma pessoa tem de verificar (aba "Pendências para verificar")
+        abertas = [r for r in base.tabela(PENDENCIAS) if not sim(r.get("Feito"))]
+        if abertas:
+            gpt_semana += (f" Pendências para verificar: {len(abertas)} aberta(s) na aba “{PENDENCIAS}” da planilha"
+                           " (cada uma com os links).")
+    except Exception as e:  # noqa: BLE001
+        print(f"  ! pendências: {e}")
     print(gpt_semana)
 
     semana = (hoje() - datetime.timedelta(days=hoje().weekday())).isoformat()

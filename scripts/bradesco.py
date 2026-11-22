@@ -18,7 +18,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-from base import (DESCRICAO_PAGINA, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
+from base import (registar_pendencia, DESCRICAO_PAGINA, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
                   hoje_iso, registo_historico, sim, texto_de_html)
 from comum import claude, custo_estimado, extrair_json
 
@@ -123,7 +123,16 @@ def main():
     global CERT_OK
     CERT_OK = certificado_faq()
     print(f"Certificado gratuito nas perguntas frequentes: {'conferido' if CERT_OK else 'NÃO conferido'}.")
-    urls = catalogo()
+    try:
+        urls = catalogo()
+    except Exception as e:  # noqa: BLE001
+        urls = []
+        print(f"  ! catálogo: {e}")
+    if not urls:
+        registar_pendencia(base, "Fundação Bradesco: o catálogo oficial não abriu ou veio vazio.",
+                           "Se o catálogo abre no seu navegador e se mudou de endereço.", 'https://www.ev.org.br/cursos',
+                           origem="bradesco.py")
+        return 0
     print(f"Catálogo da Fundação Bradesco: {len(urls)} cursos e trilhas.")
     linhas = base.tabela("Cursos")
     por_chave = {}

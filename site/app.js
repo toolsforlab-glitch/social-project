@@ -442,6 +442,12 @@
       if (h === null) return false;
       return faixa === "curto" ? h <= 4 : faixa === "medio" ? h > 4 && h <= 20 : h > 20;
     }
+    // «no Ceará», «na Bahia», «em Pernambuco», «em Portugal»
+    function noLugar(nome) {
+      var no = ["Acre", "Amapá", "Amazonas", "Ceará", "Distrito Federal", "Espírito Santo", "Maranhão", "Mato Grosso",
+        "Mato Grosso do Sul", "Pará", "Paraná", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Tocantins"];
+      return (no.indexOf(nome) >= 0 ? "no " : ["Bahia", "Paraíba"].indexOf(nome) >= 0 ? "na " : "em ") + nome;
+    }
     function filtrar() {
       var o = onde.value;
       var t = semAcentos(texto.value.trim());
@@ -475,6 +481,32 @@
       var resumo = res.length === 1 ? "1 curso" : res.length + " cursos";
       if (o && o !== "online" && res.length) resumo += " (" + presenciais + (presenciais === 1 ? " presencial, " : " presenciais, ") + (res.length - presenciais) + " on-line)";
       contagem.textContent = res.length ? resumo : "";
+      // filtros ativos, visíveis no topo da lista (na coluna da esquerda podem ficar fora da vista), cada um com ✕
+      var ativos = [];
+      escolhidas.forEach(function (id) {
+        var n = (site.necessidades || []).filter(function (x) { return x.id === id; })[0];
+        ativos.push(["quero:" + id, n ? n.rotulo : id]);
+      });
+      barreiras.forEach(function (id) {
+        var bt = ulBarreiras.querySelector('[data-barreira="' + id + '"]');
+        ativos.push(["facilita:" + id, bt ? bt.textContent : id]);
+      });
+      if (duracao && duracao.value) ativos.push(["duracao", duracao.options[duracao.selectedIndex].text]);
+      if (certificado && certificado.checked) ativos.push(["certificado", "Certificado gratuito"]);
+      if (cidade.value) ativos.push(["cidade", cidade.value]);
+      if (texto.value.trim()) ativos.push(["texto", "“" + texto.value.trim() + "”"]);
+      var caixaAtivos = el("cursos-ativos");
+      if (caixaAtivos) {
+        var semPresencial = o && o !== "online" && res.length && !presenciais;
+        caixaAtivos.hidden = !ativos.length && !semPresencial;
+        caixaAtivos.innerHTML = (ativos.length ? '<span class="filtros-ativos-titulo">Filtros escolhidos:</span> ' +
+          ativos.map(function (a) {
+            return '<button type="button" class="filtro-ativo" data-tirar="' + esc(a[0]) + '" aria-label="Tirar o filtro ' +
+              esc(a[1]) + '">' + esc(a[1]) + ' <span aria-hidden="true">✕</span></button>';
+          }).join(" ") + (ativos.length > 1 ? ' <button type="button" class="filtro-limpar" data-tirar="tudo">Limpar todos</button>' : "") : "") +
+          (semPresencial ? '<p class="discreto">Não há cursos presenciais ' + esc(noLugar(onde.options[onde.selectedIndex].text.replace(/^Brasil\s*[–-]\s*/, ""))) +
+            (ativos.length ? " com estas escolhas" : " no momento") + ". Os cursos abaixo são on-line e servem em qualquer lugar.</p>" : "");
+      }
       notaBarreiras.hidden = !barreiras.length && !(certificado && certificado.checked) && !(duracao && duracao.value);
       // «Terminam em breve»: no topo, os cursos desta escolha cujas inscrições acabam nos próximos 3 dias
       var breves = res.filter(terminaEmBreve).sort(function (a, b) { return prazoProximo(a).localeCompare(prazoProximo(b)); });
@@ -535,6 +567,39 @@
       filtrar();
     });
     cidade.addEventListener("change", filtrar);
+    var caixaAtivosEv = el("cursos-ativos");
+    if (caixaAtivosEv) caixaAtivosEv.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-tirar]");
+      if (!b) return;
+      var partes = b.getAttribute("data-tirar").split(":"), tipo = partes.shift(), valor = partes.join(":");
+      var tirarQuero = function (id) {
+        var i = escolhidas.indexOf(id);
+        if (i >= 0) escolhidas.splice(i, 1);
+        var bt = el("cursos-opcoes").querySelector('[data-id="' + id + '"]');
+        if (bt) bt.setAttribute("aria-pressed", "false");
+      };
+      var tirarFacilita = function (id) {
+        var i = barreiras.indexOf(id);
+        if (i >= 0) barreiras.splice(i, 1);
+        var bt = ulBarreiras.querySelector('[data-barreira="' + id + '"]');
+        if (bt) bt.setAttribute("aria-pressed", "false");
+      };
+      if (tipo === "quero") tirarQuero(valor);
+      else if (tipo === "facilita") tirarFacilita(valor);
+      else if (tipo === "duracao" && duracao) duracao.value = "";
+      else if (tipo === "certificado" && certificado) certificado.checked = false;
+      else if (tipo === "cidade") cidade.value = "";
+      else if (tipo === "texto") texto.value = "";
+      else if (tipo === "tudo") {
+        escolhidas.slice().forEach(tirarQuero);
+        barreiras.slice().forEach(tirarFacilita);
+        if (duracao) duracao.value = "";
+        if (certificado) certificado.checked = false;
+        cidade.value = "";
+        texto.value = "";
+      }
+      filtrar();
+    });
     // clicar numa marca do curso (ex.: On-line, Certificado gratuito, Para mulheres) filtra a lista por ela
     lista.addEventListener("click", function (ev) {
       var f = ev.target.closest("button.filtro");

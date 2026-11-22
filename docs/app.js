@@ -283,6 +283,11 @@
     var guiasPorId = {};
     var barreiras = (params.get("facilita") || "").split(",").filter(Boolean);
     var marcaEscolhida = params.get("marca") || "";
+    var certificado = el("cursos-certificado");
+    var duracao = el("cursos-duracao");
+    if (certificado) certificado.value = params.get("certificado") === "gratuito" || marcaEscolhida === "cert-gratuito" ? "gratuito" : "";
+    if (duracao && ["curto", "medio", "longo"].indexOf(params.get("duracao")) >= 0) duracao.value = params.get("duracao");
+    if (marcaEscolhida === "cert-gratuito") marcaEscolhida = "";  // links antigos: agora é o filtro «Certificado»
     var marcaSumiu = "";  // marca de um link antigo que já nenhum curso tem
     var cidade = el("cursos-cidade");
     var notaBarreiras = el("cursos-nota-barreiras");
@@ -427,6 +432,16 @@
         "Confirme sempre na página oficial antes de ir.</p></li>";
     }
 
+    // horas do curso a partir do texto da duração («10 horas», «20h/aula», «Em média 6 horas»); null se não houver
+    function horasDe(c) {
+      var m = /(\d+(?:[.,]\d+)?)\s*(h\b|h\/|horas?)/i.exec(c.duracao || "");
+      return m ? parseFloat(m[1].replace(",", ".")) : null;
+    }
+    function naDuracao(c, faixa) {
+      var h = horasDe(c);
+      if (h === null) return false;
+      return faixa === "curto" ? h <= 4 : faixa === "medio" ? h > 4 && h <= 20 : h > 20;
+    }
     function filtrar() {
       var o = onde.value;
       var t = semAcentos(texto.value.trim());
@@ -442,6 +457,8 @@
         if (barreiras.indexOf("acessivel") >= 0 && !(c.acessibilidade || []).length) return false;
         if (barreiras.indexOf("fecha_breve") >= 0 && !terminaEmBreve(c)) return false;
         if (marcaEscolhida && marcasDe(c).indexOf(marcaEscolhida) < 0) return false;
+        if (certificado && certificado.value === "gratuito" && c.certificado !== "gratuito") return false;
+        if (duracao && duracao.value && !naDuracao(c, duracao.value)) return false;
         if (cidade.value && c.modalidade !== "online" && cidadesDe(c).indexOf(cidade.value) < 0) return false;
         if (t) {
           var alvo = semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" "));
@@ -458,7 +475,7 @@
       var resumo = res.length === 1 ? "1 curso" : res.length + " cursos";
       if (o && o !== "online" && res.length) resumo += " (" + presenciais + (presenciais === 1 ? " presencial, " : " presenciais, ") + (res.length - presenciais) + " on-line)";
       contagem.textContent = res.length ? resumo : "";
-      notaBarreiras.hidden = !barreiras.length;
+      notaBarreiras.hidden = !barreiras.length && !(certificado && certificado.value) && !(duracao && duracao.value);
       // «Terminam em breve»: no topo, os cursos desta escolha cujas inscrições acabam nos próximos 3 dias
       var breves = res.filter(terminaEmBreve).sort(function (a, b) { return prazoProximo(a).localeCompare(prazoProximo(b)); });
       var caixaBreve = el("cursos-breve");
@@ -478,6 +495,8 @@
       if (o) q.set("onde", o);
       if (barreiras.length) q.set("facilita", barreiras.join(","));
       if (marcaEscolhida) q.set("marca", marcaEscolhida);
+      if (certificado && certificado.value) q.set("certificado", certificado.value);
+      if (duracao && duracao.value) q.set("duracao", duracao.value);
       var aviso = el("cursos-marca");
       if (aviso) {
         aviso.hidden = !marcaEscolhida && !marcaSumiu;
@@ -527,7 +546,8 @@
         [].forEach.call(ulBarreiras.querySelectorAll("button"), function (b) {
           b.setAttribute("aria-pressed", barreiras.indexOf(b.getAttribute("data-barreira")) >= 0);
         });
-      } else if (tipo === "marca") { marcaEscolhida = valor; marcaSumiu = ""; }
+      } else if (tipo === "marca" && valor === "cert-gratuito" && certificado) { certificado.value = "gratuito"; }
+      else if (tipo === "marca") { marcaEscolhida = valor; marcaSumiu = ""; }
       filtrar();
       contagem.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -563,6 +583,8 @@
     preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : (site.territorio_piloto || ""));
     onde.addEventListener("change", function () { preencherCidades(cidade.value); filtrar(); });
     texto.addEventListener("input", filtrar);
+    if (certificado) certificado.addEventListener("change", filtrar);
+    if (duracao) duracao.addEventListener("change", filtrar);
 
     // cidades do território escolhido em "Onde você está?": a capital primeiro, depois as outras por ordem alfabética
     function preencherCidades(escolhida) {

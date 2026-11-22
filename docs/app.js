@@ -191,9 +191,15 @@
   function idCartao(c, i) { return "curso-" + (c.id ? String(c.id).replace(/[^\w-]/g, "") : i); }
 
   function preencherOnde(select, locais, valor) {
+    // o site é para o país todo: os estados aparecem só pelo nome («Ceará», não «Brasil – Ceará») e por ordem
+    // alfabética, depois de «Mostrar tudo» e «On-line» (pedido do responsável, 22/11/2026)
     var html = '<option value="">Mostrar tudo</option>';
-    locais.forEach(function (l) {
-      html += '<option value="' + esc(l.id) + '"' + (l.id === valor ? " selected" : "") + ">" + esc(l.rotulo) + "</option>";
+    var nome = function (l) { return String(l.rotulo || "").replace(/^Brasil\s*[–-]\s*/, ""); };
+    var online = locais.filter(function (l) { return l.id === "online"; });
+    var estados = locais.filter(function (l) { return l.id !== "online"; })
+      .sort(function (a, b) { return nome(a).localeCompare(nome(b), "pt-BR"); });
+    online.concat(estados).forEach(function (l) {
+      html += '<option value="' + esc(l.id) + '"' + (l.id === valor ? " selected" : "") + ">" + esc(nome(l)) + "</option>";
     });
     select.innerHTML = html;
   }

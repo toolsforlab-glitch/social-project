@@ -35,7 +35,7 @@ import urllib.request
 
 from base import (ACAO_SOB_DEMANDA, CAMPOS_PROVA, gratuidade_comprovada, sim, HISTORICO, MARCA_GPT, MARCA_CHATGPT, Base, carregar_config, certificado_da_frase, citacao_valida, curso_no_site,
                   gratuidade_explicita, registo_historico, texto_de_html)
-from comum import baixar_final, dominio_permitido, extrair_json, gravar_json, ler_json
+from comum import baixar_final, caminho, dominio_permitido, extrair_json, gravar_json, ler_json
 
 URL_OPENAI = "https://api.openai.com/v1/responses"
 MARCA = "GPT consultado em "
@@ -356,7 +356,7 @@ def main():
     if modo == "resposta":
         pedido = ler_json("estado/auditoria_chatgpt.json", {})
         try:
-            with open("estado/resposta_chatgpt.txt", encoding="utf-8") as f:
+            with open(caminho("estado", "resposta_chatgpt.txt"), encoding="utf-8") as f:
                 bruto = f.read()
         except OSError:
             bruto = ""
@@ -379,7 +379,7 @@ def main():
             registar_uso(False, "nenhuma dúvida para perguntar nesta rodada")
             return
         texto = texto_para_chatgpt(itens, hoje)
-        with open("estado/auditoria_chatgpt.md", "w", encoding="utf-8") as f:
+        with open(caminho("estado", "auditoria_chatgpt.md"), "w", encoding="utf-8") as f:
             f.write(texto + "\n")
         gravar_json("estado/auditoria_chatgpt.json", {"data": hoje.isoformat(), "itens": itens})
         registar_uso(False, f"API desligada; texto de auditoria para o ChatGPT preparado ({len(itens)} perguntas, "

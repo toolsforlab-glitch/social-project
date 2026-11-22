@@ -7,6 +7,7 @@
     "playlist_ongs": "https://open.spotify.com/playlist/0Wa3oKP9SIKGNx5mm0lorq",
     "canal_whatsapp": ""
   },
+  "google_analytics": "",
   "modelo_noticias": "claude-haiku-5-5",
   "modelo_cursos": "claude-haiku-5-5",
   "modelo_auditoria": "claude-sonnet-5-5",

@@ -277,6 +277,10 @@ def main():
     with open(caminho("site", "base.html"), encoding="utf-8") as f:
         modelo_base = f.read()
     versao = str(int(time.time()))
+    # Google Analytics: só o ID G-…; o site pede consentimento antes de carregar (ver app.js)
+    ga = (cfg.get("google_analytics") or "").strip()
+    if not re.fullmatch(r"G-[A-Z0-9]+", ga):
+        ga = ""
     for ficheiro, (pagina, titulo) in PAGINAS.items():
         with open(caminho("site", ficheiro), encoding="utf-8") as f:
             conteudo = f.read()
@@ -288,7 +292,8 @@ def main():
                        .replace("{{TITULO}}", titulo.format(nome=nome))
                        .replace("{{DESCRICAO}}", slogan)
                        .replace("{{NOME}}", nome).replace("{{SLOGAN}}", slogan)
-                       .replace("{{PAGINA}}", pagina).replace("{{VERSAO}}", versao))
+                       .replace("{{PAGINA}}", pagina).replace("{{VERSAO}}", versao)
+                       .replace("{{GA}}", ga))
         for p in ("cursos", "antes", "encaminhar", "noticias", "sobre"):
             pagina_html = pagina_html.replace("{{ATUAL_%s}}" % p.upper(),
                                               ' aria-current="page"' if p == pagina else "")

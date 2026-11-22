@@ -70,5 +70,14 @@
   "resolvidas": 2,
   "tokens_entrada": 272075,
   "tokens_saida": 15827
+ },
+ {
+  "quando": "2026-11-22 01:54",
+  "usado": true,
+  "motivo": "pergunta única: regra dos cursos online do Sebrae",
+  "perguntas": 1,
+  "resolvidas": 3,
+  "tokens_entrada": 52960,
+  "tokens_saida": 3486
  }
 ]

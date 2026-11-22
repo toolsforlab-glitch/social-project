@@ -123,9 +123,12 @@ def ler_curso(url):
     autoinstrucional = (forma.lower() == "curso autoinstrucional" and citacao_valida(frase_forma, texto)
                         and not ENCERRADO.search(area) and em_estoque)
     rot = rotulo.lower()
-    online_regra = (rot.startswith("curso online /") and "ao vivo" not in rot and em_estoque
-                    and not DATAS.search(area) and not ENCERRADO.search(area))
-    return {"url": url, "titulo": titulo, "online_regra": online_regra, "via_regra": False, "rotulo": rotulo, "forma": forma, "perfil": perfil, "texto": texto,
+    m_data, m_enc = DATAS.search(area), ENCERRADO.search(area)
+    motivo_regra = ("não é “Curso online”" if not rot.startswith("curso online /") else "ao vivo" if "ao vivo" in rot
+                    else "fora de estoque" if not em_estoque else f"data na página («{m_data.group(0)}»)" if m_data
+                    else f"página diz «{m_enc.group(0)}»" if m_enc else "")
+    online_regra = not motivo_regra
+    return {"url": url, "titulo": titulo, "online_regra": online_regra, "motivo_regra": motivo_regra, "via_regra": False, "rotulo": rotulo, "forma": forma, "perfil": perfil, "texto": texto,
             "gratis": bool(frase_gratis) and citacao_valida(frase_gratis, texto), "frase_gratis": frase_gratis,
             "aberto": autoinstrucional, "frase_forma": frase_forma,
             "duracao": f"{int(duracao.group(1))} horas" if duracao else "", "descricao": descricao}
@@ -253,6 +256,13 @@ def main():
     for d in lidos.values():
         if not d["aberto"] and regra and termos_ok and d["online_regra"] and d["gratis"]:
             d["aberto"] = d["via_regra"] = True
+    motivos = {}
+    for d in lidos.values():
+        if d["gratis"] and not d["aberto"] and d["rotulo"].lower().startswith("curso online"):
+            m = re.sub(r"«.*»", "«…»", d["motivo_regra"])
+            motivos.setdefault(m, []).append(d)
+    for m, ds in sorted(motivos.items(), key=lambda x: -len(x[1])):
+        print(f"  “Curso online” fora da regra: {len(ds)} | {m} | ex.: {ds[0]['url']} {ds[0]['motivo_regra']}")
     contagem = {}
     for d in lidos.values():
         k = (("gratuito" if d["gratis"] else "sem gratuidade provada") + " | " + (d["forma"] or d["rotulo"].split(" / ")[0] or "sem rótulo")

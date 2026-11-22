@@ -558,9 +558,15 @@ PENDENCIAS = "Pendências para verificar"
 def registar_pendencia(base, problema, verificar, link1, link2="", origem="rotina"):
     hoje = datetime.date.today().isoformat()
     try:
-        abertas = [r for r in base.tabela(PENDENCIAS) if not sim(r.get("Feito")) and (r.get("Link 1") or "").strip() == link1]
+        linhas = base.tabela(PENDENCIAS)
+        abertas = [r for r in linhas if not sim(r.get("Feito")) and (r.get("Link 1") or "").strip() == link1]
+        livres = [r for r in linhas if not (r.get("Problema") or "").strip()]  # linhas só com a caixa por marcar
+        nova = {"Feito": "FALSE", "Aberta em": hoje, "Visto pela última vez": hoje, "Problema": problema[:500],
+                "O que verificar": verificar[:500], "Link 1": link1, "Link 2": link2, "Origem": origem, "Notas": ""}
         if abertas:
             base.atualizar(PENDENCIAS, [(abertas[0]["_linha"], {"Visto pela última vez": hoje})])
+        elif livres:
+            base.atualizar(PENDENCIAS, [(livres[0]["_linha"], nova)])
         else:
             base.acrescentar(PENDENCIAS, [{"Feito": "FALSE", "Aberta em": hoje, "Visto pela última vez": hoje,
                                            "Problema": problema[:500], "O que verificar": verificar[:500],

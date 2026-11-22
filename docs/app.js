@@ -491,9 +491,14 @@
         }
         return true;
       });
+      // ordem: presenciais primeiro; dentro de cada grupo, o prazo de inscrição mais próximo primeiro; os cursos sem
+      // prazo (ex.: on-line sob demanda) no fim, do mais recente na planilha para o mais antigo (22/11/2026)
       res.sort(function (a, b) {
         var pa = a.modalidade === "online" ? 1 : 0, pb = b.modalidade === "online" ? 1 : 0;
         if (pa !== pb) return pa - pb;
+        var xa = prazoProximo(a), xb = prazoProximo(b);
+        if (xa && xb && xa !== xb) return xa.localeCompare(xb);
+        if (!!xa !== !!xb) return xa ? -1 : 1;
         return (b.primeiro_visto || "").localeCompare(a.primeiro_visto || "");
       });
       var presenciais = res.filter(function (c) { return c.modalidade !== "online"; }).length;

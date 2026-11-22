@@ -16,6 +16,22 @@
     <label for="cursos-texto">Buscar por palavra</label>
     <input type="search" id="cursos-texto" placeholder="Ex.: cozinha, Excel">
   </div>
+  <div class="campo">
+    <label for="cursos-certificado">Certificado</label>
+    <select id="cursos-certificado">
+      <option value="">Tanto faz</option>
+      <option value="gratuito">Certificado gratuito</option>
+    </select>
+  </div>
+  <div class="campo">
+    <label for="cursos-duracao">Duração</label>
+    <select id="cursos-duracao">
+      <option value="">Qualquer duração</option>
+      <option value="curto">Até 4 horas</option>
+      <option value="medio">De 5 a 20 horas</option>
+      <option value="longo">Mais de 20 horas</option>
+    </select>
+  </div>
 </div>
   <fieldset style="border:0;padding:0;margin:0">
     <legend style="font-weight:700;margin-bottom:.5rem;padding:0">O que você quer aprender?</legend>
@@ -37,7 +53,7 @@
 
 <p class="contagem" id="cursos-contagem" aria-live="polite"></p>
 <p class="marca-escolhida" id="cursos-marca" hidden></p>
-<p class="discreto" id="cursos-nota-barreiras" hidden>Mostramos só os cursos em que isso está confirmado na página oficial. Outros cursos podem servir: desmarque a opção para ver todos.</p>
+<p class="discreto" id="cursos-nota-barreiras" hidden>Mostramos só os cursos em que isso está confirmado na página oficial. Outros cursos podem servir: desfaça a escolha para ver todos.</p>
 <section class="breve" id="cursos-breve" hidden aria-labelledby="cursos-breve-titulo">
   <h2 id="cursos-breve-titulo">Terminam em breve</h2>
   <p class="discreto">As inscrições destes cursos acabam nos próximos 3 dias. Use “Adicionar o prazo à agenda do celular” para receber um aviso no celular.</p>

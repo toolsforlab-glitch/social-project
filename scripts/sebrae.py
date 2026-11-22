@@ -11,13 +11,20 @@ de cursos do site só mostra 12 por vez e o resto vem por JavaScript, e o robots
   o número deles fica no registro da rodada, para uma pessoa decidir;
 - o título, a duração («Duração 10h»), o perfil (público) e o começo da descrição.
 
+O Sebrae tem muitos cursos em duas páginas iguais (a versão antiga “… - chatbot” e a nova, com o mesmo texto): o
+código junta-as pela descrição (ou pelo título sem “chatbot”) e fica só com a página nova; a outra passa a Oculto,
+com a nota “duplicado”.
+
 O Claude só escolhe quais cursos servem ao público do site (não os pensados para professores, escolas, gestores
 públicos ou profissões muito específicas) e as necessidades de cada um. Os escolhidos são publicados sozinhos; cursos já
 na planilha com «Mudança a rever» marcada ou «Revisto por pessoa» não mudam de Estado. A verificação semanal não toca
 nestes cursos; este leitor relê-os a cada rodada e, se um deixar de ser gratuito ou autoinstrucional, deixa de
 estar provado (Situação «Por confirmar») e volta para Novo.
 """
+import datetime
 import hashlib
+import json
+import os
 from html import unescape
 import re
 import sys
@@ -29,6 +36,8 @@ from base import (DESCRICAO_PAGINA, ENCERRADO, HISTORICO, VERIFICACAO_INICIAL, B
 from comum import claude, custo_estimado, extrair_json
 
 SITE = "https://loja.sebrae.com.br"
+ESTADO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "estado", "sebrae.json")
+DIAS_RECUSA = 90  # um curso que o Claude deixou de fora só volta a ser perguntado depois deste tempo
 MAPA = SITE + "/sitemap.xml"
 PRODUTO = re.compile(r"^https://loja\.sebrae\.com\.br/[a-z0-9-]+-(?:\d{9,}|a0[a-z0-9]{14,})/?$", re.I)
 ENTIDADE = "Sebrae (cursos online)"
@@ -109,6 +118,49 @@ def ler_curso(url):
             "duracao": f"{int(duracao.group(1))} horas" if duracao else "", "descricao": descricao}
 
 
+def _sem_acentos(t):
+    import unicodedata
+    t = unicodedata.normalize("NFKD", t or "")
+    return re.sub(r"[^a-z0-9 ]", " ", "".join(c for c in t if not unicodedata.combining(c)).lower())
+
+
+def chave_curso(d):
+    """O mesmo curso em duas páginas tem a mesma descrição; sem descrição, o título sem “chatbot” e sem “curso”."""
+    desc = " ".join(_sem_acentos(d["descricao"]).split())[:90]
+    if len(desc) >= 40:
+        return "d:" + desc
+    tit = re.sub(r"\b(chatbot|curso de gestao|curso)\b", " ", _sem_acentos(d["titulo"]))
+    return "t:" + " ".join(tit.split())
+
+
+def agrupar(lidos):
+    """{url: url da página que fica} para os cursos repetidos; fica a página nova (código a0…) ou a primeira."""
+    grupos = {}
+    for u, d in lidos.items():
+        if d["aberto"] and d["gratis"]:
+            grupos.setdefault(chave_curso(d), []).append(u)
+    fica = {}
+    for us in grupos.values():
+        melhor = sorted(us, key=lambda u: (not re.search(r"-a0[a-z0-9]{14,}/?$", u), "chatbot" in u, u))[0]
+        for u in us:
+            fica[u] = melhor
+    return fica
+
+
+def ler_estado():
+    try:
+        with open(ESTADO, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+def guardar_estado(est):
+    os.makedirs(os.path.dirname(ESTADO), exist_ok=True)
+    with open(ESTADO, "w", encoding="utf-8") as f:
+        json.dump(est, f, ensure_ascii=False, indent=1, sort_keys=True)
+
+
 def provas(d):
     ev, comp = [], []
     if d["gratis"]:
@@ -146,11 +198,22 @@ def main():
         contagem[k] = contagem.get(k, 0) + 1
     for k, n in sorted(contagem.items(), key=lambda x: -x[1]):
         print(f"  {n:4d}  {k}")
+    fica = agrupar(lidos)
+    print(f"  {sum(1 for u, f in fica.items() if u != f)} páginas repetidas (mesmo curso em outra página).")
+    est = ler_estado()
+    recusados = est.setdefault("recusados", {})
+    corte = (datetime.date.fromisoformat(hoje) - datetime.timedelta(days=DIAS_RECUSA)).isoformat()
     alteracoes, historico = [], []
     # 1. cursos já na planilha: relidos a cada rodada
     for u, d in lidos.items():
         r = por_chave.get(chave(u))
         if not r or r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip():
+            continue
+        if fica.get(u, u) != u:
+            campos = {"Estado": "Oculto", "Última verificação": hoje,
+                      "Nota da verificação": f"{hoje}: duplicado: o mesmo curso está em {fica[u]} (mesmo texto na página)."}
+            historico.append(registo_historico(r, "Catálogo Sebrae", "Oculto (duplicado)", campos, fica[u]))
+            alteracoes.append((r["_linha"], campos))
             continue
         evid, comp = provas(d)
         outros = [c.strip() for c in (r.get("Campos comprovados") or "").split(",")
@@ -176,7 +239,9 @@ def main():
             historico.append(registo_historico(r, "Catálogo Sebrae", "Despublicado", campos, u))
         alteracoes.append((r["_linha"], campos))
     # 2. cursos novos: só os gratuitos E autoinstrucionais; o Claude escolhe os úteis para o público do site
-    novos_lidos = [d for u, d in lidos.items() if chave(u) not in por_chave and d["aberto"] and d["gratis"] and d["titulo"]]
+    ja = {chave(u) for u in por_chave}
+    novos_lidos = [d for u, d in lidos.items() if chave(u) not in ja and d["aberto"] and d["gratis"] and d["titulo"]
+                   and fica.get(u, u) == u and recusados.get(u, "") < corte]
     novos, custo = [], 0.0
     if novos_lidos:
         lista = "\n".join(f"{i} | {d['titulo'][:150]} | público: {d['perfil'][:120] or '—'} | {d['descricao'][:200]}"
@@ -193,7 +258,9 @@ def main():
         for d in novos_lidos:
             x = escolha.get(d["url"])
             if not x:
+                recusados[d["url"]] = hoje
                 continue
+            recusados.pop(d["url"], None)
             evid, comp = provas(d)
             nec = [n for n in (x.get("necessidades") or []) if n in NECESSIDADES]
             novos.append({
@@ -226,6 +293,7 @@ def main():
     except Exception as e:  # noqa: BLE001
         print(f"  ! aba Catálogos: {e}")
     base.guardar()
+    guardar_estado(est)
     print(f"Sebrae: {len(lidos)} páginas lidas ({falhas} falhas), {len(alteracoes)} cursos atualizados, "
           f"{len(novos)} novos publicados. Custo estimado: {custo:.3f} USD")
 

@@ -296,6 +296,17 @@
     var nomesLocal = {};
     site.locais.forEach(function (l) { nomesLocal[l.id] = l.rotulo; });
 
+    // Busca por palavra: cada palavra digitada tem de aparecer como palavra inteira no texto do curso, não dentro de
+    // outra («excel» não acha «excelência»). Aceita até 3 letras a mais no fim, para plurais e flexões
+    // («curso» acha «cursos», «eletricist» acha «eletricista»). Com várias palavras, todas têm de aparecer.
+    function bateBusca(alvo, busca) {
+      var palavras = alvo.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+      return busca.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every(function (termo) {
+        return palavras.some(function (p) {
+          return p === termo || (p.indexOf(termo) === 0 && p.length - termo.length <= 3 && termo.length >= 3);
+        });
+      });
+    }
     function semAcentos(t) {
       return String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
     }
@@ -468,7 +479,7 @@
         if (cidade.value && c.modalidade !== "online" && cidadesDe(c).indexOf(cidade.value) < 0) return false;
         if (t) {
           var alvo = semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" "));
-          if (alvo.indexOf(t) < 0) return false;
+          if (!bateBusca(alvo, t)) return false;
         }
         return true;
       });

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-22T13:53",
+ "atualizado": "2026-11-22T21:40",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -252,8 +252,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -2232,813 +2232,6 @@
    "cadunico": "",
    "turnos": [],
    "internet": "Sim",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-5fa91c58",
-   "titulo": "Noções de Informática",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Noções de Informática",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-maracanau-2026-11-23-08-00-12-00",
-     "unidade": "CVT MARACANAÚ",
-     "cidade": "Maracanaú",
-     "local": {
-      "nome": "CVT Maracanaú",
-      "municipio": "Maracanaú",
-      "site": "https://www.centec.org.br/unidades/cvt-maracanau/",
-      "bairro": "Jereissati I",
-      "morada": "Av. Central, s/nº",
-      "telefone": "(85) 99609-0009",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-23",
-     "fim": "2026-12-04",
-     "horario": "08:00 - 12:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - INCOMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "ANTONIETA ARAÚJO FERREIRA,11 JEREISSATI 01",
-     "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT MARACANAÚ - 23/11 a 04/12/2026 - 8h às 12h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE INFORMÁTICA - CVT MARACANAÚ - 23/11 a 04/12/2026 - 8h às 12h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    },
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-iguatu-2026-11-24-18-00-22-00",
-     "unidade": "CVT IGUATU",
-     "cidade": "Iguatu",
-     "local": {
-      "nome": "CVT Iguatu",
-      "municipio": "Iguatu",
-      "site": "https://www.centec.org.br/unidades/cvt-iguatu/",
-      "bairro": "Santo Antônio",
-      "morada": "Av. Dário Rabêlo, s/n",
-      "telefone": "(88) 99651-0043",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-24",
-     "fim": "2026-12-07",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - INCOMPLETO SEM PRÉ-REQUISITOS.",
-     "documentos": "",
-     "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
-     "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 24/11 a 07/12/26 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 24/11 a 07/12/26 - 18h às 22h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "(88) 9 96510043",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    },
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-maranguape-2026-11-30-18-00-21-00",
-     "unidade": "CVT MARANGUAPE",
-     "cidade": "Maranguape",
-     "local": {
-      "nome": "CVT Maranguape",
-      "municipio": "Maranguape",
-      "site": "https://www.centec.org.br/unidades/cvt-maranguape/",
-      "bairro": "Centro",
-      "morada": "Rua Walter Lopes, 149",
-      "telefone": "(85) 99911-0134",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-16",
-     "horario": "18:00 - 21:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - INCOMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
-     "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT MARANGUAPE - 30/11 a 16/12/2026 - 18h às 21h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE INFORMÁTICA - CVT MARANGUAPE - 30/11 a 16/12/2026 - 18h às 21h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-22",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-965d0a2c",
-   "titulo": "Ferramentas Digitais",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Ferramentas Digitais",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#ferramentas-digitais-cvt-fortim-2026-11-23-18-00-22-00",
-     "unidade": "CVT FORTIM",
-     "cidade": "Fortim",
-     "local": {
-      "nome": "CVT Fortim",
-      "municipio": "Fortim",
-      "site": "https://www.centec.org.br/unidades/cvt-fortim/",
-      "bairro": "Centro",
-      "morada": "Rua João Martins de Sousa,nº33",
-      "telefone": "(88) 99651-0014",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-23",
-     "fim": "2026-12-04",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II(6º AO 6º ANO) INCOMPLETO TER NOÇÕES EM INFORMÁTICA.",
-     "documentos": "",
-     "local_texto": "RUA JOÃO MARTINS DE SOUSA, 33",
-     "titulo_fonte": "FERRAMENTAS DIGITAIS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "FERRAMENTAS DIGITAIS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-22",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-50ce7a69",
-   "titulo": "Práticas Administrativas",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Práticas Administrativas",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#praticas-administrativas-cvt-fortim-2026-11-23-18-00-22-00",
-     "unidade": "CVT FORTIM",
-     "cidade": "Fortim",
-     "local": {
-      "nome": "CVT Fortim",
-      "municipio": "Fortim",
-      "site": "https://www.centec.org.br/unidades/cvt-fortim/",
-      "bairro": "Centro",
-      "morada": "Rua João Martins de Sousa,nº33",
-      "telefone": "(88) 99651-0014",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-23",
-     "fim": "2026-12-04",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO MÉDIO (1º AO 3º) - INCOMPLETO SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "RUA JOÃO MARTINS DE SOUSA,33",
-     "titulo_fonte": "PRÁTICAS ADMINISTRATIVAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "PRÁTICAS ADMINISTRATIVAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    },
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#praticas-administrativas-cvt-iguatu-2026-11-23-18-00-22-00",
-     "unidade": "CVT IGUATU",
-     "cidade": "Iguatu",
-     "local": {
-      "nome": "CVT Iguatu",
-      "municipio": "Iguatu",
-      "site": "https://www.centec.org.br/unidades/cvt-iguatu/",
-      "bairro": "Santo Antônio",
-      "morada": "Av. Dário Rabêlo, s/n",
-      "telefone": "(88) 99651-0043",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-23",
-     "fim": "2026-12-04",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO MÉDIO (1º AO 3º) - INCOMPLETO SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "Av. Dario Rabelo, S/N - Campus Multi-Institucional Humberto Teixeira.",
-     "titulo_fonte": "PRÁTICAS ADMINISTRATIVAS - CVT IGUATU - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "PRÁTICAS ADMINISTRATIVAS - CVT IGUATU - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "(88) 9 96510043",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-22",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-a898c5cd",
-   "titulo": "Noções em Instalações Elétricas",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Noções em Instalações Elétricas",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-em-instalacoes-eletricas-cvt-fortim-2026-11-23-18-00-22-00",
-     "unidade": "CVT FORTIM",
-     "cidade": "Fortim",
-     "local": {
-      "nome": "CVT Fortim",
-      "municipio": "Fortim",
-      "site": "https://www.centec.org.br/unidades/cvt-fortim/",
-      "bairro": "Centro",
-      "morada": "Rua João Martins de Sousa,nº33",
-      "telefone": "(88) 99651-0014",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-23",
-     "fim": "2026-12-04",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL I (1º AO 5º) - COMPLETO SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "VILA CAJUEIRO",
-     "titulo_fonte": "NOÇÕES EM INSTALAÇÕES ELÉTRICAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES EM INSTALAÇÕES ELÉTRICAS - CVT FORTIM - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-22",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-9bf82116",
-   "titulo": "Elaboração de Pratos e Sobremesas Natalina",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Elaboração de Pratos e Sobremesas Natalina",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#elaboracao-de-pratos-e-sobremesas-natalina-cvt-quixere-2026-11-30-13-00-17-00",
-     "unidade": "CVT QUIXERÉ",
-     "cidade": "Quixeré",
-     "local": {
-      "nome": "CVT Quixeré",
-      "municipio": "Quixeré",
-      "site": "https://www.centec.org.br/unidades/cvt-quixere/",
-      "bairro": "Centro",
-      "morada": "Rua Padre Zacarias, nº 450",
-      "telefone": "(88) 99651-0027",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-11",
-     "horario": "13:00 - 17:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º A 9º) - COMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "RUA PADRE ZACARIAS, 450",
-     "titulo_fonte": "ELABORAÇÃO DE PRATOS E SOBREMESAS NATALINA - CVT QUIXERÉ - 30/11 a 11/12/2026 - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "ELABORAÇÃO DE PRATOS E SOBREMESAS NATALINA - CVT QUIXERÉ - 30/11 a 11/12/2026 - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-22",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-d5a7a632",
-   "titulo": "Excel Básico",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Excel Básico",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#excel-basico-cvt-limoeiro-2026-11-23-18-00-22-00",
-     "unidade": "CVT LIMOEIRO",
-     "cidade": "Limoeiro do Norte",
-     "local": {
-      "nome": "CVT Limoeiro do Norte",
-      "municipio": "Limoeiro do Norte",
-      "site": "https://www.centec.org.br/unidades/cvt-limoeiro-do-norte/",
-      "bairro": "Centro",
-      "morada": "Rua Cônego Bessa",
-      "telefone": "(88) 99651-0029",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-23",
-     "fim": "2026-12-04",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - COMPLETO TER NOÇÕES DE INFORMÁTICA",
-     "documentos": "",
-     "local_texto": "RUA CÔNEGO BESSA, 2381, CENTRO, LIMOEIRO DO NORTE",
-     "titulo_fonte": "EXCEL BÁSICO - CVT LIMOEIRO - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "EXCEL BÁSICO - CVT LIMOEIRO - 23/11 a 04/12/26 - 18h às 22h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    },
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#excel-basico-cvt-vicosa-do-ceara-2026-11-30-13-00-17-00",
-     "unidade": "CVT VIÇOSA DO CEARÁ",
-     "cidade": "Viçosa do Ceará",
-     "local": {
-      "nome": "CVT Viçosa do Ceará",
-      "municipio": "Viçosa do Ceará",
-      "site": "https://www.centec.org.br/unidades/cvt-vicosa-do-ceara/",
-      "bairro": "Centro",
-      "morada": "Rua Professor Valdevino de Alencar, nº 243",
-      "telefone": "(88) 99651-0015",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-11",
-     "horario": "13:00 - 17:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - COMPLETO TER NOÇÕES EM INFORMÁTICA",
-     "documentos": "",
-     "local_texto": "RUA PROFESSOR VALDEVINO DE ALENCAR, No 243",
-     "titulo_fonte": "EXCEL BÁSICO - CVT VIÇOSA DO CEARÁ - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "EXCEL BÁSICO - CVT VIÇOSA DO CEARÁ - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "(88)996510015",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-22",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-4ae3e898",
-   "titulo": "Noções em Recursos Humanos",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Noções em Recursos Humanos",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-em-recursos-humanos-cvt-maranguape-2026-11-30-13-00-17-00",
-     "unidade": "CVT MARANGUAPE",
-     "cidade": "Maranguape",
-     "local": {
-      "nome": "CVT Maranguape",
-      "municipio": "Maranguape",
-      "site": "https://www.centec.org.br/unidades/cvt-maranguape/",
-      "bairro": "Centro",
-      "morada": "Rua Walter Lopes, 149",
-      "telefone": "(85) 99911-0134",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-11",
-     "horario": "13:00 - 17:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO MÉDIO (1º AO 3º) - COMPLETO SEM PRÉ-REQUISITOS.",
-     "documentos": "",
-     "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
-     "titulo_fonte": "NOÇÕES EM RECURSOS HUMANOS - CVT MARANGUAPE - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES EM RECURSOS HUMANOS - CVT MARANGUAPE - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-      "frase": ""
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-22",
-     "reserva": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-22",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
@@ -9426,8 +8619,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9479,8 +8672,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9532,8 +8725,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9585,8 +8778,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9638,8 +8831,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9691,8 +8884,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9744,8 +8937,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9797,8 +8990,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9849,8 +9042,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9902,8 +9095,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -9955,8 +9148,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10008,8 +9201,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10061,8 +9254,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10113,8 +9306,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10165,8 +9358,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10218,8 +9411,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10271,8 +9464,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10324,8 +9517,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10377,8 +9570,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10430,8 +9623,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10483,8 +9676,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10536,8 +9729,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10589,8 +9782,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10642,8 +9835,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10695,8 +9888,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10748,8 +9941,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10801,8 +9994,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10853,8 +10046,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10906,8 +10099,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -10959,8 +10152,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11013,8 +10206,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11065,8 +10258,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11118,8 +10311,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11170,8 +10363,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11223,8 +10416,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11276,8 +10469,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11328,8 +10521,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11381,8 +10574,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11433,8 +10626,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11486,8 +10679,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11539,8 +10732,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11592,8 +10785,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11644,8 +10837,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11697,8 +10890,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11750,8 +10943,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11803,8 +10996,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11856,8 +11049,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11909,8 +11102,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -11962,8 +11155,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12016,8 +11209,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12069,8 +11262,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12121,8 +11314,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12174,8 +11367,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12227,8 +11420,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12279,8 +11472,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12332,8 +11525,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12385,8 +11578,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12438,8 +11631,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12491,8 +11684,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12545,8 +11738,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12599,8 +11792,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12651,8 +11844,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12703,8 +11896,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12756,8 +11949,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12810,8 +12003,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12863,8 +12056,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12916,8 +12109,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -12968,8 +12161,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13021,8 +12214,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13074,8 +12267,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13127,8 +12320,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13181,8 +12374,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13234,8 +12427,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13287,8 +12480,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13339,8 +12532,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13391,8 +12584,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13444,8 +12637,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13498,8 +12691,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13551,8 +12744,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13603,8 +12796,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13656,8 +12849,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13708,8 +12901,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13762,8 +12955,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13816,8 +13009,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13869,8 +13062,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13922,8 +13115,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -13975,8 +13168,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14028,8 +13221,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14080,8 +13273,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14133,8 +13326,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14187,8 +13380,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14241,8 +13434,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14294,8 +13487,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14347,8 +13540,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14400,8 +13593,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14453,8 +13646,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14507,8 +13700,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14560,8 +13753,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14613,8 +13806,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14666,8 +13859,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14719,8 +13912,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14773,8 +13966,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14827,8 +14020,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14880,8 +14073,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14933,8 +14126,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -14986,8 +14179,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15040,8 +14233,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15094,8 +14287,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15147,8 +14340,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15200,8 +14393,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15253,8 +14446,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15305,8 +14498,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15358,8 +14551,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15411,8 +14604,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15465,8 +14658,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15518,8 +14711,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15571,8 +14764,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15624,8 +14817,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15677,8 +14870,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15730,8 +14923,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15782,8 +14975,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15835,8 +15028,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15888,8 +15081,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15941,8 +15134,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -15994,8 +15187,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16047,8 +15240,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16100,8 +15293,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16152,8 +15345,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16205,8 +15398,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16259,8 +15452,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16312,8 +15505,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16364,8 +15557,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16417,8 +15610,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16470,8 +15663,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16522,8 +15715,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16576,8 +15769,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16629,8 +15822,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16682,8 +15875,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16735,8 +15928,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16787,8 +15980,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16840,8 +16033,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16893,8 +16086,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16947,8 +16140,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -16999,8 +16192,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17052,8 +16245,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17105,8 +16298,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17158,8 +16351,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17213,8 +16406,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17267,8 +16460,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17321,8 +16514,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17374,8 +16567,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17427,8 +16620,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17480,8 +16673,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17533,8 +16726,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17586,8 +16779,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17640,8 +16833,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17693,8 +16886,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17746,8 +16939,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17800,8 +16993,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17853,8 +17046,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17906,8 +17099,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -17959,8 +17152,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18012,8 +17205,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18065,8 +17258,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18119,8 +17312,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18173,8 +17366,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18227,8 +17420,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18280,8 +17473,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18333,8 +17526,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18386,8 +17579,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18438,8 +17631,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18491,8 +17684,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18545,8 +17738,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18598,8 +17791,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18652,8 +17845,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18705,8 +17898,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18758,8 +17951,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18811,8 +18004,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18865,8 +18058,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18918,8 +18111,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -18972,8 +18165,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19025,8 +18218,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19078,8 +18271,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19131,8 +18324,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19185,8 +18378,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19238,8 +18431,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19291,8 +18484,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19344,8 +18537,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19397,8 +18590,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19449,8 +18642,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19502,8 +18695,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19555,8 +18748,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19608,8 +18801,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19662,8 +18855,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19716,8 +18909,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19769,8 +18962,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19822,8 +19015,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19876,8 +19069,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19928,8 +19121,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -19980,8 +19173,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20033,8 +19226,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20087,8 +19280,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20140,8 +19333,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20193,8 +19386,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20247,8 +19440,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20300,8 +19493,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20353,8 +19546,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20407,8 +19600,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20460,8 +19653,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20514,8 +19707,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20567,8 +19760,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20620,8 +19813,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20673,8 +19866,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20726,8 +19919,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20780,8 +19973,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20833,8 +20026,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20886,8 +20079,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20940,8 +20133,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -20993,8 +20186,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -21047,8 +20240,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -21101,8 +20294,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -21154,8 +20347,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },
@@ -21208,8 +20401,8 @@
    "modalidade": "online",
    "destino": {
     "tipo": "curso",
-    "conta": "Sebrae",
-    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. É preciso entrar ou criar uma conta no Sebrae. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
+    "conta": "conta Sebrae",
+    "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja do Sebrae do seu estado: é o mesmo curso.",
     "procurar": "",
     "frase": ""
    },

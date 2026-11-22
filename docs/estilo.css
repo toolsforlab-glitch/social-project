@@ -88,6 +88,8 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 /* Listas */
 .lista { list-style: none; padding: 0; margin: 0; }
 .curso, .noticia { padding: 1.1rem 0 1.2rem; border-bottom: 1px solid var(--pedra); }
+/* lista de cursos: separação mais marcada entre um curso e o seguinte (pedido do responsável, 22/11/2026) */
+.lista > .curso { padding: 1.6rem 0 1.8rem; border-bottom: 2px solid #9aa3b6; }
 .curso h3 { margin-bottom: .25rem; color: var(--tinta); }
 .entidade { color: var(--tinta-suave); font-size: 1rem; margin-bottom: .5rem; }
 .factos { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: .5rem 0 .8rem; padding: 0; list-style: none; font-size: .95rem; }

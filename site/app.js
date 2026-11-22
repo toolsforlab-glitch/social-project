@@ -247,7 +247,8 @@
       var o = onde.value;
       var ultimos = todos.filter(function (c) {
         if (o === "online" && c.modalidade !== "online") return false;
-        if (o && o !== "online" && c.modalidade !== "online" && c.local !== o) return false;
+        // estado escolhido: só os cursos presenciais desse estado; os on-line têm a opção própria «On-line»
+        if (o && o !== "online" && (c.modalidade === "online" || c.local !== o)) return false;
         var n = diasAte(prazoProximo(c));
         return n !== null && n >= 0 && n <= 10;
       }).sort(function (a, b) { return prazoProximo(a).localeCompare(prazoProximo(b)); }).slice(0, 5);
@@ -465,7 +466,8 @@
       var res = todos.filter(function (c) {
         if (escolhidas.length && !c.necessidades.some(function (n) { return escolhidas.indexOf(n) >= 0; })) return false;
         if (o === "online" && c.modalidade !== "online") return false;
-        if (o && o !== "online" && c.modalidade !== "online" && c.local !== o) return false;
+        // estado escolhido: só os cursos presenciais desse estado; os on-line têm a opção própria «On-line»
+        if (o && o !== "online" && (c.modalidade === "online" || c.local !== o)) return false;
         if (barreiras.indexOf("noite") >= 0 && turnosDe(c).indexOf("Noite") < 0) return false;
         if (barreiras.indexOf("sem_internet") >= 0 && c.internet !== "Não") return false;
         if (barreiras.indexOf("sem_escolaridade") >= 0 && ["Nenhuma", "Saber ler e escrever"].indexOf(c.escolaridade) < 0) return false;
@@ -476,7 +478,7 @@
         if (marcaEscolhida && marcasDe(c).indexOf(marcaEscolhida) < 0) return false;
         if (certificado && certificado.checked && c.certificado !== "gratuito") return false;
         if (duracao && duracao.value && !naDuracao(c, duracao.value)) return false;
-        if (cidade.value && c.modalidade !== "online" && cidadesDe(c).indexOf(cidade.value) < 0) return false;
+        if (cidade.value && cidadesDe(c).indexOf(cidade.value) < 0) return false;
         if (t) {
           var alvo = semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" "));
           if (!bateBusca(alvo, t)) return false;
@@ -490,7 +492,7 @@
       });
       var presenciais = res.filter(function (c) { return c.modalidade !== "online"; }).length;
       var resumo = res.length === 1 ? "1 curso" : res.length + " cursos";
-      if (o && o !== "online" && res.length) resumo += " (" + presenciais + (presenciais === 1 ? " presencial, " : " presenciais, ") + (res.length - presenciais) + " on-line)";
+      if (o && o !== "online" && res.length) resumo += res.length === 1 ? " presencial" : " presenciais";
       contagem.textContent = res.length ? resumo : "";
       // filtros ativos, visíveis no topo da lista (na coluna da esquerda podem ficar fora da vista), cada um com ✕
       var ativos = [];
@@ -508,7 +510,7 @@
       if (texto.value.trim()) ativos.push(["texto", "“" + texto.value.trim() + "”"]);
       var caixaAtivos = el("cursos-ativos");
       if (caixaAtivos) {
-        var semPresencial = o && o !== "online" && res.length && !presenciais;
+        var semPresencial = false;
         caixaAtivos.hidden = !ativos.length && !semPresencial;
         caixaAtivos.innerHTML = (ativos.length ? '<span class="filtros-ativos-titulo">Filtros escolhidos:</span> ' +
           ativos.map(function (a) {
@@ -531,7 +533,11 @@
         }).join("");
       }
       lista.innerHTML = res.length ? res.map(function (c) { return cursoHtml(c, todos.indexOf(c)); }).join("") :
-        '<li class="vazio">Não há cursos com essas opções no momento. Tente escolher menos opções ou "Mostrar tudo" em "Onde você está?". A lista é atualizada todo dia.</li>';
+        (o && o !== "online"
+          ? '<li class="vazio">Não há cursos presenciais ' + esc(noLugar(onde.options[onde.selectedIndex].text.replace(/^Brasil\s*[–-]\s*/, ""))) +
+            (cidade.value ? " em " + esc(cidade.value) : "") + (ativos.length ? " com estas escolhas" : "") +
+            ' no momento. Os cursos on-line servem em qualquer lugar. <button type="button" class="filtro botao secundario pequeno" data-filtro="onde:online">Ver os cursos on-line</button></li>'
+          : '<li class="vazio">Não há cursos com essas opções no momento. Tente escolher menos opções ou "Mostrar tudo" em "Onde você está?". A lista é atualizada todo dia.</li>');
 
       var q = new URLSearchParams();
       if (escolhidas.length) q.set("quero", escolhidas.join(","));

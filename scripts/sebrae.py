@@ -84,7 +84,8 @@ def ler_curso(url):
     if gratis:
         m = re.search(r"R\$\s*0,00\s+Gratuito", texto)
         frase_gratis = m.group(0) if m else ""
-    duracao = re.search(r'pdp-duration.{0,400}?Dura[çc][ãa]o\s*(\d+)\s*h', html, flags=re.S)
+    k = html.find('class="pdp-duration"')
+    duracao = re.search(r'class="duration"[^>]*>\s*Dura[çc][ãa]o\s*(\d+)\s*h', html[k:k + 5000]) if k >= 0 else None
     # área do produto (do título até «Ainda na dúvida?»), para não ler os outros produtos sugeridos na página
     i = texto.find(titulo) if titulo else -1
     j = texto.find("Ainda na dúvida", max(i, 0))

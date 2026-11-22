@@ -20,7 +20,9 @@ Para cada curso que o site mostra hoje (docs/dados/cursos.json) e que tem dúvid
    volta a ser perguntado passados DIAS_ENTRE_CONSULTAS dias.
 
 A verificação semanal (verificar.py) volta a conferir estas frases no link guardado e mantém-nas enquanto lá estiverem.
-Sem o segredo OPENAI_API_KEY, o script não faz nada. Cursos com «Revisto por pessoa» nunca são alterados.
+Desde 22/11/2026 (decisão do responsável: a API custa caro) as rotinas NÃO chamam a API: preparam um texto de
+auditoria para o responsável colar no ChatGPT da sua assinatura; a resposta, colada de volta, é provada pelo código
+da mesma forma (ver main). Cursos com «Revisto por pessoa» nunca são alterados.
 """
 import datetime
 import json
@@ -31,7 +33,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from base import (ACAO_SOB_DEMANDA, CAMPOS_PROVA, gratuidade_comprovada, sim, HISTORICO, MARCA_GPT, Base, carregar_config, certificado_da_frase, citacao_valida, curso_no_site,
+from base import (ACAO_SOB_DEMANDA, CAMPOS_PROVA, gratuidade_comprovada, sim, HISTORICO, MARCA_GPT, MARCA_CHATGPT, Base, carregar_config, certificado_da_frase, citacao_valida, curso_no_site,
                   gratuidade_explicita, registo_historico, texto_de_html)
 from comum import baixar_final, dominio_permitido, extrair_json, gravar_json, ler_json
 
@@ -198,26 +200,13 @@ def registar_uso(usado, motivo, perguntas=0, resolvidas=0, tokens=None):
             f.write(f"### Auditoria do GPT\n\n{linha}\n")
 
 
-def main():
-    chave = os.environ.get("OPENAI_API_KEY", "").strip()
-    if not chave:
-        registar_uso(False, "sem chave da OpenAI (segredo OPENAI_API_KEY ou SOCIAL_PROJECT)")
-        return
-    base = Base()
-    cfg = carregar_config(base)
-    conf = cfg.get("gpt", {})
-    modelo = conf.get("modelo", "gpt-5.5")
-    maximo = int(os.environ.get("GPT_MAX_CONSULTAS", conf.get("max_consultas", 10)))
-    forcar = os.environ.get("GPT_FORCAR", "") == "1"  # ignora o intervalo entre consultas (testes)
-    hoje = datetime.date.today()
+def candidatos_do_dia(base, cfg, linhas, hoje, consultas, forcar):
+    """Cursos com dúvidas, por ordem de importância (gratuidade, situação, data, depois só certificado)."""
     no_site = {c.get("id"): duvidas_do_curso(c)
                for c in ler_json("docs/dados/cursos.json", {"cursos": []}).get("cursos", [])}
-    linhas = base.tabela("Cursos")
-    consultas = ler_json("estado/gpt_consultas.json", {})
     candidatos = [(r, no_site[r["ID"]]) for r in linhas if no_site.get(r.get("ID")) and curso_no_site(r, cfg)
                   and not (r.get("Revisto por pessoa") or "").strip()
                   and (forcar or not consultado_ha_pouco(r, hoje, consultas, no_site[r["ID"]] == ["certificado"]))]
-    # primeiro os cursos com dúvidas mais importantes (gratuidade, situação, data), depois os só de certificado
     # Cursos com "Mudança a rever" marcada pelas rotinas (situação ou gratuidade em dúvida): na dúvida, o GPT audita
     # e, se o código confirmar tudo, a marca sai sozinha (regra do responsável, 21/11/2026).
     ja = {r["ID"] for r, _ in candidatos}
@@ -232,89 +221,198 @@ def main():
         if duv:
             candidatos.append((r, duv))
     candidatos.sort(key=lambda x: min(ORDEM.index(d) for d in x[1]))
-    print(f"Cursos com dúvidas: {len(candidatos)} (máximo {maximo} perguntas); modelo {modelo}")
-    alteracoes, historico, respostas, paginas, erro_conta = [], [], {}, {}, ""
-    tokens, perguntas, provados = {"input_tokens": 0, "output_tokens": 0}, 0, 0
+    return candidatos
+
+
+def perguntas_agrupadas(candidatos, maximo):
+    """[{n, link, dominio, duvidas, titulo, entidade, ids}] — cursos do mesmo edital com as mesmas dúvidas: uma pergunta."""
+    grupos = {}
     for r, duvidas in candidatos:
         link = (r.get("Página do curso") or "").strip() or r["Link"]
-        dominio = dominio_oficial(link)
         especificas = any(d in ("situacao", "inscricoes_ate") for d in duvidas)
-        chave_resp = (link, tuple(duvidas), r["Título"] if especificas else "")
-        if chave_resp not in respostas:  # cursos do mesmo edital com as mesmas dúvidas: uma só pergunta
-            if perguntas >= maximo:
-                break
-            pedido = PEDIDO.format(titulo=r["Título"], entidade=r.get("Entidade", ""), link=link, dominio=dominio,
-                                   perguntas="\n".join("- " + PERGUNTAS[d].format(hoje=hoje.isoformat())
-                                                       for d in duvidas))
-            try:
-                perguntas += 1
-                texto, uso = gpt(modelo, pedido, dominio, chave)
-                for k in tokens:
-                    tokens[k] += int(uso.get(k) or 0)
-                respostas[chave_resp] = extrair_json(texto) or {}
-            except urllib.error.HTTPError as e:
-                print(f"  ! OpenAI respondeu {e.code}: {e.read()[:300]!r}")
-                if e.code in (401, 403, 429):
-                    erro_conta = f"a OpenAI recusou o pedido ({e.code})"
-                    break
+        chave = (link, tuple(duvidas), r["Título"] if especificas else "")
+        if chave not in grupos:
+            if len(grupos) >= maximo:
                 continue
-            except Exception as e:  # noqa: BLE001
-                print(f"  ! {r['Título']}: {e}")
+            grupos[chave] = {"n": len(grupos) + 1, "link": link, "dominio": dominio_oficial(link), "duvidas": duvidas,
+                             "titulo": r["Título"], "entidade": r.get("Entidade", ""), "ids": []}
+        grupos[chave]["ids"].append(r["ID"])
+    return list(grupos.values())
+
+
+TEXTO_CHATGPT = """Você vai me ajudar a auditar informações de cursos gratuitos para pessoas em situação de \
+vulnerabilidade no Brasil. Preciso de provas escritas, não de conclusões. Use a pesquisa na web.
+
+Regras:
+- Procure só em páginas OFICIAIS da entidade de cada curso (o domínio indicado em cada curso): primeiro na própria \
+página ou edital do curso, depois na página do programa no site da entidade. Não servem notícias, blogs nem sites de \
+terceiros. Não deduza.
+- Para cada pergunta, copie a frase EXATA, letra a letra, sem resumir, e o link exato da página onde ela está.
+- Quando não encontrar uma frase, responda null nessa pergunta. É melhor null do que uma frase aproximada.
+- Hoje é {hoje}.
+
+O que significa cada pergunta:
+{definicoes}
+
+Cursos:
+{cursos}
+
+Responda só com um bloco JSON, sem texto antes nem depois, com uma chave por número de curso e, dentro, uma chave \
+por pergunta, assim:
+{{"1": {{"gratuito": {{"valor": "…ou null", "frase": "…", "url": "…"}}}}, "2": {{…}}}}
+Quando não encontrar uma frase, ponha {{"valor": null, "frase": null, "url": null}} nessa pergunta."""
+
+
+def texto_para_chatgpt(itens, hoje):
+    usadas = [d for d in ORDEM if any(d in it["duvidas"] for it in itens)]
+    definicoes = "\n".join("- " + PERGUNTAS[d].format(hoje=hoje.isoformat()) for d in usadas)
+    cursos = "\n\n".join(f"{it['n']}. {it['titulo']}\n   Entidade: {it['entidade']}\n   Página ou edital: {it['link']}\n"
+                          f"   Domínio oficial: {it['dominio']}\n   Perguntas: {', '.join(it['duvidas'])}" for it in itens)
+    return TEXTO_CHATGPT.format(hoje=hoje.isoformat(), definicoes=definicoes, cursos=cursos)
+
+
+def aplicar_respostas(base, linhas, itens, respostas, hoje, consultas, marca):
+    """O código prova cada resposta (conferir) e grava o que passa. Devolve o número de dúvidas resolvidas."""
+    por_id = {r.get("ID"): r for r in linhas}
+    alteracoes, historico, paginas, provados = [], [], {}, 0
+    for it in itens:
+        res = respostas.get(str(it["n"])) or respostas.get(it["n"])
+        if not isinstance(res, dict):
+            print(f"  – {it['n']}. {it['titulo'][:50]}: sem resposta")
+            continue
+        for id_ in it["ids"]:
+            r = por_id.get(id_)
+            if not r or (r.get("Revisto por pessoa") or "").strip():
                 continue
-        res = respostas[chave_resp]
-        consultas[r["ID"]] = hoje.isoformat()
-        comprovados = [c.strip() for c in (r.get("Campos comprovados") or "").split(",") if c.strip()]
-        evid_novas, campos, falhas = [], {}, []
-        for d in duvidas:
-            valor, frase, url, motivo = conferir(d, res.get(d), dominio, paginas)
-            rotulo = CAMPOS_PROVA[d]
-            if motivo:
-                falhas.append(f"{rotulo}: {motivo}")
-                continue
-            provados += 1
-            evid_novas.append(f"{rotulo}: «{frase}» ({url}; {MARCA_GPT})")
-            tirar = {rotulo, "programa"} if d == "gratuito" else {rotulo}
-            comprovados = [c for c in comprovados if c not in tirar] + [rotulo]
-            if d == "situacao":
-                campos["Situação das inscrições"] = valor
-            elif d == "inscricoes_ate":
-                campos["Inscrições até"] = valor
-            elif d == "certificado":
-                campos["Certificado"] = valor
-            print(f"  ✓ {r['Título'][:50]} | {rotulo} = {valor} | «{frase[:80]}» ({url[:70]})")
-            historico.append(registo_historico(r, "GPT + código", f"{rotulo} comprovado: {valor}", campos,
-                                               f"«{frase[:200]}» {url}"))
-        for f in falhas:
-            print(f"  ✗ {r['Título'][:50]} | {f}")
-        falta = re.sub(r"\[" + MARCA + r"\d{4}-\d{2}-\d{2}:[^\]]*\]\s*", "", r.get("O que falta confirmar") or "").strip()
-        if evid_novas:
-            if any(e.startswith("gratuito:") for e in evid_novas):
-                falta = re.sub(r"O edital não diz por escrito que o curso é gratuito[^.]*\.\s*", "", falta).strip()
-            campos["Campos comprovados"] = ", ".join(dict.fromkeys(comprovados))
-            campos["Evidência"] = (" | ".join(evid_novas) + " | " + (r.get("Evidência") or "")).strip(" |")[:1500]
-        if falhas:
-            falta = (f"[{MARCA}{hoje.isoformat()}: " + "; ".join(f.replace("]", ")") for f in falhas) + "] "
-                     + falta).strip()
-        campos["O que falta confirmar"] = falta[:900]
-        if sim(r.get("Mudança a rever")) and not falhas and evid_novas:
-            campos["Mudança a rever"] = "FALSE"
-            nota = f"{hoje.isoformat()}: “Mudança a rever” desmarcada depois da auditoria do GPT, conferida por código."
-            if r.get("Estado") == "Novo" and campos.get("Situação das inscrições", r.get("Situação das inscrições")) == "Aberto":
-                campos["Estado"] = "Publicado"
-                nota += " Publicado: inscrições abertas e gratuidade comprovadas."
-            campos["Nota da verificação"] = (nota + " " + (r.get("Nota da verificação") or ""))[:900]
-            historico.append(registo_historico(r, "GPT + código", "Mudança a rever desmarcada", campos, nota))
-        alteracoes.append((r["_linha"], campos))
+            consultas[r["ID"]] = hoje.isoformat()
+            comprovados = [c.strip() for c in (r.get("Campos comprovados") or "").split(",") if c.strip()]
+            evid_novas, campos, falhas = [], {}, []
+            for d in it["duvidas"]:
+                valor, frase, url, motivo = conferir(d, res.get(d), it["dominio"], paginas)
+                rotulo = CAMPOS_PROVA[d]
+                if motivo:
+                    falhas.append(f"{rotulo}: {motivo}")
+                    continue
+                provados += 1
+                evid_novas.append(f"{rotulo}: «{frase}» ({url}; {marca})")
+                tirar = {rotulo, "programa"} if d == "gratuito" else {rotulo}
+                comprovados = [c for c in comprovados if c not in tirar] + [rotulo]
+                if d == "situacao":
+                    campos["Situação das inscrições"] = valor
+                elif d == "inscricoes_ate":
+                    campos["Inscrições até"] = valor
+                elif d == "certificado":
+                    campos["Certificado"] = valor
+                print(f"  ✓ {r['Título'][:50]} | {rotulo} = {valor} | «{frase[:80]}» ({url[:70]})")
+                historico.append(registo_historico(r, "GPT + código", f"{rotulo} comprovado: {valor}", campos,
+                                                   f"«{frase[:200]}» {url}"))
+            for f in falhas:
+                print(f"  ✗ {r['Título'][:50]} | {f}")
+            falta = re.sub(r"\[" + MARCA + r"\d{4}-\d{2}-\d{2}:[^\]]*\]\s*", "", r.get("O que falta confirmar") or "").strip()
+            if evid_novas:
+                if any(e.startswith("gratuito:") for e in evid_novas):
+                    falta = re.sub(r"O edital não diz por escrito que o curso é gratuito[^.]*\.\s*", "", falta).strip()
+                campos["Campos comprovados"] = ", ".join(dict.fromkeys(comprovados))
+                campos["Evidência"] = (" | ".join(evid_novas) + " | " + (r.get("Evidência") or "")).strip(" |")[:1500]
+            if falhas:
+                falta = (f"[{MARCA}{hoje.isoformat()}: " + "; ".join(f.replace("]", ")") for f in falhas) + "] "
+                         + falta).strip()
+            campos["O que falta confirmar"] = falta[:900]
+            if sim(r.get("Mudança a rever")) and not falhas and evid_novas:
+                campos["Mudança a rever"] = "FALSE"
+                nota = f"{hoje.isoformat()}: “Mudança a rever” desmarcada depois da auditoria do GPT, conferida por código."
+                if r.get("Estado") == "Novo" and campos.get("Situação das inscrições", r.get("Situação das inscrições")) == "Aberto":
+                    campos["Estado"] = "Publicado"
+                    nota += " Publicado: inscrições abertas e gratuidade comprovadas."
+                campos["Nota da verificação"] = (nota + " " + (r.get("Nota da verificação") or ""))[:900]
+                historico.append(registo_historico(r, "GPT + código", "Mudança a rever desmarcada", campos, nota))
+            alteracoes.append((r["_linha"], campos))
     base.atualizar("Cursos", alteracoes)
     gravar_json("estado/gpt_consultas.json", consultas)
     if historico:
         base.acrescentar(HISTORICO, historico)
     base.guardar()
+    return provados
+
+
+def main():
+    """Três modos (variável GPT_MODO):
+    - "texto" (o normal desde 22/11/2026, decisão do responsável: a API custa caro): prepara o texto da auditoria
+      para colar no ChatGPT da assinatura do responsável. Grava estado/auditoria_chatgpt.md (o texto) e
+      estado/auditoria_chatgpt.json (a que cursos corresponde cada número). Não chama a OpenAI.
+    - "resposta": lê a resposta do ChatGPT em estado/resposta_chatgpt.txt (colada pelo responsável), prova cada
+      frase por código, como sempre, e grava o que passa.
+    - "api": o modo antigo, pela API da OpenAI (só com o segredo OPENAI_API_KEY; desligado nas rotinas)."""
+    modo = os.environ.get("GPT_MODO", "texto").strip().lower()
+    base = Base()
+    cfg = carregar_config(base)
+    conf = cfg.get("gpt", {})
+    maximo = int(os.environ.get("GPT_MAX_CONSULTAS", conf.get("max_consultas", 10)))
+    forcar = os.environ.get("GPT_FORCAR", "") == "1"  # ignora o intervalo entre consultas
+    hoje = datetime.date.today()
+    linhas = base.tabela("Cursos")
+    consultas = ler_json("estado/gpt_consultas.json", {})
+
+    if modo == "resposta":
+        pedido = ler_json("estado/auditoria_chatgpt.json", {})
+        try:
+            with open("estado/resposta_chatgpt.txt", encoding="utf-8") as f:
+                bruto = f.read()
+        except OSError:
+            bruto = ""
+        texto_json = bruto if "<json>" in bruto else f"<json>{bruto[bruto.find('{'):bruto.rfind('}') + 1]}</json>"
+        respostas = extrair_json(texto_json) if bruto.strip() else None
+        if not pedido.get("itens") or not isinstance(respostas, dict):
+            registar_uso(False, "resposta do ChatGPT em falta ou sem JSON")
+            return
+        print(f"Resposta do ChatGPT ao texto de {pedido.get('data')}: {len(respostas)} curso(s) respondidos.")
+        provados = aplicar_respostas(base, linhas, pedido["itens"], respostas, hoje, consultas, MARCA_CHATGPT)
+        registar_uso(True, "ChatGPT (assinatura), resposta colada pelo responsável", len(pedido["itens"]), provados)
+        return
+
+    candidatos = candidatos_do_dia(base, cfg, linhas, hoje, consultas, forcar)
+    itens = perguntas_agrupadas(candidatos, maximo)
+    print(f"Cursos com dúvidas: {len(candidatos)}; perguntas nesta rodada: {len(itens)} (máximo {maximo})")
+
+    if modo != "api":
+        if not itens:
+            registar_uso(False, "nenhuma dúvida para perguntar nesta rodada")
+            return
+        texto = texto_para_chatgpt(itens, hoje)
+        with open("estado/auditoria_chatgpt.md", "w", encoding="utf-8") as f:
+            f.write(texto + "\n")
+        gravar_json("estado/auditoria_chatgpt.json", {"data": hoje.isoformat(), "itens": itens})
+        registar_uso(False, f"API desligada; texto de auditoria para o ChatGPT preparado ({len(itens)} perguntas, "
+                            f"estado/auditoria_chatgpt.md)")
+        return
+
+    chave = os.environ.get("OPENAI_API_KEY", "").strip()
+    if not chave:
+        registar_uso(False, "sem chave da OpenAI (segredo OPENAI_API_KEY ou SOCIAL_PROJECT)")
+        return
+    modelo = conf.get("modelo", "gpt-5.5")
+    respostas, tokens, erro_conta = {}, {"input_tokens": 0, "output_tokens": 0}, ""
+    for it in itens:
+        pedido = PEDIDO.format(titulo=it["titulo"], entidade=it["entidade"], link=it["link"], dominio=it["dominio"],
+                               perguntas="\n".join("- " + PERGUNTAS[d].format(hoje=hoje.isoformat())
+                                                   for d in it["duvidas"]))
+        try:
+            texto, uso = gpt(modelo, pedido, it["dominio"], chave)
+            for k in tokens:
+                tokens[k] += int(uso.get(k) or 0)
+            respostas[str(it["n"])] = extrair_json(texto) or {}
+        except urllib.error.HTTPError as e:
+            print(f"  ! OpenAI respondeu {e.code}: {e.read()[:300]!r}")
+            if e.code in (401, 403, 429):
+                erro_conta = f"a OpenAI recusou o pedido ({e.code})"
+                break
+        except Exception as e:  # noqa: BLE001
+            print(f"  ! {it['titulo']}: {e}")
+    provados = aplicar_respostas(base, linhas, itens, respostas, hoje, consultas, MARCA_GPT)
     if tokens["input_tokens"]:
-        registar_uso(True, erro_conta, perguntas, provados, tokens)
+        registar_uso(True, erro_conta, len(respostas), provados, tokens)
     else:
-        registar_uso(False, erro_conta or ("nenhuma dúvida para perguntar nesta rodada" if not candidatos
-                                           else "sem resposta da OpenAI"))
+        registar_uso(False, erro_conta or "sem resposta da OpenAI")
 
 
 if __name__ == "__main__":

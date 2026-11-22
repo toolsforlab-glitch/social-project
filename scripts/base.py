@@ -412,6 +412,7 @@ def frase_de_gratuidade(texto):
 # ou, para sites que os servidores do GitHub não conseguem abrir (gov.br), conferidas no navegador do responsável:
 #   rótulo: «frase» (link; encontrada no navegador (Chrome), conferida por código)
 MARCA_GPT = "encontrada pelo GPT, conferida por código"
+MARCA_CHATGPT = "encontrada pelo ChatGPT, conferida por código"
 MARCA_NAVEGADOR = "encontrada no navegador (Chrome), conferida por código"
 _PROVA_GPT = re.compile(r"([\wçãáéíóúâêô ]+): «([^»]*)» \((https?://[^;)\s]+); ([^»|]*?conferida por código)\)")
 

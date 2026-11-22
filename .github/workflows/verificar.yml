@@ -9,7 +9,7 @@ on:
       passo:
         description: "Passo para rodar"
         type: choice
-        options: [verificar.py, evg.py, consultar_gpt.py, turmas.py, senac_ma.py, centec.py, pt_br.py, bradesco.py, sebrae.py, gpt_sebrae.py, gpt_certificado.py, catalogo.py]
+        options: [verificar.py, evg.py, consultar_gpt.py, aplicar_chatgpt.py, turmas.py, senac_ma.py, centec.py, pt_br.py, bradesco.py, sebrae.py, gpt_sebrae.py, gpt_certificado.py, catalogo.py]
         default: verificar.py
 
 permissions:
@@ -35,7 +35,6 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       FOLHA_ID: ${{ secrets.FOLHA_ID }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.SOCIAL_PROJECT }}
       PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5

@@ -100,13 +100,6 @@ jobs:
         timeout-minutes: 20
         run: cd scripts && python3 sebrae.py || echo 'Sebrae não lido'
 
-      - name: Auditoria do GPT nas dúvidas (o código prova)
-        timeout-minutes: 15
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || secrets.SOCIAL_PROJECT }}
-        if: ${{ always() }}
-        run: cd scripts && python3 consultar_gpt.py || echo 'GPT não consultado'
-
       - name: Atualizar o site a partir da planilha
         if: ${{ always() }}
         run: cd scripts && python3 construir_site.py

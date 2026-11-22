@@ -1,0 +1,39 @@
+name: Teste de rede (temporário)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rede:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - run: |
+          cd scripts && python3 - <<'PY'
+          from comum import baixar_final
+          from base import texto_de_html, citacao_valida
+          testes = [
+            ("https://editais.ifac.edu.br/edital/visualizacao/8656/", ["Período de inscrição dos candidatos", "10/11/2026 a 28/11/2026", "gratuit"]),
+            ("https://editais.ifac.edu.br/quero-estudar-no-ifac/edital/1206/arquivos/", ["públicos e gratuitos", "Campus Rio Branco"]),
+            ("https://www.fiema.org.br/edital/4791/preenchimento-de-vagas-nos-cursos-de-qualificacao-profissional-no-formato-presencial-no-programa-senai-de-gratuidade-regimental-centro-de-educacao-profissional-e-tecnologica-de-imperatriz-ma-10", ["PERÍODO DE INSCRIÇÃO", "Processos Seletivos - Alunos"]),
+            ("https://www.fiema.org.br/editais/11/Processos+Seletivos+-+Alunos", ["edital/", "Nenhum resultado"]),
+            ("https://psg.pi.senac.br/vagas/", ["Escolha a unidade"]),
+          ]
+          for url, frases in testes:
+              try:
+                  bruto, final = baixar_final(url, timeout=40)
+                  t = texto_de_html(bruto)
+                  print("R OK", len(t), final[:90])
+                  for f in frases:
+                      i = t.lower().find(f.lower())
+                      print("   ", f, "->", repr(t[max(0,i-150):i+250]) if i >= 0 else "NÃO")
+                  if "fiema.org.br/editais/11" in url:
+                      import re
+                      print("   links edital:", re.findall(r'href="(/edital/\d+/[^"]+)"', bruto.decode("utf-8","replace"))[:8])
+              except Exception as e:
+                  print("R ERRO", url[:80], e)
+          PY

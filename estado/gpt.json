@@ -133,5 +133,14 @@
   "resolvidas": 0,
   "tokens_entrada": 0,
   "tokens_saida": 0
+ },
+ {
+  "quando": "2026-11-22 13:33",
+  "usado": false,
+  "motivo": "API desligada; texto de auditoria para o ChatGPT preparado (2 perguntas, estado/auditoria_chatgpt.md)",
+  "perguntas": 0,
+  "resolvidas": 0,
+  "tokens_entrada": 0,
+  "tokens_saida": 0
  }
 ]

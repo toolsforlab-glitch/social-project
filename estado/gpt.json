@@ -90,12 +90,12 @@
   "tokens_saida": 4562
  },
  {
-  "quando": "2026-11-22 02:46",
+  "quando": "2026-11-22 02:57",
   "usado": true,
   "motivo": "",
   "perguntas": 10,
   "resolvidas": 0,
-  "tokens_entrada": 281038,
-  "tokens_saida": 15799
+  "tokens_entrada": 320343,
+  "tokens_saida": 17576
  }
 ]

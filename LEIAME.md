@@ -126,5 +126,14 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 
 - O ID de medição do GA4 (G-…) fica em `config.json` → `google_analytics`. Vazio = nada é carregado e o aviso não aparece.
 - O site mostra um aviso com **Aceitar** e **Recusar** (mesmo destaque). Só depois de "Aceitar" o script do Google é carregado; antes disso não há cookies nem pedidos ao Google. A escolha fica guardada no aparelho (localStorage) e pode ser mudada em Sobre → Privacidade e cookies (link no rodapé).
-- Eventos próprios, só de quem aceitou: `abrir_inscricao` (clique no botão que leva à página do curso; parâmetros curso, destino, pagina) e `lembrete_prazo` (clique em "Lembrar-me").
+- Eventos próprios (todos só de quem aceitou; todos levam `pagina`):
+  - `abrir_inscricao` (curso, destino): clique no botão que leva à inscrição. É o evento principal (conversão) no Analytics.
+  - `lembrete_prazo` (curso): clique em "Lembrar-me".
+  - `busca` (termo, resultados, estado) e `busca_sem_resultado` (termo, estado): 1,5 s depois de parar de digitar. O termo é cortado em 40 letras e descartado se tiver "@" ou 4 ou mais algarismos (e-mail, telefone, documento).
+  - `filtro` (filtro = estado | cidade | duracao | certificado | facilita; valor; na cidade também estado).
+  - `ver_online_sem_presencial` (estado): botão "Ver os cursos on-line" de um estado sem cursos presenciais.
+  - `ver_passo_govbr` (curso): link "Antes de começar" para criar a conta gov.br; `abrir_fonte_guia` (guia): link para a página oficial num guia.
+  - Página Encaminhar: `montar_lista` (cidade), `imprimir_lista`, `imprimir_ficha` (curso), `copiar_texto_whatsapp`, `copiar_link_lista`.
+  - `abrir_canal_whatsapp` e `abrir_formulario_parceiros`, quando esses links existirem.
+- Dimensões personalizadas registadas no Analytics (âmbito evento): curso, destino, termo, resultados, estado, filtro, valor, cidade, guia.
 - Decisão do responsável (22/11/2026): consentimento em vez de legítimo interesse.

@@ -99,12 +99,12 @@
   "tokens_saida": 17576
  },
  {
-  "quando": "2026-11-22 03:16",
-  "usado": true,
+  "quando": "2026-11-22 03:20",
+  "usado": false,
   "motivo": "a OpenAI recusou o pedido (429)",
-  "perguntas": 3,
+  "perguntas": 0,
   "resolvidas": 0,
-  "tokens_entrada": 89204,
-  "tokens_saida": 5508
+  "tokens_entrada": 0,
+  "tokens_saida": 0
  }
 ]

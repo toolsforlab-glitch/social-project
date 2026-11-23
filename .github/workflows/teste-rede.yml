@@ -5,9 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          set +e
-          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
-          curl -sL -A "$UA" -m 60 https://gorecife.recife.pe.gov.br/assets/index-bc3bbc61.js -o x.js
-          echo "=== chamadas"; grep -oE '.{60}(get|post)\(`?[^)]{0,60}(curso|turma|capacita|qualifica)[^)]{0,60}' x.js | head -20
-          echo "=== strings"; grep -oE '["`/][a-zA-Z_/${}.-]{0,40}(cursos?|turmas?)[a-zA-Z_/${}?=.&-]{0,60}["`]' x.js | sort -u | head -40
-          for p in api/cursos api/curso api/sites api/cursos/publicos api/v1/cursos; do echo "--- $p"; curl -s -A "$UA" -m 30 -o r.txt -w "%{http_code} %{content_type}\n" "https://gorecife.recife.pe.gov.br/$p"; head -c 400 r.txt; echo; done
+          python3 - <<'PY'
+          import json, urllib.request
+          def get(u):
+              r = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+              return json.loads(urllib.request.urlopen(r, timeout=40).read())
+          d = get("https://gorecife.recife.pe.gov.br/api/cursos?page=1")
+          print("COUNT", d["count"])
+          r0 = d["results"][0]
+          print(json.dumps(r0, ensure_ascii=False, indent=1)[:3500])
+          todos = d["results"]; u = d["next"]
+          while u:
+              d = get(u); todos += d["results"]; u = d["next"]
+          for c in todos:
+              print("C", c.get("id"), "|", c.get("name"), "|", c.get("course_status"), "|", {k: c.get(k) for k in c if any(x in k for x in ("date", "data", "inicio", "fim", "vaga", "inscri", "start", "end", "deadline"))})
+          PY

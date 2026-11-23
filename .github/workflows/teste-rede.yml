@@ -1,0 +1,14 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set +e
+          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
+          echo "=== GO RECIFE"; curl -sL -A "$UA" -m 40 https://gorecife.recife.pe.gov.br/cursos -o go.html; wc -c go.html; grep -oE '(src|href)="[^"]+\.js[^"]*"' go.html | head; grep -oE 'https?://[a-zA-Z0-9./_-]*api[a-zA-Z0-9./_-]*' go.html | sort -u | head
+          for js in $(grep -oE 'src="[^"]+\.js[^"]*"' go.html | sed 's/src="//;s/"$//' | head -8); do case $js in http*) u=$js;; *) u="https://gorecife.recife.pe.gov.br${js}";; esac; curl -sL -A "$UA" -m 40 "$u" -o x.js; echo "-- $u $(wc -c < x.js)"; grep -oE '"(/api|https?://[^"]*api)[^"]{0,80}"' x.js | sort -u | head -15; grep -oE '"/[a-z_/-]*(curso|turma)[a-z_/{}-]*"' x.js | sort -u | head -15; done
+          echo "=== GO RECIFE html cursos sample"; grep -oE 'curso[^<]{0,120}' go.html | head -20
+          echo "=== SEDUC PI editais"; curl -sL -A "$UA" -m 40 "https://seduc.pi.gov.br/editais" -o s.html; wc -c s.html; grep -oE 'href="[^"]*editais[^"]*\.pdf"' s.html | head -15; grep -oiE '>[^<]{0,40}(FIC|qualifica|Mais Forma)[^<]{0,80}<' s.html | head -15
+          echo "=== PI GOV qualifica"; curl -sL -A "$UA" -m 40 "https://www.pi.gov.br/?s=qualifica" -o p.html; wc -c p.html; grep -oiE 'href="[^"]+"[^>]*>[^<]{0,20}[Qq]ualifica[^<]{0,80}' p.html | head -10

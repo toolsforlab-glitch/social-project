@@ -79,6 +79,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 oxetech.py
 
+      - name: Turmas do Caminhos Digitais, Paraíba (página oficial, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 caminhos_digitais.py
+
       - name: Editais do Senac Maranhão (documento oficial, Claude com prova por código)
         if: ${{ always() }}
         timeout-minutes: 15

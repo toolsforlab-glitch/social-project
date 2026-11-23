@@ -182,6 +182,10 @@ DESTINOS_FONTES = [
         "tipo": "acesso", "conta": "Centec Academy",
         "nota": "Se ainda não tem conta, clique em “Criar uma conta” (são pedidos CPF, RG, e-mail, endereço e "
                 "telefone). Depois de entrar, a inscrição nesta turma vai abrir; se não abrir, clique de novo no botão."}),
+    # Caminhos Digitais (Paraíba): a página de inscrição lista as turmas por cidade; não há página por turma - 23/11/2026
+    (r"^https://caminhosdigitais\.com\.br/inscricao", {
+        "tipo": "lista", "nome": "Caminhos Digitais",
+        "nota": "Na página, procure a sua cidade e o curso. A inscrição pede nome, CPF, data de nascimento e telefone."}),
     # OxeTech Lab (Alagoas): não há página por turma, só a lista; inscrição on-line no site com conta (CPF) - 23/11/2026
     (r"^https://oxetech\.al\.gov\.br/oxetechlab", {
         "tipo": "lista", "nome": "OxeTech", "conta": "conta OxeTech",

@@ -3,6 +3,8 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -11,12 +13,26 @@ jobs:
       - run: |
           cd scripts && python3 - <<'PY'
           import senac_ma as s, re
-          u = "https://tecnico.senaibahia.com.br/wp-content/uploads/2026/10/Edital-PS-CHP-2027.1_VF_Chancelado.pdf"
-          t = s.texto_do_documento(s.baixar(u, timeout=60), "application/pdf")
-          print("CHARS", len(t))
-          for kw in ["DAS INSCRI", "PERÍODO DE INSCRI", "CRONOGRAMA", "500", "renda"]:
-              for m in list(re.finditer(re.escape(kw), t))[:2]:
-                  print("=== ", kw, "@", m.start()); print(t[max(0,m.start()-200):m.start()+900])
-          i = t.find("Salvador")
-          print("=== TABELA"); print(t[i-1500:i+2500])
+          from base import citacao_valida
+          from comum import claude, extrair_json
+          f = next(x for x in s.FONTES if x["nome"] == "Senai BA")
+          e = s.listar_senai_ba(f)[0]
+          print("EDITAL", e["number"], e["avisos"], e["extras"])
+          texto = s.recortar(s.texto_do_documento(s.baixar(e["documents"][0]["url"], timeout=60), "application/pdf"), f.get("anexo", r"ANEXO\s+I\b"), f["max_caracteres"])
+          for url in e["avisos"]:
+              texto += "\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n" + re.sub(r"[ \t]+", " ", s.texto_do_documento(s.baixar(url, timeout=60), "application/pdf"))
+          for rot, url in e["extras"]:
+              texto += f"\n\n=== DOCUMENTO OFICIAL LIGADO AO EDITAL: {rot} ===\n" + re.sub(r"[ \t]+", " ", s.texto_do_documento(s.baixar(url, timeout=60), "application/pdf"))[:20000]
+          print("CHARS", len(texto), "REQ", citacao_valida(f["requisito"]["frase"], texto))
+          sistema = s.SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", f["entidade"]).replace("Programa Senac de Gratuidade", f["programa"])
+          sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {f['nota']}\n\nDevolve só JSON")
+          r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=16000)
+          res = extrair_json(r)
+          if not isinstance(res, dict): print("RUIM", len(r), r[-600:]); raise SystemExit
+          ed, prob = s.provar(res, texto, "")
+          print("PROBLEMAS", prob, "INSC", ed["ini"], ed["fim"], "GRATIS", ed["gratuito"], res.get("gratuidade"), "MODO", ed["modo"], ed["local"], "RENDA", ed["renda"][:80])
+          for t in ed["turmas"]:
+              print("T", t["curso"], "|", t["cidade"], "|", t.get("vagas"), "|", t.get("horario"), "|", t["inicio_aulas"], "|", (t.get("frase") or "")[:90])
+          print("PROPOSTAS", len(res.get("turmas") or []), "PROVADAS", len(ed["turmas"]))
+          print("AMOSTRA TABELA:"); i = texto.find("Teixeira de Freitas"); print(texto[i-1200:i+600])
           PY

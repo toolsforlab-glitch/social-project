@@ -20,8 +20,9 @@ LOCALIZACAO = {
     "BR-PE": {"type": "approximate", "country": "BR", "region": "Pernambuco", "city": "Recife", "timezone": "America/Recife"},
     "BR-AL": {"type": "approximate", "country": "BR", "region": "Alagoas", "city": "Maceió", "timezone": "America/Maceio"},
     "BR-PB": {"type": "approximate", "country": "BR", "region": "Paraíba", "city": "João Pessoa", "timezone": "America/Fortaleza"},
+    "BR-BA": {"type": "approximate", "country": "BR", "region": "Bahia", "city": "Salvador", "timezone": "America/Bahia"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.
@@ -54,7 +55,9 @@ Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) 
 (fiepi.com.br, cursos técnicos de gratuidade), nem editais de gratuidade do SENAI Pernambuco \
 (pe.senai.br/editais e os PDFs em pe.senai.br/wp-content/uploads), nem editais do Senac Alagoas \
 (psg.al.senac.br), nem editais de gratuidade do SENAI Alagoas (al.senai.br/edital-gratuidade e os PDFs em \
-al.senai.br/wp-content/uploads), nem turmas do OxeTech Lab (oxetech.al.gov.br/oxetechlab): esses são lidos à \
+al.senai.br/wp-content/uploads), nem turmas do OxeTech Lab (oxetech.al.gov.br/oxetechlab), nem turmas do Caminhos Digitais \
+(caminhosdigitais.com.br), nem as bolsas do processo seletivo dos cursos técnicos do SENAI Bahia \
+(tecnico.senaibahia.com.br): esses são lidos à \
 parte, diretamente das páginas e documentos oficiais.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.

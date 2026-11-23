@@ -99,6 +99,22 @@ FONTES = [
              "«curso» escreve o nome certo, mas em «frase» copia a linha exatamente como está no texto. A coluna "
              "do link costuma sair ilegível no OCR: nesse caso usa o link do bloco da página. Se houver "
              "COMUNICADOS no fim, eles prevalecem."},
+    {"nome": "Senai BA", "uf": "BA", "local": "BR-BA", "regiao": "Bahia",
+     "entidade": "SENAI Bahia (Bolsas de Estudo – Gratuidade Regimental)", "estado": "estado/senai_ba.json",
+     "programa": "Gratuidade Regimental do SENAI", "listar": "senai_ba",
+     "lista": "https://tecnico.senaibahia.com.br/informacoes-gerais", "max_caracteres": 70000, "inicio_opcional": True,
+     "prefixo_turma": "https://tecnico.senaibahia.com.br/wp-content/uploads/",
+     "requisito": {"frase": "igual ou superior a 500 (quinhentos)",
+                   "texto": "Ter nota média de 500 pontos ou mais no ENEM (de 2021 a 2025) e ter concluído ou estar no 2º ou 3º ano do ensino médio"},
+     "nota": "É o Processo Seletivo dos Cursos Técnicos do SENAI Bahia: cada curso/turno tem vagas PAGAS e vagas com BOLSA "
+             "DE ESTUDO 100% (ingresso pelo ENEM, gratuidade regimental). Nas tabelas, as colunas são «MUNICÍPIO | CURSO | "
+             "VAGAS TOTAIS | ENEM (bolsa de estudo) | CURSO PAGO | …»: em «turmas» entra UMA entrada por município, curso e "
+             "turno SÓ quando o número de vagas «ENEM (bolsa de estudo)» for maior que zero; em «vagas» põe esse número de "
+             "bolsas (não o total). «cidade» é o município. Ignora os valores das mensalidades. O período de inscrição para "
+             "as bolsas está no item da forma de ingresso pelo ENEM (ex.: «no período de 09/11 a 06/01/2027»). A inscrição "
+             "é pela internet (modo «online», local «tecnico.senaibahia.com.br»). A gratuidade pode vir do Regulamento do "
+             "Programa de Bolsas, no fim do texto (ex.: «As Bolsas de Estudo são integrais, correspondendo a 100%»). Se houver "
+             "RETIFICAÇÕES no fim, elas prevalecem."},
     {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
      "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
      "programa": "Gratuidade Regimental do SENAI", "listar": "senai_pe",
@@ -311,7 +327,7 @@ MINUSCULAS = {"de", "da", "do", "das", "dos", "e"}
 
 def nome_cidade(c):
     """'SÃO DOMINGOS DO MARANHÃO/MA' → 'São Domingos do Maranhão' (o edital escreve a cidade de várias formas)."""
-    c = re.sub(r"\s*(?:[/,–-]\s*|\()(MA|AC|PI|PE|AL|PB|Maranh[ãa]o|Acre|Piau[íi]|Pernambuco|Alagoas|Para[íi]ba)\)?\s*$", "", re.sub(r"\s+", " ", c or "").strip(),
+    c = re.sub(r"\s*(?:[/,–-]\s*|\()(MA|AC|PI|PE|AL|PB|BA|Maranh[ãa]o|Acre|Piau[íi]|Pernambuco|Alagoas|Para[íi]ba|Bahia)\)?\s*$", "", re.sub(r"\s+", " ", c or "").strip(),
                flags=re.I).strip(" -–/")
     if c.isupper() or c.islower():
         c = " ".join(p.lower() if i and p.lower() in MINUSCULAS else p.capitalize()
@@ -742,6 +758,27 @@ def listar_senai_al(fonte):
     return editais
 
 
+def listar_senai_ba(fonte):
+    """SENAI Bahia: a página «Informações gerais» do site dos cursos técnicos (tecnico.senaibahia.com.br) tem o Edital
+    Oficial do processo seletivo do semestre, os aditivos (retificações) e o Regulamento do Programa de Bolsas. O edital
+    é lido com os aditivos no fim (prevalecem) e o regulamento como documento ligado (é onde está a frase das bolsas
+    integrais). Um único edital por semestre; os aditivos novos fazem-no reler."""
+    html = baixar(fonte["lista"], timeout=60).decode("utf-8", "replace")
+    docs = [(h, _html.unescape(re.sub(r"<[^>]+>", " ", r)).strip())
+            for h, r in re.findall(r'<a[^>]+href="([^"]+\.pdf)"[^>]*>(.*?)</a>', html, flags=re.S | re.I)]
+    edital = next((u for u, r in docs if re.search(r"edital oficial", r, re.I)), "")
+    if not edital:
+        raise ValueError("link do edital oficial não encontrado na página")
+    avisos = [u for u, r in docs if re.search(r"aditivo|retifica", r, re.I)]
+    regulamento = next((u for u, r in docs if re.search(r"regulamento", r, re.I)), "")
+    nome = edital.rsplit("/", 1)[-1]
+    return [{"id": "senai-ba-" + re.sub(r"[^a-z0-9]+", "-", nome.lower())[:60], "number": nome, "published_at": "",
+             "updated_at": "|".join(u.rsplit("/", 1)[-1] for u in [edital] + avisos), "title": "Processo Seletivo Cursos Técnicos SENAI Bahia",
+             "pagina": fonte["lista"], "padrao": re.escape(edital), "aditivo": False, "avisos": avisos,
+             "extras": [("Regulamento do Programa de Bolsas", regulamento)] if regulamento else [],
+             "documents": [{"type": "edital", "mime_type": "application/pdf", "url": edital}]}]
+
+
 def listar_senai_pe(fonte):
     """SENAI Pernambuco: a página «Editais» (pe.senai.br) tem blocos «GRATUIDADE | QUALIFICAÇÃO - Em andamento» e
     «GRATUIDADE | APERFEIÇOAMENTO - Em andamento»; dentro de cada bloco, o nome da unidade (em negrito) e, por baixo,
@@ -829,7 +866,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []
@@ -894,6 +931,9 @@ def correr(fonte):
                 t_aviso = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
                 texto_avisos += f"\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n{t_aviso.strip()}"
             texto += texto_avisos
+            for rotulo, url in e.get("extras") or []:
+                t_extra = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
+                texto += f"\n\n=== DOCUMENTO OFICIAL LIGADO AO EDITAL: {rotulo} ===\n{t_extra.strip()[:20000]}"
             if e.get("texto_pagina"):
                 texto += f"\n\n=== INFORMAÇÕES DESTE EDITAL NA PÁGINA OFICIAL ({e.get('pagina')}) ===\n{e['texto_pagina']}"
         except Exception as ex:  # noqa: BLE001
@@ -931,6 +971,9 @@ def correr(fonte):
             print(f"  ? edital {e.get('number')}: resposta ilegível (tentativa {tentativas} de {MAX_TENTATIVAS}; "
                   f"{len(resposta)} caracteres, fim: {re.sub(chr(10), ' ', resposta[-200:])})")
             continue
+        # requisito fixo da fonte (ex.: nota do ENEM no SENAI BA): só se a frase estiver no documento
+        req = fonte.get("requisito") or {}
+        requisito_fixo = req.get("texto", "") if req and citacao_valida(req.get("frase", ""), texto) else ""
         edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False),
                                     fonte.get("layout", False))
         if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:
@@ -1043,7 +1086,7 @@ def correr(fonte):
                     "Local": fonte["local"], "Modalidade": "presencial", "País": "BR", "Região": fonte["regiao"],
                     "Cidade": "", "Descrição": "", "Necessidades": necessidades("", titulo),
                     "Perfis": ", ".join(perfis_da_frase(edital["reserva"])) or "todos",
-                    "Condição de acesso": "", "Requisitos": "", "Certificado": "desconhecido", "Inscrições até": "",
+                    "Condição de acesso": "", "Requisitos": requisito_fixo, "Certificado": "desconhecido", "Inscrições até": "",
                     "Início": "", "Duração": str(t.get("carga_horaria") or ""), "Link verificado": "SIM",
                     "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "turmas", "Notas": "",
                     "Como me inscrever": "", **VERIFICACAO_INICIAL,

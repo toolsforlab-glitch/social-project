@@ -9,6 +9,12 @@
   },
   "google_analytics": "G-XHCRWJMB6R",
   "pix": "00000000-0000-0000-0000-000000000000",
+  "formulario_sugestoes": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLScQcBM3tobIEUGEu-H42gKVq8IjLn4MF439d7aKRzY-jh0dPw/viewform",
+    "campo_tipo": "entry.1072201061",
+    "campo_curso": "entry.1293509196",
+    "tipo_erro": "Um erro num curso (link que não abre, data errada, curso que não é gratuito)"
+  },
   "modelo_noticias": "claude-haiku-5-5",
   "modelo_cursos": "claude-haiku-5-5",
   "modelo_auditoria": "claude-sonnet-5-5",

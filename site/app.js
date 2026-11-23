@@ -309,6 +309,15 @@
     }).catch(function () { caixa.parentNode.style.display = "none"; });
   }
 
+  // «Avisar um erro neste curso»: abre o formulário de sugestões com o tipo e o nome do curso já preenchidos
+  var FORM = {};
+  function avisarErroHtml(c) {
+    if (!FORM.url) return "";
+    var q = "?usp=pp_url&" + FORM.campo_tipo + "=" + encodeURIComponent(FORM.tipo_erro || "") + "&" + FORM.campo_curso + "=" +
+      encodeURIComponent(c.titulo + (c.entidade ? " – " + c.entidade : "") + " (" + (c.url || "") + ")");
+    return '<p class="avisar"><a href="' + esc(FORM.url + q) + '" target="_blank" rel="noopener">Avisar um erro neste curso</a></p>';
+  }
+
   // ------------------------------------------------------------ Números (23/11/2026)
   // Resumo dos cursos abertos hoje, com a mesma regra da página de cursos (turmas atuais; sem os só futuros).
   function numeros(site) {
@@ -529,6 +538,7 @@
                          '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' + esc(b.rotulo) + "</a>";
                      })()) +
         (!temTurmas ? lembrarHtml(c.titulo, c.inscricoes_ate, c.url, c.modalidade === "online" ? "On-line" : c.cidade) : "") +
+        avisarErroHtml(c) +
         '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(dataBonita(c.verificado_em)) + ". " : "") +
         "Confirme sempre na página oficial antes de ir.</p></li>";
     }
@@ -1181,6 +1191,7 @@
     medir("copiar_pix", {});
   });
   carregar("dados/site.json").then(function (site) {
+    FORM = site.formulario || {};
     if (pagina === "numeros") { numeros(site); return; }
     if (pagina === "antes") { antes(); return; }
     if (pagina === "encaminhar") { encaminhar(site); return; }

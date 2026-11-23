@@ -304,6 +304,11 @@ def main():
                     + ('<p class="pix">A chave Pix será publicada aqui em breve.</p>\n' if pix.upper() == "EM-BREVE" else
                        f'<p class="pix">Chave Pix: <strong>{pix}</strong> <button type="button" class="botao secundario pequeno" '
                        f'data-copiar="{pix}">Copiar a chave</button></p>\n')) if pix else ""
+    form = (cfg.get("formulario_sugestoes") or {}).get("url", "")
+    bloco_sugestoes = ('<h2 id="sugestoes">Sugestões e erros</h2>\n'
+                       "<p>Achou um erro num curso, um link que não abre ou um curso que não é gratuito? Tem uma ideia para "
+                       "melhorar o site ou conhece um curso gratuito que falta? Conte pelo formulário: não precisa se identificar.</p>\n"
+                       f'<p><a class="botao secundario" href="{html.escape(form)}" target="_blank" rel="noopener">Mandar uma sugestão ou avisar um erro</a></p>\n') if form else ""
     for ficheiro, (pagina, titulo) in PAGINAS.items():
         with open(caminho("site", ficheiro), encoding="utf-8") as f:
             conteudo = f.read()
@@ -311,14 +316,16 @@ def main():
                     .replace("{{PLAYLIST_ONGS}}", html.escape(links.get("playlist_ongs") or "#"))
                     .replace("{{CAMINHO_WHATSAPP}}", bloco_wa)
                     .replace("{{PARCEIROS}}", bloco_parceiros)
-                    .replace("{{APOIAR}}", bloco_apoiar))
+                    .replace("{{APOIAR}}", bloco_apoiar)
+                    .replace("{{SUGESTOES}}", bloco_sugestoes))
         pagina_html = (modelo_base.replace("{{CONTEUDO}}", conteudo)
                        .replace("{{TITULO}}", titulo.format(nome=nome))
                        .replace("{{DESCRICAO}}", slogan)
                        .replace("{{NOME}}", nome).replace("{{SLOGAN}}", slogan)
                        .replace("{{PAGINA}}", pagina).replace("{{VERSAO}}", versao)
                        .replace("{{GA}}", ga)
-                       .replace("{{LINK_APOIAR}}", ' · <a href="sobre.html#apoiar">Como apoiar o site</a>' if bloco_apoiar else ""))
+                       .replace("{{LINK_APOIAR}}", ' · <a href="sobre.html#apoiar">Como apoiar o site</a>' if bloco_apoiar else "")
+                       .replace("{{LINK_SUGESTOES}}", ' · <a href="sobre.html#sugestoes">Sugestões e erros</a>' if form else ""))
         for p in ("cursos", "antes", "encaminhar", "noticias", "numeros", "sobre"):
             pagina_html = pagina_html.replace("{{ATUAL_%s}}" % p.upper(),
                                               ' aria-current="page"' if p == pagina else "")
@@ -332,6 +339,7 @@ def main():
     gravar_json("docs/dados/site.json", {
         "nome": cfg["nome"], "territorio_piloto": cfg.get("territorio_piloto", ""),
         "necessidades": cfg["cursos"]["necessidades"], "locais": cfg["cursos"]["locais"],
+        "formulario": cfg.get("formulario_sugestoes") or {},
         "temas": cfg["noticias"]["temas"], "url_site": cfg.get("url_site", ""),
     })
     n_cursos, n_noticias = exportar_dados(base, cfg)

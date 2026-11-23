@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-23T20:50",
+ "atualizado": "2026-11-23T21:22",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -2581,56 +2581,6 @@
    "cadunico": "",
    "turnos": [],
    "internet": "",
-   "ajuda": "",
-   "documentos": "",
-   "etiquetas": [],
-   "acessibilidade": []
-  },
-  {
-   "id": "C-1baeee72",
-   "titulo": "Cursos técnicos com bolsa de estudo 100% (ingresso pelo ENEM)",
-   "entidade": "SENAI Bahia (Bolsas de Estudo – Gratuidade Regimental)",
-   "url": "https://tecnico.senaibahia.com.br/",
-   "pagina_propria": false,
-   "local": "BR-BA",
-   "modalidade": "presencial",
-   "destino": null,
-   "pais": "BR",
-   "regiao": "Bahia",
-   "cidade": "",
-   "descricao": "Processo seletivo 2027.1 dos cursos técnicos do SENAI Bahia: 714 bolsas integrais em cursos presenciais e semipresenciais (automação, eletrotécnica, logística, desenvolvimento de sistemas, segurança do trabalho e outros) em Alagoinhas, Barreiras, Camaçari, Eunápolis, Feira de Santana, Ilhéus, Jacobina, Juazeiro, Lauro de Freitas, Luís Eduardo Magalhães, Salvador, Santo Antônio de Jesus, Senhor do Bonfim, Serrinha, Teixeira de Freitas e Vitória da Conquista. Cursos de 18 a 24 meses.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter nota média de 500 pontos ou mais no ENEM (de 2021 a 2025) e ter concluído ou estar no 2º ou 3º ano do ensino médio",
-   "certificado": "",
-   "certificado_comprovado": false,
-   "inscricoes_ate": "2027-01-06",
-   "data_por_confirmar": false,
-   "so_futuro": false,
-   "situacao": "Aberto",
-   "turmas": [],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-23",
-   "inicio": "",
-   "duracao": "18 a 24 meses",
-   "primeiro_visto": "2026-11-23",
-   "como_me_inscrever": [
-    "Inscrição pela internet em tecnico.senaibahia.com.br, escolhendo o curso com bolsa (ingresso pelo ENEM). A classificação é pela nota do ENEM."
-   ],
-   "antes": [],
-   "idade_minima": null,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "Não possuir condição financeira suficiente para arcar com o pagamento do curso (baixa renda, art. 68 do Decreto nº 6.635/2008)",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Sim",
    "ajuda": "",
    "documentos": "",
    "etiquetas": [],
@@ -23393,12 +23343,18 @@
    "pagina_propria": false,
    "local": "BR-RN",
    "modalidade": "presencial",
-   "destino": null,
+   "destino": {
+    "tipo": "geral",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
    "pais": "BR",
    "regiao": "Rio Grande do Norte",
    "cidade": "Natal",
-   "descricao": "Cursos gratuitos de qualificação profissional da Prefeitura do Natal nos eixos de imagem pessoal e beleza, gastronomia e segurança alimentar e turismo (Qualifica Natal Turismo). 40 horas cada, com aulas de 1 a 14 de dezembro, manhã ou tarde, no CMTE Norte (Gramoré) ou no CMTE Ribeira. A lista completa de cursos, horários e pré-requisitos está no catálogo ligado à notícia oficial.",
-   "descricao_origem": "resumo",
+   "descricao": "",
+   "descricao_origem": "",
    "gratuidade_comprovada": true,
    "necessidades": [
     "profissao"
@@ -23410,7 +23366,7 @@
    "inscricoes_ate": "2026-11-24",
    "data_por_confirmar": false,
    "so_futuro": false,
-   "situacao": "Por confirmar",
+   "situacao": "Aberto",
    "turmas": [],
    "em_revisao": false,
    "onde_inscrever": [],
@@ -23427,10 +23383,13 @@
    "escolaridade": "",
    "renda": "",
    "cadunico": "",
-   "turnos": [],
-   "internet": "",
+   "turnos": [
+    "Manhã",
+    "Tarde"
+   ],
+   "internet": "Não",
    "ajuda": "",
-   "documentos": "",
+   "documentos": "Documento de identidade e CPF, comprovante de residência e comprovante de escolaridade, quando exigido pela formação escolhida.",
    "etiquetas": [],
    "acessibilidade": []
   }

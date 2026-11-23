@@ -23,6 +23,12 @@
    "inscricao_ate": "2026-11-25",
    "cursos": 1,
    "tentativas": 1
+  },
+  "01a20a1d-8b0f-732a-8665-ed5525adb093|2026-11-23T20:33:58.032Z": {
+   "data": "2026-11-23",
+   "inscricao_ate": "2026-12-01",
+   "cursos": 2,
+   "tentativas": 1
   }
  }
 }

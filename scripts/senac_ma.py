@@ -74,7 +74,11 @@ FONTES = [
              "coluna podem estar em linhas seguidas («01/12/2026 a» e, na linha seguinte, «11/12/2026»); em "
              "«inscricao.frase» copia essas linhas. Em «local_inscricao» põe a unidade e o endereço do anexo. "
              "Em «frase» de cada curso copia a linha com o nome do curso; a data de início do curso pode não estar "
-             "na mesma linha: nesse caso devolve inicio_aulas = null. Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
+             "na mesma linha: nesse caso devolve inicio_aulas = null. Alguns editais têm VÁRIOS anexos (Anexo I, II, III…), "
+             "cada um com o seu «PERÍODO DE INSCRIÇÃO / MATRÍCULA»: nesse caso devolve, em CADA turma, "
+             "«inscricao_inicio», «inscricao_fim» e «frase_inscricao» (as linhas com as duas datas do anexo dessa "
+             "turma, ex.: «04/01/2027 a» e «18/01/2027»), e «inscricao» geral pode ser null. "
+             "Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
              "nessa informação, a frase do comunicado."},
     {"nome": "Senai AL", "uf": "AL", "local": "BR-AL", "regiao": "Alagoas",
      "entidade": "SENAI Alagoas (Edital de Gratuidade)", "estado": "estado/senai_al.json",
@@ -154,7 +158,11 @@ Devolve só JSON entre <json></json>:
  "gratuidade": "..." ou null, "renda": "..." ou null, "reserva": "..." ou null, "acessibilidade": "..." ou null,
  "turmas": [{"curso": "...", "cidade": "...", "inicio_aulas": "AAAA-MM-DD" ou null, "fim_aulas": "AAAA-MM-DD" ou null,
    "horario": "..." ou null, "dias": "..." ou null, "vagas": "..." ou null, "carga_horaria": "..." ou null,
-   "local_curso": "..." ou null, "frase": "..."}]}"""
+   "local_curso": "..." ou null, "frase": "...",
+   "inscricao_inicio": "AAAA-MM-DD" ou null, "inscricao_fim": "AAAA-MM-DD" ou null, "frase_inscricao": "..." ou null}]}
+Os três últimos campos de cada turma só se usam quando o edital tem um período de inscrição DIFERENTE para cada \
+curso ou anexo (senão null): "frase_inscricao" é o texto exato onde está esse período (ex.: "04/01/2027 a \
+18/01/2027", que pode estar partido em duas linhas)."""
 
 
 # ------------------------------------------------------------------ documento
@@ -403,7 +411,13 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
         if not (link_insc.startswith("https://") and link_insc in re.sub(r"\s+", "", texto)):
             link_insc = ""
         t["link_inscricao"] = link_insc
-        turmas.append({**t, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
+        # período de inscrição próprio da turma (editais com um período por anexo, ex.: Senac AL): só com a frase
+        ti, tf = data_valida(t.get("inscricao_inicio")), data_valida(t.get("inscricao_fim"))
+        tfr = str(t.get("frase_inscricao") or "")
+        propria = None
+        if tf and _cv(tfr, texto) and data_na_frase(tf, tfr) and (not ti or (data_na_frase(ti, tfr) and ti <= tf)):
+            propria = {"ini": ti, "fim": tf, "frase": tfr}
+        turmas.append({**t, "insc_propria": propria, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
                        "fim_aulas": data_valida(t.get("fim_aulas")),
                        "horario": horario_confirmado(t.get("horario"), frase),
                        **({"nome_ocr": True} if nome_ocr else {})})
@@ -413,6 +427,11 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
 
 
 def auditar(t, edital, problemas_edital, inicio_opcional=False):
+    propria = t.get("insc_propria")
+    if propria:
+        # a turma tem o seu próprio período, provado: os problemas do período geral do edital não se aplicam
+        problemas_edital = [x for x in problemas_edital if "inscrição" not in x]
+        edital = {**edital, "ini": propria["ini"], "fim": propria["fim"]}
     p = list(problemas_edital)
     if not edital["fim"] and not edital.get("ate_vagas"):
         p.append("sem período de inscrição comprovado")
@@ -945,8 +964,10 @@ def correr(fonte):
                     p.append("o edital tem comunicado ou retificação: confirmar prazos e vagas")
                 elif k in chave(texto_avisos) and not citacao_valida(t["frase"], texto_avisos):
                     p.append("um comunicado altera este curso e as datas não vieram do comunicado: confirmar")
-            prazo = edital["fim"]
-            if edital.get("ate_vagas"):
+            ed_t = {**edital, "ini": t["insc_propria"]["ini"], "fim": t["insc_propria"]["fim"],
+                    "frase_insc": t["insc_propria"]["frase"], "ate_vagas": False} if t.get("insc_propria") else edital
+            prazo = ed_t["fim"]
+            if ed_t.get("ate_vagas"):
                 # «até o limite de vagas»: a turma deixa de aparecer na véspera do início das aulas
                 prazo = ((datetime.date.fromisoformat(t["inicio_aulas"]) - datetime.timedelta(days=1)).isoformat()
                          if t["inicio_aulas"] else "")
@@ -957,15 +978,15 @@ def correr(fonte):
                 "Horário": t.get("horario") or "", "Dias": str(t.get("dias") or ""), "Vagas": str(t.get("vagas") or ""),
                 "Carga horária": str(t.get("carga_horaria") or ""), "Prazo de inscrição": prazo,
                 "Idade mínima": "", "Escolaridade": "", "Documentos": "",
-                "Mais informações": (f"Inscrições de {data_br(edital['ini'])} a {data_br(edital['fim'])}"
-                                     if edital["fim"] else
+                "Mais informações": (f"Inscrições de {data_br(ed_t['ini'])} a {data_br(ed_t['fim'])}"
+                                     if ed_t["fim"] else
                                      f"Inscrições a partir de {data_br(edital['ini'])}, até o limite de vagas "
                                      f"(a turma sai do site quando as aulas começam, a {data_br(t['inicio_aulas'])})"
                                      if edital.get("ate_vagas") and t["inicio_aulas"] else ""),
                 "Local na fonte": edital["local"], "Modo de inscrição": edital["modo"], "Situação": situacao,
                 "Vagas reservadas": edital["reserva"][:300],
                 "Última verificação": hoje, "Falhas seguidas": 0,
-                "Evidência": (f"«{edital['frase_insc']}» | «{t['frase']}»"
+                "Evidência": (f"«{ed_t['frase_insc']}» | «{t['frase']}»"
                               + (f" | local: «{edital['local']}»" if edital["local"] else "")
                               + (" | nome do curso corrigido de letras trocadas pelo OCR (90%+ igual)" if t.get("nome_ocr") else ""))[:900],
                 "Auditoria": (f"{hoje}: não passou: " + "; ".join(p) + ".") if p else
@@ -1026,7 +1047,8 @@ def correr(fonte):
             print(f"  + {t['curso'][:40]} | {t['cidade']} | inscrição até {prazo or '—'} | {situacao}"
                   + (f" | AUDITORIA: {'; '.join(p)}" if p else ""))
         estado["tratados"][chave_estado] = {
-            "data": hoje, "inscricao_ate": edital["fim"] or ("até o limite de vagas" if edital.get("ate_vagas") else ""),
+            "data": hoje, "inscricao_ate": edital["fim"] or ("até o limite de vagas" if edital.get("ate_vagas") else "")
+            or max([x["insc_propria"]["fim"] for x in edital["turmas"] if x.get("insc_propria")] or [""]),
             "cursos": len(edital["turmas"]),
             "tentativas": (feito.get("tentativas", 0) if isinstance(feito, dict) else 0) + 1}
         time.sleep(1)

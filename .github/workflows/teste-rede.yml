@@ -8,25 +8,16 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: pip install -q -r requirements.txt pypdf
-      - env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-          FOLHA_ID: ${{ secrets.FOLHA_ID }}
-        run: |
+      - run: |
           cd scripts && python3 - <<'PY'
-          import re, io
-          from base import Base
+          import re, io, urllib.parse, html as h
           from comum import baixar
           from pypdf import PdfReader
-          b=Base()
-          links=set()
-          for t in b.tabela("Turmas"):
-              if t["_linha"] in (93,94,95):
-                  print(f"T{t['_linha']}", {k:t.get(k) for k in ("Curso","Título na fonte","Link da turma","Link de matrícula","Início","Fim","Horário","Prazo de inscrição","Vagas","Mais informações","Evidência","Auditoria","Notas")})
-                  links.add((t.get("Link da turma") or "").split("#")[0])
-          for l in links:
-              print("=== EDITAL", l)
-              try:
-                  r=PdfReader(io.BytesIO(baixar(l,timeout=60))); tx="\n".join(p.extract_text() or "" for p in r.pages)
-                  print(re.sub(r"[ \t]+"," ",tx)[:6000])
-              except Exception as e: print("erro", e)
+          t=baixar("https://portal.ac.senac.br/psg/editais",timeout=60).decode("utf-8","replace")
+          urls=[urllib.parse.quote(h.unescape(u if u.startswith("http") else "https://portal.ac.senac.br"+u), safe=":/%") for u in re.findall(r'href="([^"]+\.pdf)"',t,re.I) if re.search(r"_135_",u)]
+          print(urls)
+          for u in urls:
+              if re.search(r"aviso|retifica|prorroga|altera|errata",u,re.I):
+                  r=PdfReader(io.BytesIO(baixar(u,timeout=60))); tx="\n".join(p.extract_text() or "" for p in r.pages)
+                  print("=== AVISO", u); print(re.sub(r"[ \t]+"," ",tx)[:3000])
           PY

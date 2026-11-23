@@ -24,8 +24,9 @@ jobs:
           sistema = s.SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", f["entidade"]).replace(
               "Programa Senac de Gratuidade", f.get("programa", "Programa Senac de Gratuidade"))
           sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {f['nota']}\n\nDevolve só JSON")
-          r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=8000)
+          r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=16000)
           res = extrair_json(r)
+          if not isinstance(res, dict): print("RESPOSTA RUIM", len(r), r[:1500], "....", r[-800:]); raise SystemExit
           ed, prob = s.provar(res, texto, e.get("published_at") or "")
           print("PROBLEMAS", prob, "INSC", ed.get("ini"), ed.get("fim"), "GRATIS", ed.get("gratuito"))
           for t in ed["turmas"]:

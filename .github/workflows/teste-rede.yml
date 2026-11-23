@@ -5,8 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for u in "https://seduc.pi.gov.br/editais" "https://seduc.pi.gov.br/" "https://www.seduc.pi.gov.br/editais" "https://seduc.pi.gov.br/download/editais/44-editais-15-05-2026-16-59-18.pdf" "https://www.pi.gov.br/?s=qualifica" "https://www.ifpi.edu.br/" "https://www.pi.senac.br/"; do
-            echo "== $u"; curl -sSL -m 25 -A "Mozilla/5.0" -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n" "$u" || echo FALHOU
-            grep -oiE 'href="[^"]*edita[^"]*"' /tmp/p | head -15
-          done
-          echo "== texto editais"; curl -sSL -m 25 -A "Mozilla/5.0" https://seduc.pi.gov.br/editais | sed 's/<[^>]*>/ /g' | tr -s ' \n' | grep -iE "edital|chamada|inscri" | head -40
+          A="Mozilla/5.0"
+          echo "== wp posts qualifica"; curl -sSL -m 25 -A "$A" "https://www.pi.gov.br/wp-json/wp/v2/posts?search=inscri%C3%A7%C3%B5es%20cursos%20gratuitos&per_page=15&_fields=date,link,title" | python3 -c "import json,sys;[print(p['date'][:10],p['title']['rendered'][:110],p['link']) for p in json.load(sys.stdin)]" || echo falhou
+          echo "== wp posts qualifica turismo"; curl -sSL -m 25 -A "$A" "https://www.pi.gov.br/wp-json/wp/v2/posts?search=qualifica&per_page=15&_fields=date,link,title" | python3 -c "import json,sys;[print(p['date'][:10],p['title']['rendered'][:110],p['link']) for p in json.load(sys.stdin)]" || echo falhou
+          echo "== wp media edital qualifica"; curl -sSL -m 25 -A "$A" "https://www.pi.gov.br/wp-json/wp/v2/media?search=qualifica&per_page=15&_fields=date,source_url" | python3 -c "import json,sys;[print(p['date'][:10],p['source_url']) for p in json.load(sys.stdin)]" || echo falhou
+          echo "== senac pi"; curl -sSL -m 25 -A "$A" https://www.pi.senac.br/ -o /tmp/s; grep -oiE 'href="[^"]*(curso|psg|gratuit|edital|inscri)[^"]*"' /tmp/s | sort -u | head -30
+          sed 's/<[^>]*>/ /g' /tmp/s | tr -s ' \n' | grep -iE "gratuit|psg|edital|inscri" | head -20

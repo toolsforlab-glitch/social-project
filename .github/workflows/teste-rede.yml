@@ -1,0 +1,19 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt || pip install -q pypdf requests
+      - run: |
+          cd scripts && python3 - <<'PY'
+          import senac_ma as s, re
+          for n, u in [("24", "https://psg.al.senac.br/admin/wp-content/uploads/2026/11/Edital-de-Bolsas-Gratuitas-24-2026_2027.pdf")]:
+              t = s.texto_do_documento(s.baixar(u, timeout=60), "application/pdf")
+              print("=== EDITAL", n, len(t))
+              i = t.find("ANEXO")
+              print(t[:1800]); print("....."); print(t[i:i+6000] if i >= 0 else t[-6000:])
+          PY

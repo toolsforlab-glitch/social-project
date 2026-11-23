@@ -34,6 +34,10 @@ regularmente (ex.: matrículas todos os meses) conta como disponível se a pági
 diz nos requisitos quando costumam abrir as inscrições.
 3. É de nível iniciante ou não exige formação anterior difícil (indica os requisitos que existirem).
 4. É de uma entidade de confiança (organismo público, universidade, instituto federal, Sistema S, ONG reconhecida).
+4b. É aberto ao público em geral. Exclui cursos condicionados a ter um emprego ou vínculo de trabalho: só para \
+servidores públicos, funcionários de um órgão ou de uma empresa, trabalhadores de uma categoria ou associados \
+(ex.: escolas de governo como a Egape, universidades corporativas). O objetivo do site é servir quem não tem \
+recursos ou está em situação de vulnerabilidade (regra do responsável, 23/11/2026).
 5. O link veio dos resultados da pesquisa e é a página PRÓPRIA deste curso (ou desta turma, ou do edital deste \
 curso), onde a pessoa se inscreve. Não uses a página geral com a lista de cursos, a página inicial do campus ou \
 uma página de pesquisa: abre a lista e usa o link do curso. Exceção: no Senac PSG (psg.ce.senac.br) usa a lista \

@@ -6,8 +6,9 @@ jobs:
     steps:
       - run: |
           A="Mozilla/5.0"
-          echo "== wp posts qualifica"; curl -sSL -m 25 -A "$A" "https://www.pi.gov.br/wp-json/wp/v2/posts?search=inscri%C3%A7%C3%B5es%20cursos%20gratuitos&per_page=15&_fields=date,link,title" | python3 -c "import json,sys;[print(p['date'][:10],p['title']['rendered'][:110],p['link']) for p in json.load(sys.stdin)]" || echo falhou
-          echo "== wp posts qualifica turismo"; curl -sSL -m 25 -A "$A" "https://www.pi.gov.br/wp-json/wp/v2/posts?search=qualifica&per_page=15&_fields=date,link,title" | python3 -c "import json,sys;[print(p['date'][:10],p['title']['rendered'][:110],p['link']) for p in json.load(sys.stdin)]" || echo falhou
-          echo "== wp media edital qualifica"; curl -sSL -m 25 -A "$A" "https://www.pi.gov.br/wp-json/wp/v2/media?search=qualifica&per_page=15&_fields=date,source_url" | python3 -c "import json,sys;[print(p['date'][:10],p['source_url']) for p in json.load(sys.stdin)]" || echo falhou
-          echo "== senac pi"; curl -sSL -m 25 -A "$A" https://www.pi.senac.br/ -o /tmp/s; grep -oiE 'href="[^"]*(curso|psg|gratuit|edital|inscri)[^"]*"' /tmp/s | sort -u | head -30
-          sed 's/<[^>]*>/ /g' /tmp/s | tr -s ' \n' | grep -iE "gratuit|psg|edital|inscri" | head -20
+          curl -sSL -m 25 -A "$A" https://psg.pi.senac.br/ -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n"
+          echo "== links"; grep -oiE '(href|src|action)="[^"]*"' /tmp/p | sort -u | head -60
+          echo "== texto"; sed 's/<script[^>]*>.*<\/script>//g; s/<[^>]*>/ /g' /tmp/p | tr -s ' \n' | head -c 3000; echo
+          echo "== js/api"; grep -oiE '"/?(api|wp-json|ajax)[^"]*"|fetch\([^)]*\)|axios[^;]{0,120}' /tmp/p | head -20
+          curl -sSL -m 25 -A "$A" "https://www.pi.senac.br/cursos/list?modalidade_id=curso_livre" -o /tmp/l -w "lista: %{http_code} %{size_download}\n"
+          sed 's/<[^>]*>/ /g' /tmp/l | tr -s ' \n' | grep -iE "gratuit|psg|R\\$" | head -10

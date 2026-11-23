@@ -43,6 +43,10 @@ servidores públicos, funcionários de um órgão ou de uma empresa, trabalhador
 recursos ou está em situação de vulnerabilidade (regra do responsável, 23/11/2026). Cursos só para alunos da \
 rede pública ou da EJA (ex.: Trilhatec, em Pernambuco) PODEM entrar: não dependem de emprego. Nesse caso, diz \
 para quem é em "exclusivo_para" (ex.: "Só para alunos da rede pública estadual").
+4c. Cursos de igrejas, paróquias, congregações, centros religiosos, pastorais, Cáritas e ONGs entram com a mesma \
+regra: gratuitos e abertos a qualquer pessoa. NÃO entram se exigirem ser membro da igreja ou da organização, \
+frequentar culto, missa, catequese ou outra atividade religiosa, ou se forem de formação religiosa (regra do \
+responsável, 23/11/2026).
 5. O link veio dos resultados da pesquisa e é a página PRÓPRIA deste curso (ou desta turma, ou do edital deste \
 curso), onde a pessoa se inscreve. Não uses a página geral com a lista de cursos, a página inicial do campus ou \
 uma página de pesquisa: abre a lista e usa o link do curso. Exceção: no Senac PSG (psg.ce.senac.br) usa a lista \

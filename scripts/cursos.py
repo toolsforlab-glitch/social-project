@@ -19,8 +19,9 @@ LOCALIZACAO = {
     "BR-PI": {"type": "approximate", "country": "BR", "region": "Piauí", "city": "Teresina", "timezone": "America/Fortaleza"},
     "BR-PE": {"type": "approximate", "country": "BR", "region": "Pernambuco", "city": "Recife", "timezone": "America/Recife"},
     "BR-AL": {"type": "approximate", "country": "BR", "region": "Alagoas", "city": "Maceió", "timezone": "America/Maceio"},
+    "BR-PB": {"type": "approximate", "country": "BR", "region": "Paraíba", "city": "João Pessoa", "timezone": "America/Fortaleza"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.

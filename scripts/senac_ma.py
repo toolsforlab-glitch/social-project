@@ -99,24 +99,6 @@ FONTES = [
              "«curso» escreve o nome certo, mas em «frase» copia a linha exatamente como está no texto. A coluna "
              "do link costuma sair ilegível no OCR: nesse caso usa o link do bloco da página. Se houver "
              "COMUNICADOS no fim, eles prevalecem."},
-    {"nome": "Senai BA", "uf": "BA", "local": "BR-BA", "regiao": "Bahia",
-     "entidade": "SENAI Bahia (Bolsas de Estudo – Gratuidade Regimental)", "estado": "estado/senai_ba.json",
-     "programa": "Gratuidade Regimental do SENAI", "listar": "senai_ba",
-     "lista": "https://tecnico.senaibahia.com.br/informacoes-gerais", "max_caracteres": 70000, "inicio_opcional": True,
-     "modelo": "claude-sonnet-5-5", "sem_raciocinio": True, "max_tokens": 32000,
-     "prefixo_turma": "https://tecnico.senaibahia.com.br/wp-content/uploads/",
-     "requisito": {"frase": "igual ou superior a 500 (quinhentos)",
-                   "texto": "Ter nota média de 500 pontos ou mais no ENEM (de 2021 a 2025) e ter concluído ou estar no 2º ou 3º ano do ensino médio"},
-     "nota": "É o Processo Seletivo dos Cursos Técnicos do SENAI Bahia: cada curso/turno tem vagas PAGAS e vagas com BOLSA "
-             "DE ESTUDO 100% (ingresso pelo ENEM, gratuidade regimental). Nas tabelas, as colunas são «MUNICÍPIO | CURSO | "
-             "VAGAS TOTAIS | ENEM (bolsa de estudo) | CURSO PAGO | …»: em «turmas» entra UMA entrada por município, curso e "
-             "turno SÓ quando o número de vagas «ENEM (bolsa de estudo)» for maior que zero; em «vagas» põe esse número de "
-             "bolsas (não o total). «cidade» é o município. São MUITAS linhas (centenas, Anexo I presencial e Anexo II semipresencial): "
-             "devolve TODAS as que têm bolsa, sem resumir nem parar a meio. Ignora os valores das mensalidades. O período de inscrição para "
-             "as bolsas está no item da forma de ingresso pelo ENEM (ex.: «no período de 09/11 a 06/01/2027»). A inscrição "
-             "é pela internet (modo «online», local «tecnico.senaibahia.com.br»). A gratuidade pode vir do Regulamento do "
-             "Programa de Bolsas, no fim do texto (ex.: «As Bolsas de Estudo são integrais, correspondendo a 100%»). Se houver "
-             "RETIFICAÇÕES no fim, elas prevalecem."},
     {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
      "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
      "programa": "Gratuidade Regimental do SENAI", "listar": "senai_pe",
@@ -760,6 +742,10 @@ def listar_senai_al(fonte):
     return editais
 
 
+# SENAI BA (23/11/2026): a fonte foi testada e retirada de FONTES: a tabela do edital, extraída do PDF, perde a ligação
+# entre município, curso e turno (células unidas), por isso as turmas não podem ser provadas linha a linha. O processo
+# seletivo entrou como um curso único (C-1baeee72) e vigiar.py avisa quando houver edital novo. A função fica para uma
+# leitura futura (ex.: se o SENAI BA publicar a tabela noutro formato).
 def listar_senai_ba(fonte):
     """SENAI Bahia: a página «Informações gerais» do site dos cursos técnicos (tecnico.senaibahia.com.br) tem o Edital
     Oficial do processo seletivo do semestre, os aditivos (retificações) e o Regulamento do Programa de Bolsas. O edital

@@ -810,6 +810,12 @@ def correr(fonte):
               f"{len(edital['turmas'])}/{propostas} cursos comprovados" + (f" | {'; '.join(problemas)}" if problemas else ""))
         for t in edital["turmas"]:
             link = f"{pagina}#{re.sub(r'[^a-z0-9]+', '-', chave(t['curso'] + ' ' + (t.get('horario') or ''))).strip('-')}"
+            if link not in existentes and not t.get("horario"):
+                # releitura em que o horário não veio: não se cria uma turma nova se o mesmo curso deste edital já
+                # existe com horário (a âncora seria outra e a turma ficava repetida no site)
+                base_link = f"{pagina}#{re.sub(r'[^a-z0-9]+', '-', chave(t['curso'])).strip('-')}-"
+                if any(l.startswith(base_link) for l in existentes):
+                    continue
             k = chave(t["curso"])
             if k in ocultos:
                 continue

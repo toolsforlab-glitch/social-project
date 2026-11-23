@@ -1,0 +1,29 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          FOLHA_ID: ${{ secrets.FOLHA_ID }}
+        run: |
+          cd scripts && python3 - <<'PY'
+          import re
+          from base import Base, texto_de_html, exige_prova
+          from comum import baixar
+          b=Base()
+          for r in b.tabela("Cursos"):
+              if "a distância (" in r.get("Título","") or r.get("ID") in ("C-18821eaa",):
+                  print(f"L{r['_linha']} {r['ID']} [{r['Estado']}] {r['Título']} | {r.get('Entidade')} | {r.get('Link')}")
+                  try:
+                      t=texto_de_html(baixar(r["Link"],timeout=40).decode("utf-8","replace"))
+                      print("   prova:", exige_prova(t) or "-")
+                      for m in re.finditer(r"(?i)[^.]{0,120}(sele[çc][ãa]o|sorteio|classifica)[^.]{0,160}", t):
+                          print("   >", re.sub(r"\s+"," ",m.group(0))[:280]); 
+                  except Exception as e: print("   erro", e)
+          PY

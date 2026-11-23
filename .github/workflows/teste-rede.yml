@@ -3,17 +3,25 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      FOLHA_ID: ${{ secrets.FOLHA_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -q -r requirements.txt || pip install -q pypdf requests
+      - run: pip install -q -r requirements.txt
       - run: |
           cd scripts && python3 - <<'PY'
-          import senac_ma as s, re
-          for n, u in [("24", "https://psg.al.senac.br/admin/wp-content/uploads/2026/11/Edital-de-Bolsas-Gratuitas-24-2026_2027.pdf")]:
-              t = s.texto_do_documento(s.baixar(u, timeout=60), "application/pdf")
-              print("=== EDITAL", n, len(t))
-              i = t.find("ANEXO")
-              print(t[:1800]); print("....."); print(t[i:i+6000] if i >= 0 else t[-6000:])
+          from base import Base, carregar_config
+          b = Base(); carregar_config(b)
+          tur = [t for t in b.tabela("Turmas") if "Bolsas-Gratuitas-24-2026" in (t.get("Link da turma") or "")]
+          ids = {t.get("Curso") for t in tur}
+          outras = {t.get("Curso") for t in b.tabela("Turmas") if "Bolsas-Gratuitas-24-2026" not in (t.get("Link da turma") or "")}
+          cur = [r for r in b.tabela("Cursos") if r.get("ID") in ids and r.get("ID") not in outras and r.get("Origem") == "turmas" and r.get("Estado") != "Publicado"]
+          print("TURMAS", len(tur), [ (t["_linha"], t.get("Título na fonte"), t.get("Estado")) for t in tur])
+          print("CURSOS", len(cur), [(r["_linha"], r.get("Título"), r.get("Estado")) for r in cur])
+          b.remover_linhas("Turmas", [t["_linha"] for t in tur])
+          b.remover_linhas("Cursos", [r["_linha"] for r in cur])
+          b.guardar()
           PY

@@ -77,7 +77,11 @@ FONTES = [
              "na mesma linha: nesse caso devolve inicio_aulas = null. Alguns editais têm VÁRIOS anexos (Anexo I, II, III…), "
              "cada um com o seu «PERÍODO DE INSCRIÇÃO / MATRÍCULA»: nesse caso devolve, em CADA turma, "
              "«inscricao_inicio», «inscricao_fim» e «frase_inscricao» (as linhas com as duas datas do anexo dessa "
-             "turma, ex.: «04/01/2027 a» e «18/01/2027»), e «inscricao» geral pode ser null. "
+             "turma, ex.: «04/01/2027 a» e «18/01/2027»), e «inscricao» geral pode ser null; e também «local_inscricao» "
+             "e «frase_local_inscricao» com o «LOCAL DE INSCRIÇÃO / MATRÍCULA» desse anexo (ex.: «Instituto Ouro "
+             "Preto Rua Padre Cícero, nº 86A – Ouro Preto – Maceió/AL», copiado das linhas do texto). Na tabela, a "
+             "primeira coluna é o SEGMENTO (Saúde, Beleza, Moda, Comércio, Gestão…): não faz parte do nome do curso "
+             "(«Moda Costureiro» → curso «Costureiro»). "
              "Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
              "nessa informação, a frase do comunicado."},
     {"nome": "Senai AL", "uf": "AL", "local": "BR-AL", "regiao": "Alagoas",
@@ -159,10 +163,12 @@ Devolve só JSON entre <json></json>:
  "turmas": [{"curso": "...", "cidade": "...", "inicio_aulas": "AAAA-MM-DD" ou null, "fim_aulas": "AAAA-MM-DD" ou null,
    "horario": "..." ou null, "dias": "..." ou null, "vagas": "..." ou null, "carga_horaria": "..." ou null,
    "local_curso": "..." ou null, "frase": "...",
-   "inscricao_inicio": "AAAA-MM-DD" ou null, "inscricao_fim": "AAAA-MM-DD" ou null, "frase_inscricao": "..." ou null}]}
+   "inscricao_inicio": "AAAA-MM-DD" ou null, "inscricao_fim": "AAAA-MM-DD" ou null, "frase_inscricao": "..." ou null,
+   "local_inscricao": "..." ou null, "frase_local_inscricao": "..." ou null}]}
 Os três últimos campos de cada turma só se usam quando o edital tem um período de inscrição DIFERENTE para cada \
 curso ou anexo (senão null): "frase_inscricao" é o texto exato onde está esse período (ex.: "04/01/2027 a \
-18/01/2027", que pode estar partido em duas linhas)."""
+18/01/2027", que pode estar partido em duas linhas). Do mesmo modo, se cada anexo tem o seu LOCAL de \
+inscrição, "local_inscricao" e "frase_local_inscricao" (o texto exato onde o local está escrito) de cada turma."""
 
 
 # ------------------------------------------------------------------ documento
@@ -417,7 +423,10 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
         propria = None
         if tf and _cv(tfr, texto) and data_na_frase(tf, tfr) and (not ti or (data_na_frase(ti, tfr) and ti <= tf)):
             propria = {"ini": ti, "fim": tf, "frase": tfr}
-        turmas.append({**t, "insc_propria": propria, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
+        # local de inscrição próprio da turma (um por anexo): só com a frase onde está escrito
+        tl, tlf = str(t.get("local_inscricao") or "").strip(), str(t.get("frase_local_inscricao") or "")
+        local_t = tl if (tl and _cv(tlf, texto) and chave(tl)[:20] in chave(tlf)) else ""
+        turmas.append({**t, "insc_propria": propria, "local_proprio": local_t, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
                        "fim_aulas": data_valida(t.get("fim_aulas")),
                        "horario": horario_confirmado(t.get("horario"), frase),
                        **({"nome_ocr": True} if nome_ocr else {})})
@@ -432,6 +441,8 @@ def auditar(t, edital, problemas_edital, inicio_opcional=False):
         # a turma tem o seu próprio período, provado: os problemas do período geral do edital não se aplicam
         problemas_edital = [x for x in problemas_edital if "inscrição" not in x]
         edital = {**edital, "ini": propria["ini"], "fim": propria["fim"]}
+    if t.get("local_proprio") and not edital["modo"]:
+        edital = {**edital, "modo": "presencial", "local": t["local_proprio"]}
     p = list(problemas_edital)
     if not edital["fim"] and not edital.get("ate_vagas"):
         p.append("sem período de inscrição comprovado")
@@ -966,6 +977,8 @@ def correr(fonte):
                     p.append("um comunicado altera este curso e as datas não vieram do comunicado: confirmar")
             ed_t = {**edital, "ini": t["insc_propria"]["ini"], "fim": t["insc_propria"]["fim"],
                     "frase_insc": t["insc_propria"]["frase"], "ate_vagas": False} if t.get("insc_propria") else edital
+            if t.get("local_proprio") and not ed_t["modo"]:
+                ed_t = {**ed_t, "modo": "presencial", "local": t["local_proprio"]}
             prazo = ed_t["fim"]
             if ed_t.get("ate_vagas"):
                 # «até o limite de vagas»: a turma deixa de aparecer na véspera do início das aulas
@@ -983,11 +996,11 @@ def correr(fonte):
                                      f"Inscrições a partir de {data_br(edital['ini'])}, até o limite de vagas "
                                      f"(a turma sai do site quando as aulas começam, a {data_br(t['inicio_aulas'])})"
                                      if edital.get("ate_vagas") and t["inicio_aulas"] else ""),
-                "Local na fonte": edital["local"], "Modo de inscrição": edital["modo"], "Situação": situacao,
+                "Local na fonte": ed_t["local"], "Modo de inscrição": ed_t["modo"], "Situação": situacao,
                 "Vagas reservadas": edital["reserva"][:300],
                 "Última verificação": hoje, "Falhas seguidas": 0,
                 "Evidência": (f"«{ed_t['frase_insc']}» | «{t['frase']}»"
-                              + (f" | local: «{edital['local']}»" if edital["local"] else "")
+                              + (f" | local: «{ed_t['local']}»" if ed_t["local"] else "")
                               + (" | nome do curso corrigido de letras trocadas pelo OCR (90%+ igual)" if t.get("nome_ocr") else ""))[:900],
                 "Auditoria": (f"{hoje}: não passou: " + "; ".join(p) + ".") if p else
                 f"{hoje}: ok (frases conferidas no documento do edital; datas e horário coerentes).",

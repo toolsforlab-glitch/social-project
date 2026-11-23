@@ -856,7 +856,6 @@ def correr(fonte):
                     alteracoes.append((existentes[link]["_linha"], {**campos, "Estado": "Rever"}))
                     historico.append(registo(existentes[link], fonte["nome"], "Rever", campos["Auditoria"]))
                 elif (not p and existentes[link].get("Estado") == "Rever"
-                      and "não passou" in (existentes[link].get("Auditoria") or "")
                       and not (existentes[link].get("Notas") or "").strip()):
                     # releitura que agora passa na auditoria (ex.: leitura do PDF melhorada): a turma que só estava
                     # em Rever por causa da auditoria automática é publicada (nunca a que uma pessoa ou um aviso

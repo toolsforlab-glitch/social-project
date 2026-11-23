@@ -1,1 +1,34 @@
-{"tratados": {}}
+{
+ "tratados": {
+  "senac-al-edital-de-bolsas-gratuitas-24-2026-2027-pdf|Edital-de-Bolsas-Gratuitas-24-2026_2027.pdf": {
+   "data": "2026-11-23",
+   "inscricao_ate": "",
+   "cursos": 14,
+   "tentativas": 1
+  },
+  "senac-al-edital-de-bolsas-gratuitas-23-2026-2027-manifesto-pdf|Edital-de-Bolsas-Gratuitas-23-2026_2027-manifesto.pdf": {
+   "data": "2026-11-23",
+   "inscricao_ate": "2026-12-11",
+   "cursos": 16,
+   "tentativas": 1
+  },
+  "senac-al-edital-de-bolsas-gratuitas-22-2026-manifesto-pdf|Edital-de-Bolsas-Gratuitas-22-2026-manifesto.pdf": {
+   "data": "2026-11-23",
+   "inscricao_ate": "2026-11-23",
+   "cursos": 6,
+   "tentativas": 1
+  },
+  "senac-al-edital-de-bolsas-gratuitas-21-2026-manifesto-pdf|Edital-de-Bolsas-Gratuitas-21-2026-manifesto.pdf|Comunicado-01-Edital-de-Bolsas-Gratuitas-21-2026.pdf": {
+   "data": "2026-11-23",
+   "inscricao_ate": "2026-11-25",
+   "cursos": 2,
+   "tentativas": 1
+  },
+  "senac-al-edital-de-bolsas-gratuitas-19-2026-manifesto-pdf|Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf|Comunicado-01-Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf|Comunicado-02-Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf": {
+   "data": "2026-11-23",
+   "inscricao_ate": "",
+   "cursos": 10,
+   "tentativas": 1
+  }
+ }
+}

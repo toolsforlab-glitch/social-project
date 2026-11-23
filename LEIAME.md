@@ -137,3 +137,10 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
   - `abrir_canal_whatsapp` e `abrir_formulario_parceiros`, quando esses links existirem.
 - Dimensões personalizadas registadas no Analytics (âmbito evento): curso, destino, termo, resultados, estado, filtro, valor, cidade, guia.
 - Decisão do responsável (22/11/2026): consentimento em vez de legítimo interesse.
+
+## Pernambuco (desde 23/11/2026)
+
+- Local `BR-PE` ("Brasil – Pernambuco") na aba Locais; sites de confiança (pe.gov.br, IFPE, IF Sertão PE, UFPE, UFRPE, UPE, Senac, SENAI, Sistema Fiepe, Sebrae, gov.br e três jornais só para descobrir) e cinco pesquisas semanais (br-pe, pe-noticias, pe-publicos-prioritarios, pe-pcd, pe-idades).
+- **SENAI PE**: os editais de gratuidade de https://www.pe.senai.br/editais/ (blocos «GRATUIDADE | QUALIFICAÇÃO/APERFEIÇOAMENTO - Em andamento») são lidos todos os dias por `senac_ma.py` (fonte «Senai PE», `listar_senai_pe`). Erratas e notas de cancelamento da mesma unidade são lidas junto com o edital. A data vem do nome do ficheiro. Cada turma pode ter um link de inscrição no portal TOTVS (sge.pe.senai.br); fica guardado em «Link de matrícula» só se estiver escrito no PDF, mas o botão do site ainda leva ao edital (falta confirmar como o portal se comporta com uma turma aberta).
+- **Senac PE**: sem processo aberto a 23/11; o leitor próprio fica para quando abrir (pendência).
+- Regra nova (vale para todas as fontes): uma frase que só fala da inscrição («a inscrição é gratuita», «não será cobrada taxa de inscrição») não prova que o curso é gratuito (`gratuidade_explicita` em base.py).

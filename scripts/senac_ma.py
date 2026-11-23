@@ -64,15 +64,17 @@ FONTES = [
              "a frase do comunicado com o nome do curso e o novo período."},
     {"nome": "Senac AL", "uf": "AL", "local": "BR-AL", "regiao": "Alagoas",
      "entidade": "Senac Alagoas (Programa Senac de Gratuidade)", "estado": "estado/senac_al.json",
-     "listar": "senac_al", "lista": "https://psg.al.senac.br/editais",
+     "listar": "senac_al", "lista": "https://psg.al.senac.br/editais", "layout": True,
      "prefixo_turma": "https://psg.al.senac.br/admin/wp-content/uploads/",
      "nota": "Os editais do Senac Alagoas chamam-se «Edital de Bolsas Gratuitas» (a frase de gratuidade pode ser "
              "a do título ou do preâmbulo, ex.: «concessão de bolsas gratuitas nos cursos»). A inscrição costuma "
-             "ser presencial, na unidade indicada no anexo de cada cidade; o período vem no anexo como «PERÍODO DE "
-             "EFETIVAÇÃO DAS MATRÍCULAS dd/mm/aaaa a dd/mm/aaaa» ou no cronograma: usa-o como período de "
-             "inscrição e, em «local_inscricao», a unidade e o endereço do anexo. Se houver anexos de cidades "
-             "diferentes com períodos diferentes, usa o período que vale para a maioria dos cursos e diz a cidade "
-             "de cada curso. Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
+             "ser presencial, na unidade indicada no anexo. A tabela do anexo tem, em cada linha, a coluna "
+             "«PERÍODO DE INSCRIÇÃO / MATRÍCULA» (ex.: «01/12/2026 a 11/12/2026»): é ESSE o período de inscrição "
+             "(não o «PERÍODO DE EFETIVAÇÃO DAS MATRÍCULAS», que é mais longo); em «inscricao.frase» copia as "
+             "linhas da tabela onde está esse período. Em «local_inscricao» põe a unidade e o endereço do anexo. "
+             "O texto mantém as colunas lado a lado: o nome de um curso pode estar partido em duas ou três linhas, "
+             "misturado com as outras colunas; em «frase» copia essas linhas inteiras, tal como aparecem (com o "
+             "nome do curso e a data de início do «PERÍODO DO CURSO»). Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
              "nessa informação, a frase do comunicado."},
     {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
      "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
@@ -142,10 +144,13 @@ Devolve só JSON entre <json></json>:
 
 # ------------------------------------------------------------------ documento
 
-def texto_do_documento(dados, tipo):
-    """Texto de um PDF, Word antigo (.doc) ou Word novo (.docx)."""
+def texto_do_documento(dados, tipo, layout=False):
+    """Texto de um PDF, Word antigo (.doc) ou Word novo (.docx). Com layout=True, o PDF é lido mantendo as colunas
+    (cada linha da tabela fica numa linha do texto; usado no Senac AL, onde a leitura normal parte as linhas)."""
     if "pdf" in tipo or dados[:4] == b"%PDF":
         from pypdf import PdfReader
+        if layout:
+            return "\n".join((p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(dados)).pages)
         return "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(dados)).pages)
     if dados[:4] == b"PK\x03\x04":  # .docx
         return texto_docx(dados)
@@ -251,7 +256,20 @@ def horario_confirmado(h, frase):
 
 # ------------------------------------------------------------------ prova e auditoria
 
-def provar(res, texto, publicado, continua=False):
+def palavras_em_ordem(nome, frase):
+    """Todas as palavras do nome aparecem na frase, pela mesma ordem (tabela com o nome do curso partido em várias
+    linhas, entre outras colunas)."""
+    pos = 0
+    alvo = chave(frase)
+    for p in chave(nome).split():
+        i = alvo.find(p, pos)
+        if i < 0:
+            return False
+        pos = i + len(p)
+    return True
+
+
+def provar(res, texto, publicado, continua=False, tabela_partida=False):
     """Fica só o que está escrito no documento. Devolve (dados limpos, problemas do edital).
     continua=True: o edital pode dizer «a partir do dia X até o limite de vagas» (sem dia de fim); então a
     inscrição de cada turma vale até à véspera do início das aulas, e a frase tem de dizer «limite de vagas»."""
@@ -300,7 +318,9 @@ def provar(res, texto, publicado, continua=False):
             continue
         frase, curso = str(t.get("frase") or ""), str(t.get("curso") or "").strip()
         inicio = data_valida(t.get("inicio_aulas"))
-        if not curso or not citacao_valida(frase, texto) or chave(curso) not in chave(frase):
+        if not curso or not citacao_valida(frase, texto):
+            continue
+        if chave(curso) not in chave(frase) and not (tabela_partida and palavras_em_ordem(curso, frase)):
             continue
         if inicio and not data_na_frase(inicio, frase):
             inicio = ""
@@ -709,7 +729,8 @@ def correr(fonte):
         doc = docs[0]
         try:
             dados = baixar(doc["url"], timeout=60)
-            texto = recortar(texto_do_documento(dados, doc.get("mime_type", "")), fonte.get("anexo", r"ANEXO\s+I\b"),
+            texto = recortar(texto_do_documento(dados, doc.get("mime_type", ""), fonte.get("layout", False)),
+                             fonte.get("anexo", r"ANEXO\s+I\b"),
                              fonte.get("max_caracteres", MAX_CARACTERES))
             # comunicados e retificações publicados depois do edital: lidos juntos, no fim do texto
             texto_avisos = ""
@@ -752,7 +773,8 @@ def correr(fonte):
             print(f"  ? edital {e.get('number')}: resposta ilegível (tentativa {tentativas} de {MAX_TENTATIVAS}; "
                   f"{len(resposta)} caracteres, fim: {re.sub(chr(10), ' ', resposta[-200:])})")
             continue
-        edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False))
+        edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False),
+                                    fonte.get("layout", False))
         if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:
             # segunda prova: a página oficial também escreve o período de inscrição
             problemas.append(f"o fim da inscrição no documento ({edital['fim']}) não aparece na página oficial")

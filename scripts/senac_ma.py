@@ -103,6 +103,7 @@ FONTES = [
      "entidade": "SENAI Bahia (Bolsas de Estudo – Gratuidade Regimental)", "estado": "estado/senai_ba.json",
      "programa": "Gratuidade Regimental do SENAI", "listar": "senai_ba",
      "lista": "https://tecnico.senaibahia.com.br/informacoes-gerais", "max_caracteres": 70000, "inicio_opcional": True,
+     "modelo": "claude-sonnet-5-5", "sem_raciocinio": True, "max_tokens": 32000,
      "prefixo_turma": "https://tecnico.senaibahia.com.br/wp-content/uploads/",
      "requisito": {"frase": "igual ou superior a 500 (quinhentos)",
                    "texto": "Ter nota média de 500 pontos ou mais no ENEM (de 2021 a 2025) e ter concluído ou estar no 2º ou 3º ano do ensino médio"},
@@ -110,7 +111,8 @@ FONTES = [
              "DE ESTUDO 100% (ingresso pelo ENEM, gratuidade regimental). Nas tabelas, as colunas são «MUNICÍPIO | CURSO | "
              "VAGAS TOTAIS | ENEM (bolsa de estudo) | CURSO PAGO | …»: em «turmas» entra UMA entrada por município, curso e "
              "turno SÓ quando o número de vagas «ENEM (bolsa de estudo)» for maior que zero; em «vagas» põe esse número de "
-             "bolsas (não o total). «cidade» é o município. Ignora os valores das mensalidades. O período de inscrição para "
+             "bolsas (não o total). «cidade» é o município. São MUITAS linhas (centenas, Anexo I presencial e Anexo II semipresencial): "
+             "devolve TODAS as que têm bolsa, sem resumir nem parar a meio. Ignora os valores das mensalidades. O período de inscrição para "
              "as bolsas está no item da forma de ingresso pelo ENEM (ex.: «no período de 09/11 a 06/01/2027»). A inscrição "
              "é pela internet (modo «online», local «tecnico.senaibahia.com.br»). A gratuidade pode vir do Regulamento do "
              "Programa de Bolsas, no fim do texto (ex.: «As Bolsas de Estudo são integrais, correspondendo a 100%»). Se houver "
@@ -948,20 +950,22 @@ def correr(fonte):
                 "Programa Senac de Gratuidade", fonte.get("programa", "Programa Senac de Gratuidade"))
             if fonte.get("nota"):
                 sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {fonte['nota']}\n\nDevolve só JSON")
-            resposta, uso = claude(modelo, sistema, f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
-                                   max_tokens=6000)
+            m_fonte = fonte.get("modelo", modelo)  # editais com tabelas enormes (SENAI BA) usam outro modelo
+            pensar = False if fonte.get("sem_raciocinio") else None
+            resposta, uso = claude(m_fonte, sistema, f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
+                                   max_tokens=fonte.get("max_tokens", 6000), pensar=pensar)
         except ErroClaude as ex:
             print(f"  ERRO no Claude (edital {e.get('number')}): {ex}")
             continue
         lidos += 1
-        custo += custo_estimado(uso, modelo)
+        custo += custo_estimado(uso, m_fonte)
         res = extrair_json(resposta)
         if not isinstance(res, dict) and "</json>" not in resposta:
             # edital com muitos cursos: a resposta foi cortada a meio; lê-se outra vez com mais espaço
             try:
-                resposta, uso = claude(modelo, sistema, f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
-                                       max_tokens=16000)
-                custo += custo_estimado(uso, modelo)
+                resposta, uso = claude(m_fonte, sistema, f"Título do edital: {e.get('title')}\n\nTexto do edital:\n{texto}",
+                                       max_tokens=max(16000, fonte.get("max_tokens", 0)), pensar=pensar)
+                custo += custo_estimado(uso, m_fonte)
                 res = extrair_json(resposta)
             except ErroClaude as ex:
                 print(f"  ERRO no Claude (edital {e.get('number')}, segunda leitura): {ex}")

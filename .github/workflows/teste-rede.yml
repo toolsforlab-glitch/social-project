@@ -26,7 +26,7 @@ jobs:
           print("CHARS", len(texto), "REQ", citacao_valida(f["requisito"]["frase"], texto))
           sistema = s.SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", f["entidade"]).replace("Programa Senac de Gratuidade", f["programa"])
           sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {f['nota']}\n\nDevolve só JSON")
-          r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=16000, pensar=False)
+          r, uso = claude(f["modelo"], sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=f["max_tokens"], pensar=False)
           res = extrair_json(r)
           print("USO", uso)
           if not isinstance(res, dict):
@@ -37,8 +37,10 @@ jobs:
               if not isinstance(res, dict): print("RUIM", len(r), r[-600:]); raise SystemExit
           ed, prob = s.provar(res, texto, "")
           print("PROBLEMAS", prob, "INSC", ed["ini"], ed["fim"], "GRATIS", ed["gratuito"], res.get("gratuidade"), "MODO", ed["modo"], ed["local"], "RENDA", ed["renda"][:80])
-          for t in ed["turmas"]:
+          for t in ed["turmas"][:12]:
               print("T", t["curso"], "|", t["cidade"], "|", t.get("vagas"), "|", t.get("horario"), "|", t["inicio_aulas"], "|", (t.get("frase") or "")[:90])
           print("PROPOSTAS", len(res.get("turmas") or []), "PROVADAS", len(ed["turmas"]))
-          print("AMOSTRA TABELA:"); i = texto.find("Teixeira de Freitas"); print(texto[i-1200:i+600])
+          import collections; print("POR CIDADE", dict(collections.Counter(t["cidade"] for t in ed["turmas"]))); print("BOLSAS", sum(int(re.sub(r"\\D", "", str(t.get("vagas") or "0")) or 0) for t in ed["turmas"]))
+          for t in res.get("turmas") or []:
+              if not any(x.get("frase") == t.get("frase") for x in ed["turmas"]): print("REJ", t.get("curso"), "|", t.get("cidade"), "|", (t.get("frase") or "")[:100])
           PY

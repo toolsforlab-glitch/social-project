@@ -28,7 +28,13 @@ jobs:
           sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {f['nota']}\n\nDevolve só JSON")
           r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=16000)
           res = extrair_json(r)
-          if not isinstance(res, dict): print("RUIM", len(r), r[-600:]); raise SystemExit
+          print("USO", uso)
+          if not isinstance(res, dict):
+              import comum, json
+              resp = comum._post_claude({"model": "claude-haiku-5-5", "max_tokens": 12000, "system": sistema, "messages": [{"role": "user", "content": f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}"}]})
+              print("RESP2", json.dumps({k: v for k, v in resp.items() if k != "content"})[:800], str(resp.get("content"))[:300])
+              r = "".join(b.get("text", "") for b in resp.get("content") or [] if b.get("type") == "text"); res = extrair_json(r)
+              if not isinstance(res, dict): print("RUIM", len(r), r[-600:]); raise SystemExit
           ed, prob = s.provar(res, texto, "")
           print("PROBLEMAS", prob, "INSC", ed["ini"], ed["fim"], "GRATIS", ed["gratuito"], res.get("gratuidade"), "MODO", ed["modo"], ed["local"], "RENDA", ed["renda"][:80])
           for t in ed["turmas"]:

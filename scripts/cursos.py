@@ -60,7 +60,7 @@ Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) 
 (pe.senai.br/editais e os PDFs em pe.senai.br/wp-content/uploads), nem editais do Senac Alagoas \
 (psg.al.senac.br), nem editais de gratuidade do SENAI Alagoas (al.senai.br/edital-gratuidade e os PDFs em \
 al.senai.br/wp-content/uploads), nem turmas do OxeTech Lab (oxetech.al.gov.br/oxetechlab), nem turmas do Caminhos Digitais \
-(caminhosdigitais.com.br), nem as bolsas do processo seletivo dos cursos técnicos do SENAI Bahia \
+(caminhosdigitais.com.br), nem cursos presenciais do Qualifica Recife na plataforma GO Recife (gorecife.recife.pe.gov.br), nem as bolsas do processo seletivo dos cursos técnicos do SENAI Bahia \
 (tecnico.senaibahia.com.br): esses são lidos à \
 parte, diretamente das páginas e documentos oficiais.
 

@@ -182,6 +182,11 @@ DESTINOS_FONTES = [
         "tipo": "acesso", "conta": "Centec Academy",
         "nota": "Se ainda não tem conta, clique em “Criar uma conta” (são pedidos CPF, RG, e-mail, endereço e "
                 "telefone). Depois de entrar, a inscrição nesta turma vai abrir; se não abrir, clique de novo no botão."}),
+    # GO Recife (Qualifica Recife, Prefeitura do Recife): a plataforma lista os cursos; inscrição com a conta do Conecta
+    # Recife ou na própria escola - 23/11/2026
+    (r"^https://gorecife\.recife\.pe\.gov\.br/cursos", {
+        "tipo": "lista", "nome": "GO Recife", "conta": "conta do Conecta Recife",
+        "nota": "Na lista, procure o nome do curso. Para se inscrever, entre com a conta do Conecta Recife; quem tiver dificuldade pode se inscrever na própria escola."}),
     # Caminhos Digitais (Paraíba): a página de inscrição lista as turmas por cidade; não há página por turma - 23/11/2026
     (r"^https://caminhosdigitais\.com\.br/inscricao", {
         "tipo": "lista", "nome": "Caminhos Digitais",

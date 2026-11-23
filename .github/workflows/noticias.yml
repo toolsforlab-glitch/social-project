@@ -84,6 +84,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 caminhos_digitais.py
 
+      - name: Turmas do Qualifica Recife / GO Recife (lista oficial, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 gorecife.py
+
       - name: Editais do Senac Maranhão (documento oficial, Claude com prova por código)
         if: ${{ always() }}
         timeout-minutes: 15

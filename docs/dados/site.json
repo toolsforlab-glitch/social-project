@@ -75,6 +75,10 @@
   {
    "id": "BR-AL",
    "rotulo": "Brasil – Alagoas"
+  },
+  {
+   "id": "BR-PB",
+   "rotulo": "Brasil – Paraíba"
   }
  ],
  "temas": {

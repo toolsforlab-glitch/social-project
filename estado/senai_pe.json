@@ -1,0 +1,28 @@
+{
+ "tratados": {
+  "senai-pe-edital-app-caruaru-decora-ao-de-bolos-presencial-20261111125846655154-|EDITAL_-_APP_-_CARUARU_-_DECORA_AO_DE_BOLOS_-_PRESENCIAL_-__20261111125846655154.pdf|0": {
+   "data": "2026-11-23",
+   "inscricao_ate": "2026-11-20",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senai-pe-edital-caruaru-app-presencial-fabrica-o-de-doces-202611091633375163177|EDITAL_-_CARUARU_-_APP_-_PRESENCIAL_-_FABRICA__O_DE_DOCES_202611091633375163177.pdf|0": {
+   "data": "2026-11-23",
+   "inscricao_ate": "",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senai-pe-edital-app-goiana-opera-es-com-empilhadeira-prese-20261111113600669560|EDITAL_-_APP_-_GOIANA_-_OPERA__ES_COM_EMPILHADEIRA_-_PRESE_202611111136006695602.pdf|1": {
+   "data": "2026-11-23",
+   "inscricao_ate": "2026-11-15",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senai-pe-edital-app-paulista-bas-de-costura-inds-tecido-plan-202611171223557640|EDITAL_-_APP_-_PAULISTA_-_BAS._DE_COSTURA_INDS._TECIDO_PLAN_202611171223557640596.pdf|0": {
+   "data": "2026-11-23",
+   "inscricao_ate": "2026-11-22",
+   "cursos": 1,
+   "tentativas": 1
+  }
+ }
+}

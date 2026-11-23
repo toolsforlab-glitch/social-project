@@ -295,19 +295,30 @@ def main():
     ga = (cfg.get("google_analytics") or "").strip()
     if not re.fullmatch(r"G-[A-Z0-9]+", ga):
         ga = ""
+    # «Como apoiar o site»: só aparece quando a chave Pix estiver em config.json («pix»)
+    pix = html.escape((cfg.get("pix") or "").strip())
+    bloco_apoiar = ('<h2 id="apoiar">Como apoiar o site</h2>\n'
+                    "<p>O site é feito de forma voluntária, mas tem custos: a inteligência artificial que procura e confere os "
+                    "cursos todos os dias é paga. Se puder, contribua com qualquer valor pelo Pix. Toda ajuda mantém o site no ar "
+                    "e permite chegar a mais estados.</p>\n"
+                    + ('<p class="pix">A chave Pix será publicada aqui em breve.</p>\n' if pix.upper() == "EM-BREVE" else
+                       f'<p class="pix">Chave Pix: <strong>{pix}</strong> <button type="button" class="botao secundario pequeno" '
+                       f'data-copiar="{pix}">Copiar a chave</button></p>\n')) if pix else ""
     for ficheiro, (pagina, titulo) in PAGINAS.items():
         with open(caminho("site", ficheiro), encoding="utf-8") as f:
             conteudo = f.read()
         conteudo = (conteudo.replace("{{NOME}}", nome)
                     .replace("{{PLAYLIST_ONGS}}", html.escape(links.get("playlist_ongs") or "#"))
                     .replace("{{CAMINHO_WHATSAPP}}", bloco_wa)
-                    .replace("{{PARCEIROS}}", bloco_parceiros))
+                    .replace("{{PARCEIROS}}", bloco_parceiros)
+                    .replace("{{APOIAR}}", bloco_apoiar))
         pagina_html = (modelo_base.replace("{{CONTEUDO}}", conteudo)
                        .replace("{{TITULO}}", titulo.format(nome=nome))
                        .replace("{{DESCRICAO}}", slogan)
                        .replace("{{NOME}}", nome).replace("{{SLOGAN}}", slogan)
                        .replace("{{PAGINA}}", pagina).replace("{{VERSAO}}", versao)
-                       .replace("{{GA}}", ga))
+                       .replace("{{GA}}", ga)
+                       .replace("{{LINK_APOIAR}}", ' · <a href="sobre.html#apoiar">Como apoiar o site</a>' if bloco_apoiar else ""))
         for p in ("cursos", "antes", "encaminhar", "noticias", "numeros", "sobre"):
             pagina_html = pagina_html.replace("{{ATUAL_%s}}" % p.upper(),
                                               ' aria-current="page"' if p == pagina else "")

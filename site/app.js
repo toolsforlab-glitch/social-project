@@ -1170,6 +1170,16 @@
     else if (escolha !== "nao") mostrarAviso(true);
   })();
 
+  // botão «Copiar a chave» (Pix, página Sobre)
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest("[data-copiar]");
+    if (!b) return;
+    var v = b.getAttribute("data-copiar");
+    var feito = function () { var t0 = b.textContent; b.textContent = "Chave copiada"; setTimeout(function () { b.textContent = t0; }, 2500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(v).then(feito, function () { window.prompt("Copie a chave Pix:", v); });
+    else window.prompt("Copie a chave Pix:", v);
+    medir("copiar_pix", {});
+  });
   carregar("dados/site.json").then(function (site) {
     if (pagina === "numeros") { numeros(site); return; }
     if (pagina === "antes") { antes(); return; }

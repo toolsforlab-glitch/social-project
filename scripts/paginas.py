@@ -187,6 +187,15 @@ DESTINOS_FONTES = [
     (r"^https://gorecife\.recife\.pe\.gov\.br/cursos", {
         "tipo": "lista", "nome": "GO Recife", "conta": "conta do Conecta Recife",
         "nota": "Na lista, procure o nome do curso. Para se inscrever, entre com a conta do Conecta Recife; quem tiver dificuldade pode se inscrever na própria escola."}),
+    # Treinar para Empregar (Prefeitura de Salvador): uma página por turma, com o botão de inscrição (pede cadastro e
+    # envio de documentos); /cursos é a lista de todas - 23/11/2026
+    (r"^https://treinarparaempregar\.salvador\.ba\.gov\.br/cursos/.", {
+        "tipo": "curso", "conta": "cadastro no Treinar para Empregar",
+        "nota": "Na página da turma, faça o cadastro (ou entre) e envie as fotos dos documentos pedidos. A vaga só é "
+                "confirmada depois de a prefeitura conferir os documentos."}),
+    (r"^https://treinarparaempregar\.salvador\.ba\.gov\.br/cursos", {
+        "tipo": "lista", "nome": "Treinar para Empregar", "conta": "cadastro no Treinar para Empregar",
+        "nota": "Na lista, procure o nome do curso e abra a turma para se inscrever."}),
     # Caminhos Digitais (Paraíba): a página de inscrição lista as turmas por cidade; não há página por turma - 23/11/2026
     (r"^https://caminhosdigitais\.com\.br/inscricao", {
         "tipo": "lista", "nome": "Caminhos Digitais",

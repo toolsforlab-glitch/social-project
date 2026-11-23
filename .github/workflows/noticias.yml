@@ -89,6 +89,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 gorecife.py
 
+      - name: Turmas do Treinar para Empregar / Prefeitura de Salvador (lista oficial, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 salvador_tpe.py
+
       - name: Editais do Senac Maranhão (documento oficial, Claude com prova por código)
         if: ${{ always() }}
         timeout-minutes: 15

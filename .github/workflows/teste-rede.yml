@@ -11,17 +11,12 @@ jobs:
       - run: |
           cd scripts && python3 - <<'PY'
           import senac_ma as s, re
-          b = "https://tecnico.senaibahia.com.br/wp-content/uploads/"
-          for n in ["2026/10/REGULAMENTO-SENAI-PROGRAMA-DE-BOLSA-DE-ESTUDO-2027.1_Chancelado.pdf", "2026/11/PS-CHP-CHP-2027.1-2o-ADITIVO_Chancelado-1.pdf", "2026/10/Edital-PS-CHP-2027.1_VF_Chancelado.pdf"]:
-              t = s.texto_do_documento(s.baixar(b + n, timeout=60), "application/pdf")
-              print("=====", n, len(t))
-              if "REGULAMENTO" in n:
-                  print(t[:9000])
-              elif "ADITIVO" in n:
-                  print(t[:2500])
-              else:
-                  for m in re.finditer(r"(?i)(inscri[çc][õo]es|cronograma|gratuid|bolsa)", t):
-                      pass
-                  i = t.lower().find("cronograma")
-                  print(t[i:i+2500])
+          u = "https://tecnico.senaibahia.com.br/wp-content/uploads/2026/10/Edital-PS-CHP-2027.1_VF_Chancelado.pdf"
+          t = s.texto_do_documento(s.baixar(u, timeout=60), "application/pdf")
+          print("CHARS", len(t))
+          for kw in ["DAS INSCRI", "PERÍODO DE INSCRI", "CRONOGRAMA", "500", "renda"]:
+              for m in list(re.finditer(re.escape(kw), t))[:2]:
+                  print("=== ", kw, "@", m.start()); print(t[max(0,m.start()-200):m.start()+900])
+          i = t.find("Salvador")
+          print("=== TABELA"); print(t[i-1500:i+2500])
           PY

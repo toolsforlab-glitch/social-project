@@ -16,13 +16,8 @@ VIGIAS = [
      "fechado": "não existe processo de inscrição aberto",
      "verificar": "O Senac PE abriu inscrições: peça ao Claude para montar o leitor próprio a partir da página "
                   "(enquanto está aberta). A pendência de 23/11 sobre o Senac PE pode ser fechada depois disso."},
-    # SENAI Bahia: o processo seletivo 2027.1 entrou como um curso único (C-1baeee72); quando a página tiver outro edital
-    # (novo semestre), é preciso rever esse curso
-    {"nome": "SENAI Bahia (processo seletivo dos cursos técnicos com bolsa)",
-     "url": "https://tecnico.senaibahia.com.br/informacoes-gerais",
-     "fechado": "Edital-PS-CHP-2027.1_VF_Chancelado.pdf",
-     "verificar": "O SENAI Bahia publicou outro edital dos cursos técnicos: peça ao Claude para rever o curso C-1baeee72 "
-                  "(prazo, número de bolsas) a partir do edital novo."},
+    # SENAI Bahia (cursos técnicos com bolsa): saiu em 23/11/2026, porque a entrada exige nota do ENEM (regra: cursos
+    # com prova ficam fora); o vigia foi retirado.
     # Senac Paraíba: o catálogo de matrículas tem o tipo de formação «Seleção PSG» (código 5); em 23/11/2026 estava
     # vazio. A resposta deste endereço traz também campos internos de pagamento do Senac PB: só se conta o número
     # de turmas, nada mais é lido nem guardado.

@@ -6,7 +6,7 @@ import re
 import urllib.parse
 import sys
 
-from base import ACAO_SOB_DEMANDA, DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, gratuidade_explicita, provas_do_gpt, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
+from base import ACAO_SOB_DEMANDA, DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, exige_prova, gratuidade_explicita, provas_do_gpt, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
 from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json
 from paginas import chave as chave_titulo, destino_do_link, destino_texto, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
@@ -449,6 +449,13 @@ def main():
                       and str(res.get("gratuito") or "").lower() != "sim"):
                     # se o Claude leu "gratuito" mas a frase não se confirmou no texto, fica para uma pessoa ver
                     fora = "a página oficial não diz que o curso é gratuito"
+            # Regra do responsável (23/11/2026): cursos cuja entrada exige prova (prova objetiva, vestibular, nota do
+            # ENEM, exame de seleção) ficam fora. Só se olha para o que descreve este curso (não para o menu do site).
+            prova = exige_prova(" ".join(str(x or "") for x in (r.get("Título"), r.get("Requisitos"), r.get("Descrição"),
+                                                                 campos.get("Requisitos"), res.get("requisitos"),
+                                                                 res.get("descricao"))))
+            if prova and r.get("Estado") in ("Novo", "Rever", "Publicado") and not revisto:
+                fora = f"a entrada exige prova («{prova[:120]}»)"
             if fora:
                 campos["Estado"] = "Oculto"
                 campos["Notas"] = (f"{hoje_txt}: posto de fora automaticamente: {fora}."

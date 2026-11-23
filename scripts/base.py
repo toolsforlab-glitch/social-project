@@ -397,6 +397,26 @@ _SO_INSCRICAO = re.compile(r"inscri", re.I)
 _FALA_DO_CURSO = re.compile(r"curso|bolsa|aula|estud|matr[ií]cula|capacita|forma[çc]|qualifica|certificad|oficina|treinament", re.I)
 
 
+# Cursos cuja entrada exige prova (prova objetiva, vestibular, nota do ENEM, exame de seleção) ficam fora do site
+# (decisão do responsável, 23/11/2026). Pertencer a um grupo (renda, CadÚnico, mulheres, LGBTQIA+, migrantes, pessoas
+# com deficiência) NÃO é prova e continua a valer como pré-requisito.
+_EXIGE_PROVA = re.compile(
+    r"prova (?:objetiva|escrita|de conhecimentos?|de sele[çc][ãa]o|classificat[óo]ria|eliminat[óo]ria)|"
+    r"\bvestibular|exame de sele[çc][ãa]o|exame classificat[óo]rio|teste seletivo|"
+    r"(?:nota|notas|m[ée]dia|pontua[çc][ãa]o|resultado)s? (?:obtidas? )?(?:no|do|nas provas do) ENEM|"
+    r"ingresso pelo ENEM|pontos no ENEM|avalia[çc][ãa]o escrita", re.I)
+
+
+def exige_prova(texto):
+    """A frase do texto que mostra que a entrada no curso exige prova, ou "" (cursos assim ficam fora do site)."""
+    m = _EXIGE_PROVA.search(texto or "")
+    if not m:
+        return ""
+    ini = max(0, (texto or "").rfind(".", 0, m.start()) + 1)
+    fim = (texto or "").find(".", m.end())
+    return re.sub(r"\s+", " ", texto[ini:fim if fim > 0 else m.end() + 120]).strip()[:300]
+
+
 def gratuidade_explicita(frase):
     """True se a frase diz, com palavras suas, que não há custo (e não o nega). Uma frase que só fala da inscrição
     («a inscrição é gratuita») não prova que o curso é gratuito."""

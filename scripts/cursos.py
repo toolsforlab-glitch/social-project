@@ -7,7 +7,7 @@ import os
 import re
 import sys
 
-from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso
+from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, VERIFICACAO_INICIAL, Base, carregar_config, exige_prova, hoje_iso
 from comum import ErroClaude, claude, custo_estimado, dominio_permitido, extrair_json, hoje, verificar_link
 
 ABA = "Cursos"
@@ -49,6 +49,10 @@ para quem é em "exclusivo_para" (ex.: "Só para alunos da rede pública estadua
 regra: gratuitos e abertos a qualquer pessoa. NÃO entram se exigirem ser membro da igreja ou da organização, \
 frequentar culto, missa, catequese ou outra atividade religiosa, ou se forem de formação religiosa (regra do \
 responsável, 23/11/2026).
+4d. NÃO entram cursos cuja ENTRADA exige prova: prova objetiva ou escrita, vestibular, nota do ENEM, exame de \
+seleção ou teste seletivo (regra do responsável, 23/11/2026). Seleção por ordem de inscrição, sorteio, entrevista \
+ou análise de renda pode entrar. Pertencer a um grupo (baixa renda, CadÚnico, mulheres, pessoas LGBTQIA+, migrantes, \
+pessoas com deficiência, jovens, pessoas idosas) NÃO é prova: esses cursos entram, com o grupo em "exclusivo_para".
 5. O link veio dos resultados da pesquisa e é a página PRÓPRIA deste curso (ou desta turma, ou do edital deste \
 curso), onde a pessoa se inscreve. Não uses a página geral com a lista de cursos, a página inicial do campus ou \
 uma página de pesquisa: abre a lista e usa o link do curso. Exceção: no Senac PSG (psg.ce.senac.br) usa a lista \
@@ -149,6 +153,9 @@ def normalizar(c, tarefa, cfg, dominios):
     inscricoes = ler_data(c.get("inscricoes_ate"))
     if inscricoes and inscricoes < hoje_iso():
         return None, "inscrições encerradas"
+    prova = exige_prova(" ".join(str(c.get(k) or "") for k in ("titulo", "descricao", "requisitos", "exclusivo_para")))
+    if prova:
+        return None, f"a entrada exige prova («{prova[:120]}»)"
     ids_nec = {n["id"] for n in cfg["necessidades"]}
     local = tarefa["local"]
     modalidade = c.get("modalidade") if c.get("modalidade") in ("online", "presencial", "misto") else \

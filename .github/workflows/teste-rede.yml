@@ -3,21 +3,24 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      FOLHA_ID: ${{ secrets.FOLHA_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -q -r requirements.txt || pip install -q pypdf requests
+      - run: pip install -q -r requirements.txt
       - run: |
           cd scripts && python3 - <<'PY'
           import senac_ma as s
-          b = "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/"
-          for n in ["Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf", "Comunicado-01-Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf", "Comunicado-02-Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf"]:
-              t = s.texto_do_documento(s.baixar(b + n, timeout=60), "application/pdf")
-              print("=====", n, len(t))
-              if n.startswith("Edital"):
-                  i = t.find("ANEXO I")
-                  print(t[i:i+7000])
-              else:
-                  print(t[:3000])
+          from base import Base, carregar_config
+          b = Base(); carregar_config(b)
+          for t in b.tabela("Turmas"):
+              if "Bolsas-Gratuitas-19-2026" in (t.get("Link da turma") or ""):
+                  print("T", t["_linha"], "|", t.get("Título na fonte"), "|", t.get("Cidade"), "|", t.get("Estado"), "|", t.get("Situação"), "|", t.get("Prazo de inscrição"), "|", (t.get("Mais informações") or "")[:45], "|", (t.get("Auditoria") or "")[:230], "|", (t.get("Notas") or "")[:60])
+          u = "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf"
+          t = s.texto_do_documento(s.baixar(u, timeout=60), "application/pdf")
+          i = t.find("ANEXO III")
+          print(t[i+1800:i+9000])
           PY

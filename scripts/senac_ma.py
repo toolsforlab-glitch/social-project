@@ -985,6 +985,8 @@ def correr(fonte):
                 prazo = ((datetime.date.fromisoformat(t["inicio_aulas"]) - datetime.timedelta(days=1)).isoformat()
                          if t["inicio_aulas"] else "")
             situacao = "Aberta" if prazo and hoje <= prazo else "Encerrada"
+            if situacao == "Aberta" and ed_t.get("ini") and hoje < ed_t["ini"]:
+                situacao = "Por abrir"  # a inscrição ainda não começou: fica fora do site até ao dia (23/11/2026)
             campos = {
                 "Título na fonte": t["curso"], "Unidade na fonte": t.get("local_curso") or "", "Cidade": t["cidade"],
                 "Unidade": "", "Link de matrícula": t.get("link_inscricao") or "", "Início": t["inicio_aulas"], "Fim": t.get("fim_aulas") or "",
@@ -1024,7 +1026,7 @@ def correr(fonte):
                 else:
                     alteracoes.append((existentes[link]["_linha"], campos))
                 continue
-            if situacao != "Aberta":
+            if situacao not in ("Aberta", "Por abrir"):
                 continue
             curso = cursos.get(k)
             if not curso:
@@ -1071,6 +1073,14 @@ def correr(fonte):
         prazo = (t.get("Prazo de inscrição") or "")[:10]
         if t.get("Situação") == "Aberta" and prazo and prazo < hoje:
             alteracoes.append((t["_linha"], {"Situação": "Encerrada", "Última verificação": hoje}))
+        elif t.get("Situação") == "Por abrir":
+            # abre no primeiro dia do período (a data está em «Mais informações»: «Inscrições de dd/mm/aaaa a …»)
+            m = re.search(r"Inscrições de (\d{2})/(\d{2})/(\d{4})", t.get("Mais informações") or "")
+            ini = f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else ""
+            if prazo and prazo < hoje:
+                alteracoes.append((t["_linha"], {"Situação": "Encerrada", "Última verificação": hoje}))
+            elif ini and ini <= hoje:
+                alteracoes.append((t["_linha"], {"Situação": "Aberta", "Última verificação": hoje}))
 
     # publicar cursos e atualizar a situação de cada curso pelas suas turmas
     turmas_finais = {l: (t.get("Curso"), t.get("Situação"), t.get("Estado")) for l, t in existentes.items()}

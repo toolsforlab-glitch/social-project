@@ -1,0 +1,12 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in "https://seduc.pi.gov.br/editais" "https://seduc.pi.gov.br/" "https://www.seduc.pi.gov.br/editais" "https://seduc.pi.gov.br/download/editais/44-editais-15-05-2026-16-59-18.pdf" "https://www.pi.gov.br/?s=qualifica" "https://www.ifpi.edu.br/" "https://www.pi.senac.br/"; do
+            echo "== $u"; curl -sSL -m 25 -A "Mozilla/5.0" -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n" "$u" || echo FALHOU
+            grep -oiE 'href="[^"]*edita[^"]*"' /tmp/p | head -15
+          done
+          echo "== texto editais"; curl -sSL -m 25 -A "Mozilla/5.0" https://seduc.pi.gov.br/editais | sed 's/<[^>]*>/ /g' | tr -s ' \n' | grep -iE "edital|chamada|inscri" | head -40

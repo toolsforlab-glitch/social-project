@@ -537,7 +537,7 @@ def listar_senai_pe(fonte):
                 continue
             url = a.group(1)
             rotulo = _html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", a.group(2)))).strip()
-            m = re.search(r"_(20\d{2})(\d{2})(\d{2})\d*\.pdf$", url)
+            m = re.search(r"_(20\d{2})(\d{2})(\d{2})\d*(?:-\d+)?\.pdf$", url)
             if m:
                 pub = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
             else:

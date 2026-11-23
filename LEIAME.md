@@ -175,3 +175,9 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Fortaleza + Futuro** (maisfuturo.sde.fortaleza.ce.gov.br): site parado (datas de 2023-2024, páginas que já não existem); não tem leitor.
 - **São Luís, Teresina, Maceió, João Pessoa, Rio Branco**: sem plataforma com lista; os cursos saem em notícias oficiais com inscrição presencial. Pesquisa semanal própria por capital («xx-prefeitura-capital»).
 
+## Rio Grande do Norte e Sergipe (desde 23/11/2026)
+
+- Locais `BR-RN` e `BR-SE`; sites de confiança (rn.gov.br, IFRN, UFRN, UERN, Ufersa, Senac, SENAI, FIERN, Sebrae, gov.br; se.gov.br, IFS, UFS, Senac, SENAI, FIES, Prefeitura de Aracaju, Sebrae, gov.br; mais jornais só para descobrir) e sete pesquisas semanais por estado (geral, notícias, públicos prioritários, PcD, idades, igrejas/ONGs, prefeitura da capital).
+- **Vigias** (vigiar.py), porque em 23/11 não havia nada aberto: Senac SE (lista pública do PSG, psg.se.senac.br/api/course/filter, conta meta.totalItems), SENAI RN (página «Oportunidades», frase «Nenhuma oportunidade encontrada») e Senac RN (página do Programa de Bolsas, frase do último resultado).
+- **SENAI SE**: o catálogo não marca os cursos gratuitos e a página de matrícula (app.fies.org.br) não abre fora do Brasil; pendência.
+

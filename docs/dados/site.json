@@ -85,6 +85,12 @@
    "rotulo": "Brasil – Bahia"
   }
  ],
+ "formulario": {
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLScQcBM3tobIEUGEu-H42gKVq8IjLn4MF439d7aKRzY-jh0dPw/viewform",
+  "campo_tipo": "entry.1072201061",
+  "campo_curso": "entry.1293509196",
+  "tipo_erro": "Um erro num curso (link que não abre, data errada, curso que não é gratuito)"
+ },
  "temas": {
   "humanitario": "Ajuda humanitária",
   "desenvolvimento": "Desenvolvimento e pobreza",

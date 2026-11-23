@@ -13,34 +13,10 @@ jobs:
       - run: |
           cd scripts && python3 - <<'PY'
           import senac_ma as s, re
-          from base import citacao_valida
-          from comum import claude, extrair_json
-          f = next(x for x in s.FONTES if x["nome"] == "Senai BA")
-          e = s.listar_senai_ba(f)[0]
-          print("EDITAL", e["number"], e["avisos"], e["extras"])
-          texto = s.recortar(s.texto_do_documento(s.baixar(e["documents"][0]["url"], timeout=60), "application/pdf"), f.get("anexo", r"ANEXO\s+I\b"), f["max_caracteres"])
-          for url in e["avisos"]:
-              texto += "\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n" + re.sub(r"[ \t]+", " ", s.texto_do_documento(s.baixar(url, timeout=60), "application/pdf"))
-          for rot, url in e["extras"]:
-              texto += f"\n\n=== DOCUMENTO OFICIAL LIGADO AO EDITAL: {rot} ===\n" + re.sub(r"[ \t]+", " ", s.texto_do_documento(s.baixar(url, timeout=60), "application/pdf"))[:20000]
-          print("CHARS", len(texto), "REQ", citacao_valida(f["requisito"]["frase"], texto))
-          sistema = s.SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", f["entidade"]).replace("Programa Senac de Gratuidade", f["programa"])
-          sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {f['nota']}\n\nDevolve só JSON")
-          r, uso = claude(f["modelo"], sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=f["max_tokens"], pensar=False)
-          res = extrair_json(r)
-          print("USO", uso)
-          if not isinstance(res, dict):
-              import comum, json
-              resp = comum._post_claude({"model": "claude-haiku-5-5", "max_tokens": 12000, "system": sistema, "messages": [{"role": "user", "content": f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}"}]})
-              print("RESP2", json.dumps({k: v for k, v in resp.items() if k != "content"})[:800], str(resp.get("content"))[:300])
-              r = "".join(b.get("text", "") for b in resp.get("content") or [] if b.get("type") == "text"); res = extrair_json(r)
-              if not isinstance(res, dict): print("RUIM", len(r), r[-600:]); raise SystemExit
-          ed, prob = s.provar(res, texto, "")
-          print("PROBLEMAS", prob, "INSC", ed["ini"], ed["fim"], "GRATIS", ed["gratuito"], res.get("gratuidade"), "MODO", ed["modo"], ed["local"], "RENDA", ed["renda"][:80])
-          for t in ed["turmas"][:12]:
-              print("T", t["curso"], "|", t["cidade"], "|", t.get("vagas"), "|", t.get("horario"), "|", t["inicio_aulas"], "|", (t.get("frase") or "")[:90])
-          print("PROPOSTAS", len(res.get("turmas") or []), "PROVADAS", len(ed["turmas"]))
-          import collections; print("POR CIDADE", dict(collections.Counter(t["cidade"] for t in ed["turmas"]))); print("BOLSAS", sum(int(re.sub(r"\\D", "", str(t.get("vagas") or "0")) or 0) for t in ed["turmas"]))
-          for t in res.get("turmas") or []:
-              if not any(x.get("frase") == t.get("frase") for x in ed["turmas"]): print("REJ", t.get("curso"), "|", t.get("cidade"), "|", (t.get("frase") or "")[:100])
+          u = "https://tecnico.senaibahia.com.br/wp-content/uploads/2026/10/Edital-PS-CHP-2027.1_VF_Chancelado.pdf"
+          t = s.texto_do_documento(s.baixar(u, timeout=60), "application/pdf")
+          i = t.find("ANEXO I")
+          print("ANEXO I @", i, [m.start() for m in re.finditer("ANEXO", t)][:12])
+          j = t.find("Alagoinhas", i)
+          print(t[j-1500:j+3500])
           PY

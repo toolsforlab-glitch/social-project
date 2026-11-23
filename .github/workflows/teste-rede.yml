@@ -6,33 +6,36 @@ jobs:
     steps:
       - run: |
           A="Mozilla/5.0 (X11; Linux x86_64) Chrome/120"
-          echo "#### SENAI RN oportunidades.js"
-          curl -sSL -m 25 -A "$A" "https://www.rn.senai.br/assets/js/oportunidades.js" -o /tmp/o.js -w "%{http_code} %{size_download}\n"
-          head -c 3500 /tmp/o.js; echo
-          grep -oE "(https?:)?//[^'\"\` ]+|['\"\`]/[a-zA-Z0-9_/.-]*(api|json|oportun)[^'\"\`]*['\"\`]" /tmp/o.js | sort -u | head -20
-          echo "#### SENAC SE PSG"
-          curl -sSL -m 25 -A "$A" https://psg.se.senac.br/ -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n"
+          echo "#### SENAI RN api"
+          curl -sS -m 30 -A "$A" "https://www.rn.senai.br/transparencia/includes/api/api-oportunidades.php?acao=resultado&modalidade=&produto=&cidade=&area=&curso=" -o /tmp/r.json -w "%{http_code} %{size_download}\n" || true
+          python3 - <<'PY'
+          import json,re,html
+          try:
+              d=json.load(open('/tmp/r.json')); print("keys",list(d.keys()), d.get("success"))
+              h=d.get("html","")
+              open('/tmp/r.html','w').write(h)
+              print("html len",len(h))
+              print(h[:3000])
+          except Exception as e: print("erro",e, open('/tmp/r.json').read()[:500])
+          PY
+          echo "#### SENAI RN filtros"
+          curl -sS -m 30 -A "$A" "https://www.rn.senai.br/transparencia/includes/api/api-oportunidades.php?acao=filtros" | python3 -c "import json,sys,re;d=json.load(sys.stdin);h=d.get('html','');print(re.sub(r'\s+',' ',h)[:1500])" || true
+          echo "#### SENAC SE /cursos"
+          curl -sSL -m 25 -A "$A" https://psg.se.senac.br/cursos -o /tmp/c -w "%{http_code} %{size_download}\n" || true
           python3 - <<'PY'
           import re,html
-          t=open('/tmp/p',encoding='utf-8',errors='replace').read()
-          print("js:",sorted(set(re.findall(r'src="([^"]+\.js[^"]*)"',t)))[:8])
-          print("links:",sorted(set(l for l in re.findall(r'href="([^"#]+)"',t) if not l.endswith(('.css','.png','.ico'))))[:40])
-          print("api:",sorted(set(re.findall(r'["\'](/?api/[^"\']{0,80}|https?://[^"\']*/api/[^"\']{0,80})["\']',t)))[:10])
-          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); print("texto:",s[:2500])
+          t=open('/tmp/c',encoding='utf-8',errors='replace').read()
+          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); print("texto:",s[:1500])
+          pushes=re.findall(r'self\.__next_f\.push\(\[1,"(.*?)"\]\)',t,re.S)
+          print("next_f",len(pushes)); blob="".join(pushes); print(blob[:3000])
+          print("URLs:",sorted(set(re.findall(r'https?://[a-zA-Z0-9.-]+(?:/[a-zA-Z0-9_/.-]*)?',blob)))[:30])
           PY
-          echo "#### SENAC SE noticia"
-          curl -sSL -m 25 -A "$A" https://www.se.senac.br/senac-sergipe-abre-vagas-647-vagas-para-36-cursos-de-gratuitos/ -o /tmp/n
+          for j in $(grep -oE '/_next/static/chunks/[a-z0-9]+\.js' /tmp/c | sort -u); do curl -sS -m 20 -A "$A" "https://psg.se.senac.br$j" | grep -oE "https?://[a-zA-Z0-9.-]+\.[a-z]{2,}[a-zA-Z0-9_/.-]*|['\"\`]/api/[^'\"\`]{0,80}" | grep -viE "w3.org|reactjs|nextjs|github|mozilla|google" | sort -u; done | sort -u | head -30
+          echo "#### SENAI SE (sem verificar, só para ver)"
+          curl -sSLk -m 25 -A "$A" https://www.se.senai.br/cursos -o /tmp/s -w "%{http_code} %{size_download} %{url_effective}\n" || true
           python3 -c "
-          import re,html
-          t=open('/tmp/n',encoding='utf-8',errors='replace').read()
-          print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if re.search(r'psg|edital|\.pdf|inscri',l,re.I)))[:20])
-          m=re.search(r'(?s)<article.*?</article>',t) or re.search(r'(?s)<main.*?</main>',t); s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',m.group(0) if m else t))); print(s[:2500])"
-          echo "#### SENAI SE"
-          for u in https://www.se.senai.br/cursos https://www.se.senai.br/ https://senaise.com.br/; do curl -sSL -m 20 -A "$A" "$u" -o /tmp/s -w "$u %{http_code} %{size_download} %{url_effective}\n" || true; python3 -c "
-          import re; t=open('/tmp/s',encoding='utf-8',errors='replace').read(); print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if re.search(r'curs|gratu|turma|edital',l,re.I)))[:15]); print(sorted(set(re.findall(r'src=\"([^\"]+\.js[^\"]*)\"',t)))[:5])" 2>/dev/null; done
-          echo "#### IFRN edital 68"
-          curl -sSL -m 25 -A "$A" https://processoseletivo.ifrn.edu.br/ -o /tmp/i
-          python3 -c "
-          import re,html; t=open('/tmp/i',encoding='utf-8',errors='replace').read()
-          print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if re.search(r'edital|concurso|visualiz|inscri',l,re.I)))[:30])
-          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); i=s.find('Inscrições Abertas'); print(s[i:i+1800])"
+          import re,html; t=open('/tmp/s',encoding='utf-8',errors='replace').read()
+          print(sorted(set(re.findall(r'src=\"([^\"]+\.js[^\"]*)\"',t)))[:6]); print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if re.search(r'curs|turma',l,re.I)))[:20])
+          print(sorted(set(re.findall(r'[\"\'](/?api/[^\"\']{0,80}|https?://[^\"\']*/api/[^\"\']{0,80})[\"\']',t)))[:10])
+          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); i=max(0,s.lower().find('gratuit')-200); print(s[:400],'...',s[i:i+1500])"
+          echo | openssl s_client -connect www.se.senai.br:443 -servername www.se.senai.br 2>/dev/null | openssl x509 -noout -issuer -dates 2>/dev/null || true

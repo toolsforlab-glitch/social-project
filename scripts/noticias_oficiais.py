@@ -1,0 +1,135 @@
+"""Notícias oficiais de cursos gratuitos das prefeituras e governos (23/11/2026), sem Claude.
+
+Muitos cursos para quem mais precisa (ciclos da Semtas do Natal, Semtes de Maceió, Fortaleza Inclusiva…) não estão em
+nenhuma lista de cursos: saem só como notícia no site oficial da prefeitura, com inscrição presencial e poucos dias de
+prazo. Este script lê, todos os dias, as páginas de notícias oficiais da tabela FONTES e, quando aparece uma notícia
+NOVA cujo título fala de cursos gratuitos ou de qualificação profissional, cria um curso «Novo» com o link da notícia
+oficial (Origem «notícia oficial»).
+
+A seguir, na mesma rotina, a verificação (verificar.py com VERIFICAR_ORIGEM="notícia oficial") lê cada notícia com
+o Claude e aplica todas as regras do site (gratuidade com frase, prazo, prova para entrar, emprego, auditoria
+independente) antes de publicar. Este script não publica nada.
+
+Na primeira leitura de cada fonte, as notícias que já lá estão são só marcadas como vistas (essas já foram tratadas à
+mão a 23/11/2026).
+"""
+import datetime
+import html as _html
+import json
+import re
+import sys
+import urllib.parse
+
+from base import VERIFICACAO_INICIAL, Base, carregar_config
+from comum import baixar, gravar_json, ler_json
+from cursos import id_curso
+
+ESTADO = "estado/noticias_oficiais.json"
+ORIGEM = "notícia oficial"
+DIAS_API = 20  # na API do WordPress (Piauí), só as notícias dos últimos dias
+
+FONTES = [
+    {"nome": "Prefeitura do Natal – Semtas", "pagina": "https://natal.rn.gov.br/semtas", "local": "BR-RN",
+     "regiao": "Rio Grande do Norte", "cidade": "Natal", "entidade": "Prefeitura do Natal (Semtas)"},
+    {"nome": "Prefeitura de Maceió", "pagina": "https://maceio.al.gov.br/noticias", "local": "BR-AL",
+     "regiao": "Alagoas", "cidade": "Maceió", "entidade": "Prefeitura de Maceió"},
+    {"nome": "Prefeitura de Fortaleza", "pagina": "https://www.fortaleza.ce.gov.br/noticias", "local": "BR-CE",
+     "regiao": "Ceará", "cidade": "Fortaleza", "entidade": "Prefeitura de Fortaleza"},
+    {"nome": "Prefeitura de Fortaleza – Fortaleza Inclusiva", "pagina": "https://www.fortaleza.ce.gov.br/fortaleza-inclusiva",
+     "local": "BR-CE", "regiao": "Ceará", "cidade": "Fortaleza", "entidade": "Prefeitura de Fortaleza (Fortaleza Inclusiva)"},
+    # Piauí: o portal do governo (WordPress) tem pesquisa pública; usam-se só as notícias recentes
+    {"nome": "Governo do Piauí", "api": "https://www.pi.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["cursos gratuitos", "qualificação profissional inscrições"], "local": "BR-PI", "regiao": "Piauí",
+     "cidade": "", "entidade": "Governo do Piauí"},
+]
+
+INCLUIR = re.compile(r"cursos?\s+(?:\w+\s+){0,2}(?:gratuit|de\s+qualifica|profissionaliz|de\s+capacita)|"
+                     r"vagas\s+(?:gratuitas\s+)?(?:em|para|de)\s+(?:\w+\s+)?cursos|qualifica[çc][ãa]o\s+profissional|"
+                     r"inscri[çc][õo]es\s+(?:abertas\s+)?para\s+(?:os\s+)?cursos|oficinas?\s+gratuit", re.I)
+EXCLUIR = re.compile(r"servidor|gestor|conselheir|professor|concurso|seletivo\s+para\s+contrat|"
+                     r"capacita\s+(?:profissionais|equipes|t[ée]cnicos)|entrega\s+(?:de\s+)?certificad|formatura|"
+                     r"certifica\s+(?:mais\s+de\s+)?\d|encerra", re.I)
+
+
+def limpar_titulo(t):
+    t = _html.unescape(re.sub(r"<[^>]+>", " ", t or ""))
+    t = re.sub(r"\s+", " ", t).strip()
+    t = re.sub(r"^\d{2}/\d{2}/\d{4}\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ ]{3,30}\s+", "", t)  # Maceió: «23/11/2026 OPORTUNIDADES …»
+    t = re.sub(r"\s+[A-Z]{3,10}\s*,\s*\d{2}/\d{2}/\d{4}\.?$", "", t)       # Natal: «… SEMTAS , 17/11/2026.»
+    t = re.sub(r"^(?:Economia|Educação|Cidadania|Trabalho)\s+(?=[A-ZÁÉÍÓÚ])", "", t)  # Fortaleza: «Economia Prefeitura …»
+    return t.strip(" .")[:200]
+
+
+def noticias_da_pagina(fonte):
+    html = baixar(fonte["pagina"], timeout=40).decode("utf-8", "replace")
+    achadas = {}
+    for href, texto in re.findall(r'<a[^>]+href="([^"#]+)"[^>]*>(.*?)</a>', html, flags=re.S):
+        titulo = limpar_titulo(texto)
+        if len(titulo) < 25:
+            continue
+        link = urllib.parse.urljoin(fonte["pagina"], _html.unescape(href))
+        if urllib.parse.urlparse(link).netloc.split(":")[0].lower() != urllib.parse.urlparse(fonte["pagina"]).netloc.lower():
+            continue
+        if len(titulo) > len(achadas.get(link, "")):
+            achadas[link] = titulo
+    return achadas
+
+
+def noticias_da_api(fonte, hoje):
+    achadas = {}
+    limite = (datetime.date.fromisoformat(hoje) - datetime.timedelta(days=DIAS_API)).isoformat()
+    for q in fonte["pesquisas"]:
+        url = fonte["api"].format(q=urllib.parse.quote(q))
+        for p in json.loads(baixar(url, timeout=40).decode("utf-8", "replace")):
+            if str(p.get("date", ""))[:10] >= limite:
+                achadas[p["link"]] = limpar_titulo((p.get("title") or {}).get("rendered", ""))
+    return achadas
+
+
+def main():
+    base = Base()
+    carregar_config(base)
+    hoje = datetime.date.today().isoformat()
+    estado = ler_json(ESTADO, {"vistas": {}})
+    links_na_base = {(r.get("Link") or "").strip().rstrip("/") for r in base.tabela("Cursos")}
+    novos = []
+    for f in FONTES:
+        try:
+            achadas = noticias_da_api(f, hoje) if f.get("api") else noticias_da_pagina(f)
+        except Exception as e:  # noqa: BLE001
+            print(f"{f['nome']}: a página não abriu ({type(e).__name__}); fica para amanhã.")
+            continue
+        primeira = f["nome"] not in estado["vistas"]
+        vistas = estado["vistas"].setdefault(f["nome"], {})
+        relevantes = {l: t for l, t in achadas.items() if INCLUIR.search(t) and not EXCLUIR.search(t)}
+        n_novas = 0
+        for link, titulo in relevantes.items():
+            if link in vistas:
+                continue
+            vistas[link] = hoje
+            if primeira or link.rstrip("/") in links_na_base:
+                continue
+            n_novas += 1
+            novos.append({
+                "ID": id_curso(link, titulo), "Estado": "Novo", "Título": titulo, "Entidade": f["entidade"], "Link": link,
+                "Local": f["local"], "Modalidade": "presencial", "País": "BR", "Região": f["regiao"], "Cidade": f["cidade"],
+                "Descrição": "", "Necessidades": "profissao", "Perfis": "todos", "Condição de acesso": "", "Requisitos": "",
+                "Certificado": "desconhecido", "Inscrições até": "", "Início": "", "Duração": "", "Link verificado": "SIM",
+                "Primeiro visto": hoje, "Última verificação": "", "Origem": ORIGEM,
+                "Notas": f"{hoje}: notícia nova na página oficial «{f['nome']}» ({f.get('pagina') or 'pesquisa do portal'}).",
+                "Como me inscrever": "", "Nota da verificação": "", **VERIFICACAO_INICIAL,
+                "Situação das inscrições": "Por confirmar", "Verificar automaticamente": "TRUE",
+            })
+            print(f"  + {f['nome']}: {titulo[:90]}")
+        print(f"{f['nome']}: {len(achadas)} links, {len(relevantes)} sobre cursos, "
+              + ("primeira leitura (marcadas como vistas)." if primeira else f"{n_novas} notícias novas."))
+    if novos:
+        base.acrescentar("Cursos", novos)
+    base.guardar()
+    gravar_json(ESTADO, estado)
+    print(f"Notícias oficiais: {len(novos)} cursos novos para a verificação.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

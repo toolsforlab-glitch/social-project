@@ -94,6 +94,14 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 salvador_tpe.py
 
+      - name: Notícias oficiais de cursos das prefeituras e governos (sem Claude) e verificação das novas
+        if: ${{ always() }}
+        timeout-minutes: 15
+        env:
+          VERIFICAR_ORIGEM: "notícia oficial"
+          MAX_VERIFICACOES: "8"
+        run: cd scripts && python3 noticias_oficiais.py && python3 verificar.py
+
       - name: Editais do Senac Maranhão (documento oficial, Claude com prova por código)
         if: ${{ always() }}
         timeout-minutes: 15

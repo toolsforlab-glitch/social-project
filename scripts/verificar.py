@@ -228,6 +228,8 @@ def main():
                   # Sebrae: lido do catálogo oficial em sebrae.py
                   and "loja.sebrae.com.br" not in r["Link"] + (r.get("Página do curso") or "")
                   and (r.get("Verificar automaticamente", "") == "" or sim(r.get("Verificar automaticamente")))
+                  # rotina diária: só as propostas de uma origem (ex.: «notícia oficial», de noticias_oficiais.py)
+                  and (not os.environ.get("VERIFICAR_ORIGEM") or r.get("Origem") == os.environ["VERIFICAR_ORIGEM"])
                   # durante um piloto, os cursos online de outros países não aparecem no site: não gastar com eles
                   and not (r.get("Local") == "online" and pais_piloto
                            and r.get("País") not in (pais_piloto, "Internacional", ""))]

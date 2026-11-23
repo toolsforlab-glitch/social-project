@@ -40,7 +40,10 @@ FAQ_LINK = "https://www.escolavirtual.gov.br/faq"
 MARCA = "lida na API oficial da EV.G, conferida por código"
 MAX_NOVOS = int(os.environ.get("EVG_MAX_NOVOS", "15"))
 PUBLICO_ABERTO = re.compile(r"qualquer\s+(cidad[ãa]o|pessoa)|cidad[ãa]os?\s+(em\s+geral|interessad)|"
-                            r"p[úu]blico\s+em\s+geral|sociedade\s+em\s+geral|toda\s+a\s+sociedade|aberto\s+a\s+todos", re.I)
+                            r"p[úu]blico\s+em\s+geral|sociedade\s+em\s+geral|toda\s+a\s+sociedade|aberto\s+a\s+todos|"
+                            # 23/11/2026 (conferido na página de cada curso): «gestores, servidores e cidadãos», «educadores,
+                            # pais…», «lideranças comunitárias», «micro e pequenos empreendedores» também são público aberto
+                            r"\be\s+cidad[ãa]os\b|cidad[ãa]os\s+que\b|\bpais\b|lideran[çc]as\s+comunit|\bempreendedor(?:es|as)\b", re.I)
 # temas da EV.G ligados ao que o site serve (os outros são, quase sempre, de gestão pública)
 TEMAS = {42, 43, 50, 51, 57, 58, 60, 65, 11, 12, 2, 16, 22}
 PALAVRAS = re.compile(r"finan|dinheiro|or[çc]amento\s+(pessoal|familiar|dom)|empreend|neg[óo]cio|emprego|trabalh|carreira|"

@@ -6,17 +6,33 @@ jobs:
     steps:
       - run: |
           A="Mozilla/5.0 (X11; Linux x86_64) Chrome/120"
-          for u in https://se.senai.br/cursos https://www.rn.senai.br/oportunidades/ https://www.rn.senai.br/publicacoes/ https://www.rn.senai.br/gratuidade/ https://lp.rn.senac.br/programa-de-bolsa https://www.rn.senac.br/psg https://www.se.senac.br/ https://processoseletivo.ifrn.edu.br/ https://www.ifs.edu.br/ https://www.natal.rn.gov.br/ https://www.aracaju.se.gov.br/; do
-            echo "======== $u"
-            curl -sSL -m 25 -A "$A" -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n" "$u" || { echo FALHOU; continue; }
-            python3 - <<'PY'
+          echo "#### SENAI RN oportunidades.js"
+          curl -sSL -m 25 -A "$A" "https://www.rn.senai.br/assets/js/oportunidades.js" -o /tmp/o.js -w "%{http_code} %{size_download}\n"
+          head -c 3500 /tmp/o.js; echo
+          grep -oE "(https?:)?//[^'\"\` ]+|['\"\`]/[a-zA-Z0-9_/.-]*(api|json|oportun)[^'\"\`]*['\"\`]" /tmp/o.js | sort -u | head -20
+          echo "#### SENAC SE PSG"
+          curl -sSL -m 25 -A "$A" https://psg.se.senac.br/ -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n"
+          python3 - <<'PY'
           import re,html
           t=open('/tmp/p',encoding='utf-8',errors='replace').read()
-          print("title:",(re.findall(r'<title>(.*?)</title>',t,re.S) or [''])[0].strip()[:100])
-          print("js:",sorted(set(re.findall(r'src="([^"]+\.js[^"]*)"',t)))[:6])
-          links=sorted(set(l for l in re.findall(r'href="([^"#]+)"',t) if re.search(r'curs|gratu|edital|bolsa|psg|oportun|inscri|turma|selec|\.pdf|api',l,re.I)))[:30]; print("links:",links)
-          print("api:",sorted(set(re.findall(r'["\'](/?api/[^"\']{0,80}|https?://[^"\']*/api/[^"\']{0,80}|[^"\']*\.json)["\']',t)))[:10])
-          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t)))
-          i=max(0,s.lower().find('gratuit')-300); print("texto:",s[:300],"...",s[i:i+900])
+          print("js:",sorted(set(re.findall(r'src="([^"]+\.js[^"]*)"',t)))[:8])
+          print("links:",sorted(set(l for l in re.findall(r'href="([^"#]+)"',t) if not l.endswith(('.css','.png','.ico'))))[:40])
+          print("api:",sorted(set(re.findall(r'["\'](/?api/[^"\']{0,80}|https?://[^"\']*/api/[^"\']{0,80})["\']',t)))[:10])
+          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); print("texto:",s[:2500])
           PY
-          done
+          echo "#### SENAC SE noticia"
+          curl -sSL -m 25 -A "$A" https://www.se.senac.br/senac-sergipe-abre-vagas-647-vagas-para-36-cursos-de-gratuitos/ -o /tmp/n
+          python3 -c "
+          import re,html
+          t=open('/tmp/n',encoding='utf-8',errors='replace').read()
+          print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if re.search(r'psg|edital|\.pdf|inscri',l,re.I)))[:20])
+          m=re.search(r'(?s)<article.*?</article>',t) or re.search(r'(?s)<main.*?</main>',t); s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',m.group(0) if m else t))); print(s[:2500])"
+          echo "#### SENAI SE"
+          for u in https://www.se.senai.br/cursos https://www.se.senai.br/ https://senaise.com.br/; do curl -sSL -m 20 -A "$A" "$u" -o /tmp/s -w "$u %{http_code} %{size_download} %{url_effective}\n" || true; python3 -c "
+          import re; t=open('/tmp/s',encoding='utf-8',errors='replace').read(); print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if re.search(r'curs|gratu|turma|edital',l,re.I)))[:15]); print(sorted(set(re.findall(r'src=\"([^\"]+\.js[^\"]*)\"',t)))[:5])" 2>/dev/null; done
+          echo "#### IFRN edital 68"
+          curl -sSL -m 25 -A "$A" https://processoseletivo.ifrn.edu.br/ -o /tmp/i
+          python3 -c "
+          import re,html; t=open('/tmp/i',encoding='utf-8',errors='replace').read()
+          print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if re.search(r'edital|concurso|visualiz|inscri',l,re.I)))[:30])
+          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); i=s.find('Inscrições Abertas'); print(s[i:i+1800])"

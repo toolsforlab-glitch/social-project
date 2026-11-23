@@ -85,7 +85,12 @@ FONTES = [
              "renda). No fim do texto vem o bloco do edital na página oficial, com «Período de inscrição», «Local "
              "para inscrição» e «Início das aulas»: podes copiar as frases desse bloco (valem tanto como as do PDF). "
              "Se o local de inscrição for um link (ex.: formulário Google), devolve-o em «link_inscricao» de cada "
-             "turma, copiado letra a letra. Se houver COMUNICADOS no fim, eles prevalecem."},
+             "turma, copiado letra a letra. Os PDFs costumam ser digitalizados e o texto vem de OCR: a tabela do "
+             "ANEXO I tem uma linha por turma («Curso | CH | Vagas | Turno | Data de Início | Cidade | Link»); o "
+             "nome do curso pode vir com a primeira letra cortada (ex.: «ISISTENTE DE …» é «ASSISTENTE DE …»): em "
+             "«curso» escreve o nome certo, mas em «frase» copia a linha exatamente como está no texto. A coluna "
+             "do link costuma sair ilegível no OCR: nesse caso usa o link do bloco da página. Se houver "
+             "COMUNICADOS no fim, eles prevalecem."},
     {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
      "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
      "programa": "Gratuidade Regimental do SENAI", "listar": "senai_pe",
@@ -154,6 +159,22 @@ Devolve só JSON entre <json></json>:
 
 # ------------------------------------------------------------------ documento
 
+MARCA_OCR = "[texto lido por OCR de um PDF digitalizado]"
+
+
+def parecido_na_frase(curso, frase, minimo=0.9):
+    """O nome do curso (como devia ser) é quase igual a algum trecho da frase lida por OCR?"""
+    import difflib
+    c, f = chave(curso), chave(frase)
+    if len(c) < 8:
+        return False
+    melhor = 0.0
+    for i in range(0, max(1, len(f) - len(c) + 3)):
+        for n in (len(c) - 2, len(c) - 1, len(c), len(c) + 1):
+            melhor = max(melhor, difflib.SequenceMatcher(None, c, f[i:i + n]).ratio())
+    return melhor >= minimo
+
+
 def texto_por_ocr(dados, max_paginas=12):
     """Texto de um PDF digitalizado, com o Tesseract (português). Devolve "" se o Tesseract não estiver instalado.
     O texto lido assim pode ter letras trocadas: as fontes que o usam têm de ter uma segunda prova do período de
@@ -163,15 +184,15 @@ def texto_por_ocr(dados, max_paginas=12):
         with open(origem, "wb") as f:
             f.write(dados)
         try:
-            subprocess.run(["pdftoppm", "-r", "200", "-png", "-l", str(max_paginas), origem, os.path.join(pasta, "p")],
+            subprocess.run(["pdftoppm", "-r", "300", "-png", "-l", str(max_paginas), origem, os.path.join(pasta, "p")],
                            capture_output=True, timeout=180, check=True)
             partes = []
             for img in sorted(x for x in os.listdir(pasta) if x.endswith(".png")):
-                r = subprocess.run(["tesseract", os.path.join(pasta, img), "-", "-l", "por", "--psm", "6"],
+                r = subprocess.run(["tesseract", os.path.join(pasta, img), "-", "-l", "por", "--psm", "4"],
                                    capture_output=True, timeout=120)
                 partes.append(r.stdout.decode("utf-8", "replace"))
             texto = "\n".join(partes)
-            return ("[texto lido por OCR de um PDF digitalizado]\n" + texto) if texto.strip() else ""
+            return (MARCA_OCR + "\n" + texto) if texto.strip() else ""
         except (OSError, subprocess.SubprocessError):
             return ""
 
@@ -365,8 +386,13 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
         inicio = data_valida(t.get("inicio_aulas"))
         if not curso or not _cv(frase, texto):
             continue
+        nome_ocr = False
         if chave(curso) not in chave(frase) and not (tabela_partida and palavras_em_ordem(curso, frase)):
-            continue
+            # texto de OCR: o nome pode vir com uma ou duas letras trocadas ou cortadas (ex.: «ISISTENTE» por
+            # «ASSISTENTE»); aceita-se só se o nome escrito for quase igual ao trecho da frase (90% ou mais)
+            if not (texto.startswith(MARCA_OCR) and parecido_na_frase(curso, frase)):
+                continue
+            nome_ocr = True
         if inicio and not data_na_frase(inicio, frase):
             inicio = ""
         cidade = str(t.get("cidade") or "").strip()
@@ -379,7 +405,8 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
         t["link_inscricao"] = link_insc
         turmas.append({**t, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
                        "fim_aulas": data_valida(t.get("fim_aulas")),
-                       "horario": horario_confirmado(t.get("horario"), frase)})
+                       "horario": horario_confirmado(t.get("horario"), frase),
+                       **({"nome_ocr": True} if nome_ocr else {})})
     return {"ini": ini, "fim": fim, "ate_vagas": ate_vagas, "frase_insc": frase_insc if (fim or ate_vagas) else "",
             "local": local, "modo": modo,
             "gratuito": gratuito, "renda": renda, "reserva": reserva, "acessibilidade": acess, "turmas": turmas}, problemas
@@ -939,7 +966,8 @@ def correr(fonte):
                 "Vagas reservadas": edital["reserva"][:300],
                 "Última verificação": hoje, "Falhas seguidas": 0,
                 "Evidência": (f"«{edital['frase_insc']}» | «{t['frase']}»"
-                              + (f" | local: «{edital['local']}»" if edital["local"] else ""))[:900],
+                              + (f" | local: «{edital['local']}»" if edital["local"] else "")
+                              + (" | nome do curso corrigido de letras trocadas pelo OCR (90%+ igual)" if t.get("nome_ocr") else ""))[:900],
                 "Auditoria": (f"{hoje}: não passou: " + "; ".join(p) + ".") if p else
                 f"{hoje}: ok (frases conferidas no documento do edital; datas e horário coerentes).",
             }

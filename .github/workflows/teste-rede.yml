@@ -1,0 +1,27 @@
+name: Teste de rede (temporário)
+on: workflow_dispatch
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - name: Textos Senac AL
+        working-directory: scripts
+        run: |
+          python3 - <<'PY'
+          import re
+          from senac_ma import FONTES, listar_senac_al, texto_do_documento
+          from comum import baixar
+          f = next(x for x in FONTES if x["nome"] == "Senac AL")
+          for e in listar_senac_al(f):
+              if not re.search(r"2[34]-2026|21-2026", e["number"]):
+                  continue
+              t = texto_do_documento(baixar(e["pagina"], timeout=60), "application/pdf")
+              i = t.upper().find("ANEXO I")
+              print("=====", e["title"], len(t)); print(re.sub(r"[ \t]+", " ", t[i:i+3500]))
+              for u in e["avisos"]:
+                  print("--- aviso", u); print(re.sub(r"[ \t]+", " ", texto_do_documento(baixar(u, timeout=60), "application/pdf"))[:1500])
+          PY

@@ -62,6 +62,19 @@ FONTES = [
              "e em inscricao.frase a frase do cronograma (Anexo III) com «limite de vagas». Se no fim do texto houver "
              "COMUNICADOS DE ALTERAÇÃO, eles mudam o edital: para um curso alterado usa as datas novas e, em «frase», "
              "a frase do comunicado com o nome do curso e o novo período."},
+    {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
+     "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
+     "programa": "Gratuidade Regimental do SENAI", "listar": "senai_pe",
+     "lista": "https://www.pe.senai.br/editais/",
+     "prefixo_turma": "https://www.pe.senai.br/wp-content/uploads/",
+     "nota": "Os editais do SENAI Pernambuco concedem «bolsas de estudo» (gratuidade regimental) em cursos de "
+             "qualificação ou aperfeiçoamento. A frase da inscrição costuma ser «As inscrições estarão abertas entre "
+             "os dias X a Y». A tabela de cursos está no ANEXO I e, para cada turma, o texto pode ter um link de "
+             "inscrição (depois de «INSCRIÇÃO:»): devolve-o em «link_inscricao», copiado letra a letra, ou null. "
+             "Atenção: «A inscrição no processo seletivo é gratuita» NÃO prova que o curso é gratuito (fala só da "
+             "inscrição); para «gratuidade» usa a frase das bolsas (ex.: «bolsas integrais de estudo»), se existir. "
+             "Se no fim do texto houver ERRATAS ou NOTAS DE CANCELAMENTO, elas mudam o edital: usa as datas novas e, "
+             "nessa informação, a frase da errata."},
     {"nome": "Senai PI", "uf": "PI", "local": "BR-PI", "regiao": "Piauí",
      "entidade": "SENAI Piauí (Programa SENAI de Gratuidade Regimental)", "estado": "estado/senai_pi.json",
      "programa": "Programa SENAI de Gratuidade Regimental", "listar": "senai_pi",
@@ -491,6 +504,69 @@ def listar_senai_pi(fonte):
     return editais
 
 
+def listar_senai_pe(fonte):
+    """SENAI Pernambuco: a página «Editais» (pe.senai.br) tem blocos «GRATUIDADE | QUALIFICAÇÃO - Em andamento» e
+    «GRATUIDADE | APERFEIÇOAMENTO - Em andamento»; dentro de cada bloco, o nome da unidade (em negrito) e, por baixo,
+    os PDFs: «Edital de Abertura – …», erratas, notas de cancelamento e listas de classificados. A data de publicação
+    vem do nome do ficheiro (…_AAAAMMDDhhmmss….pdf) ou, se não tiver, do mês da pasta de upload. Erratas e notas da
+    mesma unidade são lidas junto com o edital a que se referem (pelo nome do curso); se não disserem qual, com
+    todos os editais dessa unidade publicados até 30 dias antes (o leitor manda essas turmas para Rever)."""
+    html = baixar(fonte["lista"], timeout=60).decode("utf-8", "replace")
+    blocos = re.findall(r'<h2 class="info__description__title">(.*?)</h2>\s*<div class="info__description__text">(.*?)</div>',
+                        html, flags=re.S)
+    if not blocos:
+        raise ValueError("blocos de editais não encontrados na página")
+    editais = []
+    for titulo_bloco, corpo in blocos:
+        titulo_bloco = _html.unescape(re.sub(r"<[^>]+>", "", titulo_bloco)).strip()
+        if not re.match(r"GRATUIDADE\b.*Em andamento", titulo_bloco, flags=re.I):
+            continue
+        unidade, docs = "", []
+        for par in re.findall(r"<p[^>]*>(.*?)</p>", corpo, flags=re.S):
+            a = re.search(r'<a[^>]+href="([^"]+\.pdf)"[^>]*>(.*?)</a>', par, flags=re.S | re.I)
+            texto = _html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", par))).strip()
+            if not a:
+                if texto:
+                    unidade = texto
+                continue
+            url = a.group(1)
+            rotulo = _html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", a.group(2)))).strip()
+            m = re.search(r"_(20\d{2})(\d{2})(\d{2})\d*\.pdf$", url)
+            if m:
+                pub = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+            else:
+                m = re.search(r"/uploads/(20\d{2})/(\d{2})/", url)
+                pub = f"{m.group(1)}-{m.group(2)}-01" if m else ""
+            docs.append({"url": url, "rotulo": rotulo, "pub": pub, "unidade": unidade})
+        def assunto(r):
+            return chave(re.split(r"\s+[–-]\s+", r, maxsplit=1)[-1]) if re.search(r"\s[–-]\s", r) else ""
+        abertura = [d for d in docs if re.match(r"edital\s+de\s+abertura", d["rotulo"], flags=re.I)]
+        avisos = [d for d in docs if re.search(r"errata|retifica|aditivo|cancel|prorroga", d["rotulo"], flags=re.I)]
+        for d in abertura:
+            meus = []
+            for av in avisos:
+                if av["unidade"] != d["unidade"] or (av["pub"] and d["pub"] and av["pub"] < d["pub"]):
+                    continue
+                sa, sd = assunto(av["rotulo"]), assunto(d["rotulo"])
+                if sa and sd and (sa in sd or sd in sa):
+                    meus.append(av["url"])
+                elif not sa or not any(assunto(x["rotulo"]) and (assunto(av["rotulo"]) in assunto(x["rotulo"])
+                                                             or assunto(x["rotulo"]) in assunto(av["rotulo"]))
+                                       for x in abertura if x["unidade"] == av["unidade"]):
+                    # aviso que não diz o curso (ex.: «Nota de cancelamento», «Errata – 200 vagas»): vale para os
+                    # editais da unidade publicados até 30 dias antes
+                    if not (d["pub"] and av["pub"]) or (datetime.date.fromisoformat(av["pub"])
+                                                        - datetime.date.fromisoformat(d["pub"])).days <= 30:
+                        meus.append(av["url"])
+            num = re.sub(r"[^a-z0-9]+", "-", d["url"].rsplit("/", 1)[-1].lower())[:70]
+            editais.append({"id": f"senai-pe-{num}", "number": num, "published_at": d["pub"],
+                            "updated_at": d["url"].rsplit("/", 1)[-1] + f"|{len(meus)}",
+                            "title": f"{titulo_bloco} | {d['unidade']} | {d['rotulo']}", "pagina": d["url"],
+                            "padrao": re.escape(d["url"]), "aditivo": False, "avisos": meus,
+                            "documents": [{"type": "edital", "mime_type": "application/pdf", "url": d["url"]}]})
+    return editais
+
+
 def numero_alterado(n):
     m = re.match(r"(\d+)", str(n or ""))
     return m.group(1) if m else ""
@@ -510,7 +586,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []

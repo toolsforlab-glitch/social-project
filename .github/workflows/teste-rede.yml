@@ -7,25 +7,15 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with: {python-version: "3.12"}
-      - run: pip install -q pypdf
-      - name: Pernambuco
+      - run: pip install -q -r requirements.txt
+      - name: Lista do SENAI PE
+        working-directory: scripts
         run: |
           python3 - <<'PY'
-          import io, re, urllib.request
-          from pypdf import PdfReader
-          A = {"User-Agent": "Mozilla/5.0 (compatible; ProjetoSocial/1.0)"}
-          def get(u):
-              return urllib.request.urlopen(urllib.request.Request(u, headers=A), timeout=60).read()
-          for u in ["https://www.pe.senai.br/editais/", "https://intranet.pe.senac.br/dr/nova/psgnet/",
-                    "https://www.egape.pe.gov.br/", "https://www.educacao.pe.gov.br/", "https://www.pe.senac.br/psg/"]:
-              try:
-                  b = get(u); print("OK", u, len(b))
-              except Exception as e:
-                  print("FALHOU", u, type(e).__name__, e)
-          for u in ["https://www.pe.senai.br/wp-content/uploads/2026/11/EDITAL_-_APP_-_CARUARU_-_DECORA_AO_DE_BOLOS_-_PRESENCIAL_-__20261111125846655154.pdf"]:
-              try:
-                  t = "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(get(u))).pages)
-                  print("PDF", len(t)); print(t[:9000])
-              except Exception as e:
-                  print("PDF FALHOU", type(e).__name__, e)
+          from senac_ma import FONTES, listar_senai_pe
+          f = next(x for x in FONTES if x["nome"] == "Senai PE")
+          ed = listar_senai_pe(f)
+          print(len(ed), "editais")
+          for e in sorted(ed, key=lambda e: e["published_at"], reverse=True)[:25]:
+              print(e["published_at"], "|", e["title"][:120], "| avisos:", len(e["avisos"]))
           PY

@@ -392,9 +392,17 @@ _GRATUIDADE = re.compile(r"gratuit|sem\s+(qualquer\s+)?(custo|pagamento|cobran|[
 _GRATUIDADE_NEGADA = re.compile(r"n[ãa]o\s+(é|são|e|sao|será|serão)\s+gratuit", re.I)
 
 
+# «A inscrição no processo seletivo é gratuita» fala só da inscrição, não do curso (SENAI PE, 23/11/2026)
+_SO_INSCRICAO = re.compile(r"inscri", re.I)
+_FALA_DO_CURSO = re.compile(r"curso|bolsa|aula|estud|matr[ií]cula|capacita|forma[çc]|qualifica|certificad|oficina|treinament", re.I)
+
+
 def gratuidade_explicita(frase):
-    """True se a frase diz, com palavras suas, que não há custo (e não o nega)."""
+    """True se a frase diz, com palavras suas, que não há custo (e não o nega). Uma frase que só fala da inscrição
+    («a inscrição é gratuita») não prova que o curso é gratuito."""
     frase = frase or ""
+    if _SO_INSCRICAO.search(frase) and not _FALA_DO_CURSO.search(frase):
+        return False
     return bool(_GRATUIDADE.search(frase)) and not _GRATUIDADE_NEGADA.search(frase)
 
 

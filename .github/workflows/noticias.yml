@@ -69,6 +69,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 centec.py
 
+      - name: Vigiar páginas oficiais ainda fechadas (Senac PE)
+        if: ${{ always() }}
+        timeout-minutes: 5
+        run: cd scripts && python3 vigiar.py
+
       - name: Turmas do OxeTech Lab, Alagoas (lista oficial, sem Claude)
         if: ${{ always() }}
         timeout-minutes: 10

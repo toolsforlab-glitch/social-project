@@ -354,8 +354,9 @@ def auditar(t, edital, problemas_edital, inicio_opcional=False):
     p = list(problemas_edital)
     if not edital["fim"] and not edital.get("ate_vagas"):
         p.append("sem período de inscrição comprovado")
-    if not t["inicio_aulas"] and not inicio_opcional:
-        p.append("sem data de início das aulas comprovada")
+    if not t["inicio_aulas"]:
+        if not inicio_opcional:
+            p.append("sem data de início das aulas comprovada")
     elif edital["ini"] and t["inicio_aulas"] < edital["ini"]:
         p.append(f"as aulas começam ({t['inicio_aulas']}) antes de abrir a inscrição ({edital['ini']})")
     if t.get("fim_aulas") and t["inicio_aulas"] and t["fim_aulas"] < t["inicio_aulas"]:

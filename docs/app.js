@@ -184,7 +184,7 @@
       l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' + esc(b.rotulo) + "</a>");
     }
     if (comBotao && tituloCurso) l.push(lembrarHtml(tituloCurso, t.prazo, t.link, [t.unidade, t.cidade].filter(Boolean).join(", ")));
-    return "<li>" + l.join("<br>") + "</li>";
+    return "<li>" + l.join("<br>").replace(/<br><details/g, "<details").replace(/<\/details><br>/g, "</details>") + "</li>";
   }
 
   // Botão e nota a partir do destino do link (paginas.py: curso, acesso, lista, pdf, formulario, inicio, geral).

@@ -1,0 +1,22 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          A="Mozilla/5.0 (X11; Linux x86_64) Chrome/120"
+          for u in https://maisfuturo.sde.fortaleza.ce.gov.br/ https://www.treinarparaempregar.salvador.ba.gov.br/ https://treinarparaempregar.salvador.ba.gov.br/ https://salvadordigital.salvador.ba.gov.br/ https://fortalezacapacita.fortaleza.ce.gov.br/ https://www.joaopessoa.pb.gov.br/?s=qualifica https://www.maceio.al.gov.br/ https://semdec.salvador.ba.gov.br/; do
+            echo "======== $u"
+            curl -sSL -m 25 -A "$A" -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n" "$u" || { echo FALHOU; continue; }
+            python3 - "$u" <<'PY'
+          import re,sys,html
+          t=open('/tmp/p',encoding='utf-8',errors='replace').read()
+          print("title:",(re.findall(r'<title>(.*?)</title>',t,re.S) or [''])[0].strip()[:100])
+          js=sorted(set(re.findall(r'src="([^"]+\.js[^"]*)"',t)))[:8]; print("js:",js)
+          links=sorted(set(l for l in re.findall(r'href="([^"#]+)"',t) if re.search(r'curs|qualif|inscri|turma|servi|api',l,re.I)))[:25]; print("links:",links)
+          print("api:",sorted(set(re.findall(r'["\'](/?api/[^"\']{0,80}|https?://[^"\']*/api/[^"\']{0,80})["\']',t)))[:10])
+          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t)))
+          print("texto:",s[:700])
+          PY
+          done

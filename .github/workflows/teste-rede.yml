@@ -5,18 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          set +e
+          UA="Mozilla/5.0"
+          curl -sL -A "$UA" -m 60 https://gorecife.recife.pe.gov.br/assets/index-bc3bbc61.js -o x.js
           python3 - <<'PY'
-          import json, urllib.request
-          def get(u):
-              r = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
-              return json.loads(urllib.request.urlopen(r, timeout=40).read())
-          d = get("https://gorecife.recife.pe.gov.br/api/cursos?page=1")
-          print("COUNT", d["count"])
-          r0 = d["results"][0]
-          print(json.dumps(r0, ensure_ascii=False, indent=1)[:3500])
-          todos = d["results"]; u = d["next"]
-          while u:
-              d = get(u); todos += d["results"]; u = d["next"]
-          for c in todos:
-              print("C", c.get("id"), "|", c.get("name"), "|", c.get("course_status"), "|", {k: c.get(k) for k in c if any(x in k for x in ("date", "data", "inicio", "fim", "vaga", "inscri", "start", "end", "deadline"))})
+          import re
+          t = open("x.js", encoding="utf-8", errors="replace").read()
+          t = re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), t)
+          for kw in ["gratuit", "morador", "residente", "Recife-PE", "sem custo"]:
+              for m in list(re.finditer(kw, t, re.I))[:4]:
+                  print("==", kw, "::", re.sub(r"\s+", " ", t[max(0, m.start()-160):m.start()+160]))
           PY
+          curl -s -A "$UA" "https://gorecife.recife.pe.gov.br/api/cursos/2537" | head -c 300; echo

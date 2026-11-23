@@ -7,17 +7,10 @@ jobs:
       - run: |
           pip install -q pypdf
           B=https://psg.pi.senac.br/media/pdf/vaga
-          for f in "EDITAL_PSG_N%C2%BA_006_2026_Visto_CJUR_-_assinado_Presidente.pdf" "EDITAL2.PDF" "EDITAL1.PDF" "COMUNICADO_N%C2%BA_05_DE_ALTERA%C3%87%C3%83O_NO_EDITAL_N%C2%BA_006-2026_.pdf" "COMUNICADO_N04_DE_ALTERACAO_NO_EDITAL_N_006-2026.pdf" "COMUNICADO__DE_CANCELAMENTO_02_NO_EDITAL_N%C2%BA_008-2026_-Pedro_II.pdf"; do
-            echo "########## $f"; curl -sSLk -m 40 -A "Mozilla/5.0" "$B/$f" -o /tmp/e.pdf -w "%{http_code} %{size_download}\n" || continue
-            python3 - <<'PY'
-          import re
+          for f in "EDITAL_PSG_N%C2%BA_006_2026_Visto_CJUR_-_assinado_Presidente.pdf" "EDITAL1.PDF" "COMUNICADO_N%C2%BA_05_DE_ALTERA%C3%87%C3%83O_NO_EDITAL_N%C2%BA_006-2026_.pdf" "COMUNICADO_N04_DE_ALTERACAO_NO_EDITAL_N_006-2026.pdf" "COMUNICADO_N03_DE_ALTERACAO_NO_EDITAL_N006-2026.pdf" "COMUNICADO_N02_DE_ALTERACAO_NO_EDITAL_N006-2026.pdf" "COMUNICADO_N%C2%BA_01_DE_ALTERA%C3%87%C3%83O_NO_EDITAL_N%C2%BA_006-2026__PSG.pdf"; do
+            echo "@@@@@@@@@@ $f"; curl -sSLk -m 40 -A "Mozilla/5.0" "$B/$f" -o /tmp/e.pdf || continue
+            python3 -c "
           from pypdf import PdfReader
-          r=PdfReader('/tmp/e.pdf'); t="\n".join((p.extract_text() or "") for p in r.pages)
-          t=re.sub(r'[ \t]+',' ',t)
-          print("paginas",len(r.pages),"chars",len(t))
-          print(t[:900])
-          for m in re.finditer(r'(?i)[^\n]{0,160}(inscriç[õo]es?|per[íi]odo)[^\n]{0,200}',t):
-              s=m.group(0)
-              if re.search(r'\d{2}/\d{2}',s): print(" >",s.strip()[:330])
-          PY
+          r=PdfReader('/tmp/e.pdf')
+          print('\n'.join((p.extract_text() or '') for p in r.pages))"
           done

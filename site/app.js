@@ -234,9 +234,10 @@
   }
   var GRATUIDADE_AVISO = "A página oficial não diz por escrito que este curso é gratuito: confirme antes de se inscrever";
   // Descrição: um texto reescrito pela rotina mostra-se como resumo; o texto copiado da página oficial, sem rótulo.
-  function descricaoHtml(c) {
+  // curta = cartão da lista de cursos: a descrição mostra 2 linhas e um botão «ler mais» (revisão do celular, 23/11/2026)
+  function descricaoHtml(c, curta) {
     if (!c.descricao) return "";
-    return '<p class="descricao">' + (c.descricao_origem === "pagina" ? "" : '<span class="rotulo">Em resumo:</span> ') +
+    return '<p class="descricao' + (curta ? ' curta' : '') + '">' + (c.descricao_origem === "pagina" ? "" : '<span class="rotulo">Em resumo:</span> ') +
       esc(c.descricao) + "</p>";
   }
   function idCartao(c, i) { return "curso-" + (c.id ? String(c.id).replace(/[^\w-]/g, "") : i); }
@@ -331,11 +332,12 @@
 
   // «Avisar um erro neste curso»: abre o formulário de sugestões com o tipo e o nome do curso já preenchidos
   var FORM = {};
-  function avisarErroHtml(c) {
+  function avisarErroHtml(c, naLinha) {
     if (!FORM.url) return "";
     var q = "?usp=pp_url&" + FORM.campo_tipo + "=" + encodeURIComponent(FORM.tipo_erro || "") + "&" + FORM.campo_curso + "=" +
       encodeURIComponent(c.titulo + (c.entidade ? " – " + c.entidade : "") + " (" + (c.url || "") + ")");
-    return '<p class="avisar"><a href="' + esc(FORM.url + q) + '" target="_blank" rel="noopener">Avisar um erro neste curso</a></p>';
+    var a = '<a href="' + esc(FORM.url + q) + '" target="_blank" rel="noopener">Avisar um erro' + (naLinha ? "" : " neste curso") + "</a>";
+    return naLinha ? ' <span class="avisar">' + a + "</span>" : '<p class="avisar">' + a + "</p>";
   }
 
   // ------------------------------------------------------------ Números (23/11/2026)
@@ -541,7 +543,7 @@
       // que dizem para onde levam.
       return '<li class="curso" id="' + idCartao(c, i) + '"><h2>' + esc(c.titulo) + "</h2>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
-        descricaoHtml(c) +
+        descricaoHtml(c, true) +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         posso(c, i) + antesHtml(c) +
@@ -564,17 +566,16 @@
         // botão do curso por baixo das turmas: só se levar a outra página que não a de uma das turmas
         // (antes repetia o mesmo edital ou a mesma lista; pedido do responsável, 23/11/2026)
         (temTurmas ? (turmas.some(function (t) { return semAncora(t.link) === semAncora(c.url); }) ? "" :
-                     '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
-                     ((c.destino || {}).tipo === "lista" ? "Ver todos os cursos na página oficial" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>")
+                     '<p class="link-oficial"><a href="' + esc(c.url) + '" rel="noopener">' +
+                     ((c.destino || {}).tipo === "lista" ? "Ver todos os cursos na página oficial" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a></p>")
                    : (function () {
                        var b = destinoBotao(c.destino, false, "", (c.antes || []).indexOf("govbr") >= 0);
                        return (b.nota ? '<p class="guia-link">' + b.nota + "</p>" : "") +
                          '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' + esc(b.rotulo) + "</a>";
                      })()) +
         (!temTurmas ? lembrarHtml(c.titulo, c.inscricoes_ate, c.url, c.modalidade === "online" ? "On-line" : c.cidade) : "") +
-        avisarErroHtml(c) +
-        '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(dataBonita(c.verificado_em)) + ". " : "") +
-        "Confirme sempre na página oficial antes de ir.</p></li>";
+        '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(c.verificado_em.slice(8, 10) + "/" + c.verificado_em.slice(5, 7) + "/" + c.verificado_em.slice(0, 4)) + ". " : "") +
+        "Confirme sempre na página oficial antes de ir." + avisarErroHtml(c, true) + "</p></li>";
     }
 
     // horas do curso a partir do texto da duração («10 horas», «20h/aula», «Em média 6 horas»); null se não houver
@@ -685,6 +686,17 @@
             ' no momento. Os cursos on-line servem em qualquer lugar. <button type="button" class="filtro botao secundario pequeno" data-filtro="onde:online">Ver os cursos on-line</button></li>'
           : '<li class="vazio">Não há cursos com essas opções no momento. Tente escolher menos opções ou "Mostrar tudo" em "Onde você está?". A lista é atualizada todo dia.</li>');
 
+      // «ler mais» só nas descrições que não cabem nas 2 linhas
+      lista.querySelectorAll(".descricao.curta").forEach(function (p) {
+        if (p.scrollHeight <= p.clientHeight + 2) { p.classList.remove("curta"); return; }
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "ler-mais"; b.textContent = "ler mais"; b.setAttribute("aria-expanded", "false");
+        b.addEventListener("click", function () {
+          var aberta = p.classList.toggle("curta") === false;
+          b.textContent = aberta ? "ler menos" : "ler mais"; b.setAttribute("aria-expanded", aberta ? "true" : "false");
+        });
+        p.insertAdjacentElement("afterend", b);
+      });
       var q = new URLSearchParams();
       if (escolhidas.length) q.set("quero", escolhidas.join(","));
       if (o) q.set("onde", o);

@@ -113,7 +113,15 @@ def claude(modelo, sistema, pedido, max_tokens=4000, ferramentas=None, max_conti
             corpo["tools"] = ferramentas
         if pensar is False:
             corpo["thinking"] = {"type": "disabled"}  # extração de tabelas longas: o raciocínio gastava o limite
-        resp = _post_claude(corpo)
+        try:
+            resp = _post_claude(corpo)
+        except ErroClaude as ex:
+            # alguns modelos desligam o raciocínio com outro valor (a própria API diz qual)
+            if pensar is False and "between_tools" in str(ex):
+                corpo["thinking"] = {"type": "between_tools"}
+                resp = _post_claude(corpo)
+            else:
+                raise
         depurar(f"resposta-{int(time.time() * 1000)}.json", resp)
         somar_uso(uso_total, resp.get("usage") or {})
         conteudo = resp.get("content") or []

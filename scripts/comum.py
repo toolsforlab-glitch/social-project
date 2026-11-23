@@ -101,7 +101,7 @@ notícias) devem estar em português do Brasil (pt-BR), com vocabulário, ortogr
 copiadas das páginas oficiais (evidências e citações) ficam exatamente como estão na página."""
 
 
-def claude(modelo, sistema, pedido, max_tokens=4000, ferramentas=None, max_continuacoes=4):
+def claude(modelo, sistema, pedido, max_tokens=4000, ferramentas=None, max_continuacoes=4, pensar=None):
     """Pede uma resposta ao Claude. Devolve (texto, uso). Trata as pausas longas da pesquisa web."""
     mensagens = [{"role": "user", "content": pedido}]
     sistema = (sistema or "") + IDIOMA
@@ -111,6 +111,8 @@ def claude(modelo, sistema, pedido, max_tokens=4000, ferramentas=None, max_conti
         corpo = {"model": modelo, "max_tokens": max_tokens, "system": sistema, "messages": mensagens}
         if ferramentas:
             corpo["tools"] = ferramentas
+        if pensar is False:
+            corpo["thinking"] = {"type": "disabled"}  # extração de tabelas longas: o raciocínio gastava o limite
         resp = _post_claude(corpo)
         depurar(f"resposta-{int(time.time() * 1000)}.json", resp)
         somar_uso(uso_total, resp.get("usage") or {})

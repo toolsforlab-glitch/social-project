@@ -26,7 +26,7 @@ jobs:
           print("CHARS", len(texto), "REQ", citacao_valida(f["requisito"]["frase"], texto))
           sistema = s.SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", f["entidade"]).replace("Programa Senac de Gratuidade", f["programa"])
           sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {f['nota']}\n\nDevolve só JSON")
-          r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=16000)
+          r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=16000, pensar=False)
           res = extrair_json(r)
           print("USO", uso)
           if not isinstance(res, dict):

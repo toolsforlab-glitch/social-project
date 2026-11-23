@@ -541,8 +541,13 @@ def listar_senai_pe(fonte):
             if m:
                 pub = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
             else:
+                # sem data no nome: só o mês da pasta de upload. Do mês atual ou do anterior fica sem data (é lido e a
+                # data de inscrição vem do próprio PDF); mais antigo, fica com o dia 1 e sai pelo corte dos recentes
                 m = re.search(r"/uploads/(20\d{2})/(\d{2})/", url)
-                pub = f"{m.group(1)}-{m.group(2)}-01" if m else ""
+                mes_atual = hoje_ceara()[:7]
+                mes_anterior = (datetime.date.fromisoformat(mes_atual + "-01") - datetime.timedelta(days=1)).isoformat()[:7]
+                pub = "" if m and f"{m.group(1)}-{m.group(2)}" in (mes_atual, mes_anterior) else (
+                    f"{m.group(1)}-{m.group(2)}-01" if m else "")
             docs.append({"url": url, "rotulo": rotulo, "pub": pub, "unidade": unidade})
         def assunto(r):
             return chave(re.split(r"\s+[–-]\s+", r, maxsplit=1)[-1]) if re.search(r"\s[–-]\s", r) else ""

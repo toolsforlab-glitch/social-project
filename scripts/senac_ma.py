@@ -294,6 +294,12 @@ def provar(res, texto, publicado, continua=False):
             inicio = ""
         cidade = str(t.get("cidade") or "").strip()
         cidade = nome_cidade(cidade) if cidade and chave(cidade) in chave(texto) else ""
+        # link de inscrição da turma (SENAI PE): só conta se estiver escrito no documento, letra a letra
+        # (o PDF pode partir o endereço em duas linhas: compara-se sem espaços)
+        link_insc = re.sub(r"\s+", "", str(t.get("link_inscricao") or ""))
+        if not (link_insc.startswith("https://") and link_insc in re.sub(r"\s+", "", texto)):
+            link_insc = ""
+        t["link_inscricao"] = link_insc
         turmas.append({**t, "curso": curso, "inicio_aulas": inicio, "cidade": cidade,
                        "fim_aulas": data_valida(t.get("fim_aulas")),
                        "horario": horario_confirmado(t.get("horario"), frase)})
@@ -730,7 +736,7 @@ def correr(fonte):
             situacao = "Aberta" if prazo and hoje <= prazo else "Encerrada"
             campos = {
                 "Título na fonte": t["curso"], "Unidade na fonte": t.get("local_curso") or "", "Cidade": t["cidade"],
-                "Unidade": "", "Link de matrícula": "", "Início": t["inicio_aulas"], "Fim": t.get("fim_aulas") or "",
+                "Unidade": "", "Link de matrícula": t.get("link_inscricao") or "", "Início": t["inicio_aulas"], "Fim": t.get("fim_aulas") or "",
                 "Horário": t.get("horario") or "", "Dias": str(t.get("dias") or ""), "Vagas": str(t.get("vagas") or ""),
                 "Carga horária": str(t.get("carga_horaria") or ""), "Prazo de inscrição": prazo,
                 "Idade mínima": "", "Escolaridade": "", "Documentos": "",

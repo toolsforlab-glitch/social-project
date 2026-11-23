@@ -17,8 +17,9 @@ LOCALIZACAO = {
     "BR-CE": {"type": "approximate", "country": "BR", "region": "Ceará", "city": "Fortaleza", "timezone": "America/Fortaleza"},
     "BR-AC": {"type": "approximate", "country": "BR", "region": "Acre", "city": "Rio Branco", "timezone": "America/Rio_Branco"},
     "BR-PI": {"type": "approximate", "country": "BR", "region": "Piauí", "city": "Teresina", "timezone": "America/Fortaleza"},
+    "BR-PE": {"type": "approximate", "country": "BR", "region": "Pernambuco", "city": "Recife", "timezone": "America/Recife"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.
@@ -42,7 +43,8 @@ usa o link da notícia.
 Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) nem da Rede CVT / Centec \
 (centec.org.br), nem editais do Programa Senac de Gratuidade do Maranhão (ma.senac.br), do Acre (portal.ac.senac.br) e do Piauí \
 (psg.pi.senac.br), nem editais do Programa SENAI de Gratuidade Regimental do Maranhão (fiema.org.br) e do Piauí \
-(fiepi.com.br, cursos técnicos de gratuidade): esses são lidos à \
+(fiepi.com.br, cursos técnicos de gratuidade), nem editais de gratuidade do SENAI Pernambuco \
+(pe.senai.br/editais e os PDFs em pe.senai.br/wp-content/uploads): esses são lidos à \
 parte, diretamente das páginas e documentos oficiais.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.

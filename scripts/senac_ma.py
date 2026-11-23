@@ -274,17 +274,23 @@ def palavras_em_ordem(nome, frase):
 
 
 def provar(res, texto, publicado, continua=False, tabela_partida=False):
+    # texto lido em colunas (Senac AL): as colunas estão separadas por « | »; as frases copiadas podem trazer ou não
+    # essas barras, por isso compara-se sem elas (o resto da frase tem de estar igual)
+    def _cv(frase, tx):
+        if tabela_partida:
+            return citacao_valida(str(frase).replace("|", " "), str(tx).replace("|", " "))
+        return citacao_valida(frase, tx)
     """Fica só o que está escrito no documento. Devolve (dados limpos, problemas do edital).
     continua=True: o edital pode dizer «a partir do dia X até o limite de vagas» (sem dia de fim); então a
     inscrição de cada turma vale até à véspera do início das aulas, e a frase tem de dizer «limite de vagas»."""
     problemas = []
     insc = res.get("inscricao") if isinstance(res.get("inscricao"), dict) else {}
     ini, fim, frase_insc = data_valida(insc.get("inicio")), data_valida(insc.get("fim")), str(insc.get("frase") or "")
-    ate_vagas = bool(continua and not fim and ini and citacao_valida(frase_insc, texto)
+    ate_vagas = bool(continua and not fim and ini and _cv(frase_insc, texto)
                      and re.search(r"limite\s+de\s+vagas", frase_insc, flags=re.I) and data_na_frase(ini, frase_insc))
     if ate_vagas:
         pass
-    elif not (ini and fim and citacao_valida(frase_insc, texto) and data_br(fim)[:5] in frase_insc.replace(" ", "")):
+    elif not (ini and fim and _cv(frase_insc, texto) and data_br(fim)[:5] in frase_insc.replace(" ", "")):
         problemas.append("o período de inscrição não foi confirmado no documento")
         ini = fim = ""
     elif ini > fim:
@@ -292,12 +298,12 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
     elif publicado and not (publicado[:10] <= fim <= (datetime.date.fromisoformat(publicado[:10])
                                                          + datetime.timedelta(days=60)).isoformat()):
         problemas.append(f"o fim da inscrição ({fim}) não está perto da data do edital ({publicado[:10]})")
-    local = str(res.get("local_inscricao") or "") if citacao_valida(str(res.get("frase_local") or ""), texto) else ""
+    local = str(res.get("local_inscricao") or "") if _cv(str(res.get("frase_local") or ""), texto) else ""
     modo = res.get("modo") if res.get("modo") in ("presencial", "online", "ambos") else ""
     if modo in ("presencial", "ambos") and not local:
         modo = ""  # inscrição presencial sem local comprovado não serve a ninguém
     # gratuidade: só uma frase que diga que não há custo; o nome do programa não chega (regra de 20/11/2026)
-    gratuito = citacao_valida(str(res.get("gratuidade") or ""), texto) and gratuidade_explicita(str(res.get("gratuidade")))
+    gratuito = _cv(str(res.get("gratuidade") or ""), texto) and gratuidade_explicita(str(res.get("gratuidade")))
     if not gratuito:
         frase = frase_de_gratuidade(texto)
         if frase:
@@ -306,15 +312,15 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
     m = re.search(r"[^.\n]{0,80}(?:programa\s+senac\s+de\s+gratuidade|gratuidade\s+regimental)[^.\n]{0,80}",
                   texto, flags=re.I)
     res["programa"] = re.sub(r"\s+", " ", m.group(0)).strip() if m else ""
-    renda = str(res.get("renda") or "") if citacao_valida(str(res.get("renda") or ""), texto) else ""
-    reserva = str(res.get("reserva") or "") if citacao_valida(str(res.get("reserva") or ""), texto) else ""
+    renda = str(res.get("renda") or "") if _cv(str(res.get("renda") or ""), texto) else ""
+    reserva = str(res.get("reserva") or "") if _cv(str(res.get("reserva") or ""), texto) else ""
     if (not perfis_da_frase(reserva) or "( )" in reserva
             or not re.search(r"reserv|\bcotas?\b|priorid|prefer[êe]nc|exclusiv|destinad|somente|apenas", reserva, flags=re.I)):
         # a frase tem de nomear um grupo que conhecemos e dizer que há vagas para ele (a pergunta da ficha de
         # inscrição «Você é pessoa com deficiência? ( ) sim ( ) não» não é uma reserva de vagas)
         reserva = ""
     acess = str(res.get("acessibilidade") or "")
-    if not (citacao_valida(acess, texto) and etiquetas_acessibilidade(acess)):
+    if not (_cv(acess, texto) and etiquetas_acessibilidade(acess)):
         acess = ""  # a frase tem de estar no documento e nomear um recurso concreto
     turmas = []
     for t in res.get("turmas") or []:
@@ -322,7 +328,7 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
             continue
         frase, curso = str(t.get("frase") or ""), str(t.get("curso") or "").strip()
         inicio = data_valida(t.get("inicio_aulas"))
-        if not curso or not citacao_valida(frase, texto):
+        if not curso or not _cv(frase, texto):
             continue
         if chave(curso) not in chave(frase) and not (tabela_partida and palavras_em_ordem(curso, frase)):
             continue

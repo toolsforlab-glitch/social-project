@@ -64,17 +64,17 @@ FONTES = [
              "a frase do comunicado com o nome do curso e o novo período."},
     {"nome": "Senac AL", "uf": "AL", "local": "BR-AL", "regiao": "Alagoas",
      "entidade": "Senac Alagoas (Programa Senac de Gratuidade)", "estado": "estado/senac_al.json",
-     "listar": "senac_al", "lista": "https://psg.al.senac.br/editais", "layout": True, "max_caracteres": 48000,
+     "listar": "senac_al", "lista": "https://psg.al.senac.br/editais", "max_caracteres": 48000, "inicio_opcional": True,
      "prefixo_turma": "https://psg.al.senac.br/admin/wp-content/uploads/",
      "nota": "Os editais do Senac Alagoas chamam-se «Edital de Bolsas Gratuitas» (a frase de gratuidade pode ser "
              "a do título ou do preâmbulo, ex.: «concessão de bolsas gratuitas nos cursos»). A inscrição costuma "
              "ser presencial, na unidade indicada no anexo. A tabela do anexo tem, em cada linha, a coluna "
              "«PERÍODO DE INSCRIÇÃO / MATRÍCULA» (ex.: «01/12/2026 a 11/12/2026»): é ESSE o período de inscrição "
-             "(não o «PERÍODO DE EFETIVAÇÃO DAS MATRÍCULAS», que é mais longo); em «inscricao.frase» copia as "
-             "linhas da tabela onde está esse período. Em «local_inscricao» põe a unidade e o endereço do anexo. "
-             "O texto mantém as colunas lado a lado: o nome de um curso pode estar partido em duas ou três linhas, "
-             "misturado com as outras colunas; em «frase» copia essas linhas inteiras, tal como aparecem (com o "
-             "nome do curso e a data de início do «PERÍODO DO CURSO»). Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
+             "(não o «PERÍODO DE EFETIVAÇÃO DAS MATRÍCULAS», que é mais longo); no texto, as duas datas dessa "
+             "coluna podem estar em linhas seguidas («01/12/2026 a» e, na linha seguinte, «11/12/2026»); em "
+             "«inscricao.frase» copia essas linhas. Em «local_inscricao» põe a unidade e o endereço do anexo. "
+             "Em «frase» de cada curso copia a linha com o nome do curso; a data de início do curso pode não estar "
+             "na mesma linha: nesse caso devolve inicio_aulas = null. Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
              "nessa informação, a frase do comunicado."},
     {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
      "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
@@ -350,11 +350,11 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
             "gratuito": gratuito, "renda": renda, "reserva": reserva, "acessibilidade": acess, "turmas": turmas}, problemas
 
 
-def auditar(t, edital, problemas_edital):
+def auditar(t, edital, problemas_edital, inicio_opcional=False):
     p = list(problemas_edital)
     if not edital["fim"] and not edital.get("ate_vagas"):
         p.append("sem período de inscrição comprovado")
-    if not t["inicio_aulas"]:
+    if not t["inicio_aulas"] and not inicio_opcional:
         p.append("sem data de início das aulas comprovada")
     elif edital["ini"] and t["inicio_aulas"] < edital["ini"]:
         p.append(f"as aulas começam ({t['inicio_aulas']}) antes de abrir a inscrição ({edital['ini']})")
@@ -812,7 +812,7 @@ def correr(fonte):
             k = chave(t["curso"])
             if k in ocultos:
                 continue
-            p = auditar(t, edital, problemas)
+            p = auditar(t, edital, problemas, fonte.get("inicio_opcional", False))
             if e.get("tem_aviso"):
                 p.append("o edital tem aviso de prorrogação ou alteração: confirmar prazos e vagas")
             if texto_avisos:

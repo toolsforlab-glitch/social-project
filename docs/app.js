@@ -120,6 +120,7 @@
       return isNaN(h) ? "" : h < 12 ? "Manhã" : h < 18 ? "Tarde" : "Noite";
     }).filter(Boolean);
   }
+  function semAncora(u) { return String(u || "").split("#")[0]; }
   function turmaHtml(t, comBotao, tituloCurso) {
     var l = ["<strong>" + esc(t.unidade || (t.local && t.local.nome) || "") + "</strong>" + (t.cidade ? " (" + esc(t.cidade) + ")" : "")];
     var quando = [t.inicio ? dataCurtaG(t.inicio) + (t.fim ? " a " + dataCurtaG(t.fim) : "") : "", t.horario, t.dias]
@@ -171,6 +172,12 @@
                  nota: "O botão abre a página de acesso" + (conta ? " do " + esc(conta) : "") + ", não o curso. Entre com a sua conta." +
                        (d.nota ? extra : " Se ainda não tem conta, é preciso criar uma nessa página. Depois de entrar, clique outra vez no botão.") };
       case "lista":
+        // turma presencial sem página própria (ex.: Centec): a inscrição é na unidade e o botão serve só para conferir
+        // (pedido do responsável, 23/11/2026)
+        if (emTurma && inscricao === "presencial")
+          return { rotulo: "Conferir na página " + (d.nome ? "do " + d.nome : "oficial"),
+                   nota: "Esta turma não tem página própria: o botão abre a lista geral" + (d.nome ? " do " + esc(d.nome) : "") + ", só para conferir. " +
+                         (d.procurar ? "Lá, procure “" + esc(d.procurar) + "”." : "Lá, procure o nome do curso.") + extra };
         return { rotulo: "Abrir a lista de cursos", nota: "O botão abre uma lista geral, não o curso. " +
                  (d.procurar ? "Na lista, procure “" + esc(d.procurar) + "”." : "Na lista, procure o nome do curso.") + precisaConta + extra };
       case "inicio":
@@ -449,8 +456,11 @@
           }).join("") + "</ul></div>" : "") +
         (!temTurmas && c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
           c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
-        (temTurmas ? '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
-                     ((c.destino || {}).tipo === "lista" ? "Ver a lista completa de cursos" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>"
+        // botão do curso por baixo das turmas: só se levar a outra página que não a de uma das turmas
+        // (antes repetia o mesmo edital ou a mesma lista; pedido do responsável, 23/11/2026)
+        (temTurmas ? (turmas.some(function (t) { return semAncora(t.link) === semAncora(c.url); }) ? "" :
+                     '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
+                     ((c.destino || {}).tipo === "lista" ? "Ver a lista completa de cursos" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>")
                    : (function () {
                        var b = destinoBotao(c.destino, false, "", (c.antes || []).indexOf("govbr") >= 0);
                        return (b.nota ? '<p class="guia-link">' + b.nota + "</p>" : "") +

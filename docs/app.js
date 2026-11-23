@@ -45,6 +45,15 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
+  // Telefones clicáveis no celular (revisão de 23/11/2026): cada número com DDD vira um link «tel:»; o WhatsApp abre a
+  // conversa (wa.me). Recebe texto sem escapar e devolve HTML seguro.
+  function telefones(t, whatsapp) {
+    return esc(t).replace(/(?:\(?\d{2}\)?[\s.]?)\d{4,5}[\s.-]?\d{4}\b/g, function (m) {
+      var d = m.replace(/\D/g, "");
+      if (d.length < 10 || d.length > 11) return m;
+      return '<a class="tel" href="' + (whatsapp ? "https://wa.me/55" + d : "tel:+55" + d) + '"' + (whatsapp ? ' rel="noopener"' : "") + ">" + m + "</a>";
+    });
+  }
   function dataBonita(iso) {
     if (!iso) return "";
     var p = iso.slice(0, 10).split("-");
@@ -146,7 +155,7 @@
     if (t.info) l.push(esc(t.info));
     if (t.inscricao === "online") l.push(t.info ? "Inscrição pela internet." : "Aulas on-line ao vivo. Inscrição pela internet.");
     if (t.inscricao === "presencial") l.push("Inscrição presencial" + (t.local_texto ? " em: " + esc(t.local_texto) : " na unidade"));
-    if (t.inscricao !== "pagina" && t.telefone) l.push("Dúvidas: " + esc(t.telefone));
+    if (t.inscricao !== "pagina" && t.telefone) l.push("Dúvidas: " + telefones(t.telefone));
     var quem = [t.idade_minima ? t.idade_minima + " anos ou mais" : "", t.escolaridade ? (t.inscricao === "pagina" ? "Escolaridade: " : "Requisito: ") + t.escolaridade.replace(/\.$/, "") : ""]
       .filter(Boolean).join(" · ");
     if (quem) l.push(esc(quem));
@@ -156,7 +165,7 @@
     if (u) {
       var morada = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
       if (morada) l.push(esc(morada));
-      if (u.telefone) l.push("Telefone " + esc(u.telefone));
+      if (u.telefone) l.push("Telefone " + telefones(u.telefone));
     }
     if (comBotao) {
       var b = destinoBotao(t.destino, true, t.inscricao);
@@ -534,7 +543,7 @@
             var morada = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
             if (morada) linhas.push(esc(morada));
             if (u.horario) linhas.push("Atendimento: " + esc(u.horario));
-            var contactos = [u.telefone ? "Telefone " + esc(u.telefone) : "", u.whatsapp ? "WhatsApp " + esc(u.whatsapp) : ""].filter(Boolean);
+            var contactos = [u.telefone ? "Telefone " + telefones(u.telefone) : "", u.whatsapp ? "WhatsApp " + telefones(u.whatsapp, true) : ""].filter(Boolean);
             if (contactos.length) linhas.push(contactos.join(" · "));
             if (u.o_que_levar) linhas.push("Leve: " + esc(u.o_que_levar));
             return "<li>" + linhas.join("<br>") + "</li>";
@@ -545,7 +554,7 @@
         // (antes repetia o mesmo edital ou a mesma lista; pedido do responsável, 23/11/2026)
         (temTurmas ? (turmas.some(function (t) { return semAncora(t.link) === semAncora(c.url); }) ? "" :
                      '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' +
-                     ((c.destino || {}).tipo === "lista" ? "Ver a lista completa de cursos" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>")
+                     ((c.destino || {}).tipo === "lista" ? "Ver todos os cursos na página oficial" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a>")
                    : (function () {
                        var b = destinoBotao(c.destino, false, "", (c.antes || []).indexOf("govbr") >= 0);
                        return (b.nota ? '<p class="guia-link">' + b.nota + "</p>" : "") +
@@ -813,6 +822,16 @@
       }
     });
 
+    // celular: quem chega já com uma escolha (da página inicial) vê logo a contagem e os cursos; os filtros ficam
+    // na caixa «Mudar a busca». Em telas largas, a caixa fica sempre aberta.
+    var caixaFiltros = el("cursos-filtros-caixa");
+    if (caixaFiltros && window.matchMedia) {
+      var largo = window.matchMedia("(min-width: 64rem)");
+      var chegouComEscolha = ["quero", "onde", "facilita", "marca", "certificado", "duracao"].some(function (k) { return params.has(k); });
+      caixaFiltros.open = largo.matches || !chegouComEscolha;
+      var ajustar = function () { if (largo.matches) caixaFiltros.open = true; };
+      if (largo.addEventListener) largo.addEventListener("change", ajustar); else if (largo.addListener) largo.addListener(ajustar);
+    }
     botoesOpcoes(el("cursos-opcoes"), site.necessidades, escolhidas, filtrar);
     // ao entrar na busca sem filtros no link, o padrão é «Mostrar tudo» (pedido do responsável, 22/11/2026)
     preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : "");

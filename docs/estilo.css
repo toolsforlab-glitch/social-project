@@ -45,7 +45,7 @@ a:hover { color: var(--anil-escuro); }
 .topo { background: var(--cal); border-bottom: 1px solid var(--pedra); }
 .topo .dentro { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: .9rem; padding-bottom: .9rem; }
 .marca { font-weight: 700; font-size: 1.3rem; color: var(--anil); text-decoration: none; letter-spacing: -0.01em; }
-.menu { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 1rem; }
+.menu { display: flex; gap: .15rem 1.1rem; flex-wrap: wrap; font-size: 1rem; }
 .menu a { text-decoration: none; color: var(--tinta); padding: .2rem 0; border-bottom: 2px solid transparent; }
 .menu a[aria-current="page"] { border-bottom-color: var(--anil); color: var(--anil); font-weight: 700; }
 
@@ -274,3 +274,15 @@ p.avisar a { color: var(--tinta-suave); }
 .bolinha circle { fill: var(--anil); stroke: #fff; stroke-width: 2; }
 .bolinha text { fill: #fff; font-weight: 700; text-anchor: middle; dominant-baseline: central; font-family: inherit; }
 .bolinha.zero circle { fill: #9aa3b8; }
+
+/* Celular (revisão de 23/11/2026): os filtros ocupavam mais de duas telas antes do primeiro curso. Ficam numa caixa
+   «Mudar a busca» que fecha quando a pessoa já chega com uma escolha feita na página inicial; em telas largas a caixa
+   fica sempre aberta e o botão some. */
+.filtros-caixa > summary { list-style: none; cursor: pointer; display: inline-block; font-weight: 700; color: var(--anil);
+  border: 2px solid var(--anil); border-radius: var(--raio); padding: .6rem 1.2rem; margin-bottom: 1rem; }
+.filtros-caixa > summary::-webkit-details-marker { display: none; }
+.filtros-caixa > summary::before { content: "▸ "; }
+.filtros-caixa[open] > summary::before { content: "▾ "; }
+@media (min-width: 64rem) { .filtros-caixa > summary { display: none; } }
+/* telefones clicáveis: área de toque maior */
+a.tel { white-space: nowrap; padding: .15rem 0; }

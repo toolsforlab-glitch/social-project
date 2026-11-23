@@ -1,0 +1,27 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt || pip install -q pypdf requests
+      - run: |
+          cd scripts && python3 - <<'PY'
+          import senac_ma as s, re
+          b = "https://tecnico.senaibahia.com.br/wp-content/uploads/"
+          for n in ["2026/10/REGULAMENTO-SENAI-PROGRAMA-DE-BOLSA-DE-ESTUDO-2027.1_Chancelado.pdf", "2026/11/PS-CHP-CHP-2027.1-2o-ADITIVO_Chancelado-1.pdf", "2026/10/Edital-PS-CHP-2027.1_VF_Chancelado.pdf"]:
+              t = s.texto_do_documento(s.baixar(b + n, timeout=60), "application/pdf")
+              print("=====", n, len(t))
+              if "REGULAMENTO" in n:
+                  print(t[:9000])
+              elif "ADITIVO" in n:
+                  print(t[:2500])
+              else:
+                  for m in re.finditer(r"(?i)(inscri[çc][õo]es|cronograma|gratuid|bolsa)", t):
+                      pass
+                  i = t.lower().find("cronograma")
+                  print(t[i:i+2500])
+          PY

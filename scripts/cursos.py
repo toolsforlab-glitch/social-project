@@ -37,7 +37,9 @@ diz nos requisitos quando costumam abrir as inscrições.
 4b. É aberto ao público em geral. Exclui cursos condicionados a ter um emprego ou vínculo de trabalho: só para \
 servidores públicos, funcionários de um órgão ou de uma empresa, trabalhadores de uma categoria ou associados \
 (ex.: escolas de governo como a Egape, universidades corporativas). O objetivo do site é servir quem não tem \
-recursos ou está em situação de vulnerabilidade (regra do responsável, 23/11/2026).
+recursos ou está em situação de vulnerabilidade (regra do responsável, 23/11/2026). Cursos só para alunos da \
+rede pública ou da EJA (ex.: Trilhatec, em Pernambuco) PODEM entrar: não dependem de emprego. Nesse caso, diz \
+para quem é em "exclusivo_para" (ex.: "Só para alunos da rede pública estadual").
 5. O link veio dos resultados da pesquisa e é a página PRÓPRIA deste curso (ou desta turma, ou do edital deste \
 curso), onde a pessoa se inscreve. Não uses a página geral com a lista de cursos, a página inicial do campus ou \
 uma página de pesquisa: abre a lista e usa o link do curso. Exceção: no Senac PSG (psg.ce.senac.br) usa a lista \

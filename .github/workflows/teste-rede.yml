@@ -6,11 +6,14 @@ jobs:
     steps:
       - run: |
           A="Mozilla/5.0"
-          curl -sS -m 25 -A "$A" https://psg.pi.senac.br/ -o /dev/null 2>&1 | head -3 || true
-          echo | openssl s_client -connect psg.pi.senac.br:443 -servername psg.pi.senac.br 2>/dev/null | openssl x509 -noout -subject -issuer -dates 2>&1 | head -5 || true
-          curl -sSL -m 25 -A "$A" http://psg.pi.senac.br/ -o /tmp/p -w "http: %{http_code} %{size_download} %{url_effective}\n" || true
-          curl -sSLk -m 25 -A "$A" https://psg.pi.senac.br/ -o /tmp/p -w "k: %{http_code} %{size_download} %{url_effective}\n" || true
-          echo "== links"; grep -oiE '(href|src|action)="[^"]*"' /tmp/p | sort -u | head -60
-          echo "== texto"; sed 's/<[^>]*>/ /g' /tmp/p | tr -s ' \n' | head -c 3000; echo
-          curl -sSL -m 25 -A "$A" "https://www.pi.senac.br/cursos/list?modalidade_id=curso_livre" -o /tmp/l -w "lista: %{http_code} %{size_download}\n" || true
-          sed 's/<[^>]*>/ /g' /tmp/l | tr -s ' \n' | grep -ioE ".{0,80}(gratuit|psg).{0,80}" | head -10
+          for p in vagas inscricao programa; do
+            echo "=== $p"; curl -sSLk -m 25 -A "$A" "https://psg.pi.senac.br/$p/" -o /tmp/p -w "%{http_code} %{size_download}\n" || true
+            python3 - <<'PY'
+          import re,html
+          t=open('/tmp/p',encoding='utf-8',errors='replace').read()
+          t=re.sub(r'(?s)<(script|style)[^>]*>.*?</\1>',' ',t)
+          print(sorted(set(re.findall(r'(?:href|action|data-url)="([^"#]+)"',t)))[:40])
+          s=html.unescape(re.sub(r'<[^>]+>',' ',t)); s=re.sub(r'\s+',' ',s)
+          print(s[:2500])
+          PY
+          done

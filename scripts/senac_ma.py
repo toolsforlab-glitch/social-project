@@ -64,7 +64,7 @@ FONTES = [
              "a frase do comunicado com o nome do curso e o novo período."},
     {"nome": "Senac AL", "uf": "AL", "local": "BR-AL", "regiao": "Alagoas",
      "entidade": "Senac Alagoas (Programa Senac de Gratuidade)", "estado": "estado/senac_al.json",
-     "listar": "senac_al", "lista": "https://psg.al.senac.br/editais", "layout": True,
+     "listar": "senac_al", "lista": "https://psg.al.senac.br/editais", "layout": True, "max_caracteres": 48000,
      "prefixo_turma": "https://psg.al.senac.br/admin/wp-content/uploads/",
      "nota": "Os editais do Senac Alagoas chamam-se «Edital de Bolsas Gratuitas» (a frase de gratuidade pode ser "
              "a do título ou do preâmbulo, ex.: «concessão de bolsas gratuitas nos cursos»). A inscrição costuma "
@@ -150,7 +150,11 @@ def texto_do_documento(dados, tipo, layout=False):
     if "pdf" in tipo or dados[:4] == b"%PDF":
         from pypdf import PdfReader
         if layout:
-            return "\n".join((p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(dados)).pages)
+            # as colunas vêm separadas por muitos espaços: cada separação longa vira « | » (texto mais curto e as
+            # colunas continuam distinguíveis); as linhas em branco saem
+            texto = "\n".join((p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(dados)).pages)
+            linhas = [re.sub(r" {3,}", " | ", l).strip(" |") for l in texto.splitlines()]
+            return "\n".join(l for l in linhas if l)
         return "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(dados)).pages)
     if dados[:4] == b"PK\x03\x04":  # .docx
         return texto_docx(dados)

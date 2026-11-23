@@ -3,6 +3,8 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -10,8 +12,26 @@ jobs:
       - run: pip install -q -r requirements.txt || pip install -q pypdf requests
       - run: sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-por poppler-utils >/dev/null
       - run: |
-          for u in https://al.senai.br/wp-content/uploads/2026/09/edital-senai.pdf https://al.senai.br/wp-content/uploads/2026/09/Senai.pdf; do
-            curl -sL -o e.pdf "$u"; pdfinfo e.pdf | grep -i "pages\|producer\|creator"; pdffonts e.pdf | head -5
-            pdftoppm -r 200 -png -f 1 -l 4 e.pdf p; for f in p-*.png; do tesseract $f - -l por 2>/dev/null; done | head -150; rm -f p-*.png
-            echo ==========
-          done
+          cd scripts && python3 - <<'PY'
+          import senac_ma as s, json
+          from comum import claude, extrair_json
+          f = next(x for x in s.FONTES if x["nome"] == "Senai AL")
+          s.hoje_ceara = lambda: "2026-09-08"
+          e = s.listar_senai_al(f)[0]
+          print("EDITAL", e["title"], e.get("periodo_lista"))
+          texto = s.recortar(s.texto_do_documento(s.baixar(e["documents"][0]["url"], timeout=60), "application/pdf"),
+                             f.get("anexo", r"ANEXO\s+I\b"), f.get("max_caracteres", s.MAX_CARACTERES))
+          texto += f"\n\n=== INFORMAÇÕES DESTE EDITAL NA PÁGINA OFICIAL ({e.get('pagina')}) ===\n{e['texto_pagina']}"
+          print("CHARS", len(texto)); print(texto[-3500:])
+          sistema = s.SISTEMA.replace("Senac Maranhão (Programa Senac de Gratuidade)", f["entidade"]).replace(
+              "Programa Senac de Gratuidade", f.get("programa", "Programa Senac de Gratuidade"))
+          sistema = sistema.replace("\n\nDevolve só JSON", f"\n- {f['nota']}\n\nDevolve só JSON")
+          r, uso = claude("claude-haiku-5-5", sistema, f"Título do edital: {e['title']}\n\nTexto do edital:\n{texto}", max_tokens=6000)
+          res = extrair_json(r)
+          ed, prob = s.provar(res, texto, e.get("published_at") or "")
+          print("PROBLEMAS", prob)
+          print("INSC", ed.get("ini"), ed.get("fim"), "GRATIS", ed.get("gratuito"), "LOCAL", ed.get("local"))
+          for t in ed["turmas"][:40]:
+              print("T", t.get("curso"), "|", t.get("cidade"), "|", t.get("inicio_aulas"), "|", t.get("horario"), "|", t.get("link_inscricao"))
+          print("PROPOSTAS", len(res.get("turmas") or []), "PROVADAS", len(ed["turmas"]))
+          PY

@@ -154,6 +154,28 @@ Devolve só JSON entre <json></json>:
 
 # ------------------------------------------------------------------ documento
 
+def texto_por_ocr(dados, max_paginas=12):
+    """Texto de um PDF digitalizado, com o Tesseract (português). Devolve "" se o Tesseract não estiver instalado.
+    O texto lido assim pode ter letras trocadas: as fontes que o usam têm de ter uma segunda prova do período de
+    inscrição (ex.: o mesmo período escrito na página oficial, em «periodo_lista»)."""
+    with tempfile.TemporaryDirectory() as pasta:
+        origem = os.path.join(pasta, "e.pdf")
+        with open(origem, "wb") as f:
+            f.write(dados)
+        try:
+            subprocess.run(["pdftoppm", "-r", "200", "-png", "-l", str(max_paginas), origem, os.path.join(pasta, "p")],
+                           capture_output=True, timeout=180, check=True)
+            partes = []
+            for img in sorted(x for x in os.listdir(pasta) if x.endswith(".png")):
+                r = subprocess.run(["tesseract", os.path.join(pasta, img), "-", "-l", "por", "--psm", "6"],
+                                   capture_output=True, timeout=120)
+                partes.append(r.stdout.decode("utf-8", "replace"))
+            texto = "\n".join(partes)
+            return ("[texto lido por OCR de um PDF digitalizado]\n" + texto) if texto.strip() else ""
+        except (OSError, subprocess.SubprocessError):
+            return ""
+
+
 def texto_do_documento(dados, tipo, layout=False):
     """Texto de um PDF, Word antigo (.doc) ou Word novo (.docx). Com layout=True, o PDF é lido mantendo as colunas
     (cada linha da tabela fica numa linha do texto; usado no Senac AL, onde a leitura normal parte as linhas)."""
@@ -165,7 +187,10 @@ def texto_do_documento(dados, tipo, layout=False):
             texto = "\n".join((p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(dados)).pages)
             linhas = [re.sub(r" {3,}", " | ", l).strip(" |") for l in texto.splitlines()]
             return "\n".join(l for l in linhas if l)
-        return "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(dados)).pages)
+        texto = "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(dados)).pages)
+        if len(texto.strip()) < 300:
+            texto = texto_por_ocr(dados) or texto  # PDF digitalizado (imagens): lido por OCR (SENAI AL, 23/11/2026)
+        return texto
     if dados[:4] == b"PK\x03\x04":  # .docx
         return texto_docx(dados)
     # Word antigo (.doc): o LibreOffice converte para .docx sem perder as linhas das tabelas (o antiword perde
@@ -626,16 +651,21 @@ def listar_senai_al(fonte):
         titulo = _html.unescape(re.sub(r"<[^>]+>", "", (re.search(r"<h2[^>]*>(.*?)</h2>", b, flags=re.S) or [None, ""])[1])).strip()
         texto = _html.unescape(re.sub(r"[ \t\xa0]+", " ", re.sub(r"<(?:/p|br|/li|/h\d)[^>]*>", "\n", b)))
         texto = re.sub(r"<[^>]+>", " ", texto)
-        texto = "\n".join(l.strip() for l in texto.splitlines() if l.strip())
+        texto = "\n".join(l.strip() for l in texto.splitlines() if l.strip() and not l.strip().endswith('">'))
+        segunda = [x.start() for x in re.finditer(r"EDITAL DE GRATUIDADE", texto)]
+        if len(segunda) > 1:
+            texto = texto[:segunda[1]]  # o bloco repete o texto (versão para telemóvel)
         docs = [(h, _html.unescape(re.sub(r"<[^>]+>", " ", r)).strip())
                 for h, r in re.findall(r'<a[^>]+href="([^"]+\.pdf)"[^>]*>(.*?)</a>', b, flags=re.S | re.I)]
         if not docs:
             continue
         m = re.search(r"Per[ií]odo de inscri[çc][ãa]o:?\s*(\d{2}/\d{2}/\d{4})(?:\s*[aàá]\s*(\d{2}/\d{2}/\d{4}))?", texto, flags=re.I)
-        fim = ""
+        fim = ini_p = ""
         if m:
             d, mm_, a = (m.group(2) or m.group(1)).split("/")
             fim = f"{a}-{mm_}-{d}"
+            d, mm_, a = m.group(1).split("/")
+            ini_p = f"{a}-{mm_}-{d}"
         edital = next((u for u, _ in docs if not re.search(r"lista|aprovad|resultado|classifica|comunicado|retifica|errata|aditivo",
                                                             u.rsplit("/", 1)[-1], flags=re.I)), docs[0][0])
         mm = re.search(r"/uploads/(20\d{2})/(\d{2})/", edital)
@@ -649,7 +679,8 @@ def listar_senai_al(fonte):
                             f"{mm.group(1)}-{mm.group(2)}-01" if mm else ""),
                         "updated_at": "|".join(u.rsplit("/", 1)[-1] for u, _ in docs) + f"|{fim}",
                         "title": titulo, "pagina": fonte["lista"], "padrao": re.escape(edital), "aditivo": False,
-                        "avisos": avisos, "texto_pagina": texto[:4000],
+                        "avisos": avisos, "texto_pagina": texto[:2500],
+                        **({"periodo_lista": (ini_p, fim)} if m and m.group(2) else {}),
                         "documents": [{"type": "edital", "mime_type": "application/pdf", "url": edital}]})
     return editais
 

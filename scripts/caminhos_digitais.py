@@ -9,8 +9,10 @@ Regras:
 - só turmas com vagas e cuja parada ainda não acabou; «Esgotada» ou parada passada = Encerrada;
 - o «Tour de Realidade Virtual» não é curso: fica de fora;
 - gratuidade: só com a frase da própria página, conferida por código a cada leitura (FRASE_GRATUIDADE);
-- carga horária: NÃO é publicada (a página das trilhas diz 16 a 40 horas, mas cada turma da carreta aparece com 1 hora;
-  pendência de 23/11/2026). Enquanto PUBLICAR_SOZINHO for False, as turmas novas entram em Rever com uma nota.
+- carga horária: NÃO é publicada (as notícias falam de cursos de 16 a 40 horas, presenciais e on-line, mas cada turma da
+  carreta aparece com 1 hora e nenhuma fonte oficial diz a carga da parte presencial; auditoria do ChatGPT conferida a
+  23/11/2026). Decisão do responsável (23/11/2026): publicar só o que está comprovado, com a carga em branco.
+  Com PUBLICAR_SOZINHO = False, as turmas novas voltam a entrar em Rever.
 """
 import datetime
 import html as _html
@@ -24,8 +26,9 @@ from turmas import ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, nec
 PAGINA = "https://caminhosdigitais.com.br/inscricao/"
 ENTIDADE = "Governo da Paraíba – Secties (Caminhos Digitais)"
 FRASE_GRATUIDADE = "A formação é gratuita e as aulas acontecem na carreta"
+FRASE_AJUDA = "nossa equipe faz a inscrição para você"  # inscrição também na carreta (conferida a 23/11/2026)
 FORA = re.compile(r"\btour\b|realidade virtual", re.I)
-PUBLICAR_SOZINHO = False  # 23/11/2026: à espera da confirmação da carga horária (ver pendência)
+PUBLICAR_SOZINHO = True  # 23/11/2026: decisão do responsável: publicar sem carga horária (fica em branco)
 NOTA_ESPERA = "À espera da confirmação da carga horária das turmas da carreta (pendência de 23/11/2026)."
 
 
@@ -77,6 +80,7 @@ def main():
     cidades = ler(html)
     texto = limpo(html)
     gratuito = citacao_valida(FRASE_GRATUIDADE, texto)
+    ajuda = citacao_valida(FRASE_AJUDA, texto)
     print(f"Caminhos Digitais: {len(cidades)} cidades na página; gratuidade {'confirmada' if gratuito else 'NÃO confirmada'}.")
     if not cidades and "cidade-grupo" not in html:
         registar_pendencia(base, "Caminhos Digitais (Paraíba): a página de inscrição mudou de formato.",
@@ -113,10 +117,12 @@ def main():
                 "Unidade": "", "Cidade": cidade, "Link de matrícula": PAGINA, "Início": ini, "Fim": fim,
                 "Horário": horario(hora), "Dias": "", "Carga horária": "", "Vagas": vagas,
                 "Prazo de inscrição": fim, "Idade mínima": "", "Escolaridade": "", "Documentos": "",
-                "Mais informações": "Inscrição na página do projeto, enquanto houver vagas (pede nome, CPF, data de nascimento e telefone).",
-                "Local na fonte": local, "Modo de inscrição": "online", "Situação": situacao,
+                "Mais informações": ("Inscrição na página do projeto, enquanto houver vagas (pede nome, CPF, data de nascimento e telefone)."
+                                     + (" Quem precisar de ajuda pode se inscrever na própria carreta." if ajuda else "")),
+                "Local na fonte": local, "Modo de inscrição": "ambos" if ajuda else "online", "Situação": situacao,
                 "Última verificação": hoje, "Falhas seguidas": 0,
-                "Evidência": f"página oficial: «{cidade}» «{sub}» | «{curso}» «{hora}» «{vagas}»"[:900],
+                "Evidência": (f"página oficial: «{cidade}» «{sub}» | «{curso}» «{hora}» «{vagas}»"
+                              + (f" | «{FRASE_AJUDA}»" if ajuda else ""))[:900],
                 "Auditoria": (f"{hoje}: não passou: " + "; ".join(problemas) + ".") if problemas else
                 f"{hoje}: ok (cidade, datas, horário e vagas da página oficial de inscrição).",
             }

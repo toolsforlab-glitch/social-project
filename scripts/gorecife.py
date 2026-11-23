@@ -64,6 +64,15 @@ def titulo_legivel(nome):
                     for i, p in enumerate(nome.split(" ")))
 
 
+def requisitos(t):
+    """Idade mínima da lista e, se a descrição começar por «PRÉ-REQUISITO: …», esse pré-requisito (palavras da prefeitura)."""
+    partes = [f"Ter {t.get('minimum_age')} anos ou mais"] if t.get("minimum_age") else []
+    m = re.match(r"\s*PR[ÉE][\s-]*REQUISITOS?\s*:\s*(.+?)(?=\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]|$)", str(t.get("description") or ""))
+    if m:
+        partes.append(m.group(1).strip().capitalize())
+    return "; ".join(partes)
+
+
 def auditar(nome, ini, fim, prazo, h_ini, h_fim, escola):
     p = []
     if not nome:
@@ -172,7 +181,7 @@ def main():
                     "Cidade": "Recife", "Descrição": re.sub(r"\s+", " ", str(t.get("description") or ""))[:400],
                     "Origem da descrição": "", "Necessidades": necessidades("", nome),
                     "Perfis": "todos", "Condição de acesso": "",
-                    "Requisitos": f"Ter {t.get('minimum_age')} anos ou mais" if t.get("minimum_age") else "",
+                    "Requisitos": requisitos(t),
                     "Certificado": "desconhecido", "Inscrições até": "", "Início": "",
                     "Duração": f"{t.get('workload')} horas" if t.get("workload") else "", "Link verificado": "SIM",
                     "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "turmas", "Notas": "",

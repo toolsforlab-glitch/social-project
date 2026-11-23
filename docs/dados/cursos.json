@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-23T20:40",
+ "atualizado": "2026-11-23T20:50",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -23382,6 +23382,55 @@
    "internet": "Não",
    "ajuda": "",
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
+   "etiquetas": [],
+   "acessibilidade": []
+  },
+  {
+   "id": "C-45476d65",
+   "titulo": "Cursos de beleza, gastronomia e turismo (Qualifica Natal, 8º ciclo)",
+   "entidade": "Prefeitura do Natal (Semtas, Centros Municipais de Trabalho e Empreendedorismo)",
+   "url": "https://natal.rn.gov.br/news/post2/46141",
+   "pagina_propria": false,
+   "local": "BR-RN",
+   "modalidade": "presencial",
+   "destino": null,
+   "pais": "BR",
+   "regiao": "Rio Grande do Norte",
+   "cidade": "Natal",
+   "descricao": "Cursos gratuitos de qualificação profissional da Prefeitura do Natal nos eixos de imagem pessoal e beleza, gastronomia e segurança alimentar e turismo (Qualifica Natal Turismo). 40 horas cada, com aulas de 1 a 14 de dezembro, manhã ou tarde, no CMTE Norte (Gramoré) ou no CMTE Ribeira. A lista completa de cursos, horários e pré-requisitos está no catálogo ligado à notícia oficial.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Levar documento de identidade, CPF, comprovante de residência e comprovante de escolaridade, quando exigido pelo curso",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2026-11-24",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Por confirmar",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-23",
+   "inicio": "2026-12-01",
+   "duracao": "40 horas",
+   "primeiro_visto": "2026-11-23",
+   "como_me_inscrever": [
+    "Inscrição presencial nos dias 23 e 24 de novembro, das 8h às 16h, no CMTE Ribeira (Avenida Duque de Caxias, 27, Ribeira, em frente ao Banco do Brasil) ou no CMTE Norte (Rua Bariri, s/n, Gramoré). Telefone: (84) 3232-4922."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
    "etiquetas": [],
    "acessibilidade": []
   }

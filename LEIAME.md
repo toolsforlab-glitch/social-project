@@ -181,3 +181,8 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Vigias** (vigiar.py), porque em 23/11 não havia nada aberto: Senac SE (lista pública do PSG, psg.se.senac.br/api/course/filter, conta meta.totalItems), SENAI RN (página «Oportunidades», frase «Nenhuma oportunidade encontrada») e Senac RN (página do Programa de Bolsas, frase do último resultado).
 - **SENAI SE**: o catálogo não marca os cursos gratuitos e a página de matrícula (app.fies.org.br) não abre fora do Brasil; pendência.
 
+## Regras de 23/11/2026 (à noite): prova e escolas públicas
+
+- **Cursos que exigem prova ficam fora**: prova objetiva ou escrita, vestibular, nota do ENEM, exame de seleção, teste seletivo (`exige_prova` em base.py). Aplicado na pesquisa semanal (regra 4d e filtro por código antes de criar o curso) e na verificação (o curso passa a Oculto). Pertencer a um grupo (baixa renda, CadÚnico, mulheres, LGBTQIA+, migrantes, pessoas com deficiência, jovens, pessoas idosas) não é prova e continua a valer. Saíram: SENAI Bahia (ENEM ≥ 500) e as Escolas Técnicas Estaduais de Pernambuco (prova objetiva).
+- **Escolas públicas = «Tudo gratuito»** (Sites de confiança): todos os institutos federais da região (IFMA, IFCE, IFAC, IFPI, IFPE, IF Sertão PE, IFAL, IFPB, IFBA, IF Baiano, IFRN, IFS) e os domínios das Secretarias de Educação estaduais (seduc.ce, educacao.ma, see.ac, seduc.pi, educacao.pe, educacao.al, educacao.ba, educacao.rn, seduc.se). Se a página de um curso disser que é pago, vale a página.
+

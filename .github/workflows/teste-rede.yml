@@ -6,17 +6,24 @@ jobs:
     steps:
       - run: |
           A="Mozilla/5.0 (X11; Linux x86_64) Chrome/120"
-          for u in https://maisfuturo.sde.fortaleza.ce.gov.br/ https://www.treinarparaempregar.salvador.ba.gov.br/ https://treinarparaempregar.salvador.ba.gov.br/ https://salvadordigital.salvador.ba.gov.br/ https://fortalezacapacita.fortaleza.ce.gov.br/ https://www.joaopessoa.pb.gov.br/?s=qualifica https://www.maceio.al.gov.br/ https://semdec.salvador.ba.gov.br/; do
-            echo "======== $u"
-            curl -sSL -m 25 -A "$A" -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n" "$u" || { echo FALHOU; continue; }
-            python3 - "$u" <<'PY'
-          import re,sys,html
-          t=open('/tmp/p',encoding='utf-8',errors='replace').read()
-          print("title:",(re.findall(r'<title>(.*?)</title>',t,re.S) or [''])[0].strip()[:100])
-          js=sorted(set(re.findall(r'src="([^"]+\.js[^"]*)"',t)))[:8]; print("js:",js)
-          links=sorted(set(l for l in re.findall(r'href="([^"#]+)"',t) if re.search(r'curs|qualif|inscri|turma|servi|api',l,re.I)))[:25]; print("links:",links)
-          print("api:",sorted(set(re.findall(r'["\'](/?api/[^"\']{0,80}|https?://[^"\']*/api/[^"\']{0,80})["\']',t)))[:10])
-          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t)))
-          print("texto:",s[:700])
-          PY
-          done
+          B=https://treinarparaempregar.salvador.ba.gov.br
+          curl -sSL -m 25 -A "$A" $B/ -o /tmp/h
+          J=$(grep -oE '/_nuxt/[A-Za-z0-9_-]+\.js' /tmp/h | head -1); echo "bundle $J"
+          curl -sSL -m 25 -A "$A" "$B$J" -o /tmp/j.js; wc -c /tmp/j.js
+          grep -oE '"/?api/[a-zA-Z0-9_/{}.$-]{2,60}"|`/?api/[^`]{2,80}`|apiBase[^,;]{0,80}|baseURL[^,;]{0,80}' /tmp/j.js | sort -u | head -40
+          for e in /api/courses /api/cursos /api/v1/courses /api/public/courses /api/trilhas /api/courses?per_page=50; do echo "== $e"; curl -sS -m 20 -A "$A" -H "Accept: application/json" "$B$e" -o /tmp/a -w "%{http_code} %{content_type} %{size_download}\n"; head -c 600 /tmp/a; echo; done
+          echo "== pagina de curso"; curl -sSL -m 25 -A "$A" $B/cursos/cuidador-de-idoso -o /tmp/c; python3 -c "
+          import re,html
+          t=open('/tmp/c',encoding='utf-8',errors='replace').read()
+          m=re.search(r'<script[^>]*id=\"__NUXT_DATA__\"[^>]*>(.*?)</script>',t,re.S); print('nuxtdata',len(m.group(1)) if m else None); print(m.group(1)[:2500] if m else '')
+          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); print('TEXTO',s[:2000])"
+          echo "####### FORTALEZA"
+          F=https://maisfuturo.sde.fortaleza.ce.gov.br
+          for p in ventosaterapia.php cardapios.php; do echo "== $p"; curl -sSL -m 25 -A "$A" $F/$p -o /tmp/f -w "%{http_code} %{size_download}\n"; python3 -c "
+          import re,html
+          t=open('/tmp/f',encoding='utf-8',errors='replace').read()
+          print(sorted(set(l for l in re.findall(r'href=\"([^\"#]+)\"',t) if not l.endswith(('.css','.png','.jpg')) and 'google' not in l))[:30])
+          s=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<(script|style).*?</\1>|<[^>]+>',' ',t))); i=s.find('Ventosa') if 'Ventosa' in s[3000:] else 0; print(s[-2500:])"; done
+          curl -sSL -m 25 -A "$A" $F/ -o /tmp/fh; python3 -c "
+          import re; t=open('/tmp/fh',encoding='utf-8',errors='replace').read(); ls=re.findall(r'href=\"([a-z0-9_-]+\.php)\"',t); print(len(ls),'paginas .php'); print(ls[:80])
+          print(re.findall(r'(?s)<!--.{0,200}?-->',t)[:3])"

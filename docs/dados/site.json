@@ -71,6 +71,10 @@
   {
    "id": "BR-PE",
    "rotulo": "Brasil – Pernambuco"
+  },
+  {
+   "id": "BR-AL",
+   "rotulo": "Brasil – Alagoas"
   }
  ],
  "temas": {

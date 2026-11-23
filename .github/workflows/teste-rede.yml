@@ -7,17 +7,28 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -q -r requirements.txt pypdf
+      - run: pip install -q -r requirements.txt
       - run: |
           cd scripts && python3 - <<'PY'
-          import re, io, urllib.parse, html as h
+          import re, html as h
           from comum import baixar
-          from pypdf import PdfReader
-          t=baixar("https://portal.ac.senac.br/psg/editais",timeout=60).decode("utf-8","replace")
-          urls=[urllib.parse.quote(h.unescape(u if u.startswith("http") else "https://portal.ac.senac.br"+u), safe=":/%") for u in re.findall(r'href="([^"]+\.pdf)"',t,re.I) if re.search(r"_135_",u)]
-          print(urls)
-          for u in urls:
-              if re.search(r"aviso|retifica|prorroga|altera|errata",u,re.I):
-                  r=PdfReader(io.BytesIO(baixar(u,timeout=60))); tx="\n".join(p.extract_text() or "" for p in r.pages)
-                  print("=== AVISO", u); print(re.sub(r"[ \t]+"," ",tx)[:3000])
+          PAG=["https://natal.rn.gov.br/semtas","https://maceio.al.gov.br/noticias/semtes","https://maceio.al.gov.br/noticias",
+               "https://www.fortaleza.ce.gov.br/noticias","https://www.fortaleza.ce.gov.br/fortaleza-inclusiva",
+               "https://www.saoluis.ma.gov.br/noticias","https://saoluis.ma.gov.br/semcas","https://pmt.pi.gov.br/noticias/","https://teresina.pi.gov.br/noticias",
+               "https://www.riobranco.ac.gov.br/noticias/","https://www2.recife.pe.gov.br/noticias","https://www.joaopessoa.pb.gov.br/noticias/",
+               "https://www.aracaju.se.gov.br/noticias","https://comunicacao.salvador.ba.gov.br/","https://www.al.gov.br/noticias",
+               "https://www.ceara.gov.br/noticias/","https://www.pi.gov.br/noticias/","https://www.rn.gov.br/materia/","https://agenciasergipe.se.gov.br/",
+               "https://www.ma.gov.br/noticias","https://agencia.ac.gov.br/","https://www.pe.gov.br/noticias","https://paraiba.pb.gov.br/noticias","https://www.ba.gov.br/noticias"]
+          kw=re.compile(r"curso|qualifica|capacita|oficina|vagas gratuit|forma[çc][ãa]o profissional",re.I)
+          for u in PAG:
+              try:
+                  t=baixar(u,timeout=30).decode("utf-8","replace")
+              except Exception as e:
+                  print(f"✗ {u}: {type(e).__name__} {str(e)[:80]}"); continue
+              links=[]
+              for href,txt in re.findall(r'<a[^>]+href="([^"#]+)"[^>]*>(.*?)</a>',t,re.S):
+                  txt=re.sub(r"\s+"," ",h.unescape(re.sub(r"<[^>]+>"," ",txt))).strip()
+                  if len(txt)>25 and kw.search(txt): links.append((txt[:100],href[:120]))
+              print(f"✓ {u}: {len(t)} bytes, {len(links)} links com curso/qualificação")
+              for x in links[:5]: print("     ", x)
           PY

@@ -1,0 +1,32 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt pypdf
+      - env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          FOLHA_ID: ${{ secrets.FOLHA_ID }}
+        run: |
+          cd scripts && python3 - <<'PY'
+          import re, io
+          from base import Base
+          from comum import baixar
+          from pypdf import PdfReader
+          b=Base()
+          links=set()
+          for t in b.tabela("Turmas"):
+              if t["_linha"] in (93,94,95):
+                  print(f"T{t['_linha']}", {k:t.get(k) for k in ("Curso","Título na fonte","Link da turma","Link de matrícula","Início","Fim","Horário","Prazo de inscrição","Vagas","Mais informações","Evidência","Auditoria","Notas")})
+                  links.add((t.get("Link da turma") or "").split("#")[0])
+          for l in links:
+              print("=== EDITAL", l)
+              try:
+                  r=PdfReader(io.BytesIO(baixar(l,timeout=60))); tx="\n".join(p.extract_text() or "" for p in r.pages)
+                  print(re.sub(r"[ \t]+"," ",tx)[:6000])
+              except Exception as e: print("erro", e)
+          PY

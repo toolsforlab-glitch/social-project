@@ -286,3 +286,9 @@ p.avisar a { color: var(--tinta-suave); }
 @media (min-width: 64rem) { .filtros-caixa > summary { display: none; } }
 /* telefones clicáveis: área de toque maior */
 a.tel { white-space: nowrap; padding: .15rem 0; }
+/* Detalhes de cada turma na lista de cursos (fechados; abrem ao tocar) */
+.turma-detalhes { margin: .35rem 0 .2rem; }
+.turma-detalhes > summary { cursor: pointer; font-weight: 700; color: var(--anil); padding: .45rem 0; min-height: 2.75rem; display: list-item; }
+.turma-detalhes > summary span { font-weight: 400; color: var(--tinta-suave); font-size: .95rem; }
+.turma-detalhes[open] > summary { margin-bottom: .2rem; }
+@media print { .turma-detalhes > summary { display: none; } }

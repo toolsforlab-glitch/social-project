@@ -1,6 +1,29 @@
 {
- "atualizado": "2026-11-23T09:35",
+ "atualizado": "2026-11-23T10:03",
  "dias": [
+  {
+   "data": "2026-11-23",
+   "itens": [
+    {
+     "titulo": "Organizador da Parada LGBTI+ do Rio diz que movimento não vai recuar",
+     "resumo": "Cláudio Nascimento, da ONG Grupo Arco-Íris, afirmou que o movimento não vai recuar, após a parada no domingo (22) em Copacabana. Ele comentou que o evento aconteceu pouco depois das eleições gerais.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/nao-vamos-recuar-promete-organizador-de-parada-lgbti-do-rio"
+    },
+    {
+     "titulo": "Filantropia pode ter mais peso no financiamento da ciência",
+     "resumo": "Artigo do Estadão defende que a filantropia científica pode ampliar seu papel no apoio à pesquisa no Brasil.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "Estadão",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5GRmpqdmVmVnUwRGdnWWpJYURsNHk1NVQ0b2VVRjRiNHkySlpuY2JnN2pXMFpnbmVfbjd1aEJBUGdNRUhwenU1azhNMk5jREtXR21SdF9hbjluemZJWXVIX0UxRUxLZ202M0U4Vk9wOTdwLUpBci1KY3p3?oc=5"
+    }
+   ]
+  },
   {
    "data": "2026-11-22",
    "itens": [

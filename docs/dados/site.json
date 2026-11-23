@@ -83,6 +83,14 @@
   {
    "id": "BR-BA",
    "rotulo": "Brasil – Bahia"
+  },
+  {
+   "id": "BR-RN",
+   "rotulo": "Brasil – Rio Grande do Norte"
+  },
+  {
+   "id": "BR-SE",
+   "rotulo": "Brasil – Sergipe"
   }
  ],
  "formulario": {

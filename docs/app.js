@@ -367,7 +367,7 @@
           var b = f.getBBox(), n = porUf[uf] || 0;
           var r = n >= 100 ? 17 : n >= 10 ? 14 : 12;
           // posição da bolinha: centro da caixa do estado (ajustes para estados de forma irregular)
-          var ajuste = { PE: [-25, 0], PI: [0, 8], MA: [0, 10], BA: [-6, 0], PB: [-4, -2], AL: [3, -3] }[uf] || [0, 0];
+          var ajuste = { PE: [-25, 0], PI: [0, 8], MA: [0, 10], BA: [-6, 0], PB: [-4, -2], AL: [3, -3], SE: [2, 3], RN: [4, 0] }[uf] || [0, 0];
           var x = b.x + b.width / 2 + ajuste[0], y = b.y + b.height / 2 + ajuste[1];
           marcas += '<g class="bolinha' + (n ? "" : " zero") + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r + '"></circle>' +
             '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" font-size="' + (r > 12 ? 12 : 11) + '">' + n + "</text></g>";

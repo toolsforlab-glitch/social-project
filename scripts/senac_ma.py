@@ -971,9 +971,13 @@ def correr(fonte):
                 p.append("o edital tem aviso de prorrogação ou alteração: confirmar prazos e vagas")
             if texto_avisos:
                 cursos_nos_avisos = [x for x in edital["turmas"] if chave(x["curso"]) in chave(texto_avisos)]
+                # o comunicado nomeia o anexo/cidade que altera (ex.: «ANEXO I – … – ARAPIRACA»): um curso com o
+                # mesmo nome noutra cidade não é afetado (Senac AL 19/2026, 23/11/2026)
+                outra_cidade = bool(t["cidade"]) and chave(t["cidade"]) not in chave(texto_avisos) and any(
+                    x["cidade"] and chave(x["cidade"]) in chave(texto_avisos) for x in edital["turmas"])
                 if not cursos_nos_avisos:
                     p.append("o edital tem comunicado ou retificação: confirmar prazos e vagas")
-                elif k in chave(texto_avisos) and not citacao_valida(t["frase"], texto_avisos):
+                elif k in chave(texto_avisos) and not outra_cidade and not citacao_valida(t["frase"], texto_avisos):
                     p.append("um comunicado altera este curso e as datas não vieram do comunicado: confirmar")
             ed_t = {**edital, "ini": t["insc_propria"]["ini"], "fim": t["insc_propria"]["fim"],
                     "frase_insc": t["insc_propria"]["frase"], "ate_vagas": False} if t.get("insc_propria") else edital

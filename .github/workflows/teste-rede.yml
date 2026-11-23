@@ -13,14 +13,22 @@ jobs:
       - run: pip install -q -r requirements.txt
       - run: |
           cd scripts && python3 - <<'PY'
-          import senac_ma as s
           from base import Base, carregar_config
           b = Base(); carregar_config(b)
-          for t in b.tabela("Turmas"):
-              if "Bolsas-Gratuitas-19-2026" in (t.get("Link da turma") or ""):
-                  print("T", t["_linha"], "|", t.get("Título na fonte"), "|", t.get("Cidade"), "|", t.get("Estado"), "|", t.get("Situação"), "|", t.get("Prazo de inscrição"), "|", (t.get("Mais informações") or "")[:45], "|", (t.get("Auditoria") or "")[:230], "|", (t.get("Notas") or "")[:60])
-          u = "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf"
-          t = s.texto_do_documento(s.baixar(u, timeout=60), "application/pdf")
-          i = t.find("ANEXO III")
-          print(t[i+1800:i+9000])
+          T = {t["_linha"]: t for t in b.tabela("Turmas")}
+          chk = {142: "Informática Básica", 152: "Informática Básica", 137: "Internet na Medida", 138: "Informática Básica", 139: "Informática Básica", 135: "Gestão Assistente Administrativo"}
+          for n, nome in chk.items():
+              assert T[n].get("Título na fonte") == nome and "Bolsas-Gratuitas-19-2026" in T[n].get("Link da turma", ""), n
+          alt = [
+            (142, {"Estado": "Publicado", "Auditoria": "2026-11-23: ok (conferido por Claude no PDF do edital 19/2026: Anexo II, Palmeira dos Índios, «13/10/2026 a 26/11/2026» e «Informática Básica 100h 01/12/2026 a 02/02/2027 Segunda a Sexta 08h às 12h 25 Presencial»; os comunicados 01 e 02 só alteram o Anexo I, Arapiraca)."}),
+            (152, {"Notas": "Turma repetida (é a mesma da linha 142)."}),
+            (137, {"Situação": "Encerrada", "Notas": "Comunicado 01 (26/10/2026): a inscrição passou para 26/10/2026 a 17/11/2026."}),
+            (138, {"Situação": "Encerrada", "Notas": "Comunicado 02 (09/11/2026): a inscrição passou para 26/10/2026 a 09/11/2026."}),
+            (139, {"Situação": "Encerrada", "Notas": "Comunicado 02 (09/11/2026): a inscrição passou para 26/10/2026 a 09/11/2026."}),
+          ]
+          b.atualizar("Turmas", alt); b.guardar()
+          print("FEITO", len(alt), "| curso da turma 142:", T[142].get("Curso"))
+          for r in b.tabela("Cursos"):
+              if r.get("ID") == T[142].get("Curso"):
+                  print("CURSO", r["_linha"], r.get("Título"), r.get("Estado"), r.get("Situação das inscrições"), r.get("Campos comprovados"))
           PY

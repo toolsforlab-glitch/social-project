@@ -17,11 +17,12 @@ jobs:
           from comum import baixar
           f = next(x for x in FONTES if x["nome"] == "Senac AL")
           for e in listar_senac_al(f):
-              if not re.search(r"2[34]-2026|21-2026", e["number"]):
+              if not re.search(r"23-2026", e["number"]):
                   continue
-              t = texto_do_documento(baixar(e["pagina"], timeout=60), "application/pdf")
+              import io
+              from pypdf import PdfReader
+              dados = baixar(e["pagina"], timeout=60)
+              t = "\n".join((p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(dados)).pages)
               i = t.upper().find("ANEXO I")
-              print("=====", e["title"], len(t)); print(re.sub(r"[ \t]+", " ", t[i:i+3500]))
-              for u in e["avisos"]:
-                  print("--- aviso", u); print(re.sub(r"[ \t]+", " ", texto_do_documento(baixar(u, timeout=60), "application/pdf"))[:1500])
+              print("=====", e["title"], len(t)); print(re.sub(r" {3,}", " | ", t[i:i+7000]))
           PY

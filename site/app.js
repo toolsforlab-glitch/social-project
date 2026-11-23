@@ -63,13 +63,25 @@
   }
   function dataCurtaG(iso) { var p = (iso || "").slice(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] : ""; }
   // Turmas lidas das páginas oficiais: some quando passa o prazo ou, sem prazo, quando a turma começa
+  // Período escolhido no calendário da página de cursos ({ini, fim} em AAAA-MM-DD); null = «inscrições abertas hoje».
+  var periodo = null;
+  // A janela de inscrição [ini, fim] cruza o período escolhido (ou, sem período, inclui hoje)?
+  function abertaNoPeriodo(ini, fim) {
+    var h = hojeIso();
+    ini = ini || h; fim = fim || "9999-12-31";
+    if (!periodo) return ini <= h && fim >= h;
+    return ini <= periodo.fim && fim >= periodo.ini;
+  }
   function turmasAtuais(c) {
     var h = hojeIso();
     return (c.turmas || []).filter(function (t) {
-      if (t.prazo) return t.prazo >= h;
-      return !t.inicio || t.inicio > h;
+      if (t.prazo ? t.prazo < h : (t.inicio && t.inicio <= h)) return false;
+      if (t.por_abrir && !t.abertura) return false;  // inscrição futura sem data de abertura: não se mostra
+      return abertaNoPeriodo(t.por_abrir ? t.abertura : "", t.prazo || t.inicio || "");
     });
   }
+  // cursos que só têm inscrições futuras ficam fora das listas que não têm calendário (início, encaminhar)
+  function semFuturos(lista) { return (lista || []).filter(function (c) { return !c.so_futuro; }); }
   // Prazos a terminar: dias que faltam até ao fim das inscrições (0 = hoje). Só com prazo comprovado.
   var DIAS_ALERTA = 3;
   function diasAte(iso) {
@@ -127,7 +139,8 @@
       .filter(Boolean).join(" · ");
     if (quando) l.push(esc(quando));
     var urgente = t.prazo && diasAte(t.prazo) >= 0 && diasAte(t.prazo) <= DIAS_ALERTA;
-    l.push(t.prazo ? '<span class="prazo' + (urgente ? ' urgente' : '') + '">' + (urgente ? esc(quandoTermina(t.prazo)) : "Inscrições até " + esc(dataBonita(t.prazo))) + "</span>"
+    if (t.por_abrir && t.abertura) l.push('<span class="prazo">Inscrições de ' + esc(dataBonita(t.abertura)) + (t.prazo ? " a " + esc(dataBonita(t.prazo)) : "") + "</span>");
+    else l.push(t.prazo ? '<span class="prazo' + (urgente ? ' urgente' : '') + '">' + (urgente ? esc(quandoTermina(t.prazo)) : "Inscrições até " + esc(dataBonita(t.prazo))) + "</span>"
            : t.inscricao === "pagina" ? '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>'
            : '<span class="prazo">Inscrições abertas. O prazo não está indicado: inscreva-se antes do início da turma</span>');
     if (t.info) l.push(esc(t.info));
@@ -291,13 +304,62 @@
     }
     onde.addEventListener("change", desenharUltimos);
     carregar("dados/cursos.json").then(function (d) {
-      todos = d.cursos || [];
+      todos = semFuturos(d.cursos);
       desenharUltimos();
     }).catch(function () { caixa.parentNode.style.display = "none"; });
   }
 
+  // ------------------------------------------------------------ Números (23/11/2026)
+  // Resumo dos cursos abertos hoje, com a mesma regra da página de cursos (turmas atuais; sem os só futuros).
+  function numeros(site) {
+    // mapa do Brasil em quadrados: [UF, linha, coluna, nome]
+    var GRADE = [["RR", 0, 2, "Roraima"], ["AP", 0, 4, "Amapá"],
+      ["AC", 1, 0, "Acre"], ["AM", 1, 1, "Amazonas"], ["PA", 1, 3, "Pará"], ["MA", 1, 4, "Maranhão"], ["CE", 1, 5, "Ceará"], ["RN", 1, 6, "Rio Grande do Norte"],
+      ["RO", 2, 1, "Rondônia"], ["MT", 2, 2, "Mato Grosso"], ["TO", 2, 3, "Tocantins"], ["PI", 2, 4, "Piauí"], ["PE", 2, 5, "Pernambuco"], ["PB", 2, 6, "Paraíba"],
+      ["MS", 3, 2, "Mato Grosso do Sul"], ["GO", 3, 3, "Goiás"], ["BA", 3, 4, "Bahia"], ["AL", 3, 5, "Alagoas"],
+      ["DF", 4, 3, "Distrito Federal"], ["MG", 4, 4, "Minas Gerais"], ["SE", 4, 5, "Sergipe"],
+      ["PR", 5, 2, "Paraná"], ["SP", 5, 3, "São Paulo"], ["RJ", 5, 4, "Rio de Janeiro"], ["ES", 5, 5, "Espírito Santo"],
+      ["SC", 6, 2, "Santa Catarina"], ["RS", 7, 2, "Rio Grande do Sul"]];
+    function horas(c) { var m = /(\d+(?:[.,]\d+)?)\s*(h\b|h\/|horas?)/i.exec(c.duracao || ""); return m ? parseFloat(m[1].replace(",", ".")) : null; }
+    carregar("dados/cursos.json").then(function (d) {
+      var todos = semFuturos(d.cursos).filter(function (c) {
+        return (c.turmas || []).length ? turmasAtuais(c).length > 0 : abertaNoPeriodo("", c.inscricoes_ate || "");
+      });
+      var total = todos.length;
+      var online = todos.filter(function (c) { return c.modalidade === "online"; }).length;
+      var cert = todos.filter(function (c) { return c.certificado === "gratuito"; }).length;
+      var pct = function (n) { return total ? Math.round(n * 100 / total) + "%" : "0%"; };
+      var quando = d.atualizado ? dataBonita(d.atualizado.slice(0, 10)) + ", às " + d.atualizado.slice(11, 16) : "";
+      el("numeros-data").textContent = "Lista atualizada em " + quando + ".";
+      el("numeros-cartoes").innerHTML = [[total, "cursos com inscrições abertas"], [total - online, "presenciais"], [online, "on-line"],
+        [cert, "com certificado gratuito (" + pct(cert) + ")"]].map(function (x) {
+        return '<div class="numero-cartao"><b>' + x[0].toLocaleString("pt-BR") + "</b><span>" + esc(x[1]) + "</span></div>";
+      }).join("");
+      var faixas = [["Até 4 horas", 0], ["De 5 a 20 horas", 0], ["Mais de 20 horas", 0], ["Não informada", 0]];
+      todos.forEach(function (c) { var h = horas(c); faixas[h === null ? 3 : h <= 4 ? 0 : h <= 20 ? 1 : 2][1]++; });
+      el("numeros-duracao").innerHTML = faixas.map(function (f) {
+        var p = total ? Math.round(f[1] * 100 / total) : 0;
+        return '<div class="barra"><span>' + esc(f[0]) + '</span><span class="barra-fundo"><span class="barra-cheia" style="width:' + p + '%"></span></span>' +
+          '<span class="barra-valor">' + p + "% (" + f[1] + ")</span></div>";
+      }).join("");
+      var porUf = {}, ativos = {};
+      (site.locais || []).forEach(function (l) { if (/^BR-/.test(l.id)) ativos[l.id.slice(3)] = 1; });
+      todos.forEach(function (c) { if (c.modalidade !== "online" && /^BR-/.test(c.local || "")) porUf[c.local.slice(3)] = (porUf[c.local.slice(3)] || 0) + 1; });
+      var max = Math.max.apply(null, [1].concat(Object.keys(porUf).map(function (k) { return porUf[k]; })));
+      el("numeros-mapa").innerHTML = GRADE.map(function (g) {
+        var n = porUf[g[0]] || 0, at = ativos[g[0]];
+        return '<div class="uf' + (at ? " ativo" : "") + (at && n >= max / 2 ? " muitos" : "") + '" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) +
+          '" title="' + esc(g[3]) + ": " + (at ? n + " cursos presenciais" : "ainda não faz parte do site") + '"><span>' + g[0] + "</span><b>" + (at ? n : "–") + "</b></div>";
+      }).join("");
+      el("numeros-mapa-lista").innerHTML = GRADE.filter(function (g) { return ativos[g[0]]; })
+        .sort(function (a, b) { return (porUf[b[0]] || 0) - (porUf[a[0]] || 0); })
+        .map(function (g) { return "<li>" + esc(g[3]) + ": " + (porUf[g[0]] || 0) + "</li>"; }).join("");
+    }).catch(function () { el("numeros-cartoes").innerHTML = '<p class="vazio">Não foi possível carregar os números agora.</p>'; });
+  }
+
   // ------------------------------------------------------------ Cursos
   function cursos(site) {
+    var calendarioRedesenhar = function () {};
     var params = new URLSearchParams(location.search);
     var escolhidas = (params.get("quero") || "").split(",").filter(Boolean);
     var onde = el("cursos-onde");
@@ -503,6 +565,9 @@
         if (barreiras.indexOf("acessivel") >= 0 && !(c.acessibilidade || []).length) return false;
         if (barreiras.indexOf("fecha_breve") >= 0 && !terminaEmBreve(c)) return false;
         if (marcaEscolhida && marcasDe(c).indexOf(marcaEscolhida) < 0) return false;
+        // calendário: o curso tem de ter inscrições abertas em algum dia do período (sem período: hoje)
+        if ((c.turmas || []).length) { if (!turmasAtuais(c).length) return false; }
+        else if (!abertaNoPeriodo("", c.inscricoes_ate || "")) return false;
         if (certificado && certificado.checked && c.certificado !== "gratuito") return false;
         if (duracao && duracao.value && !naDuracao(c, duracao.value)) return false;
         if (cidade.value && cidadesDe(c).indexOf(cidade.value) < 0) return false;
@@ -540,6 +605,8 @@
       if (duracao && duracao.value) ativos.push(["duracao", duracao.options[duracao.selectedIndex].text]);
       if (certificado && certificado.checked) ativos.push(["certificado", "Certificado gratuito"]);
       if (cidade.value) ativos.push(["cidade", cidade.value]);
+      if (periodo) ativos.push(["periodo", periodo.ini === periodo.fim ? "Inscrições em " + dataBonita(periodo.ini)
+                                                                       : "Inscrições de " + dataBonita(periodo.ini) + " a " + dataBonita(periodo.fim)]);
       if (texto.value.trim()) ativos.push(["texto", "“" + texto.value.trim() + "”"]);
       var caixaAtivos = el("cursos-ativos");
       if (caixaAtivos) {
@@ -663,6 +730,7 @@
       else if (tipo === "duracao" && duracao) duracao.value = "";
       else if (tipo === "certificado" && certificado) certificado.checked = false;
       else if (tipo === "cidade") cidade.value = "";
+      else if (tipo === "periodo") { periodo = null; calendarioRedesenhar(); }
       else if (tipo === "texto") texto.value = "";
       else if (tipo === "tudo") {
         escolhidas.slice().forEach(tirarQuero);
@@ -671,6 +739,7 @@
         if (certificado) certificado.checked = false;
         cidade.value = "";
         texto.value = "";
+        periodo = null; calendarioRedesenhar();
       }
       filtrar();
     });
@@ -724,6 +793,63 @@
     // ao entrar na busca sem filtros no link, o padrão é «Mostrar tudo» (pedido do responsável, 22/11/2026)
     preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : "");
     onde.addEventListener("change", function () { preencherCidades(cidade.value); filtrar(); });
+    // Calendário: um toque escolhe um dia; o segundo toque fecha o período; o terceiro recomeça (23/11/2026)
+    (function calendario() {
+      var grade = el("cal-grade");
+      if (!grade) return;
+      var MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+      var hoje = hojeIso(), base = new Date(), mes = 0, MAX_MESES = 6, primeiro = null;
+      function iso(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+      function curta(s) { return dataBonita(s); }
+      function desenhar() {
+        var ano = base.getFullYear(), m = base.getMonth() + mes;
+        var d1 = new Date(ano, m, 1), dias = new Date(ano, m + 1, 0).getDate();
+        el("cal-mes").textContent = MESES[d1.getMonth()] + " de " + d1.getFullYear();
+        document.querySelector('.cal-seta[data-cal="-1"]').disabled = mes <= 0;
+        document.querySelector('.cal-seta[data-cal="1"]').disabled = mes >= MAX_MESES;
+        var h = ["D", "S", "T", "Q", "Q", "S", "S"].map(function (x, i) {
+          return '<span class="cal-sem" aria-hidden="true">' + x + "</span>";
+        }).join("");
+        for (var i = 0; i < d1.getDay(); i++) h += "<span></span>";
+        for (var n = 1; n <= dias; n++) {
+          var s = iso(new Date(d1.getFullYear(), d1.getMonth(), n));
+          var cls = "cal-dia" + (s === hoje ? " hoje" : "");
+          var ini = periodo ? periodo.ini : primeiro, fim = periodo ? periodo.fim : primeiro;
+          if (ini && s >= ini && s <= fim) cls += (s === ini || s === fim) ? " ponta" : " no-periodo";
+          h += '<button type="button" class="' + cls + '" data-dia="' + s + '"' + (s < hoje ? " disabled" : "") +
+            ' aria-pressed="' + (ini && s >= ini && s <= fim) + '" aria-label="' + n + " de " + MESES[d1.getMonth()] + '">' + n + "</button>";
+        }
+        grade.innerHTML = h;
+        var esc2 = el("cal-escolha");
+        esc2.innerHTML = periodo
+          ? (periodo.ini === periodo.fim ? "Inscrições abertas em " + esc(curta(periodo.ini))
+             : "Inscrições abertas entre " + esc(curta(periodo.ini)) + " e " + esc(curta(periodo.fim))) +
+            ' <button type="button" class="botao secundario pequeno" data-cal-limpar>Voltar para hoje</button>'
+          : "Mostrando os cursos com inscrições abertas hoje.";
+      }
+      grade.addEventListener("click", function (ev) {
+        var b = ev.target.closest("button[data-dia]");
+        if (!b || b.disabled) return;
+        var s = b.getAttribute("data-dia");
+        if (!periodo || periodo.ini !== periodo.fim || !primeiro) {
+          primeiro = s; periodo = { ini: s, fim: s };
+        } else {
+          periodo = s < primeiro ? { ini: s, fim: primeiro } : { ini: primeiro, fim: s };
+          primeiro = null;
+        }
+        medir("calendario", { valor: periodo.ini + (periodo.fim !== periodo.ini ? " a " + periodo.fim : "") });
+        desenhar(); filtrar();
+      });
+      document.querySelectorAll(".cal-seta").forEach(function (b) {
+        b.addEventListener("click", function () { mes += +b.getAttribute("data-cal"); desenhar(); });
+      });
+      el("cal-escolha").addEventListener("click", function (ev) {
+        if (!ev.target.closest("[data-cal-limpar]")) return;
+        periodo = null; primeiro = null; desenhar(); filtrar();
+      });
+      calendarioRedesenhar = desenhar;
+      desenhar();
+    })();
     texto.addEventListener("input", filtrar);
     if (certificado) certificado.addEventListener("change", filtrar);
     if (duracao) duracao.addEventListener("change", filtrar);
@@ -748,7 +874,7 @@
 
     lista.innerHTML = '<li class="discreto">Carregando os cursos…</li>';
     Promise.all([carregar("dados/cursos.json"), carregar("dados/guias.json").catch(function () { return { guias: [] }; })]).then(function (r) {
-      todos = r[0].cursos || [];
+      todos = semFuturos(r[0].cursos);
       // link com uma marca que nenhum curso tem mais (ex.: todas as gratuidades já confirmadas): mostrar todos e dizer porquê
       if (marcaEscolhida && !todos.some(function (c) { return marcasDe(c).indexOf(marcaEscolhida) >= 0; })) {
         marcaSumiu = textoMarca(marcaEscolhida); marcaEscolhida = "";
@@ -961,7 +1087,7 @@
     comOnline.checked = params.get("online") !== "nao";
 
     Promise.all([carregar("dados/cursos.json"), carregar("dados/guias.json").catch(function () { return { guias: [] }; })]).then(function (r) {
-      todos = r[0].cursos || []; atualizado = r[0].atualizado ? dataCurta(r[0].atualizado.slice(0, 10)) + "/" + r[0].atualizado.slice(0, 4) : "";
+      todos = semFuturos(r[0].cursos); atualizado = r[0].atualizado ? dataCurta(r[0].atualizado.slice(0, 10)) + "/" + r[0].atualizado.slice(0, 4) : "";
       (r[1].guias || []).forEach(function (g) { guias[g.id] = g; });
       var cids = {};
       todos.forEach(function (c) { if (c.modalidade !== "online" && c.situacao === "Aberto" && !c.em_revisao) cidadesDe(c).forEach(function (x) { cids[x] = 1; }); });
@@ -1045,6 +1171,7 @@
   })();
 
   carregar("dados/site.json").then(function (site) {
+    if (pagina === "numeros") { numeros(site); return; }
     if (pagina === "antes") { antes(); return; }
     if (pagina === "encaminhar") { encaminhar(site); return; }
     if (pagina === "inicio") inicio(site);

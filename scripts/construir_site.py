@@ -21,6 +21,7 @@ PAGINAS = {
     "noticias.html": ("noticias", "Notícias do setor social | {nome}"),
     "antes.html": ("antes", "Antes de começar: CPF, conta gov.br, CadÚnico e Jovem Aprendiz | {nome}"),
     "encaminhar.html": ("encaminhar", "Para quem encaminha pessoas: lista e fichas para imprimir | {nome}"),
+    "numeros.html": ("numeros", "Os números do site: cursos gratuitos abertos hoje | {nome}"),
     "sobre.html": ("sobre", "Sobre | {nome}"),
 }
 
@@ -82,6 +83,12 @@ def destino_do_curso(r):
     return None
 
 
+def abertura_da_turma(t):
+    """Primeiro dia das inscrições (AAAA-MM-DD), quando está em «Mais informações» («Inscrições de dd/mm/aaaa a …»)."""
+    m = re.search(r"Inscrições de (\d{2})/(\d{2})/(\d{4})", t.get("Mais informações") or "")
+    return f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else ""
+
+
 def exportar_turmas(base, unidades, municipios):
     """Turmas por curso, lidas das páginas oficiais por turmas.py. Só saem as que não encerraram.
 
@@ -104,6 +111,9 @@ def exportar_turmas(base, unidades, municipios):
         unidade = unidades.get((t.get("Unidade") or "").strip())
         por_curso.setdefault(curso, []).append({
             "visivel": situacao in ("Aberta", "Por confirmar") and (t.get("Estado") or "").strip() == "Publicado",
+            # inscrição que ainda não começou (23/11/2026): vai para o site só para o calendário da página de cursos
+            "por_abrir": situacao == "Por abrir" and (t.get("Estado") or "").strip() == "Publicado",
+            "abertura": abertura_da_turma(t),
             "situacao": situacao, "link": t["Link da turma"].strip(),
             "unidade": t.get("Unidade na fonte", ""), "cidade": municipios.get((t.get("Unidade") or "").strip()) or t.get("Cidade", ""),
             "local": unidade, "inicio": t.get("Início", ""), "fim": t.get("Fim", ""),
@@ -177,8 +187,11 @@ def exportar_dados(base, cfg):
         if acompanhadas is None and turmas_recentes and any(f in r["Link"] for f in FONTES_COM_TURMAS):
             acompanhadas = []  # curso do Senac PSG sem nenhuma turma aberta na lista oficial
         turmas = [t for t in (acompanhadas or []) if t["visivel"]]
-        if acompanhadas is not None and not turmas:
+        futuras = [t for t in (acompanhadas or []) if t["por_abrir"]]
+        if acompanhadas is not None and not turmas and not futuras:
             continue  # todas as turmas conhecidas já encerraram
+        so_futuro = bool(futuras) and not turmas  # só aparece quando o calendário escolhe dias do período
+        turmas = turmas + futuras
         cursos.append({
             "id": r.get("ID", ""), "titulo": r.get("Título", ""), "entidade": r.get("Entidade", ""),
             # o botão leva à página própria do curso quando ela foi encontrada e confirmada (paginas.py)
@@ -196,6 +209,7 @@ def exportar_dados(base, cfg):
             # uma data só aparece se estiver comprovada na página ou confirmada por uma pessoa
             "inscricoes_ate": r.get("Inscrições até", "") if comprovado(r, "data") else "",
             "data_por_confirmar": bool(r.get("Inscrições até")) and not comprovado(r, "data"),
+            "so_futuro": so_futuro,
             "situacao": ("Aberto" if any(t["situacao"] == "Aberta" for t in turmas) else "Por confirmar") if turmas
                         else (r.get("Situação das inscrições", "") or "Por confirmar"),
             "turmas": [{k: v for k, v in t.items() if k != "visivel"} for t in turmas],
@@ -294,7 +308,7 @@ def main():
                        .replace("{{NOME}}", nome).replace("{{SLOGAN}}", slogan)
                        .replace("{{PAGINA}}", pagina).replace("{{VERSAO}}", versao)
                        .replace("{{GA}}", ga))
-        for p in ("cursos", "antes", "encaminhar", "noticias", "sobre"):
+        for p in ("cursos", "antes", "encaminhar", "noticias", "numeros", "sobre"):
             pagina_html = pagina_html.replace("{{ATUAL_%s}}" % p.upper(),
                                               ' aria-current="page"' if p == pagina else "")
         with open(os.path.join(docs, ficheiro), "w", encoding="utf-8") as f:

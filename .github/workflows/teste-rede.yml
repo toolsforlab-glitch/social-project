@@ -1,0 +1,33 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          FOLHA_ID: ${{ secrets.FOLHA_ID }}
+        run: |
+          cd scripts && python3 - <<'PY'
+          import re
+          from base import Base
+          b=Base()
+          pad=re.compile(r"\bprova\b|vestibular|\bENEM\b|exame de sele|exame classificat|teste seletivo|avalia[çc][ãa]o escrita|prova objetiva|reda[çc][ãa]o", re.I)
+          for r in b.tabela("Cursos"):
+              if r.get("Estado") not in ("Publicado","Rever","Novo"): continue
+              txt=" | ".join(str(r.get(k,"")) for k in ("Título","Descrição","Requisitos","Condição de acesso","Como me inscrever","Evidência","Notas"))
+              m=pad.search(txt)
+              if m:
+                  i=m.start(); print(f"L{r['_linha']} {r['ID']} [{r['Estado']}] {r['Título'][:60]} | {r.get('Entidade','')[:40]} | …{txt[max(0,i-90):i+90]}…")
+          print("=== TURMAS")
+          for t in b.tabela("Turmas"):
+              if t.get("Estado")!="Publicado" or t.get("Situação") in ("Encerrada",): continue
+              txt=" | ".join(str(t.get(k,"")) for k in ("Título na fonte","Mais informações","Evidência","Documentos","Escolaridade"))
+              m=pad.search(txt)
+              if m:
+                  i=m.start(); print(f"T{t['_linha']} {t.get('Curso')} {t.get('Título na fonte','')[:50]} | …{txt[max(0,i-80):i+80]}…")
+          PY

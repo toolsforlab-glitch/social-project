@@ -52,7 +52,8 @@ Não incluas cursos do Programa Senac de Gratuidade do Ceará (psg.ce.senac.br) 
 (psg.pi.senac.br), nem editais do Programa SENAI de Gratuidade Regimental do Maranhão (fiema.org.br) e do Piauí \
 (fiepi.com.br, cursos técnicos de gratuidade), nem editais de gratuidade do SENAI Pernambuco \
 (pe.senai.br/editais e os PDFs em pe.senai.br/wp-content/uploads), nem editais do Senac Alagoas \
-(psg.al.senac.br): esses são lidos à \
+(psg.al.senac.br), nem editais de gratuidade do SENAI Alagoas (al.senai.br/edital-gratuidade e os PDFs em \
+al.senai.br/wp-content/uploads), nem turmas do OxeTech Lab (oxetech.al.gov.br/oxetechlab): esses são lidos à \
 parte, diretamente das páginas e documentos oficiais.
 
 Na dúvida sobre um pormenor, inclui o curso e põe null nesse campo, em vez de o excluir.

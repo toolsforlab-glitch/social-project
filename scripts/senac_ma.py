@@ -62,6 +62,18 @@ FONTES = [
              "e em inscricao.frase a frase do cronograma (Anexo III) com «limite de vagas». Se no fim do texto houver "
              "COMUNICADOS DE ALTERAÇÃO, eles mudam o edital: para um curso alterado usa as datas novas e, em «frase», "
              "a frase do comunicado com o nome do curso e o novo período."},
+    {"nome": "Senac AL", "uf": "AL", "local": "BR-AL", "regiao": "Alagoas",
+     "entidade": "Senac Alagoas (Programa Senac de Gratuidade)", "estado": "estado/senac_al.json",
+     "listar": "senac_al", "lista": "https://psg.al.senac.br/editais",
+     "prefixo_turma": "https://psg.al.senac.br/admin/wp-content/uploads/",
+     "nota": "Os editais do Senac Alagoas chamam-se «Edital de Bolsas Gratuitas» (a frase de gratuidade pode ser "
+             "a do título ou do preâmbulo, ex.: «concessão de bolsas gratuitas nos cursos»). A inscrição costuma "
+             "ser presencial, na unidade indicada no anexo de cada cidade; o período vem no anexo como «PERÍODO DE "
+             "EFETIVAÇÃO DAS MATRÍCULAS dd/mm/aaaa a dd/mm/aaaa» ou no cronograma: usa-o como período de "
+             "inscrição e, em «local_inscricao», a unidade e o endereço do anexo. Se houver anexos de cidades "
+             "diferentes com períodos diferentes, usa o período que vale para a maioria dos cursos e diz a cidade "
+             "de cada curso. Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
+             "nessa informação, a frase do comunicado."},
     {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
      "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
      "programa": "Gratuidade Regimental do SENAI", "listar": "senai_pe",
@@ -510,6 +522,50 @@ def listar_senai_pi(fonte):
     return editais
 
 
+def listar_senac_al(fonte):
+    """Senac Alagoas: a página «Editais» (psg.al.senac.br/editais) tem um cartão por edital (article.editais-item)
+    com o título, o selo «EDITAL ABERTO»/«EDITAL ENCERRADO», o tipo (Qualificação, Técnico, Aprendizagem) e a
+    cidade. Entram só os abertos que não são de Aprendizagem (essas vagas são para empresas). A página de cada
+    edital lista o PDF do edital e os comunicados (lidos juntos, no fim do texto). O período de inscrição vem
+    sempre do próprio PDF; o selo «aberto» da lista não é usado para decidir a situação."""
+    base_site = "https://psg.al.senac.br"
+    html = baixar(fonte["lista"], timeout=60).decode("utf-8", "replace")
+    cartoes = re.findall(r'<article class="editais-item">(.*?)</article>', html, flags=re.S)
+    if not cartoes:
+        raise ValueError("cartões de editais não encontrados na página")
+    mes_atual = hoje_ceara()[:7]
+    mes_anterior = (datetime.date.fromisoformat(mes_atual + "-01") - datetime.timedelta(days=1)).isoformat()[:7]
+    editais = []
+    for c in cartoes:
+        titulo = _html.unescape(re.sub(r"<[^>]+>", "", (re.search(r"<h3>(.*?)</h3>", c, flags=re.S) or [None, ""])[1])).strip()
+        if "status-open" not in c:
+            continue
+        etiquetas = [_html.unescape(x).strip() for x in re.findall(r'<span class="yellow">(.*?)</span>', c, flags=re.S)]
+        if any(re.match(r"aprendizagem", x, flags=re.I) for x in etiquetas):
+            continue
+        m = re.search(r'href="([^"]+)"', c)
+        if not m:
+            continue
+        pagina_edital = m.group(1) if m.group(1).startswith("http") else base_site + m.group(1)
+        ph = baixar(pagina_edital, timeout=60).decode("utf-8", "replace")
+        docs = [(h if h.startswith("http") else base_site + h, _html.unescape(re.sub(r"<[^>]+>", " ", r)).strip())
+                for h, r in re.findall(r'<a href="([^"]+\.pdf)"[^>]*>(.*?)</a>', ph, flags=re.S | re.I)]
+        if not docs:
+            continue
+        edital = next((u for u, r in docs if not re.search(r"comunicado|retifica|errata|aditivo|resultado|lista", r, flags=re.I)), docs[0][0])
+        avisos = [u for u, r in docs if u != edital and re.search(r"comunicado|retifica|errata|aditivo|prorroga|cancel", r, flags=re.I)]
+        mm = re.search(r"/uploads/(20\d{2})/(\d{2})/", edital)
+        pub = "" if mm and f"{mm.group(1)}-{mm.group(2)}" in (mes_atual, mes_anterior) else (
+            f"{mm.group(1)}-{mm.group(2)}-01" if mm else "")
+        num = re.sub(r"[^a-z0-9]+", "-", edital.rsplit("/", 1)[-1].lower())[:70]
+        editais.append({"id": f"senac-al-{num}", "number": num, "published_at": pub,
+                        "updated_at": "|".join(u.rsplit("/", 1)[-1] for u, _ in docs),
+                        "title": f"{titulo} | {' | '.join(etiquetas)}", "pagina": edital,
+                        "padrao": re.escape(edital), "aditivo": False, "avisos": avisos,
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": edital}]})
+    return editais
+
+
 def listar_senai_pe(fonte):
     """SENAI Pernambuco: a página «Editais» (pe.senai.br) tem blocos «GRATUIDADE | QUALIFICAÇÃO - Em andamento» e
     «GRATUIDADE | APERFEIÇOAMENTO - Em andamento»; dentro de cada bloco, o nome da unidade (em negrito) e, por baixo,
@@ -597,7 +653,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []

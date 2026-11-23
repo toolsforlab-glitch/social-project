@@ -6,9 +6,11 @@ jobs:
     steps:
       - run: |
           A="Mozilla/5.0"
-          curl -sSL -m 25 -A "$A" https://psg.pi.senac.br/ -o /tmp/p -w "%{http_code} %{size_download} %{url_effective}\n"
+          curl -sS -m 25 -A "$A" https://psg.pi.senac.br/ -o /dev/null 2>&1 | head -3 || true
+          echo | openssl s_client -connect psg.pi.senac.br:443 -servername psg.pi.senac.br 2>/dev/null | openssl x509 -noout -subject -issuer -dates 2>&1 | head -5 || true
+          curl -sSL -m 25 -A "$A" http://psg.pi.senac.br/ -o /tmp/p -w "http: %{http_code} %{size_download} %{url_effective}\n" || true
+          curl -sSLk -m 25 -A "$A" https://psg.pi.senac.br/ -o /tmp/p -w "k: %{http_code} %{size_download} %{url_effective}\n" || true
           echo "== links"; grep -oiE '(href|src|action)="[^"]*"' /tmp/p | sort -u | head -60
-          echo "== texto"; sed 's/<script[^>]*>.*<\/script>//g; s/<[^>]*>/ /g' /tmp/p | tr -s ' \n' | head -c 3000; echo
-          echo "== js/api"; grep -oiE '"/?(api|wp-json|ajax)[^"]*"|fetch\([^)]*\)|axios[^;]{0,120}' /tmp/p | head -20
-          curl -sSL -m 25 -A "$A" "https://www.pi.senac.br/cursos/list?modalidade_id=curso_livre" -o /tmp/l -w "lista: %{http_code} %{size_download}\n"
-          sed 's/<[^>]*>/ /g' /tmp/l | tr -s ' \n' | grep -iE "gratuit|psg|R\\$" | head -10
+          echo "== texto"; sed 's/<[^>]*>/ /g' /tmp/p | tr -s ' \n' | head -c 3000; echo
+          curl -sSL -m 25 -A "$A" "https://www.pi.senac.br/cursos/list?modalidade_id=curso_livre" -o /tmp/l -w "lista: %{http_code} %{size_download}\n" || true
+          sed 's/<[^>]*>/ /g' /tmp/l | tr -s ' \n' | grep -ioE ".{0,80}(gratuit|psg).{0,80}" | head -10

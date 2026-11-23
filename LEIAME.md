@@ -155,3 +155,9 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **OxeTech Lab** (desde 23/11): `oxetech.py`, todos os dias, sem Claude. Lê o JSON público https://oxetech.al.gov.br/turma/disponiveis (e os laboratórios de /laboratorio/public). Turmas dos laboratórios «Servidores» e «Instrutores» ficam de fora. Gratuidade conferida por código no site («Cursos gratuitos e presenciais em espaços modernos»). Não há página por turma: o botão leva à lista (destino «lista», nome «OxeTech»), com a nota de criar conta com o CPF. Em 23/11 a lista tinha 0 turmas (pendência para conferir a primeira).
 - **IFAL**: sem leitor próprio (a Proex publica poucos editais de cursos por ano e cada um tem regras diferentes, como sorteio); fica na pesquisa semanal br-al.
 - Leitor de editais (todas as fontes): uma turma que estava em Rever só pela auditoria automática (sem Notas) é publicada quando uma releitura passa na auditoria. Testei a leitura do PDF em colunas (`layout`) e ficou pior: está disponível mas desligada.
+
+## Paraíba (desde 23/11/2026)
+
+- Local `BR-PB`; sites de confiança (pb.gov.br, IFPB, UFPB, UFCG, UEPB, Senac, FIEPB/SENAI, Sebrae, gov.br e três jornais só para descobrir) e cinco pesquisas semanais (br-pb, pb-noticias, pb-publicos-prioritarios, pb-pcd, pb-idades).
+- **Senac PB**: não publica editais do PSG. As vagas gratuitas aparecem no catálogo de matrículas (pb.senac.br/matriculas) com o tipo de formação «Seleção PSG» (código 5), mas em 23/11 não havia nenhuma (as da Semana S eram por telefone nas unidades). `vigiar.py` conta as turmas desse filtro todos os dias e abre uma pendência quando aparecerem. Atenção: a resposta JSON desse catálogo traz também campos internos de pagamento do Senac PB; o vigia só conta as turmas, sem ler nem guardar mais nada.
+- **SENAI PB** (FIEPB): sem página de editais de gratuidade encontrada; fica na pesquisa semanal.

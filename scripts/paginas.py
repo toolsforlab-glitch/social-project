@@ -183,8 +183,9 @@ DESTINOS_FONTES = [
         "nota": "Se ainda não tem conta, clique em “Criar uma conta” (são pedidos CPF, RG, e-mail, endereço e "
                 "telefone). Depois de entrar, a inscrição nesta turma vai abrir; se não abrir, clique de novo no botão."}),
     # Centec presencial: não há página por turma, só a lista geral; inscrição na unidade com o CPF - 20/11/2026
+    # O botão diz «Conferir na página do Centec»: serve só para conferir, a inscrição é presencial - 23/11/2026
     (r"^https://www\.centec\.org\.br/", {
-        "tipo": "lista", "nota": "A inscrição é feita na unidade, com o CPF."}),
+        "tipo": "lista", "nome": "Centec", "nota": "A inscrição é feita na unidade, com o CPF."}),
     # Editais do Senac e do SENAI (MA, AC, PI): o link abre o PDF do edital
     (r"\.pdf($|[?#])", {
         "tipo": "pdf", "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim."}),
@@ -222,6 +223,8 @@ def destino_fixo(link, procurar=""):
     for padrao, d in DESTINOS_FONTES:
         if re.search(padrao, link or "", flags=re.I):
             r = {"tipo": d["tipo"], "conta": d.get("conta", ""), "nota": d.get("nota", ""), "procurar": "", "frase": ""}
+            if d.get("nome"):
+                r["nome"] = d["nome"]  # nome curto da fonte, para o botão «Conferir na página do …»
             if d["tipo"] in ("lista", "inicio"):
                 r["procurar"] = procurar
             return r

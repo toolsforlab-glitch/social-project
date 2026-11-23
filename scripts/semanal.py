@@ -13,7 +13,7 @@ from base import PENDENCIAS, sim, Base, carregar_config, hoje_iso
 from comum import caminho, hoje, ler_json
 
 BREVO = "https://api.brevo.com/v3"
-NOMES = {"BR-CE": "Ceará", "BR-MA": "Maranhão", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "PT": "Portugal"}
+NOMES = {"BR-CE": "Ceará", "BR-MA": "Maranhão", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe", "PT": "Portugal"}
 
 
 # regra do projeto (20/11/2026): sem frase oficial que diga que não há custo, avisa-se em todo o lado

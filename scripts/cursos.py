@@ -21,8 +21,10 @@ LOCALIZACAO = {
     "BR-AL": {"type": "approximate", "country": "BR", "region": "Alagoas", "city": "Maceió", "timezone": "America/Maceio"},
     "BR-PB": {"type": "approximate", "country": "BR", "region": "Paraíba", "city": "João Pessoa", "timezone": "America/Fortaleza"},
     "BR-BA": {"type": "approximate", "country": "BR", "region": "Bahia", "city": "Salvador", "timezone": "America/Bahia"},
+    "BR-RN": {"type": "approximate", "country": "BR", "region": "Rio Grande do Norte", "city": "Natal", "timezone": "America/Fortaleza"},
+    "BR-SE": {"type": "approximate", "country": "BR", "region": "Sergipe", "city": "Aracaju", "timezone": "America/Maceio"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.

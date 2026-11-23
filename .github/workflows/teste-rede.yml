@@ -8,21 +8,21 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: pip install -q -r requirements.txt
-      - env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-          FOLHA_ID: ${{ secrets.FOLHA_ID }}
-        run: |
+      - run: |
           cd scripts && python3 - <<'PY'
-          from base import Base
-          b=Base(); hoje="2026-11-23"
-          print("=== CURSOS Rever/Novo")
-          for r in b.tabela("Cursos"):
-              if r.get("Estado") in ("Rever","Novo"):
-                  ate=r.get("Inscrições até","")
-                  if ate and ate<hoje: continue
-                  print(f"L{r['_linha']} {r['ID']} [{r['Estado']}] {r.get('Local')} | {r['Título'][:55]} | {r.get('Entidade','')[:35]} | até {ate or '?'} | sit {r.get('Situação das inscrições','')} | comprov {r.get('Campos comprovados','')} | falta: {(r.get('O que falta confirmar') or '')[:120]} | link {r.get('Link','')[:90]}")
-          print("=== TURMAS Rever")
-          for t in b.tabela("Turmas"):
-              if t.get("Estado")=="Rever" and t.get("Situação") in ("Aberta","Por abrir"):
-                  print(f"T{t['_linha']} {t.get('Curso')} {t.get('Título na fonte','')[:50]} | {t.get('Cidade','')} | prazo {t.get('Prazo de inscrição','')} | {t.get('Situação')} | aud: {(t.get('Auditoria') or '')[:160]} | notas: {(t.get('Notas') or '')[:100]}")
+          import re
+          from base import texto_de_html
+          from comum import baixar
+          def ver(u, pad, n=8):
+              try:
+                  t=texto_de_html(baixar(u,timeout=40).decode("utf-8","replace"))
+              except Exception as e:
+                  print("##", u, "ERRO", e); return
+              print("##", u, len(t))
+              for m in list(re.finditer(pad, t, re.I))[:n]:
+                  print("   >", re.sub(r"\s+"," ",t[max(0,m.start()-200):m.end()+250]))
+          ver("https://www.escolavirtual.gov.br/cursos/empregabilidade-com-o-copilot", r"p[úu]blico|qualquer|cidad[ãa]o|aberto a")
+          ver("https://www.escolavirtual.gov.br/perguntas-frequentes", r"qualquer pessoa|qualquer cidad|p[úu]blico em geral|quem pode|todos os cidad|sociedade")
+          ver("https://www.escolavirtual.gov.br/sobre", r"qualquer pessoa|qualquer cidad|p[úu]blico em geral|quem pode|sociedade|cidad[ãa]os")
+          ver("https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-oferta-7-3-mil-vagas-em-32-cursos-gratuitos-de-capacitacao-profissional", r"inscri|site|link|gratuit|at[ée] o dia", 12)
           PY

@@ -182,6 +182,10 @@ DESTINOS_FONTES = [
         "tipo": "acesso", "conta": "Centec Academy",
         "nota": "Se ainda não tem conta, clique em “Criar uma conta” (são pedidos CPF, RG, e-mail, endereço e "
                 "telefone). Depois de entrar, a inscrição nesta turma vai abrir; se não abrir, clique de novo no botão."}),
+    # OxeTech Lab (Alagoas): não há página por turma, só a lista; inscrição on-line no site com conta (CPF) - 23/11/2026
+    (r"^https://oxetech\.al\.gov\.br/oxetechlab", {
+        "tipo": "lista", "nome": "OxeTech", "conta": "conta OxeTech",
+        "nota": "Na lista, escolha a cidade. É preciso criar a conta no site (botão «Cadastre-se», com o CPF)."}),
     # Centec presencial: não há página por turma, só a lista geral; inscrição na unidade com o CPF - 20/11/2026
     # O botão diz «Conferir na página do Centec»: serve só para conferir, a inscrição é presencial - 23/11/2026
     (r"^https://www\.centec\.org\.br/", {

@@ -76,6 +76,16 @@ FONTES = [
              "Em «frase» de cada curso copia a linha com o nome do curso; a data de início do curso pode não estar "
              "na mesma linha: nesse caso devolve inicio_aulas = null. Se no fim do texto houver COMUNICADOS, eles mudam o edital: usa as datas novas e, "
              "nessa informação, a frase do comunicado."},
+    {"nome": "Senai AL", "uf": "AL", "local": "BR-AL", "regiao": "Alagoas",
+     "entidade": "SENAI Alagoas (Edital de Gratuidade)", "estado": "estado/senai_al.json",
+     "programa": "Gratuidade Regimental do SENAI", "listar": "senai_al",
+     "lista": "https://al.senai.br/edital-gratuidade/",
+     "prefixo_turma": "https://al.senai.br/wp-content/uploads/",
+     "nota": "Os editais do SENAI Alagoas chamam-se «Edital de Gratuidade» (vagas gratuitas para pessoas de baixa "
+             "renda). No fim do texto vem o bloco do edital na página oficial, com «Período de inscrição», «Local "
+             "para inscrição» e «Início das aulas»: podes copiar as frases desse bloco (valem tanto como as do PDF). "
+             "Se o local de inscrição for um link (ex.: formulário Google), devolve-o em «link_inscricao» de cada "
+             "turma, copiado letra a letra. Se houver COMUNICADOS no fim, eles prevalecem."},
     {"nome": "Senai PE", "uf": "PE", "local": "BR-PE", "regiao": "Pernambuco",
      "entidade": "SENAI Pernambuco (Gratuidade Regimental)", "estado": "estado/senai_pe.json",
      "programa": "Gratuidade Regimental do SENAI", "listar": "senai_pe",
@@ -597,6 +607,53 @@ def listar_senac_al(fonte):
     return editais
 
 
+def listar_senai_al(fonte):
+    """SENAI Alagoas: a página «Edital Gratuidade» (al.senai.br/edital-gratuidade/) tem um bloco por edital
+    (<section class="list-editais">), do mais novo para o mais antigo, com «Período de inscrição», «Local para
+    inscrição» (muitas vezes um formulário Google), «Público-alvo», «Início das aulas» e os PDFs (edital,
+    comunicados, listas de aprovados). Entram os editais cujo período de inscrição ainda não acabou (ou, sem
+    período legível, os publicados neste mês ou no anterior). O texto do bloco da página vai junto com o PDF, no
+    fim, para as frases poderem ser conferidas também ali."""
+    html = baixar(fonte["lista"], timeout=60).decode("utf-8", "replace")
+    blocos = re.split(r'<section class="list-editais', html)[1:]
+    if not blocos:
+        raise ValueError("blocos de editais não encontrados na página")
+    hoje = hoje_ceara()
+    mes_atual = hoje[:7]
+    mes_anterior = (datetime.date.fromisoformat(mes_atual + "-01") - datetime.timedelta(days=1)).isoformat()[:7]
+    editais = []
+    for b in blocos[:15]:
+        titulo = _html.unescape(re.sub(r"<[^>]+>", "", (re.search(r"<h2[^>]*>(.*?)</h2>", b, flags=re.S) or [None, ""])[1])).strip()
+        texto = _html.unescape(re.sub(r"[ \t\xa0]+", " ", re.sub(r"<(?:/p|br|/li|/h\d)[^>]*>", "\n", b)))
+        texto = re.sub(r"<[^>]+>", " ", texto)
+        texto = "\n".join(l.strip() for l in texto.splitlines() if l.strip())
+        docs = [(h, _html.unescape(re.sub(r"<[^>]+>", " ", r)).strip())
+                for h, r in re.findall(r'<a[^>]+href="([^"]+\.pdf)"[^>]*>(.*?)</a>', b, flags=re.S | re.I)]
+        if not docs:
+            continue
+        m = re.search(r"Per[ií]odo de inscri[çc][ãa]o:?\s*(\d{2}/\d{2}/\d{4})(?:\s*[aàá]\s*(\d{2}/\d{2}/\d{4}))?", texto, flags=re.I)
+        fim = ""
+        if m:
+            d, mm_, a = (m.group(2) or m.group(1)).split("/")
+            fim = f"{a}-{mm_}-{d}"
+        edital = next((u for u, _ in docs if not re.search(r"lista|aprovad|resultado|classifica|comunicado|retifica|errata|aditivo",
+                                                            u.rsplit("/", 1)[-1], flags=re.I)), docs[0][0])
+        mm = re.search(r"/uploads/(20\d{2})/(\d{2})/", edital)
+        recente = bool(mm) and f"{mm.group(1)}-{mm.group(2)}" in (mes_atual, mes_anterior)
+        if (fim and fim < hoje) or (not fim and not recente):
+            continue
+        avisos = [u for u, _ in docs if u != edital and re.search(r"comunicado|retifica|errata|aditivo|prorroga|cancel",
+                                                                   u.rsplit("/", 1)[-1], flags=re.I)]
+        num = re.sub(r"[^a-z0-9]+", "-", titulo.lower()).strip("-")[:40] or re.sub(r"[^a-z0-9]+", "-", edital.rsplit("/", 1)[-1].lower())[:60]
+        editais.append({"id": f"senai-al-{num}", "number": titulo, "published_at": "" if recente else (
+                            f"{mm.group(1)}-{mm.group(2)}-01" if mm else ""),
+                        "updated_at": "|".join(u.rsplit("/", 1)[-1] for u, _ in docs) + f"|{fim}",
+                        "title": titulo, "pagina": fonte["lista"], "padrao": re.escape(edital), "aditivo": False,
+                        "avisos": avisos, "texto_pagina": texto[:4000],
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": edital}]})
+    return editais
+
+
 def listar_senai_pe(fonte):
     """SENAI Pernambuco: a página «Editais» (pe.senai.br) tem blocos «GRATUIDADE | QUALIFICAÇÃO - Em andamento» e
     «GRATUIDADE | APERFEIÇOAMENTO - Em andamento»; dentro de cada bloco, o nome da unidade (em negrito) e, por baixo,
@@ -684,7 +741,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []
@@ -749,6 +806,8 @@ def correr(fonte):
                 t_aviso = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
                 texto_avisos += f"\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n{t_aviso.strip()}"
             texto += texto_avisos
+            if e.get("texto_pagina"):
+                texto += f"\n\n=== INFORMAÇÕES DESTE EDITAL NA PÁGINA OFICIAL ({e.get('pagina')}) ===\n{e['texto_pagina']}"
         except Exception as ex:  # noqa: BLE001
             print(f"  ✗ edital {e.get('number')}: documento ilegível ({type(ex).__name__})")
             continue

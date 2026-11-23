@@ -340,26 +340,40 @@
       var pct = function (n) { return total ? Math.round(n * 100 / total) + "%" : "0%"; };
       var quando = d.atualizado ? dataBonita(d.atualizado.slice(0, 10)) + ", às " + d.atualizado.slice(11, 16) : "";
       el("numeros-data").textContent = "Lista atualizada em " + quando + ".";
-      el("numeros-cartoes").innerHTML = [[total, "cursos com inscrições abertas"], [total - online, "presenciais"], [online, "on-line"],
-        [cert, "com certificado gratuito (" + pct(cert) + ")"]].map(function (x) {
+      el("numeros-cartoes").innerHTML = [[total, "cursos com inscrições abertas"], [total - online, "presenciais (" + pct(total - online) + ")"],
+        [online, "on-line (" + pct(online) + ")"], [cert, "com certificado gratuito (" + pct(cert) + ")"]].map(function (x) {
         return '<div class="numero-cartao"><b>' + x[0].toLocaleString("pt-BR") + "</b><span>" + esc(x[1]) + "</span></div>";
       }).join("");
       var faixas = [["Até 4 horas", 0], ["De 5 a 20 horas", 0], ["Mais de 20 horas", 0], ["Não informada", 0]];
       todos.forEach(function (c) { var h = horas(c); faixas[h === null ? 3 : h <= 4 ? 0 : h <= 20 ? 1 : 2][1]++; });
+      var maior = Math.max.apply(null, faixas.map(function (f) { return f[1]; }).concat([1]));
       el("numeros-duracao").innerHTML = faixas.map(function (f) {
         var p = total ? Math.round(f[1] * 100 / total) : 0;
-        return '<div class="barra"><span>' + esc(f[0]) + '</span><span class="barra-fundo"><span class="barra-cheia" style="width:' + p + '%"></span></span>' +
+        // a barra mais comprida é a maior faixa; as outras ficam proporcionais a ela
+        return '<div class="barra"><span>' + esc(f[0]) + '</span><span class="barra-fundo"><span class="barra-cheia" style="width:' + (f[1] * 100 / maior).toFixed(1) + '%"></span></span>' +
           '<span class="barra-valor">' + p + "% (" + f[1] + ")</span></div>";
       }).join("");
       var porUf = {}, ativos = {};
       (site.locais || []).forEach(function (l) { if (/^BR-/.test(l.id)) ativos[l.id.slice(3)] = 1; });
       todos.forEach(function (c) { if (c.modalidade !== "online" && /^BR-/.test(c.local || "")) porUf[c.local.slice(3)] = (porUf[c.local.slice(3)] || 0) + 1; });
       var max = Math.max.apply(null, [1].concat(Object.keys(porUf).map(function (k) { return porUf[k]; })));
-      el("numeros-mapa").innerHTML = GRADE.map(function (g) {
-        var n = porUf[g[0]] || 0, at = ativos[g[0]];
-        return '<div class="uf' + (at ? " ativo" : "") + (at && n >= max / 2 ? " muitos" : "") + '" style="grid-row:' + (g[1] + 1) + ";grid-column:" + (g[2] + 1) +
-          '" title="' + esc(g[3]) + ": " + (at ? n + " cursos presenciais" : "ainda não faz parte do site") + '"><span>' + g[0] + "</span><b>" + (at ? n : "–") + "</b></div>";
-      }).join("");
+      var svg = el("mapa-brasil"), g = el("mapa-bolinhas");
+      if (svg && g) {
+        var marcas = "";
+        svg.querySelectorAll(".uf-forma").forEach(function (f) {
+          var uf = f.getAttribute("data-uf");
+          if (!ativos[uf]) return;
+          f.classList.add("ativo");
+          var b = f.getBBox(), n = porUf[uf] || 0;
+          var r = n >= 100 ? 17 : n >= 10 ? 14 : 12;
+          // posição da bolinha: centro da caixa do estado (ajustes para estados de forma irregular)
+          var ajuste = { PE: [-25, 0], PI: [0, 8], MA: [0, 10], BA: [-6, 0], PB: [-4, -2], AL: [3, -3] }[uf] || [0, 0];
+          var x = b.x + b.width / 2 + ajuste[0], y = b.y + b.height / 2 + ajuste[1];
+          marcas += '<g class="bolinha' + (n ? "" : " zero") + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r + '"></circle>' +
+            '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" font-size="' + (r > 12 ? 12 : 11) + '">' + n + "</text></g>";
+        });
+        g.innerHTML = marcas;
+      }
       el("numeros-mapa-lista").innerHTML = GRADE.filter(function (g) { return ativos[g[0]]; })
         .sort(function (a, b) { return (porUf[b[0]] || 0) - (porUf[a[0]] || 0); })
         .map(function (g) { return "<li>" + esc(g[3]) + ": " + (porUf[g[0]] || 0) + "</li>"; }).join("");
@@ -803,63 +817,6 @@
     // ao entrar na busca sem filtros no link, o padrão é «Mostrar tudo» (pedido do responsável, 22/11/2026)
     preencherOnde(onde, site.locais, params.has("onde") ? params.get("onde") : "");
     onde.addEventListener("change", function () { preencherCidades(cidade.value); filtrar(); });
-    // Calendário: um toque escolhe um dia; o segundo toque fecha o período; o terceiro recomeça (23/11/2026)
-    (function calendario() {
-      var grade = el("cal-grade");
-      if (!grade) return;
-      var MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
-      var hoje = hojeIso(), base = new Date(), mes = 0, MAX_MESES = 6, primeiro = null;
-      function iso(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
-      function curta(s) { return dataBonita(s); }
-      function desenhar() {
-        var ano = base.getFullYear(), m = base.getMonth() + mes;
-        var d1 = new Date(ano, m, 1), dias = new Date(ano, m + 1, 0).getDate();
-        el("cal-mes").textContent = MESES[d1.getMonth()] + " de " + d1.getFullYear();
-        document.querySelector('.cal-seta[data-cal="-1"]').disabled = mes <= 0;
-        document.querySelector('.cal-seta[data-cal="1"]').disabled = mes >= MAX_MESES;
-        var h = ["D", "S", "T", "Q", "Q", "S", "S"].map(function (x, i) {
-          return '<span class="cal-sem" aria-hidden="true">' + x + "</span>";
-        }).join("");
-        for (var i = 0; i < d1.getDay(); i++) h += "<span></span>";
-        for (var n = 1; n <= dias; n++) {
-          var s = iso(new Date(d1.getFullYear(), d1.getMonth(), n));
-          var cls = "cal-dia" + (s === hoje ? " hoje" : "");
-          var ini = periodo ? periodo.ini : primeiro, fim = periodo ? periodo.fim : primeiro;
-          if (ini && s >= ini && s <= fim) cls += (s === ini || s === fim) ? " ponta" : " no-periodo";
-          h += '<button type="button" class="' + cls + '" data-dia="' + s + '"' + (s < hoje ? " disabled" : "") +
-            ' aria-pressed="' + (ini && s >= ini && s <= fim) + '" aria-label="' + n + " de " + MESES[d1.getMonth()] + '">' + n + "</button>";
-        }
-        grade.innerHTML = h;
-        var esc2 = el("cal-escolha");
-        esc2.innerHTML = periodo
-          ? (periodo.ini === periodo.fim ? "Inscrições abertas em " + esc(curta(periodo.ini))
-             : "Inscrições abertas entre " + esc(curta(periodo.ini)) + " e " + esc(curta(periodo.fim))) +
-            ' <button type="button" class="botao secundario pequeno" data-cal-limpar>Voltar para hoje</button>'
-          : "Mostrando os cursos com inscrições abertas hoje.";
-      }
-      grade.addEventListener("click", function (ev) {
-        var b = ev.target.closest("button[data-dia]");
-        if (!b || b.disabled) return;
-        var s = b.getAttribute("data-dia");
-        if (!periodo || periodo.ini !== periodo.fim || !primeiro) {
-          primeiro = s; periodo = { ini: s, fim: s };
-        } else {
-          periodo = s < primeiro ? { ini: s, fim: primeiro } : { ini: primeiro, fim: s };
-          primeiro = null;
-        }
-        medir("calendario", { valor: periodo.ini + (periodo.fim !== periodo.ini ? " a " + periodo.fim : "") });
-        desenhar(); filtrar();
-      });
-      document.querySelectorAll(".cal-seta").forEach(function (b) {
-        b.addEventListener("click", function () { mes += +b.getAttribute("data-cal"); desenhar(); });
-      });
-      el("cal-escolha").addEventListener("click", function (ev) {
-        if (!ev.target.closest("[data-cal-limpar]")) return;
-        periodo = null; primeiro = null; desenhar(); filtrar();
-      });
-      calendarioRedesenhar = desenhar;
-      desenhar();
-    })();
     texto.addEventListener("input", filtrar);
     if (certificado) certificado.addEventListener("change", filtrar);
     if (duracao) duracao.addEventListener("change", filtrar);

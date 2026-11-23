@@ -169,3 +169,9 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Senac PI**: o leitor de editais (`senac_ma.py`, fonte «Senac PI») já existe. Desde 19/11/2026 o certificado de psg.pi.senac.br está expirado e a lista não abre; fica registada uma pendência e nada é alterado. A verificação de segurança não é desligada: o leitor volta a funcionar sozinho quando o certificado for renovado.
 - **Seduc PI** (Mais Formação, Mais Renda; Mulheres Mil): o site recusa ligações dos servidores do GitHub; as chamadas novas aparecem pela pesquisa semanal do Piauí.
 
+## Prefeituras das capitais (desde 23/11/2026)
+
+- **Treinar para Empregar (Prefeitura de Salvador)**: `salvador_tpe.py` lê todos os dias, sem Claude, a lista pública https://treinarparaempregar.salvador.ba.gov.br/api/cursos (uma entrada por turma). Só turmas PRESENCIAIS. Gratuidade pela frase da própria turma («Curso gratuito…» / «TURMA GRATUITA»). Turma só para mulheres: o curso leva «(só para mulheres)» no título e essa condição de acesso. «Por abrir» antes do início das inscrições; Aberta com inscrições abertas, vagas e prazo por vencer. Datas das inscrições convertidas para a hora de Salvador.
+- **Fortaleza + Futuro** (maisfuturo.sde.fortaleza.ce.gov.br): site parado (datas de 2023-2024, páginas que já não existem); não tem leitor.
+- **São Luís, Teresina, Maceió, João Pessoa, Rio Branco**: sem plataforma com lista; os cursos saem em notícias oficiais com inscrição presencial. Pesquisa semanal própria por capital («xx-prefeitura-capital»).
+

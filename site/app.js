@@ -152,20 +152,31 @@
     else l.push(t.prazo ? '<span class="prazo' + (urgente ? ' urgente' : '') + '">' + (urgente ? esc(quandoTermina(t.prazo)) : "Inscrições até " + esc(dataBonita(t.prazo))) + "</span>"
            : t.inscricao === "pagina" ? '<span class="prazo">Prazo de inscrição não indicado: confirme na página da turma</span>'
            : '<span class="prazo">Inscrições abertas. O prazo não está indicado: inscreva-se antes do início da turma</span>');
-    if (t.info) l.push(esc(t.info));
+    // Detalhes da turma: no celular cada curso ocupava ~1,5 ecrã. Na lista, ficam numa caixa «Ver detalhes da turma»
+    // que abre ao tocar (decisão do responsável, 23/11/2026); nas fichas para imprimir (sem botão) ficam à vista.
+    var det = [], tipos = [];
+    if (t.info) det.push(esc(t.info));
     if (t.inscricao === "online") l.push(t.info ? "Inscrição pela internet." : "Aulas on-line ao vivo. Inscrição pela internet.");
     if (t.inscricao === "presencial") l.push("Inscrição presencial" + (t.local_texto ? " em: " + esc(t.local_texto) : " na unidade"));
-    if (t.inscricao !== "pagina" && t.telefone) l.push("Dúvidas: " + telefones(t.telefone));
+    if (t.inscricao !== "pagina" && t.telefone) { det.push("Dúvidas: " + telefones(t.telefone)); tipos.push("telefone"); }
     var quem = [t.idade_minima ? t.idade_minima + " anos ou mais" : "", t.escolaridade ? (t.inscricao === "pagina" ? "Escolaridade: " : "Requisito: ") + t.escolaridade.replace(/\.$/, "") : ""]
       .filter(Boolean).join(" · ");
-    if (quem) l.push(esc(quem));
-    if (t.documentos) l.push("Documentos: " + esc(t.documentos.replace(/\.$/, "")));
+    if (quem) { det.push(esc(quem)); tipos.unshift("requisitos"); }
+    if (t.documentos) { det.push("Documentos: " + esc(t.documentos.replace(/\.$/, ""))); tipos.splice(tipos.indexOf("telefone") >= 0 ? tipos.length - 1 : tipos.length, 0, "documentos"); }
     // turma com local de inscrição próprio (Centec presencial): não mostrar também a morada da unidade
     var u = (t.inscricao === "presencial" && t.local_texto) ? null : t.local;
     if (u) {
       var morada = [u.morada, u.bairro, u.municipio].filter(Boolean).join(", ");
-      if (morada) l.push(esc(morada));
-      if (u.telefone) l.push("Telefone " + telefones(u.telefone));
+      if (morada) { det.push(esc(morada)); tipos.push("endereço"); }
+      if (u.telefone) { det.push("Telefone " + telefones(u.telefone)); if (tipos.indexOf("telefone") < 0) tipos.push("telefone"); }
+    }
+    if (det.length && comBotao) {
+      var ordem = ["requisitos", "documentos", "endereço", "telefone"].filter(function (x) { return tipos.indexOf(x) >= 0; });
+      var rotulo = ordem.length ? ordem.length === 1 ? ordem[0] : ordem.slice(0, -1).join(", ") + " e " + ordem[ordem.length - 1] : "";
+      l.push('<details class="turma-detalhes"><summary>Ver detalhes da turma' + (rotulo ? " <span>(" + esc(rotulo) + ")</span>" : "") +
+             "</summary>" + det.join("<br>") + "</details>");
+    } else {
+      l = l.concat(det);
     }
     if (comBotao) {
       var b = destinoBotao(t.destino, true, t.inscricao);
@@ -824,6 +835,10 @@
 
     // celular: quem chega já com uma escolha (da página inicial) vê logo a contagem e os cursos; os filtros ficam
     // na caixa «Mudar a busca». Em telas largas, a caixa fica sempre aberta.
+    // ao imprimir a lista, os detalhes das turmas saem abertos
+    window.addEventListener("beforeprint", function () {
+      document.querySelectorAll(".turma-detalhes").forEach(function (d) { d.open = true; });
+    });
     var caixaFiltros = el("cursos-filtros-caixa");
     if (caixaFiltros && window.matchMedia) {
       var largo = window.matchMedia("(min-width: 64rem)");

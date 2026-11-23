@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-23T11:44",
+ "atualizado": "2026-11-23T12:00",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -21323,6 +21323,89 @@
    "acessibilidade": []
   },
   {
+   "id": "C-60205147",
+   "titulo": "Assistente Administrativo",
+   "entidade": "Senac Alagoas (Programa Senac de Gratuidade)",
+   "url": "https://psg.al.senac.br/admin/wp-content/uploads/2026/11/Edital-de-Bolsas-Gratuitas-23-2026_2027-manifesto.pdf",
+   "pagina_propria": true,
+   "local": "BR-AL",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "pdf",
+    "conta": "",
+    "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+    "procurar": "",
+    "frase": ""
+   },
+   "pais": "BR",
+   "regiao": "Alagoas",
+   "cidade": "",
+   "descricao": "",
+   "descricao_origem": "",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao",
+    "emprego"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "",
+   "data_por_confirmar": false,
+   "situacao": "Aberto",
+   "turmas": [
+    {
+     "situacao": "Aberta",
+     "link": "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf#assistente-administrativo-19-00-22-00",
+     "unidade": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL",
+     "cidade": "Arapiraca",
+     "local": null,
+     "inicio": "2026-11-04",
+     "fim": "2027-04-02",
+     "horario": "19:00 - 22:00",
+     "dias": "Quarta, Quinta e Sexta",
+     "prazo": "2026-11-24",
+     "idade_minima": "",
+     "escolaridade": "",
+     "documentos": "",
+     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL (Arapiraca). Palmeira dos Índios e Delmiro Gouveia têm unidades próprias indicadas nos Anexos II e III.",
+     "titulo_fonte": "Assistente Administrativo",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
+     "telefone": "",
+     "inscricao": "presencial",
+     "info": "Inscrições de 13/10/2026 a 24/11/2026",
+     "verificado_em": "2026-11-23",
+     "reserva": ""
+    }
+   ],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-23",
+   "inicio": "",
+   "duracao": "160",
+   "primeiro_visto": "2026-11-23",
+   "como_me_inscrever": [],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "Não",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "acessibilidade": []
+  },
+  {
    "id": "C-b4621c64",
    "titulo": "Panetone",
    "entidade": "Senac Alagoas (Programa Senac de Gratuidade)",
@@ -21369,7 +21452,7 @@
      "idade_minima": "",
      "escolaridade": "",
      "documentos": "",
-     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL",
+     "local_texto": "Maribondo/AL: Secretaria Municipal de Desenvolvimento Econômico e Turismo (SEDETUR), Rua do Comércio, nº 48, Centro – Maribondo/AL. Penedo/AL: Secretaria da Mulher, Largo de Fátima, nº 452 - Bloco B – Centro – Penedo/AL. A unidade responsável pela efetivação das matrículas é o Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL.",
      "titulo_fonte": "Panetone",
      "destino": {
       "tipo": "pdf",
@@ -21398,7 +21481,7 @@
      "idade_minima": "",
      "escolaridade": "",
      "documentos": "",
-     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL",
+     "local_texto": "Maribondo/AL: Secretaria Municipal de Desenvolvimento Econômico e Turismo (SEDETUR), Rua do Comércio, nº 48, Centro – Maribondo/AL. Penedo/AL: Secretaria da Mulher, Largo de Fátima, nº 452 - Bloco B – Centro – Penedo/AL. A unidade responsável pela efetivação das matrículas é o Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL.",
      "titulo_fonte": "Panetone",
      "destino": {
       "tipo": "pdf",
@@ -21481,7 +21564,7 @@
      "idade_minima": "",
      "escolaridade": "",
      "documentos": "",
-     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL",
+     "local_texto": "Maribondo/AL: Secretaria Municipal de Desenvolvimento Econômico e Turismo (SEDETUR), Rua do Comércio, nº 48, Centro – Maribondo/AL. Penedo/AL: Secretaria da Mulher, Largo de Fátima, nº 452 - Bloco B – Centro – Penedo/AL. A unidade responsável pela efetivação das matrículas é o Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL.",
      "titulo_fonte": "Preparo de Pizza",
      "destino": {
       "tipo": "pdf",
@@ -21564,7 +21647,7 @@
      "idade_minima": "",
      "escolaridade": "",
      "documentos": "",
-     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL",
+     "local_texto": "Maribondo/AL: Secretaria Municipal de Desenvolvimento Econômico e Turismo (SEDETUR), Rua do Comércio, nº 48, Centro – Maribondo/AL. Penedo/AL: Secretaria da Mulher, Largo de Fátima, nº 452 - Bloco B – Centro – Penedo/AL. A unidade responsável pela efetivação das matrículas é o Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL.",
      "titulo_fonte": "Doces e Salgados para Lanchonete",
      "destino": {
       "tipo": "pdf",
@@ -21647,7 +21730,7 @@
      "idade_minima": "",
      "escolaridade": "",
      "documentos": "",
-     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL",
+     "local_texto": "Maribondo/AL: Secretaria Municipal de Desenvolvimento Econômico e Turismo (SEDETUR), Rua do Comércio, nº 48, Centro – Maribondo/AL. Penedo/AL: Secretaria da Mulher, Largo de Fátima, nº 452 - Bloco B – Centro – Penedo/AL. A unidade responsável pela efetivação das matrículas é o Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL.",
      "titulo_fonte": "Design de Sobrancelha com Henna",
      "destino": {
       "tipo": "pdf",
@@ -21730,7 +21813,7 @@
      "idade_minima": "",
      "escolaridade": "",
      "documentos": "",
-     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL",
+     "local_texto": "Maribondo/AL: Secretaria Municipal de Desenvolvimento Econômico e Turismo (SEDETUR), Rua do Comércio, nº 48, Centro – Maribondo/AL. Penedo/AL: Secretaria da Mulher, Largo de Fátima, nº 452 - Bloco B – Centro – Penedo/AL. A unidade responsável pela efetivação das matrículas é o Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL.",
      "titulo_fonte": "Alongamento de Cílios",
      "destino": {
       "tipo": "pdf",
@@ -21742,6 +21825,35 @@
      "telefone": "",
      "inscricao": "presencial",
      "info": "Inscrições de 12/11/2026 a 23/11/2026",
+     "verificado_em": "2026-11-23",
+     "reserva": ""
+    },
+    {
+     "situacao": "Aberta",
+     "link": "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf#alongamento-de-cilios-14-00-18-00",
+     "unidade": "Posto Avançado Alto Sertão do Senac, Rua Floriano Peixoto, nº 171 – Centro – Delmiro Gouveia/AL",
+     "cidade": "Delmiro Gouveia",
+     "local": null,
+     "inicio": "2026-11-16",
+     "fim": "2026-11-19",
+     "horario": "14:00 - 18:00",
+     "dias": "Segunda a Sexta",
+     "prazo": "2026-11-24",
+     "idade_minima": "",
+     "escolaridade": "",
+     "documentos": "",
+     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL (Arapiraca). Palmeira dos Índios e Delmiro Gouveia têm unidades próprias indicadas nos Anexos II e III.",
+     "titulo_fonte": "Alongamento de Cílios",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
+     "telefone": "",
+     "inscricao": "presencial",
+     "info": "Inscrições de 13/10/2026 a 24/11/2026",
      "verificado_em": "2026-11-23",
      "reserva": ""
     },
@@ -21939,6 +22051,35 @@
      "info": "Inscrições de 13/10/2026 a 24/11/2026",
      "verificado_em": "2026-11-23",
      "reserva": ""
+    },
+    {
+     "situacao": "Aberta",
+     "link": "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf#desenvolvimento-web-front-end-14-00-18-00",
+     "unidade": "Senac – Posto Avançado Palmeira dos Índios, Rua José Pinto de Barros, nº 66 – Centro - Palmeira dos Índios/AL",
+     "cidade": "Palmeira dos Índios",
+     "local": null,
+     "inicio": "2026-11-23",
+     "fim": "2027-01-27",
+     "horario": "14:00 - 18:00",
+     "dias": "Segunda a Sexta",
+     "prazo": "2026-11-24",
+     "idade_minima": "",
+     "escolaridade": "",
+     "documentos": "",
+     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL (Arapiraca). Palmeira dos Índios e Delmiro Gouveia têm unidades próprias indicadas nos Anexos II e III.",
+     "titulo_fonte": "Desenvolvimento Web - Front End",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
+     "telefone": "",
+     "inscricao": "presencial",
+     "info": "Inscrições de 13/10/2026 a 24/11/2026",
+     "verificado_em": "2026-11-23",
+     "reserva": ""
     }
    ],
    "em_revisao": false,
@@ -21994,6 +22135,35 @@
    "data_por_confirmar": false,
    "situacao": "Aberto",
    "turmas": [
+    {
+     "situacao": "Aberta",
+     "link": "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf#a-arte-de-se-comunicar-e-de-vender-mais-08-00-12-00",
+     "unidade": "Posto Avançado Alto Sertão do Senac, Rua Floriano Peixoto, nº 171 – Centro – Delmiro Gouveia/AL",
+     "cidade": "Delmiro Gouveia",
+     "local": null,
+     "inicio": "2026-11-03",
+     "fim": "2026-11-12",
+     "horario": "08:00 - 12:00",
+     "dias": "Segunda a Sexta",
+     "prazo": "2026-11-24",
+     "idade_minima": "",
+     "escolaridade": "",
+     "documentos": "",
+     "local_texto": "Senac – Unidade do Agreste, Rua Marinete Francisca Nunes, nº 2853 – Brasiliana – Arapiraca/AL (Arapiraca). Palmeira dos Índios e Delmiro Gouveia têm unidades próprias indicadas nos Anexos II e III.",
+     "titulo_fonte": "A Arte de se Comunicar e de Vender Mais",
+     "destino": {
+      "tipo": "pdf",
+      "conta": "",
+      "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim.",
+      "procurar": "",
+      "frase": ""
+     },
+     "telefone": "",
+     "inscricao": "presencial",
+     "info": "Inscrições de 13/10/2026 a 24/11/2026",
+     "verificado_em": "2026-11-23",
+     "reserva": ""
+    },
     {
      "situacao": "Aberta",
      "link": "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf#a-arte-de-se-comunicar-e-de-vender-mais",

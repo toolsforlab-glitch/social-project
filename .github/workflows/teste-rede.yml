@@ -11,6 +11,7 @@ jobs:
       PYTHONUNBUFFERED: "1"
       SECO: "1"
       SO_FONTE: "Senai AM"
+      DIAGNOSTICO: /tmp/diag
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
@@ -18,3 +19,8 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
       - run: cd scripts && python3 senac_ma.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: diag
+          path: /tmp/diag

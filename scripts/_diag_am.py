@@ -5,7 +5,7 @@ f = glob.glob("/tmp/diag/*.json")[0]
 d = json.load(open(f))
 texto, resp = d["texto"], d["resposta"]
 i = texto.find("DOCUMENTO OFICIAL LIGADO")
-print("TEXTO PROGRAMACAO (inicio):", repr(texto[i:i+1800]))
+
 from comum import extrair_json
 res = extrair_json(resp)
 falhas = 0

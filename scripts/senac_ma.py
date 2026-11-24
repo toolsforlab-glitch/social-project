@@ -137,7 +137,7 @@ FONTES = [
      "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
      "lista": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
      "prefixo_turma": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
-     "layout": True, "ancora_com_data": True, "max_extra": 70000, "max_tokens": 48000, "max_caracteres": 30000,
+     "layout": True, "ancora_com_data": True, "codigo_turma": r"[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}", "max_extra": 70000, "max_tokens": 48000, "max_caracteres": 30000,
      "nota": "No SENAI Amazonas a «Chamada Pública» (texto principal) tem as regras: a gratuidade («Os cursos "
              "ofertados serão 100% gratuitos»), a forma de seleção (item 1.17, «ordem de data e horário de "
              "inscrição»), a baixa renda (item 1.20, declaração do candidato: copia essa frase para «renda») e o "
@@ -146,7 +146,8 @@ FONTES = [
              "de cada turma, copiado letra a letra). A lista de turmas NÃO está na chamada: está no fim, no DOCUMENTO "
              "OFICIAL LIGADO AO EDITAL «Programação de cursos» (planilha com curso, código da turma, carga horária, "
              "vagas, tipo de ação, período, horário e pré-requisitos; as células longas partem-se em várias linhas). "
-             "Uma entrada em «turmas» por CÓDIGO DE TURMA (ex.: «APP.CLP.051»). Em «frase» copia o texto desde o "
+             "Uma entrada em «turmas» por CÓDIGO DE TURMA (ex.: «APP.CLP.051»), com o código em «codigo» (campo "
+             "extra, copiado letra a letra). Em «frase» copia o texto desde o "
              "início do nome do curso até ao período (datas de início e término), tal como aparece, mesmo que o nome "
              "venha partido à volta do código. Em «curso» o nome completo, juntando as partes. Todas as turmas são em "
              "Manaus: «cidade» = «Manaus», mesmo nas EaD e semipresenciais. Os pré-requisitos (escolaridade, idade, "
@@ -1200,6 +1201,22 @@ def correr(fonte):
         # requisito fixo da fonte (ex.: nota do ENEM no SENAI BA): só se a frase estiver no documento
         req = fonte.get("requisito") or {}
         requisito_fixo = req.get("texto", "") if req and citacao_valida(req.get("frase", ""), texto) else ""
+        if fonte.get("codigo_turma"):
+            # tabela com o nome do curso partido em várias linhas à volta do código da turma (SENAI AM): o modelo
+            # junta o nome e a frase deixa de ser literal. A prova passa a ser o próprio texto do PDF: a única linha
+            # com o código da turma e as duas linhas antes e depois, onde têm de estar, pela ordem, as palavras do
+            # nome; as datas são conferidas depois nessa janela, como em qualquer frase.
+            linhas = texto.split("\n")
+            for t in res.get("turmas") or []:
+                cod = str(t.get("codigo") or "").strip()
+                if not re.fullmatch(fonte["codigo_turma"], cod):
+                    continue
+                idx = [i for i, l in enumerate(linhas) if re.search(rf"(?<![\w.]){re.escape(cod)}(?![\w.])", l)]
+                if len(idx) != 1:
+                    continue
+                janela = "\n".join(linhas[max(0, idx[0] - 2):idx[0] + 3])
+                if palavras_em_ordem(str(t.get("curso") or ""), janela.replace("|", " ")):
+                    t["frase"] = janela
         edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False),
                                     fonte.get("layout", False))
         if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:

@@ -5,9 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          B=https://fieam.org.br/senai
-          curl -sS -m 40 -A "Mozilla/5.0" -o /dev/null -w "home %{http_code}\n" $B/ || true
-          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/pages?search=chamada&per_page=50&_fields=id,date,modified,slug,link,title" | head -c 6000; echo
-          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/posts?search=gratuit&per_page=20&_fields=id,date,slug,link,title" | head -c 5000; echo
-          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/media?search=chamada&per_page=30&_fields=id,date,source_url" | head -c 6000; echo
-          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/media?search=programacao&per_page=30&_fields=id,date,source_url" | head -c 4000; echo
+          curl -sS -m 40 -A "Mozilla/5.0" -o /dev/null -w "pdf %{http_code}\n" "https://fieam.org.br/senai/wp-content/uploads/sites/16/2026/04/Chamada-Publica-GEP-02-2026-Cursos-Gratuitos-SENAI-Manaus-1.pdf" || true
+          curl -sS -m 40 -A "Mozilla/5.0" "https://news.google.com/rss/search?q=%22SENAI%22+Amazonas+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419" | python3 -c "import sys,re;t=sys.stdin.read();print(len(t));[print(a,'|',b) for a,b in re.findall(r'<item><title>(.*?)</title>.*?<pubDate>(.*?)</pubDate>',t)[:15]]"

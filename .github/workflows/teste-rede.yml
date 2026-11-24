@@ -8,6 +8,7 @@ jobs:
           sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
           B=https://www.cetam.am.gov.br/wp-content/uploads/2026
           for f in 10/Edital-011-2026-Qualificacao-Profissional-EaD 08/Edital-009-2026-Qualificacao-Profissional-Capital 08/Edital-010-2026-Qualificacao-Profissional-Interior-e-EaD; do
-            curl -sS -m 60 -A "Mozilla/5.0" -o e.pdf "$B/$f.pdf"; echo "######## $f $(pdfinfo e.pdf | grep Pages)"
-            pdftotext e.pdf - | tr '\n' ' ' | sed 's/  */ /g' | grep -oiE ".{0,200}(gratuit|ordem de chegada|sorteio|prova|entrevista|portf[óo]lio|not[óo]rio|experi[êe]ncia|curr[íi]culo|respons[áa]vel por|custo|material|baixa renda|renda|CadÚnico|prioridade|reserva).{0,200}" | head -30
+            curl -sS -m 60 -A "Mozilla/5.0" -o e.pdf "$B/$f.pdf"; echo "== $f $(pdfinfo e.pdf | grep Pages)"
+            pdftotext -layout e.pdf e.txt; grep -n "ANEXO II" e.txt | head -3
+            L=$(grep -n "ANEXO II" e.txt | tail -1 | cut -d: -f1); sed -n "$((L)),$((L+45))p" e.txt | sed 's/   */ | /g' | cut -c1-260
           done

@@ -30,6 +30,7 @@ PAGINA_PSG = SITE + "/psg"
 ENTIDADE = "Senac Pará (Programa Senac de Gratuidade)"
 FRASE_GRATUIDADE = "conheça a oferta de vagas gratuitas em unidades mais próximas"
 FRASE_RENDA = "Se o resultado for até 2 salários mínimos federais, o candidato poderá concorrer a uma vaga no PSG."
+FRASE_ORDEM = "O ingresso nos cursos do PSG se dá por ordem de inscrição do candidato."
 REQUISITO_RENDA = "Renda familiar de até 2 salários mínimos por pessoa"
 
 
@@ -77,17 +78,18 @@ def cursos_da_selecao(url):
         per = re.search(r"Período do curso:\s*de\s*<strong>([\d/]+)</strong>\s*até\s*<strong>([\d/]+)</strong>", bloco, re.S)
         cursos.append({
             "nome": limpo(h.group(1)), "modo": "online" if "online" in limpo(h.group(2)).lower() else "presencial",
-            "pre": limpo(pre.group(1)) if pre else "", "local": limpo(loc.group(1)) if loc else "",
+            "pre": limpo(pre.group(1)) if pre else "", "local": limpo(loc.group(1)).strip(" :;") if loc else "",
             "insc_ini": iso(insc.group(1)) if insc else "", "prazo": iso(insc.group(2)) if insc else "",
             "ini": iso(per.group(1)) if per else "", "fim": iso(per.group(2)) if per else "",
-            "botao": "Inscrever neste curso" in bloco, "texto": limpo(bloco)[:600]})
+            "botao": "Inscrever neste curso" in bloco, "encerrada": "Inscrições encerradas" in bloco,
+            "texto": limpo(bloco)[:600]})
     return numero, cidade, cursos
 
 
 def idade_escolaridade(pre):
-    idade = re.search(r"(?:Requisito de idade|Idade mínima):\s*(\d{2})\s*anos", pre, re.I)
+    idade = re.search(r"(?:Requisito de idade|Idade mínima)(?:\s+de)?:?\s*(\d{2})\s*anos|Idade maior ou igual a\s*(\d{2})", pre, re.I)
     esc = re.search(r"Escolaridade mínima:\s*(.+?)(?=\s+Requisito|\s+Idade|$)", pre, re.I)
-    return (idade.group(1) if idade else ""), (esc.group(1).strip(" .") if esc else "")
+    return ((idade.group(1) or idade.group(2)) if idade else ""), (esc.group(1).strip(" .;") if esc else "")
 
 
 def auditar(c):
@@ -123,8 +125,7 @@ def main():
         return 0
     gratuito = citacao_valida(FRASE_GRATUIDADE, texto_insc)
     renda = FRASE_RENDA if citacao_valida(FRASE_RENDA, texto_psg) else ""
-    m_sel = re.search(r"[^.]*por ordem de inscrição[^.]*\.", texto_insc)
-    frase_sel = m_sel.group(0).strip() if m_sel and citacao_valida(m_sel.group(0).strip(), texto_insc) else ""
+    frase_sel = FRASE_ORDEM if citacao_valida(FRASE_ORDEM, texto_insc) else ""
     abertas = selecoes_abertas(lista)
     print(f"Senac Pará: {lista.count('psg/selecao/detalhar/') // 2} seleções na lista, {len(abertas)} com inscrições "
           f"abertas; gratuidade {'conferida' if gratuito else 'NÃO conferida'}; renda {'conferida' if renda else 'não'}; "
@@ -167,7 +168,9 @@ def main():
                 situacao = "Encerrada"
             elif c["insc_ini"] and hoje < c["insc_ini"]:
                 situacao = "Por abrir"
-            elif c["botao"] and c["prazo"]:
+            elif c["prazo"] and not c["encerrada"] and (c["botao"] or c["modo"] == "presencial"):
+                # inscrição online: o botão «Inscrever neste curso» mostra que há vagas; inscrição presencial: a
+                # página não tem botão, vale o período de inscrição (e o aviso «Inscrições encerradas», se aparecer)
                 situacao = "Aberta"
             else:
                 situacao = "Encerrada"
@@ -178,7 +181,8 @@ def main():
                 "Carga horária": "", "Vagas": "", "Prazo de inscrição": c["prazo"], "Idade mínima": idade,
                 "Escolaridade": esc[:120], "Documentos": "",
                 "Mais informações": (f"Inscrições de {br(c['insc_ini'])} a {br(c['prazo'])}, "
-                                     + ("pela internet, na página da seleção" if c["modo"] == "online" else "presenciais")
+                                     + ("pela internet, na página da seleção" if c["modo"] == "online"
+                                        else "presenciais (o local está no edital, na página da seleção)")
                                      + f" (seleção {numero} do Senac Pará)."),
                 "Local na fonte": c["local"][:200], "Modo de inscrição": c["modo"], "Situação": situacao,
                 "Última verificação": hoje, "Falhas seguidas": 0,

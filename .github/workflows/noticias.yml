@@ -94,6 +94,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 salvador_tpe.py
 
+      - name: Turmas do Programa Senac de Gratuidade no Pará (portal do PSG, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 senac_pa.py
+
       - name: Notícias oficiais de cursos das prefeituras e governos (sem Claude) e verificação das novas
         if: ${{ always() }}
         timeout-minutes: 15

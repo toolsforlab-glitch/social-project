@@ -504,7 +504,7 @@
         factos.push(c.local ? marca("local", txtLocal, "onde:" + c.local) : txtLocal);
       }
       if (c.certificado === "gratuito") factos.push(marca("bom", "Certificado gratuito", "marca:cert-gratuito"));
-      else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago</span>');
+      else if (c.certificado === "pago") factos.push('<span class="atencao">Certificado pago' + (c.certificado_valor ? " (" + esc(c.certificado_valor) + ")" : "") + '</span>');
       // regra do projeto: gratuidade só com frase da página que diga que não há custo; sem ela, avisa-se
       if (c.gratuidade_comprovada === false) factos.push(marca("atencao", "Gratuidade por confirmar", "marca:grat-confirmar"));
       var breve = terminaEmBreve(c);

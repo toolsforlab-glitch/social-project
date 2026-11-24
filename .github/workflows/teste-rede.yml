@@ -10,21 +10,15 @@ jobs:
       - run: pip install -q -r requirements.txt
       - run: |
           cd scripts && python3 - <<'PY'
-          import re
+          import senac_ma as s
           from comum import baixar
-          from base import texto_de_html
-          for u in ["https://am.senac.br/programa-senac-de-gratuidade/consulta-de-vaga/?ordem_ano=desc&situacao=aberto",
-                    "https://am.senac.br/consulta-de-vaga/n-398-2026-senac-manaus-centro-inscricoes-abertas-2386/",
-                    "https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-398-2026-senac-manaus-centro-inscricoes-abertas-3624df0c81d2.pdf",
-                    "https://am.senac.br/programa-senac-de-gratuidade/",
-                    "https://am.senac.br/wp-content/uploads/2026/01/EDITAL-001_2026_Programa-Senac-de-Gratuidade_PSG_Senac-Amazonas.doc.pdf"]:
-              try:
-                  b = baixar(u, timeout=90); t = texto_de_html(b)
-                  print("==", u[:110], "OK", len(b), "| consulta-de-vaga links:", len(set(re.findall(rb"/consulta-de-vaga/n-[^\"']+", b))))
-                  if u.endswith("3624df0c81d2.pdf"):
-                      print("   TEXTO:", t[:3500])
-                  for m in re.finditer(r".{0,180}(gratuit(?!dade)|sem custo|nenhum custo|isen|sal[áa]rios? m[íi]nimos?|ordem de inscri|sorteio).{0,180}", t, re.I):
-                      print("   ~", m.group(0)[:380])
-              except Exception as e:
-                  print("==", u[:110], "ERRO", type(e).__name__, str(e)[:150])
+          f = next(x for x in s.FONTES if x["nome"] == "Senac AM")
+          ed = s.listar_senac_am(f)
+          print("== aberturas abertas:", len(ed), "| trechos:", bool(ed and ed[0]["trechos"]))
+          for e in ed[:40]:
+              print("   ~", e["published_at"], e["number"][:60], "| avisos:", len(e["avisos"]))
+          par = next((e for e in ed if "parceria" in e["number"]), None)
+          if par:
+              t = s.texto_do_documento(baixar(par["pagina"], timeout=60), "application/pdf")
+              print("== PARCERIA", par["number"], "::", " ".join(t.split())[:2500])
           PY

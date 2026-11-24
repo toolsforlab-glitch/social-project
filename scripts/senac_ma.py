@@ -112,6 +112,21 @@ FONTES = [
              "inscrição); para «gratuidade» usa a frase das bolsas (ex.: «bolsas integrais de estudo»), se existir. "
              "Se no fim do texto houver ERRATAS ou NOTAS DE CANCELAMENTO, elas mudam o edital: usa as datas novas e, "
              "nessa informação, a frase da errata."},
+    {"nome": "Senac AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",
+     "entidade": "Senac Amazonas (Programa Senac de Gratuidade)", "estado": "estado/senac_am.json",
+     "listar": "senac_am", "lista": "https://am.senac.br/programa-senac-de-gratuidade/consulta-de-vaga/",
+     "prefixo_turma": "https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/", "anexo": r"ANEXO\s+I\b",
+     "nota": "No Senac Amazonas cada «Abertura de Vagas» é um PDF curto: o ANEXO I tem o cronograma (a linha "
+             "«Inscrições» com o período e o local, presencial ou online) e o ANEXO II o «QUADRO DE VAGAS_PSG» (uma "
+             "linha por curso: município e unidade, curso, pré-requisitos, carga horária, início, término, horário, "
+             "número de vagas). A gratuidade, a renda e a forma de preenchimento das vagas NÃO estão na abertura: "
+             "estão no edital geral do PSG 2026, cujos trechos conferidos vêm no fim do texto («TRECHOS DO EDITAL "
+             "GERAL»): podes copiar essas frases para «gratuidade», «renda» e «selecao». NÃO devolvas (deixa fora de "
+             "«turmas») os cursos cujos pré-requisitos exigem já trabalhar na profissão ou ter experiência "
+             "profissional (ex.: «Requisito específico: atuar como cabeleireiro(a)», «Comprovante de atuação "
+             "profissional»), nem os que são só para pessoas indicadas por uma empresa ou instituição parceira "
+             "(regra do responsável: cursos só para quem já tem emprego, cargo ou profissão ficam fora). Se no fim "
+             "houver COMUNICADOS ou ERRATAS, eles prevalecem."},
     {"nome": "Senai PI", "uf": "PI", "local": "BR-PI", "regiao": "Piauí",
      "entidade": "SENAI Piauí (Programa SENAI de Gratuidade Regimental)", "estado": "estado/senai_pi.json",
      "programa": "Programa SENAI de Gratuidade Regimental", "listar": "senai_pi",
@@ -698,6 +713,78 @@ def listar_senac_al(fonte):
     return editais
 
 
+EDITAL_GERAL_AM = ("https://am.senac.br/wp-content/uploads/2026/01/"
+                   "EDITAL-001_2026_Programa-Senac-de-Gratuidade_PSG_Senac-Amazonas.doc.pdf")
+TRECHOS_AM = [
+    "As vagas gratuitas descritas no anexo II deste Edital, e conforme publicação de abertura de vagas no decorrer do "
+    "ano de 2026, são destinadas a pessoas de baixa renda",
+    "Possuir renda familiar per capita de até 2,0 salários mínimos da federação",
+    "As vagas destinadas ao Programa Senac de Gratuidade - PSG, divulgadas nas aberturas publicadas no site, serão "
+    "preenchidas por ordem de inscrição",
+]
+
+
+def listar_senac_am(fonte):
+    """Senac Amazonas: a «Consulta de Vagas» (filtro «Aberto») lista as aberturas de vagas com a data de publicação;
+    a página de cada uma tem o PDF da abertura e, à parte, «Comunicados» e «Erratas» (lidos juntos, no fim do texto).
+    A gratuidade, a renda e a ordem de inscrição estão no edital geral do PSG 2026: os três trechos são conferidos
+    por código nesse edital a cada leitura e juntados ao texto de cada abertura; se algum faltar, não se junta."""
+    trechos = []
+    try:
+        texto_geral = re.sub(r"\s+", " ", texto_do_documento(baixar(EDITAL_GERAL_AM, timeout=90), "application/pdf"))
+        conferidos = [t for t in TRECHOS_AM if citacao_valida(t, texto_geral)]
+        if len(conferidos) == len(TRECHOS_AM):
+            trechos = [(f"TRECHOS DO EDITAL GERAL DO PSG 2026 DO SENAC AMAZONAS ({EDITAL_GERAL_AM}), conferidos por "
+                        "código", "\n".join(f"«{t}»" for t in conferidos))]
+        else:
+            print(f"  ! Senac AM: só {len(conferidos)} de {len(TRECHOS_AM)} trechos encontrados no edital geral")
+    except Exception as ex:  # noqa: BLE001
+        print(f"  ! Senac AM: edital geral ilegível ({type(ex).__name__})")
+    editais = []
+    for pag in range(1, 6):
+        url = fonte["lista"] + (f"page/{pag}/" if pag > 1 else "") + "?ordem_ano=desc&situacao=aberto"
+        try:
+            html = baixar(url, timeout=60).decode("utf-8", "replace")
+        except Exception:  # noqa: BLE001
+            break
+        itens = re.findall(r'href="(https://am\.senac\.br/consulta-de-vaga/[^"]+)"', html)
+        datas = re.findall(r"(20\d{2}-\d{2}-\d{2})", html)
+        if not itens:
+            break
+        vistos_pag = []
+        for i in itens:
+            if i not in vistos_pag:
+                vistos_pag.append(i)
+        for pagina in vistos_pag:
+            if not re.search(r"inscricoes-abertas", pagina):
+                continue
+            try:
+                ph = baixar(pagina, timeout=60).decode("utf-8", "replace")
+            except Exception:  # noqa: BLE001
+                continue
+            pub = (re.search(r"(20\d{2}-\d{2}-\d{2})", ph) or [None, ""])[1]
+            partes = re.split(r"<span>\s*(Aprovados|Comunicados|Erratas)\s*</span>", ph)
+            pdfs = lambda t: [_html.unescape(u) for u in re.findall(r'href="([^"]+\.pdf)"', t, flags=re.I)]
+            principal = pdfs(partes[0])
+            if not principal:
+                continue
+            edital = principal[-1]
+            avisos = []
+            for rotulo, bloco in zip(partes[1::2], partes[2::2]):
+                if rotulo in ("Comunicados", "Erratas"):
+                    avisos += [u for u in pdfs(bloco.split("</div>")[0]) if u != edital]
+            titulo = _html.unescape(re.sub(r"<[^>]+>", "", (re.search(r"<title>(.*?)</title>", ph, flags=re.S) or [None, ""])[1])).split("|")[0].strip()
+            num = re.sub(r"[^a-z0-9]+", "-", pagina.rstrip("/").rsplit("/", 1)[-1])[:70]
+            editais.append({"id": f"senac-am-{num}", "number": num, "published_at": pub,
+                            "updated_at": "|".join(u.rsplit("/", 1)[-1] for u in [edital] + avisos),
+                            "title": titulo, "pagina": edital, "padrao": re.escape(edital), "aditivo": False,
+                            "avisos": avisos, "trechos": trechos,
+                            "documents": [{"type": "edital", "mime_type": "application/pdf", "url": edital}]})
+        if "situacao=aberto" not in html or f"page/{pag + 1}/" not in html:
+            break
+    return editais
+
+
 def listar_senai_al(fonte):
     """SENAI Alagoas: a página «Edital Gratuidade» (al.senai.br/edital-gratuidade/) tem um bloco por edital
     (<section class="list-editais">), do mais novo para o mais antigo, com «Período de inscrição», «Local para
@@ -863,7 +950,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []
@@ -938,6 +1025,10 @@ def correr(fonte):
             for rotulo, url in e.get("extras") or []:
                 t_extra = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
                 texto += f"\n\n=== DOCUMENTO OFICIAL LIGADO AO EDITAL: {rotulo} ===\n{t_extra.strip()[:20000]}"
+            for rotulo, txt in e.get("trechos") or []:
+                # trechos de um documento oficial geral, já conferidos por código nesse documento (ex.: o edital
+                # geral do PSG 2026 do Senac Amazonas, com a gratuidade e a renda que as aberturas não repetem)
+                texto += f"\n\n=== {rotulo} ===\n{txt}"
             if e.get("texto_pagina"):
                 texto += f"\n\n=== INFORMAÇÕES DESTE EDITAL NA PÁGINA OFICIAL ({e.get('pagina')}) ===\n{e['texto_pagina']}"
         except Exception as ex:  # noqa: BLE001

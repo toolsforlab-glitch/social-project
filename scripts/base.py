@@ -476,7 +476,7 @@ def certificado_da_frase(valor, frase):
         return "gratuito"
     if valor == "pago" and re.search(r"\bpag[oa]\b|taxa|r\$|valor\s+de", frase, re.I):
         return "pago"
-    if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa])\s+"
+    if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa]|geram?)\s+"
                                                  r"(direito\s+a\s+)?certificad|sem\s+certificad", frase, re.I):
         return "sem certificado"
     return ""

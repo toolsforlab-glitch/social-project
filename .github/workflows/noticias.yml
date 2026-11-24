@@ -128,6 +128,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 bradesco.py || echo 'Fundação Bradesco não lida'
 
+      - name: Cursos gratuitos da FGV (API oficial do portal, prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 fgv.py || echo 'FGV não lida'
+
       - name: Cursos on-line do Sebrae (catálogo oficial, prova por código)
         if: ${{ always() }}
         timeout-minutes: 20

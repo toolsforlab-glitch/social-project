@@ -11,16 +11,17 @@ jobs:
       - run: |
           cd scripts && python3 - <<'PY'
           import re
+          import senac_pa as s
           from comum import baixar
-          from base import texto_de_html
-          S = "https://www.pa.senac.br"
-          for u in [S + "/psg/selecao", S + "/psg/selecao/detalhar/belem/3/89", S + "/psg",
-                    S + "/send4/arquivos/edital/versaoassinadaparaimpressao.pdf", S + "/psg/como-se-inscrever"]:
-              try:
-                  b = baixar(u, timeout=60); t = texto_de_html(b)
-                  print("==", u, "OK", len(b), "| detalhar:", len(set(re.findall(rb"detalhar/[a-z\-]+/\d+/\d+", b))), "| Abertas:", b.count(b"Inscri\xc3\xa7\xc3\xb5es Abertas"))
-                  for m in re.finditer(r".{0,160}(gratuit(?!dade)|sem custo|sem nenhum custo|isento|isen[çc][ãa]o|n[ãa]o ter[áa] custo).{0,160}", t, re.I):
-                      print("   ~", m.group(0)[:330])
-              except Exception as e:
-                  print("==", u, "ERRO", type(e).__name__, str(e)[:150])
+          from base import texto_de_html, citacao_valida
+          lista = baixar(s.LISTA, timeout=60).decode("utf-8", "replace")
+          ab = s.selecoes_abertas(lista)
+          ti = texto_de_html(baixar(s.PAGINA_INSCRICAO, timeout=60)); tp = texto_de_html(baixar(s.PAGINA_PSG, timeout=60))
+          print("== abertas", len(ab), "| gratuito", citacao_valida(s.FRASE_GRATUIDADE, ti), "| renda", citacao_valida(s.FRASE_RENDA, tp),
+                "| ordem:", (re.search(r"[^.]*por ordem de inscrição[^.]*\.", ti) or [""])[0])
+          for u in ab[:4]:
+              n, cid, cs = s.cursos_da_selecao(u)
+              print("==", n, cid, len(cs), u)
+              for c in cs[:4]:
+                  print("   ~", {k: c[k] for k in ("nome", "modo", "insc_ini", "prazo", "ini", "fim", "botao")}, "|", s.idade_escolaridade(c["pre"]), "|", c["local"][:60])
           PY

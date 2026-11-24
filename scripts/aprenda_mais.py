@@ -35,7 +35,7 @@ FRASE_GRATUITO = "oferece cursos on-line, abertos e gratuitos em diversas áreas
 NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
                 "dinheiro", "direitos"]
 ROTULOS = ["Conteúdo", "Conclusão do curso", "Carga horária", "Prazo mínimo para obtenção do certificado",
-           "Público-alvo", "Requisitos", "Módulos", "Metodologia", "Instituição", "Nível", "Idioma"]
+           "Público-alvo", "Requisitos", "Módulos", "Metodologia", "Instituição", "Área", "Nível", "Idioma"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
 Brasil a encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer os seus direitos. Recebe cursos \
 abertos dos institutos federais (plataforma Aprenda Mais, do MEC; on-line, gratuitos, sem tutoria). Escolha os que \
@@ -82,6 +82,9 @@ def info(curso_id):
         campos.setdefault(m.group(1), m.group(2).strip())
     conclusao = re.search(r"até\s+(\d{2})/(\d{2})/(\d{4})", campos.get("Conclusão do curso", ""))
     campos["conclusao_iso"] = f"{conclusao.group(3)}-{conclusao.group(2)}-{conclusao.group(1)}" if conclusao else ""
+    # «6 0 horas» / «4 0 horas» (espaço no meio do número, tal como está na página) -> «60 horas»
+    if campos.get("Carga horária"):
+        campos["Carga horária"] = re.sub(r"(\d)\s+(?=\d)", r"\1", campos["Carga horária"])
     campos["texto"] = texto
     return campos
 

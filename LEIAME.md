@@ -210,6 +210,15 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - O Claude escolhe as trilhas úteis ao público (fora: boas-vindas, trilhas só para juízes, advogados, servidores, professores ou gestores de ONGs, e as preparatórias de Azure e Dynamics 365). Uma trilha que sai da página passa a «Encerrado».
 - Primeira leitura (24/11/2026): 43 trilhas (203 cursos), 16 publicadas.
 
+## Aprenda Mais, do MEC: cursos abertos dos institutos federais (desde 24/11/2026)
+
+- `aprenda_mais.py` (todos os dias, no workflow diário): lê a plataforma Aprenda Mais (aprendamais.mec.gov.br, Moodle do MEC com os cursos on-line abertos da Rede Federal: IFRS, IFTM, IFBA, IFRO e outros). As listas por área e a página «Course information» de cada curso (`course/info.php?id=N`) são públicas e abrem a partir do GitHub. A página de cada curso dá o conteúdo, a carga horária, o público-alvo, os requisitos, a instituição e a data até à qual é preciso terminar («Conclusão do curso: até 31/01/2027»).
+- Gratuidade, na página inicial: «oferece cursos on-line, abertos e gratuitos em diversas áreas do conhecimento» (os termos de uso dizem também que o usuário «não precisará pagar nenhum valor para cursá-los»).
+- **Certificado: «desconhecido».** Os termos de uso dizem que quem conclui com 60% ou mais tem direito ao certificado de conclusão, mas nenhuma página oficial diz que o certificado é gratuito (só jornais o dizem). O site não mostra nada sobre o certificado até haver a frase oficial.
+- Os cursos saem por semestre («Turma 2026B»); cada curso é identificado pelo nome sem a turma, e quando entra uma turma nova o link é atualizado na mesma linha. Turmas «extra» contam como o mesmo curso. Um curso que sai da lista passa a «Encerrado».
+- O Claude escolhe os cursos úteis ao público (fora: só para quem já tem profissão ou cargo, ou cujos requisitos pedem ser estudante ou profissional de uma área; nível universitário muito especializado). Os cursos já avaliados ficam em `estado/aprenda_mais.json`, para não serem relidos todos os dias.
+- Primeira leitura (24/11/2026): 421 turmas, 416 cursos diferentes, 121 publicados (inglês 1 a 13, espanhol 1 a 10, português como língua adicional 1 a 12, empreendedorismo, MEI, educação financeira, atendimento ao cliente, segurança do trabalho, hotelaria, horticultura orgânica, matérias do ensino médio, entre outros).
+
 ## SENAI Play (retirado a 24/11/2026)
 
 > **Retirado no mesmo dia.** O certificado do SENAI Play é sempre pago, e o responsável decidiu que curso com certificado pago não entra («Ou é grátis ou não é»). `senai_play.py` saiu das rotinas; os 59 cursos estão Oculto na folha. A regra vale para todas as fontes: `curso_no_site` (base.py) esconde qualquer curso com Certificado «pago», e a regra 4e de `cursos.py` não deixa entrar cursos novos assim. O texto abaixo fica só como registo.

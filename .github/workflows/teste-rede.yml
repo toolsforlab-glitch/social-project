@@ -1,0 +1,13 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
+          for u in https://www.cetam.am.gov.br/tudo-sobre-inscricoes/ "https://www.cetam.am.gov.br/wp-json/wp/v2/media?search=edital&per_page=30&_fields=date,source_url" https://cursos.cetam.am.gov.br/ https://inscricao.cetam.am.gov.br/; do
+            curl -sS -m 40 -A "Mozilla/5.0" -o /tmp/o -w "$u %{http_code} %{content_type} %{size_download}\n" "$u" || true; done
+          curl -sS -m 40 -A "Mozilla/5.0" "https://www.cetam.am.gov.br/wp-json/wp/v2/media?search=edital&per_page=30&_fields=date,source_url" | python3 -c "import sys,json;[print(x['date'][:10],x['source_url']) for x in json.load(sys.stdin)]" || true
+          curl -sS -m 40 -A "Mozilla/5.0" https://www.cetam.am.gov.br/tudo-sobre-inscricoes/ | grep -o 'href="[^"]*\.pdf"' | head -40
+          curl -sS -m 40 -A "Mozilla/5.0" https://cursos.cetam.am.gov.br/ | head -c 1500

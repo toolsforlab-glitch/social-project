@@ -1,0 +1,23 @@
+name: teste-rede (temporário)
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - run: |
+          cd scripts && python3 - <<'PY'
+          import re, senac_ma as s
+          from comum import baixar
+          f = next(x for x in s.FONTES if x["nome"] == "Senac AM")
+          ed = {e["number"][:8]: e for e in s.listar_senac_am(f)}
+          for k in ["n-391-20", "n-384-20", "n-395-20"]:
+              e = ed.get(k)
+              if e:
+                  t = " ".join(s.texto_do_documento(baixar(e["pagina"], timeout=60), "application/pdf").split())
+                  i = t.find("ANEXO II")
+                  print("==", k, "::", t[i:i+1800])
+          PY

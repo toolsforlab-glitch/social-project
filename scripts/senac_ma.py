@@ -115,6 +115,7 @@ FONTES = [
     {"nome": "Senac AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",
      "entidade": "Senac Amazonas (Programa Senac de Gratuidade)", "estado": "estado/senac_am.json",
      "listar": "senac_am", "lista": "https://am.senac.br/programa-senac-de-gratuidade/consulta-de-vaga/",
+     "max_por_execucao": 20,  # muitas aberturas curtas, com inscrições de 1 a 3 dias
      "prefixo_turma": "https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/", "anexo": r"ANEXO\s+I\b",
      "nota": "No Senac Amazonas cada «Abertura de Vagas» é um PDF curto: o ANEXO I tem o cronograma (a linha "
              "«Inscrições» com o período e o local, presencial ou online) e o ANEXO II o «QUADRO DE VAGAS_PSG» (uma "
@@ -1008,7 +1009,7 @@ def correr(fonte):
             estado["tratados"][chave_estado] = hoje
             print(f"  · edital nº {e.get('number')}: cancelado por comunicado, não foi lido")
             continue
-        if not docs or lidos >= MAX_POR_EXECUCAO:
+        if not docs or lidos >= fonte.get("max_por_execucao", MAX_POR_EXECUCAO):
             continue
         doc = docs[0]
         try:

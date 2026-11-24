@@ -201,3 +201,10 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - `fgv.py` (todos os dias, no workflow diário): lê a API pública do portal cursosgratuitos.fgv.br (a mesma que o site usa; abre a partir do GitHub). Confere a cada leitura, nas perguntas frequentes oficiais, a gratuidade («Os cursos da FGV em parceria com o OEG são inteiramente gratuitos.») e que o curso fica disponível enquanto estiver no portfólio (sob demanda). O Claude escolhe os cursos úteis ao público do site; os escolhidos são publicados sozinhos e passam a «Encerrado» se saírem do portfólio.
 - **Sem certificado**: os cursos gratuitos da FGV dão só uma declaração de participação (pós-teste com nota 7 ou mais). A coluna Certificado fica «sem certificado».
 - Primeira leitura (24/11/2026): 226 cursos no portfólio, 82 escolhidos e publicados.
+
+## SENAI Play (desde 24/11/2026)
+
+- `senai_play.py` (todos os dias): API pública do SENAI Play (play.senai.br). Entram só cursos com **16 horas ou mais** (minicursos e trilhas); os ~1.000 microcursos curtos ficam de fora (decisão do responsável: 1.300 cursos curtos soam a má qualidade). O Claude escolhe os úteis ao público.
+- Gratuidade: frase oficial da Agência de Notícias da Indústria, conferida a cada leitura («todos os cursos são 100% online e gratuitos»; o certificado é «por uma taxa simbólica»).
+- **Certificado pago com o valor**: o preço vem do campo `certificatePrice` da API (igual ao do Futuro.Digital, conferido a 24/11). Fica na Evidência como `valor do certificado: «R$ …»` e o site mostra «Certificado pago (R$ …)». Sem preço na API, o certificado fica por confirmar. Regra do responsável: certificado pago entra, desde que se distinga do gratuito e mostre o valor.
+- Primeira leitura: 99 cursos com 16 h ou mais, 59 publicados (1 repetido escondido).

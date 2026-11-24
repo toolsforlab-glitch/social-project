@@ -47,6 +47,30 @@
    "inscricao_ate": "2026-11-24",
    "cursos": 1,
    "tentativas": 1
+  },
+  "senai-pe-edital-qua-santo-amaro-auxiliar-de-linha-de-prod-pr-202611231303335071|EDITAL_-_QUA_-_SANTO_AMARO_-_AUXILIAR_DE_LINHA_DE_PROD._-_PR_20261123130333507156.pdf|1": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-30",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senai-pe-edital-app-cabo-660-vagas-presencial-202611241754066666742-pdf|EDITAL_-_APP_-_CABO_-_660_VAGAS_-_PRESENCIAL_-__202611241754066666742.pdf|0": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-12-10",
+   "cursos": 7,
+   "tentativas": 1
+  },
+  "senai-pe-edital-app-caruaru-bas-de-costura-ind-tecido-plano-2026112414215755666|EDITAL_-_APP_-_CARUARU_-_BAS_DE_COSTURA_IND._TECIDO_PLANO_-_202611241421575566689.pdf|0": {
+   "data": "2026-11-24",
+   "inscricao_ate": "",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senai-pe-edital-app-goiana-opera-es-com-empilhadeira-prese-20261111113600669560|EDITAL_-_APP_-_GOIANA_-_OPERA__ES_COM_EMPILHADEIRA_-_PRESE_202611111136006695602.pdf|2": {
+   "data": "2026-11-24",
+   "inscricao_ate": "",
+   "cursos": 1,
+   "tentativas": 1
   }
  }
 }

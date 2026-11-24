@@ -1073,7 +1073,7 @@ def correr(fonte):
     base = Base()
     cfg = carregar_config(base)
     garantir_aba(base)
-    hoje = hoje_ceara()
+    hoje = (os.environ.get("HOJE_ENSAIO") if os.environ.get("SECO") else "") or hoje_ceara()  # ensaio: data simulada
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:

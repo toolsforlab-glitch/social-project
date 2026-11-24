@@ -11,7 +11,8 @@ jobs:
       PYTHONUNBUFFERED: "1"
       SECO: "1"
       SO_FONTE: "Senai AM"
-      DIAGNOSTICO: /tmp/diag
+      SENAC_MA_DIAGNOSTICO: /tmp/diag
+      HOJE_ENSAIO: "2026-08-24"
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5

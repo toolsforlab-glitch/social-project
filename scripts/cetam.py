@@ -106,14 +106,46 @@ def editais_da_pagina(html):
     return editais, erratas
 
 
+def repartir(itens, filas, minimo=1):
+    """Divide os itens de uma coluna (lista ordenada de (linha, texto)) em blocos contínuos, um por turma (linhas das
+    turmas em «filas»), com o centro de cada bloco o mais perto possível da linha da turma (o PDF centra cada célula
+    na sua linha). Programação dinâmica; devolve a lista de blocos ou None se não houver itens que cheguem."""
+    m, n = len(itens), len(filas)
+    if n == 0 or m < n * minimo:
+        return None
+    inf = float("inf")
+    custo = [[inf] * (m + 1) for _ in range(n + 1)]
+    corte = [[0] * (m + 1) for _ in range(n + 1)]
+    custo[0][0] = 0.0
+    for k in range(1, n + 1):
+        for j in range(k * minimo, m + 1):
+            for a in range((k - 1) * minimo, j - minimo + 1):
+                if custo[k - 1][a] == inf:
+                    continue
+                bloco = itens[a:j]
+                c = ((sum(x for x, _ in bloco) / len(bloco) - filas[k - 1]) ** 2) if bloco else 4.0
+                if custo[k - 1][a] + c < custo[k][j]:
+                    custo[k][j], corte[k][j] = custo[k - 1][a] + c, a
+    if custo[n][m] == inf:
+        return None
+    blocos, j = [], m
+    for k in range(n, 0, -1):
+        a = corte[k][j]
+        blocos.append(itens[a:j])
+        j = a
+    return blocos[::-1]
+
+
 def ler_tabela(layout):
     """Turmas do Anexo II. Devolve (turmas, avisos)."""
     linhas = layout.split("\n")
     ini = next((i for i, l in enumerate(linhas) if re.search(r"ANEXO\s+(?:ll|II)\b", l) and "LISTA" in l.upper()), None)
     if ini is None:
         return [], ["Anexo II não encontrado"]
-    fim = next((i for i in range(ini + 1, len(linhas)) if re.search(r"ANEXO\s+(?:lll|III|IV|lV)\b", linhas[i])), len(linhas))
+    fim = next((i for i in range(ini + 1, len(linhas))
+                if (m_a := re.search(r"\bANEXO\s+([IVXl]+)\b", linhas[i])) and m_a.group(1) not in ("II", "ll")), len(linhas))
     turmas, avisos = [], []
+    r_avisos = avisos
     municipio = unidade = endereco = ""
     centros = None  # colunas do cabeçalho atual
     online = False
@@ -124,21 +156,49 @@ def ler_tabela(layout):
         if not segmento or not centros:
             return
         dados_idx = [i for i, l in segmento if eh_turma(l)]
+        if not dados_idx:
+            return
         info = {i: ler_linha_turma(l) for i, l in segmento if eh_turma(l)}
         partes = {i: {"curso": [], "local": [], "req": []} for i in dados_idx}
+        colunas = {"curso": [], "local": [], "req": []}
         for i, l in segmento:
+            if i > dados_idx[-1] + 4:
+                break  # depois da última turma só podem vir as últimas linhas das suas células
             if i in info:
                 for col, txt in info[i]["esquerda"]:
-                    partes[i][col].append((i, txt))
+                    colunas[col].append((i, txt))
                 if info[i]["req"]:
-                    partes[i]["req"].append((i, info[i]["req"]))
+                    colunas["req"].append((i, info[i]["req"]))
                 continue
             for txt, c in pedacos(l):
                 col = coluna(c)
-                if col not in ("curso", "local", "req") or not dados_idx:
+                if col in colunas:
+                    colunas[col].append((i, txt))
+        for col, itens in colunas.items():
+            # várias peças na mesma linha ficam juntas
+            por_linha = []
+            for i, txt in itens:
+                if por_linha and por_linha[-1][0] == i:
+                    por_linha[-1] = (i, por_linha[-1][1] + " " + txt)
+                else:
+                    por_linha.append((i, txt))
+            blocos = None
+            if col == "req":
+                # os pré-requisitos começam sempre pela idade («16 ANOS …»): parte-se aí, se a conta bater
+                texto = " ".join(t for _, t in por_linha)
+                itens_req = [x.strip() for x in re.split(r"(?=\b\d{2} ANOS\b)", texto) if x.strip()]
+                if len(itens_req) == len(dados_idx) and all(re.match(r"\d{2} ANOS", x) for x in itens_req):
+                    for i, x in zip(dados_idx, itens_req):
+                        partes[i]["req"] = [(i, x)]
                     continue
-                alvo = min(dados_idx, key=lambda j: (abs(j - i), -j))  # mais perto; empate: a turma seguinte
-                partes[alvo][col].append((i, txt))
+            blocos = repartir(por_linha, dados_idx, minimo=1 if col in ("curso", "req") else 0)
+            if blocos is None:
+                for i, txt in por_linha:  # recurso: a turma mais perto
+                    partes[min(dados_idx, key=lambda j: (abs(j - i), -j))][col].append((i, txt))
+                r_avisos.append(f"coluna {col}: repartição pela turma mais perto ({len(por_linha)} linhas, {len(dados_idx)} turmas)")
+            else:
+                for i, b in zip(dados_idx, blocos):
+                    partes[i][col] = b
         for i in dados_idx:
             t = info[i]
             curso = normal(" ".join(x for _, x in sorted(partes[i]["curso"])))
@@ -343,9 +403,15 @@ def main():
                       f"req: {t0['req'][:90]}")
             for f in fora[:4]:
                 print(f"    - fora: {f[:150]}")
-            nomes_curtos = [t for t in r["turmas"] if len(t["curso"]) < 6 or len(t["req"]) < 8][:5]
-            for t in nomes_curtos:
-                print(f"    ? suspeita: {t}")
+            sem_idade = [t for t in r["turmas"] if not re.match(r"\d{2} ANOS", t["req"])]
+            estranhos = [t for t in r["turmas"] if re.search(r"ESCOLA|UNIDADE|CENTRO|\d|ANOS", t["curso"]) or len(t["curso"]) < 5]
+            print(f"    conferência: {len(sem_idade)} turmas com pré-requisito sem idade; {len(estranhos)} nomes estranhos")
+            for t in (sem_idade + estranhos)[:6]:
+                print(f"    ? {t['curso'][:60]} | local {t['local'][:50]} | req {t['req'][:100]}")
+            nomes = sorted({titulo(t["curso"]) for t in r["turmas"]})
+            print("    nomes:", " · ".join(nomes)[:1500])
+            locais = sorted({t["local"] for t in r["turmas"]})
+            print("    locais:", " · ".join(locais)[:900])
             continue
         if not (r["gratuidade"] and r["ini"] and r["fim"]):
             registar_pendencia(base, f"Cetam: o edital {num} não tem a frase da gratuidade ou o período de inscrição "

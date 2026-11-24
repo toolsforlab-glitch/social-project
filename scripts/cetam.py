@@ -1,0 +1,418 @@
+"""Cursos gratuitos do Cetam (Centro de Educação Tecnológica do Amazonas, Governo do Amazonas), lidos dos editais
+oficiais, sem Claude (24/11/2026).
+
+O Cetam publica cerca de 11 editais por ano na página «Tudo sobre inscrições» (https://www.cetam.am.gov.br/tudo-sobre-
+inscricoes/, abre a partir do GitHub): cursos presenciais na capital (por unidade), no interior (por município, com o
+local de realização de cada turma) e EaD, com inscrições de 2 a 4 dias no Portal do Candidato
+(https://inscricao.cetam.am.gov.br/) e vagas por ordem de chegada. Os editais presenciais são enormes (127 e 205
+páginas em 2026, centenas de turmas), por isso a tabela do Anexo II é lida por código (pdftotext -layout), linha a
+linha: cada turma tem uma linha com o número, a carga horária, o horário, as datas de início e de término e as vagas;
+o nome do curso, o local e os pré-requisitos partem-se nas linhas à volta e são juntados pela coluna (posição no
+cabeçalho) e pela linha de turma mais próxima.
+
+Regras do responsável (24/11/2026):
+- os presenciais entram, com aviso: o edital diz que são gratuitos «nas etapas: inscrições, matrículas e certificação»
+  e que, «na etapa de execução», o aluno compra os materiais individuais das aulas práticas (vai para «Requisitos»);
+- os cursos «avançados» (certificado de um curso básico OU portfólio/experiência avaliados) entram;
+- ficam fora as turmas cujo pré-requisito exige já ser da área (acadêmico, técnico, profissional, docente, servidor).
+
+Provas, tiradas do próprio edital a cada leitura: a frase da gratuidade, a da ocupação das vagas (ordem de chegada
+ou de preenchimento online), o período de inscrição (item 4.1) e, por turma, a linha da tabela. Conferência extra: a
+soma das vagas lidas tem de bater com o total anunciado no início do edital; se não bater, as turmas desse edital vão
+para «Rever». Erratas: os cursos nomeados numa errata vão para «Rever» (se a errata falar da inscrição, todos).
+
+As turmas só são publicadas quando a inscrição abre (como nos outros editais) e passam a «Encerrado» depois do fim.
+Um curso no site = um curso num município (ou EaD) num edital, com as unidades, horários e datas nas notas.
+"""
+import hashlib
+import os
+import re
+import subprocess
+import sys
+import tempfile
+import unicodedata
+from datetime import date, timedelta
+
+from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso, registar_pendencia, registo_historico
+from comum import baixar
+from turmas import necessidades
+
+SITE = "https://www.cetam.am.gov.br"
+PAGINA = SITE + "/tudo-sobre-inscricoes/"
+PORTAL = "https://inscricao.cetam.am.gov.br/"
+ENTIDADE = "Cetam – Centro de Educação Tecnológica do Amazonas (Governo do Amazonas)"
+MESES_RECENTES = 3  # só se leem editais publicados nos últimos meses (pasta AAAA/MM do upload)
+AVISO_MATERIAL = "o aluno compra o material individual das aulas práticas (o curso é gratuito)"
+DA_AREA = re.compile(r"ACAD[ÊE]MIC|T[ÉE]CNICOS? (?:EM|DE)\b|PROFISSIONA(?:L|IS) (?:D|QUE)|ATUA(?:R|NTE|ÇÃO)|SERVIDOR|"
+                     r"DOCENTES?\b|PROFESSOR(?:ES|A)?\b", re.I)
+DATA = r"\d{2}/\d{2}/\d{4}"
+RODAPE = re.compile(r"cetam\.am\.gov\.br|instagram\.com|youtube\.com|facebook\.com|Fone:|Pedro Teixeira|CEP:|"
+                    r"EDITAL CETAM|INSCRIÇÕES ONLINE|UNIDADES DE EDUCAÇÃO|ESTADO DO AMAZONAS|ANEXO", re.I)
+
+
+def sem_acentos(s):
+    return "".join(c for c in unicodedata.normalize("NFKD", (s or "").lower()) if not unicodedata.combining(c))
+
+
+def normal(t):
+    return re.sub(r"\s+", " ", (t or "").replace("​", " ")).strip()
+
+
+def iso(d):
+    dd, mm, aa = d.split("/")
+    return f"{aa}-{mm}-{dd}"
+
+
+def titulo(s):
+    s = normal(s)
+    s = s[:1].upper() + s[1:].lower() if s.isupper() else s
+    for sigla in ("esg", "tea", "sgi", "tbo", "ead", "clp", "nr", "ia", "ti", "pcd", "libras", "excel", "word",
+                  "power bi", "python", "cad"):
+        s = re.sub(rf"\b{sigla}\b", sigla.upper() if sigla not in ("libras", "excel", "word", "python") else sigla.title(), s)
+    return s.replace("Power bi", "Power BI")
+
+
+def nome_municipio(s):
+    pequenas = {"da", "de", "do", "das", "dos", "e"}
+    return " ".join(p.lower() if i and p.lower() in pequenas else p.capitalize() for i, p in enumerate(normal(s).split()))
+
+
+def texto_layout(dados):
+    with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
+        f.write(dados)
+        f.flush()
+        return subprocess.run(["pdftotext", "-layout", f.name, "-"], capture_output=True, check=True).stdout.decode(
+            "utf-8", "replace")
+
+
+def pedacos(linha):
+    """Pedaços de texto separados por 2 ou mais espaços, com a posição do centro."""
+    return [(m.group(0), (m.start() + m.end()) / 2) for m in re.finditer(r"\S+(?: \S+)*", linha)]
+
+
+def editais_da_pagina(html):
+    urls = list(dict.fromkeys(re.findall(r'href="(https://www\.cetam\.am\.gov\.br/wp-content/uploads/\d{4}/\d{2}/[^"]+\.pdf)"', html)))
+    editais, erratas = [], {}
+    for u in urls:
+        nome = u.rsplit("/", 1)[-1]
+        m = re.search(r"Edital[-_ ]?(\d{3})[-_](\d{4})", nome, re.I)
+        if not m:
+            continue
+        num = f"{m.group(1)}/{m.group(2)}"
+        if re.search(r"errata", nome, re.I):
+            erratas.setdefault(num, []).append(u)
+        elif re.match(r"edital", nome, re.I) and not re.search(r"lista|relac|inscritos", nome, re.I):
+            editais.append((num, u))
+    return editais, erratas
+
+
+def ler_tabela(layout):
+    """Turmas do Anexo II. Devolve (turmas, avisos)."""
+    linhas = layout.split("\n")
+    ini = next((i for i, l in enumerate(linhas) if re.search(r"ANEXO\s+(?:ll|II)\b", l) and "LISTA" in l.upper()), None)
+    if ini is None:
+        return [], ["Anexo II não encontrado"]
+    fim = next((i for i in range(ini + 1, len(linhas)) if re.search(r"ANEXO\s+(?:lll|III|IV|lV)\b", linhas[i])), len(linhas))
+    turmas, avisos = [], []
+    municipio = unidade = endereco = ""
+    centros = None  # colunas do cabeçalho atual
+    online = False
+    segmento = []  # (índice, linha) da tabela atual
+    ultimas = []  # linhas recentes fora de tabela (para achar o nome da unidade)
+
+    def fechar_segmento():
+        if not segmento or not centros:
+            return
+        dados_idx = [i for i, l in segmento if eh_turma(l)]
+        info = {i: ler_linha_turma(l) for i, l in segmento if eh_turma(l)}
+        partes = {i: {"curso": [], "local": [], "req": []} for i in dados_idx}
+        for i, l in segmento:
+            if i in info:
+                for col, txt in info[i]["esquerda"]:
+                    partes[i][col].append((i, txt))
+                if info[i]["req"]:
+                    partes[i]["req"].append((i, info[i]["req"]))
+                continue
+            for txt, c in pedacos(l):
+                col = coluna(c)
+                if col not in ("curso", "local", "req") or not dados_idx:
+                    continue
+                alvo = min(dados_idx, key=lambda j: (abs(j - i), -j))  # mais perto; empate: a turma seguinte
+                partes[alvo][col].append((i, txt))
+        for i in dados_idx:
+            t = info[i]
+            curso = normal(" ".join(x for _, x in sorted(partes[i]["curso"])))
+            local = normal(" ".join(x for _, x in sorted(partes[i]["local"])))
+            req = normal(" ".join(x for _, x in sorted(partes[i]["req"])))
+            turmas.append({**{k: v for k, v in t.items() if k != "esquerda"}, "curso": curso, "local": local or unidade,
+                           "req": req, "municipio": municipio, "endereco": endereco, "online": online,
+                           "linha": normal(linhas[i])})
+
+    def coluna(c):
+        return min(centros, key=lambda k: abs(centros[k] - c))
+
+    def eh_turma(l):
+        return bool(re.match(r"^\s{0,6}\d{1,3}\s{2,}", l)) and len(re.findall(DATA, l)) >= 2
+
+    def ler_linha_turma(l):
+        m0 = re.match(r"^\s*(\d{1,3})(?=\s{2,})", l)
+        resto_ini = m0.end()
+        m = re.search(rf"(?<=\s\s)(\d{{2,4}})\s{{2,}}(?:(\S(?:.*?\S)?)\s{{2,}})?({DATA})\s+({DATA})\s{{2,}}([\d.]+)"
+                      rf"(?:\s{{2,}}([\d.]+))?(.*)$", l[resto_ini:])
+        if not m:
+            return {"n": m0.group(1), "ch": "", "horario": "", "inicio": "", "fim": "", "vagas": "", "espera": "",
+                    "dias": "", "esquerda": [], "req": ""}
+        esquerda = []
+        for txt, c in pedacos(l[:resto_ini + m.start()]):
+            if txt == m0.group(1):
+                continue
+            col = coluna(c)
+            esquerda.append(("local" if col == "local" else "curso", txt))
+        dias, req = [], []
+        base_x = resto_ini + m.start(7)
+        for txt, c in pedacos(m.group(7)):
+            if re.match(r"(SEG|TER|QUA|QUI|SEX|S[ÁA]B|DOM)\b", txt):
+                dias.append(txt)
+            else:
+                req.append(txt)
+        return {"n": m0.group(1), "ch": m.group(1), "horario": m.group(2) or "", "inicio": iso(m.group(3)),
+                "fim": iso(m.group(4)), "vagas": m.group(5).replace(".", ""), "espera": (m.group(6) or "").replace(".", ""),
+                "dias": " ".join(dias), "esquerda": esquerda, "req": " ".join(req)}
+
+    for i in range(ini + 1, fim):
+        l = linhas[i]
+        if not l.strip():
+            continue
+        if re.match(r"^\s*N\.º\s", l) and "CURSO" in l:
+            fechar_segmento()
+            segmento = []
+            cab = {txt: c for txt, c in pedacos(l)}
+            centros = {}
+            for txt, c in cab.items():
+                if txt.startswith("REALIZA") or txt.startswith("LOCAL"):
+                    centros["local"] = c
+                elif txt == "CURSO":
+                    centros["curso"] = c
+                elif txt.startswith("PRÉ-REQ") or txt.startswith("PRE-REQ"):
+                    centros["req"] = c
+                elif txt in ("CH", "HORÁRIO", "VAGAS", "N.º"):
+                    centros[txt] = c
+            online = "HORÁRIO" not in cab
+            continue
+        if RODAPE.search(l) or (l.strip().isdigit() and len(l.strip()) <= 3 and len(l) - len(l.lstrip()) > 40):
+            continue
+        if re.match(r"^\s*(DATA|INÍCIO|SEMANA|LOCAL DE|CURSO|REGULAR|ESPERA|VAGA|DIAS DA|TÉRMINO)\b", l.strip()) and not eh_turma(l):
+            if all(re.match(r"(DATA|INÍCIO|TÉRMINO|SEMANA|DIAS DA|LOCAL DE|CURSO|VAGA.*|REGULAR|ESPERA|DE ESPERA)$", p)
+                   for p, _ in pedacos(l)):
+                continue
+        mm = re.match(r"^\s*\d{1,3}\.\s+([A-ZÀ-Ü][A-ZÀ-Ü'\- ]+?)\s*$", l)
+        if mm:
+            fechar_segmento()
+            segmento, centros = [], None
+            municipio, unidade, endereco = nome_municipio(mm.group(1)), "", ""
+            ultimas = []
+            continue
+        if re.search(r"\bENDEREÇO\b", l):
+            fechar_segmento()
+            segmento, centros = [], None
+            # nome da unidade: a última linha em maiúsculas antes do endereço (na capital)
+            cand = [x for x in ultimas[-8:] if x.isupper() and "@" not in x and "E-MAIL" not in x
+                    and not re.search(r"\d{4,}", x) and len(x) > 6]
+            if cand and not municipio:
+                unidade = normal(cand[-1])
+            end = [p for p, _ in pedacos(l) if p not in ("ENDEREÇO",) and "@" not in p and "E-MAIL" not in p]
+            prox = [p for x in linhas[i - 2:i + 3] for p, c in pedacos(x)
+                    if p not in ("ENDEREÇO", "E-MAIL", "TELEFONE") and "@" not in p and not re.match(r"\(\d\d\)", p)
+                    and c < 90]
+            endereco = normal(" ".join(dict.fromkeys(end + prox)))
+            continue
+        if centros:
+            segmento.append((i, l))
+        else:
+            ultimas.append(normal(l))
+    fechar_segmento()
+    return turmas, avisos
+
+
+def cidade_da_turma(t):
+    if t["online"]:
+        return ""
+    if t["municipio"]:
+        return t["municipio"]
+    m = re.findall(r"([A-ZÀ-Úa-zà-ú' ]+)/AM", t["endereco"])
+    return nome_municipio(m[-1].strip(" -–")) if m else "Manaus"
+
+
+def chave_curso(num, curso, cidade):
+    return "C-" + hashlib.sha1(f"cetam|{num}|{sem_acentos(curso)}|{sem_acentos(cidade)}".encode()).hexdigest()[:8]
+
+
+def ler_edital(num, url, erratas):
+    dados = baixar(url, timeout=120)
+    layout = texto_layout(dados)
+    t = normal(layout)
+    r = {"num": num, "url": url, "problemas": []}
+    m = re.search(rf"4\.1\.?\s*Data:\s*({DATA})[^.]*?\ba\s*({DATA})[^.]*\.", t)
+    r["ini"], r["fim"], r["frase_insc"] = (iso(m.group(1)), iso(m.group(2)), m.group(0)) if m else ("", "", "")
+    m = re.search(r"Os cursos ofertados neste edital são (?:totalmente )?gratuitos[^.]*?(?:certificação\)?|etapas)\.?", t)
+    r["gratuidade"] = m.group(0) if m else ""
+    m = re.search(r"[^.]*responsável por providenciar os materiais[^.]*\.", t)
+    r["materiais"] = normal(m.group(0)).lstrip("0123456789. ") if m else ""
+    m = re.search(r"As vagas ofertadas serão ocupadas[^.]*\.", t)
+    r["selecao"] = m.group(0) if m and re.search(r"ordem de chegada|ordem de preenchimento", m.group(0), re.I) else ""
+    m = re.search(r"oferta de ([\d.]+) \(", t)
+    r["total"] = int(m.group(1).replace(".", "")) if m else 0
+    r["portal"] = PORTAL if "inscricao.cetam.am.gov.br" in t else ""
+    r["turmas"], avisos = ler_tabela(layout)
+    r["problemas"] += avisos
+    soma = sum(int(x["vagas"] or 0) for x in r["turmas"])
+    r["soma"] = soma
+    if r["total"] and soma != r["total"]:
+        r["problemas"].append(f"a soma das vagas lidas ({soma}) não bate com o total do edital ({r['total']})")
+    r["texto_errata"] = ""
+    for u in erratas.get(num, []):
+        try:
+            r["texto_errata"] += " " + normal(texto_layout(baixar(u, timeout=60)))
+        except Exception:  # noqa: BLE001
+            r["problemas"].append(f"errata ilegível ({u})")
+    return r
+
+
+def agrupar(r):
+    """Um curso por (curso, município ou EaD) dentro do edital."""
+    cursos, fora = {}, []
+    for t in r["turmas"]:
+        if not t["curso"] or not t["inicio"]:
+            r["problemas"].append(f"turma sem nome ou sem datas: {t['linha'][:120]}")
+            continue
+        if DA_AREA.search(t["req"]) and "PORTFÓLIO" not in t["req"].upper():
+            fora.append(f"{t['curso']} ({t['req']})")
+            continue
+        cidade = cidade_da_turma(t)
+        k = chave_curso(r["num"], t["curso"], cidade or "online")
+        c = cursos.setdefault(k, {"curso": t["curso"], "cidade": cidade, "online": t["online"], "turmas": []})
+        c["turmas"].append(t)
+    return cursos, fora
+
+
+def main():
+    seco = bool(os.environ.get("SECO"))
+    hoje = (os.environ.get("HOJE_ENSAIO") if seco else "") or hoje_iso()
+    base = None if seco else Base()
+    if base:
+        carregar_config(base)
+    try:
+        html = baixar(PAGINA, timeout=90).decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        print(f"Cetam: a página de inscrições não abriu ({type(e).__name__}); fica para amanhã.")
+        return 0
+    editais, erratas = editais_da_pagina(html)
+    so = os.environ.get("CETAM_EDITAL")  # ensaio: só este edital (número, ex.: 009/2026)
+    corte = date.fromisoformat(hoje) - timedelta(days=31 * MESES_RECENTES)
+    recentes = [(n, u) for n, u in editais if (so and n == so) or (not so and re.search(r"/uploads/(\d{4})/(\d{2})/", u)
+                and date(*map(int, re.search(r"/uploads/(\d{4})/(\d{2})/", u).groups()), 1) >= corte.replace(day=1))]
+    print(f"Cetam: {len(editais)} editais na página; {len(recentes)} recentes: {', '.join(n for n, _ in recentes) or '—'}.")
+
+    linhas = base.tabela("Cursos") if base else []
+    na_folha = {r["ID"]: r for r in linhas if r.get("Origem") == "cetam"}
+    alteracoes, novos, historico = [], [], []
+    for cid, r in na_folha.items():
+        if r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip():
+            continue
+        if (r.get("Inscrições até") or "9999") < hoje and r.get("Situação das inscrições") != "Encerrado":
+            alteracoes.append((r["_linha"], {"Situação das inscrições": "Encerrado", "Última verificação": hoje}))
+
+    for num, url in recentes:
+        try:
+            r = ler_edital(num, url, erratas)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ✗ edital {num}: ilegível ({type(e).__name__}: {e})")
+            continue
+        cursos, fora = agrupar(r)
+        aberto = bool(r["ini"] and r["fim"] and r["ini"] <= hoje <= r["fim"])
+        print(f"  edital {num}: inscrição {r['ini'] or '?'} a {r['fim'] or '?'} ({'aberta' if aberto else 'fechada'}); "
+              f"{len(r['turmas'])} turmas, {r['soma']} vagas (edital: {r['total'] or '?'}); {len(cursos)} cursos; "
+              f"{len(fora)} fora por serem só para quem já é da área; gratuidade {'sim' if r['gratuidade'] else 'NÃO'}; "
+              f"seleção {'sim' if r['selecao'] else 'NÃO'}; material pago {'sim' if r['materiais'] else 'não'}"
+              + (f" | PROBLEMAS: {'; '.join(r['problemas'][:5])}" if r["problemas"] else ""))
+        if seco:
+            for c in list(cursos.values())[:6]:
+                t0 = c["turmas"][0]
+                print(f"    · {titulo(c['curso'])} | {c['cidade'] or 'EaD'} | {len(c['turmas'])} turmas | "
+                      f"{t0['local']} | {t0['ch']}h {t0['horario']} {t0['inicio']}→{t0['fim']} | vagas {t0['vagas']} | "
+                      f"req: {t0['req'][:90]}")
+            for f in fora[:4]:
+                print(f"    - fora: {f[:150]}")
+            nomes_curtos = [t for t in r["turmas"] if len(t["curso"]) < 6 or len(t["req"]) < 8][:5]
+            for t in nomes_curtos:
+                print(f"    ? suspeita: {t}")
+            continue
+        if not (r["gratuidade"] and r["ini"] and r["fim"]):
+            registar_pendencia(base, f"Cetam: o edital {num} não tem a frase da gratuidade ou o período de inscrição "
+                                     "no formato conhecido; não foi publicado.",
+                               "Peça ao Claude para ver o edital e ajustar o leitor (cetam.py).", url, origem="cetam.py")
+            continue
+        if not aberto:
+            continue
+        rever_tudo = bool(r["problemas"]) or bool(re.search(r"inscri|4\.1", r["texto_errata"], re.I))
+        evid_base = " | ".join(x for x in [
+            f"gratuito: «{r['gratuidade']}» ({url})",
+            f"vagas: «{r['selecao']}»" if r["selecao"] else "",
+            f"inscrição: «{r['frase_insc']}»",
+            f"material: «{r['materiais']}»" if r["materiais"] else "",
+        ] if x)
+        for cid, c in cursos.items():
+            if cid in na_folha:
+                continue
+            rever = rever_tudo or (r["texto_errata"] and sem_acentos(c["curso"]) in sem_acentos(r["texto_errata"]))
+            nome = titulo(c["curso"])
+            reqs = list(dict.fromkeys(titulo(t["req"]) for t in c["turmas"] if t["req"]))
+            requisitos = "; ".join(reqs[:3] + ([AVISO_MATERIAL] if r["materiais"] and not c["online"] else []))
+            inicio = min(t["inicio"] for t in c["turmas"])
+            notas_turmas = "; ".join(
+                f"{titulo(t['local'])}: {t['horario'] + ', ' if t['horario'] else ''}{t['dias'] + ', ' if t['dias'] else ''}"
+                f"{t['inicio'][8:]}/{t['inicio'][5:7]} a {t['fim'][8:]}/{t['fim'][5:7]}, {t['vagas']} vagas"
+                if t["local"] else f"{t['inicio'][8:]}/{t['inicio'][5:7]} a {t['fim'][8:]}/{t['fim'][5:7]}, {t['vagas']} vagas"
+                for t in c["turmas"])
+            evid = (evid_base + f" | turma: «{c['turmas'][0]['linha'][:250]}»")[:1500]
+            linha = {
+                "ID": cid, "Estado": "Rever" if rever else "Publicado", "Título": nome[:200], "Entidade": ENTIDADE,
+                "Link": PORTAL, "Local": "BR-AM", "Modalidade": "online" if c["online"] else "presencial", "País": "BR",
+                "Região": "Amazonas", "Cidade": c["cidade"], "Descrição": "", "Origem da descrição": "",
+                "Necessidades": necessidades("", nome), "Perfis": "todos", "Condição de acesso": "",
+                "Requisitos": requisitos[:500], "Certificado": "gratuito", "Inscrições até": r["fim"], "Início": inicio,
+                "Duração": f"{c['turmas'][0]['ch']} horas" if c["turmas"][0]["ch"] else "", "Link verificado": "SIM",
+                "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "cetam",
+                "Notas": (f"Edital Cetam {num}. Turmas: {notas_turmas}")[:900],
+                "Como me inscrever": ("1. Entre no Portal do Candidato do Cetam (inscricao.cetam.am.gov.br) e faça o "
+                                      "cadastro, com CPF, RG e comprovante de escolaridade.\n"
+                                      f"2. Escolha o curso \"{nome}\"" + (f" e a unidade em {c['cidade']}" if c["cidade"] else "")
+                                      + f" e inscreva-se entre {r['ini'][8:]}/{r['ini'][5:7]} e {r['fim'][8:]}/{r['fim'][5:7]}.\n"
+                                      "3. As vagas são preenchidas por ordem de chegada: inscreva-se logo no primeiro dia.\n"
+                                      + ("4. Se for chamado, confirme a matrícula presencialmente na unidade, com os "
+                                         "documentos originais." if not c["online"] else "4. Acompanhe o e-mail: o Cetam "
+                                         "manda a confirmação e o acesso à plataforma.")),
+                **VERIFICACAO_INICIAL,
+                "Nota da verificação": f"{hoje}: publicado automaticamente a partir do edital Cetam {num} (Anexo II)."
+                                       + (" Rever: " + "; ".join(r["problemas"][:3]) if r["problemas"] else "")
+                                       + (" Rever: há errata que nomeia este curso ou a inscrição." if rever and r["texto_errata"] else ""),
+                "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE", "Evidência": evid,
+                "Campos comprovados": "gratuito, situação, certificado", "Página do curso": url,
+            }
+            novos.append(linha)
+            historico.append(registo_historico(linha, "Edital Cetam", linha["Estado"], linha, url))
+        print(f"  edital {num}: {sum(1 for n in novos if num in n['Notas'])} cursos novos.")
+    if seco:
+        return 0
+    base.atualizar("Cursos", alteracoes)
+    if novos:
+        base.acrescentar("Cursos", novos)
+    if historico:
+        base.acrescentar(HISTORICO, historico)
+    base.guardar()
+    print(f"Cetam: {len(alteracoes)} cursos atualizados, {len(novos)} novos.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

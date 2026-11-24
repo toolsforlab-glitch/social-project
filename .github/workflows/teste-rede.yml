@@ -3,14 +3,15 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
+    env:
+      SECO: "1"
+      PYTHONUNBUFFERED: "1"
     steps:
-      - run: |
-          sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
-          B=https://www.cetam.am.gov.br/wp-content/uploads/2026
-          for f in 08/Edital-009-2026-Qualificacao-Profissional-Capital 08/Edital-010-2026-Qualificacao-Profissional-Interior-e-EaD; do
-            curl -sS -m 60 -A "Mozilla/5.0" -o e.pdf "$B/$f.pdf"; echo "== $f"
-            pdftotext -layout e.pdf e.txt
-            L=$(grep -n "N\.º  *CURSO\|N\.º.*CURSO" e.txt | head -1 | cut -d: -f1); echo "primeiro cabecalho $L"; sed -n "$((L-22)),$((L+4))p" e.txt | cut -c1-200
-            L2=$(grep -n "N\.º.*CURSO" e.txt | sed -n 2p | cut -d: -f1); echo "segundo cabecalho $L2"; sed -n "$((L2-22)),$((L2+3))p" e.txt | cut -c1-200
-            echo "cabecalhos: $(grep -c 'N\.º.*CURSO' e.txt)"; grep -n "N\.º.*CURSO" e.txt | head -3 | cut -c1-200
-          done
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt && sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1
+      - run: cd scripts && CETAM_EDITAL=009/2026 HOJE_ENSAIO=2026-08-18 python3 cetam.py
+      - run: cd scripts && CETAM_EDITAL=010/2026 HOJE_ENSAIO=2026-08-25 python3 cetam.py
+      - run: cd scripts && CETAM_EDITAL=011/2026 HOJE_ENSAIO=2026-11-03 python3 cetam.py

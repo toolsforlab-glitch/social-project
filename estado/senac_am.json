@@ -4,7 +4,7 @@
    "data": "2026-11-24",
    "inscricao_ate": "",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-397-2026-senac-itacoatiara-inscricoes-abertas-parceria-2385|n-397-2026-senac-itacoatiara-inscricoes-abertas-parceria-dad82cb5ff09.pdf": {
    "data": "2026-11-24",
@@ -14,21 +14,21 @@
   },
   "senac-am-n-396-2026-senac-itacoatiara-inscricoes-abertas-parceria-2384|n-396-2026-senac-itacoatiara-inscricoes-abertas-parceria-c1e0f43d5b7a.pdf": {
    "data": "2026-11-24",
-   "inscricao_ate": "",
-   "cursos": 0,
-   "tentativas": 1
+   "inscricao_ate": "2026-11-25",
+   "cursos": 1,
+   "tentativas": 2
   },
   "senac-am-n-395-2026-senac-itacoatiara-inscricoes-abertas-2383|n-395-2026-senac-itacoatiara-inscricoes-abertas-6bd48b00268c.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-25",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-394-2026-senac-parintins-inscricoes-abertas-2382|n-394-2026-senac-parintins-inscricoes-abertas-fb4e66490538.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-25",
-   "cursos": 0,
-   "tentativas": 1
+   "cursos": 3,
+   "tentativas": 2
   },
   "senac-am-n-393-2026-senac-parintins-inscricoes-abertas-parceria-2381|n-393-2026-senac-parintins-inscricoes-abertas-parceria-b420f32cabd1.pdf": {
    "data": "2026-11-24",
@@ -38,21 +38,21 @@
   },
   "senac-am-n-392-2026-senac-parintins-inscricoes-abertas-parceria-2380|n-392-2026-senac-parintins-inscricoes-abertas-parceria-a207814f0172.pdf": {
    "data": "2026-11-24",
-   "inscricao_ate": "",
-   "cursos": 0,
-   "tentativas": 1
+   "inscricao_ate": "2026-11-25",
+   "cursos": 2,
+   "tentativas": 2
   },
   "senac-am-n-391-2026-senac-manaus-cei-inscricoes-abertas-2376|n-391-2026-senac-manaus-cei-inscricoes-abertas-5a19d29cb699.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-28",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-390-2026-senac-coari-inscricoes-abertas-2375|n-390-2026-senac-coari-inscricoes-abertas-a2e2dd8c018a.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-18",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-389-2026-senac-manaus-cidade-nova-inscricoes-abertas-2374|n-389-2026-senac-manaus-cidade-nova-inscricoes-abertas-511738d6469e.pdf": {
    "data": "2026-11-24",
@@ -76,19 +76,19 @@
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-19",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-385-2026-senac-manaus-centro-inscricoes-abertas-2370|n-385-2026-senac-manaus-centro-inscricoes-abertas-8173a8fe05f0.pdf|errata-001-n-385-2026-senac-manaus-centro-alteracoes-de-periodo-f73bfd3da011.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-18",
-   "cursos": 0,
-   "tentativas": 1
+   "cursos": 1,
+   "tentativas": 2
   },
   "senac-am-n-384-2026-senac-manaus-centro-inscricoes-abertas-2369|n-384-2026-senac-manaus-centro-inscricoes-abertas-a8d3d09dd1b3.pdf|errata-001-n-384-2026-senac-manaus-centro-alteracoes-de-periodo-021dae5a8f47.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-18",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-383-2026-senac-coari-inscricoes-abertas-parceria-2368|n-383-2026-senac-coari-inscricoes-abertas-parceria-048688606d6f.pdf": {
    "data": "2026-11-24",
@@ -105,8 +105,8 @@
   "senac-am-n-381-2026-senac-manaus-centro-inscricoes-abertas-2366|n-381-2026-senac-manaus-centro-inscricoes-abertas-75cd187ceafe.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-18",
-   "cursos": 0,
-   "tentativas": 1
+   "cursos": 2,
+   "tentativas": 2
   },
   "senac-am-n-380-2026-senac-manaus-centro-inscricoes-abertas-2365|n-380-2026-senac-manaus-centro-inscricoes-abertas-2ea3e83aaf4f.pdf": {
    "data": "2026-11-24",
@@ -117,7 +117,55 @@
   "senac-am-n-379-2026-senac-coari-inscricoes-abertas-parceria-2364|n-379-2026-senac-coari-inscricoes-abertas-parceria-f4dca8d96011.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-19",
+   "cursos": 1,
+   "tentativas": 2
+  },
+  "senac-am-n-378-2026-senac-itacoatiara-inscricoes-abertas-parceria-2359|n-378-2026-senac-itacoatiara-inscricoes-abertas-parceria-396a4997b18b.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-19",
+   "cursos": 2,
+   "tentativas": 1
+  },
+  "senac-am-n-377-2026-senac-manaus-cei-inscricoes-abertas-2357|n-377-2026-senac-manaus-cei-inscricoes-abertas-742fd8ce1cbb.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-23",
    "cursos": 0,
+   "tentativas": 1
+  },
+  "senac-am-n-376-2026-senac-manaus-cei-inscricoes-abertas-2356|n-376-2026-senac-manaus-cei-inscricoes-abertas-6a453d418c95.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-19",
+   "cursos": 0,
+   "tentativas": 1
+  },
+  "senac-am-n-375-2026-senac-manaus-cei-inscricoes-abertas-2355|n-375-2026-senac-manaus-cei-inscricoes-abertas-355bbd9d38d1.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-19",
+   "cursos": 0,
+   "tentativas": 1
+  },
+  "senac-am-n-374-2026-senac-carreta-de-informatica-inscricoes-abertas-parceria-23|n-374-2026-senac-carreta-de-informatica-inscricoes-abertas-parceria-4f419e72ea26.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-19",
+   "cursos": 0,
+   "tentativas": 1
+  },
+  "senac-am-n-373-2026-senac-manaus-cidade-nova-inscricoes-abertas-2353|n-373-2026-senac-manaus-cidade-nova-inscricoes-abertas-c026612bb08c.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-18",
+   "cursos": 0,
+   "tentativas": 1
+  },
+  "senac-am-n-372-2026-senac-manaus-centro-cth-inscricoes-abertas-2352|n-372-2026-senac-manaus-centro-cth-inscricoes-abertas-c622599e2f09.pdf|errata-001-n-372-2026-senac-manaus-cth-alteracoes-de-periodo-173b0e81059d.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-16",
+   "cursos": 3,
+   "tentativas": 1
+  },
+  "senac-am-n-371-2026-senac-parintins-inscricoes-abertas-2351|n-371-2026-senac-parintins-inscricoes-abertas-ed303e5abbce.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-17",
+   "cursos": 1,
    "tentativas": 1
   }
  }

@@ -38,6 +38,14 @@ FONTES_COM_TURMAS = ("psg.ce.senac.br", "centec.org.br/cursos-formacao-inicial-c
                                                  "cursos-nivel-medio-senai-gratuidade")
 
 
+def regra_vagas(texto):
+    """«sorteio», «ordem» (ordem de inscrição/chegada) ou "" (24/11/2026). Só a partir de frases da fonte."""
+    if re.search(r"\bsorte(?:io|ad[ao]s?|ar)\b", texto or "", re.I):
+        return "sorteio"
+    if re.search(r"ordem (?:de|das) inscri[çc]|ordem de chegada|ordem cronol[óo]gica (?:de|das) inscri", texto or "", re.I):
+        return "ordem"
+    return ""
+
 
 def origem_descricao(r):
     """«pagina» quando a descrição foi copiada da página oficial; «resumo» quando foi reescrita (o site mostra
@@ -132,6 +140,8 @@ def exportar_turmas(base, unidades, municipios):
             "info": t.get("Mais informações", "") if (t.get("Modo de inscrição") or "").strip() else "",
             "verificado_em": (t.get("Última verificação") or "")[:10],
             "reserva": (t.get("Vagas reservadas") or "").strip(),
+            # como se distribuem as vagas (24/11/2026): só com a frase do edital guardada na evidência da turma
+            "regra_vagas": regra_vagas(" ".join(re.findall(r"vagas: «(.+?)»", t.get("Evidência") or ""))),
         })
     sem_destino = sorted({re.sub(r"^(https?://[^/]+).*", r"\1", x["link"]) for lst in por_curso.values()
                           for x in lst if x["visivel"] and not x["destino"]})
@@ -233,9 +243,8 @@ def exportar_dados(base, cfg):
         # Como se distribuem as vagas (regra do responsável, 24/11/2026): sorteio e ordem de inscrição podem entrar, mas
         # quem procura tem de saber. Só com a frase da fonte (evidência ou informação da turma).
         fonte_vagas = " ".join([r.get("Evidência") or ""] + [str(t.get("info") or "") for t in turmas])
-        cursos[-1]["vagas"] = ("sorteio" if re.search(r"\bsorte(?:io|ad[ao]s?|ar)\b", fonte_vagas, re.I)
-                               else "ordem" if re.search(r"ordem (?:de|das) inscri[çc]|ordem de chegada|ordem cronol[óo]gica de inscri", fonte_vagas, re.I)
-                               else "")
+        regras = {t.get("regra_vagas") for t in turmas if t.get("regra_vagas")}
+        cursos[-1]["vagas"] = regra_vagas(fonte_vagas) or (regras.pop() if len(regras) == 1 else "")
         # acessibilidade para pessoas com deficiência: só com a frase da fonte que nomeia o recurso
         acess = {}
         for f in (re.findall(r"acessibilidade: «(.+?)»", r.get("Evidência") or "")

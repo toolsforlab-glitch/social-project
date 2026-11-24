@@ -148,7 +148,10 @@ cursos, "turmas" nunca vem vazio. "frase" é o texto da linha do Anexo I desse c
 copiado tal como aparece no texto que recebes (começa no nome do curso e inclui a data de início das aulas).
 - "cidade": o município onde o curso decorre, como está escrito no edital.
 - "gratuidade": a frase exata do edital que diz que o curso é gratuito ou sem custo para quem estuda (ex.: \
-"gratuito", "sem custo", "bolsa integral"). O nome do programa sozinho não serve; se não houver, null.
+"gratuito", "sem custo", "bolsas gratuitas"). O nome do programa sozinho não serve; "bolsa integral" ou "bolsa de \
+estudo" sozinhas também não (decisão do responsável, 24/11/2026: bolsa pressupõe concorrência); se não houver, null.
+- "selecao": a frase exata que diz como as vagas são preenchidas, se for por ordem de inscrição (ou de chegada) \
+ou por sorteio; senão null.
 - "renda": a frase exata com o critério de renda, se existir.
 - "reserva": a frase exata que reserva vagas ou dá prioridade a um grupo de pessoas (ex.: pessoas com deficiência, \
 mulheres, pessoas negras, quilombolas), se existir; senão null.
@@ -160,6 +163,7 @@ Devolve só JSON entre <json></json>:
 {"inscricao": {"inicio": "AAAA-MM-DD", "fim": "AAAA-MM-DD", "frase": "..."} ou null,
  "modo": "presencial|online|ambos" ou null, "local_inscricao": "..." ou null, "frase_local": "..." ou null,
  "gratuidade": "..." ou null, "renda": "..." ou null, "reserva": "..." ou null, "acessibilidade": "..." ou null,
+ "selecao": "..." ou null,
  "turmas": [{"curso": "...", "cidade": "...", "inicio_aulas": "AAAA-MM-DD" ou null, "fim_aulas": "AAAA-MM-DD" ou null,
    "horario": "..." ou null, "dias": "..." ou null, "vagas": "..." ou null, "carga_horaria": "..." ou null,
    "local_curso": "..." ou null, "frase": "...",
@@ -389,6 +393,10 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
         # a frase tem de nomear um grupo que conhecemos e dizer que há vagas para ele (a pergunta da ficha de
         # inscrição «Você é pessoa com deficiência? ( ) sim ( ) não» não é uma reserva de vagas)
         reserva = ""
+    # como se distribuem as vagas (24/11/2026): a frase tem de estar no documento e falar de sorteio ou ordem
+    selecao = str(res.get("selecao") or "")
+    if not (_cv(selecao, texto) and re.search(r"sorte|ordem (?:de|das) inscri|ordem de chegada|ordem cronol", selecao, re.I)):
+        selecao = ""
     acess = str(res.get("acessibilidade") or "")
     if not (_cv(acess, texto) and etiquetas_acessibilidade(acess)):
         acess = ""  # a frase tem de estar no documento e nomear um recurso concreto
@@ -432,7 +440,8 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
                        **({"nome_ocr": True} if nome_ocr else {})})
     return {"ini": ini, "fim": fim, "ate_vagas": ate_vagas, "frase_insc": frase_insc if (fim or ate_vagas) else "",
             "local": local, "modo": modo,
-            "gratuito": gratuito, "renda": renda, "reserva": reserva, "acessibilidade": acess, "turmas": turmas}, problemas
+            "gratuito": gratuito, "renda": renda, "reserva": reserva, "acessibilidade": acess, "selecao": selecao,
+            "turmas": turmas}, problemas
 
 
 def auditar(t, edital, problemas_edital, inicio_opcional=False):
@@ -1040,6 +1049,7 @@ def correr(fonte):
                 "Última verificação": hoje, "Falhas seguidas": 0,
                 "Evidência": (f"«{ed_t['frase_insc']}» | «{t['frase']}»"
                               + (f" | local: «{ed_t['local']}»" if ed_t["local"] else "")
+                              + (f" | vagas: «{edital['selecao'][:200]}»" if edital.get("selecao") else "")
                               + (" | nome do curso corrigido de letras trocadas pelo OCR (90%+ igual)" if t.get("nome_ocr") else ""))[:900],
                 "Auditoria": (f"{hoje}: não passou: " + "; ".join(p) + ".") if p else
                 f"{hoje}: ok (frases conferidas no documento do edital; datas e horário coerentes).",

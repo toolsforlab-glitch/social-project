@@ -387,8 +387,10 @@ ESCOLARIDADES = ["Nenhuma", "Saber ler e escrever", "Fundamental incompleto", "F
 # «bolsa integral»…). O nome do programa («Programa Senac de Gratuidade») não serve: concluir que o curso é
 # gratuito pelo nome é dedução (regra do responsável, 20/11/2026). Sem frase, o site mostra «Gratuidade por confirmar».
 _GRATUIDADE = re.compile(r"gratuit|sem\s+(qualquer\s+)?(custo|pagamento|cobran|[ôo]nus|mensalidade|taxa)|custo\s+zero|"
-                         r"bolsas?\s+(de\s+estudos?\s+)?(s[ãa]o\s+|é\s+)?(integra|100\s*%)|100\s*%\s*(\(cem\s+por\s+cento\)\s*)?de\s+isen[çc][ãa]o|n[ãa]o\s+(h[áa]|haver[áa]|ser[áa]|tem|possui|ter[áa])\s+"
+                         r"100\s*%\s*(\(cem\s+por\s+cento\)\s*)?de\s+isen[çc][ãa]o|n[ãa]o\s+(h[áa]|haver[áa]|ser[áa]|tem|possui|ter[áa])\s+"
                          r"(nenhum(a)?\s+|qualquer\s+)?(cobrad|cobran|custo|taxa)", re.I)
+# 24/11/2026: «bolsa integral» / «bolsa de estudo 100%» deixou de contar como gratuidade (decisão do responsável:
+# bolsa pressupõe concorrência). «Bolsas gratuitas» continua a contar (tem a palavra «gratuitas»).
 _GRATUIDADE_NEGADA = re.compile(r"n[ãa]o\s+(é|são|e|sao|será|serão)\s+gratuit", re.I)
 
 

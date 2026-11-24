@@ -9,19 +9,4 @@ jobs:
         with: {python-version: "3.12"}
       - run: pip install -q -r requirements.txt
       - run: |
-          cd scripts && python3 - <<'PY'
-          import re
-          from comum import baixar
-          from base import texto_de_html
-          A = "https://aprendamais.mec.gov.br"
-          for u in [A + "/", A + "/course/info.php?id=3213", A + "/course/index.php?categoryid=6&browse=courses&perpage=200&page=0",
-                    A + "/mod/page/view.php?id=134111",
-                    A + "/pluginfile.php/57/mod_folder/content/0/Termos%20de%20Uso%20Plataforma%20Aprenda%20Mais%20-%20vers%C3%A3o%202.pdf"]:
-              try:
-                  b = baixar(u, timeout=60); t = texto_de_html(b)
-                  print("==", u[:100], "OK", len(b), "| cursos:", len(set(re.findall(rb"course/view\.php\?id=(\d+)", b))))
-                  for m in re.finditer(r".{0,160}(gratuit|certificad|custo|cobran|taxa).{0,160}", t, re.I):
-                      print("   ~", m.group(0)[:330])
-              except Exception as e:
-                  print("==", u[:100], "ERRO", type(e).__name__, str(e)[:150])
-          PY
+          cd scripts && SECO=1 python3 aprenda_mais.py

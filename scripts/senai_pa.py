@@ -67,6 +67,11 @@ def main():
     try:
         inicial = baixar(LISTA, timeout=90).decode("utf-8", "replace")
         unidades = list(dict.fromkeys(re.findall(r'href="(https://www\.senaipa\.org\.br/escolas-1/[^"]+)"', inicial)))
+        rotulos = {}
+        for href, rot in re.findall(r'href="(https://www\.senaipa\.org\.br/escolas-1/[^"]+)"[^>]*>(.*?)</a>', inicial, re.S):
+            r = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " ", rot))).strip()
+            if r:
+                rotulos.setdefault(href, r)
         edital = (re.search(r'href="(https://www\.senaipa\.org\.br/_files/ugd/[^"]+\.pdf)"', inicial) or [None, ""])[1]
         texto_edital = re.sub(r"\s+", " ", texto_de_html(baixar(edital, timeout=90))) if edital else ""
     except Exception as e:  # noqa: BLE001
@@ -96,17 +101,28 @@ def main():
         slug = u.rsplit("/", 1)[-1]
         digital = "digital" in slug
         cidade = "" if digital else cidade_da_unidade(slug)
-        unidade = re.sub(r"\s+", " ", _html.unescape((re.search(r"Voltar\s+(SENAI[^<]{3,80}?|ESCOLA DIGITAL)\s", texto) or [None, ""])[1])).strip()
-        for rotulo in re.findall(r'href="https://abrir\.link/[^"]+"[^>]*aria-label="([^"]+)"', ph):
-            nome, turno = nome_e_turno(rotulo)
-            if not nome:
+        unidade = rotulos.get(u, "")
+        # cada curso: «Nome ( Turno) Inscrição: Online|Presencial|Online e presencial … Edital Matricule-se aqui»
+        corpo = texto.split("Voltar", 1)[-1]
+        for seg in corpo.split("Matricule-se aqui")[:-1]:
+            m = re.search(r"(.+)\(\s*([^()]{1,40}?)\s*\)\s*Inscrição:\s*(Online e presencial|Online|Presencial)", seg, re.I | re.S)
+            if not m:
+                continue
+            nome = re.sub(r"\s+", " ", m.group(1)).strip(" -–")
+            if unidade and nome.upper().startswith(unidade.upper()):
+                nome = nome[len(unidade):].strip(" -–")
+            nome = re.sub(r"^(?:Edital|Acesse a comunidade)\s+", "", nome).strip()
+            turno, modo = m.group(2).strip(), m.group(3).lower()
+            if not nome or len(nome) > 150:
                 continue
             online = digital or turno.upper() == "EAD"
             k = chave_curso(nome, "online" if online else cidade)
             d = lidos.setdefault(k, {"nome": nome, "cidade": "" if online else cidade, "online": online,
-                                     "turnos": [], "unidades": [], "paginas": []})
-            if turno and turno.upper() != "EAD" and turno.lower() not in [t.lower() for t in d["turnos"]]:
+                                     "turnos": [], "unidades": [], "paginas": [], "modos": []})
+            if turno and turno.upper() != "EAD" and turno.lower() not in d["turnos"]:
                 d["turnos"].append(turno.lower())
+            if modo not in d["modos"]:
+                d["modos"].append(modo)
             if unidade and unidade not in d["unidades"]:
                 d["unidades"].append(unidade)
             if u not in d["paginas"]:
@@ -114,7 +130,7 @@ def main():
     print(f"SENAI Pará: {len(lidos)} cursos diferentes nas páginas das unidades.")
     if seco:
         for d in list(lidos.values())[:60]:
-            print("  ·", d["nome"], "|", d["cidade"] or "online", "|", d["turnos"], "|", d["unidades"])
+            print("  ·", d["nome"], "|", d["cidade"] or "online", "|", d["turnos"], "|", d["modos"], "|", d["unidades"])
         print("  documentos:", documentos)
         return 0
 
@@ -153,7 +169,11 @@ def main():
                                            f"turnos: {turnos}" if turnos else "",
                                            f"documentos (edital): {documentos}" if documentos else ""] if x)[:500],
             "Como me inscrever": ("1. Abra a página da unidade no site do SENAI Pará.\n"
-                                  f"2. Clique em \"{d['nome']}\" (\"Matricule-se aqui\") e faça a inscrição.\n"
+                                  + (f"2. Clique em \"{d['nome']}\" (\"Matricule-se aqui\") e faça a inscrição pela internet.\n"
+                                     if d["modos"] == ["online"] else
+                                     "2. A inscrição é presencial na unidade (o endereço está na página da unidade).\n"
+                                     if d["modos"] == ["presencial"] else
+                                     f"2. Inscreva-se pela internet (\"Matricule-se aqui\") ou na unidade.\n")
                                   + (f"3. Tenha à mão: {documentos}.\n" if documentos else "")
                                   + ("4. As vagas são preenchidas por ordem de inscrição: inscreva-se cedo." if ordem else "")).strip(),
             **VERIFICACAO_INICIAL, "Nota da verificação": nota,

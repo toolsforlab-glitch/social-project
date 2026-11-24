@@ -13,16 +13,11 @@ jobs:
           import re
           from comum import baixar
           from base import texto_de_html
-          S = "https://www.senaipa.org.br"
-          for u in [S + "/cursos-gratuitos", S + "/escolas-1/senai-bel%C3%A9m-get%C3%BAlio-vargas",
-                    S + "/_files/ugd/cf72c4_434f86f6a3e24e10a265cbeb3e8a3c81.pdf", S + "/_files/ugd/cf72c4_f33c7e9dba924b13a309ae1e15d7ba29.pdf"]:
-              try:
-                  b = baixar(u, timeout=90); t = texto_de_html(b)
-                  print("==", u, "OK", len(b), "| escolas:", len(set(re.findall(rb"/escolas-1/[a-z0-9%\-]+", b))), "| pdfs:", len(set(re.findall(rb"_files/ugd/[a-z0-9_]+\.pdf", b))), "| abrir.link:", b.count(b"abrir.link"))
-                  if u.endswith(".pdf"):
-                      print("   TEXTO:", t[:3000])
-                  for m in re.finditer(r".{0,160}(gratuit(?!dade)|sem custo|nenhum custo|isen|sal[áa]rios? m[íi]nimos?|ordem de inscri|sorteio|prova|baixa renda).{0,160}", t, re.I):
-                      print("   ~", m.group(0)[:340])
-              except Exception as e:
-                  print("==", u, "ERRO", type(e).__name__, str(e)[:150])
+          t = texto_de_html(baixar("https://www.senaipa.org.br/_files/ugd/cf72c4_434f86f6a3e24e10a265cbeb3e8a3c81.pdf", timeout=90))
+          for pat in [r"1\.1 DOCUMENTOS", r"2\.1", r"2\.2", r"3 \.? ?D", r"4 DOS CRIT", r"5 ?\.", r"6 ?\.", r"encerr", r"t[ée]rmino", r"in[íi]cio das aulas", r"pr[ée]-requisito", r"Gratuidade Regimental"]:
+              for m in list(re.finditer(pat, t))[:2]:
+                  print("==", pat, "::", t[m.start():m.start()+700])
+          b = baixar("https://www.senaipa.org.br/escolas-1/senai-bel%C3%A9m-get%C3%BAlio-vargas", timeout=60).decode("utf-8","replace")
+          i = b.find("Planejador de Manuten")
+          print("== HTML ::", re.sub(r"\s+", " ", b[i-600:i+1500]))
           PY

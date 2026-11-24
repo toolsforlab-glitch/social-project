@@ -132,6 +132,27 @@ FONTES = [
              "mesmo que passe de 40 palavras. Se a linha «Inscrições» tiver um só dia (ex.: «Inscrições 25/11/2026»), "
              "devolve inicio = fim = esse dia; se tiver dois dias («17/11/2026 e 19/11/2026»), o primeiro e o "
              "último; em «inscricao.frase» copia a linha «Inscrições …»."},
+    {"nome": "Senai AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",
+     "entidade": "SENAI Amazonas (Programa SENAI de Gratuidade)", "estado": "estado/senai_am.json",
+     "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
+     "lista": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
+     "prefixo_turma": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
+     "layout": True, "ancora_com_data": True, "max_extra": 70000, "max_tokens": 48000, "max_caracteres": 30000,
+     "nota": "No SENAI Amazonas a «Chamada Pública» (texto principal) tem as regras: a gratuidade («Os cursos "
+             "ofertados serão 100% gratuitos»), a forma de seleção (item 1.17, «ordem de data e horário de "
+             "inscrição»), a baixa renda (item 1.20, declaração do candidato: copia essa frase para «renda») e o "
+             "período de inscrição (item 1.4: «As inscrições serão realizadas a partir das 8h do dia …, pelo endereço "
+             "… e serão encerradas às 12h do dia …»; modo «online»; o endereço do formulário vai em «link_inscricao» "
+             "de cada turma, copiado letra a letra). A lista de turmas NÃO está na chamada: está no fim, no DOCUMENTO "
+             "OFICIAL LIGADO AO EDITAL «Programação de cursos» (planilha com curso, código da turma, carga horária, "
+             "vagas, tipo de ação, período, horário e pré-requisitos; as células longas partem-se em várias linhas). "
+             "Uma entrada em «turmas» por CÓDIGO DE TURMA (ex.: «APP.CLP.051»). Em «frase» copia o texto desde o "
+             "início do nome do curso até ao período (datas de início e término), tal como aparece, mesmo que o nome "
+             "venha partido à volta do código. Em «curso» o nome completo, juntando as partes. Todas as turmas são em "
+             "Manaus: «cidade» = «Manaus», mesmo nas EaD e semipresenciais. Os pré-requisitos (escolaridade, idade, "
+             "outro curso feito antes) não excluem a turma; mas NÃO devolvas as turmas cujo pré-requisito exija já "
+             "trabalhar na profissão ou ter experiência profissional (regra do responsável: cursos só para quem já "
+             "tem emprego, cargo ou profissão ficam fora)."},
     {"nome": "Senai PI", "uf": "PI", "local": "BR-PI", "regiao": "Piauí",
      "entidade": "SENAI Piauí (Programa SENAI de Gratuidade Regimental)", "estado": "estado/senai_pi.json",
      "programa": "Programa SENAI de Gratuidade Regimental", "listar": "senai_pi",
@@ -790,6 +811,105 @@ def listar_senac_am(fonte):
     return editais
 
 
+FIEAM = "https://fieam.org.br/senai/wp-content/uploads/sites/16/"
+ESTADO_CHAMADAS_AM = "estado/senai_am_chamadas.json"
+FRASE_GRATUIDADE_SENAI_AM = "Os cursos ofertados serão 100% gratuitos"
+
+
+def _pdf_existe(url):
+    """Os PDFs da FIEAM abrem a partir do GitHub (as páginas não: desafio da Cloudflare); um nome que não existe
+    devolve 404."""
+    try:
+        dados = baixar(url, timeout=40)
+    except Exception:  # noqa: BLE001
+        return None
+    return dados if dados[:5] == b"%PDF-" else None
+
+
+def listar_senai_am(fonte):
+    """SENAI Amazonas: abre 2 ou 3 «Chamadas Públicas» de gratuidade por ano (Manaus; inscrição de 2 dias por
+    formulário, por ordem de inscrição). As páginas do site da FIEAM estão atrás de um desafio da Cloudflare e não
+    abrem a partir do GitHub, mas os PDFs abrem. Por isso procuram-se os PDFs da chamada seguinte pelos nomes que o
+    SENAI AM usa (ex.: 2026/08/Chamada-Publica-GEP-03-2026-Cursos-Gratuitos-SENAI-Manaus.pdf) nas pastas do mês
+    anterior, do atual e do seguinte, e a «Programação de cursos» pelos nomes já vistos (Programacao-da-Gratuidade-
+    SENAI-AM-1-2026, Programacao-Gratuidade-SENAI-AM-2-2026-1, Programacao_Gratuidade_SENAI-AM-3-2026-2). Se a
+    chamada aparecer e a programação não, abre-se uma pendência (o Claude encontra o PDF pelo navegador e junta-o
+    em «programacoes» do estado). O vigia (vigiar.py) avisa também se houver notícias da chamada sem PDF achado."""
+    est = ler_json(ESTADO_CHAMADAS_AM, {"ultima": [2026, 3], "chamadas": {}, "programacoes": {}})
+    hoje_d = datetime.date.fromisoformat(hoje_ceara())
+    pastas = []
+    for dm in (-1, 0, 1):
+        m = hoje_d.month + dm
+        a = hoje_d.year + (m - 1) // 12
+        pastas.append(f"{a}/{(m - 1) % 12 + 1:02d}")
+    ano, n = est["ultima"]
+    candidatos = [(ano, n)] + ([(ano, n + 1)] if n < 4 else []) + [(ano + 1, 1)]
+    editais = []
+    for a, k in candidatos:
+        chave_ch = f"{k:02d}-{a}"
+        url_ch = est["chamadas"].get(chave_ch)
+        if not url_ch:
+            for pasta in pastas:
+                for suf in ("", "-1", "-2"):
+                    u = f"{FIEAM}{pasta}/Chamada-Publica-GEP-{k:02d}-{a}-Cursos-Gratuitos-SENAI-Manaus{suf}.pdf"
+                    if _pdf_existe(u):
+                        url_ch = u
+                        break
+                if url_ch:
+                    break
+            if not url_ch:
+                continue
+            est["chamadas"][chave_ch] = url_ch
+            est["vista_em"] = hoje_d.isoformat()
+            if [a, k] > list(est["ultima"]):
+                est["ultima"] = [a, k]
+            print(f"  · SENAI AM: Chamada Pública {k:02d}/{a} encontrada: {url_ch}")
+        if chave_ch in est.get("encerradas", []) and not os.environ.get("SECO"):
+            continue  # chamada já fechada quando o leitor nasceu (só serve de ensaio)
+        url_pg = est["programacoes"].get(chave_ch)
+        if not url_pg:
+            pasta_ch = url_ch[len(FIEAM):len(FIEAM) + 7]
+            for pasta in [pasta_ch] + [p for p in pastas if p != pasta_ch]:
+                for sep in ("-", "_"):
+                    for da in ("", f"da{sep}"):
+                        for suf in ("", "-1", "-2", "-3"):
+                            u = f"{FIEAM}{pasta}/Programacao{sep}{da}Gratuidade{sep}SENAI-AM-{k}-{a}{suf}.pdf"
+                            if _pdf_existe(u):
+                                url_pg = u
+                                break
+                        if url_pg:
+                            break
+                    if url_pg:
+                        break
+                if url_pg:
+                    break
+            if url_pg:
+                est["programacoes"][chave_ch] = url_pg
+            else:
+                print(f"  ! SENAI AM: a programação da Chamada {k:02d}/{a} não foi encontrada pelos nomes conhecidos")
+                try:
+                    b = Base()
+                    registar_pendencia(b, f"SENAI Amazonas: saiu a Chamada Pública {k:02d}/{a}, mas o PDF da "
+                                          "«Programação de cursos» tem um nome novo e a rotina não o encontrou.",
+                                       "Peça ao Claude para abrir fieam.org.br/senai/chamada-publica/ no navegador e "
+                                       "juntar o link da programação ao estado (estado/senai_am_chamadas.json).",
+                                       url_ch, origem="senac_ma.py")
+                    b.guardar()
+                except Exception:  # noqa: BLE001
+                    pass
+                continue
+        editais.append({"id": f"senai-am-{chave_ch}", "number": f"{k:02d}/{a}", "published_at": "",
+                        "updated_at": url_ch.rsplit("/", 1)[-1] + "|" + url_pg.rsplit("/", 1)[-1],
+                        "title": f"Chamada Pública nº {k:02d}/{a} - Vagas gratuitas nos Cursos de Qualificação "
+                                 "Profissional e Aperfeiçoamento Profissional (SENAI Amazonas, Manaus)",
+                        "pagina": url_ch, "padrao": re.escape(url_ch), "aditivo": False,
+                        "extras": [("Programação de cursos", url_pg)],
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": url_ch}]})
+    if not os.environ.get("SECO"):
+        gravar_json(ESTADO_CHAMADAS_AM, est)
+    return editais
+
+
 def listar_senai_al(fonte):
     """SENAI Alagoas: a página «Edital Gratuidade» (al.senai.br/edital-gratuidade/) tem um bloco por edital
     (<section class="list-editais">), do mais novo para o mais antigo, com «Período de inscrição», «Local para
@@ -942,8 +1062,10 @@ def numero_alterado(n):
 
 
 def main():
+    so = os.environ.get("SO_FONTE")  # ex.: SO_FONTE="Senai AM" (ensaios)
     for fonte in FONTES:
-        correr(fonte)
+        if not so or fonte["nome"] == so:
+            correr(fonte)
     return 0
 
 
@@ -955,7 +1077,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am, "senai_am": listar_senai_am}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []
@@ -1028,8 +1150,10 @@ def correr(fonte):
                 texto_avisos += f"\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n{t_aviso.strip()}"
             texto += texto_avisos
             for rotulo, url in e.get("extras") or []:
-                t_extra = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
-                texto += f"\n\n=== DOCUMENTO OFICIAL LIGADO AO EDITAL: {rotulo} ===\n{t_extra.strip()[:20000]}"
+                t_extra = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf",
+                                                                   fonte.get("layout", False)))
+                texto += (f"\n\n=== DOCUMENTO OFICIAL LIGADO AO EDITAL: {rotulo} ===\n"
+                          f"{t_extra.strip()[:fonte.get('max_extra', 20000)]}")
             for rotulo, txt in e.get("trechos") or []:
                 # trechos de um documento oficial geral, já conferidos por código nesse documento (ex.: o edital
                 # geral do PSG 2026 do Senac Amazonas, com a gratuidade e a renda que as aberturas não repetem)
@@ -1101,7 +1225,11 @@ def correr(fonte):
               f"{edital['ini'] or '?'} a {edital['fim'] or '?'}, modo {edital['modo'] or '?'}, "
               f"{len(edital['turmas'])}/{propostas} cursos comprovados" + (f" | {'; '.join(problemas)}" if problemas else ""))
         for t in edital["turmas"]:
-            link = f"{pagina}#{re.sub(r'[^a-z0-9]+', '-', chave(t['curso'] + ' ' + (t.get('horario') or ''))).strip('-')}"
+            ancora = t['curso'] + ' ' + (t.get('horario') or '')
+            if fonte.get("ancora_com_data"):
+                # a mesma chamada tem várias turmas do mesmo curso e horário em meses diferentes (SENAI AM)
+                ancora += ' ' + (t.get('inicio_aulas') or '')
+            link = f"{pagina}#{re.sub(r'[^a-z0-9]+', '-', chave(ancora)).strip('-')}"
             if link not in existentes and not t.get("horario"):
                 # releitura em que o horário não veio: não se cria uma turma nova se o mesmo curso deste edital já
                 # existe com horário (a âncora seria outra e a turma ficava repetida no site)
@@ -1287,6 +1415,15 @@ def correr(fonte):
         if campos:
             alteracoes_cursos.append((r["_linha"], campos))
 
+    if os.environ.get("SECO"):
+        # ensaio: mostra o que seria escrito e não grava nada (nem a folha nem o estado)
+        print(f"  [SECO] {fonte['nome']}: {len(novas)} turmas novas, {len(cursos_novos)} cursos novos, "
+              f"{len(alteracoes)} alterações; custo ≈ {round(custo, 3)} USD")
+        for t in novas[:4]:
+            print("   ", {k: str(v)[:160] for k, v in t.items() if v})
+        for c in cursos_novos[:3]:
+            print("   ", {k: (c.get(k) or "")[:300] for k in ("Título", "Requisitos", "Evidência", "Campos comprovados")})
+        return
     base.atualizar(ABA, alteracoes)
     base.acrescentar(ABA, novas)
     base.atualizar("Cursos", alteracoes_cursos)

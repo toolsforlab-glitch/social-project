@@ -138,6 +138,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 escola_trabalhador.py || echo 'Escola do Trabalhador 4.0 não lida'
 
+      - name: Cursos abertos dos institutos federais (Aprenda Mais, MEC; prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 20
+        run: cd scripts && python3 aprenda_mais.py || echo 'Aprenda Mais não lida'
+
       - name: Cursos on-line do Sebrae (catálogo oficial, prova por código)
         if: ${{ always() }}
         timeout-minutes: 20

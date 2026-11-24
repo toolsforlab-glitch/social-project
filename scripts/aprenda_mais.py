@@ -25,11 +25,12 @@ import unicodedata
 
 from base import (registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
                   citacao_valida, exige_prova, hoje_iso, registo_historico, texto_de_html)
-from comum import baixar, claude, custo_estimado, extrair_json
+from comum import baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
 
 SITE = "https://aprendamais.mec.gov.br"
 ENTIDADE = "Aprenda Mais (MEC, Rede Federal)"
 MARCA = "lida na plataforma oficial Aprenda Mais, conferida por código"
+ESTADO = "estado/aprenda_mais.json"  # cursos já avaliados pelo Claude (escolhidos ou não), para não os reler todos os dias
 FRASE_GRATUITO = "oferece cursos on-line, abertos e gratuitos em diversas áreas do conhecimento"
 NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
                 "dinheiro", "direitos"]
@@ -40,7 +41,8 @@ Brasil a encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer
 abertos dos institutos federais (plataforma Aprenda Mais, do MEC; on-line, gratuitos, sem tutoria). Escolha os que \
 servem a qualquer pessoa que quer aprender uma profissão, melhorar no trabalho, voltar a estudar ou abrir um \
 negócio. Deixe de fora: os pensados só para quem já tem uma profissão ou um cargo (servidores públicos, \
-professores, profissionais de saúde, de direito ou de contabilidade, gestores), os de nível universitário muito \
+professores, profissionais de saúde, de direito ou de contabilidade, gestores) ou cujos requisitos pedem ser \
+estudante ou profissional de uma área, os de nível universitário muito \
 especializado e os de programação ou engenharia avançada. Para cada escolhido, indique as necessidades (ids da \
 lista dada). Responda só com JSON entre <json></json>: [{"n": número do curso na lista, "necessidades": ["id", ...]}]."""
 
@@ -155,9 +157,10 @@ def main():
         alteracoes.append((r["_linha"], mud))
         print(f"  = {r['Título'][:60]} | turma nova {i}")
     # 2. cursos novos: lê a página de cada um e o Claude escolhe os úteis para o público do site
+    estado = ler_json(ESTADO, {"avaliados": {}})
     novos_lidos = []
     for n, ts in por_nome.items():
-        if chave(n) in na_folha:
+        if chave(n) in na_folha or chave(n) in estado["avaliados"]:
             continue
         i, d = melhor_turma(ts)
         if not i or not d.get("conclusao_iso") or d["conclusao_iso"] < hoje:
@@ -172,16 +175,19 @@ def main():
             lote = novos_lidos[ini:ini + 80]
             texto_lista = "\n".join(
                 f"{k} | {c['nome'][:100]} | {c['area']} | {c['d'].get('Carga horária', '')} | "
-                f"{c['d'].get('Conteúdo', '')[:150]} | Público: {c['d'].get('Público-alvo', '')[:120]}"
+                f"{c['d'].get('Conteúdo', '')[:150]} | Público: {c['d'].get('Público-alvo', '')[:120]} | "
+                f"Requisitos: {c['d'].get('Requisitos', '')[:120]}"
                 for k, c in enumerate(lote, 1))
             texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
                                 f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | nome | área | "
-                                f"carga horária | conteúdo | público):\n{texto_lista}", max_tokens=6000)
+                                f"carga horária | conteúdo | público | requisitos):\n{texto_lista}", max_tokens=6000)
             custo += custo_estimado(uso, cfg["modelo_cursos"])
             for x in (extrair_json(texto) or []):
                 if isinstance(x, dict) and str(x.get("n", "")).isdigit() and 1 <= int(x["n"]) <= len(lote):
                     escolha[ini + int(x["n"]) - 1] = x
         print(f"Cursos novos da Aprenda Mais: {len(novos_lidos)}; o Claude escolheu {len(escolha)}.")
+        for c in novos_lidos:
+            estado["avaliados"][chave(c["nome"])] = f"{hoje} {c['nome'][:80]}"
         for k, c in enumerate(novos_lidos):
             x = escolha.get(k)
             if not x:
@@ -219,6 +225,7 @@ def main():
             publicados.append(linha)
             historico.append(registo_historico(linha, "Catálogo Aprenda Mais", "Publicado", linha, url))
             print(f"  + {c['nome'][:55]} | {inst} | {d.get('Carga horária', '')} | {', '.join(nec)}")
+    gravar_json(ESTADO, estado)
     base.atualizar("Cursos", alteracoes)
     if publicados:
         base.acrescentar("Cursos", publicados)

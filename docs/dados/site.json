@@ -91,6 +91,30 @@
   {
    "id": "BR-SE",
    "rotulo": "Brasil – Sergipe"
+  },
+  {
+   "id": "BR-PA",
+   "rotulo": "Brasil – Pará"
+  },
+  {
+   "id": "BR-AM",
+   "rotulo": "Brasil – Amazonas"
+  },
+  {
+   "id": "BR-RO",
+   "rotulo": "Brasil – Rondônia"
+  },
+  {
+   "id": "BR-RR",
+   "rotulo": "Brasil – Roraima"
+  },
+  {
+   "id": "BR-AP",
+   "rotulo": "Brasil – Amapá"
+  },
+  {
+   "id": "BR-TO",
+   "rotulo": "Brasil – Tocantins"
   }
  ],
  "formulario": {

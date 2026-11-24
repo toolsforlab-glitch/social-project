@@ -10,14 +10,16 @@ jobs:
       - run: pip install -q -r requirements.txt
       - run: |
           cd scripts && python3 - <<'PY'
+          import escola_trabalhador as e
           from comum import baixar
-          from base import texto_de_html
-          for u in [                    "https://escoladotrabalhador40.tawk.help/article/certificado-como-emitir-posso-utilizar-para-horas-complementares-posso-utilizar-como-curso-t%C3%A9cnico",
-                    "https://escoladotrabalhador40.tawk.help/article/cat%C3%A1logo-de-cursos"]:
-              try:
-                  b = baixar(u, timeout=120); t = texto_de_html(b) if b[:1] != b"{" else b.decode()
-                  print("==", u, "OK", len(b), "| course-card:", b.count(b"data-course-id"), "| cert gratuito:", "sendo gratuito" in t, "| cursos gratuitos:", "cursos gratuitos" in t)
-                  print(t[:200])
-              except Exception as e:
-                  print("==", u, "ERRO", type(e).__name__, str(e)[:150])
+          from base import texto_de_html, citacao_valida, certificado_da_frase
+          b = baixar(e.SITE, timeout=60).decode("utf-8", "replace")
+          f = texto_de_html(baixar(e.FAQ_CERTIFICADO, timeout=120))
+          print("== gratuito", citacao_valida(e.FRASE_GRATUITO, texto_de_html(b.encode())), "| cert", citacao_valida(e.FRASE_CERTIFICADO, f),
+                "| aprov", citacao_valida(e.FRASE_APROVACAO, f), "| regra", certificado_da_frase("gratuito", e.FRASE_CERTIFICADO))
+          ts = e.trilhas(b)
+          print("== trilhas", len(ts), sum(len(t["cursos"]) for t in ts))
+          for t in ts:
+              print("==", t["titulo"], "|", "; ".join(n for _, n in t["cursos"])[:150])
+          print("== desc", e.descricao_curso(ts[17]["cursos"][0][0]))
           PY

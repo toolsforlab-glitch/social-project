@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-24T19:27",
+ "atualizado": "2026-11-24T19:33",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -31550,7 +31550,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-24",
    "inicio": "",
-   "duracao": "6 horas",
+   "duracao": "60 horas",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
     "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
@@ -32624,7 +32624,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-24",
    "inicio": "",
-   "duracao": "4 horas",
+   "duracao": "40 horas",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
     "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
@@ -33551,7 +33551,7 @@
   {
    "id": "C-d46652e7",
    "titulo": "A Poesia de Augusto dos Anjos",
-   "entidade": "Aprenda Mais (MEC, Rede Federal) — IFBA Área: educação",
+   "entidade": "Aprenda Mais (MEC, Rede Federal) — IFBA",
    "url": "https://aprendamais.mec.gov.br/course/info.php?id=3157",
    "pagina_propria": true,
    "local": "online",

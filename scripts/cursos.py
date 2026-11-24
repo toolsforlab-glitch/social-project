@@ -23,8 +23,14 @@ LOCALIZACAO = {
     "BR-BA": {"type": "approximate", "country": "BR", "region": "Bahia", "city": "Salvador", "timezone": "America/Bahia"},
     "BR-RN": {"type": "approximate", "country": "BR", "region": "Rio Grande do Norte", "city": "Natal", "timezone": "America/Fortaleza"},
     "BR-SE": {"type": "approximate", "country": "BR", "region": "Sergipe", "city": "Aracaju", "timezone": "America/Maceio"},
+    "BR-PA": {"type": "approximate", "country": "BR", "region": "Pará", "city": "Belém", "timezone": "America/Belem"},
+    "BR-AM": {"type": "approximate", "country": "BR", "region": "Amazonas", "city": "Manaus", "timezone": "America/Manaus"},
+    "BR-RO": {"type": "approximate", "country": "BR", "region": "Rondônia", "city": "Porto Velho", "timezone": "America/Porto_Velho"},
+    "BR-RR": {"type": "approximate", "country": "BR", "region": "Roraima", "city": "Boa Vista", "timezone": "America/Boa_Vista"},
+    "BR-AP": {"type": "approximate", "country": "BR", "region": "Amapá", "city": "Macapá", "timezone": "America/Belem"},
+    "BR-TO": {"type": "approximate", "country": "BR", "region": "Tocantins", "city": "Palmas", "timezone": "America/Araguaina"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe", "BR-PA": "Pará", "BR-AM": "Amazonas", "BR-RO": "Rondônia", "BR-RR": "Roraima", "BR-AP": "Amapá", "BR-TO": "Tocantins"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.

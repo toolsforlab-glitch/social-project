@@ -127,7 +127,11 @@ FONTES = [
              "profissional (ex.: «Requisito específico: atuar como cabeleireiro(a)», «Comprovante de atuação "
              "profissional»), nem os que são só para pessoas indicadas por uma empresa ou instituição parceira "
              "(regra do responsável: cursos só para quem já tem emprego, cargo ou profissão ficam fora). Se no fim "
-             "houver COMUNICADOS ou ERRATAS, eles prevalecem."},
+             "houver COMUNICADOS ou ERRATAS, eles prevalecem. Em «frase» de cada curso copia o texto do quadro desde o "
+             "NOME do curso até às datas de início e término (os pré-requisitos ficam no meio e vêm incluídos), "
+             "mesmo que passe de 40 palavras. Se a linha «Inscrições» tiver um só dia (ex.: «Inscrições 25/11/2026»), "
+             "devolve inicio = fim = esse dia; se tiver dois dias («17/11/2026 e 19/11/2026»), o primeiro e o "
+             "último; em «inscricao.frase» copia a linha «Inscrições …»."},
     {"nome": "Senai PI", "uf": "PI", "local": "BR-PI", "regiao": "Piauí",
      "entidade": "SENAI Piauí (Programa SENAI de Gratuidade Regimental)", "estado": "estado/senai_pi.json",
      "programa": "Programa SENAI de Gratuidade Regimental", "listar": "senai_pi",

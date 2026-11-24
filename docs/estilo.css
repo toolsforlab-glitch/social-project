@@ -300,3 +300,6 @@ a.tel { white-space: nowrap; padding: .15rem 0; }
 .link-oficial { margin: .5rem 0 0; font-size: 1rem; }
 .verificado span.avisar a { color: var(--tinta-suave); }
 @media print { .descricao.curta { display: block; -webkit-line-clamp: unset; overflow: visible; } .ler-mais { display: none; } }
+/* Aviso de como se distribuem as vagas (sorteio / ordem de inscrição), 24/11/2026 */
+.vagas-aviso { margin: .2rem 0 .7rem; font-weight: 700; color: var(--tinta); font-size: 1rem; }
+.vagas-aviso::before { content: "ⓘ "; color: var(--anil); }

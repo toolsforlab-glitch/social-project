@@ -12,12 +12,10 @@ jobs:
           cd scripts && python3 - <<'PY'
           from comum import baixar
           from base import texto_de_html
-          for u in ["https://ead.escoladotrabalhador40.com.br/",
-                    "https://ead.escoladotrabalhador40.com.br/api/v1/Courses/351/Metadata",
-                    "https://escoladotrabalhador40.tawk.help/article/certificado-como-emitir-posso-utilizar-para-horas-complementares-posso-utilizar-como-curso-t%C3%A9cnico",
-                    "https://www.gov.br/pt-br/servicos/inscrever-em-curso-do-caminho-digital"]:
+          for u in [                    "https://escoladotrabalhador40.tawk.help/article/certificado-como-emitir-posso-utilizar-para-horas-complementares-posso-utilizar-como-curso-t%C3%A9cnico",
+                    "https://escoladotrabalhador40.tawk.help/article/cat%C3%A1logo-de-cursos"]:
               try:
-                  b = baixar(u, timeout=40); t = texto_de_html(b) if b[:1] != b"{" else b.decode()
+                  b = baixar(u, timeout=120); t = texto_de_html(b) if b[:1] != b"{" else b.decode()
                   print("==", u, "OK", len(b), "| course-card:", b.count(b"data-course-id"), "| cert gratuito:", "sendo gratuito" in t, "| cursos gratuitos:", "cursos gratuitos" in t)
                   print(t[:200])
               except Exception as e:

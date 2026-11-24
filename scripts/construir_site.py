@@ -216,9 +216,6 @@ def exportar_dados(base, cfg):
             # o certificado só aparece com prova (frase da página, ou GPT conferido por código) ou revisto por pessoa
             "certificado": r.get("Certificado", "") if comprovado(r, "certificado") else "",
             "certificado_comprovado": comprovado(r, "certificado"),
-            # valor do certificado pago (24/11/2026): só com a frase guardada na Evidência («valor do certificado: «R$ …»»)
-            "certificado_valor": (re.findall(r"valor do certificado: «(R\$ ?[\d.]+,\d{2})»", r.get("Evidência") or "") or [""])[0]
-                                 if r.get("Certificado") == "pago" and comprovado(r, "certificado") else "",
             # uma data só aparece se estiver comprovada na página ou confirmada por uma pessoa
             "inscricoes_ate": r.get("Inscrições até", "") if comprovado(r, "data") else "",
             "data_por_confirmar": bool(r.get("Inscrições até")) and not comprovado(r, "data"),

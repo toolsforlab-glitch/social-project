@@ -54,6 +54,8 @@ seleção ou teste seletivo (regra do responsável, 23/11/2026), e também reda�
 conhecimento e análise de currículo (24/11/2026): nada que obrigue a disputar a vaga mostrando que se sabe mais. \
 Seleção por ordem de inscrição, sorteio, entrevista só de orientação ou prioridade por renda pode entrar. Pertencer a um grupo (baixa renda, CadÚnico, mulheres, pessoas LGBTQIA+, migrantes, \
 pessoas com deficiência, jovens, pessoas idosas) NÃO é prova: esses cursos entram, com o grupo em "exclusivo_para".
+4e. NÃO entram cursos com certificado pago, mesmo que o curso seja gratuito: «ou é grátis ou não é» (regra do \
+responsável, 24/11/2026). Curso gratuito sem certificado pode entrar.
 5. O link veio dos resultados da pesquisa e é a página PRÓPRIA deste curso (ou desta turma, ou do edital deste \
 curso), onde a pessoa se inscreve. Não uses a página geral com a lista de cursos, a página inicial do campus ou \
 uma página de pesquisa: abre a lista e usa o link do curso. Exceção: no Senac PSG (psg.ce.senac.br) usa a lista \

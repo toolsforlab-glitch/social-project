@@ -202,7 +202,9 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Sem certificado**: os cursos gratuitos da FGV dão só uma declaração de participação (pós-teste com nota 7 ou mais). A coluna Certificado fica «sem certificado».
 - Primeira leitura (24/11/2026): 226 cursos no portfólio, 82 escolhidos e publicados.
 
-## SENAI Play (desde 24/11/2026)
+## SENAI Play (retirado a 24/11/2026)
+
+> **Retirado no mesmo dia.** O certificado do SENAI Play é sempre pago, e o responsável decidiu que curso com certificado pago não entra («Ou é grátis ou não é»). `senai_play.py` saiu das rotinas; os 59 cursos estão Oculto na folha. A regra vale para todas as fontes: `curso_no_site` (base.py) esconde qualquer curso com Certificado «pago», e a regra 4e de `cursos.py` não deixa entrar cursos novos assim. O texto abaixo fica só como registo.
 
 - `senai_play.py` (todos os dias): API pública do SENAI Play (play.senai.br). Entram só cursos com **16 horas ou mais** (minicursos e trilhas); os ~1.000 microcursos curtos ficam de fora (decisão do responsável: 1.300 cursos curtos soam a má qualidade). O Claude escolhe os úteis ao público.
 - Gratuidade: frase oficial da Agência de Notícias da Indústria, conferida a cada leitura («todos os cursos são 100% online e gratuitos»; o certificado é «por uma taxa simbólica»).

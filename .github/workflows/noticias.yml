@@ -133,11 +133,6 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 fgv.py || echo 'FGV não lida'
 
-      - name: Cursos do SENAI Play com 16 h ou mais (API oficial, certificado pago com valor)
-        if: ${{ always() }}
-        timeout-minutes: 15
-        run: cd scripts && python3 senai_play.py || echo 'SENAI Play não lido'
-
       - name: Cursos on-line do Sebrae (catálogo oficial, prova por código)
         if: ${{ always() }}
         timeout-minutes: 20

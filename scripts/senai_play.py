@@ -1,5 +1,9 @@
 """Cursos gratuitos on-line do SENAI Play (play.senai.br), com prova por código.
 
+RETIRADO a 24/11/2026: o certificado do SENAI Play é sempre pago («taxa simbólica», de R$ 14,90 a R$ 247,00), e o
+responsável decidiu que curso com certificado pago não entra no site («Ou é grátis ou não é»). Este leitor saiu das
+rotinas e os cursos foram ocultados na folha. Fica guardado só para consulta.
+
 Decisões do responsável (24/11/2026): «certificado pago entra, desde que tenha a distinção entre certificado pago e
 gratuito» e «tem que colocar o valor do certificado». Entram só os cursos com 16 horas ou mais (sobretudo os
 minicursos, que juntam vários microcursos); os cerca de 900 microcursos curtos ficam de fora para não encherem o site.

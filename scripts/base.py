@@ -515,8 +515,10 @@ def citacao_valida(citacao, pagina):
 
 
 def curso_no_site(r, cfg):
-    """Um curso aparece se o Estado o permitir e as inscrições não estiverem encerradas."""
-    return visivel(r.get("Estado"), cfg) and (r.get("Situação das inscrições") or "").strip() != "Encerrado"
+    """Um curso aparece se o Estado o permitir, as inscrições não estiverem encerradas e o certificado não for pago.
+    Decisão do responsável (24/11/2026): «Ou é grátis ou não é» — um curso gratuito com certificado pago não entra."""
+    return (visivel(r.get("Estado"), cfg) and (r.get("Situação das inscrições") or "").strip() != "Encerrado"
+            and (r.get("Certificado") or "").strip() != "pago")
 
 
 def registo_historico(r, tipo, resultado, depois, notas=""):

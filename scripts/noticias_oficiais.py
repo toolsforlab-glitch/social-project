@@ -41,6 +41,16 @@ FONTES = [
     {"nome": "Governo do Piauí", "api": "https://www.pi.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
      "pesquisas": ["cursos gratuitos", "qualificação profissional inscrições"], "local": "BR-PI", "regiao": "Piauí",
      "cidade": "", "entidade": "Governo do Piauí"},
+    # Cagece Capacita (24/11/2026): cursos profissionalizantes gratuitos todos os meses em Fortaleza, com carta de
+    # encaminhamento do Sine/IDT. O site da Cagece não abre fora do Brasil; as notícias saem no portal do Governo do
+    # Ceará, cuja pesquisa (WordPress) abre a partir do GitHub. Os títulos falam de «cartas de encaminhamento», não de
+    # «cursos gratuitos», daí o filtro próprio. Na primeira leitura já cria as notícias dos últimos 20 dias (nenhuma foi
+    # tratada à mão).
+    {"nome": "Governo do Ceará – Cagece Capacita",
+     "api": "https://www.ce.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["cagece capacita"], "local": "BR-CE", "regiao": "Ceará", "cidade": "Fortaleza",
+     "entidade": "Cagece (Cagece Capacita)", "incluir": r"cagece capacita.*(?:carta|curso|inscri|matr[íi]cula|vaga)",
+     "primeira_leitura_cria": True},
 ]
 
 INCLUIR = re.compile(r"cursos?\s+(?:\w+\s+){0,2}(?:gratuit|de\s+qualifica|profissionaliz|de\s+capacita)|"
@@ -48,7 +58,7 @@ INCLUIR = re.compile(r"cursos?\s+(?:\w+\s+){0,2}(?:gratuit|de\s+qualifica|profis
                      r"inscri[çc][õo]es\s+(?:abertas\s+)?para\s+(?:os\s+)?cursos|oficinas?\s+gratuit", re.I)
 EXCLUIR = re.compile(r"servidor|gestor|conselheir|professor|concurso|seletivo\s+para\s+contrat|"
                      r"capacita\s+(?:profissionais|equipes|t[ée]cnicos)|entrega\s+(?:de\s+)?certificad|formatura|"
-                     r"certifica\s+(?:mais\s+de\s+)?\d|encerra", re.I)
+                     r"certifica\s+(?:mais\s+de\s+)?\d|entregam|entregaram|\d+\s+certificados|encerra", re.I)
 
 
 def limpar_titulo(t):
@@ -101,13 +111,14 @@ def main():
             continue
         primeira = f["nome"] not in estado["vistas"]
         vistas = estado["vistas"].setdefault(f["nome"], {})
-        relevantes = {l: t for l, t in achadas.items() if INCLUIR.search(t) and not EXCLUIR.search(t)}
+        incluir = re.compile(f["incluir"], re.I) if f.get("incluir") else INCLUIR
+        relevantes = {l: t for l, t in achadas.items() if incluir.search(t) and not EXCLUIR.search(t)}
         n_novas = 0
         for link, titulo in relevantes.items():
             if link in vistas:
                 continue
             vistas[link] = hoje
-            if primeira or link.rstrip("/") in links_na_base:
+            if (primeira and not f.get("primeira_leitura_cria")) or link.rstrip("/") in links_na_base:
                 continue
             n_novas += 1
             novos.append({

@@ -404,7 +404,13 @@ _EXIGE_PROVA = re.compile(
     r"prova (?:objetiva|escrita|de conhecimentos?|de sele[çc][ãa]o|classificat[óo]ria|eliminat[óo]ria)|"
     r"\bvestibular|exame de sele[çc][ãa]o|exame classificat[óo]rio|teste seletivo|"
     r"(?:nota|notas|m[ée]dia|pontua[çc][ãa]o|resultado)s? (?:obtidas? )?(?:no|do|nas provas do) ENEM|"
-    r"ingresso pelo ENEM|pontos no ENEM|avalia[çc][ãa]o escrita", re.I)
+    r"ingresso pelo ENEM|pontos no ENEM|avalia[çc][ãa]o escrita|"
+    # 24/11/2026 (regra do responsável): também fica fora o que obriga a disputar a vaga mostrando que se sabe mais:
+    # redação, entrevista de nível ou de conhecimento, análise de currículo. Sorteio e ordem de inscrição continuam.
+    r"prova de reda[çc][ãa]o|reda[çc][ãa]o (?:eliminat|classificat)|"
+    r"entrevista (?:para (?:a )?verifica[çc][ãa]o (?:do|de) n[íi]vel|de n[íi]vel|t[ée]cnica|de conhecimentos?)|"
+    r"verifica[çc][ãa]o (?:do|de) n[íi]vel de profici[êe]ncia|teste de nivelamento (?:eliminat|classificat|para ingresso)|"
+    r"an[áa]lise (?:de|do) curr[íi]culo|an[áa]lise curricular", re.I)
 
 
 def exige_prova(texto):

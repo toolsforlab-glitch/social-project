@@ -50,8 +50,9 @@ regra: gratuitos e abertos a qualquer pessoa. NÃO entram se exigirem ser membro
 frequentar culto, missa, catequese ou outra atividade religiosa, ou se forem de formação religiosa (regra do \
 responsável, 23/11/2026).
 4d. NÃO entram cursos cuja ENTRADA exige prova: prova objetiva ou escrita, vestibular, nota do ENEM, exame de \
-seleção ou teste seletivo (regra do responsável, 23/11/2026). Seleção por ordem de inscrição, sorteio, entrevista \
-ou análise de renda pode entrar. Pertencer a um grupo (baixa renda, CadÚnico, mulheres, pessoas LGBTQIA+, migrantes, \
+seleção ou teste seletivo (regra do responsável, 23/11/2026), e também redação, entrevista de nível ou de \
+conhecimento e análise de currículo (24/11/2026): nada que obrigue a disputar a vaga mostrando que se sabe mais. \
+Seleção por ordem de inscrição, sorteio, entrevista só de orientação ou prioridade por renda pode entrar. Pertencer a um grupo (baixa renda, CadÚnico, mulheres, pessoas LGBTQIA+, migrantes, \
 pessoas com deficiência, jovens, pessoas idosas) NÃO é prova: esses cursos entram, com o grupo em "exclusivo_para".
 5. O link veio dos resultados da pesquisa e é a página PRÓPRIA deste curso (ou desta turma, ou do edital deste \
 curso), onde a pessoa se inscreve. Não uses a página geral com a lista de cursos, a página inicial do campus ou \

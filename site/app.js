@@ -544,6 +544,9 @@
       return '<li class="curso" id="' + idCartao(c, i) + '"><h2>' + esc(c.titulo) + "</h2>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         descricaoHtml(c, true) +
+        // como se distribuem as vagas (regra de 24/11/2026: sorteio e ordem de inscrição entram, com aviso claro)
+        (c.vagas === "sorteio" ? '<p class="vagas-aviso">Vagas por sorteio: inscrever-se não garante a vaga.</p>'
+         : c.vagas === "ordem" ? '<p class="vagas-aviso">Vagas por ordem de inscrição: inscreva-se cedo.</p>' : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         posso(c, i) + antesHtml(c) +

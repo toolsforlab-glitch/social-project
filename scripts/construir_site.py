@@ -230,6 +230,12 @@ def exportar_dados(base, cfg):
             if texto and texto not in etiquetas:
                 etiquetas[texto] = f
         cursos[-1]["etiquetas"] = [{"texto": k, "frase": v} for k, v in etiquetas.items()]
+        # Como se distribuem as vagas (regra do responsável, 24/11/2026): sorteio e ordem de inscrição podem entrar, mas
+        # quem procura tem de saber. Só com a frase da fonte (evidência ou informação da turma).
+        fonte_vagas = " ".join([r.get("Evidência") or ""] + [str(t.get("info") or "") for t in turmas])
+        cursos[-1]["vagas"] = ("sorteio" if re.search(r"\bsorte(?:io|ad[ao]s?|ar)\b", fonte_vagas, re.I)
+                               else "ordem" if re.search(r"ordem (?:de|das) inscri[çc]|ordem de chegada|ordem cronol[óo]gica de inscri", fonte_vagas, re.I)
+                               else "")
         # acessibilidade para pessoas com deficiência: só com a frase da fonte que nomeia o recurso
         acess = {}
         for f in (re.findall(r"acessibilidade: «(.+?)»", r.get("Evidência") or "")

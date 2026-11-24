@@ -188,3 +188,9 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Cursos que exigem prova ficam fora**: prova objetiva ou escrita, vestibular, nota do ENEM, exame de seleção, teste seletivo (`exige_prova` em base.py). Aplicado na pesquisa semanal (regra 4d e filtro por código antes de criar o curso) e na verificação (o curso passa a Oculto). Pertencer a um grupo (baixa renda, CadÚnico, mulheres, LGBTQIA+, migrantes, pessoas com deficiência, jovens, pessoas idosas) não é prova e continua a valer. Saíram: SENAI Bahia (ENEM ≥ 500) e as Escolas Técnicas Estaduais de Pernambuco (prova objetiva).
 - **Escolas públicas = «Tudo gratuito»** (Sites de confiança): todos os institutos federais da região (IFMA, IFCE, IFAC, IFPI, IFPE, IF Sertão PE, IFAL, IFPB, IFBA, IF Baiano, IFRN, IFS) e os domínios das Secretarias de Educação estaduais (seduc.ce, educacao.ma, see.ac, seduc.pi, educacao.pe, educacao.al, educacao.ba, educacao.rn, seduc.se). Se a página de um curso disser que é pago, vale a página.
 
+
+## Regra de 24/11/2026: disputar a vaga
+
+- **Fica de fora o que obriga a disputar a vaga mostrando que se sabe mais**: prova, redação, nota do ENEM, entrevista de nível ou de conhecimento, análise de currículo (`exige_prova` em base.py e regra 4d da pesquisa semanal). Quem está em situação de vulnerabilidade quer formação, não concorrer.
+- **Entram, com aviso**: vagas por **sorteio** ou por **ordem de inscrição**, e prioridade para quem tem menos renda. O site mostra no cartão do curso «Vagas por sorteio: inscrever-se não garante a vaga» ou «Vagas por ordem de inscrição: inscreva-se cedo», só quando a frase está na evidência da fonte (`vagas` em construir_site.py).
+- A palavra «bolsa» sozinha não decide: o Senac AL chama «bolsas gratuitas» ao mecanismo do PSG (inscrição na turma, com teto de renda) e entra. O SENAI PE «Direção Defensiva», que só falava em «bolsas integrais de estudo», ficou de fora por decisão do responsável.

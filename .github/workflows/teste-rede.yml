@@ -1,0 +1,13 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          B=https://fieam.org.br/senai
+          curl -sS -m 40 -A "Mozilla/5.0" -o /dev/null -w "home %{http_code}\n" $B/ || true
+          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/pages?search=chamada&per_page=50&_fields=id,date,modified,slug,link,title" | head -c 6000; echo
+          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/posts?search=gratuit&per_page=20&_fields=id,date,slug,link,title" | head -c 5000; echo
+          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/media?search=chamada&per_page=30&_fields=id,date,source_url" | head -c 6000; echo
+          curl -sS -m 40 -A "Mozilla/5.0" "$B/wp-json/wp/v2/media?search=programacao&per_page=30&_fields=id,date,source_url" | head -c 4000; echo

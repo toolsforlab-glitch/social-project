@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-24T14:47",
+ "atualizado": "2026-11-24T14:54",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -195,7 +195,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -381,7 +382,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -479,7 +481,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -576,7 +579,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -673,7 +677,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -770,7 +775,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -867,7 +873,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -964,7 +971,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1061,7 +1069,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1158,7 +1167,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1256,7 +1266,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1353,7 +1364,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1450,7 +1462,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1548,7 +1561,8 @@
      "inscricao": "online",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1646,7 +1660,8 @@
      "inscricao": "online",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1745,7 +1760,8 @@
      "inscricao": "presencial",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1844,7 +1860,8 @@
      "inscricao": "presencial",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1943,7 +1960,8 @@
      "inscricao": "presencial",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -2042,7 +2060,8 @@
      "inscricao": "presencial",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -2655,7 +2674,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 17/11/2026 a 25/11/2026",
      "verificado_em": "2026-11-19",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -2861,7 +2881,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -2958,7 +2979,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -2999,7 +3021,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -3096,7 +3119,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -3183,7 +3207,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -3214,7 +3239,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 20/11/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -3245,7 +3271,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 06/11/2026 a 02/12/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -3332,7 +3359,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -3363,7 +3391,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -3394,7 +3423,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 01/12/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -3425,7 +3455,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 06/11/2026 a 02/12/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -3512,7 +3543,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 13/11/2026 a 01/12/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -3543,7 +3575,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 01/12/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -3574,7 +3607,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 13/11/2026 a 01/12/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -3661,7 +3695,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 06/11/2026 a 24/11/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -3748,7 +3783,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 16/11/2026 a 01/12/2026",
      "verificado_em": "2026-11-16",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23200,7 +23236,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 12/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": false,
@@ -23231,7 +23268,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 12/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23318,7 +23356,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 12/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23405,7 +23444,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 12/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23492,7 +23532,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 12/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23579,7 +23620,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 12/11/2026 a 23/11/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23667,7 +23709,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 13/10/2026 a 26/11/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23754,7 +23797,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 23/11/2026 a 11/12/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": true,
@@ -23785,7 +23829,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 04/01/2027 a 13/01/2027",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     },
     {
      "por_abrir": true,
@@ -23816,7 +23861,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 18/01/2027 a 05/02/2027",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -23903,7 +23949,8 @@
      "inscricao": "presencial",
      "info": "Inscrições de 23/11/2026 a 11/12/2026",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -24000,7 +24047,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -24271,7 +24319,8 @@
      "inscricao": "presencial",
      "info": "Inscrição na plataforma GO Recife (com a conta do Conecta Recife) ou diretamente na escola: Profissionalizante de Areias, Rua Ipojuca 257, Areias.",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -24360,7 +24409,8 @@
      "inscricao": "presencial",
      "info": "Inscrição na plataforma GO Recife (com a conta do Conecta Recife) ou diretamente na escola: Profissionalizante Dona Olegarinha, Rua Padre Landim 392, Madalena.",
      "verificado_em": "2026-11-23",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -24559,7 +24609,8 @@
      "inscricao": "pagina",
      "info": "",
      "verificado_em": "2026-11-24",
-     "reserva": ""
+     "reserva": "",
+     "regra_vagas": ""
     }
    ],
    "em_revisao": false,

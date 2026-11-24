@@ -1,20 +1,8 @@
 import json, glob, re
-from base import citacao_valida
-from turmas import chave
-f = glob.glob("/tmp/diag/*.json")[0]
-d = json.load(open(f))
-texto, resp = d["texto"], d["resposta"]
-i = texto.find("DOCUMENTO OFICIAL LIGADO")
-
 from comum import extrair_json
-res = extrair_json(resp)
-falhas = 0
-for t in res.get("turmas") or []:
-    fr = str(t.get("frase") or "")
-    ok = citacao_valida(fr, texto)
-    nome = chave(t.get("curso", "")) in chave(fr)
-    if not (ok and nome):
-        falhas += 1
-        if falhas <= 8:
-            print("FALHA cv=%s nome=%s | curso=%r | frase=%r" % (ok, nome, t.get("curso"), fr[:300]))
-print("falhas", falhas, "de", len(res.get("turmas") or []))
+cods_pdf, cods_resp = set(), []
+for f in sorted(glob.glob("/tmp/diag/*.json")):
+    d = json.load(open(f))
+    cods_pdf |= set(re.findall(r"\b[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}\b", d["texto"]))
+    cods_resp += [t.get("codigo") for t in (extrair_json(d["resposta"]) or {}).get("turmas") or []]
+print("codigos no PDF:", len(cods_pdf), "| propostos (distintos):", len(set(cods_resp)), "| em falta:", sorted(cods_pdf - set(cods_resp))[:20])

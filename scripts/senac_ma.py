@@ -1266,7 +1266,9 @@ def correr(fonte):
               f"{len(edital['turmas'])}/{propostas} cursos comprovados" + (f" | {'; '.join(problemas)}" if problemas else ""))
         for t in edital["turmas"]:
             ancora = t['curso'] + ' ' + (t.get('horario') or '')
-            if fonte.get("ancora_com_data"):
+            if fonte.get("codigo_turma") and re.fullmatch(fonte["codigo_turma"], str(t.get("codigo") or "")):
+                ancora = str(t["codigo"])  # o código da turma é único na chamada (SENAI AM)
+            elif fonte.get("ancora_com_data"):
                 # a mesma chamada tem várias turmas do mesmo curso e horário em meses diferentes (SENAI AM)
                 ancora += ' ' + (t.get('inicio_aulas') or '')
             link = f"{pagina}#{re.sub(r'[^a-z0-9]+', '-', chave(ancora)).strip('-')}"

@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -sS -m 40 -A "Mozilla/5.0" -o /dev/null -w "pdf %{http_code}\n" "https://fieam.org.br/senai/wp-content/uploads/sites/16/2026/04/Chamada-Publica-GEP-02-2026-Cursos-Gratuitos-SENAI-Manaus-1.pdf" || true
-          curl -sS -m 40 -A "Mozilla/5.0" "https://news.google.com/rss/search?q=%22SENAI%22+Amazonas+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419" | python3 -c "import sys,re;t=sys.stdin.read();print(len(t));[print(a,'|',b) for a,b in re.findall(r'<item><title>(.*?)</title>.*?<pubDate>(.*?)</pubDate>',t)[:15]]"
+          for u in senai/feed/ senai/wp-sitemap.xml senai/sitemap_index.xml senai/chamada-publica/ senai/wp-content/uploads/sites/16/2026/ senai/robots.txt; do
+            curl -sS -m 40 -A "Mozilla/5.0" -o /tmp/o -w "$u %{http_code} %{content_type}\n" "https://fieam.org.br/$u" || true; head -c 300 /tmp/o | tr '\n' ' '; echo; done

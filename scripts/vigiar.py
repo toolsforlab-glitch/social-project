@@ -50,13 +50,56 @@ VIGIAS = [
      "fechado": "RESULTADO EDITAL Nº 006_2026",
      "verificar": "O Senac RN mudou a página do Programa de Bolsas (provavelmente edital novo): peça ao Claude para ler o "
                   "edital e montar o leitor próprio."},
+    # SENAI Amazonas: as páginas da FIEAM não abrem a partir do GitHub (Cloudflare); o leitor (senac_ma.py, fonte «Senai
+    # AM») procura os PDFs da chamada seguinte pelos nomes habituais. Reserva: se o Google Notícias tiver notícias
+    # recentes da abertura e o leitor ainda não tiver achado a chamada, abre-se uma pendência.
+    {"nome": "SENAI Amazonas (Chamada Pública de gratuidade)",
+     "rss": "https://news.google.com/rss/search?q=%22Senai%22+Amazonas+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"senai[\s-]*(?:amazonas|am)\b.*(?:vagas|inscri)|(?:vagas|inscri).*senai[\s-]*(?:amazonas|am)\b",
+     "dias": 10, "estado_leitor": "estado/senai_am_chamadas.json",
+     "link": "https://fieam.org.br/senai/chamada-publica/",
+     "verificar": "Há notícias de uma Chamada Pública nova do SENAI AM e o leitor não achou o PDF (nome novo): peça ao "
+                  "Claude para abrir fieam.org.br/senai/chamada-publica/ no navegador e juntar os links da chamada e da "
+                  "programação ao estado (estado/senai_am_chamadas.json)."},
 ]
+
+
+def vigiar_rss(base, v):
+    """Notícias recentes (Google Notícias) que o leitor próprio ainda não apanhou."""
+    import datetime
+    import email.utils
+    import re
+    from comum import ler_json
+    try:
+        xml = baixar(v["rss"], timeout=40).decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        print(f"{v['nome']}: o Google Notícias não abriu ({type(e).__name__}); fica para amanhã.")
+        return
+    hoje = datetime.date.today()
+    vista = (ler_json(v["estado_leitor"], {}) or {}).get("vista_em", "")
+    recentes = []
+    for titulo, data in re.findall(r"<item><title>(.*?)</title>.*?<pubDate>(.*?)</pubDate>", xml, flags=re.S):
+        try:
+            d = email.utils.parsedate_to_datetime(data).date()
+        except (TypeError, ValueError):
+            continue
+        if (hoje - d).days <= v["dias"] and re.search(v["titulo"], titulo, flags=re.I) and (not vista or vista < d.isoformat()):
+            recentes.append(f"{d.isoformat()}: {titulo}")
+    if not recentes:
+        print(f"{v['nome']}: sem notícias novas de abertura.")
+        return
+    print(f"{v['nome']}: {len(recentes)} notícias recentes sem chamada achada pelo leitor.")
+    registar_pendencia(base, f"{v['nome']}: notícias de abertura e nenhum PDF achado pelo leitor ({recentes[0][:200]}).",
+                       v["verificar"], v["link"] + "#" + hoje.strftime("%Y-%m"), origem="vigiar.py")
 
 
 def main():
     base = Base()
     carregar_config(base)
     for v in VIGIAS:
+        if v.get("rss"):
+            vigiar_rss(base, v)
+            continue
         try:
             html = baixar(v["url"], timeout=40).decode("utf-8", "replace")
         except Exception as e:  # noqa: BLE001

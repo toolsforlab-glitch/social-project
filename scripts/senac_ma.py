@@ -438,8 +438,11 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
         reserva = ""
     # como se distribuem as vagas (24/11/2026): a frase tem de estar no documento e falar de sorteio ou ordem
     selecao = str(res.get("selecao") or "")
-    if not (_cv(selecao, texto) and re.search(r"sorte|ordem (?:de|das) (?:data e hor[áa]rio d[ae] )?inscri|ordem de chegada|ordem cronol", selecao, re.I)):
+    sel_limpa = re.sub(r"\s+", " ", selecao.replace("|", " "))  # texto em colunas: « | » no meio da frase
+    if not (_cv(selecao, texto) and re.search(r"sorte|ordem (?:de|das) (?:data e hor[áa]rio d[ae] )?inscri|ordem de chegada|ordem cronol", sel_limpa, re.I)):
         selecao = ""
+    elif tabela_partida:
+        selecao = sel_limpa  # guarda-se sem as barras das colunas (o site procura «ordem de … inscrição»)
     acess = str(res.get("acessibilidade") or "")
     if not (_cv(acess, texto) and etiquetas_acessibilidade(acess)):
         acess = ""  # a frase tem de estar no documento e nomear um recurso concreto
@@ -1459,7 +1462,7 @@ def correr(fonte):
         print(f"  [SECO] {fonte['nome']}: {len(novas)} turmas novas, {len(cursos_novos)} cursos novos, "
               f"{len(alteracoes)} alterações; custo ≈ {round(custo, 3)} USD")
         for t in novas[:2]:
-            print("   ", {k: str(v)[:400] for k, v in t.items() if v})
+            print("   ", {k: str(v)[:900] for k, v in t.items() if v})
         for c in cursos_novos[:3]:
             print("   ", {k: (c.get(k) or "")[:300] for k in ("Título", "Requisitos", "Evidência", "Campos comprovados")})
         return

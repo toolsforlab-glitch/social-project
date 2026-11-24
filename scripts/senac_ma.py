@@ -888,8 +888,10 @@ def correr(fonte):
     for e in editais:
         chave_estado = f"{e.get('id')}|{e.get('updated_at')}"
         feito = estado["tratados"].get(chave_estado)
-        # RELER_ABERTOS=1 (uma vez, 24/11/2026): volta a ler os editais com inscrições ainda abertas, para guardar
-        # campos novos (ex.: a frase de sorteio/ordem de inscrição)
+        # RELER_ABERTOS=1 (usado uma vez, 24/11/2026): volta a ler os editais com inscrições ainda abertas, para guardar
+        # campos novos (ex.: a frase de sorteio/ordem de inscrição). CUIDADO: a releitura volta aos dados do edital
+        # original e desfaz correções feitas à mão pelos avisos (aconteceu com o Senac AC 135/2026, linhas 93-95 de
+        # Turmas, repostas à mão). Por isso já não está no workflow manual.
         if (os.environ.get("RELER_ABERTOS") and isinstance(feito, dict) and feito.get("cursos")
                 and (feito.get("inscricao_ate") or "") >= hoje):
             feito = None

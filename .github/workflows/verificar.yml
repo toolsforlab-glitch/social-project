@@ -11,10 +11,6 @@ on:
         type: choice
         options: [verificar.py, evg.py, consultar_gpt.py, aplicar_chatgpt.py, turmas.py, senac_ma.py, centec.py, oxetech.py, caminhos_digitais.py, gorecife.py, salvador_tpe.py, noticias_oficiais.py, vigiar.py, pt_br.py, bradesco.py, sebrae.py, gpt_sebrae.py, gpt_certificado.py, catalogo.py]
         default: verificar.py
-      reler:
-        description: "Só para senac_ma.py: voltar a ler os editais com inscrições abertas"
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -52,8 +48,6 @@ jobs:
 
       - name: Rodar o passo escolhido
         timeout-minutes: 25
-        env:
-          RELER_ABERTOS: ${{ inputs.reler && '1' || '' }}
         run: cd scripts && python3 "${{ inputs.passo || 'verificar.py' }}"
 
       - name: Gerar o site a partir da planilha

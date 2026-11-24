@@ -888,6 +888,11 @@ def correr(fonte):
     for e in editais:
         chave_estado = f"{e.get('id')}|{e.get('updated_at')}"
         feito = estado["tratados"].get(chave_estado)
+        # RELER_ABERTOS=1 (uma vez, 24/11/2026): volta a ler os editais com inscrições ainda abertas, para guardar
+        # campos novos (ex.: a frase de sorteio/ordem de inscrição)
+        if (os.environ.get("RELER_ABERTOS") and isinstance(feito, dict) and feito.get("cursos")
+                and (feito.get("inscricao_ate") or "") >= hoje):
+            feito = None
         if (e.get("published_at") and e["published_at"][:10] < corte) or (feito and (not isinstance(feito, dict)
                                                                        or feito.get("tentativas", 0) >= MAX_TENTATIVAS
                                                                        or feito.get("cursos"))):

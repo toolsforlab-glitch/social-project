@@ -7,9 +7,10 @@ jobs:
       - run: |
           sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
           B=https://www.cetam.am.gov.br/wp-content/uploads/2026
-          for f in 10/Edital-011-2026-Qualificacao-Profissional-EaD 08/Edital-009-2026-Qualificacao-Profissional-Capital; do
+          for f in 08/Edital-009-2026-Qualificacao-Profissional-Capital 08/Edital-010-2026-Qualificacao-Profissional-Interior-e-EaD; do
             curl -sS -m 60 -A "Mozilla/5.0" -o e.pdf "$B/$f.pdf"; echo "== $f"
-            pdftotext -layout e.pdf e.txt; grep -n -i "anexo" e.txt | head -8
-            L=$(grep -n "INFORMÁTICA BÁSICA\|Informática Básica" e.txt | sed -n 3p | cut -d: -f1); echo "linha $L"
-            sed -n "$((L-30)),$((L+25))p" e.txt | sed 's/    */ | /g' | cut -c1-240
+            pdftotext -layout e.pdf e.txt
+            L=$(grep -n "N\.º  *CURSO\|N\.º.*CURSO" e.txt | head -1 | cut -d: -f1); echo "primeiro cabecalho $L"; sed -n "$((L-22)),$((L+4))p" e.txt | cut -c1-200
+            L2=$(grep -n "N\.º.*CURSO" e.txt | sed -n 2p | cut -d: -f1); echo "segundo cabecalho $L2"; sed -n "$((L2-22)),$((L2+3))p" e.txt | cut -c1-200
+            echo "cabecalhos: $(grep -c 'N\.º.*CURSO' e.txt)"; grep -n "N\.º.*CURSO" e.txt | head -3 | cut -c1-200
           done

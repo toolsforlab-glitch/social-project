@@ -9,9 +9,9 @@ O código confere em cada leitura:
 - a gratuidade, na página inicial: «oferece cursos on-line, abertos e gratuitos em diversas áreas do conhecimento»;
 - que o curso continua na lista da sua área (senão passa a «Encerrado»), e a data de conclusão na página do curso.
 
-Certificado: os termos de uso dizem que quem conclui com 60% ou mais «terá direito ao certificado de conclusão», mas
-nenhuma página oficial diz que o certificado é gratuito; por isso a coluna fica «desconhecido» (o site não mostra
-nada sobre o certificado) até haver a frase. Regra do responsável (24/11/2026): certificado pago não entra.
+Certificado gratuito (24/11/2026, frase encontrada pela auditoria do ChatGPT e conferida por código): as perguntas
+frequentes oficiais (mod/page/view.php?id=100) dizem «Totalmente gratuitos, inclusive o certificado.»; o código
+confere a frase a cada leitura. Se a frase sair, os cursos novos ficam com o certificado «desconhecido».
 
 Cada curso é identificado pelo nome sem a turma (ex.: «Contabilidade Básica»); quando entra uma turma nova, o link
 e a data de conclusão são atualizados na mesma linha. Turmas «extra» do mesmo curso contam como o mesmo curso (fica a
@@ -23,7 +23,7 @@ import re
 import sys
 import unicodedata
 
-from base import (registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
+from base import (registar_pendencia, certificado_da_frase, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
                   citacao_valida, exige_prova, hoje_iso, registo_historico, texto_de_html)
 from comum import baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
 
@@ -31,6 +31,8 @@ SITE = "https://aprendamais.mec.gov.br"
 ENTIDADE = "Aprenda Mais (MEC, Rede Federal)"
 MARCA = "lida na plataforma oficial Aprenda Mais, conferida por código"
 ESTADO = "estado/aprenda_mais.json"  # cursos já avaliados pelo Claude (escolhidos ou não), para não os reler todos os dias
+FAQ = SITE + "/mod/page/view.php?id=100"
+FRASE_CERTIFICADO = "Totalmente gratuitos, inclusive o certificado."
 FRASE_GRATUITO = "oferece cursos on-line, abertos e gratuitos em diversas áreas do conhecimento"
 NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
                 "dinheiro", "direitos"]
@@ -97,6 +99,11 @@ def main():
     try:
         inicial = baixar(SITE + "/", timeout=60).decode("utf-8", "replace")
         gratuito_ok = citacao_valida(FRASE_GRATUITO, texto_de_html(inicial.encode()))
+        try:
+            cert_ok = (citacao_valida(FRASE_CERTIFICADO, texto_de_html(baixar(FAQ, timeout=60)))
+                       and certificado_da_frase("gratuito", FRASE_CERTIFICADO) == "gratuito")
+        except Exception:  # noqa: BLE001
+            cert_ok = False
         lista = {}
         for cid, area in areas(inicial).items():
             for i, titulo in cursos_da_area(cid):
@@ -143,6 +150,13 @@ def main():
     for cid, r in na_folha.items():
         if r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip():
             continue
+        if cert_ok and "certificado" not in (r.get("Campos comprovados") or ""):
+            # certificado gratuito provado depois de o curso entrar (24/11/2026): acrescenta-se a prova
+            alteracoes.append((r["_linha"], {
+                "Certificado": "gratuito",
+                "Evidência": ((r.get("Evidência") or "") + f" | certificado: «{FRASE_CERTIFICADO}» ({FAQ}; perguntas frequentes oficiais)")[:1500],
+                "Campos comprovados": ((r.get("Campos comprovados") or "").strip(", ") + ", certificado").strip(", "),
+                "Notas": (r.get("Notas") or "").replace("as páginas oficiais não dizem se é gratuito", "o certificado é gratuito (perguntas frequentes oficiais)")}))
         if cid not in ids_atuais:
             if r.get("Situação das inscrições") != "Encerrado":
                 alteracoes.append((r["_linha"], {"Situação das inscrições": "Encerrado", "Última verificação": hoje}))
@@ -203,6 +217,7 @@ def main():
             inst = d.get("Instituição", "")
             evid = " | ".join([
                 f"gratuito: «{FRASE_GRATUITO}» ({SITE}/; {MARCA})",
+                *([f"certificado: «{FRASE_CERTIFICADO}» ({FAQ}; perguntas frequentes oficiais)"] if cert_ok else []),
                 f"situação: «Conclusão do curso: {d.get('Conclusão do curso', '')}» ({url}; {MARCA}; curso sob demanda)",
             ])[:1500]
             linha = {
@@ -211,20 +226,22 @@ def main():
                 "Local": "online", "Modalidade": "online", "País": "BR", "Região": "", "Cidade": "",
                 "Descrição": desc, "Origem da descrição": DESCRICAO_PAGINA if desc else "",
                 "Necessidades": ", ".join(nec), "Perfis": "todos", "Condição de acesso": "",
-                "Requisitos": d.get("Requisitos", "")[:300], "Certificado": "desconhecido",
+                "Requisitos": d.get("Requisitos", "")[:300], "Certificado": "gratuito" if cert_ok else "desconhecido",
                 "Inscrições até": "", "Início": "", "Duração": f"{horas.group(0)} horas" if horas else "",
                 "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "aprenda_mais",
                 "Notas": nota_conclusao(d),
                 "Como me inscrever": ("1. Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).\n"
                                       "2. Abra a página do curso e faça a inscrição.\n"
                                       f"3. Estude no seu ritmo e termine até {d.get('Conclusão do curso', '').replace('até ', '')}.\n"
+                                      "4. Para o certificado de conclusão (gratuito), é preciso ter 60% ou mais de aproveitamento."
+                                      if cert_ok else
                                       "4. Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."),
                 **VERIFICACAO_INICIAL,
                 "Nota da verificação": (f"{hoje}: publicado automaticamente: curso da plataforma Aprenda Mais (MEC); "
                                         f"gratuidade na página oficial e data de conclusão na página do curso, "
                                         f"conferidas por código."),
                 "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE", "Evidência": evid,
-                "Campos comprovados": "gratuito, situação", "Página do curso": url}
+                "Campos comprovados": "gratuito, situação" + (", certificado" if cert_ok else ""), "Página do curso": url}
             publicados.append(linha)
             historico.append(registo_historico(linha, "Catálogo Aprenda Mais", "Publicado", linha, url))
             print(f"  + {c['nome'][:55]} | {inst} | {d.get('Carga horária', '')} | {', '.join(nec)}")
@@ -241,8 +258,8 @@ def main():
 
 
 def nota_conclusao(d):
-    return (f"Turma atual: termine o curso {d.get('Conclusão do curso', '').strip()}. O certificado de conclusão exige "
-            f"60% de aproveitamento (termos de uso); as páginas oficiais não dizem se é gratuito.")
+    return (f"Turma atual: termine o curso {d.get('Conclusão do curso', '').strip()}. O certificado de conclusão, "
+            f"gratuito, exige 60% de aproveitamento (termos de uso e perguntas frequentes).")
 
 
 if __name__ == "__main__":

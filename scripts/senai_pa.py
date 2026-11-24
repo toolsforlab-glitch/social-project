@@ -10,7 +10,11 @@ Obras ( Manhã)»), que leva à inscrição. Abre a partir do GitHub.
 
 Por isso estes cursos são tratados como cursos sob demanda (como a FGV): um curso fica «Aberto» enquanto aparecer
 na página da sua unidade e passa a «Encerrado» quando sair. Provas, conferidas por código a cada leitura:
-- gratuidade: o título «Cursos Gratuitos» da página oficial da unidade, que lista o curso;
+- gratuidade: o título «Cursos Gratuitos» da página oficial da unidade, que lista o curso, e (desde 24/11/2026, frase
+  encontrada pela auditoria do ChatGPT) o comunicado oficial da FIEPA de 27/08/2026 sobre a abertura do edital: «está
+  com 12 mil vagas abertas para cursos gratuitos de qualificação profissional»;
+- requisitos gerais do edital (item 1.2): Ensino Fundamental completo e a partir dos 14 anos; nos cursos de
+  Aperfeiçoamento a experiência é só «desejável» (não exigida), por isso entram;
 - vagas por ordem de inscrição e renda (até 1,5 salário mínimo por pessoa): frases do edital unificado;
 - documentos pedidos: frase do edital unificado.
 """
@@ -31,6 +35,11 @@ LISTA = SITE + "/cursos-gratuitos"
 ENTIDADE = "SENAI Pará (Gratuidade Regimental)"
 FRASE_ORDEM = "A seleção será feita por ordem de inscrição"
 FRASE_RENDA = "declara-se integrante de família com renda mensal per capita de no máximo 1,5 salários-mínimos federal"
+FIEPA = ("https://www.fiepa.org.br/post/senai-par%C3%A1-oferta-12-mil-vagas-gratuitas-em-cursos-de-"
+         "qualifica%C3%A7%C3%A3o-profissional")
+FRASE_FIEPA = "está com 12 mil vagas abertas para cursos gratuitos de qualificação profissional"
+FRASE_REQUISITOS = "Escolaridade mínima: Ensino Fundamental completo. Idade mínima: A partir dos 14 anos"
+REQUISITOS = "Ensino Fundamental completo; a partir de 14 anos"
 RENDA = "Renda familiar de até 1,5 salário mínimo por pessoa"
 CIDADES = {"altamira": "Altamira", "belem": "Belém", "braganca": "Bragança", "canaa": "Canaã dos Carajás",
            "castanhal": "Castanhal", "juruti": "Juruti", "maraba": "Marabá", "paragominas": "Paragominas",
@@ -82,10 +91,16 @@ def main():
         return 0
     ordem = FRASE_ORDEM if citacao_valida(FRASE_ORDEM, texto_edital) else ""
     renda = FRASE_RENDA if citacao_valida(FRASE_RENDA, texto_edital) else ""
+    requisitos_ok = citacao_valida(FRASE_REQUISITOS, texto_edital)
+    try:
+        fiepa_ok = citacao_valida(FRASE_FIEPA, texto_de_html(baixar(FIEPA, timeout=60)))
+    except Exception:  # noqa: BLE001
+        fiepa_ok = False
     docs = re.search(r"1\.1 DOCUMENTOS NECESSÁRIOS: (.+?) Caso o curso exija", texto_edital)
     documentos = docs.group(1).strip(" ;") if docs else ""
     print(f"SENAI Pará: {len(unidades)} unidades; edital {'lido' if texto_edital else 'NÃO lido'}; ordem de inscrição "
-          f"{'conferida' if ordem else 'não'}; renda {'conferida' if renda else 'não'}.")
+          f"{'conferida' if ordem else 'não'}; renda {'conferida' if renda else 'não'}; comunicado da FIEPA "
+          f"{'conferido' if fiepa_ok else 'não'}; requisitos {'conferidos' if requisitos_ok else 'não'}.")
 
     lidos = {}  # chave -> dados do curso
     for u in unidades:
@@ -144,6 +159,22 @@ def main():
         if situacao != r.get("Situação das inscrições"):
             alteracoes.append((r["_linha"], {"Situação das inscrições": situacao, "Última verificação": hoje}))
             print(f"  = {r['Título'][:60]} | {situacao}")
+    prova_fiepa = f"gratuito: «{FRASE_FIEPA}» (comunicado oficial da FIEPA, 27/08/2026: {FIEPA})"
+    prova_req = f"requisitos: «{FRASE_REQUISITOS}» ({edital})"
+    requisitos_curso = "; ".join(x for x in [REQUISITOS if requisitos_ok else "", RENDA if renda else ""] if x)
+    for cid, r in na_folha.items():
+        if r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip():
+            continue
+        ev = r.get("Evidência") or ""
+        mud = {}
+        if fiepa_ok and FRASE_FIEPA not in ev:
+            ev = prova_fiepa + " | " + ev
+            mud["Evidência"] = ev
+        if requisitos_ok and FRASE_REQUISITOS not in ev:
+            ev = ev + " | " + prova_req
+            mud.update({"Evidência": ev[:1500], "Requisitos": requisitos_curso})
+        if mud:
+            alteracoes.append((r["_linha"], mud))
     nota = (f"{hoje}: publicado automaticamente: curso listado na página oficial da unidade do SENAI Pará com o título "
             f"«Cursos Gratuitos» (Gratuidade Regimental; edital unificado com inscrições contínuas).")
     for cid, d in lidos.items():
@@ -151,7 +182,9 @@ def main():
             continue
         pagina = d["paginas"][0]
         evid = " | ".join(x for x in [
+            prova_fiepa if fiepa_ok else "",
             f"gratuito: «Cursos Gratuitos» (título da página oficial da unidade, que lista o curso: {pagina})",
+            prova_req if requisitos_ok else "",
             f"vagas: «{ordem}» ({edital})" if ordem else "",
             f"renda: «{renda}» ({edital})" if renda else "",
             f"situação: curso listado na página da unidade, edital com inscrições contínuas ({pagina}; curso sob demanda)",
@@ -162,7 +195,7 @@ def main():
             "Local": "BR-PA", "Modalidade": "online" if d["online"] else "presencial", "País": "BR", "Região": "Pará",
             "Cidade": d["cidade"], "Descrição": "", "Origem da descrição": "",
             "Necessidades": necessidades("", d["nome"]), "Perfis": "todos", "Condição de acesso": "",
-            "Requisitos": RENDA if renda else "", "Certificado": "desconhecido", "Inscrições até": "", "Início": "",
+            "Requisitos": requisitos_curso, "Certificado": "desconhecido", "Inscrições até": "", "Início": "",
             "Duração": "", "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje,
             "Origem": "senai_pa",
             "Notas": "; ".join(x for x in [f"Unidade: {', '.join(d['unidades'])}" if d["unidades"] else "",

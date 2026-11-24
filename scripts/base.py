@@ -470,6 +470,9 @@ def certificado_da_frase(valor, frase):
             r"certifica\w*(\s+\S+){0,5}?\s+(gratuit|sem\s+(qualquer\s+)?(custo|[ôo]nus|taxa|cobran)|isent|"
             r"n[ãa]o\s+(tem|possui|ter[áa]|h[áa])\s+(nenhum(a)?\s+|qualquer\s+)?(custo|taxa|cobran))", frase, re.I):
         return "gratuito"
+    # «Totalmente gratuitos, inclusive o certificado.» (perguntas frequentes da Aprenda Mais, MEC, 24/11/2026)
+    if valor == "gratuito" and re.search(r"gratuit\w*,?\s+(?:inclusive|incluindo|at[ée])\s+(?:o\s+)?certificad", frase, re.I):
+        return "gratuito"
     # «O certificado é reconhecido e chancelado pela Microsoft e pelo Ministério do Trabalho, sendo gratuito e emitido
     # automaticamente pela plataforma» (FAQ da Escola do Trabalhador 4.0, 24/11/2026): o sujeito de «sendo gratuito»
     # é o certificado, na mesma frase

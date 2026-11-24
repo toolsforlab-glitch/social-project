@@ -137,7 +137,8 @@ FONTES = [
      "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
      "lista": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
      "prefixo_turma": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
-     "layout": True, "ancora_com_data": True, "codigo_turma": r"[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}", "max_extra": 70000, "max_tokens": 48000, "max_caracteres": 30000,
+     "layout": True, "ancora_com_data": True, "codigo_turma": r"[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}",
+     "link_inscricao_regex": r"pelo endereço\s+(https://forms\.(?:cloud\.microsoft|office\.com|gle)/\S+)", "max_extra": 70000, "max_tokens": 48000, "max_caracteres": 30000,
      "nota": "No SENAI Amazonas a «Chamada Pública» (texto principal) tem as regras: a gratuidade («Os cursos "
              "ofertados serão 100% gratuitos»), a forma de seleção (item 1.17, «ordem de data e horário de "
              "inscrição»), a baixa renda (item 1.20, declaração do candidato: copia essa frase para «renda») e o "
@@ -437,7 +438,7 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
         reserva = ""
     # como se distribuem as vagas (24/11/2026): a frase tem de estar no documento e falar de sorteio ou ordem
     selecao = str(res.get("selecao") or "")
-    if not (_cv(selecao, texto) and re.search(r"sorte|ordem (?:de|das) inscri|ordem de chegada|ordem cronol", selecao, re.I)):
+    if not (_cv(selecao, texto) and re.search(r"sorte|ordem (?:de|das) (?:data e hor[áa]rio d[ae] )?inscri|ordem de chegada|ordem cronol", selecao, re.I)):
         selecao = ""
     acess = str(res.get("acessibilidade") or "")
     if not (_cv(acess, texto) and etiquetas_acessibilidade(acess)):
@@ -1217,6 +1218,11 @@ def correr(fonte):
                 janela = "\n".join(linhas[max(0, idx[0] - 2):idx[0] + 3])
                 if palavras_em_ordem(str(t.get("curso") or ""), janela.replace("|", " ")):
                     t["frase"] = janela
+            # link do formulário de inscrição, igual para todas as turmas (item 1.4 da chamada)
+            m_link = re.search(fonte["link_inscricao_regex"], texto) if fonte.get("link_inscricao_regex") else None
+            for t in res.get("turmas") or []:
+                if m_link and not t.get("link_inscricao"):
+                    t["link_inscricao"] = m_link.group(1)
         edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False),
                                     fonte.get("layout", False))
         if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:
@@ -1436,8 +1442,8 @@ def correr(fonte):
         # ensaio: mostra o que seria escrito e não grava nada (nem a folha nem o estado)
         print(f"  [SECO] {fonte['nome']}: {len(novas)} turmas novas, {len(cursos_novos)} cursos novos, "
               f"{len(alteracoes)} alterações; custo ≈ {round(custo, 3)} USD")
-        for t in novas[:4]:
-            print("   ", {k: str(v)[:160] for k, v in t.items() if v})
+        for t in novas[:2]:
+            print("   ", {k: str(v)[:400] for k, v in t.items() if v})
         for c in cursos_novos[:3]:
             print("   ", {k: (c.get(k) or "")[:300] for k in ("Título", "Requisitos", "Evidência", "Campos comprovados")})
         return

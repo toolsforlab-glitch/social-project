@@ -42,7 +42,7 @@ def regra_vagas(texto):
     """«sorteio», «ordem» (ordem de inscrição/chegada) ou "" (24/11/2026). Só a partir de frases da fonte."""
     if re.search(r"\bsorte(?:io|ad[ao]s?|ar)\b", texto or "", re.I):
         return "sorteio"
-    if re.search(r"ordem (?:de|das) inscri[çc]|ordem de chegada|ordem cronol[óo]gica (?:de|das) inscri", texto or "", re.I):
+    if re.search(r"ordem (?:de|das) (?:data e hor[áa]rio d[ae] )?inscri[çc]|ordem de chegada|ordem cronol[óo]gica (?:de|das) inscri", texto or "", re.I):
         return "ordem"
     return ""
 

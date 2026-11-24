@@ -34,6 +34,14 @@ FRASE_ORDEM = "O ingresso nos cursos do PSG se dá por ordem de inscrição do c
 REQUISITO_RENDA = "Renda familiar de até 2 salários mínimos por pessoa"
 
 
+# nomes com acento das cidades que aparecem nos links do portal (o resto fica com a primeira letra maiúscula)
+CIDADES = {"belem": "Belém", "maraba": "Marabá", "santarem": "Santarém", "redencao": "Redenção", "castanhal": "Castanhal",
+           "ananindeua": "Ananindeua", "barcarena": "Barcarena", "capanema": "Capanema", "parauapebas": "Parauapebas",
+           "altamira": "Altamira", "tucurui": "Tucuruí", "braganca": "Bragança", "abaetetuba": "Abaetetuba",
+           "paragominas": "Paragominas", "itaituba": "Itaituba", "cameta": "Cametá", "tailandia": "Tailândia",
+           "xinguara": "Xinguara", "breves": "Breves", "soure": "Soure", "salinopolis": "Salinópolis"}
+
+
 def limpo(s):
     return re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " ", s or ""))).strip()
 
@@ -64,9 +72,14 @@ def selecoes_abertas(pagina):
 
 def cursos_da_selecao(url):
     b = baixar(url, timeout=60).decode("utf-8", "replace")
-    titulo = limpo((re.search(r"<title>(.*?)</title>", b, re.S) or [None, ""])[1])
-    m = re.search(r"Seleção\s+(\d+/\d{4})\s+em\s+(.+?)\s+-\s+Programa", titulo)
-    numero, cidade = (m.group(1), m.group(2).strip()) if m else ("", "")
+    texto = limpo(b)
+    m = re.search(r"Seleção\s+(\d+/\d{4})\s+em\s+([A-ZÀ-Ý][\wÀ-ÿ' ]+?)\s+-\s+Programa", texto)
+    numero = m.group(1) if m else ""
+    # cidade: do título da página («Seleção 150/2026 em Belém - …»); senão, do link (/detalhar/<cidade>/…)
+    cidade = m.group(2).strip() if m else ""
+    if not cidade:
+        s_cid = re.search(r"/detalhar/([a-z\-]+)/", url)
+        cidade = CIDADES.get(s_cid.group(1), s_cid.group(1).replace("-", " ").title()) if s_cid else ""
     cursos = []
     for bloco in b.split('<div class="media-body">')[1:]:
         h = re.search(r'<h3 class="h4 media-heading">(.*?)<small>(.*?)</small>', bloco, re.S)

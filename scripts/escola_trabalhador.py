@@ -75,7 +75,13 @@ def descricao_curso(cid):
 
 def descricao(t):
     if len(t["cursos"]) == 1:
-        return (t.get("detalhe") or "")[:500]
+        # frases inteiras até 500 caracteres (nunca cortar a meio de uma frase)
+        texto = ""
+        for frase in re.split(r"(?<=[.!?])\s+", t.get("detalhe") or ""):
+            if len(texto) + len(frase) + 1 > 500:
+                break
+            texto = (texto + " " + frase).strip()
+        return texto
     return ("Trilha com " + str(len(t["cursos"])) + " cursos: " + "; ".join(n for _, n in t["cursos"]) + ".")[:500]
 
 

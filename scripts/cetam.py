@@ -170,8 +170,7 @@ def ler_tabela(layout):
                 if info[i]["req"]:
                     colunas["req"].append((i, info[i]["req"]))
                 continue
-            for txt, c in pedacos(l):
-                col = coluna(c)
+            for col, txt in dividir(l, 0):
                 if col in colunas:
                     colunas[col].append((i, txt))
         for col, itens in colunas.items():
@@ -204,12 +203,33 @@ def ler_tabela(layout):
             curso = normal(" ".join(x for _, x in sorted(partes[i]["curso"])))
             local = normal(" ".join(x for _, x in sorted(partes[i]["local"])))
             req = normal(" ".join(x for _, x in sorted(partes[i]["req"])))
+            ead = online or (t.get("horario") or "").upper() == "EAD"
             turmas.append({**{k: v for k, v in t.items() if k != "esquerda"}, "curso": curso, "local": local or unidade,
-                           "req": req, "municipio": municipio, "endereco": endereco, "online": online,
+                           "req": req, "municipio": municipio, "endereco": endereco, "online": ead,
                            "linha": normal(linhas[i])})
 
     def coluna(c):
         return min(centros, key=lambda k: abs(centros[k] - c))
+
+    def dividir(texto, desvio):
+        """Pedaços com a sua coluna; entre «local» e «curso» o PDF às vezes deixa um só espaço, por isso aí a
+        divisão é palavra a palavra, pela fronteira a meio dos dois cabeçalhos."""
+        saida = []
+        for txt, c in pedacos(texto):
+            col = coluna(c + desvio)
+            if "local" in centros and col in ("local", "curso"):
+                fronteira = (centros["local"] + centros["curso"]) / 2
+                ini_p = c - len(txt) / 2
+                for w in re.finditer(r"\S+", txt):
+                    cw = ini_p + (w.start() + w.end()) / 2 + desvio
+                    cw_col = "local" if cw < fronteira else "curso"
+                    if saida and saida[-1][0] == cw_col and saida[-1][2]:
+                        saida[-1] = (cw_col, saida[-1][1] + " " + w.group(0), True)
+                    else:
+                        saida.append((cw_col, w.group(0), True))
+            else:
+                saida.append((col, txt, False))
+        return [(a, b) for a, b, _ in saida]
 
     def eh_turma(l):
         return bool(re.match(r"^\s{0,6}\d{1,3}\s{2,}", l)) and len(re.findall(DATA, l)) >= 2
@@ -223,15 +243,12 @@ def ler_tabela(layout):
             return {"n": m0.group(1), "ch": "", "horario": "", "inicio": "", "fim": "", "vagas": "", "espera": "",
                     "dias": "", "esquerda": [], "req": ""}
         esquerda = []
-        for txt, c in pedacos(l[:resto_ini + m.start()]):
-            if txt == m0.group(1):
-                continue
-            col = coluna(c)
+        for col, txt in dividir(" " * resto_ini + l[resto_ini:resto_ini + m.start()], 0):
             esquerda.append(("local" if col == "local" else "curso", txt))
         dias, req = [], []
         base_x = resto_ini + m.start(7)
         for txt, c in pedacos(m.group(7)):
-            if re.match(r"(SEG|TER|QUA|QUI|SEX|S[ÁA]B|DOM)\b", txt):
+            if re.match(r"(SEG|TER|QUA|QUI|SEX|S[ÁA]B|DOM|EaD$|EAD$)\b", txt):
                 dias.append(txt)
             else:
                 req.append(txt)
@@ -259,7 +276,7 @@ def ler_tabela(layout):
                     centros[txt] = c
             online = "HORÁRIO" not in cab
             continue
-        if RODAPE.search(l) or (l.strip().isdigit() and len(l.strip()) <= 3 and len(l) - len(l.lstrip()) > 40):
+        if RODAPE.search(l) or re.search(r"Cursos de Educação a Distância", l) or (l.strip().isdigit() and len(l.strip()) <= 3 and len(l) - len(l.lstrip()) > 40):
             continue
         if re.match(r"^\s*(DATA|INÍCIO|SEMANA|LOCAL DE|CURSO|REGULAR|ESPERA|VAGA|DIAS DA|TÉRMINO)\b", l.strip()) and not eh_turma(l):
             if all(re.match(r"(DATA|INÍCIO|TÉRMINO|SEMANA|DIAS DA|LOCAL DE|CURSO|VAGA.*|REGULAR|ESPERA|DE ESPERA)$", p)
@@ -273,13 +290,19 @@ def ler_tabela(layout):
             ultimas = []
             continue
         if re.search(r"\bENDEREÇO\b", l):
+            # nome da unidade (capital): a última linha em maiúsculas antes do endereço; o que vem a partir dela (ou
+            # do endereço, duas linhas acima) não pertence à tabela anterior
+            u_idx = i - 2
+            if not municipio:
+                for j in range(i - 1, max(ini, i - 14), -1):
+                    x = normal(linhas[j])
+                    if (x and x.isupper() and "@" not in x and "E-MAIL" not in x and not RODAPE.search(x)
+                            and not re.search(r"\d{4,}|^\d+$", x) and len(x) > 6 and not re.match(r"N\.º", x)):
+                        unidade, u_idx = x, j
+                        break
+            segmento = [(j, x) for j, x in segmento if j < min(u_idx, i - 2)]
             fechar_segmento()
             segmento, centros = [], None
-            # nome da unidade: a última linha em maiúsculas antes do endereço (na capital)
-            cand = [x for x in ultimas[-8:] if x.isupper() and "@" not in x and "E-MAIL" not in x
-                    and not re.search(r"\d{4,}", x) and len(x) > 6]
-            if cand and not municipio:
-                unidade = normal(cand[-1])
             end = [p for p, _ in pedacos(l) if p not in ("ENDEREÇO",) and "@" not in p and "E-MAIL" not in p]
             prox = [p for x in linhas[i - 2:i + 3] for p, c in pedacos(x)
                     if p not in ("ENDEREÇO", "E-MAIL", "TELEFONE") and "@" not in p and not re.match(r"\(\d\d\)", p)

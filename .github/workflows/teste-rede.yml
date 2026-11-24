@@ -3,15 +3,11 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
-    env:
-      SECO: "1"
-      PYTHONUNBUFFERED: "1"
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install -q -r requirements.txt && sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1
-      - run: cd scripts && CETAM_EDITAL=009/2026 HOJE_ENSAIO=2026-08-18 python3 cetam.py
-      - run: cd scripts && CETAM_EDITAL=010/2026 HOJE_ENSAIO=2026-08-25 python3 cetam.py
-      - run: cd scripts && CETAM_EDITAL=011/2026 HOJE_ENSAIO=2026-11-03 python3 cetam.py
+      - run: |
+          sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
+          curl -sS -m 60 -A "Mozilla/5.0" -o e.pdf "https://www.cetam.am.gov.br/wp-content/uploads/2026/08/Edital-010-2026-Qualificacao-Profissional-Interior-e-EaD.pdf"
+          pdftotext -layout e.pdf e.txt
+          L=$(grep -n "AZENILDA" e.txt | head -1 | cut -d: -f1); sed -n "$((L-14)),$((L+10))p" e.txt | cut -c1-175
+          echo =====; L=$(grep -n "TRANSTORNO" e.txt | sed -n 2p | cut -d: -f1); sed -n "$((L-8)),$((L+8))p" e.txt | cut -c1-175
+          echo =====; L=$(grep -n "WORD AVANÇADO" e.txt | head -1 | cut -d: -f1); sed -n "$((L-30)),$((L+8))p" e.txt | cut -c1-175

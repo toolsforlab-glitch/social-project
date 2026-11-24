@@ -1244,6 +1244,8 @@ def correr(fonte):
                   + re.sub(r"\s+", " ", texto[pos:pos + 1500] if pos >= 0 else texto[-1500:]))
             for t in (res.get("turmas") or [])[:3]:
                 print(f"    proposta não comprovada: {str(t)[:300]}")
+            if not res.get("turmas"):
+                print(f"    resposta sem turmas ({len(resposta)} caracteres): {re.sub(chr(10), ' ', resposta[:700])}")
         print(f"  edital nº {e.get('number')} ({(e.get('published_at') or '')[:10]}): inscrição "
               f"{edital['ini'] or '?'} a {edital['fim'] or '?'}, modo {edital['modo'] or '?'}, "
               f"{len(edital['turmas'])}/{propostas} cursos comprovados" + (f" | {'; '.join(problemas)}" if problemas else ""))

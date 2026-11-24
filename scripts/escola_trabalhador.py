@@ -51,7 +51,7 @@ necessidades (ids da lista dada). Responda só com JSON entre <json></json>: \
 
 def limpar(nome):
     """Tira a numeração do início («01. », «1. », «01 - »)."""
-    return re.sub(r"^\s*\d+\s*[.\-–]\s*", "", html.unescape(nome)).strip()
+    return re.sub(r"\s+", " ", re.sub(r"^\s*\d+\s*[.\-–]\s*", "", html.unescape(nome))).strip()
 
 
 def trilhas(pagina):

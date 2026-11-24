@@ -137,8 +137,8 @@ FONTES = [
      "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
      "lista": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
      "prefixo_turma": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
-     "layout": True, "sem_raciocinio": True, "ancora_com_data": True, "codigo_turma": r"[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}",
-     "link_inscricao_regex": r"pelo endereço\s+(https://forms\.(?:cloud\.microsoft|office\.com|gle)/\S+)", "max_extra": 70000, "max_tokens": 48000, "max_caracteres": 30000,
+     "layout": True, "partes": 4, "ancora_com_data": True, "codigo_turma": r"[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}",
+     "link_inscricao_regex": r"pelo endereço\s+(https://forms\.(?:cloud\.microsoft|office\.com|gle)/\S+)", "max_extra": 70000, "max_tokens": 32000, "max_caracteres": 30000,
      "nota": "No SENAI Amazonas a «Chamada Pública» (texto principal) tem as regras: a gratuidade («Os cursos "
              "ofertados serão 100% gratuitos»), a forma de seleção (item 1.17, «ordem de data e horário de "
              "inscrição»), a baixa renda (item 1.20, declaração do candidato: copia essa frase para «renda») e o "
@@ -900,13 +900,16 @@ def listar_senai_am(fonte):
                 except Exception:  # noqa: BLE001
                     pass
                 continue
-        editais.append({"id": f"senai-am-{chave_ch}", "number": f"{k:02d}/{a}", "published_at": "",
-                        "updated_at": url_ch.rsplit("/", 1)[-1] + "|" + url_pg.rsplit("/", 1)[-1],
-                        "title": f"Chamada Pública nº {k:02d}/{a} - Vagas gratuitas nos Cursos de Qualificação "
-                                 "Profissional e Aperfeiçoamento Profissional (SENAI Amazonas, Manaus)",
-                        "pagina": url_ch, "padrao": re.escape(url_ch), "aditivo": False,
-                        "extras": [("Programação de cursos", url_pg)],
-                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": url_ch}]})
+        partes = fonte.get("partes", 1)
+        for parte in range(1, partes + 1):
+            editais.append({"id": f"senai-am-{chave_ch}-p{parte}", "number": f"{k:02d}/{a} (parte {parte})",
+                            "published_at": "",
+                            "updated_at": url_ch.rsplit("/", 1)[-1] + "|" + url_pg.rsplit("/", 1)[-1],
+                            "title": f"Chamada Pública nº {k:02d}/{a} - Vagas gratuitas nos Cursos de Qualificação "
+                                     "Profissional e Aperfeiçoamento Profissional (SENAI Amazonas, Manaus)",
+                            "pagina": url_ch, "padrao": re.escape(url_ch), "aditivo": False,
+                            "extras": [("Programação de cursos", url_pg, (parte, partes))],
+                            "documents": [{"type": "edital", "mime_type": "application/pdf", "url": url_ch}]})
     if not os.environ.get("SECO"):
         gravar_json(ESTADO_CHAMADAS_AM, est)
     return editais
@@ -1151,9 +1154,18 @@ def correr(fonte):
                 t_aviso = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
                 texto_avisos += f"\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n{t_aviso.strip()}"
             texto += texto_avisos
-            for rotulo, url in e.get("extras") or []:
+            for item in e.get("extras") or []:
+                rotulo, url = item[0], item[1]
                 t_extra = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf",
                                                                    fonte.get("layout", False)))
+                if len(item) > 2:
+                    # documento longo lido em partes (parte, total), com 6 linhas sobrepostas em cada fronteira, para
+                    # a resposta do modelo não ser cortada (SENAI AM: ~95 turmas numa planilha de 7 páginas)
+                    parte, total = item[2]
+                    ls = t_extra.split("\n")
+                    tam = -(-len(ls) // total)
+                    t_extra = "\n".join(ls[max(0, (parte - 1) * tam - 6):parte * tam + 6])
+                    rotulo += f" (parte {parte} de {total})"
                 texto += (f"\n\n=== DOCUMENTO OFICIAL LIGADO AO EDITAL: {rotulo} ===\n"
                           f"{t_extra.strip()[:fonte.get('max_extra', 20000)]}")
             for rotulo, txt in e.get("trechos") or []:
@@ -1360,6 +1372,8 @@ def correr(fonte):
                 }
                 cursos_novos.append(novo)
                 curso = cursos[k] = novo["ID"]
+            if any(n["Link da turma"] == link for n in novas):
+                continue  # a mesma turma lida em duas partes do documento (linhas sobrepostas)
             novas.append({"ID": id_turma(link), "Curso": curso, "Estado": "Rever" if p else "Publicado",
                           "Link da turma": link, "Primeiro visto": hoje, **campos})
             print(f"  + {t['curso'][:40]} | {t['cidade']} | inscrição até {prazo or '—'} | {situacao}"

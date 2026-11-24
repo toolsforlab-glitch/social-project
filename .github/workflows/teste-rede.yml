@@ -5,5 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for u in senai/feed/ senai/wp-sitemap.xml senai/sitemap_index.xml senai/chamada-publica/ senai/wp-content/uploads/sites/16/2026/ senai/robots.txt; do
-            curl -sS -m 40 -A "Mozilla/5.0" -o /tmp/o -w "$u %{http_code} %{content_type}\n" "https://fieam.org.br/$u" || true; head -c 300 /tmp/o | tr '\n' ' '; echo; done
+          sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
+          B=https://fieam.org.br/senai/wp-content/uploads/sites/16
+          curl -sS -m 60 -A "Mozilla/5.0" -o c.pdf "$B/2026/08/Chamada-Publica-GEP-03-2026-Cursos-Gratuitos-SENAI-Manaus.pdf"
+          curl -sS -m 60 -A "Mozilla/5.0" -o p.pdf "$B/2026/08/Programacao_Gratuidade_SENAI-AM-3-2026-2.pdf"
+          pdftotext -layout c.pdf - | head -150
+          echo ===== PROG; pdfinfo p.pdf | grep Pages; pdftotext -layout p.pdf - | head -70
+          for n in 01-2027-Cursos-Gratuitos-SENAI-Manaus 01-2027-Cursos-Gratuitos-SENAI-Manaus-1; do for m in 2026/11 2026/12; do curl -s -o /dev/null -m 30 -A "Mozilla/5.0" -w "$m $n %{http_code}\n" "$B/$m/Chamada-Publica-GEP-$n.pdf"; done; done
+          curl -s -o /dev/null -m 30 -A "Mozilla/5.0" -w "inexistente %{http_code}\n" "$B/2026/08/nao-existe.pdf"

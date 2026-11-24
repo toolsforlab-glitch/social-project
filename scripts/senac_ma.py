@@ -137,7 +137,7 @@ FONTES = [
      "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
      "lista": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
      "prefixo_turma": "https://fieam.org.br/senai/wp-content/uploads/sites/16/",
-     "layout": True, "ancora_com_data": True, "codigo_turma": r"[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}",
+     "layout": True, "sem_raciocinio": True, "ancora_com_data": True, "codigo_turma": r"[A-Z]{2,4}\.[A-Z0-9]{2,4}\.\d{2,4}",
      "link_inscricao_regex": r"pelo endereço\s+(https://forms\.(?:cloud\.microsoft|office\.com|gle)/\S+)", "max_extra": 70000, "max_tokens": 48000, "max_caracteres": 30000,
      "nota": "No SENAI Amazonas a «Chamada Pública» (texto principal) tem as regras: a gratuidade («Os cursos "
              "ofertados serão 100% gratuitos»), a forma de seleção (item 1.17, «ordem de data e horário de "

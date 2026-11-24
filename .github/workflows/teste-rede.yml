@@ -1,0 +1,10 @@
+name: teste-rede (temporário)
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in https://www.cagece.com.br/ https://www.cagece.com.br/noticias/ https://www.cagece.com.br/cagece-capacita/ https://www.ce.gov.br/ "https://www.ce.gov.br/?s=cagece" https://www.ceara.gov.br/ "https://www.ceara.gov.br/?s=cagece+capacita" "https://www.ceara.gov.br/wp-json/wp/v2/posts?search=cagece%20capacita&per_page=5&_fields=date,link,title"; do
+            echo "== $u"; curl -sS -m 25 -A "Mozilla/5.0" -o /tmp/p -w "%{http_code} %{size_download}\n" "$u" || true; grep -o -i 'cagece[^"<]\{0,80\}capacita[^"<]\{0,80\}' /tmp/p | head -3 || true
+          done

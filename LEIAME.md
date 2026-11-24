@@ -202,6 +202,14 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Sem certificado**: os cursos gratuitos da FGV dão só uma declaração de participação (pós-teste com nota 7 ou mais). A coluna Certificado fica «sem certificado».
 - Primeira leitura (24/11/2026): 226 cursos no portfólio, 82 escolhidos e publicados.
 
+## Escola do Trabalhador 4.0 (desde 24/11/2026)
+
+- `escola_trabalhador.py` (todos os dias, no workflow diário): lê a página inicial da plataforma oficial (ead.escoladotrabalhador40.com.br, Ministério do Trabalho e Emprego e Microsoft), que mostra sem login todas as trilhas e os cursos de cada uma, e a API pública da plataforma (`/api/v1/Courses/{id}/Metadata`) para a descrição dos cursos. Abre a partir do GitHub (o FAQ precisa de 120 s de espera; o gov.br corta a ligação, por isso não é usado).
+- **Cada trilha é um curso no site.** Não há página própria por curso nem carga horária publicada: o link é a página inicial da plataforma (o site mostra «Procurar este curso na página oficial») e o «Como me inscrever» diz o nome da trilha a procurar.
+- Gratuidade, na página da plataforma: «oferece cursos gratuitos em temas de tecnologia e produtividade». **Certificado gratuito**, nas perguntas frequentes oficiais: «O certificado é reconhecido e chancelado pela Microsoft e pelo Ministério do Trabalho, sendo gratuito e emitido automaticamente pela plataforma.» (com 50% ou mais no teste de cada curso). As duas frases são conferidas a cada leitura; se faltar uma, nada muda e fica uma pendência. `certificado_da_frase` passou a aceitar «o certificado …, sendo gratuito» na mesma frase.
+- O Claude escolhe as trilhas úteis ao público (fora: boas-vindas, trilhas só para juízes, advogados, servidores, professores ou gestores de ONGs, e as preparatórias de Azure e Dynamics 365). Uma trilha que sai da página passa a «Encerrado».
+- Primeira leitura (24/11/2026): 43 trilhas (203 cursos), 16 publicadas.
+
 ## SENAI Play (retirado a 24/11/2026)
 
 > **Retirado no mesmo dia.** O certificado do SENAI Play é sempre pago, e o responsável decidiu que curso com certificado pago não entra («Ou é grátis ou não é»). `senai_play.py` saiu das rotinas; os 59 cursos estão Oculto na folha. A regra vale para todas as fontes: `curso_no_site` (base.py) esconde qualquer curso com Certificado «pago», e a regra 4e de `cursos.py` não deixa entrar cursos novos assim. O texto abaixo fica só como registo.

@@ -99,6 +99,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 senac_pa.py
 
+      - name: Cursos gratuitos do SENAI Pará (páginas das unidades, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 senai_pa.py
+
       - name: Notícias oficiais de cursos das prefeituras e governos (sem Claude) e verificação das novas
         if: ${{ always() }}
         timeout-minutes: 15

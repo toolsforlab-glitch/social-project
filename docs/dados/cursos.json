@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-24T16:19",
+ "atualizado": "2026-11-24T16:26",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -32525,66 +32525,6 @@
    "regiao": "",
    "cidade": "",
    "descricao": "Domine a arte do \"elevator pitch\" e aprenda a apresentar sua startup de forma concisa e persuasiva para investidores, destacando seu valor único e potencial de crescimento. Este curso é fundamental para empreendedores que buscam validar suas ideias e captar investimentos, diferenciando-se no mercado competitivo.",
-   "descricao_origem": "pagina",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "negocio"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "",
-   "certificado": "",
-   "certificado_comprovado": false,
-   "certificado_valor": "",
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "so_futuro": false,
-   "situacao": "Aberto",
-   "turmas": [],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-24",
-   "inicio": "",
-   "duracao": "16 horas",
-   "primeiro_visto": "2026-11-24",
-   "como_me_inscrever": [
-    "Abra a página do curso no SENAI Play.",
-    "Clique em \"Inscreva-se\" e faça o cadastro gratuito.",
-    "Estude no seu ritmo, pelo computador ou pelo celular.",
-    "No fim, veja na plataforma como pedir o certificado."
-   ],
-   "antes": [],
-   "idade_minima": null,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "",
-   "ajuda": "",
-   "documentos": "",
-   "etiquetas": [],
-   "vagas": "",
-   "acessibilidade": []
-  },
-  {
-   "id": "C-28a010af",
-   "titulo": "Startup Pitch: Apresentação para investidores",
-   "entidade": "SENAI Play (SENAI Nacional)",
-   "url": "https://play.senai.br/curso/44764f6a-93ac-4c78-a673-3bba811b2efa",
-   "pagina_propria": true,
-   "local": "online",
-   "modalidade": "online",
-   "destino": {
-    "tipo": "curso",
-    "conta": "",
-    "nota": "",
-    "procurar": "",
-    "frase": ""
-   },
-   "pais": "BR",
-   "regiao": "",
-   "cidade": "",
-   "descricao": "O \"elevator pitch\" é vital na trajetória de um negócio, complementando o planejamento estratégico ao oferecer uma comunicação concisa e persuasiva da proposta de valor. Essa habilidade não apenas diferencia a empresa no mercado competitivo, mas também se",
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [

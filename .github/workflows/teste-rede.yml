@@ -1,0 +1,36 @@
+name: teste-rede (temporário)
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - run: |
+          cd scripts && python3 - <<'PY'
+          import re
+          from comum import baixar
+          from base import texto_de_html, citacao_valida
+          casos = [
+            ("FIEPA", "https://www.fiepa.org.br/post/senai-par%C3%A1-oferta-12-mil-vagas-gratuitas-em-cursos-de-qualifica%C3%A7%C3%A3o-profissional",
+             "está com 12 mil vagas abertas para cursos gratuitos de qualificação profissional"),
+            ("APRENDA", "https://aprendamais.mec.gov.br/mod/page/view.php?id=100", "Totalmente gratuitos, inclusive o certificado"),
+            ("EDITAL", "https://www.senaipa.org.br/_files/ugd/cf72c4_f33c7e9dba924b13a309ae1e15d7ba29.pdf",
+             "Para os cursos na modalidade de Aperfeiçoamento Profissional, é desejável que o candidato possua conhecimentos prévios ou experiência profissional na área de interesse"),
+          ]
+          for nome, u, frase in casos:
+              try:
+                  t = texto_de_html(baixar(u, timeout=90))
+                  print("==", nome, "OK", len(t), "| frase encontrada:", citacao_valida(frase, t))
+                  i = t.find(frase[:30])
+                  print("   contexto:", t[max(0, i - 300): i + 500] if i >= 0 else t[:600])
+                  for m in list(re.finditer(r"(\d{1,2} de [a-zç]+ de 20\d\d|\d{2}/\d{2}/20\d\d|20\d\d-\d\d-\d\d|há \d+ [a-z]+)", t))[:6]:
+                      print("   data:", m.group(0))
+                  if nome == "EDITAL":
+                      for m in re.finditer(r".{0,200}(desejável|1\.2 PR[ÉE]-REQUISITOS|PR[ÉE]-REQUISITO).{0,400}", t):
+                          print("   ~", m.group(0)[:600])
+              except Exception as e:
+                  print("==", nome, "ERRO", type(e).__name__, str(e)[:150])
+          PY

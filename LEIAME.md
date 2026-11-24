@@ -195,3 +195,9 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Entram, com aviso**: vagas por **sorteio** ou por **ordem de inscrição**, e prioridade para quem tem menos renda. O site mostra no cartão do curso «Vagas por sorteio: inscrever-se não garante a vaga» ou «Vagas por ordem de inscrição: inscreva-se cedo», só quando a frase está na evidência da fonte (`vagas`/`regra_vagas` em construir_site.py). O leitor de editais (senac_ma.py) guarda a frase em cada turma como `vagas: «…»` na Evidência (campo `selecao` do edital, conferido no documento).
 - «Bolsa integral» / «bolsa de estudo 100%» deixou de contar como frase de gratuidade (`_GRATUIDADE` em base.py); «bolsas gratuitas» continua.
 - A palavra «bolsa» sozinha não decide: o Senac AL chama «bolsas gratuitas» ao mecanismo do PSG (inscrição na turma, com teto de renda) e entra. O SENAI PE «Direção Defensiva», que só falava em «bolsas integrais de estudo», ficou de fora por decisão do responsável.
+
+## Cursos gratuitos da FGV (desde 24/11/2026)
+
+- `fgv.py` (todos os dias, no workflow diário): lê a API pública do portal cursosgratuitos.fgv.br (a mesma que o site usa; abre a partir do GitHub). Confere a cada leitura, nas perguntas frequentes oficiais, a gratuidade («Os cursos da FGV em parceria com o OEG são inteiramente gratuitos.») e que o curso fica disponível enquanto estiver no portfólio (sob demanda). O Claude escolhe os cursos úteis ao público do site; os escolhidos são publicados sozinhos e passam a «Encerrado» se saírem do portfólio.
+- **Sem certificado**: os cursos gratuitos da FGV dão só uma declaração de participação (pós-teste com nota 7 ou mais). A coluna Certificado fica «sem certificado».
+- Primeira leitura (24/11/2026): 226 cursos no portfólio, 82 escolhidos e publicados.

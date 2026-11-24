@@ -19,13 +19,13 @@
    "tentativas": 1
   },
   "ac-2026-144|Edital_PSG_144_2026_presencial_CEP_CZS_vagas_unidade_Escola_Borges_Aquino_Porto_Walter.pdf": {
-   "data": "2026-11-16",
+   "data": "2026-11-24",
    "inscricao_ate": "2026-12-01",
    "cursos": 2,
    "tentativas": 1
   },
   "ac-2026-143|Edital_PSG_143_2026_presencial_CEP_CZS_vagas_unidade_Escola_Antonio_Oliveira_Mancio_Lima.pdf": {
-   "data": "2026-11-16",
+   "data": "2026-11-24",
    "inscricao_ate": "2026-12-01",
    "cursos": 1,
    "tentativas": 1
@@ -70,7 +70,7 @@
   },
   "ac-2026-136|Edital_PSG_136_2026_1%C2%B0_Aviso_Alteracao%20-%20CEP%20RB.pdf": "2026-11-16",
   "ac-2026-135|Edital_PSG_135_2026_presencial_CEP_CZS_vagas_unidade.pdf": {
-   "data": "2026-11-16",
+   "data": "2026-11-24",
    "inscricao_ate": "2026-11-24",
    "cursos": 3,
    "tentativas": 1
@@ -134,7 +134,7 @@
    "tentativas": 1
   },
   "ac-2026-149|Edital_PSG_149_2026_presencial_CEP_CZS_vagas_unidade_Escola_Antonio_Oliveira_Mancio_Lima.pdf": {
-   "data": "2026-11-17",
+   "data": "2026-11-24",
    "inscricao_ate": "2026-12-01",
    "cursos": 1,
    "tentativas": 1
@@ -151,13 +151,14 @@
   "ac-2026-149|Edital_PSG_149_2026_1%C2%B0_Aviso_Alteracao_Antecipa%C3%A7%C3%A3o.pdf": "2026-11-23",
   "ac-2026-135|Edital_PSG_135_2026_2%C2%B0_Aviso_Alteracao%20-%20Crz.pdf": "2026-11-23",
   "ac-2026-142|Edital_PSG_142_2026_presencial_CEP_CZS_vagas_unidade_Escola_Paulo_Freire_Rodrigues_Alves.pdf": {
-   "data": "2026-11-23",
+   "data": "2026-11-24",
    "inscricao_ate": "2026-12-01",
    "cursos": 1,
    "tentativas": 1
   },
   "ac-2026-141|Edital_PSG_141_2026_1%C2%B0_Aviso_Alteracao_FJ.pdf": "2026-11-23",
   "ac-2026-146|Edital_PSG_146_2026_1%C2%BA_Aviso_Altera%C3%A7%C3%A3oNEP.pdf": "2026-11-23",
-  "ac-2026-141|Edital_PSG_141_2026_1%C2%B0_Aviso_Alteracao_FeJ.pdf": "2026-11-23"
+  "ac-2026-141|Edital_PSG_141_2026_1%C2%B0_Aviso_Alteracao_FeJ.pdf": "2026-11-23",
+  "ac-2026-146|Edital_PSG_146_2026_1%C2%BA_Aviso_Altera%C3%A7%C3%A3oNEP_01.pdf": "2026-11-24"
  }
 }

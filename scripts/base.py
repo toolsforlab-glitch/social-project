@@ -545,6 +545,7 @@ def comprovado(r, campo):
 def _normal(texto):
     texto = (texto or "").lower().replace("\u00a0", " ")
     texto = re.sub(r"[\"'“”‘’«»]", "", texto)
+    texto = re.sub(r"\s+([,.;:!?)])", r"\1", texto)  # espaço antes da pontuação: sobra de etiquetas HTML tiradas
     return re.sub(r"\s+", " ", texto).strip()
 
 

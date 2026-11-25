@@ -86,8 +86,8 @@ d2 = prova("As inscrições para o Curso de Qualificação Profissional Gratuito
            "terão início no dia 23 de novembro de 2026 e irão até 07 de dezembro de 2026", PAG2)
 p2 = prova("Exclusivo para Pessoas com Deficiência (PcD)", PAG2, bruto=True)
 reqs2 = [prova(x, PAG2) for x in (
-    "Ser pessoa com deficiência (PcD) , mediante comprovação por laudo médico",
-    "Ser pessoa de baixa renda , mediante autodeclaração no ato de inscrição",
+    "Ser pessoa com deficiência (PcD), mediante comprovação por laudo médico",
+    "Ser pessoa de baixa renda, mediante autodeclaração no ato de inscrição",
     "Ter idade mínima de 16 anos completos no ato da matrícula",
     "Ter concluído o Ensino Fundamental (apresentar histórico ou certificado)",
     "Possuir conhecimentos básicos do sistema operacional Windows (manuseio de pastas, arquivos e navegação na internet)")]

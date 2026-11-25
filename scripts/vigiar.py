@@ -94,8 +94,8 @@ VIGIAS = [
     # principal (www.pi.senac.br) só liga para o portal do PSG. Enquanto isso, as notícias avisam quando abrem vagas.
     # A Seduc PI (Mais Formação, Mais Renda) recusa ligações do GitHub: também por notícias.
     {"nome": "Senac Piauí (PSG; portal com certificado expirado)",
-     "rss": "https://news.google.com/rss/search?q=Senac+Piau%C3%AD+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-     "titulo": r"senac.*(vagas|inscri|gratuit)|(vagas|inscri|gratuit).*senac", "dias": 10,
+     "rss": "https://news.google.com/rss/search?q=%22Senac%22+Piau%C3%AD+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"^(?=.*senac)(?=.*(piau[íi]|teresina|parna[íi]ba|picos|floriano))(?=.*(vagas|inscri|gratuit))", "dias": 10,
      "link": "https://news.google.com/search?q=Senac+Piau%C3%AD+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
      "resumo": "notícias recentes de vagas gratuitas",
      "verificar": "O portal do PSG do Senac Piauí (psg.pi.senac.br) está com o certificado de segurança expirado e o "

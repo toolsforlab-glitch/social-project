@@ -3,20 +3,11 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-      FOLHA_ID: ${{ secrets.FOLHA_ID }}
-      PYTHONUNBUFFERED: "1"
-      SECO: "1"
-      SO_FONTE: "Senai AP"
-      HOJE_ENSAIO: "2026-10-07"
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install -q -r requirements.txt && sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-por >/dev/null 2>&1
-      - run: cd scripts && python3 -c "import senac_ma as m; f=[x for x in m.FONTES if x['nome']=='Senai AP'][0]; [print(e['number'], e['published_at'], e['pagina'][-70:], len(e['avisos'])) for e in m.listar_senai_ap(f)]"
-      - run: cd scripts && python3 senac_ma.py
+      - run: |
+          sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
+          curl -sS -m 60 -A "Mozilla/5.0" -o e.pdf "https://www.ap.senai.br/files/EDITAL_N__12.2026_PSAI_G_NERO_-_CURSO_DE_APERFEI_OAMENTO_SAN_202610051400309156352.pdf"
+          pdfinfo e.pdf | grep -E "Pages|Producer|Creator"
+          pdftotext e.pdf - | wc -c
+          pdftotext e.pdf - | tr '\n' ' ' | sed 's/  */ /g' | grep -oiE ".{0,250}(inscriç|gratuit|sele[çc][ãa]o|ordem|sorteio|vagas ser).{0,250}" | head -14
+          echo ====; pdftotext -layout e.pdf - | grep -n -i -A12 "Reparos" | head -40

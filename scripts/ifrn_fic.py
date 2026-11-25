@@ -48,7 +48,7 @@ def frase(texto, regex):
         fim_p = [x for x in (texto.find(". ", m.end()), texto.find("; ", m.end())) if x != -1]
         fim = min(fim_p + [m.end() + 250]) + 1
         f = texto[ini:fim].strip(" .;") + "."
-        if not re.search(r"\bnão (confere|garante|ser[áa]|haver[áa]|implica)", f, re.I):
+        if not re.search(r"\bnão (confere|garante|ser[áa]|haver[áa]|implica)|https?:|forms\.gle|DATA/PER[ÍI]ODO", f, re.I):
             return f
     return ""
 

@@ -124,6 +124,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 ifro_fic.py
 
+      - name: Cursos FIC, de extensão e ProEJA do IFRN, lidos do portal oficial de processos seletivos (sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 ifrn_fic.py
+
       - name: Notícias oficiais de cursos das prefeituras e governos (sem Claude) e verificação das novas
         if: ${{ always() }}
         timeout-minutes: 15

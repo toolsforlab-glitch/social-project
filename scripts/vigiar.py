@@ -89,6 +89,25 @@ VIGIAS = [
      "verificar": "A SEC Bahia abriu inscrições para o sorteio de vagas nos cursos técnicos subsequentes (gratuitos, para "
                   "quem terminou o ensino médio). Abra o edital oficial em www.ba.gov.br/educacao e peça ao Claude para "
                   "criar o curso com o período de inscrição, os requisitos e o aviso de que as vagas são por sorteio."},
+    # Piauí: desde 19/11/2026 o certificado de psg.pi.senac.br está expirado (confirmado em 25/11: Let's Encrypt, válido
+    # até 19/11/2026) e o leitor do Senac PI não abre a lista; a verificação de segurança não é desligada. O site
+    # principal (www.pi.senac.br) só liga para o portal do PSG. Enquanto isso, as notícias avisam quando abrem vagas.
+    # A Seduc PI (Mais Formação, Mais Renda) recusa ligações do GitHub: também por notícias.
+    {"nome": "Senac Piauí (PSG; portal com certificado expirado)",
+     "rss": "https://news.google.com/rss/search?q=Senac+Piau%C3%AD+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"senac.*(vagas|inscri|gratuit)|(vagas|inscri|gratuit).*senac", "dias": 10,
+     "link": "https://news.google.com/search?q=Senac+Piau%C3%AD+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de vagas gratuitas",
+     "verificar": "O portal do PSG do Senac Piauí (psg.pi.senac.br) está com o certificado de segurança expirado e o "
+                  "leitor automático não o abre. Abra a notícia e o portal no seu navegador; se o edital estiver "
+                  "aberto, peça ao Claude para criar o curso a partir do PDF do edital (pode anexá-lo)."},
+    {"nome": "Seduc Piauí (Mais Formação, Mais Renda)",
+     "rss": "https://news.google.com/rss/search?q=%22Mais+Forma%C3%A7%C3%A3o%22+Piau%C3%AD+inscri%C3%A7%C3%B5es&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"inscri|vagas|cursos?", "dias": 10,
+     "link": "https://news.google.com/search?q=%22Mais+Forma%C3%A7%C3%A3o%22+Piau%C3%AD+inscri%C3%A7%C3%B5es&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de inscrições",
+     "verificar": "O site da Seduc PI não abre a partir do GitHub. Abra a notícia e procure a página oficial (pi.gov.br) "
+                  "com as datas de inscrição e a gratuidade; peça ao Claude para criar o curso."},
     # OSCs aprovadas pelos critérios de histórico (regra do responsável, 25/11/2026; ver LEIAME). Não publicam as turmas
     # num site: a inscrição é feita no município, pela própria OSC. Se o Google Notícias tiver notícias recentes de cursos
     # ou inscrições com o nome delas, abre-se uma pendência (uma por mês e por OSC). Os cursos só entram com página

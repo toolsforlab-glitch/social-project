@@ -61,6 +61,7 @@ def turmas_da_selecao(url):
     pdf = re.search(r'href="([^"]+\.pdf)"', b)
     lidas = []
     for linha in corpo.split("<tr>")[1:]:
+        linha = re.sub(r"<!--.*?-->", "", linha, flags=re.S)  # a página tem células comentadas
         tds = re.findall(r"<td[^>]*>(.*?)</td>", linha, re.S)
         if len(tds) < 3:
             continue

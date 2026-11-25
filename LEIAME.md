@@ -248,7 +248,7 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 
 ## Varredura de oferta presencial fora do Sistema S – Nordeste (25/11/2026)
 
-Critérios do responsável: só instituições conceituadas (órgãos e escolas do governo, institutos federais, fundações reconhecidas); nada «de fundo de quintal» (ficam fora programas executados por OSCs/associações pouco conhecidas, ex.: Qualifica Bahia, Emprega Mais Alagoas). Acesso testado a partir do GitHub.
+Critérios do responsável: só instituições conceituadas (órgãos e escolas do governo, institutos federais, fundações reconhecidas); nada «de fundo de quintal». Uma OSC ou associação executora só entra se tiver histórico robusto e positivo, medido pelos 5 critérios da secção seguinte. Acesso testado a partir do GitHub.
 
 | Estado | Programa (instituição) | Presencial | Seleção | GitHub |
 |---|---|---|---|---|
@@ -260,3 +260,31 @@ Critérios do responsável: só instituições conceituadas (órgãos e escolas 
 | PE | Qualifica PE (SEDEPE) | sim | a conferir executor | portal não responde; site da SEDEPE abre |
 | CE | Secretaria da Proteção Social (cursos nos equipamentos); Escola de Gastronomia Social (Secult/IDM) | sim | inscrição presencial / prioridade vulnerabilidade | a testar |
 | PB/RN/AL | prefeituras das capitais (Sedest JP, Secti Campina Grande); IF Mulheres Mil (IFAL) | sim | a conferir | a testar |
+
+### OSCs executoras de programas estaduais: critérios de histórico (regra do responsável, 25/11/2026)
+
+O responsável aprovou como referência a Fundação Esperança – FÉ e a Associação Central de Cidadania (executoras do Qualifica Bahia) e pediu critérios que as selecionem. Uma OSC executora só entra se cumprir **os 5**:
+
+1. **Antiguidade:** CNPJ com 10 anos ou mais e ativo na Receita (verificado por código, BrasilAPI).
+2. **Histórico com o Estado:** qualificação profissional executada para o governo estadual em pelo menos 3 anos diferentes (termos de colaboração/fomento ou contratos de gestão publicados).
+3. **Confiança além de um curso avulso:** qualificada como Organização Social e gerindo um equipamento público por contrato de gestão, **ou** com um financiador independente que a avaliou (ex.: BrazilFoundation, UNICEF).
+4. **Sem impedimentos:** não consta no CEPIM, no CEIS nem no CNEP (Portal da Transparência; cruzado por código pela raiz do CNPJ).
+5. **Sem notícias de irregularidades** numa pesquisa pelo nome.
+
+Mesmo aprovada a OSC, cada turma continua sujeita às regras de sempre: inscrição pública com datas que se possam provar, gratuidade explícita, sem prova de seleção.
+
+**Resultado da varredura de 25/11/2026** (Bahia + 14 estados do Nordeste e do Norte):
+
+| OSC | Estado | 1 | 2 | 3 | 4 | Resultado |
+|---|---|---|---|---|---|---|
+| Fundação Esperança – FÉ (08.197.332/0001-10) | BA | 2006 | 2022, 2024, 2025, 2026 | OS (Cesol Barreiras, CG 045/2024) | nenhum | **passa** |
+| Associação Central de Cidadania (18.338.286/0001-85) | BA | 2013 | 2020, 2022, 2024 | OS (Cesol) + BrazilFoundation 2023 | nenhum | **passa** |
+| Instituto Casa da Cidadania (07.961.355/0001-96) | BA | 2006 | 2019 (CG), 2022, 2024, 2025, 2026 | OS (Cesol, CG 015/2019 e 046/2024) | nenhum | **passa** |
+| Instituto Centec (03.021.597/0001-49) | CE | 1999 | contrato de gestão contínuo (Rede CVT) | OS | nenhum | **passa** (já tem leitor: `centec.py`) |
+| ASDEC – Docentes e Egressos da F. Visconde de Cairu (12.049.952/0001-89) | BA | 2009 | 2025, 2026 (falta um 3.º ano) | OS (Cesol, CG 040 e 043/2025) | nenhum | por confirmar |
+| MOC – Movimento de Organização Comunitária (16.260.713/0001-24) | BA | 1971 (criado em 1967) | qualificação em 2024 (SETRE e SEADES); falta um 3.º ano | utilidade pública nos 3 níveis; financiador independente por provar | nenhum | por confirmar |
+| OELA – Oficina Escola de Lutheria da Amazônia (03.470.157/0001-79) | AM/AP | 1999 | só 1 termo estadual de qualificação achado (Amapá) | BrazilFoundation 2019, UNICEF | nenhum | não passa no 2 |
+| IDAC, IADES e as restantes executoras da SETRE | BA | — | 1 a 4 anos | sem OS nem financiador achado | nenhum | não passa no 3 |
+| Instituto Vida Plena (AC), Instituto Cequalis (TO) | AC, TO | — | — | nenhum histórico público achado | — | não passa |
+
+Nos outros estados não há OSCs a executar a qualificação estadual: o próprio governo executa (Qualifica Piauí, Maranhão Profissionalizado, Qualifica Pará/Seaster, Capacita Pará/Sectet, Emprega Mais Alagoas, Sine-TO, Seduc-RO) ou contrata o Senai/Senac (Qualifica Sergipe, Seteq-PE, Amapá).

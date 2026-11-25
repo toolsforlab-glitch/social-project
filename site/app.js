@@ -213,7 +213,18 @@
       if (c.exclusivo_para && livre.toLowerCase().indexOf(c.exclusivo_para.toLowerCase().slice(0, 25)) < 0) l.push(c.exclusivo_para.replace(/\.$/, ""));
       if (/aperfei[cç]oamento/i.test(c.documentos || "")) l.push("Ter experiência na área (é um curso de aperfeiçoamento)");
       // texto livre com várias condições separadas por «;»: uma por linha, com maiúscula no começo
-      livre.split(/;\s*/).forEach(function (x) { x = x.trim().replace(/\.$/, ""); if (x) l.push(x.charAt(0).toUpperCase() + x.slice(1)); });
+      // sem repetir o que já está na lista (ex.: a turma já diz a idade e a escolaridade; 25/11/2026)
+      var jaIdade = l.some(function (x) { return /\banos?\b/i.test(x); });
+      var jaEscola = l.some(function (x) { return /escolaridade|fundamental|m[ée]dio|superior/i.test(x); });
+      var jaRenda = l.some(function (x) { return /renda|sal[áa]rio/i.test(x); });
+      livre.split(/;\s*/).forEach(function (x) {
+        x = x.trim().replace(/\.$/, "");
+        if (!x) return;
+        if (jaIdade && /\bidade\b|\banos?\b/i.test(x) && !/escolaridade|renda/i.test(x)) return;
+        if (jaEscola && /escolaridade|ensino (fundamental|m[ée]dio)|superior/i.test(x) && !/\banos?\b|renda/i.test(x)) return;
+        if (jaRenda && /renda|sal[áa]rio/i.test(x)) return;
+        l.push(x.charAt(0).toUpperCase() + x.slice(1));
+      });
     }
     return l.filter(Boolean);
   }

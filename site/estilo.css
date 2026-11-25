@@ -100,7 +100,7 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .factos li { background: var(--anil-claro); color: var(--anil-escuro); padding: .15rem .6rem; border-radius: 6px; }
 .factos li.bom { background: #e5f3ea; color: #1f6640; }
 .factos li.atencao { background: #fff4d6; color: #6b4e00; }
-.requisitos { margin: .2rem 0 .7rem; padding: .5rem .8rem; border-left: 4px solid var(--anil); background: #fff; border-radius: 0 var(--raio) var(--raio) 0; }
+.requisitos { margin: .2rem 0 .7rem; padding: .3rem 0 .3rem .8rem; border-left: 4px solid var(--anil); }  /* sem fundo próprio: a linha já destaca (25/11/2026) */
 .requisitos-titulo { margin: 0 0 .2rem; font-weight: 700; color: var(--tinta); }
 .requisitos ul { margin: 0; padding-left: 1.2rem; }
 .requisitos li { margin: .1rem 0; }

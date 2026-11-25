@@ -122,6 +122,12 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Auditoria pelo ChatGPT da assinatura, sem API** (desde 22/11/2026, decisão do responsável: a API custa caro). As rotinas já não chamam a OpenAI (o segredo não é passado a nenhum workflow). Quando o responsável pede, o passo manual `consultar_gpt.py` prepara o texto da auditoria (`estado/auditoria_chatgpt.md`, até 10 perguntas; no máximo 2 só de certificado por entidade) e guarda a que cursos corresponde cada número (`estado/auditoria_chatgpt.json`). O responsável cola o texto no ChatGPT e devolve a resposta; ela vai para `estado/resposta_chatgpt.txt` e o passo `aplicar_chatgpt.py` prova cada frase por código, como antes (domínio oficial, frase letra a letra na página, a frase diz o que se afirma). O que passa fica com a marca “encontrada pelo ChatGPT, conferida por código”.
 - **Pendências para verificar** (aba na planilha, regra do responsável desde 22/11/2026). Sempre que aparece um problema que uma pessoa tem de ver (uma fonte oficial que não abre, uma lista que veio vazia, um link de inscrição fora do site oficial, uma notícia sem prazo), fica uma linha na aba “Pendências para verificar” com o problema, o que verificar e os links. As rotinas fazem isso sozinhas (`registar_pendencia` em `base.py`, usada por `senac_ma.py`, `turmas.py`, `centec.py`, `bradesco.py` e `sebrae.py`) e não repetem uma pendência aberta com o mesmo link: só atualizam “Visto pela última vez”. Quando o responsável marca “Feito”, a próxima falha da mesma fonte abre uma linha nova. O e-mail semanal diz quantas estão abertas.
 
+## Páginas do site: mudanças de 25/11/2026
+
+- **Lista de cursos em páginas de 10** (pedido do responsável, para não pesar no carregamento). A paginação aparece no início e no fim da lista, com «Mostrando X–Y de N cursos». A página fica no endereço (`?pagina=N`) e volta à 1 quando a busca ou um filtro muda. Um link direto `#curso-…` abre a página onde o curso está e destaca o cartão (antes da mudança, estes links já falhavam porque o endereço era reescrito).
+- **Números:** passar o mouse (ou tocar) num estado do mapa mostra o nome e o número de cursos presenciais; a lista dos estados passou a ser uma tabela (do maior para o menor); nas barras de duração, a barra inteira é 100% e a parte azul é a parcela.
+- **Sobre → Como escolhemos os cursos:** reescrito com as regras atuais (fontes oficiais de instituições confiáveis, incluindo OSCs com histórico; gratuito com certificado gratuito; inscrições abertas; sem prova, redação, ENEM, entrevista ou currículo; avisos de sorteio, ordem de inscrição, prioridade por renda e «Gratuidade por confirmar»; verificação semanal; IA conferida na página oficial).
+
 ## Google Analytics (com aviso de cookies)
 
 - O ID de medição do GA4 (G-…) fica em `config.json` → `google_analytics`. Vazio = nada é carregado e o aviso não aparece.
@@ -133,9 +139,11 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
   - `filtro` (filtro = estado | cidade | duracao | certificado | facilita; valor; na cidade também estado).
   - `ver_online_sem_presencial` (estado): botão "Ver os cursos on-line" de um estado sem cursos presenciais.
   - `ver_passo_govbr` (curso): link "Antes de começar" para criar a conta gov.br; `abrir_fonte_guia` (guia): link para a página oficial num guia.
-  - Página Encaminhar: `montar_lista` (cidade), `imprimir_lista`, `imprimir_ficha` (curso), `copiar_texto_whatsapp`, `copiar_link_lista`.
+  - `mudar_pagina` (numero_pagina): clique na paginação da lista de cursos.
+  - Página Encaminhar (desde 25/11/2026): `montar_lista` (cidade, municipio, estado) e `encaminhar_botao` (botao = imprimir_lista | copiar_texto_whatsapp | copiar_link_lista | imprimir_ficha; municipio; estado; com_online = sim | nao; na ficha também curso). O `encaminhar_botao` substitui os eventos antigos `imprimir_lista`, `imprimir_ficha`, `copiar_texto_whatsapp` e `copiar_link_lista`, que não levavam o estado. O estado vem do local dos cursos presenciais daquele município.
   - `abrir_canal_whatsapp` e `abrir_formulario_parceiros`, quando esses links existirem.
 - Dimensões personalizadas registadas no Analytics (âmbito evento): curso, destino, termo, resultados, estado, filtro, valor, cidade, guia.
+- Por registar no Analytics (o responsável faz em Administrador → Definições personalizadas; sem isso os valores não aparecem nos relatórios): municipio, botao, com_online, numero_pagina.
 - Decisão do responsável (22/11/2026): consentimento em vez de legítimo interesse.
 
 ## Pernambuco (desde 23/11/2026)

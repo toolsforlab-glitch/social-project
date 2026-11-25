@@ -230,6 +230,10 @@ def exportar_dados(base, cfg):
                                                    (r.get("Última verificação") or "").strip() if r.get("Nota da verificação") else "")
                                    if re.match(r"\d{4}-\d{2}-\d{2}", v)), ""),
             "inicio": r.get("Início", ""), "duracao": r.get("Duração", ""),
+            # quando o edital só diz o semestre ou o período, sem dia, com as palavras do edital (ex.: «Ingresso no 1º semestre
+            # de 2027»); regra de 25/11/2026: só o que existe mesmo
+            "inicio_texto": "" if r.get("Início") else valor_comprovado(r, "Início (como o edital diz)", "início"),
+            "matricula": valor_comprovado(r, "Matrícula (como o edital diz)", "matrícula"),
             "primeiro_visto": r.get("Primeiro visto", ""), "como_me_inscrever": passos(r.get("Como me inscrever")),
             "antes": [i for i in lista(r.get("Antes de começar")) if i in ids_guias],
             **{k: valor_comprovado(r, c, p) for k, c, p in BARREIRAS},

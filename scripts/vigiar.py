@@ -125,7 +125,7 @@ VIGIAS = [
      "itens": ["https://processoseletivo.ifrn.edu.br/"], "estado": "estado/ifrn_editais.json",
      "item": r"<h3><a href='([^']+)'>([^<]+)</a></h3>",
      "incluir": r"FIC|Forma[çc][ãa]o Inicial|Subsequente|EJA|Proeja|Qualifica",
-     "excluir": r"P[óo]s-Gradua|Mestrado|Doutorado|Especializa|Licenciatura|Superior|Gradua[çc][ãa]o|BOLSISTA|ESTAGI|servidores|funcion[áa]rios|privação de liberdade",
+     "excluir": r"P[óo]s-Gradua|Mestrado|Doutorado|Especializa|Licenciatura|Superior|Gradua[çc][ãa]o|BOLSISTA|ESTAGI|servidores|funcion[áa]rios|privação de liberdade|PROFESSOR|COORDENA|TUTOR|ASSISTENTE|CADASTRO RESERVA|DOCENTE|HETEROIDENTIFICA|RELATOS",
      "link": "https://processoseletivo.ifrn.edu.br/",
      "verificar": "Edital novo de cursos para a comunidade no IFRN. Abra o edital: entra se for gratuito, sem prova "
                   "(sorteio, ordem de inscrição ou análise de documentos) e com inscrições abertas. Peça ao Claude para "

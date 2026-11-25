@@ -245,3 +245,18 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - Gratuidade: frase oficial da Agência de Notícias da Indústria, conferida a cada leitura («todos os cursos são 100% online e gratuitos»; o certificado é «por uma taxa simbólica»).
 - **Certificado pago com o valor**: o preço vem do campo `certificatePrice` da API (igual ao do Futuro.Digital, conferido a 24/11). Fica na Evidência como `valor do certificado: «R$ …»` e o site mostra «Certificado pago (R$ …)». Sem preço na API, o certificado fica por confirmar. Regra do responsável: certificado pago entra, desde que se distinga do gratuito e mostre o valor.
 - Primeira leitura: 99 cursos com 16 h ou mais, 59 publicados (1 repetido escondido).
+
+## Varredura de oferta presencial fora do Sistema S – Nordeste (25/11/2026)
+
+Critérios do responsável: só instituições conceituadas (órgãos e escolas do governo, institutos federais, fundações reconhecidas); nada «de fundo de quintal» (ficam fora programas executados por OSCs/associações pouco conhecidas, ex.: Qualifica Bahia, Emprega Mais Alagoas). Acesso testado a partir do GitHub.
+
+| Estado | Programa (instituição) | Presencial | Seleção | GitHub |
+|---|---|---|---|---|
+| Rede federal | Cursos FIC, técnicos subsequentes e EJA dos IF (IFRN, IFCE, IFS, IFBA, IF Baiano, IFPB, IFPE, IFAL) | sim | sorteio ou ordem de inscrição (conferir por edital; ex.: o PSCT do IFPB usa notas → fica fora) | abre (IFRN tem um portal único de processos seletivos); IFMA e IFPI bloqueiam |
+| MA | IEMA Vocacional – FIC e oficinas (Governo do MA) | sim | inscrição na unidade | site bloqueia (403) |
+| PI | SEDUC-PI – Mais Formação, Mais Renda (FIC e técnicos) e Mulheres Mil | sim | a conferir | site não responde |
+| BA | SEC-BA – técnicos subsequentes (sorteio eletrônico) e FIC Pronatec | sim | sorteio | abre |
+| SE | SEED-SE – técnicos subsequentes; Primeiro Emprego (Governo + UFS, com bolsa; seleção por critérios: idade, renda) | sim | a conferir / prioridade | abre |
+| PE | Qualifica PE (SEDEPE) | sim | a conferir executor | portal não responde; site da SEDEPE abre |
+| CE | Secretaria da Proteção Social (cursos nos equipamentos); Escola de Gastronomia Social (Secult/IDM) | sim | inscrição presencial / prioridade vulnerabilidade | a testar |
+| PB/RN/AL | prefeituras das capitais (Sedest JP, Secti Campina Grande); IF Mulheres Mil (IFAL) | sim | a conferir | a testar |

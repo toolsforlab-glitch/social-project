@@ -1,16 +1,12 @@
-import re, sys, html, glob
+import re, sys
 sys.path.insert(0, "scripts")
 from comum import baixar
 from base import texto_de_html
-for f in glob.glob("sonda/*.html"):
-    t = open(f, encoding="utf-8", errors="replace").read()
-    pdfs = sorted(set(re.findall(r'href="([^"]+\.pdf)"', t)))
-    print("=====", f[-60:], pdfs)
-    for p in pdfs[:1]:
-        u = p if p.startswith("http") else "https://selecao.ifro.edu.br" + p
-        try:
-            x = texto_de_html(baixar(u.replace(" ", "%20"), 60))
-            for k in ["gratuit", "inscriç", "sorteio", "ordem", "prova", "requisit", "idade", "escolaridade", "período", "vagas"]:
-                for m in list(re.finditer(k, x, re.I))[:2]:
-                    print("  ", k, "::", x[max(0, m.start()-150):m.start()+220])
-        except Exception as e: print("ERRO", u, e)
+for u in ["https://selecao.ifro.edu.br/component/phocadownload/category/2561-edital-n-128-2026-selecao-de-estudantes-curso-de-formacao-continuada-em-corte-e-costura-modelagem?download=27433:edital-n-128-2026-selecao-de-estudantes-curso-de-formacao-continuada-em-corte-e-costura-modelagem",
+          "https://selecao.ifro.edu.br/component/phocadownload/category/2562-edital-n-129-2026-selecao-de-estudantes-curso-pratico-oficina-de-sabonete-artesanal?download=27434:edital-n-129-2026-selecao-de-estudantes-curso-pratico-oficina-de-sabonete-artesanal"]:
+    try:
+        b = baixar(u, 60); print("=====", len(b), b[:5])
+        x = texto_de_html(b)
+        open("sonda/" + u.split("download=")[1][:20] + ".txt", "w").write(x)
+        print(x[:6000])
+    except Exception as e: print("ERRO", e)

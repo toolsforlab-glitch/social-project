@@ -1,0 +1,9 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1; python3 scripts/tmp_teste/osc_ba.py

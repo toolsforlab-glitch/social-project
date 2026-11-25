@@ -898,15 +898,20 @@ def listar_senac_ap(fonte):
     editais = []
     for p in lista:
         criado = str(p.get("created_at") or "")[:10]
-        if criado < corte or str(p.get("type") or "") != "G":
+        mexido = str(p.get("updated_at") or "")[:10]
+        if max(criado, mexido) < corte or str(p.get("type") or "") != "G":
             continue
         try:
             det = json.loads(baixar(f"{fonte['api']}/{int(p['id'])}", timeout=60).decode("utf-8"))
         except Exception:  # noqa: BLE001
             continue
         det = det.get("data", det) if isinstance(det, dict) and "documents" not in det else det
-        docs = [(str(d.get("title") or ""), "https://cms.ap.senac.br/storage/" + str(d.get("filename") or ""))
+        docs = [(str(d.get("title") or ""), "https://cms.ap.senac.br/storage/" + str(d.get("filename") or ""),
+                 str(d.get("published_at") or "")[:10])
                 for d in (det.get("documents") or []) if str(d.get("filename") or "").lower().endswith(".pdf")]
+        # a data que conta é a do documento mais recente (uma errata pode prorrogar a inscrição)
+        criado = max([criado] + [dt for _, _, dt in docs if dt])
+        docs = [(t, u) for t, u, _ in docs]
         principal = [u for t, u in docs if re.match(r"\s*EDITAL", t, re.I)] or [u for t, u in docs]
         if not principal:
             continue

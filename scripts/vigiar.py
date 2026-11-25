@@ -61,6 +61,50 @@ VIGIAS = [
      "verificar": "Há notícias de uma Chamada Pública nova do SENAI AM e o leitor não achou o PDF (nome novo): peça ao "
                   "Claude para abrir fieam.org.br/senai/chamada-publica/ no navegador e juntar os links da chamada e da "
                   "programação ao estado (estado/senai_am_chamadas.json)."},
+    # OSCs aprovadas pelos critérios de histórico (regra do responsável, 25/11/2026; ver LEIAME). Não publicam as turmas
+    # num site: a inscrição é feita no município, pela própria OSC. Se o Google Notícias tiver notícias recentes de cursos
+    # ou inscrições com o nome delas, abre-se uma pendência (uma por mês e por OSC). Os cursos só entram com página
+    # oficial da turma (datas e gratuidade).
+    {"nome": "Fundação Esperança – FÉ (Barreiras, BA)",
+     "rss": "https://news.google.com/rss/search?q=%22Funda%C3%A7%C3%A3o+Esperan%C3%A7a%22+Barreiras&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"curso|inscri|qualifica|capacita|vagas|forma[çc][ãa]o", "dias": 14,
+     "link": "https://news.google.com/search?q=%22Funda%C3%A7%C3%A3o+Esperan%C3%A7a%22+Barreiras&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de cursos ou inscrições",
+     "verificar": "OSC aprovada pelos critérios de histórico (LEIAME). Abra as notícias, procure a página oficial da "
+                  "turma (datas de inscrição e gratuidade explícita) e peça ao Claude para criar o curso. Sem página "
+                  "oficial, o curso não entra."},
+    {"nome": "Associação Central de Cidadania (Serrinha, BA)",
+     "rss": "https://news.google.com/rss/search?q=%22Associa%C3%A7%C3%A3o+Central+de+Cidadania%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"curso|inscri|qualifica|capacita|vagas|forma[çc][ãa]o", "dias": 14,
+     "link": "https://news.google.com/search?q=%22Associa%C3%A7%C3%A3o+Central+de+Cidadania%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de cursos ou inscrições",
+     "verificar": "OSC aprovada pelos critérios de histórico (LEIAME). Abra as notícias, procure a página oficial da "
+                  "turma (datas de inscrição e gratuidade explícita) e peça ao Claude para criar o curso. Sem página "
+                  "oficial, o curso não entra."},
+    {"nome": "Instituto Casa da Cidadania (Vitória da Conquista, BA)",
+     "rss": "https://news.google.com/rss/search?q=%22Casa+da+Cidadania%22+%22Vit%C3%B3ria+da+Conquista%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"curso|inscri|qualifica|capacita|vagas|forma[çc][ãa]o", "dias": 14,
+     "link": "https://news.google.com/search?q=%22Casa+da+Cidadania%22+%22Vit%C3%B3ria+da+Conquista%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de cursos ou inscrições",
+     "verificar": "OSC aprovada pelos critérios de histórico (LEIAME). Abra as notícias, procure a página oficial da "
+                  "turma (datas de inscrição e gratuidade explícita) e peça ao Claude para criar o curso. Sem página "
+                  "oficial, o curso não entra."},
+    {"nome": "MOC – Movimento de Organização Comunitária (Feira de Santana, BA)",
+     "rss": "https://news.google.com/rss/search?q=%22Movimento+de+Organiza%C3%A7%C3%A3o+Comunit%C3%A1ria%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"curso|inscri|qualifica|capacita|vagas|forma[çc][ãa]o", "dias": 14,
+     "link": "https://news.google.com/search?q=%22Movimento+de+Organiza%C3%A7%C3%A3o+Comunit%C3%A1ria%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de cursos ou inscrições",
+     "verificar": "OSC aprovada pelos critérios de histórico (LEIAME). Abra as notícias, procure a página oficial da "
+                  "turma (datas de inscrição e gratuidade explícita) e peça ao Claude para criar o curso. Sem página "
+                  "oficial, o curso não entra."},
+    {"nome": "OELA – Oficina Escola de Lutheria da Amazônia (AM/AP)",
+     "rss": "https://news.google.com/rss/search?q=%22Lutheria+da+Amaz%C3%B4nia%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"curso|inscri|qualifica|capacita|vagas|forma[çc][ãa]o", "dias": 14,
+     "link": "https://news.google.com/search?q=%22Lutheria+da+Amaz%C3%B4nia%22&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de cursos ou inscrições",
+     "verificar": "OSC aprovada pelos critérios de histórico (LEIAME). Abra as notícias, procure a página oficial da "
+                  "turma (datas de inscrição e gratuidade explícita) e peça ao Claude para criar o curso. Sem página "
+                  "oficial, o curso não entra."},
 ]
 
 
@@ -76,7 +120,7 @@ def vigiar_rss(base, v):
         print(f"{v['nome']}: o Google Notícias não abriu ({type(e).__name__}); fica para amanhã.")
         return
     hoje = datetime.date.today()
-    vista = (ler_json(v["estado_leitor"], {}) or {}).get("vista_em", "")
+    vista = (ler_json(v["estado_leitor"], {}) or {}).get("vista_em", "") if v.get("estado_leitor") else ""
     recentes = []
     for titulo, data in re.findall(r"<item><title>(.*?)</title>.*?<pubDate>(.*?)</pubDate>", xml, flags=re.S):
         try:
@@ -88,12 +132,23 @@ def vigiar_rss(base, v):
     if not recentes:
         print(f"{v['nome']}: sem notícias novas de abertura.")
         return
-    print(f"{v['nome']}: {len(recentes)} notícias recentes sem chamada achada pelo leitor.")
-    registar_pendencia(base, f"{v['nome']}: notícias de abertura e nenhum PDF achado pelo leitor ({recentes[0][:200]}).",
+    resumo = v.get("resumo", "notícias de abertura e nenhum PDF achado pelo leitor")
+    print(f"{v['nome']}: {len(recentes)} {resumo}.")
+    for r in recentes[:5]:
+        print("   ", r[:200])
+    if base is None:  # ensaio (SECO=1)
+        return
+    registar_pendencia(base, f"{v['nome']}: {resumo} ({recentes[0][:200]}).",
                        v["verificar"], v["link"] + "#" + hoje.strftime("%Y-%m"), origem="vigiar.py")
 
 
 def main():
+    import os
+    if os.environ.get("SECO"):  # ensaio: só as vigias por notícias, sem planilha
+        for v in VIGIAS:
+            if v.get("rss"):
+                vigiar_rss(None, v)
+        return 0
     base = Base()
     carregar_config(base)
     for v in VIGIAS:

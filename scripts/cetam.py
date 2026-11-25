@@ -170,7 +170,8 @@ def ler_tabela(layout):
                 if info[i]["req"]:
                     colunas["req"].append((i, info[i]["req"]))
                 continue
-            for col, txt in dividir(l, 0):
+            perto = min(dados_idx, key=lambda j: abs(j - i))
+            for col, txt in dividir(l, info[perto]["desvio"]):
                 if col in colunas:
                     colunas[col].append((i, txt))
         for col, itens in colunas.items():
@@ -204,7 +205,7 @@ def ler_tabela(layout):
             local = normal(" ".join(x for _, x in sorted(partes[i]["local"])))
             req = normal(" ".join(x for _, x in sorted(partes[i]["req"])))
             ead = online or (t.get("horario") or "").upper() == "EAD"
-            turmas.append({**{k: v for k, v in t.items() if k != "esquerda"}, "curso": curso, "local": local or unidade,
+            turmas.append({**{k: v for k, v in t.items() if k not in ("esquerda", "desvio")}, "curso": curso, "local": local or unidade,
                            "req": req, "municipio": municipio, "endereco": endereco, "online": ead,
                            "linha": normal(linhas[i])})
 
@@ -241,9 +242,11 @@ def ler_tabela(layout):
                       rf"(?:\s{{2,}}([\d.]+))?(.*)$", l[resto_ini:])
         if not m:
             return {"n": m0.group(1), "ch": "", "horario": "", "inicio": "", "fim": "", "vagas": "", "espera": "",
-                    "dias": "", "esquerda": [], "req": ""}
+                    "dias": "", "esquerda": [], "req": "", "desvio": 0}
         esquerda = []
-        for col, txt in dividir(" " * resto_ini + l[resto_ini:resto_ini + m.start()], 0):
+        pos_ch = resto_ini + m.start(1) + len(m.group(1)) / 2
+        desvio = (centros["CH"] - pos_ch) if "CH" in centros else 0  # a tabela muda de posição de página para página
+        for col, txt in dividir(" " * resto_ini + l[resto_ini:resto_ini + m.start()], desvio):
             esquerda.append(("local" if col == "local" else "curso", txt))
         dias, req = [], []
         base_x = resto_ini + m.start(7)
@@ -254,7 +257,7 @@ def ler_tabela(layout):
                 req.append(txt)
         return {"n": m0.group(1), "ch": m.group(1), "horario": m.group(2) or "", "inicio": iso(m.group(3)),
                 "fim": iso(m.group(4)), "vagas": m.group(5).replace(".", ""), "espera": (m.group(6) or "").replace(".", ""),
-                "dias": " ".join(dias), "esquerda": esquerda, "req": " ".join(req)}
+                "dias": " ".join(dias), "esquerda": esquerda, "req": " ".join(req), "desvio": desvio}
 
     for i in range(ini + 1, fim):
         l = linhas[i]

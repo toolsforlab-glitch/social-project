@@ -217,6 +217,7 @@
         if (!isNaN(n)) return "Renda da família de até " + salarios(n) + " por pessoa (some o que todos da casa ganham por mês e divida pelo número de pessoas)";
       }
     }
+    if (/baixa renda autodeclarada/i.test(x)) return "Ser de família de baixa renda (basta declarar na inscrição)";
     x = x.replace(/per capita/gi, "por pessoa")
          .replace(/\b0(\d)\s*\((\w+)\)/g, "$1")
          .replace(/(\d+),0\b/g, "$1")
@@ -224,10 +225,12 @@
          .replace(/^Requisito\s+de\s+idade\s*:\s*/i, "")
          .replace(/^Requisito\s+espec[íi]fico\s*:\s*/i, "")
          .replace(/^Escolaridade\s+m[íi]nima\s*:/i, "Escolaridade:")
-         .replace(/^Idade(?:\s+m[íi]nima)?\s*:\s*/i, "")
+         .replace(/^Idade(?:\s+m[íi]nima)?\s*:\s*/i, "").replace(/^Idade\s+(?=maior|igual|a partir|m[íi]nima)/i, "")
+         .replace(/^m[íi]nima\s+(?:de\s+)?(\d+)\s*anos?/i, "Ter $1 anos ou mais")
+         .replace(/^a partir de\s+(\d+)\s*anos/i, "Ter $1 anos ou mais")
          .replace(/^(\d+)\s*anos?$/i, "Ter $1 anos ou mais")
          .replace(/^(?:ser\s+)?maior\s+ou\s+igual\s+a\s+(\d+)\s*anos/i, "Ter $1 anos ou mais")
-         .replace(/^possuir\b/i, "Ter")
+         .replace(/^possuir\b/i, "Ter").replace(/\bpossuir\b/g, "ter").replace(/\bpossua\b/g, "tenha")
          .replace(/\bSO\s+(windows)/gi, "$1");
     return x.charAt(0).toUpperCase() + x.slice(1);
   }
@@ -236,6 +239,7 @@
     return String(texto || "")
       .replace(/\s*Requisito\s+de\s+idade\s*:\s*/gi, "; Idade: ").replace(/\s*Requisito\s+espec[íi]fico\s*:\s*/gi, "; ")
       .replace(/\s+(?=(?:Escolaridade|Idade)(?:\s+m[íi]nima)?\s*:)/g, "; ")
+      .replace(/\s+(?=Idade\s+(?:m[íi]nima|maior|igual|a partir))/gi, "; ")
       .split(/;\s*|\.\s+(?=[A-ZÀ-Ú])/)
       .map(function (p) { return p.trim(); }).filter(Boolean);
   }
@@ -247,7 +251,12 @@
     };
     var temIdade = false, temEscola = false;
     if (t && (t.idade_minima || t.idade_maxima)) { l.push(idade(t.idade_minima, t.idade_maxima)); temIdade = true; }
-    if (t && t.escolaridade) { l.push("Escolaridade: " + t.escolaridade.replace(/\.$/, "")); temEscola = true; }
+    if (t && t.escolaridade && !/\([^)]*$/.test(t.escolaridade)) {
+      partesDe(t.escolaridade).map(simples).forEach(function (x, i) {
+        l.push(i === 0 && !/^escolaridade/i.test(x) ? "Escolaridade: " + x : x);
+      });
+      temEscola = true;
+    }
     if (c) {
       if (!temIdade && !/\d+\s*anos\b/i.test(livre) && (c.idade_minima || c.idade_maxima)) l.push(idade(c.idade_minima, c.idade_maxima));
       if (!temEscola && !/fundamental|m[ée]dio|escolaridade|superior|alfabetiz/i.test(livre) && c.escolaridade && ESCOLARIDADE_TXT[c.escolaridade])

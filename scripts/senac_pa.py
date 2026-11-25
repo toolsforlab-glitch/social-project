@@ -192,7 +192,7 @@ def main():
                 "Título na fonte": c["nome"], "Unidade na fonte": c["local"][:200], "Unidade": "", "Cidade": cidade,
                 "Link de matrícula": url, "Início": c["ini"], "Fim": c["fim"], "Horário": "", "Dias": "",
                 "Carga horária": "", "Vagas": "", "Prazo de inscrição": c["prazo"], "Idade mínima": idade,
-                "Escolaridade": esc[:120], "Documentos": "",
+                "Escolaridade": esc[:400], "Documentos": "",
                 "Mais informações": (f"Inscrições de {br(c['insc_ini'])} a {br(c['prazo'])}, "
                                      + ("pela internet, na página da seleção" if c["modo"] == "online"
                                         else "presenciais (o local está no edital, na página da seleção)")

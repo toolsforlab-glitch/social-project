@@ -56,6 +56,8 @@ jobs:
 
       - name: Gerar o site a partir da planilha
         run: cd scripts && python3 construir_site.py
+      - name: Auditoria dos requisitos (repetições, termos técnicos, texto cortado; só avisa)
+        run: node scripts/auditar_requisitos.js || true
       - name: Publicar
         run: |
           git config user.name "github-actions[bot]"

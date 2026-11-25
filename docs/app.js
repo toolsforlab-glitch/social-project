@@ -248,7 +248,7 @@
       gerados.push("Ter experiência na área (é um curso de aperfeiçoamento)");
     // sem repetir: compara sem o rótulo («Escolaridade mínima:», «Requisito de Idade:»…) e sem maiúsculas
     var chave = function (x) {
-      return x.toLowerCase().replace(/^(requisito\s+(de\s+idade|espec[íi]fico)|escolaridade(\s+m[íi]nima)?|idade(\s+m[íi]nima)?)\s*:\s*/, "")
+      return x.toLowerCase().replace(/^(requisito\s+(de\s+idade|espec[íi]fico)|escolaridade(\s+m[íi]nima|\s+a\s+partir\s+de)?|idade(\s+m[íi]nima)?)\s*:\s*/, "")
               .replace(/[^a-z0-9à-ú]+/g, " ").trim();
     };
     var vistos = {};

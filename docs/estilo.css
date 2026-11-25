@@ -203,6 +203,13 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .factos li.acessivel{background:#e3f1f8;color:#14506e}
 
 /* Prazos a terminar e «Lembrar-me» */
+.buscas-caixa { margin: .2rem 0 1rem; }
+.buscas-caixa h2 { font-size: 1.05rem; margin: .9rem 0 .3rem; }
+.buscas-salvas { list-style: none; padding: 0; margin: 0; }
+.buscas-salvas li { padding: .25rem 0; }
+.buscas-salvas .novos { background: #e6ecfa; color: #1d3a8a; font-weight: 700; border-radius: 999px; padding: .05rem .55rem; font-size: .9rem; }
+.busca-salva { margin: 0; color: var(--folha); font-weight: 700; }
+@media print { .buscas-caixa { display: none; } }
 .factos li.novo { background: #e6ecfa; color: #1d3a8a; font-weight: 700; }
 .factos li.urgente { background: #fde4dc; color: #8a2410; font-weight: 700; }
 .turmas .prazo.urgente { color: #8a2410; }

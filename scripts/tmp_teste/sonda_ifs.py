@@ -1,25 +1,30 @@
-import sys, re, html
+import sys, re, html, urllib.parse
 sys.path.insert(0, "scripts")
 from comum import baixar
 from base import texto_de_html
+P = "https://portal.ifrn.edu.br"
 def t(u, n=60): return baixar(u, timeout=n).decode("utf-8", "replace")
 def limpo(s): return re.sub(r"\s+", " ", html.unescape(re.sub(r"(?s)<(script|style)[^>]*>.*?</\1>|<[^>]+>", " ", s))).strip()
-for u in ["https://processoseletivo.ifrn.edu.br/edital/visualizar/696/", "https://processoseletivo.ifrn.edu.br/edital/visualizar/684/",
-          "https://processoseletivo.ifrn.edu.br/edital/visualizar/683/"]:
-    a = t(u); print("#####", u); print("  hrefs:", sorted(set(re.findall(r"href=['\"]([^'\"#]+)", a)))[:60])
-    print("  ", limpo(a)[:1800])
-a = t("https://ifce.edu.br/campus/aracati/estude-no-ifce/aracati-selecao-de-participantes-do-curso-fic-empreendedorismo-artesanal-renda-de-labirinto-edital-272026/")
-print("##### IFCE Aracati"); print("  hrefs:", [x for x in re.findall(r'href="([^"]+)"', a) if re.search(r"\.pdf|edital|anexo|inscri|forms|@@|download", x, re.I)][:30])
-m = re.search(r'(?s)<div id="content".*', a); print("  ", limpo(m.group(0) if m else a)[:3000])
-# PDFs do IFRN 68
-a = t("https://processoseletivo.ifrn.edu.br/edital/visualizar/696/")
-for x in sorted(set(re.findall(r"href=['\"]([^'\"#]+)", a))):
-    if re.search(r"arquivo|download|media|documento|\.pdf", x, re.I):
-        u = x if x.startswith("http") else "https://processoseletivo.ifrn.edu.br" + x
+paginas = set()
+for q in ["?tipo=tipo%3A2", "?tipo=tipo%3A2&page=2", "?tipo=3", "?q=EJA", "?q=FIC"]:
+    try:
+        a = t(P + "/processos-seletivos/buscar/" + q)
+    except Exception as e:
+        print("ERRO", q, e); continue
+    for h in re.findall(r'href="([^"]*processo-seletivos-estude-no-ifrn/[^"]+)"', a):
+        paginas.add(urllib.parse.urljoin(P, h))
+print("PAGINAS:"); [print("  ", p) for p in sorted(paginas)]
+for p in sorted(paginas):
+    if not re.search(r"formacao-inicial|fic|eja|qualificacao|proeja", p, re.I): continue
+    a = t(p); print("#####", p)
+    docs = sorted(set(urllib.parse.urljoin(P, h) for h in re.findall(r'href="([^"]*(?:/documents/|\.pdf)[^"]*)"', a)))
+    print("  docs:", docs[:12])
+    m = re.search(r'(?s)<main.*?</main>', a); print("  ", limpo(m.group(0) if m else a)[:2200])
+    for d in docs[:3]:
         try:
-            d = baixar(u, timeout=60)
-            if d[:4] == b"%PDF":
-                tx = texto_de_html(d); print("##### PDF", u, len(tx))
-                for pat in [r".{0,200}sorteio.{0,300}", r".{0,200}an[áa]lise.{0,200}", r".{0,150}prova.{0,150}", r".{0,100}idade.{0,150}", r".{0,200}pr[ée]-requisito.{0,300}", r".{0,200}gratuit.{0,200}"]:
-                    for m in list(re.finditer(pat, tx, re.I))[:2]: print("   ", pat[:14], "→", m.group(0)[:500])
-        except Exception as e: print("ERRO", u, e)
+            b = baixar(d, timeout=60)
+            if b[:4] != b"%PDF": continue
+            tx = texto_de_html(b); print("  ## PDF", d, len(tx)); print("    INÍCIO:", tx[:300])
+            for pat in [r".{0,250}sortei.{0,300}", r".{0,200}crit[ée]rio.{0,300}", r".{0,150}\bprova\b.{0,150}", r".{0,120}idade.{0,200}", r".{0,200}(requisito|ter conclu[íi]do).{0,300}", r".{0,150}gratuit.{0,150}", r".{0,150}in[íi]cio das aulas.{0,150}"]:
+                for mm in list(re.finditer(pat, tx, re.I))[:2]: print("    ", pat[:14], "→", mm.group(0)[:550])
+        except Exception as e: print("  ERRO", d, e)

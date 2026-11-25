@@ -161,7 +161,7 @@ FONTES = [
     {"nome": "Senai AP", "uf": "AP", "local": "BR-AP", "regiao": "Amapá",
      "entidade": "SENAI Amapá (Gratuidade Regimental)", "estado": "estado/senai_ap.json",
      "listar": "senai_ap", "lista": "https://www.ap.senai.br/senai/processo-seletivo/publica%C3%A7%C3%B5es.html",
-     "prefixo_turma": "https://www.ap.senai.br/", "extrator": "pdftotext", "max_caracteres": 90000,
+     "prefixo_turma": "https://www.ap.senai.br/", "layout": True, "max_caracteres": 90000,
      "max_tokens": 48000, "limpar": r"HASH TOTVS:[ 0-9A-F-]+",
      "nota": "Nos editais de cursos gratuitos do SENAI Amapá (Macapá, Santana, às vezes Oiapoque) a inscrição costuma ser "
              "PRESENCIAL, na secretaria da unidade, num período curto; copia a frase do período para «inscricao». Em "

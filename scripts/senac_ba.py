@@ -225,8 +225,10 @@ def main():
                     "Evidência": " | ".join(x for x in [
                         f"gratuito: «{FRASE_GRATUIDADE}» ({PAGINA_PSG})" if gratuito else "",
                         f"renda: «{renda}» ({PAGINA_PSG})" if renda else "",
-                        f"vagas: «{c['ordem']}» (texto da turma)" if c["ordem"] else ""] if x),
-                    "Campos comprovados": ", ".join(x for x in ["gratuito" if gratuito else "", "renda" if renda else ""] if x),
+                        f"vagas: «{c['ordem']}» (texto da turma)" if c["ordem"] else "",
+                        f"ajuda: «{beneficio}» (texto da turma)" if beneficio else ""] if x),
+                    "Campos comprovados": ", ".join(x for x in ["gratuito" if gratuito else "", "renda" if renda else "",
+                                                                "ajuda" if beneficio else ""] if x),
                     "Renda máxima": REQUISITO_RENDA if renda else "",
                     "Ajuda de custo ou transporte": beneficio[:300],
                     "O que falta confirmar": "" if gratuito else "A página oficial não diz que o curso é gratuito.",

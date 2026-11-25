@@ -174,7 +174,10 @@ FONTES = [
              "«selecao», a frase sobre como as vagas são preenchidas (ordem de inscrição/chegada, sorteio…). Se a seleção "
              "tiver prova, entrevista, análise de currículo ou ENEM, NÃO devolvas turmas (regra do responsável). NÃO "
              "devolvas as turmas cujos pré-requisitos exigem já trabalhar na profissão, ter experiência profissional ou "
-             "vínculo com uma empresa (ex.: aprendizagem industrial, contrato de aprendiz), nem as só para pessoas "
+             "vínculo com uma empresa (ex.: aprendizagem industrial, contrato de aprendiz). ATENÇÃO aos cursos de "
+             "APERFEIÇOAMENTO: se o edital pedir para eles comprovação de experiência (carteira de trabalho, certificados "
+             "ou «outra evidência» de experiência), NÃO devolvas nenhuma turma de aperfeiçoamento desse edital; as de "
+             "qualificação profissional continuam. Também não devolvas as turmas só para pessoas "
              "indicadas por uma empresa ou instituição parceira. Cursos para um público (mulheres, pessoas com 50 anos "
              "ou mais) entram: o requisito vai em «requisitos». Se no fim houver RETIFICAÇÕES, elas prevalecem."},
     {"nome": "Senai AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",

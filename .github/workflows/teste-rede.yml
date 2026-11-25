@@ -3,20 +3,10 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-      FOLHA_ID: ${{ secrets.FOLHA_ID }}
-      PYTHONUNBUFFERED: "1"
-      SECO: "1"
-      SO_FONTE: "Senai AP"
-      HOJE_ENSAIO: "2026-06-25"
-      SENAC_MA_DIAGNOSTICO: /tmp/diag
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install -q -r requirements.txt && sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-por >/dev/null 2>&1
-      - run: cd scripts && python3 senac_ma.py
+      - run: |
+          sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
+          curl -sS -m 60 -A "Mozilla/5.0" -o e.pdf "https://www.ap.senai.br/images/SANTANA_Edital_Gratuidade_2__Semestre_-_n__08.2026_manifest_202606230944559872739.pdf"
+          pdfinfo e.pdf | grep Pages
+          pdftotext -layout e.pdf e.txt; L=$(grep -n "ANEXO I" e.txt | head -1 | cut -d: -f1); echo "anexo $L"; sed -n "$((L)),$((L+75))p" e.txt | cut -c1-200
+          echo ====; grep -n "ALMOXARIFE\|MESTRE DE OBRAS" e.txt | head

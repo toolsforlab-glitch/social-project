@@ -110,6 +110,17 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .contagem { font-weight: 700; margin: 1.4rem 0 .2rem; }
 .vazio { background: #fff; border: 2px dashed var(--pedra); border-radius: var(--raio); padding: 1.2rem; }
 
+/* Paginação da lista de cursos: 10 por página (pedido do responsável, 25/11/2026) */
+.paginacao { margin: 1.6rem 0 .5rem; }
+.paginacao[hidden] { display: none; }
+.paginacao-texto { margin: 0 0 .6rem; color: var(--tinta-suave); font-size: .95rem; }
+.paginacao ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.paginacao .botao.pequeno { margin-left: 0; min-width: 2.75rem; min-height: 2.75rem; }
+.pagina-atual { display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem;
+  font-weight: 700; background: var(--anil); color: #fff; border-radius: var(--raio); }
+.reticencias { color: var(--tinta-suave); padding: 0 .2rem; }
+@media print { .paginacao { display: none; } }
+
 /* Caminhos na página inicial */
 .caminhos { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1rem; }
 @media (min-width: 40rem) { .caminhos { grid-template-columns: 1fr 1fr; } }

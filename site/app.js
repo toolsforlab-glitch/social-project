@@ -412,6 +412,13 @@
     var lista = el("cursos-lista");
     var contagem = el("cursos-contagem");
     var todos = [];
+    // paginação: 10 cursos por página, para a lista não ficar pesada (pedido do responsável, 25/11/2026)
+    var hashInicial = location.hash;  // o filtrar() reescreve o endereço sem o #curso-…: guardar o destino antes
+    var POR_PAGINA = 10, pagina = Math.max(1, parseInt(params.get("pagina"), 10) || 1), manterPagina = true, ultimoRes = [];
+    var navPaginas = document.createElement("nav");
+    navPaginas.className = "paginacao"; navPaginas.hidden = true;
+    navPaginas.setAttribute("aria-label", "Páginas da lista de cursos");
+    lista.insertAdjacentElement("afterend", navPaginas);
     var guiasPorId = {};
     var barreiras = (params.get("facilita") || "").split(",").filter(Boolean);
     var marcaEscolhida = params.get("marca") || "";
@@ -681,7 +688,15 @@
             '<span class="discreto">' + (sitio ? esc(sitio) + ". " : "") + esc(quandoTermina(prazoProximo(c)).replace(/^Últimos? dias?: i/, "I")) + "</span></li>";
         }).join("");
       }
-      lista.innerHTML = res.length ? res.map(function (c) { return cursoHtml(c, todos.indexOf(c)); }).join("") :
+      // qualquer mudança de filtro volta à página 1; só os botões da paginação (e os links #curso-…) mantêm a página
+      ultimoRes = res;
+      var totalPaginas = Math.max(1, Math.ceil(res.length / POR_PAGINA));
+      if (!manterPagina) pagina = 1;
+      manterPagina = false;
+      if (pagina > totalPaginas) pagina = totalPaginas;
+      var daPagina = res.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
+      desenharPaginas(res.length, totalPaginas);
+      lista.innerHTML = res.length ? daPagina.map(function (c) { return cursoHtml(c, todos.indexOf(c)); }).join("") :
         (o && o !== "online"
           ? '<li class="vazio">Não há cursos presenciais ' + esc(noLugar(onde.options[onde.selectedIndex].text.replace(/^Brasil\s*[–-]\s*/, ""))) +
             (cidade.value ? " em " + esc(cidade.value) : "") + (ativos.length ? " com estas escolhas" : "") +
@@ -714,8 +729,53 @@
           marcaSumiu ? "Nenhum curso tem mais a marca <strong>" + esc(marcaSumiu) + "</strong>, por isso mostramos todos os cursos." : "";
       }
       if (cidade.value) q.set("cidade", cidade.value);
+      if (pagina > 1) q.set("pagina", pagina);
       history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q.toString() : ""));
     }
+
+    function desenharPaginas(n, total) {
+      if (total <= 1) { navPaginas.hidden = true; navPaginas.innerHTML = ""; return; }
+      navPaginas.hidden = false;
+      var ini = (pagina - 1) * POR_PAGINA + 1, fim = Math.min(n, pagina * POR_PAGINA);
+      var botao = function (i, rotulo, aria) {
+        return '<li><button type="button" class="botao secundario pequeno" data-pagina="' + i + '"' +
+          (aria ? ' aria-label="' + aria + '"' : "") + ">" + rotulo + "</button></li>";
+      };
+      var html = '<p class="paginacao-texto">Mostrando ' + ini + "–" + fim + " de " + n + " cursos (página " + pagina +
+        " de " + total + ")</p><ul>" + (pagina > 1 ? botao(pagina - 1, "‹ Anterior", "Página anterior") : "");
+      var anterior = 0;
+      for (var i = 1; i <= total; i++) {
+        if (i !== 1 && i !== total && Math.abs(i - pagina) > 1) continue;
+        if (i - anterior > 1) html += '<li class="reticencias" aria-hidden="true">…</li>';
+        html += i === pagina ? '<li><span class="pagina-atual" aria-current="page">' + i + "</span></li>" : botao(i, String(i), "Página " + i);
+        anterior = i;
+      }
+      navPaginas.innerHTML = html + (pagina < total ? botao(pagina + 1, "Próxima ›", "Próxima página") : "") + "</ul>";
+    }
+    navPaginas.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-pagina]");
+      if (!b) return;
+      pagina = parseInt(b.getAttribute("data-pagina"), 10) || 1;
+      manterPagina = true;
+      filtrar();
+      medir("pagina", { pagina: pagina });
+      contagem.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    // links para um cartão (#curso-…, da página inicial ou de «Terminam em breve»): abrir a página onde ele está
+    function irParaCurso(id) {
+      var i = -1;
+      ultimoRes.some(function (c, j) { if (idCartao(c, todos.indexOf(c)) === id) { i = j; return true; } return false; });
+      if (i < 0) return false;
+      var p = Math.floor(i / POR_PAGINA) + 1;
+      if (p !== pagina) { pagina = p; manterPagina = true; filtrar(); }
+      var alvo = document.getElementById(id);
+      if (alvo) { alvo.scrollIntoView(); alvo.classList.add("destacado"); }
+      return true;
+    }
+    document.addEventListener("click", function (ev) {
+      var a = ev.target.closest('a[href^="#curso-"]');
+      if (a && irParaCurso(a.getAttribute("href").slice(1))) ev.preventDefault();
+    });
 
     function marcasDe(c) {
       return (c.certificado === "gratuito" ? ["cert-gratuito"] : [])
@@ -898,10 +958,7 @@
       preencherCidades(params.get("cidade") || "");
       filtrar();
       // vindo da página inicial (#curso-…): ir ao cartão desse curso
-      if (location.hash && /^#curso-/.test(location.hash)) {
-        var alvo = document.getElementById(location.hash.slice(1));
-        if (alvo) { alvo.scrollIntoView(); alvo.classList.add("destacado"); }
-      }
+      if (hashInicial && /^#curso-/.test(hashInicial)) irParaCurso(hashInicial.slice(1));
     }).catch(function () {
       lista.innerHTML = '<li class="vazio">Não foi possível carregar os cursos. Atualize a página daqui a pouco.</li>';
     });

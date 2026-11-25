@@ -121,6 +121,14 @@ def valor_diz(campo, valor, frase):
             return "Aberto", ""
         if valor == "encerrado" and ENCERRADO.search(frase):
             return "Encerrado", ""
+        # «Fim das inscrições: 02/11/2026 23:59» com a data já passada também é encerrado (25/11/2026)
+        m = re.search(r"(fim|t[ée]rmino|encerramento|prazo final) d[ae]s? inscri[çc][õo]es\W{0,5}(\d{1,2})/(\d{1,2})/(\d{4})", frase, re.I)
+        if valor == "encerrado" and m:
+            try:
+                if datetime.date(int(m.group(4)), int(m.group(3)), int(m.group(2))) < datetime.date.today():
+                    return "Encerrado", ""
+            except ValueError:
+                pass
         return "", "a frase não diz se as inscrições estão abertas ou encerradas"
     if campo == "inscricoes_ate":
         return (valor[:10], "") if data_na_frase(valor[:10], frase) else ("", "a data não está escrita na frase")

@@ -1,3 +1,2 @@
-https://www.pe.senac.br/psg/assets/js/appPSG.js
-https://intranet.pe.senac.br/dr/nova/psgnet/
-https://www.ma.senac.br/psg/
+https://www.pe.senac.br/psg/partials/vagas.html
+https://www.pe.senac.br/psg/partials/inscricao.html

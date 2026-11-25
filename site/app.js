@@ -286,6 +286,101 @@
     return function (id) { return cursos.some(function (c) { return (c.necessidades || []).indexOf(id) >= 0; }); };
   }
 
+  // Busca por palavra: cada palavra digitada tem de aparecer como palavra inteira no texto do curso, não dentro de
+  // outra («excel» não acha «excelência»). Aceita até 3 letras a mais no fim, para plurais e flexões
+  // («curso» acha «cursos», «eletricist» acha «eletricista»). Com várias palavras, todas têm de aparecer.
+  function bateBusca(alvo, busca) {
+    var palavras = alvo.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    return busca.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every(function (termo) {
+      return palavras.some(function (p) {
+        return p === termo || (p.indexOf(termo) === 0 && p.length - termo.length <= 3 && termo.length >= 3);
+      });
+    });
+  }
+  function semAcentos(t) {
+    return String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+
+  // horas do curso a partir do texto da duração («10 horas», «20h/aula», «Em média 6 horas»); null se não houver
+  function horasDe(c) {
+    var m = /(\d+(?:[.,]\d+)?)\s*(h\b|h\/|horas?)/i.exec(c.duracao || "");
+    return m ? parseFloat(m[1].replace(",", ".")) : null;
+  }
+  function naDuracao(c, faixa) {
+    var h = horasDe(c);
+    if (h === null) return false;
+    return faixa === "curto" ? h <= 4 : faixa === "medio" ? h > 4 && h <= 20 : h > 20;
+  }
+  function marcasDe(c) {
+    return (c.certificado === "gratuito" ? ["cert-gratuito"] : [])
+      .concat(c.gratuidade_comprovada === false ? ["grat-confirmar"] : [])
+      .concat((c.etiquetas || []).map(function (e) { return "pub:" + e.texto; }))
+      .concat((c.acessibilidade || []).map(function (e) { return "acc:" + e.texto; }));
+  }
+  function cidadesDe(c) {
+    if ((c.turmas || []).length) return turmasAtuais(c).map(function (t) { return t.cidade; }).filter(Boolean);
+    var l = [c.cidade].concat((c.onde_inscrever || []).map(function (u) { return u.municipio; }));
+    return l.filter(Boolean);
+  }
+
+  // Uma busca (o que a pessoa escolheu nos filtros) como objeto, a partir do endereço ?quero=…&onde=…
+  function buscaDe(p) {
+    var lista = function (k) { return (p.get(k) || "").split(",").filter(Boolean); };
+    var marca = p.get("marca") || "";
+    return { quero: lista("quero"), onde: p.get("onde") || "", facilita: lista("facilita"),
+             marca: marca === "cert-gratuito" ? "" : marca, cidade: p.get("cidade") || "",
+             certificado: p.get("certificado") === "gratuito" || marca === "cert-gratuito",
+             duracao: p.get("duracao") || "", texto: p.get("texto") || "" };
+  }
+  // O curso entra nesta busca? (a mesma regra da lista de cursos e das buscas salvas)
+  function passaBusca(c, f) {
+    if (f.quero.length && !(c.necessidades || []).some(function (n) { return f.quero.indexOf(n) >= 0; })) return false;
+    if (f.onde === "online" && c.modalidade !== "online") return false;
+    // estado escolhido: só os cursos presenciais desse estado; os on-line têm a opção própria «On-line»
+    if (f.onde && f.onde !== "online" && (c.modalidade === "online" || c.local !== f.onde)) return false;
+    if (!f.facilita.every(function (id) { return passaBarreira(c, id); })) return false;
+    if (f.marca && marcasDe(c).indexOf(f.marca) < 0) return false;
+    // calendário: o curso tem de ter inscrições abertas em algum dia do período (sem período: hoje)
+    if ((c.turmas || []).length) { if (!turmasAtuais(c).length) return false; }
+    else if (!abertaNoPeriodo("", c.inscricoes_ate || "")) return false;
+    if (f.certificado && c.certificado !== "gratuito") return false;
+    if (f.duracao && !naDuracao(c, f.duracao)) return false;
+    if (f.cidade && cidadesDe(c).indexOf(f.cidade) < 0) return false;
+    var t = semAcentos(f.texto.trim());
+    if (t && !bateBusca(semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" ")), t)) return false;
+    return true;
+  }
+
+  // ------------------------------------------------------------ Buscas salvas (só neste aparelho)
+  // Pedido do responsável (25/11/2026): «salvar a busca» em vez de avisos por e-mail. Nada sai do aparelho: a lista
+  // fica no armazenamento do navegador (localStorage). Cada busca guarda o endereço, um nome e o dia da última
+  // visita; «novos» são os cursos da busca que entraram no site depois desse dia.
+  var CHAVE_BUSCAS = "buscas-salvas", MAX_BUSCAS = 10;
+  function lerBuscas() {
+    try { var v = JSON.parse(localStorage.getItem(CHAVE_BUSCAS) || "[]"); return Array.isArray(v) ? v : []; }
+    catch (e) { return []; }
+  }
+  function gravarBuscas(l) { try { localStorage.setItem(CHAVE_BUSCAS, JSON.stringify(l.slice(0, MAX_BUSCAS))); return true; } catch (e) { return false; } }
+  function chaveBusca(q) {  // a mesma busca, qualquer que seja a página ou a ordem dos parâmetros
+    var p = new URLSearchParams(q); p.delete("pagina");
+    var k = []; p.forEach(function (v, n) { if (v) k.push(n + "=" + v); });
+    return k.sort().join("&");
+  }
+  function novosNaBusca(cursos, b) {
+    var f = buscaDe(new URLSearchParams(b.q));
+    return cursos.filter(function (c) { return (c.primeiro_visto || "").slice(0, 10) > (b.visto || "") && passaBusca(c, f); }).length;
+  }
+  function buscasSalvasHtml(cursos, atual) {
+    var l = lerBuscas();
+    if (!l.length) return "";
+    return '<h2 id="titulo-buscas-salvas">Suas buscas salvas</h2><ul class="buscas-salvas">' + l.map(function (b, i) {
+      var n = cursos ? novosNaBusca(cursos, b) : 0, aqui = atual && chaveBusca(b.q) === atual;
+      return '<li><a href="cursos.html?' + esc(b.q) + '"' + (aqui ? ' aria-current="true"' : "") + ">" + esc(b.nome) + "</a>" +
+        (n ? ' <span class="novos">' + (n === 1 ? "1 curso novo" : n + " cursos novos") + "</span>" : "") +
+        ' <button type="button" class="ler-mais" data-remover-busca="' + i + '">remover</button></li>';
+    }).join("") + '</ul><p class="discreto">Ficam só neste aparelho. Ninguém recebe seus dados.</p>';
+  }
+
   function botoesOpcoes(ul, necessidades, escolhidas, aoMudar) {
     ul.innerHTML = necessidades.map(function (n) {
       var on = escolhidas.indexOf(n.id) >= 0;
@@ -357,6 +452,16 @@
     carregar("dados/cursos.json").then(function (d) {
       todos = semFuturos(d.cursos);
       esconderSemCursos(el("inicio-opcoes"), "data-id", escolhidas, necessidadeTemCurso(todos));
+      // buscas salvas neste aparelho, com os cursos novos de cada uma desde a última visita (25/11/2026)
+      var caixaBuscas = el("inicio-buscas");
+      var desenharBuscas = function () { var h = buscasSalvasHtml(todos, ""); caixaBuscas.innerHTML = h; caixaBuscas.hidden = !h; };
+      if (caixaBuscas) {
+        desenharBuscas();
+        caixaBuscas.addEventListener("click", function (ev) {
+          var r = ev.target.getAttribute("data-remover-busca");
+          if (r !== null) { var l = lerBuscas(); l.splice(+r, 1); gravarBuscas(l); desenharBuscas(); }
+        });
+      }
       atualizar();
       desenharUltimos();
     }).catch(function () { caixa.parentNode.style.display = "none"; });
@@ -465,6 +570,7 @@
     var escolhidas = (params.get("quero") || "").split(",").filter(Boolean);
     var onde = el("cursos-onde");
     var texto = el("cursos-texto");
+    if (params.get("texto")) texto.value = params.get("texto").slice(0, 60);
     var lista = el("cursos-lista");
     var contagem = el("cursos-contagem");
     var todos = [];
@@ -478,6 +584,44 @@
       nav.setAttribute("aria-label", onde === "acima" ? "Páginas da lista de cursos (início)" : "Páginas da lista de cursos (fim)");
       lista.insertAdjacentElement(onde === "acima" ? "beforebegin" : "afterend", nav);
       return nav;
+    });
+    var caixaBuscas = document.createElement("div");
+    caixaBuscas.className = "buscas-caixa"; caixaBuscas.id = "cursos-buscas";
+    contagem.insertAdjacentElement("afterend", caixaBuscas);
+    var buscaAoAbrir = chaveBusca(location.search), novosDesde = null;  // dia da visita anterior a esta busca salva
+    function nomeDaBusca() {
+      var partes = [];
+      if (onde.value) partes.push(onde.options[onde.selectedIndex].text.replace(/^Brasil\s*[–-]\s*/, ""));
+      escolhidas.forEach(function (id) { partes.push(rotulos[id] || id); });
+      barreiras.forEach(function (id) { var bt = ulBarreiras.querySelector('[data-barreira="' + id + '"]'); partes.push(bt ? bt.textContent : id); });
+      if (cidade.value) partes.push(cidade.value);
+      if (duracao && duracao.value) partes.push(duracao.options[duracao.selectedIndex].text);
+      if (certificado && certificado.checked) partes.push("Certificado gratuito");
+      if (marcaEscolhida) partes.push(textoMarca(marcaEscolhida));
+      if (texto.value.trim()) partes.push("“" + texto.value.trim().slice(0, 40) + "”");
+      return partes.join(", ") || "Todos os cursos";
+    }
+    function desenharBuscasSalvas(q) {
+      var atual = chaveBusca(q), l = lerBuscas();
+      var salva = l.some(function (b) { return chaveBusca(b.q) === atual; });
+      var botao = !atual ? "" : salva
+        ? '<p class="busca-salva">Esta busca está salva neste aparelho.</p>'
+        : '<button type="button" class="botao secundario pequeno" id="cursos-salvar-busca">Salvar esta busca</button>' +
+          '<span class="discreto"> Quando voltar, você vê quantos cursos novos apareceram.</span>';
+      caixaBuscas.innerHTML = botao + '<div class="buscas-lista">' + buscasSalvasHtml(todos, atual) + "</div>";
+    }
+    caixaBuscas.addEventListener("click", function (ev) {
+      var q = location.search.replace(/^\?/, "");
+      if (ev.target.id === "cursos-salvar-busca") {
+        var l = lerBuscas().filter(function (b) { return chaveBusca(b.q) !== chaveBusca(q); });
+        l.unshift({ q: q.replace(/(^|&)pagina=\d+/, ""), nome: nomeDaBusca(), visto: hojeIso() });
+        if (!gravarBuscas(l)) { caixaBuscas.insertAdjacentHTML("beforeend", '<p class="discreto">Este navegador não deixa guardar buscas.</p>'); return; }
+        medir("salvar_busca", { estado: onde.value || "todos", total_salvas: Math.min(l.length, MAX_BUSCAS) });
+        desenharBuscasSalvas(q);
+        return;
+      }
+      var r = ev.target.getAttribute("data-remover-busca");
+      if (r !== null) { var l2 = lerBuscas(); l2.splice(+r, 1); gravarBuscas(l2); desenharBuscasSalvas(q); }
     });
     var guiasPorId = {};
     var barreiras = (params.get("facilita") || "").split(",").filter(Boolean);
@@ -494,21 +638,6 @@
     site.necessidades.forEach(function (n) { rotulos[n.id] = n.rotulo; });
     var nomesLocal = {};
     site.locais.forEach(function (l) { nomesLocal[l.id] = l.rotulo; });
-
-    // Busca por palavra: cada palavra digitada tem de aparecer como palavra inteira no texto do curso, não dentro de
-    // outra («excel» não acha «excelência»). Aceita até 3 letras a mais no fim, para plurais e flexões
-    // («curso» acha «cursos», «eletricist» acha «eletricista»). Com várias palavras, todas têm de aparecer.
-    function bateBusca(alvo, busca) {
-      var palavras = alvo.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-      return busca.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every(function (termo) {
-        return palavras.some(function (p) {
-          return p === termo || (p.indexOf(termo) === 0 && p.length - termo.length <= 3 && termo.length >= 3);
-        });
-      });
-    }
-    function semAcentos(t) {
-      return String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-    }
 
     var TURNO = { "Manhã": "De manhã", "Tarde": "À tarde", "Noite": "À noite" };
     var ESCOLARIDADE = {
@@ -574,7 +703,8 @@
       // regra do projeto: gratuidade só com frase da página que diga que não há custo; sem ela, avisa-se
       if (c.gratuidade_comprovada === false) factos.push(marca("atencao", "Gratuidade por confirmar", "marca:grat-confirmar"));
       var breve = terminaEmBreve(c);
-      if (recente(c)) factos.unshift(marca("novo", "Novo no site", "facilita:recente"));
+      if (novosDesde && (c.primeiro_visto || "").slice(0, 10) > novosDesde) factos.unshift('<span class="novo">Novo desde a sua última visita</span>');
+      else if (recente(c)) factos.unshift(marca("novo", "Novo no site", "facilita:recente"));
       if (breve) factos.unshift(marca("urgente", quandoTermina(prazoProximo(c)), "facilita:fecha_breve"));
       if (temTurmas) {
         factos.push('<span class="bom">' + (turmas.length === 1 ? "1 turma com inscrições abertas" : turmas.length + " turmas com inscrições abertas") + "</span>");
@@ -648,16 +778,6 @@
         "Confirme sempre na página oficial antes de ir." + avisarErroHtml(c, true) + "</p></li>";
     }
 
-    // horas do curso a partir do texto da duração («10 horas», «20h/aula», «Em média 6 horas»); null se não houver
-    function horasDe(c) {
-      var m = /(\d+(?:[.,]\d+)?)\s*(h\b|h\/|horas?)/i.exec(c.duracao || "");
-      return m ? parseFloat(m[1].replace(",", ".")) : null;
-    }
-    function naDuracao(c, faixa) {
-      var h = horasDe(c);
-      if (h === null) return false;
-      return faixa === "curto" ? h <= 4 : faixa === "medio" ? h > 4 && h <= 20 : h > 20;
-    }
     // «no Ceará», «na Bahia», «em Pernambuco», «em Portugal»
     function noLugar(nome) {
       var no = ["Acre", "Amapá", "Amazonas", "Ceará", "Distrito Federal", "Espírito Santo", "Maranhão", "Mato Grosso",
@@ -666,26 +786,10 @@
     }
     function filtrar() {
       var o = onde.value;
-      var t = semAcentos(texto.value.trim());
-      var res = todos.filter(function (c) {
-        if (escolhidas.length && !c.necessidades.some(function (n) { return escolhidas.indexOf(n) >= 0; })) return false;
-        if (o === "online" && c.modalidade !== "online") return false;
-        // estado escolhido: só os cursos presenciais desse estado; os on-line têm a opção própria «On-line»
-        if (o && o !== "online" && (c.modalidade === "online" || c.local !== o)) return false;
-        if (!barreiras.every(function (id) { return passaBarreira(c, id); })) return false;
-        if (marcaEscolhida && marcasDe(c).indexOf(marcaEscolhida) < 0) return false;
-        // calendário: o curso tem de ter inscrições abertas em algum dia do período (sem período: hoje)
-        if ((c.turmas || []).length) { if (!turmasAtuais(c).length) return false; }
-        else if (!abertaNoPeriodo("", c.inscricoes_ate || "")) return false;
-        if (certificado && certificado.checked && c.certificado !== "gratuito") return false;
-        if (duracao && duracao.value && !naDuracao(c, duracao.value)) return false;
-        if (cidade.value && cidadesDe(c).indexOf(cidade.value) < 0) return false;
-        if (t) {
-          var alvo = semAcentos([c.titulo, c.descricao, c.entidade, c.cidade, c.regiao].join(" "));
-          if (!bateBusca(alvo, t)) return false;
-        }
-        return true;
-      });
+      var buscaAtual = { quero: escolhidas, onde: o, facilita: barreiras, marca: marcaEscolhida, cidade: cidade.value,
+                         certificado: !!(certificado && certificado.checked), duracao: duracao ? duracao.value : "",
+                         texto: texto.value };
+      var res = todos.filter(function (c) { return passaBusca(c, buscaAtual); });
       // ordem: presenciais primeiro; dentro de cada grupo, o prazo de inscrição mais próximo primeiro; os cursos sem
       // prazo (ex.: on-line sob demanda) no fim, do mais recente na planilha para o mais antigo (22/11/2026)
       res.sort(function (a, b) {
@@ -784,7 +888,9 @@
           marcaSumiu ? "Nenhum curso tem mais a marca <strong>" + esc(marcaSumiu) + "</strong>, por isso mostramos todos os cursos." : "";
       }
       if (cidade.value) q.set("cidade", cidade.value);
+      if (texto.value.trim()) q.set("texto", texto.value.trim().slice(0, 60));
       if (pagina > 1) q.set("pagina", pagina);
+      desenharBuscasSalvas(q.toString());
       history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q.toString() : ""));
     }
 
@@ -832,19 +938,8 @@
       if (a && irParaCurso(a.getAttribute("href").slice(1))) ev.preventDefault();
     });
 
-    function marcasDe(c) {
-      return (c.certificado === "gratuito" ? ["cert-gratuito"] : [])
-        .concat(c.gratuidade_comprovada === false ? ["grat-confirmar"] : [])
-        .concat((c.etiquetas || []).map(function (e) { return "pub:" + e.texto; }))
-        .concat((c.acessibilidade || []).map(function (e) { return "acc:" + e.texto; }));
-    }
     function textoMarca(m) {
       return m === "cert-gratuito" ? "Certificado gratuito" : m === "grat-confirmar" ? "Gratuidade por confirmar" : m.replace(/^(pub|acc):/, "");
-    }
-    function cidadesDe(c) {
-      if ((c.turmas || []).length) return turmasAtuais(c).map(function (t) { return t.cidade; }).filter(Boolean);
-      var l = [c.cidade].concat((c.onde_inscrever || []).map(function (u) { return u.municipio; }));
-      return l.filter(Boolean);
     }
     var ulBarreiras = el("cursos-barreiras");
     [].forEach.call(ulBarreiras.querySelectorAll("button"), function (b) {
@@ -1010,6 +1105,11 @@
         marcaSumiu = textoMarca(marcaEscolhida); marcaEscolhida = "";
       }
       (r[1].guias || []).forEach(function (g) { guiasPorId[g.id] = g; });
+      var salvas = lerBuscas();
+      salvas.forEach(function (b) {
+        if (buscaAoAbrir && chaveBusca(b.q) === buscaAoAbrir) { novosDesde = b.visto || ""; b.visto = hojeIso(); }
+      });
+      if (novosDesde !== null) gravarBuscas(salvas);
       esconderSemCursos(el("cursos-opcoes"), "data-id", escolhidas, necessidadeTemCurso(todos));
       esconderSemCursos(ulBarreiras, "data-barreira", barreiras, function (id) {
         return todos.some(function (c) { return passaBarreira(c, id); });

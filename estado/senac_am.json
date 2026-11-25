@@ -130,31 +130,31 @@
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-23",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-376-2026-senac-manaus-cei-inscricoes-abertas-2356|n-376-2026-senac-manaus-cei-inscricoes-abertas-6a453d418c95.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-19",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-375-2026-senac-manaus-cei-inscricoes-abertas-2355|n-375-2026-senac-manaus-cei-inscricoes-abertas-355bbd9d38d1.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-19",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-374-2026-senac-carreta-de-informatica-inscricoes-abertas-parceria-23|n-374-2026-senac-carreta-de-informatica-inscricoes-abertas-parceria-4f419e72ea26.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-19",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-373-2026-senac-manaus-cidade-nova-inscricoes-abertas-2353|n-373-2026-senac-manaus-cidade-nova-inscricoes-abertas-c026612bb08c.pdf": {
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-18",
    "cursos": 0,
-   "tentativas": 1
+   "tentativas": 2
   },
   "senac-am-n-372-2026-senac-manaus-centro-cth-inscricoes-abertas-2352|n-372-2026-senac-manaus-centro-cth-inscricoes-abertas-c622599e2f09.pdf|errata-001-n-372-2026-senac-manaus-cth-alteracoes-de-periodo-173b0e81059d.pdf": {
    "data": "2026-11-24",
@@ -166,6 +166,36 @@
    "data": "2026-11-24",
    "inscricao_ate": "2026-11-17",
    "cursos": 1,
+   "tentativas": 1
+  },
+  "senac-am-n-370-2026-senac-parintins-inscricoes-abertas-parceria-2350|n-370-2026-senac-parintins-inscricoes-abertas-parceria-af9cf6eedb65.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-25",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senac-am-n-369-2026-senac-maues-inscricoes-abertas-2347|n-369-2026-senac-maues-inscricoes-abertas-70bc334dbd33.pdf|errata-001-n-369-2026-senac-maues-alteracao-de-periodo-a559418e8b98.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-11",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senac-am-n-368-2026-senac-maues-inscricoes-abertas-2346|n-368-2026-senac-maues-inscricoes-abertas-f3e4c73d1e9d.pdf|errata-001-n-368-2026-senac-maues-alteracao-de-periodo-165b281e96d5.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-11",
+   "cursos": 1,
+   "tentativas": 1
+  },
+  "senac-am-n-367-2026-senac-itacoatiara-inscricoes-abertas-2345|n-367-2026-senac-itacoatiara-inscricoes-abertas-71f7fc1893f5.pdf|errata-001-n-367-2026-senac-itacoatiara-alteracao-de-periodo-3c6a71d38207.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-12",
+   "cursos": 5,
+   "tentativas": 1
+  },
+  "senac-am-n-366-2026-senac-itacoatiara-inscricoes-abertas-2344|n-366-2026-senac-itacoatiara-inscricoes-abertas-657069138d2e.pdf|errata-001-n-366-2026-senac-itacoatiara-alteracao-de-periodo-e-numero-de-vagas-4a47bf8ffb37.pdf": {
+   "data": "2026-11-24",
+   "inscricao_ate": "2026-11-12",
+   "cursos": 3,
    "tentativas": 1
   }
  }

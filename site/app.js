@@ -139,10 +139,17 @@
   // turno pelo horário de início da turma: antes das 12h manhã, até às 18h tarde, depois noite
   function turnosDe(c) {
     if (!(c.turmas || []).length) return c.turnos || [];
-    return turmasAtuais(c).map(function (t) {
-      var h = parseInt((t.horario || "").split(":")[0], 10);
-      return isNaN(h) ? "" : h < 12 ? "Manhã" : h < 18 ? "Tarde" : "Noite";
-    }).filter(Boolean);
+    // turno pelo horário da turma («08:00 - 12:00»). Turma de dia inteiro (ex.: 08:00 - 17:00) não conta como
+    // «de manhã» nem «à tarde», porque ocupa os dois (25/11/2026).
+    return turmasAtuais(c).map(turnoDaTurma).filter(Boolean);
+  }
+  function turnoDaTurma(t) {
+    var m = /(\d{1,2})[:h](\d{2})?\s*(?:-|–|às|a)?\s*(?:(\d{1,2})[:h]\d{0,2})?/.exec(t.horario || "");
+    if (!m) return "";
+    var ini = +m[1], fim = m[3] !== undefined ? +m[3] : null;
+    if (ini >= 17) return "Noite";
+    if (fim !== null && ini < 12 && fim > 13) return "";
+    return ini < 12 ? "Manhã" : "Tarde";
   }
   function semAncora(u) { return String(u || "").split("#")[0]; }
   function turmaHtml(t, comBotao, tituloCurso, curso) {
@@ -325,6 +332,14 @@
   // «O que facilita para você?»: o curso passa nesta opção? (usada no filtro e para contar)
   function passaBarreira(c, id) {
     if (id === "noite") return turnosDe(c).indexOf("Noite") >= 0;
+    if (id === "manha") return turnosDe(c).indexOf("Manhã") >= 0;
+    if (id === "tarde") return turnosDe(c).indexOf("Tarde") >= 0;
+    // aceita menores de 18 anos: idade mínima abaixo de 18 escrita na fonte (no curso ou numa turma aberta)
+    if (id === "jovens") {
+      var idades = [c.idade_minima].concat(((c.turmas || []).length ? turmasAtuais(c) : []).map(function (t) { return t.idade_minima; }))
+        .map(function (x) { return parseInt(x, 10); }).filter(function (x) { return !isNaN(x); });
+      return idades.some(function (x) { return x < 18; });
+    }
     if (id === "sem_internet") return c.internet === "Não";
     if (id === "sem_escolaridade") return ["Nenhuma", "Saber ler e escrever"].indexOf(c.escolaridade) >= 0;
     if (id === "ajuda") return !!c.ajuda && !/^n[aã]o/i.test(c.ajuda);
@@ -714,6 +729,12 @@
 
     function cursoHtml(c, i) {
       var turmas = turmasAtuais(c);
+      // com um filtro de turno ligado, o cartão mostra só as turmas desse turno (25/11/2026)
+      var turnosPedidos = barreiras.map(function (b) { return { manha: "Manhã", tarde: "Tarde", noite: "Noite" }[b]; }).filter(Boolean);
+      if (turnosPedidos.length) {
+        var doTurno = turmas.filter(function (t) { return turnosPedidos.indexOf(turnoDaTurma(t)) >= 0; });
+        if (doTurno.length) turmas = doTurno;
+      }
       var temTurmas = (c.turmas || []).length > 0;
       var factos = [];
       // marcas que filtram a lista quando se clica: data-filtro="tipo:valor" (onde, facilita ou marca)

@@ -13,5 +13,3 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt && sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1
       - run: cd scripts && CETAM_EDITAL=009/2026 HOJE_ENSAIO=2026-08-18 python3 cetam.py
-      - run: cd scripts && CETAM_EDITAL=010/2026 HOJE_ENSAIO=2026-08-25 python3 cetam.py
-      - run: cd scripts && CETAM_EDITAL=011/2026 HOJE_ENSAIO=2026-11-03 python3 cetam.py

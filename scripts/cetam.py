@@ -298,17 +298,19 @@ def ler_tabela(layout):
         if re.search(r"\bENDEREÇO\b", l):
             # nome da unidade (capital): a última linha em maiúsculas antes do endereço; o que vem a partir dela (ou
             # do endereço, duas linhas acima) não pertence à tabela anterior
-            u_idx = i - 2
+            u_idx, nova = i - 2, ""
             if not municipio:
                 for j in range(i - 1, max(ini, i - 14), -1):
                     x = normal(linhas[j])
                     if (x and x.isupper() and "@" not in x and "E-MAIL" not in x and not RODAPE.search(x)
                             and not re.search(r"\d{4,}|^\d+$", x) and len(x) > 6 and not re.match(r"N\.º", x)):
-                        unidade, u_idx = x, j
+                        nova, u_idx = x, j
                         break
             segmento = [(j, x) for j, x in segmento if j < min(u_idx, i - 2)]
-            fechar_segmento()
+            fechar_segmento()  # a tabela anterior fecha com a unidade anterior
             segmento, centros = [], None
+            if nova:
+                unidade = nova
             end = [p for p, _ in pedacos(l) if p not in ("ENDEREÇO",) and "@" not in p and "E-MAIL" not in p]
             prox = [p for x in linhas[i - 2:i + 3] for p, c in pedacos(x)
                     if p not in ("ENDEREÇO", "E-MAIL", "TELEFONE") and "@" not in p and not re.match(r"\(\d\d\)", p)

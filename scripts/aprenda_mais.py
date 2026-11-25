@@ -23,7 +23,7 @@ import re
 import sys
 import unicodedata
 
-from base import (registar_pendencia, certificado_da_frase, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
+from base import (NECESSIDADES, necessidades_para_claude, registar_pendencia, certificado_da_frase, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
                   citacao_valida, exige_prova, hoje_iso, registo_historico, texto_de_html)
 from comum import baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
 
@@ -34,8 +34,6 @@ ESTADO = "estado/aprenda_mais.json"  # cursos já avaliados pelo Claude (escolhi
 FAQ = SITE + "/mod/page/view.php?id=100"
 FRASE_CERTIFICADO = "Totalmente gratuitos, inclusive o certificado."
 FRASE_GRATUITO = "oferece cursos on-line, abertos e gratuitos em diversas áreas do conhecimento"
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 ROTULOS = ["Conteúdo", "Conclusão do curso", "Carga horária", "Prazo mínimo para obtenção do certificado",
            "Público-alvo", "Requisitos", "Módulos", "Metodologia", "Instituição", "Área", "Nível", "Idioma"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
@@ -196,7 +194,7 @@ def main():
                 f"Requisitos: {c['d'].get('Requisitos', '')[:120]}"
                 for k, c in enumerate(lote, 1))
             texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                                f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | nome | área | "
+                                f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nCursos (número | nome | área | "
                                 f"carga horária | conteúdo | público | requisitos):\n{texto_lista}", max_tokens=6000)
             custo += custo_estimado(uso, cfg["modelo_cursos"])
             for x in (extrair_json(texto) or []):

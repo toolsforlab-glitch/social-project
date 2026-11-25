@@ -172,6 +172,35 @@ class Base:
                 json.dump(self.dados, f, ensure_ascii=False, indent=1)
 
 
+
+# -------------------------------------------------------------- necessidades («O que você quer aprender?»)
+# Lista única para todos os scripts que pedem ao Claude para classificar cursos. Os ids não mudam (estão gravados
+# na coluna Necessidades da aba Cursos); o texto no site vem da aba Necessidades. A explicação de cada id vai no
+# pedido ao Claude, para não confundir os temas (regra do responsável, 25/11/2026: «Terminar a escola» é só EJA
+# e supletivo; as matérias soltas vão para «materias»; «mudar» passou a ser desenvolvimento pessoal e no trabalho).
+NECESSIDADES_GUIA = [
+    ("digital", "usar o computador, o celular e a internet (informática básica, serviços digitais)"),
+    ("tecnologia", "trabalhar com tecnologia (programação, dados, redes, manutenção de computadores)"),
+    ("portugues", "aprender português (leitura, escrita, gramática, comunicação)"),
+    ("linguas", "aprender outra língua (inglês, espanhol, Libras...)"),
+    ("profissao", "aprender uma profissão (curso que prepara para um ofício ou ocupação)"),
+    ("mudar", "desenvolvimento pessoal e no trabalho (comportamento, organização, inteligência emocional, carreira)"),
+    ("escola", "terminar a escola: SÓ EJA, supletivo ou curso que dá o diploma do ensino fundamental ou médio"),
+    ("materias", "estudar matérias da escola (matemática, português, ciências, história, filosofia...) sem dar diploma"),
+    ("emprego", "encontrar emprego (currículo, entrevista, preparação para o mercado)"),
+    ("negocio", "abrir o próprio negócio (empreendedorismo, vendas, gestão de pequeno negócio)"),
+    ("dinheiro", "organizar o dinheiro (finanças pessoais, dívidas, poupança)"),
+    ("direitos", "conhecer os direitos (cidadania, direitos trabalhistas, sociais, do consumidor)"),
+]
+NECESSIDADES = [i for i, _ in NECESSIDADES_GUIA]
+EJA = re.compile(r"\b(eja|supletivo|encceja|educa[çc][ãa]o de jovens(?:,)? (?:e )?adultos|eleva[çc][ãa]o de escolaridade|"
+                 r"integrad[oa] ao ensino (?:m[ée]dio|fundamental))\b", re.I)
+
+
+def necessidades_para_claude():
+    """Texto da lista de necessidades para os pedidos ao Claude: «id = explicação; …»."""
+    return "; ".join(f"{i} = {d}" for i, d in NECESSIDADES_GUIA)
+
 # -------------------------------------------------------------- configuração
 
 def carregar_config(base):

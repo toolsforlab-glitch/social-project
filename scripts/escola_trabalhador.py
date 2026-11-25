@@ -22,7 +22,7 @@ import json
 import re
 import sys
 
-from base import (registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
+from base import (NECESSIDADES, necessidades_para_claude, registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
                   certificado_da_frase, citacao_valida, exige_prova, hoje_iso, registo_historico, texto_de_html)
 from comum import baixar, claude, custo_estimado, extrair_json
 
@@ -36,8 +36,6 @@ FRASE_GRATUITO = "oferece cursos gratuitos em temas de tecnologia e produtividad
 FRASE_CERTIFICADO = ("O certificado é reconhecido e chancelado pela Microsoft e pelo Ministério do Trabalho, sendo "
                      "gratuito e emitido automaticamente pela plataforma.")
 FRASE_APROVACAO = "é necessário concluir o curso e atingir pelo menos 50% de aproveitamento no teste de conhecimentos"
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
 Brasil a encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer os seus direitos. Recebe as trilhas \
 da Escola do Trabalhador 4.0 (Ministério do Trabalho e Microsoft; on-line, gratuitas, com certificado gratuito), cada \
@@ -148,7 +146,7 @@ def main():
         lista = "\n".join(f"{i} | {t['titulo'][:120]} | cursos: {'; '.join(n for _, n in t['cursos'])[:300]} | "
                           f"{t['detalhe'][:160]}" for i, t in enumerate(novas, 1))
         texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                            f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nTrilhas (número | título | cursos | "
+                            f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nTrilhas (número | título | cursos | "
                             f"descrição do primeiro curso):\n{lista}", max_tokens=4000)
         custo += custo_estimado(uso, cfg["modelo_cursos"])
         escolha = {}

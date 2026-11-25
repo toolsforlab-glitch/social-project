@@ -25,14 +25,12 @@ import urllib.parse
 import urllib.request
 from html import unescape
 
-from base import VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso, sim, texto_de_html
+from base import NECESSIDADES, necessidades_para_claude, VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso, sim, texto_de_html
 from comum import claude, custo_estimado, extrair_json
 
 ABA = "Catálogos"
 COM_LEITOR_PROPRIO = ("ev.org.br", "escolavirtual.gov.br", "loja.sebrae.com.br")
 MAX_PAGINAS, MAX_LINKS, MAX_NOVOS = 20, 300, 40
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 SISTEMA = """Você escolhe cursos gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no Brasil a \
 encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer os seus direitos. Recebe páginas do catálogo de \
 uma instituição (número, título, começo do texto). Escolha só as que são de UM curso (não listas, notícias, \
@@ -140,7 +138,7 @@ def main():
         if lidos:
             lista_txt = "\n".join(f"{i} | {t} | {d[:220]}" for i, (_, t, d) in enumerate(lidos, 1))
             texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                                f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nPáginas (número | título | começo):\n{lista_txt}",
+                                f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nPáginas (número | título | começo):\n{lista_txt}",
                                 max_tokens=4000)
             custo += custo_estimado(uso, cfg["modelo_cursos"])
             escolhidos = [x for x in (extrair_json(texto) or []) if isinstance(x, dict) and str(x.get("n", "")).isdigit()

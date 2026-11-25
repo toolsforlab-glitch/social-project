@@ -23,7 +23,7 @@ import json
 import re
 import sys
 
-from base import (registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
+from base import (NECESSIDADES, necessidades_para_claude, registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
                   citacao_valida, exige_prova, hoje_iso, registo_historico, texto_de_html)
 from comum import baixar, claude, custo_estimado, extrair_json
 
@@ -36,8 +36,6 @@ NOTICIA = ("https://noticias.portaldaindustria.com.br/noticias/educacao/"
            "parabens-senai-play-cinco-anos-inovando-na-educacao-profissional-do-brasil/")
 FRASE_GRATUITO = "todos os cursos são 100% online e gratuitos"
 FRASE_CERTIFICADO = "é possível emitir um certificado do curso por uma taxa simbólica"
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
 Brasil a encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer os seus direitos. Recebe cursos do \
 SENAI Play (on-line, gratuitos, de 16 horas ou mais). Escolha os que servem a qualquer pessoa que quer aprender uma \
@@ -169,7 +167,7 @@ def main():
         lista = "\n".join(f"{i} | {d['titulo'][:120]} | {d['categoria']} | {d['horas']}h | {d['descricao'][:200]}"
                           for i, d in enumerate(novos_lidos, 1))
         texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                            f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | título | tipo | horas | "
+                            f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nCursos (número | título | tipo | horas | "
                             f"descrição):\n{lista}", max_tokens=6000)
         custo += custo_estimado(uso, cfg["modelo_cursos"])
         escolha = {}

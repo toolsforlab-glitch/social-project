@@ -34,7 +34,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-from base import (registar_pendencia, DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
+from base import (NECESSIDADES, necessidades_para_claude, registar_pendencia, DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
                   hoje_iso, registo_historico, sim, texto_de_html)
 from comum import claude, custo_estimado, extrair_json
 
@@ -52,8 +52,6 @@ DATAS = re.compile(r"\b\d{1,2}/\d{1,2}/\d{2,4}\b|\b\d{1,2} de (janeiro|fevereiro
 PRODUTO = re.compile(r"^https://loja\.sebrae\.com\.br/[a-z0-9-]+-(?:\d{9,}|a0[a-z0-9]{14,})/?$", re.I)
 ENTIDADE = "Sebrae (cursos online)"
 MARCA = "lida na página oficial, conferida por código"
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
 Brasil a encontrar qualificação, emprego, a organizar o dinheiro, a abrir ou cuidar de um pequeno negócio (MEI, \
 artesão, produtor rural) ou a conhecer os seus direitos. Recebe cursos do Sebrae. Escolha os que servem a qualquer \
@@ -339,7 +337,7 @@ def main():
                               for i, d in enumerate(lote, 1))
             try:
                 texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                                    f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | título | público | "
+                                    f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nCursos (número | título | público | "
                                     f"descrição):\n{lista}", max_tokens=6000)
             except Exception as e:  # noqa: BLE001
                 print(f"  ! Claude, lote {ini // LOTE + 1}: {e}")

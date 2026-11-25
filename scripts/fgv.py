@@ -20,7 +20,7 @@ import json
 import re
 import sys
 
-from base import (registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
+from base import (NECESSIDADES, necessidades_para_claude, registar_pendencia, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config,
                   certificado_da_frase, citacao_valida, exige_prova, hoje_iso, registo_historico, sim, texto_de_html)
 from comum import baixar, claude, custo_estimado, extrair_json
 
@@ -31,8 +31,6 @@ MARCA = "lida na API oficial do portal, conferida por código"
 FAQ = SITE + "/duvidas-frequentes"
 FRASE_GRATUITO = "Os cursos da FGV em parceria com o OEG são inteiramente gratuitos."
 FRASE_DISPONIVEL = "O curso ficará disponível enquanto estiver ativo no portfólio de cursos gratuitos da FGV"
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
 Brasil a encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer os seus direitos. Recebe cursos \
 gratuitos e autoinstrucionais da FGV (curtos, de 1 a 30 horas). Escolha os que servem a qualquer pessoa que quer \
@@ -148,7 +146,7 @@ def main():
             lista = "\n".join(f"{i} | {d['titulo'][:120]} | {d['area']} | {d['horas']}h | {d['descricao'][:160]} | "
                               f"Público: {d['publico'][:160]}" for i, d in enumerate(lote, 1))
             texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                                f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | título | área | "
+                                f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nCursos (número | título | área | "
                                 f"horas | descrição | público):\n{lista}", max_tokens=6000)
             custo += custo_estimado(uso, cfg["modelo_cursos"])
             for x in (extrair_json(texto) or []):

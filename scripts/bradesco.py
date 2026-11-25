@@ -18,7 +18,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-from base import (registar_pendencia, DESCRICAO_PAGINA, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
+from base import (NECESSIDADES, necessidades_para_claude, registar_pendencia, DESCRICAO_PAGINA, certificado_da_frase, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
                   hoje_iso, registo_historico, sim, texto_de_html)
 from comum import claude, custo_estimado, extrair_json
 
@@ -30,8 +30,6 @@ MARCA = "lida na página oficial, conferida por código"
 FAQ = SITE + "/faq"
 FRASE_CERTIFICADO = ("Na Escola Virtual da Fundação Bradesco você não paga nada nem para fazer o curso, nem para "
                      "emitir o certificado.")
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 SISTEMA = """Você escolhe cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no \
 Brasil a encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer os seus direitos. Recebe cursos da \
 Escola Virtual da Fundação Bradesco. Escolha os que servem a qualquer pessoa que quer aprender ou trabalhar (deixe de \
@@ -178,7 +176,7 @@ def main():
     if novos_lidos:
         lista = "\n".join(f"{i} | {d['titulo'][:150]} | {d['descricao'][:200]}" for i, d in enumerate(novos_lidos, 1))
         texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                            f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (número | título | descrição):\n{lista}",
+                            f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nCursos (número | título | descrição):\n{lista}",
                             max_tokens=5000)
         custo += custo_estimado(uso, cfg["modelo_cursos"])
         escolha = {}

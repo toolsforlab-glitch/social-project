@@ -7,7 +7,7 @@ import os
 import re
 import sys
 
-from base import DESCRICAO_PAGINA, DESCRICAO_RESUMO, VERIFICACAO_INICIAL, Base, carregar_config, exige_prova, hoje_iso
+from base import NECESSIDADES_GUIA, DESCRICAO_PAGINA, DESCRICAO_RESUMO, VERIFICACAO_INICIAL, Base, carregar_config, exige_prova, hoje_iso
 from comum import ErroClaude, claude, custo_estimado, dominio_permitido, extrair_json, hoje, verificar_link
 
 ABA = "Cursos"
@@ -124,7 +124,8 @@ def id_curso(url, titulo):
 
 def pedido_para(tarefa, cfg):
     local = tarefa["local"]
-    necessidades = ", ".join(f"{n['id']} ({n['rotulo']})" for n in cfg["necessidades"])
+    guia = dict(NECESSIDADES_GUIA)
+    necessidades = "; ".join(f"{n['id']} = {guia.get(n['id'], n['rotulo'])}" for n in cfg["necessidades"])
     perfis = ", ".join(cfg["perfis_internos"])
     if local == "online":
         onde = ('Cursos 100% online. "modalidade": "online". "pais": "PT", "BR" ou "Internacional" conforme a '

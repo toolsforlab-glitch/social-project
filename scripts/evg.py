@@ -26,7 +26,7 @@ import re
 import sys
 import urllib.request
 
-from base import (DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
+from base import (NECESSIDADES, necessidades_para_claude, DESCRICAO_PAGINA, HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida,
                   hoje_iso, registo_historico, sim)
 from comum import claude, custo_estimado, extrair_json
 
@@ -52,8 +52,6 @@ PALAVRAS = re.compile(r"finan|dinheiro|or[çc]amento\s+(pessoal|familiar|dom)|em
                       r"direitos|cidadania|consumidor|golpe|seguran[çc]a\s+(digital|da\s+informa)|comunica[çc][ãa]o|"
                       r"ingl[êe]s|espanhol|portugu[êe]s|reda[çc][ãa]o|escrita|sa[úu]de\s+mental|primeiros\s+socorros|"
                       r"migra|refugi|racis|LGBT|diversidade|inclus[ãa]o", re.I)
-NECESSIDADES = ["digital", "tecnologia", "portugues", "linguas", "profissao", "mudar", "escola", "emprego", "negocio",
-                "dinheiro", "direitos"]
 
 SISTEMA = """Escolhes cursos on-line gratuitos para um site que ajuda pessoas em situação de vulnerabilidade no Brasil a \
 encontrar qualificação, emprego, a organizar o dinheiro ou a conhecer os seus direitos. Recebes cursos da Escola \
@@ -199,7 +197,7 @@ def main():
         lista = "\n".join(f"{c['id_curso']} | {c['tx_nome_curso']} | {(c.get('tematica') or {}).get('tx_nome_tematica', '') if isinstance(c.get('tematica'), dict) else ''} | "
                           f"{sem_html(c.get('tx_apresentacao'))[:220]}" for c in pre[:250])
         texto, uso = claude(cfg["modelo_cursos"], SISTEMA,
-                            f"Necessidades (ids): {', '.join(NECESSIDADES)}.\n\nCursos (id | título | tema | apresentação):\n{lista}",
+                            f"Necessidades (id = o que é): {necessidades_para_claude()}.\n\nCursos (id | título | tema | apresentação):\n{lista}",
                             max_tokens=6000)
         custo += custo_estimado(uso, cfg["modelo_cursos"])
         escolha = {int(x["id"]): x for x in (extrair_json(texto) or []) if isinstance(x, dict) and str(x.get("id", "")).isdigit()}

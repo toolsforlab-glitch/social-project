@@ -1,0 +1,110 @@
+{
+ "entidades": [
+  {
+   "entidade": "Sebrae (cursos online)",
+   "dominio": "sebrae.com.br",
+   "exemplos": [
+    "https://loja.sebrae.com.br/otimizac-o-de-resultados-de-marketing-digital-chatbot-372000063385",
+    "https://loja.sebrae.com.br/quais-os-passos-para-a-definic-o-de-preco-de-produtos-e-servicos-a0jv2000000h5ckmaa"
+   ],
+   "cursos": 220,
+   "n": 1
+  },
+  {
+   "entidade": "SENAI Pará (Gratuidade Regimental)",
+   "dominio": "senaipa.org.br",
+   "exemplos": [
+    "https://www.senaipa.org.br/escolas-1/escola-digital",
+    "https://www.senaipa.org.br/escolas-1/senai-altamira"
+   ],
+   "cursos": 91,
+   "n": 2
+  },
+  {
+   "entidade": "Senac Pará (Programa Senac de Gratuidade)",
+   "dominio": "pa.senac.br",
+   "exemplos": [
+    "https://www.pa.senac.br/psg/selecao"
+   ],
+   "cursos": 22,
+   "n": 3
+  },
+  {
+   "entidade": "Senac Ceará (Programa Senac de Gratuidade)",
+   "dominio": "ce.senac.br",
+   "exemplos": [
+    "https://psg.ce.senac.br/oportunidades/"
+   ],
+   "cursos": 16,
+   "n": 4
+  },
+  {
+   "entidade": "Instituto Federal do Amapá (Ifap)",
+   "dominio": "ifap.edu.br",
+   "exemplos": [
+    "https://www.ifap.edu.br/documents/1317/Edital_PROEJA_2027.pdf"
+   ],
+   "cursos": 9,
+   "n": 5
+  },
+  {
+   "entidade": "Senac Amazonas (Programa Senac de Gratuidade)",
+   "dominio": "am.senac.br",
+   "exemplos": [
+    "https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-394-2026-senac-parintins-inscricoes-abertas-fb4e66490538.pdf",
+    "https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-392-2026-senac-parintins-inscricoes-abertas-parceria-a207814f0172.pdf"
+   ],
+   "cursos": 5,
+   "n": 6
+  },
+  {
+   "entidade": "Governo da Paraíba – Secties (Caminhos Digitais)",
+   "dominio": "caminhosdigitais.com.br",
+   "exemplos": [
+    "https://caminhosdigitais.com.br/inscricao/"
+   ],
+   "cursos": 5,
+   "n": 7
+  },
+  {
+   "entidade": "Senac Acre (Programa Senac de Gratuidade)",
+   "dominio": "ac.senac.br",
+   "exemplos": [
+    "https://portal.ac.senac.br/psg/assets/arquivos/Edital_PSG_147_2026_presencial_NEP_RBR_vagas_unidade_Clicia_Gadelha.pdf",
+    "https://portal.ac.senac.br/psg/assets/arquivos/Edital_PSG_145_2026_presencial_CEP_CZS_vagas_unidade_Escola_Cunha_Vasconcelos_Rodrigues_Alves.pdf"
+   ],
+   "cursos": 4,
+   "n": 8
+  },
+  {
+   "entidade": "Senac Maranhão (Programa Senac de Gratuidade)",
+   "dominio": "ma.senac.br",
+   "exemplos": [
+    "https://ma.senac.br/editais_psg/edital-psg-no-168-2026-assistente-administrativo-sao-domingos-do-maranhao-ma/",
+    "https://ma.senac.br/editais_psg/edital-senac-ma-psg-2026-no-172-auxiliar-de-cozinha-e-pizzaiolo-barreirinhas-ma/"
+   ],
+   "cursos": 3,
+   "n": 9
+  },
+  {
+   "entidade": "Senac Alagoas (Programa Senac de Gratuidade)",
+   "dominio": "al.senac.br",
+   "exemplos": [
+    "https://psg.al.senac.br/admin/wp-content/uploads/2026/10/Edital-de-Bolsas-Gratuitas-19-2026-manifesto.pdf",
+    "https://psg.al.senac.br/admin/wp-content/uploads/2026/11/Edital-de-Bolsas-Gratuitas-24-2026_2027.pdf"
+   ],
+   "cursos": 3,
+   "n": 10
+  },
+  {
+   "entidade": "IF Baiano",
+   "dominio": "ifbaiano.edu.br",
+   "exemplos": [
+    "https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-ruy-barbosa-2027/",
+    "https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-remanso-2027/"
+   ],
+   "cursos": 3,
+   "n": 11
+  }
+ ]
+}

@@ -222,6 +222,13 @@ def candidatos_do_dia(base, cfg, linhas, hoje, consultas, forcar):
               ([] if gratuidade_comprovada(r) else ["gratuito"])
         if duv:
             candidatos.append((r, duv))
+    # o certificado das entidades da rodada por entidade (chatgpt_certificado.py) não se pergunta curso a curso
+    # (25/11/2026): uma frase oficial por entidade resolve todos os cursos dela
+    por_entidade = {e.get("entidade") for e in ler_json("estado/chatgpt_certificado.json", {}).get("entidades", [])}
+    if por_entidade:
+        candidatos = [(r, [d for d in duv if not (d == "certificado" and r.get("Entidade") in por_entidade)])
+                      for r, duv in candidatos]
+        candidatos = [(r, duv) for r, duv in candidatos if duv]
     candidatos.sort(key=lambda x: min(ORDEM.index(d) for d in x[1]))
     return candidatos
 

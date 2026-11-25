@@ -117,6 +117,29 @@ VIGIAS = [
      "resumo": "notícias recentes de vagas gratuitas",
      "verificar": "O Senac Tocantins não tem lista pública das turmas do PSG. Abra a notícia e procure o edital ou a "
                   "página oficial com as datas de inscrição; peça ao Claude para criar o curso (pode anexar o PDF)."},
+    # Institutos federais (cursos FIC, técnicos subsequentes e EJA, gratuitos; entram os que não têm prova): as páginas
+    # que listam os editais são lidas e cada edital NOVO de seleção de alunos abre uma pendência, para se criar o curso
+    # a partir do edital (prova, sorteio ou ordem de inscrição conferidos no PDF). Tipo «itens»: na primeira leitura só
+    # se guardam os editais que já lá estão.
+    {"nome": "IFRN (portal de processos seletivos)",
+     "itens": ["https://processoseletivo.ifrn.edu.br/"], "estado": "estado/ifrn_editais.json",
+     "item": r"<td[^>]*>\s*(EDITAL[^<]{10,300}?)\s*</td>",
+     "incluir": r"FIC|Forma[çc][ãa]o Inicial|Subsequente|EJA|Proeja|Qualifica",
+     "excluir": r"P[óo]s-Gradua|Mestrado|Doutorado|Especializa|Licenciatura|Superior|Gradua[çc][ãa]o|BOLSISTA|ESTAGI|servidores|funcion[áa]rios|privação de liberdade",
+     "link": "https://processoseletivo.ifrn.edu.br/",
+     "verificar": "Edital novo de cursos para a comunidade no IFRN. Abra o edital: entra se for gratuito, sem prova "
+                  "(sorteio, ordem de inscrição ou análise de documentos) e com inscrições abertas. Peça ao Claude para "
+                  "criar o curso."},
+    {"nome": "IFRO (cursos FIC dos campi)",
+     "itens": ["https://selecao.ifro.edu.br/extensao-ariquemes", "https://selecao.ifro.edu.br/extensao-buritis", "https://selecao.ifro.edu.br/extensao-cacoal", "https://selecao.ifro.edu.br/extensao-colorado", "https://selecao.ifro.edu.br/extensao-guajara-mirim", "https://selecao.ifro.edu.br/extensao-jaru", "https://selecao.ifro.edu.br/extensao-jiparana", "https://selecao.ifro.edu.br/extensao-calama", "https://selecao.ifro.edu.br/extensao-zona-norte", "https://selecao.ifro.edu.br/extensao-saomiguel", "https://selecao.ifro.edu.br/extensao-vilhena", "https://selecao.ifro.edu.br/reitoria"],
+     "estado": "estado/ifro_fic.json",
+     "item": r'<h2 class="tileHeadline">\s*<a href="([^"]+)">([^<]+)</a>',
+     "incluir": r"sele[çc][ãa]o de (alunos|cursistas|estudantes)|curso",
+     "excluir": r"professor|bolsista|profissionais|mediador|docente|servidor|ONU|coral|audi[çc]",
+     "link": "https://selecao.ifro.edu.br/cursos-fic",
+     "verificar": "Edital novo de curso FIC (curta duração, gratuito) num campus do IFRO. Abra o edital: entra se não "
+                  "tiver prova (sorteio, ordem de inscrição ou análise de documentos) e as inscrições estiverem abertas. "
+                  "Peça ao Claude para criar o curso."},
     # OSCs aprovadas pelos critérios de histórico (regra do responsável, 25/11/2026; ver LEIAME). Não publicam as turmas
     # num site: a inscrição é feita no município, pela própria OSC. Se o Google Notícias tiver notícias recentes de cursos
     # ou inscrições com o nome delas, abre-se uma pendência (uma por mês e por OSC). Os cursos só entram com página
@@ -251,6 +274,45 @@ def vigiar_wp(base, v):
                                v["verificar"], link, origem="vigiar.py")
 
 
+def vigiar_itens(base, v):
+    """Editais novos numa ou mais páginas de listas (comparados com os da leitura anterior)."""
+    import html as _html
+    import re
+    import urllib.parse
+    from comum import gravar_json, ler_json
+    achados = {}
+    for url in v["itens"]:
+        try:
+            pagina = baixar(url, timeout=40).decode("utf-8", "replace")
+        except Exception as e:  # noqa: BLE001
+            print(f"{v['nome']}: {url} não abriu ({type(e).__name__}).")
+            continue
+        for m in re.finditer(v["item"], pagina, flags=re.S | re.I):
+            partes = m.groups()
+            titulo = re.sub(r"\s+", " ", _html.unescape(partes[-1])).strip()
+            link = urllib.parse.urljoin(url, partes[0]) if len(partes) > 1 else url
+            if re.search(v["incluir"], titulo, flags=re.I) and not re.search(v["excluir"], titulo, flags=re.I):
+                achados[titulo] = link
+    if not achados:
+        print(f"{v['nome']}: nenhum edital lido (a página mudou?).")
+        return
+    estado = ler_json(v["estado"], None)
+    if estado is None:
+        gravar_json(v["estado"], {"titulos": sorted(achados)})
+        print(f"{v['nome']}: primeira leitura, {len(achados)} editais guardados.")
+        return
+    novos = [(t, l) for t, l in achados.items() if t not in set(estado.get("titulos", []))]
+    gravar_json(v["estado"], {"titulos": sorted(set(estado.get("titulos", [])) | set(achados))})
+    if not novos:
+        print(f"{v['nome']}: sem editais novos ({len(achados)} na lista).")
+        return
+    for titulo, link in novos:
+        print(f"{v['nome']}: edital novo: {titulo} {link}")
+        if base is not None:
+            registar_pendencia(base, f"{v['nome']}: edital novo «{titulo[:200]}».", v["verificar"], link,
+                               origem="vigiar.py")
+
+
 def main():
     import os
     if os.environ.get("SECO"):  # ensaio: só as vigias por notícias, sem planilha
@@ -266,6 +328,9 @@ def main():
             continue
         if v.get("wp"):
             vigiar_wp(base, v)
+            continue
+        if v.get("itens"):
+            vigiar_itens(base, v)
             continue
         try:
             html = baixar(v["url"], timeout=40).decode("utf-8", "replace")

@@ -1,0 +1,17 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          cd scripts && python3 - <<'P'
+          import re, urllib.request
+          import vigiar
+          for v in vigiar.VIGIAS[-5:]:
+              x=urllib.request.urlopen(urllib.request.Request(v["rss"],headers={"User-Agent":"Mozilla/5.0"}),timeout=40).read().decode("utf-8","replace")
+              its=re.findall(r"<item><title>(.*?)</title>.*?<pubDate>(.*?)</pubDate>",x,flags=re.S)
+              print("##",v["nome"],"itens:",len(its))
+              for t,d in its[:6]: print("   ",d[5:16],"|",t[:150])
+          P

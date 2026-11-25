@@ -511,6 +511,9 @@ def certificado_da_frase(valor, frase):
     if valor == "gratuito" and re.search(r"n[ãa]o\s+(paga|pagar[áa]?|cobra|[ée]\s+cobrad\w*)\s+(nada|nenhum\w*|qualquer)"
                                         r"[^.]{0,80}?certificad", frase, re.I):
         return "gratuito"
+    # taxa só da 2ª via não quer dizer que o certificado é pago (Regimentos do Senac CE e AM, 25/11/2026)
+    if valor == "pago" and re.search(r"2\s*[ªa]\.?\s*via|segunda\s+via", frase, re.I):
+        return ""
     if valor == "pago" and re.search(r"\bpag[oa]\b|taxa|r\$|valor\s+de", frase, re.I):
         return "pago"
     if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa]|geram?)\s+"

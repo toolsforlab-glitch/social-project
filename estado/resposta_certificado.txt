@@ -1,0 +1,20 @@
+{
+  "1": [
+    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/ferramentas-de-marketing-digital-77-s26sc3ca14055", "aplica_se_a": "Curso online Ferramentas de marketing digital do Sebrae Santa Catarina."},
+    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/criac-o-de-dashboards-praticos-77-s26sc3ca12820", "aplica_se_a": "Curso online Criação de dashboards práticos do Sebrae Santa Catarina."},
+    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/comunicac-o-e-oratoria-77-s26sc3ca14053", "aplica_se_a": "Curso online Comunicação e oratória do Sebrae Santa Catarina."}
+  ],
+  "2": [],
+  "3": [],
+  "4": [
+    {"valor": "pago", "frase": "Ao estudante que solicitar a 2ª via do certificado será cobrada uma taxa", "url": "https://www.ce.senac.br/wp-content/uploads/2024/02/REGIMENTO-ESCOLAR-SENAC-2022.pdf", "aplica_se_a": "Somente à solicitação da segunda via do certificado nos cursos abrangidos pelo Regimento Escolar do Senac Ceará, incluindo os cursos do PSG. Art. 136, § 2º."}
+  ],
+  "5": [],
+  "6": [
+    {"valor": "pago", "frase": "A cobrança de taxas somente se dará na solicitação da 2ª via de certificados, diplomas e histórico escolar, conforme documento normativo específico do Departamento Regional.", "url": "https://am.senac.br/wp-content/uploads/2025/02/NOVO-REGMENTO-ESCOLAR-2024-APROVADO-NO-CRS.pdf", "aplica_se_a": "Somente à solicitação da segunda via nas unidades de educação profissional do Senac Amazonas, abrangidas pelo Regimento Escolar."}
+  ],
+  "7": [], "8": [], "9": [], "10": [],
+  "11": [
+    {"valor": "gratuito", "frase": "O diploma ou o certificado será emitido sem ônus para o(a) estudante.", "url": "https://ifbaiano.edu.br/portal/wp-content/uploads/2025/08/Resolucao-415_2025-Normativa-para-Emissao-e-para-registro-de-diplomas-e-certificados.pdf", "aplica_se_a": "À emissão de diplomas e certificados dos cursos abrangidos pela Resolução nº 415/2025 do IF Baiano, incluindo os diplomas dos cursos técnicos subsequentes EaD de Ruy Barbosa e Remanso. Art. 29."}
+  ]
+}

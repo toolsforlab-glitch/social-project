@@ -153,13 +153,29 @@ def aplicar(lista, respostas):
                                url, e["exemplos"][0] if e["exemplos"] else "", origem="chatgpt_certificado.py")
             print("  → certificado PAGO: pendência aberta, nada gravado")
             continue
+        # A frase vale para a entidade inteira só se vier de um documento geral (regimento, resolução, regulamento,
+        # perguntas frequentes, termos) ou se o ChatGPT disser que se aplica a todos os cursos. Se vier da página de
+        # OUTRO curso (ex.: a loja do Sebrae de Santa Catarina), o código procura a mesma frase na página de cada um
+        # dos nossos cursos e só grava onde a encontra (25/11/2026: não se deduz de um curso para outro).
+        geral = bool(re.search(r"\btodos\b|regimento|resolu[çc]|normativ|regulamento|perguntas frequentes|faq|termos",
+                               aplica + " " + url, re.I))
+        print(f"  frase {'geral (vale para a entidade)' if geral else 'de um curso: confere-se curso a curso'}")
         n = 0
         for r in linhas:
             if (r.get("Entidade") != e["entidade"] or (r.get("Revisto por pessoa") or "").strip()
                     or "certificado" in [c.strip() for c in (r.get("Campos comprovados") or "").split(",")]):
                 continue
+            url_curso = url
+            if not geral:
+                url_curso = (r.get("Página do curso") or "").strip() or r.get("Link", "")
+                if url_curso not in paginas:
+                    paginas[url_curso] = texto_do_link(url_curso, e["dominio"])
+                texto_curso, motivo_curso = paginas[url_curso]
+                if motivo_curso or not citacao_valida(frase, texto_curso):
+                    continue
             comp = [c.strip() for c in (r.get("Campos comprovados") or "").split(",") if c.strip()] + ["certificado"]
-            evid = f"certificado: «{frase}» ({url}; {MARCA_CHATGPT}; frase da entidade, vale para os seus cursos)"
+            evid = (f"certificado: «{frase}» ({url_curso}; {MARCA_CHATGPT}"
+                    + ("; frase da entidade, vale para os seus cursos)" if geral else "; na página do próprio curso)"))
             campos = {"Certificado": valor, "Campos comprovados": ", ".join(dict.fromkeys(comp)),
                       "Evidência": (evid + " | " + (r.get("Evidência") or "")).strip(" |")[:1500]}
             alteracoes.append((r["_linha"], campos))

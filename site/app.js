@@ -368,11 +368,10 @@
       }).join("");
       var faixas = [["Até 4 horas", 0], ["De 5 a 20 horas", 0], ["Mais de 20 horas", 0], ["Não informada", 0]];
       todos.forEach(function (c) { var h = horas(c); faixas[h === null ? 3 : h <= 4 ? 0 : h <= 20 ? 1 : 2][1]++; });
-      var maior = Math.max.apply(null, faixas.map(function (f) { return f[1]; }).concat([1]));
       el("numeros-duracao").innerHTML = faixas.map(function (f) {
         var p = total ? Math.round(f[1] * 100 / total) : 0;
-        // a barra mais comprida é a maior faixa; as outras ficam proporcionais a ela
-        return '<div class="barra"><span>' + esc(f[0]) + '</span><span class="barra-fundo"><span class="barra-cheia" style="width:' + (f[1] * 100 / maior).toFixed(1) + '%"></span></span>' +
+        // o fundo da barra é o total (100%); a parte azul é a parcela desta faixa (pedido do responsável, 25/11/2026)
+        return '<div class="barra"><span>' + esc(f[0]) + '</span><span class="barra-fundo"><span class="barra-cheia" style="width:' + (total ? f[1] * 100 / total : 0).toFixed(1) + '%"></span></span>' +
           '<span class="barra-valor">' + p + "% (" + f[1] + ")</span></div>";
       }).join("");
       var porUf = {}, ativos = {};
@@ -380,6 +379,12 @@
       todos.forEach(function (c) { if (c.modalidade !== "online" && /^BR-/.test(c.local || "")) porUf[c.local.slice(3)] = (porUf[c.local.slice(3)] || 0) + 1; });
       var max = Math.max.apply(null, [1].concat(Object.keys(porUf).map(function (k) { return porUf[k]; })));
       var svg = el("mapa-brasil"), g = el("mapa-bolinhas");
+      var nomeUf = {}; GRADE.forEach(function (x) { nomeUf[x[0]] = x[3]; });
+      function textoDica(uf) {
+        var n = porUf[uf] || 0;
+        return (nomeUf[uf] || uf) + ": " + (!ativos[uf] ? "ainda não faz parte do site"
+          : n === 1 ? "1 curso presencial" : n + " cursos presenciais");
+      }
       if (svg && g) {
         var marcas = "";
         svg.querySelectorAll(".uf-forma").forEach(function (f) {
@@ -391,14 +396,39 @@
           // posição da bolinha: centro da caixa do estado (ajustes para estados de forma irregular)
           var ajuste = { PE: [-25, 0], PI: [0, 8], MA: [0, 10], BA: [-6, 0], PB: [-4, -2], AL: [3, -3], SE: [2, 3], RN: [4, 0] }[uf] || [0, 0];
           var x = b.x + b.width / 2 + ajuste[0], y = b.y + b.height / 2 + ajuste[1];
-          marcas += '<g class="bolinha' + (n ? "" : " zero") + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r + '"></circle>' +
+          marcas += '<g class="bolinha' + (n ? "" : " zero") + '" data-uf="' + uf + '"><title>' + esc(textoDica(uf)) + '</title><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r + '"></circle>' +
             '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" font-size="' + (r > 12 ? 12 : 11) + '">' + n + "</text></g>";
         });
         g.innerHTML = marcas;
+        // ao passar o rato (ou tocar) num estado ou na bolinha, aparece o nome do estado e o número de cursos
+        var caixaMapa = svg.parentNode, dica = document.createElement("div");
+        dica.className = "mapa-dica"; dica.hidden = true; dica.setAttribute("role", "status");
+        caixaMapa.appendChild(dica);
+        svg.querySelectorAll(".uf-forma title").forEach(function (t) { t.parentNode.removeChild(t); });  // sem a dica nativa repetida
+        var mostrarDica = function (ev) {
+          var alvo = ev.target.closest("[data-uf]");
+          svg.querySelectorAll(".uf-forma.realce").forEach(function (f) { f.classList.remove("realce"); });
+          if (!alvo) { dica.hidden = true; return; }
+          var uf = alvo.getAttribute("data-uf"), forma = svg.querySelector('.uf-forma[data-uf="' + uf + '"]');
+          if (forma) forma.classList.add("realce");
+          dica.textContent = textoDica(uf); dica.hidden = false;
+          var r = caixaMapa.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+          dica.style.left = Math.max(0, Math.min(x + 12, r.width - dica.offsetWidth)) + "px";
+          dica.style.top = Math.max(0, y - dica.offsetHeight - 10) + "px";
+        };
+        svg.addEventListener("mousemove", mostrarDica);
+        svg.addEventListener("click", mostrarDica);
+        svg.addEventListener("mouseleave", function () {
+          dica.hidden = true;
+          svg.querySelectorAll(".uf-forma.realce").forEach(function (f) { f.classList.remove("realce"); });
+        });
       }
-      el("numeros-mapa-lista").innerHTML = GRADE.filter(function (g) { return ativos[g[0]]; })
-        .sort(function (a, b) { return (porUf[b[0]] || 0) - (porUf[a[0]] || 0); })
-        .map(function (g) { return "<li>" + esc(g[3]) + ": " + (porUf[g[0]] || 0) + "</li>"; }).join("");
+      // tabela (em vez da lista com marcadores): estado e número de cursos presenciais, do maior para o menor
+      var linhasUf = GRADE.filter(function (g) { return ativos[g[0]]; })
+        .sort(function (a, b) { return (porUf[b[0]] || 0) - (porUf[a[0]] || 0) || a[3].localeCompare(b[3], "pt-BR"); });
+      el("numeros-mapa-lista").innerHTML = '<caption class="sr">Cursos presenciais com inscrições abertas em cada estado</caption>' +
+        '<thead><tr><th scope="col">Estado</th><th scope="col">Cursos presenciais</th></tr></thead><tbody>' +
+        linhasUf.map(function (g) { return '<tr><th scope="row">' + esc(g[3]) + "</th><td>" + (porUf[g[0]] || 0) + "</td></tr>"; }).join("") + "</tbody>";
     }).catch(function () { el("numeros-cartoes").innerHTML = '<p class="vazio">Não foi possível carregar os números agora.</p>'; });
   }
 
@@ -415,10 +445,14 @@
     // paginação: 10 cursos por página, para a lista não ficar pesada (pedido do responsável, 25/11/2026)
     var hashInicial = location.hash;  // o filtrar() reescreve o endereço sem o #curso-…: guardar o destino antes
     var POR_PAGINA = 10, pagina = Math.max(1, parseInt(params.get("pagina"), 10) || 1), manterPagina = true, ultimoRes = [];
-    var navPaginas = document.createElement("nav");
-    navPaginas.className = "paginacao"; navPaginas.hidden = true;
-    navPaginas.setAttribute("aria-label", "Páginas da lista de cursos");
-    lista.insertAdjacentElement("afterend", navPaginas);
+    // a mesma navegação aparece no começo e no fim da lista (pedido do responsável, 25/11/2026)
+    var navsPaginas = ["acima", "abaixo"].map(function (onde) {
+      var nav = document.createElement("nav");
+      nav.className = "paginacao paginacao-" + onde; nav.hidden = true;
+      nav.setAttribute("aria-label", onde === "acima" ? "Páginas da lista de cursos (início)" : "Páginas da lista de cursos (fim)");
+      lista.insertAdjacentElement(onde === "acima" ? "beforebegin" : "afterend", nav);
+      return nav;
+    });
     var guiasPorId = {};
     var barreiras = (params.get("facilita") || "").split(",").filter(Boolean);
     var marcaEscolhida = params.get("marca") || "";
@@ -734,8 +768,7 @@
     }
 
     function desenharPaginas(n, total) {
-      if (total <= 1) { navPaginas.hidden = true; navPaginas.innerHTML = ""; return; }
-      navPaginas.hidden = false;
+      if (total <= 1) { navsPaginas.forEach(function (nav) { nav.hidden = true; nav.innerHTML = ""; }); return; }
       var ini = (pagina - 1) * POR_PAGINA + 1, fim = Math.min(n, pagina * POR_PAGINA);
       var botao = function (i, rotulo, aria) {
         return '<li><button type="button" class="botao secundario pequeno" data-pagina="' + i + '"' +
@@ -750,9 +783,10 @@
         html += i === pagina ? '<li><span class="pagina-atual" aria-current="page">' + i + "</span></li>" : botao(i, String(i), "Página " + i);
         anterior = i;
       }
-      navPaginas.innerHTML = html + (pagina < total ? botao(pagina + 1, "Próxima ›", "Próxima página") : "") + "</ul>";
+      html += (pagina < total ? botao(pagina + 1, "Próxima ›", "Próxima página") : "") + "</ul>";
+      navsPaginas.forEach(function (nav) { nav.hidden = false; nav.innerHTML = html; });
     }
-    navPaginas.addEventListener("click", function (ev) {
+    navsPaginas.forEach(function (nav) { nav.addEventListener("click", function (ev) {
       var b = ev.target.closest("button[data-pagina]");
       if (!b) return;
       pagina = parseInt(b.getAttribute("data-pagina"), 10) || 1;
@@ -760,7 +794,7 @@
       filtrar();
       medir("pagina", { pagina: pagina });
       contagem.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    }); });
     // links para um cartão (#curso-…, da página inicial ou de «Terminam em breve»): abrir a página onde ele está
     function irParaCurso(id) {
       var i = -1;
@@ -1144,25 +1178,42 @@
       (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { copiado.textContent = msg; })
         .catch(function () { window.prompt("Copie o texto:", t); });
     }
-    el("kit-imprimir").addEventListener("click", function () { window.print(); });
-    el("kit-whatsapp").addEventListener("click", function () { copiar(textoWhatsapp(), "Texto copiado. Cole no WhatsApp."); });
-    el("kit-link").addEventListener("click", function () { copiar(location.href, "Link copiado."); });
+    // Google Analytics: um evento por clique nos botões, com o município e o estado (como na busca principal; 25/11/2026)
+    var ufDaCidade = {}, nomeLocal = {};
+    (site.locais || []).forEach(function (l) { nomeLocal[l.id] = String(l.rotulo || "").replace(/^Brasil\s*[–-]\s*/, ""); });
+    function estadoDe(cid) {
+      return Object.keys(ufDaCidade[cid] || {}).map(function (id) { return nomeLocal[id] || id; }).join(" / ");
+    }
+    function medirBotao(botao, extra) {
+      var d = { botao: botao, municipio: cidade.value || "(nenhum)", estado: estadoDe(cidade.value) || "(nenhum)",
+                com_online: comOnline.checked ? "sim" : "nao" };
+      Object.keys(extra || {}).forEach(function (k) { d[k] = extra[k]; });
+      medir("encaminhar_botao", d);
+    }
+    el("kit-imprimir").addEventListener("click", function () { medirBotao("imprimir_lista"); window.print(); });
+    el("kit-whatsapp").addEventListener("click", function () { medirBotao("copiar_texto_whatsapp"); copiar(textoWhatsapp(), "Texto copiado. Cole no WhatsApp."); });
+    el("kit-link").addEventListener("click", function () { medirBotao("copiar_link_lista"); copiar(location.href, "Link copiado."); });
     lista.addEventListener("click", function (ev) {
       var b = ev.target.closest("button[data-ficha]"); if (!b) return;
-      var f = b.closest(".ficha"); f.classList.add("imprimir-esta"); document.body.classList.add("so-uma-ficha");
+      var f = b.closest(".ficha"), hf = f.querySelector("h2, h3");
+      medirBotao("imprimir_ficha", { curso: hf ? hf.textContent.trim().slice(0, 100) : "" }); f.classList.add("imprimir-esta"); document.body.classList.add("so-uma-ficha");
       window.print();
       setTimeout(function () { f.classList.remove("imprimir-esta"); document.body.classList.remove("so-uma-ficha"); }, 500);
     });
     cidade.addEventListener("change", mostrar);
     comOnline.addEventListener("change", mostrar);
-    cidade.addEventListener("change", function () { if (cidade.value) medir("montar_lista", { cidade: cidade.value }); });
+    cidade.addEventListener("change", function () { if (cidade.value) medir("montar_lista", { cidade: cidade.value, municipio: cidade.value, estado: estadoDe(cidade.value) }); });
     comOnline.checked = params.get("online") !== "nao";
 
     Promise.all([carregar("dados/cursos.json"), carregar("dados/guias.json").catch(function () { return { guias: [] }; })]).then(function (r) {
       todos = semFuturos(r[0].cursos); atualizado = r[0].atualizado ? dataCurta(r[0].atualizado.slice(0, 10)) + "/" + r[0].atualizado.slice(0, 4) : "";
       (r[1].guias || []).forEach(function (g) { guias[g.id] = g; });
       var cids = {};
-      todos.forEach(function (c) { if (c.modalidade !== "online" && c.situacao === "Aberto" && !c.em_revisao) cidadesDe(c).forEach(function (x) { cids[x] = 1; }); });
+      todos.forEach(function (c) {
+        if (c.modalidade !== "online" && c.situacao === "Aberto" && !c.em_revisao) cidadesDe(c).forEach(function (x) {
+          cids[x] = 1; if (c.local) (ufDaCidade[x] = ufDaCidade[x] || {})[c.local] = 1;
+        });
+      });
       ordenarCidades(Object.keys(cids)).forEach(function (x) {
         var op = document.createElement("option"); op.value = x; op.textContent = x; cidade.appendChild(op);
       });
@@ -1232,10 +1283,8 @@
         var dest = ""; try { dest = new URL(a.href, location.href).hostname; } catch (e) {}
         medir("abrir_inscricao", { curso: nomeCurso, destino: dest }); return;
       }
-      if (bt && bt.hasAttribute("data-ficha")) { medir("imprimir_ficha", { curso: nomeCurso }); return; }
-      if (bt && bt.id === "kit-imprimir") { medir("imprimir_lista", {}); return; }
-      if (bt && bt.id === "kit-whatsapp") { medir("copiar_texto_whatsapp", {}); return; }
-      if (bt && bt.id === "kit-link") { medir("copiar_link_lista", {}); return; }
+      // os botões da página «Para quem encaminha» (imprimir, WhatsApp, link, ficha) são medidos em encaminhar(),
+      // no evento «encaminhar_botao», com o município e o estado
     });
     var escolha = ler();
     if (escolha === "sim") ligar();

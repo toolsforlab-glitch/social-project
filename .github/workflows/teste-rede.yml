@@ -5,7 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for u in https://www.ro.senac.br/edital-psg/ https://send3.ap.senac.br/send3/site/psg https://app.rr.senac.br/send3/site/psg https://www.ap.senac.br/ https://cms.ap.senac.br/api/selection-processes https://www.to.senac.br/psg https://www.rr.senac.br/ https://portal.fiero.org.br/ https://www.senai-ro.com.br/ https://www.senaito.com.br/ https://www.ap.senai.br/ https://www.rr.senai.br/ https://www.fieto.com.br/ ; do
-            curl -sS -m 30 -L -A "Mozilla/5.0" -o /tmp/o -w "$u %{http_code} %{size_download} %{url_effective}\n" "$u" 2>&1 | tail -1
-            grep -oiE 'href="[^"]*(edital|psg|gratuid|processo|selet)[^"]*"' /tmp/o | sort -u | head -12
-          done
+          curl -sS -m 30 -A "Mozilla/5.0" https://www.ro.senac.br/edital-psg/ -o ro.html
+          python3 - <<'P'
+          import re,html
+          t=open('ro.html',encoding='utf-8',errors='replace').read()
+          for m in re.finditer(r'<a[^>]+href="([^"]+\.pdf)"[^>]*>(.*?)</a>', t, re.S):
+              print('RO', html.unescape(re.sub('<[^>]+>','',m.group(2))).strip()[:90], '|', m.group(1)[-90:])
+          i=t.find('2026'); print(re.sub(r'\s+',' ',re.sub('<[^>]+>',' ',t[i-3000:i+3000]))[:2500])
+          P
+          echo ======= AP
+          curl -sS -m 30 -A "Mozilla/5.0" https://send3.ap.senac.br/send3/site/psg | sed 's/></>\n</g' | grep -iE "script|api|url|edital|ajax" | head -20
+          curl -sS -m 30 -A "Mozilla/5.0" https://www.ap.senac.br/ | grep -oE 'src="[^"]+\.js"' | head

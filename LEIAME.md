@@ -129,6 +129,11 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - **Números:** passar o mouse (ou tocar) num estado do mapa mostra o nome e o número de cursos presenciais; a lista dos estados foi tirada (o responsável não gostou da tabela); nas barras de duração, a barra inteira é 100% e a parte azul é a parcela, com metade do comprimento.
 - **Sobre → Como escolhemos os cursos:** reescrito com as regras atuais (fontes oficiais de instituições confiáveis, incluindo OSCs com histórico; gratuito com certificado gratuito; inscrições abertas; sem prova, redação, ENEM, entrevista ou currículo; avisos de sorteio, ordem de inscrição, prioridade por renda e «Gratuidade por confirmar»; verificação semanal; IA conferida na página oficial).
 
+## Botões «O que você quer aprender?» e «O que facilita para você?» (25/11/2026)
+
+- **Botão sem cursos fica escondido** (código, `esconderSemCursos` em `site/app.js`) e volta sozinho quando houver cursos. Em 25/11 sumiram «Sem escolaridade exigida» (a escolaridade só está preenchida em 5 de 805 cursos; vazio quer dizer «não sabemos»), «Com ajuda de custo ou transporte» e «Acessível a pessoas com deficiência». Um link antigo com uma opção escondida perde essa opção, para a lista não ficar vazia sem botão para desmarcar.
+- **Necessidades revistas** (decisão do responsável). «Terminar a escola» (`escola`) passa a ser só EJA, supletivo ou curso que dá diploma. Ficou com 2 cursos; 88 passaram para o botão novo **«Estudar matérias da escola»** (`materias`), pela regra `EJA` de `base.py`. «Mudar de profissão» passou a **«Desenvolvimento pessoal e no trabalho»** (o id `mudar` não mudou, porque está gravado nos cursos). A lista com a explicação de cada id fica num lugar só (`NECESSIDADES_GUIA` em `base.py`) e vai em todos os pedidos ao Claude que classificam cursos, para os temas não se misturarem.
+
 ## Google Analytics (com aviso de cookies)
 
 - O ID de medição do GA4 (G-…) fica em `config.json` → `google_analytics`. Vazio = nada é carregado e o aviso não aparece.
@@ -269,6 +274,9 @@ Critérios do responsável: só instituições conceituadas (órgãos e escolas 
 | PE | Qualifica PE (SEDEPE) | sim | a conferir executor | portal não responde; site da SEDEPE abre |
 | CE | Secretaria da Proteção Social (cursos nos equipamentos); Escola de Gastronomia Social (Secult/IDM) | sim | inscrição presencial / prioridade vulnerabilidade | a testar |
 | PB/RN/AL | prefeituras das capitais (Sedest JP, Secti Campina Grande); IF Mulheres Mil (IFAL) | sim | a conferir | a testar |
+| Todos (16) | **EJA – Educação de Jovens e Adultos** (secretarias estaduais e municipais de educação; EJA técnica dos IF, ex.: IFRN, IFPB, Ifap). Desde 25/11/2026, a pedido do responsável | sim | matrícula por ordem/vaga nas redes; nos IF, conferir o edital (IFRN 2026: sem prova) | notícias pelo Google Notícias (abre); CadEJA (cadeja.mec.gov.br) bloqueia leitores automáticos |
+
+**EJA na varredura (25/11/2026).** A matrícula na EJA da rede pública abre em períodos: na maioria dos estados entre novembro e fevereiro, para o ano seguinte, e em alguns estados também no meio do ano. Bahia e os CEEJA do Pará já anunciaram matrícula o ano todo, mas isso está por confirmar na página oficial. Por isso, `vigiar.py` tem uma vigia de notícias por estado («EJA – <estado>»): quando sai notícia de matrícula aberta, abre uma pendência. Notícias de fraude, investigação ou leis não contam. O curso só é criado em «Terminar a escola» a partir da página oficial da secretaria, com o período de matrícula. Para quem não acha uma escola, a pendência indica o CadEJA do MEC (cadastro nacional, a partir de 15 anos). No primeiro ensaio (45 dias) apareceram EJA técnica no IFRN (sem prova), no IFPB (inscrições prorrogadas) e no Ifap.
 
 ### OSCs executoras de programas estaduais: critérios de histórico (regra do responsável, 25/11/2026)
 

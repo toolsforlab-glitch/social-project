@@ -119,7 +119,8 @@ for _uf in ESTADOS_EJA:
     VIGIAS.append({
         "nome": f"EJA – {_uf}",
         "rss": f"https://news.google.com/rss/search?q={_q}&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-        "titulo": r"(?=.*(\bEJA\b|jovens e adultos))(?=.*(matr[íi]cul|vagas|inscri))", "dias": 14,
+        "titulo": r"^(?!.*(fraude|suspeit|investig|\blei\b|den[úu]ncia))(?=.*(\bEJA\b|jovens e adultos))"
+                   r"(?=.*(matr[íi]cul|vagas|inscri))", "dias": 14,
         "link": f"https://news.google.com/search?q={_q}&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "resumo": "notícias recentes de matrícula na EJA",
         "verificar": "Matrícula na EJA da rede pública (estado ou prefeitura). Abra a notícia e procure a página "

@@ -4,6 +4,7 @@ Para cada página, guarda-se a frase que ela mostra quando está FECHADA. Se a p
 abre uma pendência para o responsável (e para o Claude montar o leitor próprio a partir da página aberta).
 Não muda cursos nem turmas.
 """
+import urllib.parse
 import json
 import sys
 
@@ -106,6 +107,25 @@ VIGIAS = [
                   "turma (datas de inscrição e gratuidade explícita) e peça ao Claude para criar o curso. Sem página "
                   "oficial, o curso não entra."},
 ]
+
+# EJA (Educação de Jovens e Adultos) na varredura dos estados (pedido do responsável, 25/11/2026). A matrícula na
+# rede pública abre em períodos (em geral de novembro a fevereiro, e alguns estados no meio do ano); estas vigias
+# avisam quando sai notícia de matrícula aberta, para se criar o curso em «Terminar a escola» a partir da página
+# oficial da secretaria de educação.
+ESTADOS_EJA = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Maranhão", "Pará", "Paraíba",
+               "Pernambuco", "Piauí", "Rio Grande do Norte", "Rondônia", "Roraima", "Sergipe", "Tocantins"]
+for _uf in ESTADOS_EJA:
+    _q = urllib.parse.quote_plus(f'EJA matrícula "{_uf}"')
+    VIGIAS.append({
+        "nome": f"EJA – {_uf}",
+        "rss": f"https://news.google.com/rss/search?q={_q}&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "titulo": r"(?=.*(\bEJA\b|jovens e adultos))(?=.*(matr[íi]cul|vagas|inscri))", "dias": 14,
+        "link": f"https://news.google.com/search?q={_q}&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "resumo": "notícias recentes de matrícula na EJA",
+        "verificar": "Matrícula na EJA da rede pública (estado ou prefeitura). Abra a notícia e procure a página "
+                     "oficial da secretaria de educação com o período de matrícula, onde e como se matricular e os "
+                     "documentos. Peça ao Claude para criar o curso em «Terminar a escola». Sem página oficial com o "
+                     "período, não entra. Para quem não acha escola: CadEJA do MEC (cadeja.mec.gov.br)."})
 
 
 def vigiar_rss(base, v):

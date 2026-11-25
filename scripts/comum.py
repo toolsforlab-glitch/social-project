@@ -98,7 +98,13 @@ notícias) devem estar em português do Brasil (pt-BR), com vocabulário, ortogr
 "você", "celular", "contato", "registro", "equipe", "tela", "arquivo", "endereço", "ônibus", "fato", "acessar", \
 "compartilhar", "em outra" (não "noutra"), gerúndio ("está fazendo", não "está a fazer"), pronomes antes do verbo \
 ("se inscrever", "a inscrição se abre") e aspas "assim" (não «assim»). Nunca use formas de Portugal. As frases \
-copiadas das páginas oficiais (evidências e citações) ficam exatamente como estão na página."""
+copiadas das páginas oficiais (evidências e citações) ficam exatamente como estão na página.
+
+LINGUAGEM SIMPLES (regra do responsável, 25/11/2026): escreva para quem estudou pouco, com palavras do dia a dia. \
+Diga "por pessoa", nunca "per capita"; "2 salários mínimos", nunca "2,0" nem "02 (dois)"; "1 salário mínimo e \
+meio", não "1,5"; "salários mínimos", sem "federais" ou "da federação"; "ter", não "possuir"; "18 anos ou mais", \
+não "maior ou igual a 18 anos". Nos requisitos, uma condição por item, separadas por ";", sem rótulos técnicos \
+("Requisito Específico:", "Escolaridade mínima:"). Renda: "Renda da família de até X salários mínimos por pessoa"."""
 
 
 def claude(modelo, sistema, pedido, max_tokens=4000, ferramentas=None, max_continuacoes=4, pensar=None):

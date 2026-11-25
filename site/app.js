@@ -197,6 +197,49 @@
     "Fundamental completo": "Ter o ensino fundamental completo", "Médio incompleto": "Ter começado o ensino médio",
     "Médio completo": "Ter o ensino médio completo", "Superior": "Ter curso superior"
   };
+  // Linguagem simples nos requisitos (regra do responsável, 25/11/2026): nada de "per capita", "2,0", "salários
+  // mínimos da federação", "Possuir", "Maior ou igual a". A frase da fonte continua guardada na Evidência da planilha;
+  // aqui só se muda a forma de mostrar.
+  var NUMEROS = { um: 1, uma: 1, dois: 2, duas: 2, tres: 3, "três": 3, quatro: 4 };
+  function salarios(n) {
+    if (n === 1.5) return "1 salário mínimo e meio";
+    if (n === 0.5) return "meio salário mínimo";
+    if (n === 1) return "1 salário mínimo";
+    return String(n).replace(".", ",") + " salários mínimos";
+  }
+  function simples(x) {
+    x = String(x || "").replace(/\s+/g, " ").trim().replace(/[.;]\s*$/, "");
+    // renda: «Renda da família de até 2 salários mínimos por pessoa», com a explicação do que isso quer dizer
+    if (/renda/i.test(x) && /sal[áa]rio/i.test(x)) {
+      var m = /(?:at[ée]|ultrapass\w*(?: a)?|n[ãa]o (?:ultrapasse|exceda)(?: a)?|inferior a|m[áa]xim[oa] de)\s*(\d+(?:[,.]\d+)?|um e meio|um|uma|dois|duas|tr[êe]s|quatro)(?:\s*\((\w+)\))?\s*sal[áa]rio/i.exec(x);
+      if (m) {
+        var v = m[1].toLowerCase(), n = v === "um e meio" ? 1.5 : NUMEROS[v] !== undefined ? NUMEROS[v] : parseFloat(v.replace(",", "."));
+        if (!isNaN(n)) return "Renda da família de até " + salarios(n) + " por pessoa (some o que todos da casa ganham por mês e divida pelo número de pessoas)";
+      }
+    }
+    x = x.replace(/per capita/gi, "por pessoa")
+         .replace(/\b0(\d)\s*\((\w+)\)/g, "$1")
+         .replace(/(\d+),0\b/g, "$1")
+         .replace(/(sal[áa]rios?\s+m[íi]nimos?)\s+(da federa[çc][ãa]o|federa(?:l|is)|nacional|vigentes?)/gi, "$1")
+         .replace(/^Requisito\s+de\s+idade\s*:\s*/i, "")
+         .replace(/^Requisito\s+espec[íi]fico\s*:\s*/i, "")
+         .replace(/^Escolaridade\s+m[íi]nima\s*:/i, "Escolaridade:")
+         .replace(/^Idade(?:\s+m[íi]nima)?\s*:\s*/i, "")
+         .replace(/^(\d+)\s*anos?$/i, "Ter $1 anos ou mais")
+         .replace(/^(?:ser\s+)?maior\s+ou\s+igual\s+a\s+(\d+)\s*anos/i, "Ter $1 anos ou mais")
+         .replace(/^possuir\b/i, "Ter")
+         .replace(/\bSO\s+(windows)/gi, "$1");
+    return x.charAt(0).toUpperCase() + x.slice(1);
+  }
+  // um requisito por linha: separa por «;», por fim de frase e pelos rótulos «Requisito de Idade:», «Requisito Específico:»…
+  function partesDe(texto) {
+    return String(texto || "")
+      .replace(/\s*Requisito\s+de\s+idade\s*:\s*/gi, "; Idade: ").replace(/\s*Requisito\s+espec[íi]fico\s*:\s*/gi, "; ")
+      .replace(/\s+(?=(?:Escolaridade|Idade)(?:\s+m[íi]nima)?\s*:)/g, "; ")
+      .split(/;\s*|\.\s+(?=[A-ZÀ-Ú])/)
+      .map(function (p) { return p.trim(); }).filter(Boolean);
+  }
+
   function requisitosDe(c, t) {
     var l = [], livre = (c && c.requisitos) || "";
     var idade = function (min, max) {
@@ -206,27 +249,27 @@
     if (t && (t.idade_minima || t.idade_maxima)) { l.push(idade(t.idade_minima, t.idade_maxima)); temIdade = true; }
     if (t && t.escolaridade) { l.push("Escolaridade: " + t.escolaridade.replace(/\.$/, "")); temEscola = true; }
     if (c) {
-      if (!temIdade && !/\banos?\b/i.test(livre) && (c.idade_minima || c.idade_maxima)) l.push(idade(c.idade_minima, c.idade_maxima));
+      if (!temIdade && !/\d+\s*anos\b/i.test(livre) && (c.idade_minima || c.idade_maxima)) l.push(idade(c.idade_minima, c.idade_maxima));
       if (!temEscola && !/fundamental|m[ée]dio|escolaridade|superior|alfabetiz/i.test(livre) && c.escolaridade && ESCOLARIDADE_TXT[c.escolaridade])
         l.push(ESCOLARIDADE_TXT[c.escolaridade]);
-      if (c.renda && !/renda|sal[áa]rio/i.test(livre)) l.push(c.renda.replace(/\.$/, ""));
+      if (c.renda && !/renda|sal[áa]rio/i.test(livre)) l.push(simples(c.renda));
       if (c.exclusivo_para && livre.toLowerCase().indexOf(c.exclusivo_para.toLowerCase().slice(0, 25)) < 0) l.push(c.exclusivo_para.replace(/\.$/, ""));
       if (/aperfei[cç]oamento/i.test(c.documentos || "")) l.push("Ter experiência na área (é um curso de aperfeiçoamento)");
-      // texto livre com várias condições separadas por «;»: uma por linha, com maiúscula no começo
-      // sem repetir o que já está na lista (ex.: a turma já diz a idade e a escolaridade; 25/11/2026)
-      var jaIdade = l.some(function (x) { return /\banos?\b/i.test(x); });
-      var jaEscola = l.some(function (x) { return /escolaridade|fundamental|m[ée]dio|superior/i.test(x); });
-      var jaRenda = l.some(function (x) { return /renda|sal[áa]rio/i.test(x); });
-      livre.split(/;\s*/).forEach(function (x) {
-        x = x.trim().replace(/\.$/, "");
+      // texto livre: um requisito por linha, em linguagem simples, sem repetir o que já está na lista (25/11/2026)
+      // só conta o que veio antes do texto livre (turma e campos do curso), não as outras partes do próprio texto
+      var jaIdade = l.some(function (y) { return /\d+\s*anos\b/i.test(y) && !/renda|escolaridade/i.test(y); });
+      var jaEscola = l.some(function (y) { return /escolaridade|fundamental|m[ée]dio|superior/i.test(y); });
+      var jaRenda = l.some(function (y) { return /renda/i.test(y); });
+      partesDe(livre).map(simples).forEach(function (x) {
         if (!x) return;
-        if (jaIdade && /\bidade\b|\banos?\b/i.test(x) && !/escolaridade|renda/i.test(x)) return;
-        if (jaEscola && /escolaridade|ensino (fundamental|m[ée]dio)|superior/i.test(x) && !/\banos?\b|renda/i.test(x)) return;
-        if (jaRenda && /renda|sal[áa]rio/i.test(x)) return;
-        l.push(x.charAt(0).toUpperCase() + x.slice(1));
+        if (jaIdade && /\d+\s*anos\b/i.test(x) && !/escolaridade|renda|experi[êe]ncia/i.test(x)) return;
+        if (jaEscola && /^escolaridade|ensino (fundamental|m[ée]dio)|^ter curso superior/i.test(x) && !/\banos?\b|renda/i.test(x)) return;
+        if (jaRenda && /renda/i.test(x)) return;
+        l.push(x);
       });
     }
-    return l.filter(Boolean);
+    var vistos = {};
+    return l.filter(function (x) { var k = x.toLowerCase(); if (!x || vistos[k]) return false; vistos[k] = 1; return true; });
   }
   function requisitosHtml(itens) {
     if (!itens.length) return "";
@@ -1196,7 +1239,7 @@
       else if (c.idade_minima) l.push(c.idade_minima + " anos ou mais");
       else if (c.idade_maxima) l.push("até " + c.idade_maxima + " anos");
       if (c.escolaridade && c.escolaridade !== "Nenhuma") l.push(c.escolaridade.toLowerCase());
-      if (c.renda) l.push(c.renda.charAt(0).toLowerCase() + c.renda.slice(1));
+      if (c.renda) { var rs = simples(c.renda); l.push(rs.charAt(0).toLowerCase() + rs.slice(1)); }
       return l.join("; ");
     }
     function fichaHtml(c, i) {

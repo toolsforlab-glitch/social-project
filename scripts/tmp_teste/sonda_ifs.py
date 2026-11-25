@@ -5,26 +5,15 @@ from base import texto_de_html
 P = "https://portal.ifrn.edu.br"
 def t(u, n=60): return baixar(u, timeout=n).decode("utf-8", "replace")
 def limpo(s): return re.sub(r"\s+", " ", html.unescape(re.sub(r"(?s)<(script|style)[^>]*>.*?</\1>|<[^>]+>", " ", s))).strip()
-paginas = set()
-for q in ["?tipo=tipo%3A2", "?tipo=tipo%3A2&page=2", "?tipo=3", "?q=EJA", "?q=FIC"]:
-    try:
-        a = t(P + "/processos-seletivos/buscar/" + q)
-    except Exception as e:
-        print("ERRO", q, e); continue
-    for h in re.findall(r'href="([^"]*processo-seletivos-estude-no-ifrn/[^"]+)"', a):
-        paginas.add(urllib.parse.urljoin(P, h))
-print("PAGINAS:"); [print("  ", p) for p in sorted(paginas)]
-for p in sorted(paginas):
-    if not re.search(r"formacao-inicial|fic|eja|qualificacao|proeja", p, re.I): continue
-    a = t(p); print("#####", p)
-    docs = sorted(set(urllib.parse.urljoin(P, h) for h in re.findall(r'href="([^"]*(?:/documents/|\.pdf)[^"]*)"', a)))
-    print("  docs:", docs[:12])
-    m = re.search(r'(?s)<main.*?</main>', a); print("  ", limpo(m.group(0) if m else a)[:2200])
-    for d in docs[:3]:
-        try:
-            b = baixar(d, timeout=60)
-            if b[:4] != b"%PDF": continue
-            tx = texto_de_html(b); print("  ## PDF", d, len(tx)); print("    INÍCIO:", tx[:300])
-            for pat in [r".{0,250}sortei.{0,300}", r".{0,200}crit[ée]rio.{0,300}", r".{0,150}\bprova\b.{0,150}", r".{0,120}idade.{0,200}", r".{0,200}(requisito|ter conclu[íi]do).{0,300}", r".{0,150}gratuit.{0,150}", r".{0,150}in[íi]cio das aulas.{0,150}"]:
-                for mm in list(re.finditer(pat, tx, re.I))[:2]: print("    ", pat[:14], "→", mm.group(0)[:550])
-        except Exception as e: print("  ERRO", d, e)
+import os; os.makedirs("sonda", exist_ok=True)
+b = baixar(P + "/documents/31455/EDITAL_N%C2%BA_68_2026-PROEN_RE_IFRN_-_FIC_Integrado_M%C3%A9dio_EJA.pdf", timeout=60)
+open("sonda/ed68.txt", "w").write(texto_de_html(b))
+a = t(P + "/processos-seletivos/buscar/")
+print("FORM:", re.findall(r'<select[^>]*name="([^"]+)"[^>]*>(.*?)</select>', a, re.S)[:3] and [(n, re.findall(r'value="([^"]*)"[^>]*>([^<]*)', o)[:40]) for n, o in re.findall(r'<select[^>]*name="([^"]+)"[^>]*>(.*?)</select>', a, re.S)])
+paginas = {}
+for q in ["?q=concomitante", "?q=EJA", "?q=Qualifica%C3%A7%C3%A3o", "?q=65%2F2026", "?q=66%2F2026", "?q=67%2F2026"]:
+    try: a = t(P + "/processos-seletivos/buscar/" + q)
+    except Exception as e: print("ERRO", q, e); continue
+    for h, tit in re.findall(r'<a[^>]+href="([^"]*processo-seletivos-estude-no-ifrn/[^"]+)"[^>]*>(.*?)</a>', a, re.S):
+        paginas[urllib.parse.urljoin(P, h)] = limpo(tit)
+for p, tit in sorted(paginas.items()): print("  ", tit[:100], p)

@@ -969,9 +969,11 @@ def listar_senai_ap(fonte):
                 avisos.append(links[-1])
         if not principal:
             continue
-        datas = [f"{a}-{b}-{c}" for a, b, c in
-                 (re.findall(r"_(20\d{2})(\d{2})(\d{2})\d{4,}", urllib.parse.unquote(u)) for u in [principal] + avisos)
-                 for a, b, c in (a[:1] or [])]
+        datas = []
+        for u in [principal] + avisos:
+            md = re.search(r"_(20\d{2})(\d{2})(\d{2})\d{4,}", urllib.parse.unquote(u))
+            if md:
+                datas.append(f"{md.group(1)}-{md.group(2)}-{md.group(3)}")
         pub = max(datas) if datas else ""
         if not pub and m.group(2) != ano_atual:
             continue

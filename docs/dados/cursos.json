@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-25T23:14",
+ "atualizado": "2026-11-25T23:18",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -52098,14 +52098,14 @@
    "cidade": "",
    "descricao": "Para jovens e adultos que querem terminar o ensino fundamental ou o ensino médio na escola pública estadual. A pré-matrícula para 2027 é feita pela internet, no portal de matrícula do Governo do Amapá, de 5 a 21 de janeiro de 2027. Depois, a matrícula é confirmada na escola, com a entrega dos documentos.",
    "descricao_origem": "resumo",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "escola"
    ],
    "exclusivo_para": "",
    "requisitos": "",
-   "certificado": "",
-   "certificado_comprovado": false,
+   "certificado": "desconhecido",
+   "certificado_comprovado": true,
    "inscricoes_ate": "2027-01-21",
    "data_por_confirmar": false,
    "so_futuro": false,
@@ -52129,7 +52129,7 @@
    "renda": "",
    "cadunico": "",
    "turnos": [],
-   "internet": "",
+   "internet": "Não",
    "ajuda": "",
    "documentos": "",
    "etiquetas": [],

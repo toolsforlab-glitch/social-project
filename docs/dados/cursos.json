@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-25T13:28",
+ "atualizado": "2026-11-25T13:43",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -1624,406 +1624,6 @@
    "cadunico": "",
    "turnos": [],
    "internet": "Sim",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "vagas": "",
-   "acessibilidade": []
-  },
-  {
-   "id": "C-5fa91c58",
-   "titulo": "Noções de Informática",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Noções de Informática",
-    "frase": "",
-    "nome": "Centec"
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "so_futuro": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-maranguape-2026-11-30-18-00-21-00",
-     "unidade": "CVT MARANGUAPE",
-     "cidade": "Maranguape",
-     "local": {
-      "nome": "CVT Maranguape",
-      "municipio": "Maranguape",
-      "site": "https://www.centec.org.br/unidades/cvt-maranguape/",
-      "bairro": "Centro",
-      "morada": "Rua Walter Lopes, 149",
-      "telefone": "(85) 99911-0134",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-16",
-     "horario": "18:00 - 21:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - INCOMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
-     "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT MARANGUAPE - 30/11 a 16/12/2026 - 18h às 21h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE INFORMÁTICA - CVT MARANGUAPE - 30/11 a 16/12/2026 - 18h às 21h - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-25",
-     "reserva": "",
-     "regra_vagas": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-25",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "vagas": "",
-   "acessibilidade": []
-  },
-  {
-   "id": "C-9bf82116",
-   "titulo": "Elaboração de Pratos e Sobremesas Natalina",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Elaboração de Pratos e Sobremesas Natalina",
-    "frase": "",
-    "nome": "Centec"
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "so_futuro": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#elaboracao-de-pratos-e-sobremesas-natalina-cvt-quixere-2026-11-30-13-00-17-00",
-     "unidade": "CVT QUIXERÉ",
-     "cidade": "Quixeré",
-     "local": {
-      "nome": "CVT Quixeré",
-      "municipio": "Quixeré",
-      "site": "https://www.centec.org.br/unidades/cvt-quixere/",
-      "bairro": "Centro",
-      "morada": "Rua Padre Zacarias, nº 450",
-      "telefone": "(88) 99651-0027",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-11",
-     "horario": "13:00 - 17:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º A 9º) - COMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "RUA PADRE ZACARIAS, 450",
-     "titulo_fonte": "ELABORAÇÃO DE PRATOS E SOBREMESAS NATALINA - CVT QUIXERÉ - 30/11 a 11/12/2026 - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "ELABORAÇÃO DE PRATOS E SOBREMESAS NATALINA - CVT QUIXERÉ - 30/11 a 11/12/2026 - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-25",
-     "reserva": "",
-     "regra_vagas": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-25",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "vagas": "",
-   "acessibilidade": []
-  },
-  {
-   "id": "C-d5a7a632",
-   "titulo": "Excel Básico",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Excel Básico",
-    "frase": "",
-    "nome": "Centec"
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "so_futuro": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#excel-basico-cvt-vicosa-do-ceara-2026-11-30-13-00-17-00",
-     "unidade": "CVT VIÇOSA DO CEARÁ",
-     "cidade": "Viçosa do Ceará",
-     "local": {
-      "nome": "CVT Viçosa do Ceará",
-      "municipio": "Viçosa do Ceará",
-      "site": "https://www.centec.org.br/unidades/cvt-vicosa-do-ceara/",
-      "bairro": "Centro",
-      "morada": "Rua Professor Valdevino de Alencar, nº 243",
-      "telefone": "(88) 99651-0015",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-11",
-     "horario": "13:00 - 17:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - COMPLETO TER NOÇÕES EM INFORMÁTICA",
-     "documentos": "",
-     "local_texto": "RUA PROFESSOR VALDEVINO DE ALENCAR, No 243",
-     "titulo_fonte": "EXCEL BÁSICO - CVT VIÇOSA DO CEARÁ - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "EXCEL BÁSICO - CVT VIÇOSA DO CEARÁ - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "(88)996510015",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-25",
-     "reserva": "",
-     "regra_vagas": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-25",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "vagas": "",
-   "acessibilidade": []
-  },
-  {
-   "id": "C-4ae3e898",
-   "titulo": "Noções em Recursos Humanos",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Noções em Recursos Humanos",
-    "frase": "",
-    "nome": "Centec"
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "gratuito",
-   "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "so_futuro": false,
-   "situacao": "Aberto",
-   "turmas": [
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-em-recursos-humanos-cvt-maranguape-2026-11-30-13-00-17-00",
-     "unidade": "CVT MARANGUAPE",
-     "cidade": "Maranguape",
-     "local": {
-      "nome": "CVT Maranguape",
-      "municipio": "Maranguape",
-      "site": "https://www.centec.org.br/unidades/cvt-maranguape/",
-      "bairro": "Centro",
-      "morada": "Rua Walter Lopes, 149",
-      "telefone": "(85) 99911-0134",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-11-30",
-     "fim": "2026-12-11",
-     "horario": "13:00 - 17:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO MÉDIO (1º AO 3º) - COMPLETO SEM PRÉ-REQUISITOS.",
-     "documentos": "",
-     "local_texto": "MARANGUAPE - RUA WALTER LOPES, 149 - CENTRO",
-     "titulo_fonte": "NOÇÕES EM RECURSOS HUMANOS - CVT MARANGUAPE - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES EM RECURSOS HUMANOS - CVT MARANGUAPE - 30/11 a 11/12/2026 - 13h às 17h - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-25",
-     "reserva": "",
-     "regra_vagas": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-25",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "primeiro_visto": "2026-11-14",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
    "ajuda": "",
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
@@ -5162,7 +4762,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "digital"
    ],
    "exclusivo_para": "",
@@ -5935,7 +5535,7 @@
    "necessidades": [
     "emprego",
     "digital",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "Criar conta na Escola Virtual de Governo",
@@ -7147,7 +6747,7 @@
    "necessidades": [
     "digital",
     "tecnologia",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "Ter 16 anos ou mais",
@@ -7315,7 +6915,7 @@
    "necessidades": [
     "digital",
     "tecnologia",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "Ter 18 anos ou mais",
@@ -7370,7 +6970,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "portugues",
-    "escola",
+    "materias",
     "emprego"
    ],
    "exclusivo_para": "",
@@ -9137,7 +8737,7 @@
    "necessidades": [
     "tecnologia",
     "digital",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "Ter 18 anos ou mais",
@@ -24097,7 +23697,7 @@
    "necessidades": [
     "digital",
     "tecnologia",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "Criar conta na Escola Virtual de Governo",
@@ -24774,7 +24374,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -25134,7 +24734,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -25668,7 +25268,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -26448,7 +26048,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -26567,7 +26167,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -26866,7 +26466,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "portugues",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -26927,7 +26527,7 @@
    "necessidades": [
     "digital",
     "tecnologia",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -27469,7 +27069,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "dinheiro",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -28849,7 +28449,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "portugues",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -29782,7 +29382,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "digital",
     "tecnologia"
    ],
@@ -29893,7 +29493,7 @@
    "necessidades": [
     "digital",
     "tecnologia",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -30446,7 +30046,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -30505,7 +30105,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -30683,7 +30283,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "profissao"
    ],
    "exclusivo_para": "",
@@ -30802,7 +30402,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -30861,7 +30461,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -30920,7 +30520,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31099,7 +30699,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo Módulos : 04",
@@ -31218,7 +30818,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31277,7 +30877,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31336,7 +30936,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31395,7 +30995,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31454,7 +31054,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31513,7 +31113,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31572,7 +31172,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31631,7 +31231,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31690,7 +31290,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31749,7 +31349,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "profissao"
    ],
    "exclusivo_para": "",
@@ -31810,7 +31410,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "digital",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -31869,7 +31469,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "portugues"
    ],
    "exclusivo_para": "",
@@ -31930,7 +31530,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "digital",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -32046,7 +31646,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "mudar"
    ],
    "exclusivo_para": "",
@@ -32767,7 +32367,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "mudar",
-    "escola",
+    "materias",
     "emprego"
    ],
    "exclusivo_para": "",
@@ -33009,7 +32609,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "dinheiro",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33489,7 +33089,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "portugues"
    ],
    "exclusivo_para": "",
@@ -33550,7 +33150,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33610,7 +33210,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33670,7 +33270,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33730,7 +33330,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33790,7 +33390,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33850,7 +33450,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33910,7 +33510,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -33970,7 +33570,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34030,7 +33630,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34090,7 +33690,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura e escuta em língua portuguesa e possuir computador com recursos de áudio e vídeo",
@@ -34210,7 +33810,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34270,7 +33870,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34330,7 +33930,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34390,7 +33990,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34450,7 +34050,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34510,7 +34110,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34570,7 +34170,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34630,7 +34230,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir computador com recursos de áudio e vídeo",
@@ -34810,7 +34410,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34870,7 +34470,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34930,7 +34530,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -34990,7 +34590,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "portugues",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -35542,7 +35142,7 @@
    "necessidades": [
     "portugues",
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -35603,7 +35203,7 @@
    "necessidades": [
     "portugues",
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -35664,7 +35264,7 @@
    "necessidades": [
     "portugues",
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -35725,7 +35325,7 @@
    "necessidades": [
     "portugues",
     "linguas",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -35784,7 +35384,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "digital",
     "tecnologia"
    ],
@@ -35966,7 +35566,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -36025,7 +35625,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -36445,7 +36045,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -36564,7 +36164,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola",
+    "materias",
     "profissao"
    ],
    "exclusivo_para": "",
@@ -36743,7 +36343,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -36802,7 +36402,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -37281,7 +36881,7 @@
    "gratuidade_comprovada": true,
    "necessidades": [
     "emprego",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
@@ -46943,7 +46543,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -47063,7 +46663,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -47482,7 +47082,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -47541,7 +47141,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -47834,7 +47434,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -47893,7 +47493,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -48431,7 +48031,7 @@
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",
@@ -48725,7 +48325,7 @@
    "necessidades": [
     "digital",
     "tecnologia",
-    "escola"
+    "materias"
    ],
    "exclusivo_para": "",
    "requisitos": "",

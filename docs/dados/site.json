@@ -24,11 +24,15 @@
   },
   {
    "id": "mudar",
-   "rotulo": "Mudar de profissão"
+   "rotulo": "Desenvolvimento pessoal e no trabalho"
   },
   {
    "id": "escola",
    "rotulo": "Terminar a escola"
+  },
+  {
+   "id": "materias",
+   "rotulo": "Estudar matérias da escola"
   },
   {
    "id": "emprego",

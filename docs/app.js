@@ -256,6 +256,32 @@
     select.innerHTML = html;
   }
 
+  // «O que facilita para você?»: o curso passa nesta opção? (usada no filtro e para contar)
+  function passaBarreira(c, id) {
+    if (id === "noite") return turnosDe(c).indexOf("Noite") >= 0;
+    if (id === "sem_internet") return c.internet === "Não";
+    if (id === "sem_escolaridade") return ["Nenhuma", "Saber ler e escrever"].indexOf(c.escolaridade) >= 0;
+    if (id === "ajuda") return !!c.ajuda && !/^n[aã]o/i.test(c.ajuda);
+    if (id === "reservadas") return !!(c.etiquetas || []).length;
+    if (id === "acessivel") return !!(c.acessibilidade || []).length;
+    if (id === "fecha_breve") return terminaEmBreve(c);
+    return true;
+  }
+  // botões que não encontram nenhum curso ficam escondidos e voltam sozinhos quando houver cursos (25/11/2026).
+  // Tira também a opção da escolha (vinda de um link antigo), para a lista não ficar vazia sem botão para desmarcar.
+  function esconderSemCursos(ul, atributo, escolhidas, temCurso) {
+    if (!ul) return;
+    ul.querySelectorAll("button[" + atributo + "]").forEach(function (b) {
+      var id = b.getAttribute(atributo), vazio = !temCurso(id);
+      b.parentNode.hidden = vazio;
+      var i = escolhidas.indexOf(id);
+      if (vazio && i >= 0) { escolhidas.splice(i, 1); b.setAttribute("aria-pressed", "false"); }
+    });
+  }
+  function necessidadeTemCurso(cursos) {
+    return function (id) { return cursos.some(function (c) { return (c.necessidades || []).indexOf(id) >= 0; }); };
+  }
+
   function botoesOpcoes(ul, necessidades, escolhidas, aoMudar) {
     ul.innerHTML = necessidades.map(function (n) {
       var on = escolhidas.indexOf(n.id) >= 0;
@@ -326,6 +352,8 @@
     onde.addEventListener("change", desenharUltimos);
     carregar("dados/cursos.json").then(function (d) {
       todos = semFuturos(d.cursos);
+      esconderSemCursos(el("inicio-opcoes"), "data-id", escolhidas, necessidadeTemCurso(todos));
+      atualizar();
       desenharUltimos();
     }).catch(function () { caixa.parentNode.style.display = "none"; });
   }
@@ -639,13 +667,7 @@
         if (o === "online" && c.modalidade !== "online") return false;
         // estado escolhido: só os cursos presenciais desse estado; os on-line têm a opção própria «On-line»
         if (o && o !== "online" && (c.modalidade === "online" || c.local !== o)) return false;
-        if (barreiras.indexOf("noite") >= 0 && turnosDe(c).indexOf("Noite") < 0) return false;
-        if (barreiras.indexOf("sem_internet") >= 0 && c.internet !== "Não") return false;
-        if (barreiras.indexOf("sem_escolaridade") >= 0 && ["Nenhuma", "Saber ler e escrever"].indexOf(c.escolaridade) < 0) return false;
-        if (barreiras.indexOf("ajuda") >= 0 && (!c.ajuda || /^n[aã]o/i.test(c.ajuda))) return false;
-        if (barreiras.indexOf("reservadas") >= 0 && !(c.etiquetas || []).length) return false;
-        if (barreiras.indexOf("acessivel") >= 0 && !(c.acessibilidade || []).length) return false;
-        if (barreiras.indexOf("fecha_breve") >= 0 && !terminaEmBreve(c)) return false;
+        if (!barreiras.every(function (id) { return passaBarreira(c, id); })) return false;
         if (marcaEscolhida && marcasDe(c).indexOf(marcaEscolhida) < 0) return false;
         // calendário: o curso tem de ter inscrições abertas em algum dia do período (sem período: hoje)
         if ((c.turmas || []).length) { if (!turmasAtuais(c).length) return false; }
@@ -983,6 +1005,10 @@
         marcaSumiu = textoMarca(marcaEscolhida); marcaEscolhida = "";
       }
       (r[1].guias || []).forEach(function (g) { guiasPorId[g.id] = g; });
+      esconderSemCursos(el("cursos-opcoes"), "data-id", escolhidas, necessidadeTemCurso(todos));
+      esconderSemCursos(ulBarreiras, "data-barreira", barreiras, function (id) {
+        return todos.some(function (c) { return passaBarreira(c, id); });
+      });
       preencherCidades(params.get("cidade") || "");
       filtrar();
       // vindo da página inicial (#curso-…): ir ao cartão desse curso

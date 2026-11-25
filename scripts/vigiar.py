@@ -123,7 +123,7 @@ VIGIAS = [
     # se guardam os editais que já lá estão.
     {"nome": "IFRN (portal de processos seletivos)",
      "itens": ["https://processoseletivo.ifrn.edu.br/"], "estado": "estado/ifrn_editais.json",
-     "item": r"<td[^>]*>\s*(EDITAL[^<]{10,300}?)\s*</td>",
+     "item": r"<h3><a href='([^']+)'>([^<]+)</a></h3>",
      "incluir": r"FIC|Forma[çc][ãa]o Inicial|Subsequente|EJA|Proeja|Qualifica",
      "excluir": r"P[óo]s-Gradua|Mestrado|Doutorado|Especializa|Licenciatura|Superior|Gradua[çc][ãa]o|BOLSISTA|ESTAGI|servidores|funcion[áa]rios|privação de liberdade",
      "link": "https://processoseletivo.ifrn.edu.br/",

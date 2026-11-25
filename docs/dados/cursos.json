@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-25T16:12",
+ "atualizado": "2026-11-25T16:26",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -23576,12 +23576,12 @@
    "requisitos": "Ter concluído o ensino médio até a matrícula. Inscrição pelo site até 4 de dezembro de 2026 (a inscrição presencial no ponto de apoio do campus foi de 16 a 19 de novembro).",
    "certificado": "gratuito",
    "certificado_comprovado": true,
-   "inscricoes_ate": "",
-   "data_por_confirmar": true,
+   "inscricoes_ate": "2026-12-04",
+   "data_por_confirmar": false,
    "so_futuro": false,
    "situacao": "Aberto",
    "turmas": [],
-   "em_revisao": true,
+   "em_revisao": false,
    "onde_inscrever": [],
    "verificado_em": "2026-11-24",
    "inicio": "",
@@ -24475,7 +24475,7 @@
    "cidade": "",
    "descricao": "",
    "descricao_origem": "",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"
@@ -24563,7 +24563,7 @@
    "cidade": "",
    "descricao": "",
    "descricao_origem": "",
-   "gratuidade_comprovada": false,
+   "gratuidade_comprovada": true,
    "necessidades": [
     "profissao",
     "emprego"

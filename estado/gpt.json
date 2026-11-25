@@ -169,5 +169,14 @@
   "resolvidas": 2,
   "tokens_entrada": 0,
   "tokens_saida": 0
+ },
+ {
+  "quando": "2026-11-25 16:26",
+  "usado": true,
+  "motivo": "ChatGPT (assinatura), resposta colada pelo responsável",
+  "perguntas": 10,
+  "resolvidas": 3,
+  "tokens_entrada": 0,
+  "tokens_saida": 0
  }
 ]

@@ -163,9 +163,14 @@ FONTES = [
      "listar": "senai_ap", "lista": "https://www.ap.senai.br/senai/processo-seletivo/publica%C3%A7%C3%B5es.html",
      "prefixo_turma": "https://www.ap.senai.br/", "extrator": "pdftotext-layout", "layout": True,
      "max_caracteres": 90000,
-     "max_tokens": 48000, "limpar": r"HASH TOTVS:[ 0-9A-F-]+",
+     "max_tokens": 48000, "limpar": r"HASH TOTVS:[ 0-9A-F-]+", "janela_inscricao": 150,
      "nota": "Nos editais de cursos gratuitos do SENAI Amapá (Macapá, Santana, às vezes Oiapoque) a inscrição costuma ser "
-             "PRESENCIAL, na secretaria da unidade, num período curto; copia a frase do período para «inscricao». Em "
+             "PRESENCIAL, na secretaria da unidade; nos editais semestrais o período dura meses (ex.: «29/06 a "
+             "30/10/2026», no Anexo II, cronograma); copia a frase do período para «inscricao». A tabela do Anexo I "
+             "tem uma coluna de perfil com texto longo, por isso o nome do curso e a data de início ficam em linhas "
+             "diferentes: em «frase» copia o BLOCO de linhas seguidas, tal como aparecem (com as barras « | »), desde a "
+             "linha com o nome do curso até à linha com a data de início; em «curso» o nome EXATAMENTE como está na "
+             "tabela, sem acrescentar modalidade, ciclo ou turno (esses vão em «horario» e noutros campos). Em "
              "«selecao», a frase sobre como as vagas são preenchidas (ordem de inscrição/chegada, sorteio…). Se a seleção "
              "tiver prova, entrevista, análise de currículo ou ENEM, NÃO devolvas turmas (regra do responsável). NÃO "
              "devolvas as turmas cujos pré-requisitos exigem já trabalhar na profissão, ter experiência profissional ou "
@@ -458,7 +463,7 @@ def palavras_em_ordem(nome, frase):
     return True
 
 
-def provar(res, texto, publicado, continua=False, tabela_partida=False):
+def provar(res, texto, publicado, continua=False, tabela_partida=False, janela=60):
     # texto lido em colunas (Senac AL): as colunas estão separadas por « | »; as frases copiadas podem trazer ou não
     # essas barras, por isso compara-se sem elas (o resto da frase tem de estar igual)
     def _cv(frase, tx):
@@ -481,7 +486,7 @@ def provar(res, texto, publicado, continua=False, tabela_partida=False):
     elif ini > fim:
         problemas.append(f"o fim da inscrição ({fim}) é anterior ao início ({ini})")
     elif publicado and not (publicado[:10] <= fim <= (datetime.date.fromisoformat(publicado[:10])
-                                                         + datetime.timedelta(days=60)).isoformat()):
+                                                         + datetime.timedelta(days=janela)).isoformat()):
         problemas.append(f"o fim da inscrição ({fim}) não está perto da data do edital ({publicado[:10]})")
     local = str(res.get("local_inscricao") or "") if _cv(str(res.get("frase_local") or ""), texto) else ""
     modo = res.get("modo") if res.get("modo") in ("presencial", "online", "ambos") else ""
@@ -1431,7 +1436,7 @@ def correr(fonte):
                 if m_link and not t.get("link_inscricao"):
                     t["link_inscricao"] = m_link.group(1)
         edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False),
-                                    fonte.get("layout", False))
+                                    fonte.get("layout", False), fonte.get("janela_inscricao", 60))
         if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:
             # segunda prova: a página oficial também escreve o período de inscrição
             problemas.append(f"o fim da inscrição no documento ({edital['fim']}) não aparece na página oficial")

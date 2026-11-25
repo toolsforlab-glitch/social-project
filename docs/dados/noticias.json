@@ -1,6 +1,110 @@
 {
- "atualizado": "2026-11-25T00:56",
+ "atualizado": "2026-11-25T11:00",
  "dias": [
+  {
+   "data": "2026-11-25",
+   "itens": [
+    {
+     "titulo": "MPF e MPC-SP cobram mudanças em políticas para população de rua em SP",
+     "resumo": "Os dois órgãos publicaram um relatório com recomendações sobre as políticas estaduais para pessoas em situação de rua. O documento aponta falhas no acompanhamento de organizações terceirizadas, na escolha de modelos de assistência e na transparência do atendimento.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/mpf-pede-mudancas-na-gestao-de-politicas-para-populacao-de-rua-em-sp"
+    },
+    {
+     "titulo": "Ministério da Justiça lança protocolo para investigações com foco em raça e gênero",
+     "resumo": "O Ministério da Justiça e Segurança Pública divulgou diretrizes para que as polícias considerem raça e gênero nas investigações. A intenção é evitar que preconceitos e estereótipos prejudiquem o atendimento e o registro de ocorrências.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/ministerio-cria-protocolo-policial-com-foco-em-raca-e-genero"
+    },
+    {
+     "titulo": "Imagens falsas de nudez criadas por IA atingem 222 meninas no Brasil",
+     "resumo": "Levantamento mostra que 222 meninas foram vítimas de imagens de nudez falsas feitas com inteligência artificial. O caso acende o alerta para a proteção de crianças e adolescentes no ambiente digital.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "UOL Notícias",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQMWNNUmpLNkZfWFdvbE40ZjFnZ0g3aXVJemgwNXRkRUpJOEp0RmxCTGxlUnhPTmp4bFRaLUVzWWNkTDFEVkFXNTBpRXY2NUxrLUZNNVd1RjYwUU55OWZ1UGZ3eE1QTnZHNGtKSl8yUGhadTVkVlE0ZGJVNTd5aXdfcFBkTWppQklSVklDUVJxZ3AxUGxVNFNoQkJYWm5JOXFqQjdPSE1nZnB4VTdqWENuZWEtV2djOGZFenE4YXdCU1RzMGtTWWR4OEtmMWpZdDFFQzNKbA?oc=5"
+    },
+    {
+     "titulo": "Banco da Amazônia abre edital de R$ 7,5 milhões para bioeconomia",
+     "resumo": "O edital prevê apoio de até R$ 300 mil para associações, cooperativas, micro e pequenas empresas e startups da Amazônia Legal. As inscrições vão até 18 de dezembro.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/banco-da-amazonia-destina-r-75-milhoes-a-projetos-de-bioeconomia-na-amazonia-legal/"
+    },
+    {
+     "titulo": "Governo anuncia incubadora para até 50 projetos de afroturismo",
+     "resumo": "A ministra da Igualdade Racial, Rachel Barros, anunciou uma incubadora para apoiar iniciativas de afroturismo no país. A estrutura inclui rotas culturais, hospedagem em comunidades tradicionais e turismo de base comunitária.",
+     "tema": "desenvolvimento",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/incubadora-vai-apoiar-empreendimentos-de-afroturismo-no-pais"
+    },
+    {
+     "titulo": "BB, Tesouro Nacional e Inclusi querem capacitar 3 mil agentes públicos em inclusão produtiva",
+     "resumo": "Um programa prevê formar 3 mil servidores públicos para tornar a acessibilidade uma prática nas instituições. A proposta combina tecnologia e educação.",
+     "tema": "desenvolvimento",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/bb-tesouro-nacional-e-inclusi-levam-inclusao-produtiva-para-a-agenda-estrategica-da-gestao-publica/"
+    },
+    {
+     "titulo": "Major Ronald, condenado pela morte de Marielle, é demitido da PM do Rio",
+     "resumo": "O governador em exercício do Rio determinou a demissão do major, condenado pelo STF por envolvimento no assassinato da vereadora Marielle Franco. A decisão foi publicada no Diário Oficial do estado.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/condenado-pela-morte-de-marielle-major-ronald-e-demitido-da-pm"
+    },
+    {
+     "titulo": "Relatório mostra longas jornadas e falta de estrutura para caminhoneiros",
+     "resumo": "Pesquisa do Instituto Motiva aponta que nove em cada dez motoristas de caminhão dirigem mais de oito horas por dia. O levantamento também destaca a falta de locais adequados de descanso nas rodovias.",
+     "tema": "saude",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/quem-transporta-o-brasil-os-desafios-dos-caminhoneiros-nas-rodovias"
+    },
+    {
+     "titulo": "Alesc apoia inovação social e fortalece o terceiro setor em Santa Catarina",
+     "resumo": "A Assembleia Legislativa de Santa Catarina apoia o movimento de inovação social e a valorização do terceiro setor no estado. A iniciativa busca fortalecer organizações e projetos sociais locais.",
+     "tema": "gestao",
+     "regiao": "Brasil",
+     "fonte": "Assembleia Legislativa do Estado de Santa Catarina",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPMWlqbDBWM1dxQlF4MVhlb2JjVi1MZ1AzYmljN2Z4dTVJNkYtRHFBWGZuNU81TnFxWmNBUElhY2V1SlpIdGNKSG9NdUhEbjdoMmZpTjRFUG5jVG9HaUdYTGlrQ0VnbEVvQXpiRF9QUkR2T3cxd0M2UjFxeS1yb1psOC1xekFvREVHNXlBMDR3V3I3TXlhY0JnR1pGWXZpRmMyY20xTFF6MVRuaENUTmlrNlBWbV9aS1luX3BQTjUtUWFmZ1Rkc3o3TjZIdWNyejR4aWZIWVFMcTdDVkdVSWdPSGx2NA?oc=5"
+    },
+    {
+     "titulo": "Aceleração corporativa da PRIO ajuda ONGs a captar recursos em 2026",
+     "resumo": "Um programa de aceleração da empresa PRIO vem ajudando organizações do terceiro setor a captar recursos neste ano. O texto mostra como a iniciativa ligou empresa e causas sociais.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "Brasil Inovador",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbDh6LS1TNzE1Mld5ZTREdnNGQjJoWG1uZHJIdFpOdnl5RDd4Ny03bWFkWE1PODhMNXVza1Ffb3dON2d2SllydzVMaWZraDF6d3cyTWJLbWYyYlhQMlRKRFRJVDBza2wzQllzekY4elNrSkc0TlA2ZGJzdEM3QTJaN05WUThfcnJvWlNkOF9jWGRiVGtBM1BsdmRpQlAyUWJva3lJeERlaUxVaEZHN2I2TXpVZVpKeThY?oc=5"
+    },
+    {
+     "titulo": "Mulheres ocupam as ruas de Juazeiro contra a violência",
+     "resumo": "A Pastoral da Mulher organizou uma mobilização em Juazeiro, na Bahia, com moradores, organizações, artistas e serviços da rede de proteção. O objetivo é defender uma vida livre de violências para as mulheres.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/arte-e-denuncia-mulheres-ocupam-ruas-de-juazeiro-por-uma-vida-livre-de-violencias/"
+    }
+   ]
+  },
   {
    "data": "2026-11-24",
    "itens": [

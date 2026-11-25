@@ -66,13 +66,17 @@ def editais_recentes(hoje):
 
 
 def pdf_do_edital(artigo):
+    """(url do PDF do edital, texto, já tem resultado). A lista de downloads traz o edital e, depois, comunicados e
+    resultados; um edital que já tem «resultado» publicado acabou (inscrição e seleção feitas)."""
     pagina = baixar(artigo, timeout=40).decode("utf-8", "replace")
-    links = re.findall(r'href="(/component/phocadownload/[^"]+download=[^"]+)"', pagina)
-    if not links:
-        return "", ""
-    url = urllib.parse.urljoin(SITE, _html.unescape(links[0]))
+    links = [_html.unescape(x) for x in re.findall(r'href="(/component/phocadownload/[^"]+download=[^"]+)"', pagina)]
+    resultado = any(re.search(r"download=\d+:[^\"]*resultado", x, re.I) for x in links)
+    editais = [x for x in links if re.search(r"download=\d+:edital", x, re.I)]
+    if not editais:
+        return "", "", resultado
+    url = urllib.parse.urljoin(SITE, editais[0])
     dados = baixar(url, timeout=60)
-    return (url, texto_de_html(dados)) if dados[:4] == b"%PDF" else (url, "")
+    return (url, texto_de_html(dados) if dados[:4] == b"%PDF" else "", resultado)
 
 
 def iso(d, m, a):
@@ -88,6 +92,8 @@ def ler_edital(t):
                   "formacao": q.group(4).strip(), "vagas": q.group(5), "frase_quadro": q.group(0)})
     else:
         faltas.append("quadro do curso")
+    cp = re.search(r"Demonstrativo do curso e vagas ofertados pel[ao] (Campus [A-ZÀ-Ý][\wÀ-ÿ -]+?)\s+#", t)
+    c["campus_quadro"] = cp.group(1).strip() if cp else ""
     p = re.search(r"Período\s+(?:de\s+)?Inscrição dos\s*\(as\)\s*candidatos\s*\(as\)\s+(\d{2})\s*(?:a|e)\s*(\d{2})\s*/\s*(\d{2})\s*/\s*(\d{4})", t)
     if p:
         c.update({"insc_ini": iso(p.group(1), p.group(3), p.group(4)), "prazo": iso(p.group(2), p.group(3), p.group(4)),
@@ -146,12 +152,15 @@ def main():
     novos, alteracoes = [], []
     for e in lista:
         try:
-            pdf, texto = pdf_do_edital(e["link"])
+            pdf, texto, resultado = pdf_do_edital(e["link"])
         except Exception as ex:  # noqa: BLE001
             print(f"  ! {e['titulo'][:60]}: {type(ex).__name__}")
             continue
+        if resultado:
+            print(f"  - {e['titulo'][:70]}: já tem resultado publicado (seleção feita)")
+            continue
         if not texto:
-            print(f"  - {e['titulo'][:70]}: sem PDF legível")
+            print(f"  - {e['titulo'][:70]}: sem PDF do edital legível")
             continue
         c, faltas = ler_edital(texto)
         nome = c.get("curso") or e["titulo"]
@@ -168,6 +177,8 @@ def main():
         print(f"  {'·' if ident in existentes else '+'} {nome[:50]} | {c['cidade']} | inscrições {c['insc_ini']} a {c['prazo']}"
               f" | {'aberto' if aberto else 'encerrado'}" + (f" | AUDITORIA: {'; '.join(problemas)}" if problemas else ""))
         if seco:
+            print("     ", {k: c.get(k) for k in ("campus_quadro", "formacao", "vagas", "idade", "local_insc", "horario_insc",
+                                                   "local_aula", "horario_aula", "inicio")})
             continue
         if ident in existentes:
             r = existentes[ident]
@@ -192,7 +203,7 @@ def main():
             ev.append(f"certificado: «{c['frase_cert']}» ({pdf})")
         novos.append({
             "ID": ident, "Estado": "Rever" if problemas else "Publicado", "Título": nome[:200],
-            "Entidade": f"IFRO – Instituto Federal de Rondônia ({'Campus ' if e['campus'] != 'reitoria' else ''}{NOMES[e['campus']]})",
+            "Entidade": f"IFRO – Instituto Federal de Rondônia ({c['campus_quadro'] or ('Campus ' if e['campus'] != 'reitoria' else '') + NOMES[e['campus']]})",
             "Link": e["link"], "Página do curso": e["link"], "Local": "BR-RO", "Modalidade": "presencial", "País": "BR",
             "Região": "Rondônia", "Cidade": c["cidade"],
             "Descrição": (f"Curso gratuito de {c['ch']} horas em {c['cidade']}, do IFRO. São {c['vagas']} vagas. A inscrição é "

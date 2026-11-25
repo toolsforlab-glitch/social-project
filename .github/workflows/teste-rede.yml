@@ -1,5 +1,7 @@
 name: teste-rede
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   t:
     runs-on: ubuntu-latest
@@ -10,7 +12,6 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
       - run: SEGUIR=1 python3 scripts/tmp_teste/sondar.py
-      - uses: actions/upload-artifact@v4
-        with:
-          name: sonda
-          path: sonda/
+      - run: |
+          git config user.name sonda && git config user.email sonda@users.noreply.github.com
+          git checkout -q --orphan sonda-tmp && git rm -rqf --cached . && git add -f sonda && git commit -qm sonda && git push -qf origin sonda-tmp

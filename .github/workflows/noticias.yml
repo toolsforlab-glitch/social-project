@@ -119,6 +119,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 senac_to.py
 
+      - name: Cursos curtos (FIC) dos campi do IFRO, lidos dos editais oficiais (sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 ifro_fic.py
+
       - name: Notícias oficiais de cursos das prefeituras e governos (sem Claude) e verificação das novas
         if: ${{ always() }}
         timeout-minutes: 15

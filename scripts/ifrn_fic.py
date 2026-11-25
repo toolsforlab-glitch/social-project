@@ -153,14 +153,12 @@ def main():
     hoje_txt = hoje_ceara()
     hoje = datetime.date.fromisoformat(hoje_txt)
     lista = processos(hoje)
-    print(f"IFRN: {len(lista)} processos nos subtipos FIC, extensão e ProEJA "
-          f"({sum(1 for x in lista if x['estado'] == 'Em andamento')} em andamento).")
+    print(f"IFRN: {len(lista)} processos nos subtipos FIC, extensão e ProEJA.")
     existentes = {} if seco else {r["ID"]: r for r in base.tabela("Cursos") if "IFRN" in (r.get("Entidade") or "")}
     prazos = {(r.get("Inscrições até") or "") for r in existentes.values() if (r.get("Situação das inscrições") or "") != "Encerrado"}
     novos, alteracoes = [], []
     for p in lista:
-        if p["estado"] != "Em andamento" and not todos:
-            continue
+        # o estado do cartão da lista não é fiável (pode ser o do cartão vizinho): decide a etapa de inscrições da página
         try:
             pg = ler_pagina(p["url"])
         except Exception as e:  # noqa: BLE001

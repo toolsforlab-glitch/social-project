@@ -77,6 +77,18 @@ VIGIAS = [
      "verificar": "O SENAI Bahia publicou a página de um processo seletivo novo. Abra a página e o edital: entra se o "
                   "curso for gratuito (escrito), a seleção não tiver prova (ordem de inscrição, sorteio ou análise de "
                   "documentos) e as inscrições estiverem abertas. Peça ao Claude para criar o curso."},
+    # Secretaria da Educação da Bahia (SEC): cursos técnicos subsequentes ao ensino médio (Prosub), gratuitos, com vagas
+    # por sorteio eletrônico (sorteio pode entrar; o site avisa). As inscrições abrem duas vezes por ano (em 2026: 09/01 e
+    # junho/julho) e duram poucas semanas. Quando sair notícia de inscrições abertas, abre-se uma pendência para se criar
+    # o curso a partir do edital oficial (www.ba.gov.br/educacao).
+    {"nome": "SEC Bahia (cursos técnicos subsequentes por sorteio)",
+     "rss": "https://news.google.com/rss/search?q=%22sorteio+eletr%C3%B4nico%22+%22cursos+t%C3%A9cnicos%22+Bahia&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"^(?=.*(inscri|abre|abertas))(?=.*(cursos? t[ée]cnicos?|sorteio))", "dias": 10,
+     "link": "https://www.ba.gov.br/educacao/noticias",
+     "resumo": "notícias recentes de inscrições para o sorteio dos cursos técnicos",
+     "verificar": "A SEC Bahia abriu inscrições para o sorteio de vagas nos cursos técnicos subsequentes (gratuitos, para "
+                  "quem terminou o ensino médio). Abra o edital oficial em www.ba.gov.br/educacao e peça ao Claude para "
+                  "criar o curso com o período de inscrição, os requisitos e o aviso de que as vagas são por sorteio."},
     # OSCs aprovadas pelos critérios de histórico (regra do responsável, 25/11/2026; ver LEIAME). Não publicam as turmas
     # num site: a inscrição é feita no município, pela própria OSC. Se o Google Notícias tiver notícias recentes de cursos
     # ou inscrições com o nome delas, abre-se uma pendência (uma por mês e por OSC). Os cursos só entram com página

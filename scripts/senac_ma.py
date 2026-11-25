@@ -134,7 +134,7 @@ FONTES = [
              "último; em «inscricao.frase» copia a linha «Inscrições …»."},
     {"nome": "Senac RO", "uf": "RO", "local": "BR-RO", "regiao": "Rondônia",
      "entidade": "Senac Rondônia (Programa Senac de Gratuidade)", "estado": "estado/senac_ro.json",
-     "listar": "senac_ro", "lista": "https://www.ro.senac.br/edital-psg/",
+     "listar": "senac_ro", "lista": "https://www.ro.senac.br/edital-psg/", "extrator": "pdftotext",
      "api": "https://www.ro.senac.br/wp-json/wp/v2/media?search=Edital-PSG&per_page=60&_fields=date,source_url",
      "prefixo_turma": "https://www.ro.senac.br/wp-content/uploads/",
      "nota": "Nos editais do Senac Rondônia a forma de seleção costuma estar no item 2 («O critério inicial será a "
@@ -275,6 +275,18 @@ def texto_do_documento(dados, tipo, layout=False):
     (cada linha da tabela fica numa linha do texto; usado no Senac AL, onde a leitura normal parte as linhas)."""
     if "pdf" in tipo or dados[:4] == b"%PDF":
         from pypdf import PdfReader
+        if layout == "pdftotext":
+            # alguns PDFs (Senac RO) saem do pypdf com espaços a meio das palavras («F armácia»); o pdftotext não
+            try:
+                with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
+                    f.write(dados)
+                    f.flush()
+                    t = subprocess.run(["pdftotext", f.name, "-"], capture_output=True, timeout=120).stdout.decode("utf-8", "replace")
+                if len(t.strip()) > 300:
+                    return t
+            except (OSError, subprocess.SubprocessError):
+                pass
+            layout = False
         if layout:
             # as colunas vêm separadas por muitos espaços: cada separação longa vira « | » (texto mais curto e as
             # colunas continuam distinguíveis); as linhas em branco saem
@@ -1192,13 +1204,13 @@ def correr(fonte):
         doc = docs[0]
         try:
             dados = baixar(doc["url"], timeout=60)
-            texto = recortar(texto_do_documento(dados, doc.get("mime_type", ""), fonte.get("layout", False)),
+            texto = recortar(texto_do_documento(dados, doc.get("mime_type", ""), fonte.get("extrator") or fonte.get("layout", False)),
                              fonte.get("anexo", r"ANEXO\s+I\b"),
                              fonte.get("max_caracteres", MAX_CARACTERES))
             # comunicados e retificações publicados depois do edital: lidos juntos, no fim do texto
             texto_avisos = ""
             for url in e.get("avisos") or []:
-                t_aviso = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf"))
+                t_aviso = re.sub(r"[ \t]+", " ", texto_do_documento(baixar(url, timeout=60), "application/pdf", fonte.get("extrator") or False))
                 texto_avisos += f"\n\n=== COMUNICADO OU RETIFICAÇÃO PUBLICADO DEPOIS DO EDITAL (prevalece) ===\n{t_aviso.strip()}"
             texto += texto_avisos
             for item in e.get("extras") or []:

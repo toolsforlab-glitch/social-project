@@ -1,0 +1,19 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt-get -qq install -y poppler-utils >/dev/null 2>&1 || true
+          B=https://www.ba.gov.br/trabalho/sites/site-setre/files
+          for u in "2026-08/EDITAL%C2%A0DE%20CHAMAMENTO%20P%C3%9ABLICO%20N.%200072026%20-%20RESULTADO%20DEFINITIVO.pdf" "2026-09/EDITAL%20DE%20CHAMAMENTO%20P%C3%9ABLICO%20N%C2%BA%20006_2026%20-%20RESULTADO%20FINAL.pdf" "2026-09/EDITAL%20DE%20CHAMAMENTO%20P%C3%9ABLICO%20N%C2%BA%20009_2026%20-%20RESULTADO%20FINAL.pdf"; do
+            echo "######## $u"; curl -sS -m 60 -A "Mozilla/5.0" -o r.pdf "$B/$u"; pdftotext -layout r.pdf - | grep -v "^\s*$" | grep -iE "associa|instituto|funda|centro|cooperativa|osc|lote|classific|selecion|pontua|cnpj" | sed 's/   */ | /g' | head -45
+          done
+          curl -sS -m 40 -A "Mozilla/5.0" https://www.ba.gov.br/trabalho/292/termo-de-colaboracao | python3 -c "import sys,re,html;t=sys.stdin.read();[print(html.unescape(re.sub(r'<[^>]+>','',x)).strip()) for x in re.findall(r'(Termo de Colabora[^<]{0,200})',t,re.I)][:1]" ; curl -sS -m 40 -A "Mozilla/5.0" https://www.ba.gov.br/trabalho/292/termo-de-colaboracao | python3 -c "
+          import sys,re,html,collections
+          t=html.unescape(re.sub(r'<[^>]+>',' ',sys.stdin.read()))
+          nomes=re.findall(r'(?:Termo de Colabora[çc][ãa]o|TERMO DE COLABORA[ÇC][ÃA]O)[^\n]{0,40}?(?:20\d\d)[^A-Za-z]{0,30}(?:e publica[çc][ãa]o no D\.O\.E\.)?\s*[-–]?\s*([A-ZÁÉÍÓÚÂÊÔÃÕÇ][^\n]{5,120}?)(?=\s{2,}|INSTRUMENTO|$)',t)
+          c=collections.Counter(re.sub(r'\s+',' ',n).strip(' -–,') for n in nomes)
+          for k,v in c.most_common(60): print(v,k)
+          "

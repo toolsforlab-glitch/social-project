@@ -349,6 +349,10 @@ def main():
 
     for estatico in ("estilo.css", "app.js"):
         shutil.copyfile(caminho("site", estatico), os.path.join(docs, estatico))
+    # fonte do site (Atkinson Hyperlegible) e a sua licença
+    os.makedirs(os.path.join(docs, "fontes"), exist_ok=True)
+    for f in os.listdir(caminho("site", "fontes")):
+        shutil.copyfile(caminho("site", "fontes", f), os.path.join(docs, "fontes", f))
     open(os.path.join(docs, ".nojekyll"), "w").close()
 
     gravar_json("docs/dados/site.json", {

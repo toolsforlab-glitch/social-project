@@ -161,7 +161,8 @@ FONTES = [
     {"nome": "Senai AP", "uf": "AP", "local": "BR-AP", "regiao": "Amapá",
      "entidade": "SENAI Amapá (Gratuidade Regimental)", "estado": "estado/senai_ap.json",
      "listar": "senai_ap", "lista": "https://www.ap.senai.br/senai/processo-seletivo/publica%C3%A7%C3%B5es.html",
-     "prefixo_turma": "https://www.ap.senai.br/", "layout": True, "max_caracteres": 90000,
+     "prefixo_turma": "https://www.ap.senai.br/", "extrator": "pdftotext-layout", "layout": True,
+     "max_caracteres": 90000,
      "max_tokens": 48000, "limpar": r"HASH TOTVS:[ 0-9A-F-]+",
      "nota": "Nos editais de cursos gratuitos do SENAI Amapá (Macapá, Santana, às vezes Oiapoque) a inscrição costuma ser "
              "PRESENCIAL, na secretaria da unidade, num período curto; copia a frase do período para «inscricao». Em "
@@ -302,6 +303,22 @@ def texto_do_documento(dados, tipo, layout=False):
     (cada linha da tabela fica numa linha do texto; usado no Senac AL, onde a leitura normal parte as linhas)."""
     if "pdf" in tipo or dados[:4] == b"%PDF":
         from pypdf import PdfReader
+        if layout == "pdftotext-layout":
+            # tabelas em PDFs que o pypdf não lê em modo layout (TOTVS/PDFTron, SENAI AP): o pdftotext -layout mantém
+            # cada linha da tabela numa linha; as separações longas viram « | », como no modo layout
+            try:
+                with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
+                    f.write(dados)
+                    f.flush()
+                    t = subprocess.run(["pdftotext", "-layout", f.name, "-"], capture_output=True,
+                                       timeout=120).stdout.decode("utf-8", "replace")
+                linhas = [re.sub(r" {3,}", " | ", l).strip(" |") for l in t.splitlines()]
+                t = "\n".join(l for l in linhas if l)
+                if len(t.strip()) > 300:
+                    return t
+            except (OSError, subprocess.SubprocessError):
+                pass
+            layout = False
         if layout == "pdftotext":
             # alguns PDFs (Senac RO) saem do pypdf com espaços a meio das palavras («F armácia»); o pdftotext não
             try:

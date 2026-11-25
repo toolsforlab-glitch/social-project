@@ -1,8 +1,1 @@
-https://www.ba.senac.br/assets/PSGConsultaVagas-CO98HgOp.js
-https://www.ba.senac.br/assets/PSGHome-BD9sOxpi.js
-https://www.ba.senac.br/assets/psg-CFi1f5-d.js
-https://www.ba.senac.br/api/cursos/turma/psg/consulta-vagas
-https://www.ba.senac.br/api/cursos/curso/filtros-catalogo
-https://www.ba.senac.br/api/cursos/curso/catalogo
-https://www.senaibahia.com.br/processo-seletivo-inovae-qualificae/
-https://www.senaibahia.com.br/wp-content/uploads/2026/11/EDITAL-BORBOREMA-chancelado.pdf
+https://www.senaibahia.com.br/processo-seletivo-cqpg-cimatec-plural/

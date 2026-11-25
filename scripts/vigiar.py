@@ -62,6 +62,21 @@ VIGIAS = [
      "verificar": "Há notícias de uma Chamada Pública nova do SENAI AM e o leitor não achou o PDF (nome novo): peça ao "
                   "Claude para abrir fieam.org.br/senai/chamada-publica/ no navegador e juntar os links da chamada e da "
                   "programação ao estado (estado/senai_am_chamadas.json)."},
+    # SENAI Bahia: cada processo seletivo de curso gratuito (parcerias com empresas, programas como o CIMATEC Plural)
+    # ganha uma página própria no WordPress do site, com formato diferente de processo para processo, e as inscrições
+    # duram uma ou duas semanas. A lista pública de páginas (/wp-json/wp/v2/pages) é lida com as palavras abaixo; uma
+    # página nova (que não estava na leitura anterior) abre uma pendência para se criar o curso a partir da página e do
+    # edital. Os cursos técnicos com bolsa ficam fora (a bolsa exige nota do ENEM; regra: cursos com prova ficam fora).
+    {"nome": "SENAI Bahia (processos seletivos de cursos gratuitos)",
+     "wp": ["https://www.senaibahia.com.br/wp-json/wp/v2/pages?search=processo%20seletivo&orderby=modified"
+            "&per_page=30&_fields=link,title,modified",
+            "https://www.senaibahia.com.br/wp-json/wp/v2/pages?search=gratuit&orderby=modified"
+            "&per_page=30&_fields=link,title,modified"],
+     "estado": "estado/senai_ba_paginas.json", "dias": 30,
+     "link": "https://www.senaibahia.com.br/cursos-gratuitos-parceria-com-empresas/",
+     "verificar": "O SENAI Bahia publicou a página de um processo seletivo novo. Abra a página e o edital: entra se o "
+                  "curso for gratuito (escrito), a seleção não tiver prova (ordem de inscrição, sorteio ou análise de "
+                  "documentos) e as inscrições estiverem abertas. Peça ao Claude para criar o curso."},
     # OSCs aprovadas pelos critérios de histórico (regra do responsável, 25/11/2026; ver LEIAME). Não publicam as turmas
     # num site: a inscrição é feita no município, pela própria OSC. Se o Google Notícias tiver notícias recentes de cursos
     # ou inscrições com o nome delas, abre-se uma pendência (uma por mês e por OSC). Os cursos só entram com página
@@ -165,6 +180,37 @@ def vigiar_rss(base, v):
                        v["verificar"], v["link"] + "#" + hoje.strftime("%Y-%m"), origem="vigiar.py")
 
 
+def vigiar_wp(base, v):
+    """Páginas novas de um site WordPress (lista pública), comparadas com as da leitura anterior."""
+    import datetime
+    import html as _html
+    from comum import gravar_json, ler_json
+    paginas = {}
+    for url in v["wp"]:
+        try:
+            for p in json.loads(baixar(url, timeout=40).decode("utf-8", "replace")):
+                paginas[p["link"]] = (_html.unescape(p.get("title", {}).get("rendered", "")), p.get("modified", "")[:10])
+        except Exception as e:  # noqa: BLE001
+            print(f"{v['nome']}: a lista de páginas não abriu ({type(e).__name__}); fica para amanhã.")
+            return
+    estado = ler_json(v["estado"], None)
+    if estado is None:  # primeira leitura: só guarda o que já existe
+        gravar_json(v["estado"], {"links": sorted(paginas)})
+        print(f"{v['nome']}: primeira leitura, {len(paginas)} páginas guardadas.")
+        return
+    limite = (datetime.date.today() - datetime.timedelta(days=v["dias"])).isoformat()
+    novas = [(l, t, m) for l, (t, m) in paginas.items() if l not in set(estado.get("links", [])) and m >= limite]
+    gravar_json(v["estado"], {"links": sorted(set(estado.get("links", [])) | set(paginas))})
+    if not novas:
+        print(f"{v['nome']}: sem páginas novas.")
+        return
+    for link, titulo, mod in novas:
+        print(f"{v['nome']}: página nova: {titulo} ({mod}) {link}")
+        if base is not None:
+            registar_pendencia(base, f"{v['nome']}: página nova «{titulo or link}» (alterada em {mod}).",
+                               v["verificar"], link, origem="vigiar.py")
+
+
 def main():
     import os
     if os.environ.get("SECO"):  # ensaio: só as vigias por notícias, sem planilha
@@ -177,6 +223,9 @@ def main():
     for v in VIGIAS:
         if v.get("rss"):
             vigiar_rss(base, v)
+            continue
+        if v.get("wp"):
+            vigiar_wp(base, v)
             continue
         try:
             html = baixar(v["url"], timeout=40).decode("utf-8", "replace")

@@ -11,8 +11,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
-      - run: SEGUIR=1 python3 scripts/tmp_teste/sondar.py
-      - run: cd scripts && SECO=1 DIAS_ENSAIO=400 python3 -c "import vigiar; [vigiar.vigiar_rss(None,v) for v in vigiar.VIGIAS if v['nome'].startswith('SEC Bahia')]" 2>&1 | tee ../sonda/sec.txt
+      - run: python3 scripts/tmp_teste/sondar.py
       - run: |
           git config user.name sonda && git config user.email sonda@users.noreply.github.com
           git checkout -q --orphan sonda-tmp && git rm -rqf --cached . && git add -f sonda && git commit -qm sonda && git push -qf origin sonda-tmp

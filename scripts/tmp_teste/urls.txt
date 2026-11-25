@@ -1,5 +1,3 @@
-https://www.pe.senac.br/
-https://www.pe.senai.br/
-https://www.ma.senai.br/
+https://www.pe.senac.br/psg/assets/js/appPSG.js
+https://intranet.pe.senac.br/dr/nova/psgnet/
 https://www.ma.senac.br/psg/
-https://www.senaima.org.br/

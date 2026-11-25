@@ -496,7 +496,8 @@
       ver.href = "cursos.html" + (q.length ? "?" + q.join("&") : "");
     }
     botoesOpcoes(el("inicio-opcoes"), site.necessidades, escolhidas, atualizar);
-    preencherOnde(onde, site.locais, site.territorio_piloto || "");
+    // o site é para o país todo: a página inicial abre com «Mostrar tudo», como a lista de cursos (25/11/2026)
+    preencherOnde(onde, site.locais, "");
     onde.addEventListener("change", atualizar);
     atualizar();
 

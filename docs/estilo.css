@@ -2,6 +2,13 @@
    Tipo: as fontes do próprio aparelho (nada para baixar): funciona em qualquer navegador e em celulares simples,
    com internet fraca ou cara (pedido do responsável, 22/11/2026). Ordem: Windows (Segoe UI), Android (Roboto),
    iPhone/Mac (-apple-system), Linux (Noto Sans, Liberation Sans, DejaVu Sans), e por fim Arial e a sans-serif genérica. */
+/* Atkinson Hyperlegible (Braille Institute, licença SIL OFL 1.1, fontes/OFL.txt): desenhada para quem enxerga mal,
+   distingue letras parecidas (I l 1, 0 O). Guardada no próprio site, só o conjunto latino (acentos do português),
+   400 e 700, cerca de 35 KB no total. Decisão do responsável, 25/11/2026. */
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("fontes/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("fontes/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); }
 :root {
   --anil: #1d3f8f;
   --anil-escuro: #142d68;
@@ -22,8 +29,8 @@ body {
   margin: 0;
   background: var(--cal);
   color: var(--tinta);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial,
-    "Liberation Sans", "DejaVu Sans", sans-serif;
+  font-family: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans",
+    "Helvetica Neue", Arial, "Liberation Sans", "DejaVu Sans", sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
 }
@@ -61,6 +68,11 @@ p { margin: 0 0 1rem; max-width: 40em; }
 
 /* Pergunta principal */
 .pergunta { margin-bottom: 1.2rem; }
+/* celular: o botão principal fica sempre à vista no rodapé da tela enquanto se escolhem os temas (25/11/2026) */
+@media (max-width: 40rem) {
+  #inicio-ver { position: sticky; bottom: .75rem; z-index: 5; display: block; text-align: center;
+    box-shadow: 0 0 0 .5rem var(--cal); }
+}
 .opcoes { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.4rem; padding: 0; list-style: none; }
 .opcoes li[hidden] { display: none; }
 .opcao {
@@ -243,7 +255,7 @@ a.lembrar::after { content: none !important; }
 .so-leitor { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* «Em resumo:» antes de uma descrição reescrita pela rotina */
-.descricao .rotulo { font-weight: 600; }
+.descricao .rotulo { font-weight: 700; }
 
 /* Página de cursos: em ecrãs largos, filtros empilhados numa coluna à esquerda e a lista à direita (como nas bases
    de dados de artigos); no celular fica tudo numa coluna, como antes */

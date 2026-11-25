@@ -1,2 +1,8 @@
-https://processoseletivo.ifrn.edu.br/
-https://processoseletivo.ifrn.edu.br/processos/
+https://selecao.ifro.edu.br/
+https://processoseletivo.ifrr.edu.br/
+https://processoseletivo.ifto.edu.br/
+https://www.ifs.edu.br/
+https://selecao.ifs.edu.br/
+https://portal.ifro.edu.br/
+https://portal.ifrr.edu.br/
+https://portal.ifto.edu.br/

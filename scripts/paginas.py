@@ -208,6 +208,10 @@ DESTINOS_FONTES = [
     # O botão diz «Conferir na página do Centec»: serve só para conferir, a inscrição é presencial - 23/11/2026
     (r"^https://www\.centec\.org\.br/", {
         "tipo": "lista", "nome": "Centec", "nota": "A inscrição é feita na unidade, com o CPF."}),
+    # Ifap – edital do PS Proeja 2027.1 (25/11/2026): quadro de vagas na página 5, inscrição no sistema do Ifap
+    (r"^https://www\.ifap\.edu\.br/documents/1317/Edital_PROEJA_2027\.pdf", {
+        "tipo": "pdf", "nota": "Os cursos e as vagas estão no quadro da página 5 do edital. A inscrição é pela "
+                               "internet, em processoseletivo.ifap.edu.br/ps, entrando com a conta gov.br."}),
     # Editais do Senac e do SENAI (MA, AC, PI): o link abre o PDF do edital
     (r"\.pdf($|[?#])", {
         "tipo": "pdf", "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim."}),

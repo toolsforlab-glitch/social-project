@@ -106,6 +106,9 @@
     prazos = prazos.filter(function (x) { var n = diasAte(x); return n !== null && n >= 0; }).sort();
     return prazos[0] || "";
   }
+  // «Novo no site»: o curso entrou hoje ou nos 2 dias anteriores (pedido do responsável, 25/11/2026)
+  var DIAS_NOVO = 2;
+  function recente(c) { var n = diasAte(c.primeiro_visto); return n !== null && n <= 0 && n >= -DIAS_NOVO; }
   function terminaEmBreve(c) { var n = diasAte(prazoProximo(c)); return n !== null && n >= 0 && n <= DIAS_ALERTA; }
   function quandoTermina(iso) {
     var n = diasAte(iso);
@@ -265,6 +268,7 @@
     if (id === "reservadas") return !!(c.etiquetas || []).length;
     if (id === "acessivel") return !!(c.acessibilidade || []).length;
     if (id === "fecha_breve") return terminaEmBreve(c);
+    if (id === "recente") return recente(c);
     return true;
   }
   // botões que não encontram nenhum curso ficam escondidos e voltam sozinhos quando houver cursos (25/11/2026).
@@ -570,6 +574,7 @@
       // regra do projeto: gratuidade só com frase da página que diga que não há custo; sem ela, avisa-se
       if (c.gratuidade_comprovada === false) factos.push(marca("atencao", "Gratuidade por confirmar", "marca:grat-confirmar"));
       var breve = terminaEmBreve(c);
+      if (recente(c)) factos.unshift(marca("novo", "Novo no site", "facilita:recente"));
       if (breve) factos.unshift(marca("urgente", quandoTermina(prazoProximo(c)), "facilita:fecha_breve"));
       if (temTurmas) {
         factos.push('<span class="bom">' + (turmas.length === 1 ? "1 turma com inscrições abertas" : turmas.length + " turmas com inscrições abertas") + "</span>");

@@ -135,7 +135,7 @@ VIGIAS = [
      "estado": "estado/ifro_fic.json",
      "item": r'<h2 class="tileHeadline">\s*<a href="([^"]+)">([^<]+)</a>',
      "incluir": r"sele[çc][ãa]o de (alunos|cursistas|estudantes)|curso",
-     "excluir": r"professor|bolsista|profissionais|mediador|docente|servidor|ONU|coral|audi[çc]",
+     "excluir": r"professor|bolsista|profissiona|mediador|docente|servidor|ONU|coral|audi[çc]",
      "link": "https://selecao.ifro.edu.br/cursos-fic",
      "verificar": "Edital novo de curso FIC (curta duração, gratuito) num campus do IFRO. Abra o edital: entra se não "
                   "tiver prova (sorteio, ordem de inscrição ou análise de documentos) e as inscrições estiverem abertas. "

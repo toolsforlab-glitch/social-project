@@ -1,0 +1,14 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sS -m 40 -A "Mozilla/5.0" -o p.html -w "%{http_code} %{size_download}\n" "https://www.ap.senai.br/senai/processo-seletivo/publica%C3%A7%C3%B5es.html"
+          python3 - <<'P'
+          import re
+          t=open('p.html',encoding='utf-8',errors='replace').read()
+          i=t.find('012/2026'); print(t[i-600:i+2600])
+          P
+          curl -sS -m 40 -A "Mozilla/5.0" -o /dev/null -w "pdf %{http_code}\n" "https://www.ap.senai.br/files/EDITAL_N__11.2026_PSAI_G_NERO_E_GERA__ES_CURSOS_DE_APERFEI_O_202610051400212306535.pdf"

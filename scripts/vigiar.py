@@ -119,6 +119,8 @@ def vigiar_rss(base, v):
     except Exception as e:  # noqa: BLE001
         print(f"{v['nome']}: o Google Notícias não abriu ({type(e).__name__}); fica para amanhã.")
         return
+    import os
+    dias = int(os.environ.get("DIAS_ENSAIO") or v["dias"])  # só para ensaios
     hoje = datetime.date.today()
     vista = (ler_json(v["estado_leitor"], {}) or {}).get("vista_em", "") if v.get("estado_leitor") else ""
     recentes = []
@@ -127,7 +129,7 @@ def vigiar_rss(base, v):
             d = email.utils.parsedate_to_datetime(data).date()
         except (TypeError, ValueError):
             continue
-        if (hoje - d).days <= v["dias"] and re.search(v["titulo"], titulo, flags=re.I) and (not vista or vista < d.isoformat()):
+        if (hoje - d).days <= dias and re.search(v["titulo"], titulo, flags=re.I) and (not vista or vista < d.isoformat()):
             recentes.append(f"{d.isoformat()}: {titulo}")
     if not recentes:
         print(f"{v['nome']}: sem notícias novas de abertura.")

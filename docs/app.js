@@ -792,7 +792,7 @@
       pagina = parseInt(b.getAttribute("data-pagina"), 10) || 1;
       manterPagina = true;
       filtrar();
-      medir("pagina", { pagina: pagina });
+      medir("mudar_pagina", { numero_pagina: pagina });  // "pagina" é o nome da página do site (medir)
       contagem.scrollIntoView({ behavior: "smooth", block: "start" });
     }); });
     // links para um cartão (#curso-…, da página inicial ou de «Terminam em breve»): abrir a página onde ele está

@@ -144,6 +144,20 @@ FONTES = [
              "município e unidade (Porto Velho, Cacoal, Jaru, Ji-Paraná, Vilhena, Ariquemes…). NÃO devolvas as turmas "
              "cujos pré-requisitos exigem já trabalhar na profissão ou ter experiência profissional (regra do "
              "responsável). Se no fim houver RETIFICAÇÕES, elas mudam o edital: usa as datas e os cursos novos."},
+    {"nome": "Senac AP", "uf": "AP", "local": "BR-AP", "regiao": "Amapá",
+     "entidade": "Senac Amapá (Programa Senac de Gratuidade)", "estado": "estado/senac_ap.json",
+     "listar": "senac_ap", "lista": "https://www.ap.senac.br/psg",
+     "api": "https://cms.ap.senac.br/api/v1/selection-processes", "extrator": "pdftotext",
+     "prefixo_turma": "https://cms.ap.senac.br/storage/selection-process/",
+     "nota": "Nos editais do Senac Amapá o «Anexo 1» tem os cursos (carga horária, vagas, turno, pré-requisitos) e o "
+             "«Anexo 2» o cronograma (período de inscrição e de matrícula). A gratuidade costuma estar no item 1.2 («As "
+             "vagas provenientes deste edital não terão ônus para o aluno selecionado»): podes copiá-la para "
+             "«gratuidade». A inscrição é pela internet em https://send3.ap.senac.br/send3/site/psg (modo «online»; "
+             "devolve esse endereço em «link_inscricao» de cada turma). As unidades são o CEP Senac Macapá e a UI "
+             "Senac Santana: «cidade» = Macapá ou Santana. Em «selecao», a frase do item 4 sobre como as vagas são "
+             "preenchidas, se for por ordem de inscrição ou sorteio. NÃO devolvas as turmas cujos pré-requisitos exigem "
+             "já trabalhar na profissão ou ter experiência profissional, nem as só para pessoas indicadas por uma "
+             "empresa ou instituição parceira (regra do responsável). Se no fim houver ERRATAS, elas prevalecem."},
     {"nome": "Senai AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",
      "entidade": "SENAI Amazonas (Programa SENAI de Gratuidade)", "estado": "estado/senai_am.json",
      "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
@@ -872,6 +886,41 @@ def listar_senac_ro(fonte):
     return editais
 
 
+def listar_senac_ap(fonte):
+    """Senac Amapá: a página do PSG (ap.senac.br/psg) lê a lista pública cms.ap.senac.br/api/v1/selection-processes
+    e, para cada processo, /selection-processes/{id} traz os documentos (edital e erratas, PDFs em
+    cms.ap.senac.br/storage/). ATENÇÃO (25/11/2026): estas respostas trazem também dados pessoais de funcionários do
+    Senac AP (campo «people»: nome, CPF, nascimento, telefone, morada). Só se leem número, nome, datas e a lista de
+    documentos (título e ficheiro); nada mais é lido, impresso ou guardado."""
+    lista = json.loads(baixar(fonte["api"], timeout=60).decode("utf-8"))
+    lista = lista.get("data", lista) if isinstance(lista, dict) else lista
+    corte = (datetime.date.fromisoformat(hoje_ceara()) - datetime.timedelta(days=DIAS_RECENTES)).isoformat()
+    editais = []
+    for p in lista:
+        criado = str(p.get("created_at") or "")[:10]
+        if criado < corte or str(p.get("type") or "") != "G":
+            continue
+        try:
+            det = json.loads(baixar(f"{fonte['api']}/{int(p['id'])}", timeout=60).decode("utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        det = det.get("data", det) if isinstance(det, dict) and "documents" not in det else det
+        docs = [(str(d.get("title") or ""), "https://cms.ap.senac.br/storage/" + str(d.get("filename") or ""))
+                for d in (det.get("documents") or []) if str(d.get("filename") or "").lower().endswith(".pdf")]
+        principal = [u for t, u in docs if re.match(r"\s*EDITAL", t, re.I)] or [u for t, u in docs]
+        if not principal:
+            continue
+        edital = principal[0]
+        avisos = [u for t, u in docs if u != edital and re.search(r"errata|retifica|aditivo|prorroga|comunicado", t, re.I)]
+        num = re.sub(r"\s*-\s*PSG\s*$", "", str(p.get("number") or "")).strip()
+        editais.append({"id": f"senac-ap-{int(p['id'])}", "number": num, "published_at": criado,
+                        "updated_at": "|".join(u.rsplit("/", 1)[-1] for u in [edital] + avisos),
+                        "title": re.sub(r"\s+", " ", str(p.get("name") or ""))[:200], "pagina": edital,
+                        "padrao": re.escape(edital), "aditivo": False, "avisos": avisos,
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": edital}]})
+    return editais
+
+
 FIEAM = "https://fieam.org.br/senai/wp-content/uploads/sites/16/"
 ESTADO_CHAMADAS_AM = "estado/senai_am_chamadas.json"
 FRASE_GRATUIDADE_SENAI_AM = "Os cursos ofertados serão 100% gratuitos"
@@ -1141,7 +1190,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am, "senai_am": listar_senai_am, "senac_ro": listar_senac_ro}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am, "senai_am": listar_senai_am, "senac_ro": listar_senac_ro, "senac_ap": listar_senac_ap}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []

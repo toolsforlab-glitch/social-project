@@ -1,30 +1,141 @@
 {
- "data": "2026-11-22",
+ "data": "2026-11-25",
  "itens": [
   {
    "n": 1,
-   "link": "https://loja.sebrae.com.br/por-que-devo-entender-o-que-e-formalizac-o-e-como-me-preparar-a0jv2000000h5cnmaa",
-   "dominio": "sebrae.com.br",
+   "link": "https://www.gov.br/mec/pt-br/mec-idiomas",
+   "dominio": "www.gov.br",
    "duvidas": [
+    "gratuito",
     "certificado"
    ],
-   "titulo": "Por que devo entender o que é formalização? E como me preparar?",
-   "entidade": "Sebrae (cursos online)",
+   "titulo": "Aprender inglês e espanhol",
+   "entidade": "Ministério da Educação (MEC Idiomas)",
    "ids": [
-    "C-4e6d0b66"
+    "C-94e22da3"
    ]
   },
   {
    "n": 2,
-   "link": "https://loja.sebrae.com.br/a-gest-o-da-propriedade-rural-por-um-novo-ponto-de-vista-a0jv2000000h5damaq",
-   "dominio": "sebrae.com.br",
+   "link": "https://ma.senac.br/editais_psg/edital-senac-ma-psg-2026-no-172-auxiliar-de-cozinha-e-pizzaiolo-barreirinhas-ma/",
+   "dominio": "ma.senac.br",
+   "duvidas": [
+    "gratuito"
+   ],
+   "titulo": "Auxiliar de cozinha",
+   "entidade": "Senac Maranhão (Programa Senac de Gratuidade)",
+   "ids": [
+    "C-00843a35",
+    "C-e3fe5e92"
+   ]
+  },
+  {
+   "n": 3,
+   "link": "https://www.pe.senai.br/wp-content/uploads/2026/11/EDITAL_-_QUA_-_SANTO_AMARO_-_AUXILIAR_DE_LINHA_DE_PROD._-_PR_20261123130333507156.pdf",
+   "dominio": "pe.senai.br",
+   "duvidas": [
+    "gratuito",
+    "certificado"
+   ],
+   "titulo": "Auxiliar de Linha de Produção",
+   "entidade": "SENAI Pernambuco (Gratuidade Regimental)",
+   "ids": [
+    "C-5dcbf7d8"
+   ]
+  },
+  {
+   "n": 4,
+   "link": "https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-oferta-7-3-mil-vagas-em-32-cursos-gratuitos-de-capacitacao-profissional",
+   "dominio": "ce.gov.br",
+   "duvidas": [
+    "situacao",
+    "inscricoes_ate",
+    "certificado"
+   ],
+   "titulo": "32 cursos de capacitação profissional (Programa Autonomia Econômica)",
+   "entidade": "Prefeitura de Fortaleza (SDE – Plano Fortaleza Inclusiva)",
+   "ids": [
+    "C-cf77f502"
+   ]
+  },
+  {
+   "n": 5,
+   "link": "https://www.se.senac.br/senac-sergipe-abre-vagas-647-vagas-para-36-cursos-de-gratuitos/",
+   "dominio": "se.senac.br",
+   "duvidas": [
+    "situacao"
+   ],
+   "titulo": "Gestão de Departamento de Pessoal",
+   "entidade": "Senac Sergipe (Programa Senac de Gratuidade)",
+   "ids": [
+    "C-c6333b5b"
+   ]
+  },
+  {
+   "n": 6,
+   "link": "https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-santo-estevao-2027/",
+   "dominio": "ifbaiano.edu.br",
+   "duvidas": [
+    "inscricoes_ate"
+   ],
+   "titulo": "Cursos técnicos a distância (Santo Estêvão)",
+   "entidade": "IF Baiano",
+   "ids": [
+    "C-bbd64b5d"
+   ]
+  },
+  {
+   "n": 7,
+   "link": "https://editais.ifac.edu.br/edital/visualizacao/8656/",
+   "dominio": "ifac.edu.br",
    "duvidas": [
     "certificado"
    ],
-   "titulo": "A gestão da propriedade rural por um novo ponto de vista",
-   "entidade": "Sebrae (cursos online)",
+   "titulo": "Inglês",
+   "entidade": "Instituto Federal do Acre (Ifac)",
    "ids": [
-    "C-14a386a5"
+    "C-fd0b23bb",
+    "C-1b941be0"
+   ]
+  },
+  {
+   "n": 8,
+   "link": "https://gorecife.recife.pe.gov.br/cursos",
+   "dominio": "pe.gov.br",
+   "duvidas": [
+    "certificado"
+   ],
+   "titulo": "NR10",
+   "entidade": "Prefeitura do Recife – Qualifica Recife (GO Recife)",
+   "ids": [
+    "C-c351514a"
+   ]
+  },
+  {
+   "n": 9,
+   "link": "https://maceio.al.gov.br/noticias/semtes/prefeitura-de-maceio-oferta-50-vagas-em-cursos-gratuitos-de-qualificacao-profissional-para-2027",
+   "dominio": "al.gov.br",
+   "duvidas": [
+    "certificado"
+   ],
+   "titulo": "Assistente de Marketing e Vendas",
+   "entidade": "Prefeitura de Maceió (Semtes) com o Senac",
+   "ids": [
+    "C-3cbfe7b4",
+    "C-58420dfe"
+   ]
+  },
+  {
+   "n": 10,
+   "link": "https://processoseletivo.ifrn.edu.br/edital/visualizar/696/",
+   "dominio": "ifrn.edu.br",
+   "duvidas": [
+    "certificado"
+   ],
+   "titulo": "Operador de Computador integrado ao ensino médio (EJA, curso FIC)",
+   "entidade": "IFRN (Instituto Federal do Rio Grande do Norte)",
+   "ids": [
+    "C-18821eaa"
    ]
   }
  ]

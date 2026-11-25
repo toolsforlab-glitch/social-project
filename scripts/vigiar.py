@@ -308,7 +308,7 @@ def vigiar_itens(base, v):
     import re
     import urllib.parse
     from comum import gravar_json, ler_json
-    achados = {}
+    achados, brutos = {}, 0
     for url in v["itens"]:
         try:
             pagina = baixar(url, timeout=40).decode("utf-8", "replace")
@@ -316,13 +316,14 @@ def vigiar_itens(base, v):
             print(f"{v['nome']}: {url} não abriu ({type(e).__name__}).")
             continue
         for m in re.finditer(v["item"], pagina, flags=re.S | re.I):
+            brutos += 1
             partes = m.groups()
             titulo = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " — ", partes[-1]))).strip(" —")
             titulo = re.sub(r"(\s—\s)+", " — ", titulo)
             link = urllib.parse.urljoin(url, partes[0]) if len(partes) > 1 else url
             if re.search(v["incluir"], titulo, flags=re.I) and not re.search(v["excluir"], titulo, flags=re.I):
                 achados[titulo] = link
-    if not achados:
+    if not brutos:
         print(f"{v['nome']}: nenhum edital lido (a página mudou?).")
         return
     estado = ler_json(v["estado"], None)

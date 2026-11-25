@@ -11,7 +11,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
-      - run: mkdir -p sonda && SEGUIR=1 timeout 1200 python3 scripts/tmp_teste/sondar.py > sonda/log.txt 2>&1 || true
+      - run: mkdir -p sonda && cd scripts && SECO=1 python3 -c "import vigiar; [vigiar.vigiar_itens(None,v) for v in vigiar.VIGIAS if v.get('itens') and v['nome'][:4] in ('IFCE','IFPB')]; [vigiar.vigiar_wp(None,v) for v in vigiar.VIGIAS if v.get('wp') and 'Baiano' in v['nome']]" 2>&1 | tee ../sonda/itens.txt; cp ../estado/ifce_editais.json ../estado/ifpb_editais.json ../estado/ifbaiano_noticias.json ../sonda/ || true
       - run: |
           git config user.name sonda && git config user.email sonda@users.noreply.github.com
           git checkout -q --orphan sonda-tmp && git rm -rqf --cached . && git add -f sonda && git commit -qm sonda && git push -qf origin sonda-tmp

@@ -1,7 +1,1 @@
-https://ifce.edu.br/
-https://www.ifpb.edu.br/
-https://www.ifpe.edu.br/
-https://www2.ifal.edu.br/
-https://portal.ifba.edu.br/
-https://ifbaiano.edu.br/portal/
-https://processoseletivo.ifs.edu.br/
+# nada

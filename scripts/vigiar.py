@@ -124,7 +124,7 @@ VIGIAS = [
     {"nome": "IFRN (portal de processos seletivos)",
      "itens": ["https://processoseletivo.ifrn.edu.br/"], "estado": "estado/ifrn_editais.json",
      "item": r"<h3><a href='([^']+)'>([^<]+)</a></h3>",
-     "incluir": r"FIC|Forma[çc][ãa]o Inicial|Subsequente|EJA|Proeja|Qualifica",
+     "incluir": r"\bFIC\b|Forma[çc][ãa]o Inicial|Subsequente|\bEJA\b|Proeja|Qualifica",
      "excluir": r"P[óo]s-Gradua|Mestrado|Doutorado|Especializa|Licenciatura|Superior|Gradua[çc][ãa]o|BOLSISTA|ESTAGI|servidores|funcion[áa]rios|privação de liberdade|PROFESSOR|COORDENA|TUTOR|ASSISTENTE|CADASTRO RESERVA|DOCENTE|HETEROIDENTIFICA|RELATOS",
      "link": "https://processoseletivo.ifrn.edu.br/",
      "verificar": "Edital novo de cursos para a comunidade no IFRN. Abra o edital: entra se for gratuito, sem prova "
@@ -140,6 +140,34 @@ VIGIAS = [
      "verificar": "Edital novo de curso FIC (curta duração, gratuito) num campus do IFRO. Abra o edital: entra se não "
                   "tiver prova (sorteio, ordem de inscrição ou análise de documentos) e as inscrições estiverem abertas. "
                   "Peça ao Claude para criar o curso."},
+    {"nome": "IFCE (processos seletivos em andamento)",
+     "itens": ["https://ifce.edu.br/"], "estado": "estado/ifce_editais.json",
+     "item": r'data-tab="estude-no-ifce">\s*<a href="([^"]+)" class="card-ps-header">\s*<p class="hat">[^<]*</p>\s*<h3 class="title">([^<]+)</h3>',
+     "incluir": r"\bFIC\b|Forma[çc][ãa]o Inicial|Subsequente|\bEJA\b|Proeja|Mulheres Mil|qualifica|\bcursos?\b",
+     "excluir": r"P[óo]s-Gradua|Mestrado|Doutorado|Especializa|Licenciatura|Bacharelado|Superior|Gradua|Transferid|Diplomad|professor|educador|docente|servidor|bolsista|tutor|coordena|estagi|aux[íi]lio|afastamento|incuba|mentor|monitor|substitut",
+     "link": "https://ifce.edu.br/processos-seletivos/buscar/",
+     "verificar": "Processo seletivo novo de curso para a comunidade no IFCE. Abra a página e o edital: entra se for "
+                  "gratuito, sem prova (sorteio, ordem de inscrição ou análise de documentos) e com inscrições abertas. "
+                  "Peça ao Claude para criar o curso."},
+    {"nome": "IFPB (editais)",
+     "itens": ["https://www.ifpb.edu.br/editais"], "estado": "estado/ifpb_editais.json",
+     "item": r'<a aria-labelledby="[^"]+" href="([^"]+)"></a><div class="card-inner"><div class="card-summary">(<h2 class="title"[^>]*>[^<]+</h2>(?:<p class="description">[^<]*</p>)?)',
+     "incluir": r"\bFIC\b|Forma[çc][ãa]o Inicial|Subsequente|\bEJA\b|Proeja|Mulheres Mil|qualifica|\bcursos?\b",
+     "excluir": r"P[óo]s-Gradua|Mestrado|Doutorado|Especializa|Licenciatura|Bacharelado|Superior|Gradua|Transferid|Diplomad|professor|educador|docente|servidor|bolsista|tutor|coordena|estagi|aux[íi]lio|afastamento|incuba|mentor|monitor|substitut|PSCT|vestibular|profissiona|artigo|PRPIPG|pesquisa",
+     "link": "https://www.ifpb.edu.br/editais",
+     "verificar": "Edital novo de curso para a comunidade no IFPB. Abra o edital: entra se for gratuito, sem prova "
+                  "(o PSCT usa notas e fica fora) e com inscrições abertas. Peça ao Claude para criar o curso."},
+    # IF Baiano: as aberturas de cursos FIC (muitas do Mulheres Mil, com bolsa) saem como notícias no WordPress do
+    # portal, com inscrições de dois ou três dias (ex.: Ruy Barbosa, Operadora de Computador, 17 a 19/11/2026, ordem de
+    # inscrição). Lê-se a lista pública de notícias com as palavras abaixo.
+    {"nome": "IF Baiano (notícias de cursos FIC e inscrições)",
+     "wp": ["https://ifbaiano.edu.br/portal/wp-json/wp/v2/posts?search=FIC&orderby=date&per_page=30&_fields=link,title,modified",
+            "https://ifbaiano.edu.br/portal/wp-json/wp/v2/posts?search=inscri%C3%A7%C3%B5es&orderby=date&per_page=30&_fields=link,title,modified"],
+     "estado": "estado/ifbaiano_noticias.json", "dias": 10,
+     "link": "https://ifbaiano.edu.br/portal/",
+     "verificar": "Notícia nova do IF Baiano sobre inscrições. Se for curso para a comunidade (FIC, Mulheres Mil, "
+                  "subsequente, EJA), abra o edital: entra se for gratuito, sem prova e com inscrições abertas (costumam "
+                  "durar dois ou três dias). Peça ao Claude para criar o curso."},
     # OSCs aprovadas pelos critérios de histórico (regra do responsável, 25/11/2026; ver LEIAME). Não publicam as turmas
     # num site: a inscrição é feita no município, pela própria OSC. Se o Google Notícias tiver notícias recentes de cursos
     # ou inscrições com o nome delas, abre-se uma pendência (uma por mês e por OSC). Os cursos só entram com página
@@ -289,7 +317,8 @@ def vigiar_itens(base, v):
             continue
         for m in re.finditer(v["item"], pagina, flags=re.S | re.I):
             partes = m.groups()
-            titulo = re.sub(r"\s+", " ", _html.unescape(partes[-1])).strip()
+            titulo = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " — ", partes[-1]))).strip(" —")
+            titulo = re.sub(r"(\s—\s)+", " — ", titulo)
             link = urllib.parse.urljoin(url, partes[0]) if len(partes) > 1 else url
             if re.search(v["incluir"], titulo, flags=re.I) and not re.search(v["excluir"], titulo, flags=re.I):
                 achados[titulo] = link

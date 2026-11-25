@@ -132,6 +132,18 @@ FONTES = [
              "mesmo que passe de 40 palavras. Se a linha «Inscrições» tiver um só dia (ex.: «Inscrições 25/11/2026»), "
              "devolve inicio = fim = esse dia; se tiver dois dias («17/11/2026 e 19/11/2026»), o primeiro e o "
              "último; em «inscricao.frase» copia a linha «Inscrições …»."},
+    {"nome": "Senac RO", "uf": "RO", "local": "BR-RO", "regiao": "Rondônia",
+     "entidade": "Senac Rondônia (Programa Senac de Gratuidade)", "estado": "estado/senac_ro.json",
+     "listar": "senac_ro", "lista": "https://www.ro.senac.br/edital-psg/",
+     "api": "https://www.ro.senac.br/wp-json/wp/v2/media?search=Edital-PSG&per_page=60&_fields=date,source_url",
+     "prefixo_turma": "https://www.ro.senac.br/wp-content/uploads/",
+     "nota": "Nos editais do Senac Rondônia a forma de seleção costuma estar no item 2 («O critério inicial será a "
+             "ordem de inscrição dos candidatos…»): copia-a para «selecao». A inscrição é online, num formulário do "
+             "site (ex.: «https://www.ro.senac.br/formulario-inscricao-edital-psg-16-2026/»): devolve-o em "
+             "«link_inscricao» de cada turma, copiado letra a letra (sem espaços). O Anexo I tem os cursos por "
+             "município e unidade (Porto Velho, Cacoal, Jaru, Ji-Paraná, Vilhena, Ariquemes…). NÃO devolvas as turmas "
+             "cujos pré-requisitos exigem já trabalhar na profissão ou ter experiência profissional (regra do "
+             "responsável). Se no fim houver RETIFICAÇÕES, elas mudam o edital: usa as datas e os cursos novos."},
     {"nome": "Senai AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",
      "entidade": "SENAI Amazonas (Programa SENAI de Gratuidade)", "estado": "estado/senai_am.json",
      "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
@@ -816,6 +828,38 @@ def listar_senac_am(fonte):
     return editais
 
 
+def listar_senac_ro(fonte):
+    """Senac Rondônia: os editais do PSG e as retificações são PDFs no WordPress do site; a API pública de média
+    (wp-json/wp/v2/media?search=Edital-PSG) lista-os com a data de publicação. Agrupa-se por número (NN.AAAA): o
+    edital é a versão mais recente do «Edital-PSG-NN.AAAA…» e as «Retificação» vão como avisos (lidas no fim)."""
+    dados = json.loads(baixar(fonte["api"], timeout=60).decode("utf-8"))
+    grupos = {}
+    for d in dados:
+        url, data = d.get("source_url", ""), (d.get("date") or "")[:10]
+        nome = urllib.parse.unquote(url.rsplit("/", 1)[-1])
+        m = re.search(r"PSG[-_ ](\d{1,2})\.(\d{4})", nome)
+        if not m or not url.lower().endswith(".pdf"):
+            continue
+        g = grupos.setdefault(f"{int(m.group(1)):02d}/{m.group(2)}", {"edital": "", "data": "", "avisos": [], "pub": ""})
+        if re.search(r"retifica", nome, re.I):
+            g["avisos"].append((data, url))
+        elif re.match(r"Edital[-_ ]PSG", nome, re.I) and data >= g["data"]:
+            g.update({"edital": url, "data": data, "pub": g["pub"] or data})
+        if re.match(r"Edital[-_ ]PSG", nome, re.I):
+            g["pub"] = min(x for x in [g["pub"], data] if x)
+    editais = []
+    for num, g in grupos.items():
+        if not g["edital"]:
+            continue
+        avisos = [u for _, u in sorted(g["avisos"])]
+        editais.append({"id": f"senac-ro-{num.replace('/', '-')}", "number": num, "published_at": g["pub"],
+                        "updated_at": "|".join(u.rsplit("/", 1)[-1] for u in [g["edital"]] + avisos),
+                        "title": f"Edital PSG nº {num} – Senac Rondônia", "pagina": g["edital"],
+                        "padrao": re.escape(g["edital"]), "aditivo": False, "avisos": avisos,
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": g["edital"]}]})
+    return editais
+
+
 FIEAM = "https://fieam.org.br/senai/wp-content/uploads/sites/16/"
 ESTADO_CHAMADAS_AM = "estado/senai_am_chamadas.json"
 FRASE_GRATUIDADE_SENAI_AM = "Os cursos ofertados serão 100% gratuitos"
@@ -1085,7 +1129,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am, "senai_am": listar_senai_am}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am, "senai_am": listar_senai_am, "senac_ro": listar_senac_ro}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []

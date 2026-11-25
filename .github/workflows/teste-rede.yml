@@ -3,13 +3,18 @@ on: workflow_dispatch
 jobs:
   t:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      FOLHA_ID: ${{ secrets.FOLHA_ID }}
+      PYTHONUNBUFFERED: "1"
+      SECO: "1"
+      SO_FONTE: "Senac RO"
     steps:
-      - run: |
-          curl -sS -m 30 -A "Mozilla/5.0" "https://www.ro.senac.br/wp-json/wp/v2/media?search=Edital-PSG&per_page=20&_fields=date,source_url" | python3 -c "import sys,json
-          try:
-            [print(x['date'][:10],x['source_url']) for x in json.load(sys.stdin)]
-          except Exception as e: print('ERRO',e)"
-          curl -sS -m 30 -A "Mozilla/5.0" "https://www.ro.senac.br/wp-json/wp/v2/posts?search=edital%20psg&per_page=10&_fields=date,link,title" | head -c 1500; echo
-          echo ===== AP JS
-          curl -sS -m 30 -A "Mozilla/5.0" https://send3.ap.senac.br/send3/resources/site/js/pss_psg.min.js -o ap.js; wc -c ap.js
-          grep -oE 'base_url ?\+ ?"[^"]+"|"site/[^"]+"|url: ?[^,]{0,80}' ap.js | sort -u | head -30
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt && sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-por >/dev/null 2>&1
+      - run: cd scripts && python3 senac_ma.py

@@ -163,7 +163,7 @@ FONTES = [
      "listar": "senai_ap", "lista": "https://www.ap.senai.br/senai/processo-seletivo/publica%C3%A7%C3%B5es.html",
      "prefixo_turma": "https://www.ap.senai.br/", "extrator": "pdftotext-layout", "layout": True,
      "max_caracteres": 90000,
-     "max_tokens": 48000, "limpar": r"HASH TOTVS:[ 0-9A-F-]+", "janela_inscricao": 150,
+     "max_tokens": 48000, "limpar": r"HASH TOTVS:[ 0-9A-F-]+", "janela_inscricao": 150, "prova_janela": 5,
      "nota": "Nos editais de cursos gratuitos do SENAI Amapá (Macapá, Santana, às vezes Oiapoque) a inscrição costuma ser "
              "PRESENCIAL, na secretaria da unidade; nos editais semestrais o período dura meses (ex.: «29/06 a "
              "30/10/2026», no Anexo II, cronograma); copia a frase do período para «inscricao». A tabela do Anexo I "
@@ -1435,6 +1435,25 @@ def correr(fonte):
             for t in res.get("turmas") or []:
                 if m_link and not t.get("link_inscricao"):
                     t["link_inscricao"] = m_link.group(1)
+        if fonte.get("prova_janela") and isinstance(res, dict):
+            # tabela com o nome do curso, a data e o turno partidos em colunas à volta da linha da carga horária
+            # (SENAI AP): a prova é a única janela de linhas do PDF, à volta de uma linha com essa carga horária, que
+            # tem as palavras do nome (pela ordem) e a data de início
+            linhas_j = texto.split("\n")
+            raio = fonte["prova_janela"]
+            for t in res.get("turmas") or []:
+                ch = re.sub(r"\s", "", str(t.get("carga_horaria") or "")).lower()
+                m_ch = re.fullmatch(r"(\d{1,4}(?:\.\d{3})?)h(?:oras)?", ch)
+                if not (m_ch and t.get("inicio_aulas") and t.get("curso")):
+                    continue
+                cands = set()
+                for i, l in enumerate(linhas_j):
+                    if re.search(rf"(?<![\d.]){re.escape(m_ch.group(1))}\s?h\b", l):
+                        jan = "\n".join(linhas_j[max(0, i - raio):i + raio + 1])
+                        if palavras_em_ordem(str(t["curso"]), jan.replace("|", " ")) and data_na_frase(t["inicio_aulas"], jan):
+                            cands.add(jan)
+                if len(cands) == 1:
+                    t["frase"] = cands.pop()
         edital, problemas = provar(res, texto, e.get("published_at") or "", fonte.get("inscricao_continua", False),
                                     fonte.get("layout", False), fonte.get("janela_inscricao", 60))
         if e.get("datas_pagina") and edital["fim"] and edital["fim"] not in e["datas_pagina"]:

@@ -1,0 +1,17 @@
+name: teste-rede
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - run: mkdir -p sonda && cd scripts && SECO=1 python3 ifro_fic.py 2>&1 | tee ../sonda/ifro.txt
+      - run: |
+          git config user.name sonda && git config user.email sonda@users.noreply.github.com
+          git checkout -q --orphan sonda-tmp && git rm -rqf --cached . && git add -f sonda && git commit -qm sonda && git push -qf origin sonda-tmp

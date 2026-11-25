@@ -760,7 +760,7 @@
         if (c.inscricoes_ate && !breve) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
         else if (c.data_por_confirmar) factos.push('<span class="atencao">Confirme a data na página oficial</span>');
         if (c.situacao === "Por confirmar") factos.push('<span class="atencao">Inscrições por confirmar</span>');
-        if (c.inicio) factos.push("Começa em " + esc(dataBonita(c.inicio)));
+        if (c.inicio) factos.push("Aulas começam em " + esc(dataBonita(c.inicio)));
         (c.turnos || []).forEach(function (t) { if (TURNO[t]) factos.push(t === "Noite" ? marca("local", TURNO[t], "facilita:noite") : TURNO[t]); });
       }
       (c.etiquetas || []).forEach(function (e) { factos.push(marca("publico", e.texto, "marca:pub:" + e.texto)); });
@@ -1258,7 +1258,7 @@
           (u.telefone ? ". Telefone " + esc(u.telefone) : "") + "</li>");
       });
       if (c.modalidade === "online") linhas.push("<li><strong>Onde:</strong> pela internet</li>");
-      var quando = [c.inicio ? "começa em " + dataCurta(c.inicio) : "", turnoSeguro(c)].filter(Boolean).join(", ");
+      var quando = [c.inicio ? "aulas começam em " + dataCurta(c.inicio) : "", turnoSeguro(c)].filter(Boolean).join(", ");
       if (quando) linhas.push("<li><strong>Quando:</strong> " + esc(quando) + "</li>");
       else if (varia(c)) linhas.push("<li><strong>Quando:</strong> o horário muda de unidade para unidade: confirme na unidade</li>");
       if (c.inscricoes_ate) linhas.push("<li><strong>Inscrições até:</strong> " + esc(dataCurta(c.inscricoes_ate)) + "</li>");
@@ -1309,7 +1309,7 @@
         }
         var u = unidadesDaCidade(c)[0];
         var det = [c.modalidade === "online" ? "On-line" : (u ? u.nome + (u.morada ? ", " + u.morada : "") : c.cidade),
-                   c.inicio ? "começa em " + dataCurta(c.inicio) : "",
+                   c.inicio ? "aulas começam em " + dataCurta(c.inicio) : "",
                    turnoSeguro(c)].filter(Boolean).join(" · ");
         l.push(det);
         if (c.documentos) l.push("Levar: " + c.documentos.replace(/\.$/, ""));

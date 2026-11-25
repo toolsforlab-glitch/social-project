@@ -114,6 +114,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 senac_rr.py
 
+      - name: Turmas do Programa Senac de Gratuidade no Tocantins (lista de cursos do site, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 senac_to.py
+
       - name: Notícias oficiais de cursos das prefeituras e governos (sem Claude) e verificação das novas
         if: ${{ always() }}
         timeout-minutes: 15

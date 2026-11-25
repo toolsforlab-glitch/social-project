@@ -109,7 +109,9 @@ FONTES = [
              "os dias X a Y». A tabela de cursos está no ANEXO I e, para cada turma, o texto pode ter um link de "
              "inscrição (depois de «INSCRIÇÃO:»): devolve-o em «link_inscricao», copiado letra a letra, ou null. "
              "Atenção: «A inscrição no processo seletivo é gratuita» NÃO prova que o curso é gratuito (fala só da "
-             "inscrição); para «gratuidade» usa a frase das bolsas (ex.: «bolsas integrais de estudo»), se existir. "
+             "inscrição); «bolsas integrais» ou «bolsas de estudo» também NÃO provam (bolsa não garante gratuidade, decisão do "
+             "responsável de 25/11/2026): para «gratuidade» só serve uma frase que diga que o curso é gratuito ou sem custo; "
+             "senão, null. "
              "Se no fim do texto houver ERRATAS ou NOTAS DE CANCELAMENTO, elas mudam o edital: usa as datas novas e, "
              "nessa informação, a frase da errata."},
     {"nome": "Senac AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",

@@ -3,11 +3,12 @@ e escreve o passo a passo de inscrição em linguagem simples."""
 import html
 import os
 import re
+import urllib.error
 import urllib.parse
 import sys
 
 from base import ACAO_SOB_DEMANDA, DESCRICAO_PAGINA, ENCERRADO, certificado_da_frase, exige_prova, gratuidade_explicita, provas_do_gpt, DESCRICAO_RESUMO, texto_de_html, COLUNAS_BARREIRAS, ESCOLARIDADES, CAMPOS_PROVA, HISTORICO, SITUACOES, Base, citacao_valida, carregar_config, etiquetas_acessibilidade, hoje_iso, perfis_da_frase, registo_historico, sim, visivel
-from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json
+from comum import ErroClaude, baixar, baixar_final, claude, custo_estimado, dominio_permitido, extrair_json, verificar_link
 from paginas import chave as chave_titulo, destino_do_link, destino_texto, e_pagina_do_curso, encontrar_pagina, titulo_curto
 
 ABA = "Cursos"
@@ -164,6 +165,20 @@ def destino_do_curso_verificado(r, pagina_curso, res, ev, pagina):
     return destino_texto(tipo, procurar, conta, frase)
 
 
+class Pagina404(Exception):
+    """A página do curso (ou o link, se não houver página do curso) já não existe (erro 404 ou 410)."""
+
+
+def _baixar_ou_404(url):
+    try:
+        return baixar(url, timeout=30)
+    except urllib.error.HTTPError as e:
+        # «404 é fora» (decisão do responsável, 25/11/2026): confirma-se com uma segunda leitura antes de tirar o curso
+        if e.code in (404, 410) and verificar_link(url) in (404, 410):
+            raise Pagina404(url) from e
+        raise
+
+
 def pagina_do_curso(r, dominios):
     """Página própria do curso (regras em paginas.py) e o texto a dar ao Claude.
 
@@ -172,7 +187,7 @@ def pagina_do_curso(r, dominios):
     atual = (r.get("Página do curso") or "").strip()
     if atual:
         try:
-            dados = baixar(atual, timeout=30)
+            dados = _baixar_ou_404(atual)
             if dados[:4] == b"%PDF":  # o edital em PDF é a página própria do curso
                 texto = texto_de_html(dados)
                 alvo = chave_titulo(titulo_curto(r["Título"]))
@@ -182,9 +197,11 @@ def pagina_do_curso(r, dominios):
                 bruto = dados.decode("utf-8", "replace")
                 if e_pagina_do_curso(bruto, r["Título"]):
                     return atual, "", texto_de_html(bruto)[:MAX_CARACTERES]
+        except Pagina404:
+            raise
         except Exception:  # noqa: BLE001
             pass
-    bruto = baixar(r["Link"], timeout=30).decode("utf-8", "replace")
+    bruto = _baixar_ou_404(r["Link"]).decode("utf-8", "replace")
     pagina, nota = encontrar_pagina(r["Link"], bruto, r["Título"], dominios)
     if pagina and pagina != r["Link"]:
         try:
@@ -245,6 +262,15 @@ def main():
         dominios = cfg["cursos"]["dominios"].get(r.get("Local"), [])
         try:
             pagina_curso, nota_pagina, pagina = pagina_do_curso(r, dominios)
+        except Pagina404 as e:
+            contagem["encerrado"] += 1
+            nota = f"{hoje_txt}: tirado do site — a página {e} dá erro 404 (regra: 404 é fora)."
+            alteracoes.append((r["_linha"], {"Estado": "Oculto", "Situação das inscrições": "Encerrado",
+                                             "Nota da verificação": nota,
+                                             "Notas": ((r.get("Notas") or "") + " " + nota).strip()[:900]}))
+            historico.append(registo_historico(r, "Link", "Oculto", "Oculto", nota))
+            print(f"  ✗ {r['Título']}: página 404, tirado do site")
+            continue
         except Exception as e:  # noqa: BLE001
             contagem["falhou"] += 1
             alteracoes.append((r["_linha"], {"Nota da verificação": f"{hoje_txt}: não foi possível abrir a página ({type(e).__name__})."}))

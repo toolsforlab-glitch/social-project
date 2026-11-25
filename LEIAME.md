@@ -229,6 +229,11 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 - «Bolsa integral» / «bolsa de estudo 100%» deixou de contar como frase de gratuidade (`_GRATUIDADE` em base.py); «bolsas gratuitas» continua.
 - A palavra «bolsa» sozinha não decide: o Senac AL chama «bolsas gratuitas» ao mecanismo do PSG (inscrição na turma, com teto de renda) e entra. O SENAI PE «Direção Defensiva», que só falava em «bolsas integrais de estudo», ficou de fora por decisão do responsável.
 
+## Regras de 25/11/2026 (noite): bolsa e página 404
+
+- **Bolsa não garante gratuidade.** «Bolsas integrais», «bolsa de estudo» ou «bolsa de 100%» não provam que o curso é gratuito (já valia em `gratuidade_explicita` desde 24/11; a nota da fonte SENAI PE em `senac_ma.py` deixou de pedir a frase das bolsas). O «Auxiliar de Linha de Produção» do SENAI PE, cujo edital só fala em «bolsas integrais», foi ocultado.
+- **404 é fora.** Se a página do curso (ou o link, quando não há página do curso) der erro 404 ou 410, confirmado por uma segunda leitura, `verificar.py` tira o curso do site (Estado «Oculto», inscrições «Encerrado», com a nota e uma linha no Histórico). O «Gestão de Departamento de Pessoal» do Senac SE foi ocultado por isso.
+
 ## Cursos gratuitos da FGV (desde 24/11/2026)
 
 - `fgv.py` (todos os dias, no workflow diário): lê a API pública do portal cursosgratuitos.fgv.br (a mesma que o site usa; abre a partir do GitHub). Confere a cada leitura, nas perguntas frequentes oficiais, a gratuidade («Os cursos da FGV em parceria com o OEG são inteiramente gratuitos.») e que o curso fica disponível enquanto estiver no portfólio (sob demanda). O Claude escolhe os cursos úteis ao público do site; os escolhidos são publicados sozinhos e passam a «Encerrado» se saírem do portfólio.

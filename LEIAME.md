@@ -18,22 +18,26 @@ Lista única das regras que valem hoje. Cada regra nova entra **primeiro aqui** 
 9. **O que não se comprova sai**: curso de notícia sem página oficial, ou sem prazo e sem prova de vagas → Oculto (16/11; ex.: SENAI Acre).
 10. **Publicação com auditoria**: um curso só passa a Publicado depois de uma segunda leitura independente ou de regras de código (datas coerentes, frases conferidas); senão fica em Rever com o motivo. Oculto e Rever postos por uma pessoa nunca são alterados.
 11. **Instagram de OSC aprovada** conta como página oficial da turma (25/11; conferido no navegador).
+12. **Emprego: fora.** Cursos só para quem tem emprego, cargo ou profissão (servidores, funcionários de uma empresa, profissionais de uma área) ficam fora; cursos só para alunos da rede pública ou da EJA podem entrar (23/11).
+13. **Igrejas, congregações e ONGs**: entram se forem gratuitos e abertos a qualquer pessoa; fora se exigirem ser membro, ir a culto ou catequese, ou se forem formação religiosa (23/11).
+14. **Notícias de jornal só servem para descobrir** (marcadas «Só para descobrir» em Sites de confiança): curso com link de jornal fica em Rever e, sem página oficial, passa a Oculto.
+15. **Certificado, acessibilidade e idades só com frase**: o certificado tem de ser descrito; a acessibilidade tem de nomear um recurso concreto; a idade tem de estar escrita. Escola Virtual de Governo: entra se o público incluir cidadãos ou «qualquer pessoa».
 
 **B. Como se mostra**
-12. **Requisitos: texto da fonte, um por linha**, sem reescrever (25/11).
-13. **Linguagem simples só nos textos do projeto** (descrições «Em resumo», etiquetas, botões). Frases da fonte nunca se alteram. Tudo em português do Brasil (21/11; `IDIOMA`, comum.py).
-14. **«Em resumo:»** aparece quando a descrição foi reescrita pelo projeto; sem rótulo quando foi copiada da página (`origem_descricao`, construir_site.py; 20/11).
-15. **Datas**: «Inscrições até …» só com prazo comprovado; «Aulas começam em …» só com data de início (25/11); «Se for aprovado: matrícula de … a …» só com a frase do cronograma (`matricula_do_edital`, base.py; `matricula_edital.py`; 25/11). O semestre de ingresso não vira etiqueta (fica na descrição; 25/11).
-16. **Cursos «por abrir»**: com data de abertura provada, aparecem até 60 dias antes com «Inscrições abrem em … e vão até …» e passam sozinhos a Aberto no dia (`situacao_do_curso`, construir_site.py; `DIAS_POR_ABRIR`, app.js; 25/11).
-17. **Cada botão diz que página abre** (curso, lista, PDF, formulário, acesso…; `paginas.py`).
-18. **Só mulheres** (Mulheres Mil e afins) vai no título e na condição de acesso.
+16. **Requisitos: texto da fonte, um por linha**, sem reescrever (25/11).
+17. **Linguagem simples só nos textos do projeto** (descrições «Em resumo», etiquetas, botões). Frases da fonte nunca se alteram. Tudo em português do Brasil (21/11; `IDIOMA`, comum.py).
+18. **«Em resumo:»** aparece quando a descrição foi reescrita pelo projeto; sem rótulo quando foi copiada da página (`origem_descricao`, construir_site.py; 20/11).
+19. **Datas**: «Inscrições até …» só com prazo comprovado; «Aulas começam em …» só com data de início (25/11); «Se for aprovado: matrícula de … a …» só com a frase do cronograma (`matricula_do_edital`, base.py; `matricula_edital.py`; 25/11). O semestre de ingresso não vira etiqueta (fica na descrição; 25/11).
+20. **Cursos «por abrir»**: com data de abertura provada, aparecem até 60 dias antes com «Inscrições abrem em … e vão até …» e passam sozinhos a Aberto no dia (`situacao_do_curso`, construir_site.py; `DIAS_POR_ABRIR`, app.js; 25/11).
+21. **Cada botão diz que página abre** (curso, lista, PDF, formulário, acesso…; `paginas.py`).
+22. **Só mulheres** (Mulheres Mil e afins) vai no título e na condição de acesso.
 
 **C. Como se trabalha**
-19. **Problemas viram pendências** na aba «Pendências para verificar» (`registar_pendencia`, base.py; 22/11). Pendência que depende de uma data futura → lembrete marcado na hora (25/11).
-20. **A rotina marca, uma pessoa decide**: «Mudança a rever» só sai por uma pessoa; «Revisto por pessoa» protege a linha das rotinas.
-21. **Leitores sem Claude sempre que a fonte é estruturada** (listas, APIs, editais com modelo fixo); o Claude só escolhe ou resume, nunca prova.
-22. **Segurança**: nunca desligar a verificação TLS; nunca ler dados de pagamento nem dados pessoais expostos por APIs das fontes; nunca guardar chaves no repositório (só em GitHub Secrets).
-23. **Fluxos temporários** (`teste-rede.yml`, `scripts/tmp_teste/`, ramo `sonda-tmp`) são apagados logo depois do uso.
+23. **Problemas viram pendências** na aba «Pendências para verificar» (`registar_pendencia`, base.py; 22/11). Pendência que depende de uma data futura → lembrete marcado na hora (25/11).
+24. **A rotina marca, uma pessoa decide**: «Mudança a rever» só sai por uma pessoa; «Revisto por pessoa» protege a linha das rotinas.
+25. **Leitores sem Claude sempre que a fonte é estruturada** (listas, APIs, editais com modelo fixo); o Claude só escolhe ou resume, nunca prova.
+26. **Segurança**: nunca desligar a verificação TLS; nunca ler dados de pagamento nem dados pessoais expostos por APIs das fontes; nunca guardar chaves no repositório (só em GitHub Secrets).
+27. **Fluxos temporários** (`teste-rede.yml`, `scripts/tmp_teste/`, ramo `sonda-tmp`) são apagados logo depois do uso.
 
 
 

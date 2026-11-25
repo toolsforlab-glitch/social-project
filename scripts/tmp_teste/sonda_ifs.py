@@ -1,32 +1,25 @@
-import sys, re, json, html
+import sys, re, html
 sys.path.insert(0, "scripts")
 from comum import baixar
 from base import texto_de_html
-def t(u, n=60):
-    return baixar(u, timeout=n).decode("utf-8", "replace")
-def limpo(s): return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s))).strip()
-print("##### IF BAIANO")
-posts = json.loads(t("https://ifbaiano.edu.br/portal/wp-json/wp/v2/posts?search=FIC&orderby=date&per_page=12&_fields=link,title,date,content"))
-for p in posts[:12]:
-    c = p["content"]["rendered"]
-    print("==", p["date"][:10], limpo(p["title"]["rendered"]), p["link"])
-    print("   links:", [x for x in re.findall(r'href="([^"]+)"', c) if re.search(r"pdf|edital|selecao|inscri|forms|doc", x, re.I)][:6])
-    print("   texto:", limpo(c)[:900])
-print("##### IFCE")
-pg = t("https://ifce.edu.br/")
-for u, tit in re.findall(r'data-tab="estude-no-ifce">\s*<a href="([^"]+)" class="card-ps-header">\s*<p class="hat">[^<]*</p>\s*<h3 class="title">([^<]+)</h3>', pg):
-    print("==", tit, u)
-    if "FIC" in tit or "curso" in tit.lower() and "Técnico" not in tit:
+def t(u, n=60): return baixar(u, timeout=n).decode("utf-8", "replace")
+def limpo(s): return re.sub(r"\s+", " ", html.unescape(re.sub(r"(?s)<(script|style)[^>]*>.*?</\1>|<[^>]+>", " ", s))).strip()
+for u in ["https://processoseletivo.ifrn.edu.br/edital/visualizar/696/", "https://processoseletivo.ifrn.edu.br/edital/visualizar/684/",
+          "https://processoseletivo.ifrn.edu.br/edital/visualizar/683/"]:
+    a = t(u); print("#####", u); print("  hrefs:", sorted(set(re.findall(r"href=['\"]([^'\"#]+)", a)))[:60])
+    print("  ", limpo(a)[:1800])
+a = t("https://ifce.edu.br/campus/aracati/estude-no-ifce/aracati-selecao-de-participantes-do-curso-fic-empreendedorismo-artesanal-renda-de-labirinto-edital-272026/")
+print("##### IFCE Aracati"); print("  hrefs:", [x for x in re.findall(r'href="([^"]+)"', a) if re.search(r"\.pdf|edital|anexo|inscri|forms|@@|download", x, re.I)][:30])
+m = re.search(r'(?s)<div id="content".*', a); print("  ", limpo(m.group(0) if m else a)[:3000])
+# PDFs do IFRN 68
+a = t("https://processoseletivo.ifrn.edu.br/edital/visualizar/696/")
+for x in sorted(set(re.findall(r"href=['\"]([^'\"#]+)", a))):
+    if re.search(r"arquivo|download|media|documento|\.pdf", x, re.I):
+        u = x if x.startswith("http") else "https://processoseletivo.ifrn.edu.br" + x
         try:
-            a = t(u)
-            print("   links:", [x for x in re.findall(r'href="([^"]+)"', a) if re.search(r"\.pdf|edital|anexo|inscri|forms", x, re.I)][:15])
-            print("   texto:", limpo(re.sub(r"(?s)<(script|style|nav|header|footer).*?</\1>", " ", a))[:2500])
-        except Exception as e: print("   ERRO", e)
-print("##### IFRN")
-pg = t("https://processoseletivo.ifrn.edu.br/")
-for u, tit in re.findall(r"<h3><a href='([^']+)'>([^<]+)</a></h3>", pg)[:40]:
-    print("==", tit, u)
-for u, tit in re.findall(r"<h3><a href='([^']+)'>([^<]+)</a></h3>", pg):
-    if re.search(r"\bFIC\b|Forma[çc][ãa]o Inicial|Qualifica", tit, re.I):
-        a = t("https://processoseletivo.ifrn.edu.br" + u if u.startswith("/") else u)
-        print("#### FIC", tit); print("   links:", re.findall(r"href=['\"]([^'\"]+\.pdf[^'\"]*)", a)[:10]); print("   ", limpo(a)[:1500]); break
+            d = baixar(u, timeout=60)
+            if d[:4] == b"%PDF":
+                tx = texto_de_html(d); print("##### PDF", u, len(tx))
+                for pat in [r".{0,200}sorteio.{0,300}", r".{0,200}an[áa]lise.{0,200}", r".{0,150}prova.{0,150}", r".{0,100}idade.{0,150}", r".{0,200}pr[ée]-requisito.{0,300}", r".{0,200}gratuit.{0,200}"]:
+                    for m in list(re.finditer(pat, tx, re.I))[:2]: print("   ", pat[:14], "→", m.group(0)[:500])
+        except Exception as e: print("ERRO", u, e)

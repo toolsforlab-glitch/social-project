@@ -32,13 +32,25 @@ from turmas import hoje_ceara, necessidades
 P = "https://portal.ifrn.edu.br"
 SUBTIPOS = {"10": "Qualificação Profissional (FIC)", "50": "Curso de Extensão", "3": "Técnico Integrado - ProEJA"}
 GRATUITO = "gratuito: «entidade marcada como “Tudo gratuito” em Sites de confiança, por uma pessoa» (IFRN: escola pública)"
-SELECAO = re.compile(r"[^.;]{0,220}(sorteio|ordem (cronol[óo]gica )?de (inscri[çc][ãa]o|chegada)|ordem de envio)[^.;]{0,160}[.;]", re.I)
+SELECAO = re.compile(r"sorteio|ordem (cronol[óo]gica )?de (inscri[çc][ãa]o|chegada)|ordem de envio", re.I)
 SEM_ACESSO = re.compile(r"(exclusiv\w+|apenas|somente) (para |a |aos? |às? )?(estudantes|discentes|alunos|servidor)\w*[^.]{0,40}"
                         r"(do|da|no|na) (IFRN|Instituto|campus)|regularmente matriculad[oa]s? (em cursos )?(no|do) IFRN", re.I)
 SEM_PROVA_EXTRA = re.compile(r"\bentrevistas?\b|\breda[çc][ãa]o\b|an[áa]lise (de |do )?(curr[íi]culo|curricular)|"
-                             r"carta de inten[çc][ãa]o|\bprova (objetiva|escrita|pr[áa]tica)", re.I)
-IDADE = re.compile(r"[^.;]{0,120}(idade m[íi]nima de \d+ anos|\d+ \(?[a-zç]*\)? ?anos (completos|ou mais)|a partir de \d+ anos)[^.;]{0,80}[.;]", re.I)
+                             r"carta de inten[çc][ãa]o|\bprova (objetiva|escrita|pr[áa]tica)|(avalia[çc][ãa]o|an[áa]lise|prova) de t[íi]tulos", re.I)
+IDADE = re.compile(r"idade m[íi]nima de \d+ anos|\d+ (\([a-zç]+\) )?anos (completos|ou mais)|a partir de \d+ (\([a-zç]+\) )?anos", re.I)
 MULHERES = re.compile(r"mulheres mil|exclusiv\w+ (para |a )?mulheres|p[úu]blico feminino", re.I)
+
+
+def frase(texto, regex):
+    """A primeira frase inteira do texto que tem o padrão e não o nega («não confere», «não será»…)."""
+    for m in regex.finditer(texto or ""):
+        ini = max(texto.rfind(". ", 0, m.start()), texto.rfind("; ", 0, m.start()), m.start() - 350) + 1
+        fim_p = [x for x in (texto.find(". ", m.end()), texto.find("; ", m.end())) if x != -1]
+        fim = min(fim_p + [m.end() + 250]) + 1
+        f = texto[ini:fim].strip(" .;") + "."
+        if not re.search(r"\bnão (confere|garante|ser[áa]|haver[áa]|implica)", f, re.I):
+            return f
+    return ""
 
 
 def limpo(s):
@@ -68,9 +80,12 @@ def processos(hoje):
                         continue
                     vistos.add(u)
                     novos += 1
-                    antes = limpo(a[max(0, m.start() - 1500):m.start()])
+                    bruto = a[max(0, m.start() - 2500):m.start()]
+                    antes = limpo(bruto)
                     estados = re.findall(r"\b(Finalizado|Em andamento|Encerrado|Suspenso|Cancelado|Previsto)\b", antes)
-                    out.append({"url": u, "subtipo": nome, "estado": estados[-1] if estados else ""})
+                    tits = re.findall(r"<h[2-4][^>]*>(.*?)</h[2-4]>", bruto, re.S)
+                    out.append({"url": u, "subtipo": nome, "estado": estados[-1] if estados else "",
+                                "titulo": limpo(tits[-1]) if tits else ""})
                 if not novos:
                     break
     return out
@@ -85,12 +100,8 @@ def ler_pagina(u):
     a = baixar_txt(u)
     m = re.search(r"(?s)<main.*?</main>", a)
     texto = limpo(m.group(0) if m else a)
-    titulo = ""
-    for pad in (r'<meta property="og:title" content="([^"]+)"', r"<h2[^>]*>(.*?)</h2>", r"<title>(.*?)</title>"):
-        t = re.search(pad, a, re.S)
-        if t and limpo(t.group(1)) and "Portal Instituto" not in limpo(t.group(1)):
-            titulo = limpo(t.group(1)).split(" — ")[0]
-            break
+    t = re.search(r"<title>(.*?)</title>", a, re.S)
+    titulo = limpo(t.group(1)).split(" — ")[0] if t else ""
     pub = re.search(r"Publicada há [^(]*\(em (\d{2})/(\d{2})/(\d{4})", texto)
     ins = re.search(r"(?:(\d{2}/\d{2})(?:/\d{4})?(?: às [\dh:]+)? a |Até )(\d{2}/\d{2})(?:/\d{4})?(?: às [\dh:]+)? Inscriç\w+", texto)
     docs = []
@@ -156,7 +167,7 @@ def main():
             print(f"  ! {p['url']}: {type(e).__name__}")
             continue
         ini, fim = periodo(pg)
-        nome = pg["titulo"] or p["url"].rstrip("/").rsplit("/", 1)[-1]
+        nome = p["titulo"] or pg["titulo"] or p["url"].rstrip("/").rsplit("/", 1)[-1]
         if not fim:
             print(f"  - {nome[:60]}: sem etapa de inscrições legível")
             continue
@@ -169,10 +180,10 @@ def main():
             motivo.append("já tem resultado final")
         if not t:
             motivo.append("sem PDF do edital legível")
-        sel = SELECAO.search(t) if t else None
+        sel = frase(t, SELECAO) if t else ""
         if t and not sel:
             motivo.append("o edital não diz sorteio nem ordem de inscrição")
-        if t and (exige_prova(t) or SEM_PROVA_EXTRA.search(t)):
+        if t and (exige_prova(t) or SEM_PROVA_EXTRA.search(t + " " + pg["texto"])):
             motivo.append("o edital fala de prova, entrevista, redação ou análise de currículo")
         if t and SEM_ACESSO.search(t + " " + pg["conteudo"]):
             motivo.append("só para estudantes ou servidores do IFRN")
@@ -181,8 +192,8 @@ def main():
         if motivo:
             print(f"  - {nome[:60]} | {estado}: fora ({'; '.join(motivo)})")
             continue
-        idade = IDADE.search(t)
-        print(f"  + {nome[:60]} | {estado} | seleção: «{sel.group(0).strip()[:120]}»" + (f" | idade: «{idade.group(0).strip()[:80]}»" if idade else ""))
+        idade = frase(t, IDADE)
+        print(f"  + {nome[:70]} | {estado} | seleção: «{sel[:220]}»" + (f" | idade: «{idade[:200]}»" if idade else ""))
         if seco or not aberto:
             continue
         if ident in existentes:
@@ -191,13 +202,13 @@ def main():
             print(f"    (já há um curso do IFRN aberto com o prazo {fim}; não é criado de novo)")
             continue
         mulheres = bool(MULHERES.search(nome + " " + pg["conteudo"] + " " + t[:3000]))
-        if not citacao_valida(sel.group(0).strip(), t) or not citacao_valida(pg["frase_ins"], pg["texto"]):
+        if not citacao_valida(sel, t) or not citacao_valida(pg["frase_ins"], pg["texto"]):
             print("    frases não conferem; não criado")
             continue
-        ev = [GRATUITO, f"data: «{pg['frase_ins']}» ({p['url']})", f"vagas: «{sel.group(0).strip()}» ({url_pdf})"]
+        ev = [GRATUITO, f"data: «{pg['frase_ins']}» ({p['url']})", f"vagas: «{sel}» ({url_pdf})"]
         comp = ["gratuito", "data"]
         if idade:
-            ev.append(f"idade: «{idade.group(0).strip()}» ({url_pdf})")
+            ev.append(f"idade: «{idade}» ({url_pdf})")
         campus = pg["campus"].replace("-", " ").title() if pg["campus"] not in ("", "reitoria") else ""
         desc = pg["conteudo"] or ""
         novos.append({
@@ -207,7 +218,7 @@ def main():
             "Link": p["url"], "Página do curso": p["url"], "Local": "BR-RN", "Modalidade": "presencial", "País": "BR",
             "Região": "Rio Grande do Norte", "Cidade": "", "Descrição": desc[:1500], "Origem da descrição": DESCRICAO_PAGINA,
             "Necessidades": necessidades("", nome), "Perfis": "todos", "Condição de acesso": "só para mulheres" if mulheres else "",
-            "Requisitos": idade.group(0).strip()[:300] if idade else "", "Certificado": "desconhecido",
+            "Requisitos": idade[:300], "Certificado": "desconhecido",
             "Inscrições até": fim.isoformat(), "Link verificado": "SIM", "Primeiro visto": hoje_txt, "Última verificação": hoje_txt,
             "Origem": "turmas", "Notas": f"{p['subtipo']}; edital: {url_pdf}",
             "Como me inscrever": "As regras e o local de inscrição estão no edital, na página do processo seletivo (botão do curso).",

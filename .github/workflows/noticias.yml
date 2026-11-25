@@ -39,7 +39,7 @@ jobs:
     # As rotinas só correm depois de ligadas: variável ROTINAS_ATIVAS = sim (Settings > Secrets and variables > Actions > Variables)
     if: ${{ vars.ROTINAS_ATIVAS == 'sim' && needs.vez.outputs.salta != 'sim' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 55  # 25/11/2026: com as fontes novas do Norte a rotina passou dos 25 minutos e foi cancelada
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}

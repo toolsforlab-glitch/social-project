@@ -158,6 +158,18 @@ FONTES = [
              "preenchidas, se for por ordem de inscrição ou sorteio. NÃO devolvas as turmas cujos pré-requisitos exigem "
              "já trabalhar na profissão ou ter experiência profissional, nem as só para pessoas indicadas por uma "
              "empresa ou instituição parceira (regra do responsável). Se no fim houver ERRATAS, elas prevalecem."},
+    {"nome": "Senai AP", "uf": "AP", "local": "BR-AP", "regiao": "Amapá",
+     "entidade": "SENAI Amapá (Gratuidade Regimental)", "estado": "estado/senai_ap.json",
+     "listar": "senai_ap", "lista": "https://www.ap.senai.br/senai/processo-seletivo/publica%C3%A7%C3%B5es.html",
+     "prefixo_turma": "https://www.ap.senai.br/", "extrator": "pdftotext",
+     "nota": "Nos editais de cursos gratuitos do SENAI Amapá (Macapá, Santana, às vezes Oiapoque) a inscrição costuma ser "
+             "PRESENCIAL, na secretaria da unidade, num período curto; copia a frase do período para «inscricao». Em "
+             "«selecao», a frase sobre como as vagas são preenchidas (ordem de inscrição/chegada, sorteio…). Se a seleção "
+             "tiver prova, entrevista, análise de currículo ou ENEM, NÃO devolvas turmas (regra do responsável). NÃO "
+             "devolvas as turmas cujos pré-requisitos exigem já trabalhar na profissão, ter experiência profissional ou "
+             "vínculo com uma empresa (ex.: aprendizagem industrial, contrato de aprendiz), nem as só para pessoas "
+             "indicadas por uma empresa ou instituição parceira. Cursos para um público (mulheres, pessoas com 50 anos "
+             "ou mais) entram: o requisito vai em «requisitos». Se no fim houver RETIFICAÇÕES, elas prevalecem."},
     {"nome": "Senai AM", "uf": "AM", "local": "BR-AM", "regiao": "Amazonas",
      "entidade": "SENAI Amazonas (Programa SENAI de Gratuidade)", "estado": "estado/senai_am.json",
      "programa": "Programa SENAI de Gratuidade", "listar": "senai_am",
@@ -926,6 +938,53 @@ def listar_senac_ap(fonte):
     return editais
 
 
+def listar_senai_ap(fonte):
+    """SENAI Amapá: a página «Oferta de cursos» (Joomla) lista os editais de cursos gratuitos, do mais novo para o
+    mais antigo: um título <h3> «Edital de Cursos Gratuitos nº NNN/AAAA» e, por baixo, uma linha por documento
+    («Oferta de curso – …», «RETIFICAÇÃO – …», «Resultado …») com um link «Confira aqui!». Cada linha tem também um
+    link vazio copiado por engano (aponta sempre para o mesmo PDF): só contam os links com texto. A data vem do nome
+    do ficheiro (…_AAAAMMDDhhmm…pdf) quando existe; editais de anos anteriores ficam de fora."""
+    pagina_html = baixar(fonte["lista"], timeout=60).decode("utf-8", "replace")
+    ano_atual = hoje_ceara()[:4]
+    editais = []
+    partes = re.split(r"<h3[^>]*>", pagina_html)
+    for bloco in partes[1:]:
+        titulo_h3 = re.sub(r"<[^>]+>", " ", bloco.split("</h3>", 1)[0])
+        titulo_h3 = re.sub(r"\s+", " ", _html.unescape(titulo_h3)).strip()
+        m = re.search(r"Cursos Gratuitos\s+n[º°o]\.?\s*(\d{1,3})/(\d{4})", titulo_h3, re.I)
+        if not m or m.group(2) < str(int(ano_atual) - 1):
+            continue
+        num = f"{int(m.group(1)):02d}/{m.group(2)}"
+        corpo = bloco.split("</h3>", 1)[1] if "</h3>" in bloco else ""
+        principal, avisos, rotulo_principal = "", [], ""
+        for p_html in re.findall(r"<p[^>]*>(.*?)</p>", corpo, flags=re.S):
+            texto_p = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " ", p_html))).strip()
+            links = [(re.sub(r"<[^>]+>", "", t).strip(), u) for u, t in re.findall(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', p_html, flags=re.S)]
+            links = [urllib.parse.urljoin(fonte["lista"], _html.unescape(u)) for t, u in links if t]
+            if not links:
+                continue
+            if re.match(r"(Oferta de curso|Edital de abertura)", texto_p, re.I) and not principal:
+                principal, rotulo_principal = links[-1], texto_p
+            elif re.search(r"retifica|errata|aditivo|prorroga", texto_p, re.I):
+                avisos.append(links[-1])
+        if not principal:
+            continue
+        datas = [f"{a}-{b}-{c}" for a, b, c in
+                 (re.findall(r"_(20\d{2})(\d{2})(\d{2})\d{4,}", urllib.parse.unquote(u)) for u in [principal] + avisos)
+                 for a, b, c in (a[:1] or [])]
+        pub = max(datas) if datas else ""
+        if not pub and m.group(2) != ano_atual:
+            continue
+        editais.append({"id": f"senai-ap-{num.replace('/', '-')}", "number": num, "published_at": pub,
+                        "updated_at": "|".join(u.rsplit("/", 1)[-1] for u in [principal] + avisos),
+                        "title": f"{titulo_h3} – {rotulo_principal[:150]}", "pagina": principal,
+                        "padrao": re.escape(principal), "aditivo": False, "avisos": avisos,
+                        "documents": [{"type": "edital", "mime_type": "application/pdf", "url": principal}]})
+        if len(editais) >= 8:
+            break
+    return editais
+
+
 FIEAM = "https://fieam.org.br/senai/wp-content/uploads/sites/16/"
 ESTADO_CHAMADAS_AM = "estado/senai_am_chamadas.json"
 FRASE_GRATUIDADE_SENAI_AM = "Os cursos ofertados serão 100% gratuitos"
@@ -1195,7 +1254,7 @@ def correr(fonte):
     modelo = cfg.get("modelo_cursos") or "claude-haiku-5-5"
     estado = ler_json(fonte["estado"], {"tratados": {}})
     try:
-        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am, "senai_am": listar_senai_am, "senac_ro": listar_senac_ro, "senac_ap": listar_senac_ap}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
+        editais = {"senai_ma": listar_senai_ma, "senac_pi": listar_senac_pi, "senai_pi": listar_senai_pi, "senai_pe": listar_senai_pe, "senac_al": listar_senac_al, "senai_al": listar_senai_al, "senai_ba": listar_senai_ba, "senac_am": listar_senac_am, "senai_am": listar_senai_am, "senac_ro": listar_senac_ro, "senac_ap": listar_senac_ap, "senai_ap": listar_senai_ap}.get(fonte.get("listar"), listar_ma if fonte.get("api") else listar_ac)(fonte)
     except Exception as e:  # noqa: BLE001
         print(f"{fonte['nome']}: a lista de editais não abriu ({type(e).__name__}: {e}). Nada alterado.")
         editais = []

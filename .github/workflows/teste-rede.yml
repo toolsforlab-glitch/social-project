@@ -1,0 +1,11 @@
+name: teste-rede
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in https://www.ro.senac.br/edital-psg/ https://send3.ap.senac.br/send3/site/psg https://app.rr.senac.br/send3/site/psg https://www.ap.senac.br/ https://cms.ap.senac.br/api/selection-processes https://www.to.senac.br/psg https://www.rr.senac.br/ https://portal.fiero.org.br/ https://www.senai-ro.com.br/ https://www.senaito.com.br/ https://www.ap.senai.br/ https://www.rr.senai.br/ https://www.fieto.com.br/ ; do
+            curl -sS -m 30 -L -A "Mozilla/5.0" -o /tmp/o -w "$u %{http_code} %{size_download} %{url_effective}\n" "$u" 2>&1 | tail -1
+            grep -oiE 'href="[^"]*(edital|psg|gratuid|processo|selet)[^"]*"' /tmp/o | sort -u | head -12
+          done

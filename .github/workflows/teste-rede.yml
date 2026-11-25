@@ -20,11 +20,3 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt && sudo apt-get -qq install -y poppler-utils tesseract-ocr tesseract-ocr-por >/dev/null 2>&1
       - run: cd scripts && python3 senac_ma.py
-      - run: |
-          cd scripts && python3 - <<'P'
-          import json,glob
-          for f in sorted(glob.glob('/tmp/diag/*.json')):
-              d=json.load(open(f))
-              if '07' in f or '08' in f:
-                  t=d['texto']; i=t.find('ANEXO'); print(f, len(t)); print(t[i:i+2500].replace('\n',' | ')[:2500])
-          P

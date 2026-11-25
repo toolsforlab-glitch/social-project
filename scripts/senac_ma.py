@@ -161,7 +161,8 @@ FONTES = [
     {"nome": "Senai AP", "uf": "AP", "local": "BR-AP", "regiao": "Amapá",
      "entidade": "SENAI Amapá (Gratuidade Regimental)", "estado": "estado/senai_ap.json",
      "listar": "senai_ap", "lista": "https://www.ap.senai.br/senai/processo-seletivo/publica%C3%A7%C3%B5es.html",
-     "prefixo_turma": "https://www.ap.senai.br/", "extrator": "pdftotext",
+     "prefixo_turma": "https://www.ap.senai.br/", "extrator": "pdftotext", "max_caracteres": 90000,
+     "max_tokens": 48000, "limpar": r"HASH TOTVS:[ 0-9A-F-]+",
      "nota": "Nos editais de cursos gratuitos do SENAI Amapá (Macapá, Santana, às vezes Oiapoque) a inscrição costuma ser "
              "PRESENCIAL, na secretaria da unidade, num período curto; copia a frase do período para «inscricao». Em "
              "«selecao», a frase sobre como as vagas são preenchidas (ordem de inscrição/chegada, sorteio…). Se a seleção "
@@ -1319,7 +1320,10 @@ def correr(fonte):
         doc = docs[0]
         try:
             dados = baixar(doc["url"], timeout=60)
-            texto = recortar(texto_do_documento(dados, doc.get("mime_type", ""), fonte.get("extrator") or fonte.get("layout", False)),
+            bruto = texto_do_documento(dados, doc.get("mime_type", ""), fonte.get("extrator") or fonte.get("layout", False))
+            if fonte.get("limpar"):
+                bruto = re.sub(fonte["limpar"], " ", bruto)  # marcas d'água repetidas em todas as páginas
+            texto = recortar(bruto,
                              fonte.get("anexo", r"ANEXO\s+I\b"),
                              fonte.get("max_caracteres", MAX_CARACTERES))
             # comunicados e retificações publicados depois do edital: lidos juntos, no fim do texto

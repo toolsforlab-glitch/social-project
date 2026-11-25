@@ -1,12 +1,16 @@
 <h1>Para quem encaminha pessoas</h1>
-<p>Para equipes de CRAS, associações, escolas e lideranças comunitárias. Escolha o município e terá uma lista pronta para imprimir, salvar em PDF ou mandar pelo WhatsApp, e uma ficha de cada curso para entregar à pessoa.</p>
+<p>Para equipes de CRAS, associações, escolas e lideranças comunitárias. Escolha o estado e o município e terá uma lista pronta para imprimir, salvar em PDF ou mandar pelo WhatsApp, e uma ficha de cada curso para entregar à pessoa.</p>
 
 <form id="kit-filtros" class="filtros" onsubmit="return false">
   <div class="campo">
-    <label for="kit-cidade">Município</label>
-    <select id="kit-cidade"><option value="">Escolha o município</option></select>
+    <label for="kit-estado">Estado</label>
+    <select id="kit-estado"><option value="">Escolha o estado</option></select>
   </div>
   <div class="campo">
+    <label for="kit-cidade">Município</label>
+    <select id="kit-cidade" disabled><option value="">Escolha primeiro o estado</option></select>
+  </div>
+  <div class="campo campo-largo">
     <label class="caixa"><input type="checkbox" id="kit-online" checked> Incluir cursos on-line (para quem tem internet)</label>
   </div>
 </form>

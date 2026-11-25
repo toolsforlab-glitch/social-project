@@ -423,12 +423,6 @@
           svg.querySelectorAll(".uf-forma.realce").forEach(function (f) { f.classList.remove("realce"); });
         });
       }
-      // tabela (em vez da lista com marcadores): estado e número de cursos presenciais, do maior para o menor
-      var linhasUf = GRADE.filter(function (g) { return ativos[g[0]]; })
-        .sort(function (a, b) { return (porUf[b[0]] || 0) - (porUf[a[0]] || 0) || a[3].localeCompare(b[3], "pt-BR"); });
-      el("numeros-mapa-lista").innerHTML = '<caption class="sr">Cursos presenciais com inscrições abertas em cada estado</caption>' +
-        '<thead><tr><th scope="col">Estado</th><th scope="col">Cursos presenciais</th></tr></thead><tbody>' +
-        linhasUf.map(function (g) { return '<tr><th scope="row">' + esc(g[3]) + "</th><td>" + (porUf[g[0]] || 0) + "</td></tr>"; }).join("") + "</tbody>";
     }).catch(function () { el("numeros-cartoes").innerHTML = '<p class="vazio">Não foi possível carregar os números agora.</p>'; });
   }
 
@@ -1052,7 +1046,7 @@
   // ------------------------------------------------------------ Para quem encaminha
   function encaminhar(site) {
     var params = new URLSearchParams(location.search);
-    var cidade = el("kit-cidade"), comOnline = el("kit-online"), lista = el("kit-lista");
+    var estado = el("kit-estado"), cidade = el("kit-cidade"), comOnline = el("kit-online"), lista = el("kit-lista");
     var acoes = el("kit-acoes"), copiado = el("kit-copiado");
     var todos = [], guias = {}, atualizado = "";
     var TURNO = { "Manhã": "de manhã", "Tarde": "à tarde", "Noite": "à noite" };
@@ -1140,7 +1134,7 @@
         '<p class="kit-titulo">Cursos gratuitos com inscrições abertas: ' + esc(cidade.value) + (comOnline.checked ? " e on-line" : "") +
         ". Lista de " + esc(atualizado) + ".</p><ul class=\"fichas\">" + sel.map(function (c) { return fichaHtml(c, todos.indexOf(c)); }).join("") + "</ul>" :
         '<p class="vazio">Neste momento não há cursos confirmados para ' + esc(cidade.value) + '. Marque "Incluir cursos on-line" ou volte daqui a alguns dias.</p>';
-      var q = new URLSearchParams(); q.set("cidade", cidade.value); if (!comOnline.checked) q.set("online", "nao");
+      var q = new URLSearchParams(); if (estado.value) q.set("estado", estado.value); q.set("cidade", cidade.value); if (!comOnline.checked) q.set("online", "nao");
       history.replaceState(null, "", location.pathname + "?" + q.toString());
     }
     function textoWhatsapp() {
@@ -1182,8 +1176,22 @@
     var ufDaCidade = {}, nomeLocal = {};
     (site.locais || []).forEach(function (l) { nomeLocal[l.id] = String(l.rotulo || "").replace(/^Brasil\s*[–-]\s*/, ""); });
     function estadoDe(cid) {
+      if (estado.value) return nomeLocal[estado.value] || estado.value;
       return Object.keys(ufDaCidade[cid] || {}).map(function (id) { return nomeLocal[id] || id; }).join(" / ");
     }
+    // municípios só do estado escolhido (pedido do responsável, 25/11/2026)
+    var todasCidades = [];
+    function preencherCidades(valor) {
+      var doEstado = estado.value ? todasCidades.filter(function (x) { return (ufDaCidade[x] || {})[estado.value]; }) : [];
+      cidade.innerHTML = '<option value="">' + (estado.value ? "Escolha o município" : "Escolha primeiro o estado") + "</option>" +
+        doEstado.map(function (x) { return '<option value="' + esc(x) + '"' + (x === valor ? " selected" : "") + ">" + esc(x) + "</option>"; }).join("");
+      cidade.disabled = !estado.value;
+    }
+    estado.addEventListener("change", function () {
+      preencherCidades(""); mostrar();
+      if (estado.value) history.replaceState(null, "", location.pathname + "?estado=" + encodeURIComponent(estado.value));
+      else history.replaceState(null, "", location.pathname);
+    });
     function medirBotao(botao, extra) {
       var d = { botao: botao, municipio: cidade.value || "(nenhum)", estado: estadoDe(cidade.value) || "(nenhum)",
                 com_online: comOnline.checked ? "sim" : "nao" };
@@ -1214,10 +1222,17 @@
           cids[x] = 1; if (c.local) (ufDaCidade[x] = ufDaCidade[x] || {})[c.local] = 1;
         });
       });
-      ordenarCidades(Object.keys(cids)).forEach(function (x) {
-        var op = document.createElement("option"); op.value = x; op.textContent = x; cidade.appendChild(op);
+      todasCidades = ordenarCidades(Object.keys(cids));
+      var comCidades = {};
+      todasCidades.forEach(function (x) { Object.keys(ufDaCidade[x] || {}).forEach(function (id) { comCidades[id] = 1; }); });
+      Object.keys(comCidades).sort(function (a, b) { return (nomeLocal[a] || a).localeCompare(nomeLocal[b] || b, "pt-BR"); }).forEach(function (id) {
+        var op = document.createElement("option"); op.value = id; op.textContent = nomeLocal[id] || id; estado.appendChild(op);
       });
-      if (params.get("cidade")) cidade.value = params.get("cidade");
+      // links antigos só com ?cidade=: o estado vem dos cursos daquele município
+      var pe = params.get("estado"), pc = params.get("cidade");
+      if (!pe && pc && ufDaCidade[pc]) pe = Object.keys(ufDaCidade[pc])[0];
+      if (pe && comCidades[pe]) estado.value = pe;
+      preencherCidades(pc || "");
       mostrar();
     }).catch(function () { lista.innerHTML = '<p class="vazio">Não foi possível carregar os cursos. Atualize a página daqui a pouco.</p>'; });
   }

@@ -124,8 +124,9 @@ Cerca de 0,03 USD por dia nas notícias e 1,5 USD por semana nos cursos e verifi
 
 ## Páginas do site: mudanças de 25/11/2026
 
-- **Lista de cursos em páginas de 10** (pedido do responsável, para não pesar no carregamento). A paginação aparece no início e no fim da lista, com «Mostrando X–Y de N cursos». A página fica no endereço (`?pagina=N`) e volta à 1 quando a busca ou um filtro muda. Um link direto `#curso-…` abre a página onde o curso está e destaca o cartão (antes da mudança, estes links já falhavam porque o endereço era reescrito).
-- **Números:** passar o mouse (ou tocar) num estado do mapa mostra o nome e o número de cursos presenciais; a lista dos estados passou a ser uma tabela (do maior para o menor); nas barras de duração, a barra inteira é 100% e a parte azul é a parcela.
+- **Para quem encaminha:** primeiro o Estado, depois o Município (só os municípios desse estado). Entram só os estados com cursos presenciais abertos e sem revisão pendente. O endereço guarda os dois (`?estado=BR-CE&cidade=Fortaleza`); links antigos só com `?cidade=` descobrem o estado pelos cursos. No Analytics, o `estado` passa a ser o escolhido.
+- **Lista de cursos em páginas de 10** (pedido do responsável, para não pesar no carregamento). A paginação aparece no início e no fim da lista, com «Mostrando X–Y de N cursos» e botões baixos (metade da altura dos botões normais). A página fica no endereço (`?pagina=N`) e volta à 1 quando a busca ou um filtro muda. Um link direto `#curso-…` abre a página onde o curso está e destaca o cartão (antes da mudança, estes links já falhavam porque o endereço era reescrito).
+- **Números:** passar o mouse (ou tocar) num estado do mapa mostra o nome e o número de cursos presenciais; a lista dos estados foi tirada (o responsável não gostou da tabela); nas barras de duração, a barra inteira é 100% e a parte azul é a parcela, com metade do comprimento.
 - **Sobre → Como escolhemos os cursos:** reescrito com as regras atuais (fontes oficiais de instituições confiáveis, incluindo OSCs com histórico; gratuito com certificado gratuito; inscrições abertas; sem prova, redação, ENEM, entrevista ou currículo; avisos de sorteio, ordem de inscrição, prioridade por renda e «Gratuidade por confirmar»; verificação semanal; IA conferida na página oficial).
 
 ## Google Analytics (com aviso de cookies)

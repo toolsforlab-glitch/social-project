@@ -129,7 +129,7 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 ifrn_fic.py
 
-      - name: Data de matrícula dos editais dos cursos novos («Se for aprovado: matrícula …»)
+      - name: "Data de matrícula dos editais dos cursos novos («Se for aprovado», matrícula …)"
         if: ${{ always() }}
         timeout-minutes: 10
         run: cd scripts && python3 matricula_edital.py

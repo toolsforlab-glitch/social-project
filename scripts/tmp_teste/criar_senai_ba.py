@@ -24,7 +24,7 @@ def prova(frase, url, bruto=False):
     t = texto(url, bruto)
     if bruto:
         import html, re
-        t = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t)))
+        t = html.unescape(re.sub(r"\s+", " ", t))  # inclui a descrição da página (meta)
     assert citacao_valida(frase, t), f"frase não encontrada em {url}: {frase}"
     return frase
 

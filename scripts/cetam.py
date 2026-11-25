@@ -34,13 +34,14 @@ import unicodedata
 from datetime import date, timedelta
 
 from base import HISTORICO, VERIFICACAO_INICIAL, Base, carregar_config, hoje_iso, registar_pendencia, registo_historico
-from comum import baixar
+from comum import baixar, gravar_json, ler_json
 from turmas import necessidades
 
 SITE = "https://www.cetam.am.gov.br"
 PAGINA = SITE + "/tudo-sobre-inscricoes/"
 PORTAL = "https://inscricao.cetam.am.gov.br/"
 ENTIDADE = "Cetam – Centro de Educação Tecnológica do Amazonas (Governo do Amazonas)"
+ESTADO = "estado/cetam.json"  # editais já lidos (período de inscrição), para não baixar de novo os fechados
 MESES_RECENTES = 3  # só se leem editais publicados nos últimos meses (pasta AAAA/MM do upload)
 AVISO_MATERIAL = "o aluno compra o material individual das aulas práticas (o curso é gratuito)"
 DA_AREA = re.compile(r"ACAD[ÊE]MIC|T[ÉE]CNICOS? (?:EM|DE)\b|PROFISSIONA(?:L|IS) (?:D|QUE)|ATUA(?:R|NTE|ÇÃO)|SERVIDOR|"
@@ -64,11 +65,13 @@ def iso(d):
 
 
 def titulo(s):
-    s = normal(s)
+    s = re.sub(r"\s*\((?:EaD|EAD)\)\s*$", "", normal(s))
+    s = re.sub(r"(\w)- (\w)", r"\1-\2", s)  # «PRÉ- HOSPITALAR» (hífen partido na linha)
     s = s[:1].upper() + s[1:].lower() if s.isupper() else s
     for sigla in ("esg", "tea", "sgi", "tbo", "ead", "clp", "nr", "ia", "ti", "pcd", "libras", "excel", "word",
                   "power bi", "python", "cad"):
         s = re.sub(rf"\b{sigla}\b", sigla.upper() if sigla not in ("libras", "excel", "word", "python") else sigla.title(), s)
+    s = re.sub(r"\((\w{2,5})\)", lambda m: "(" + m.group(1).upper() + ")", s)  # siglas: (APH), (ACS), (PAE)
     return s.replace("Power bi", "Power BI")
 
 
@@ -378,7 +381,27 @@ def agrupar(r):
         k = chave_curso(r["num"], t["curso"], cidade or "online")
         c = cursos.setdefault(k, {"curso": t["curso"], "cidade": cidade, "online": t["online"], "turmas": []})
         c["turmas"].append(t)
+    # nome com palavras em falta no meio (ex.: «AGENTE DE INCLUSÃO PARA COM TRANSTORNO…» ao lado de «…PARA PESSOA COM
+    # TRANSTORNO…»): não se adivinha a palavra; o curso vai para «Rever»
+    nomes = {titulo(c["curso"]).lower() for c in cursos.values()}
+    for c in cursos.values():
+        n = titulo(c["curso"]).lower().split()
+        for outro in nomes:
+            o = outro.split()
+            if len(o) > len(n) >= 2 and o[0] == n[0] and o[-1] == n[-1] and _em_ordem(n, o):
+                c["suspeito"] = f"o nome parece incompleto (há «{outro}» no mesmo edital)"
+                break
     return cursos, fora
+
+
+def _em_ordem(curto, longo):
+    pos = 0
+    for p in curto:
+        try:
+            pos = longo.index(p, pos) + 1
+        except ValueError:
+            return False
+    return True
 
 
 def main():
@@ -408,9 +431,13 @@ def main():
         if (r.get("Inscrições até") or "9999") < hoje and r.get("Situação das inscrições") != "Encerrado":
             alteracoes.append((r["_linha"], {"Situação das inscrições": "Encerrado", "Última verificação": hoje}))
 
+    cache = ler_json(ESTADO, {})
     for num, url in recentes:
+        if not so and (cache.get(url, {}).get("fim") or "9999") < hoje:
+            continue  # edital já fechado: não se volta a baixar
         try:
             r = ler_edital(num, url, erratas)
+            cache[url] = {"num": num, "ini": r["ini"], "fim": r["fim"], "turmas": len(r["turmas"])}
         except Exception as e:  # noqa: BLE001
             print(f"  ✗ edital {num}: ilegível ({type(e).__name__}: {e})")
             continue
@@ -427,6 +454,8 @@ def main():
                 print(f"    · {titulo(c['curso'])} | {c['cidade'] or 'EaD'} | {len(c['turmas'])} turmas | "
                       f"{t0['local']} | {t0['ch']}h {t0['horario']} {t0['inicio']}→{t0['fim']} | vagas {t0['vagas']} | "
                       f"req: {t0['req'][:90]}")
+            susp = [c for c in cursos.values() if c.get("suspeito")]
+            print(f"    para rever por nome incompleto: {len(susp)}: " + "; ".join(titulo(c['curso']) for c in susp[:5]))
             for f in fora[:4]:
                 print(f"    - fora: {f[:150]}")
             sem_idade = [t for t in r["turmas"] if not re.match(r"\d{2} ANOS", t["req"])]
@@ -456,7 +485,8 @@ def main():
         for cid, c in cursos.items():
             if cid in na_folha:
                 continue
-            rever = rever_tudo or (r["texto_errata"] and sem_acentos(c["curso"]) in sem_acentos(r["texto_errata"]))
+            rever = (rever_tudo or bool(c.get("suspeito"))
+                     or bool(r["texto_errata"] and sem_acentos(c["curso"]) in sem_acentos(r["texto_errata"])))
             nome = titulo(c["curso"])
             reqs = list(dict.fromkeys(titulo(t["req"]) for t in c["turmas"] if t["req"]))
             requisitos = "; ".join(reqs[:3] + ([AVISO_MATERIAL] if r["materiais"] and not c["online"] else []))
@@ -487,7 +517,8 @@ def main():
                 **VERIFICACAO_INICIAL,
                 "Nota da verificação": f"{hoje}: publicado automaticamente a partir do edital Cetam {num} (Anexo II)."
                                        + (" Rever: " + "; ".join(r["problemas"][:3]) if r["problemas"] else "")
-                                       + (" Rever: há errata que nomeia este curso ou a inscrição." if rever and r["texto_errata"] else ""),
+                                       + (" Rever: há errata que nomeia este curso ou a inscrição." if rever and r["texto_errata"] else "")
+                                       + (f" Rever: {c['suspeito']}." if c.get("suspeito") else ""),
                 "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE", "Evidência": evid,
                 "Campos comprovados": "gratuito, situação, certificado", "Página do curso": url,
             }
@@ -496,6 +527,7 @@ def main():
         print(f"  edital {num}: {sum(1 for n in novos if num in n['Notas'])} cursos novos.")
     if seco:
         return 0
+    gravar_json(ESTADO, cache)
     base.atualizar("Cursos", alteracoes)
     if novos:
         base.acrescentar("Cursos", novos)

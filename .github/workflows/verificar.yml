@@ -9,7 +9,7 @@ on:
       passo:
         description: "Passo para rodar"
         type: choice
-        options: [verificar.py, evg.py, consultar_gpt.py, aplicar_chatgpt.py, turmas.py, senac_ma.py, centec.py, oxetech.py, caminhos_digitais.py, gorecife.py, salvador_tpe.py, senac_pa.py, senai_pa.py, noticias_oficiais.py, vigiar.py, pt_br.py, bradesco.py, fgv.py, escola_trabalhador.py, aprenda_mais.py, sebrae.py, gpt_sebrae.py, gpt_certificado.py, catalogo.py]
+        options: [verificar.py, evg.py, consultar_gpt.py, aplicar_chatgpt.py, turmas.py, senac_ma.py, centec.py, oxetech.py, caminhos_digitais.py, gorecife.py, salvador_tpe.py, senac_pa.py, senai_pa.py, cetam.py, noticias_oficiais.py, vigiar.py, pt_br.py, bradesco.py, fgv.py, escola_trabalhador.py, aprenda_mais.py, sebrae.py, gpt_sebrae.py, gpt_certificado.py, catalogo.py]
         default: verificar.py
 
 permissions:
@@ -43,7 +43,7 @@ jobs:
           python-version: "3.12"
       - run: pip install -q -r requirements.txt
       - name: Conversores de Word e OCR (só para o leitor de editais)
-        if: ${{ inputs.passo == 'senac_ma.py' }}
+        if: ${{ inputs.passo == 'senac_ma.py' || inputs.passo == 'cetam.py' }}
         run: (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends libreoffice-writer-nogui antiword tesseract-ocr tesseract-ocr-por poppler-utils) > /dev/null 2>&1 || echo "conversores não instalados"
 
       - name: Rodar o passo escolhido

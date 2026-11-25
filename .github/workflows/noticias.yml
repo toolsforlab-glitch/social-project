@@ -119,6 +119,11 @@ jobs:
           (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends libreoffice-writer-nogui antiword tesseract-ocr tesseract-ocr-por poppler-utils) > /dev/null 2>&1 || echo "conversores de Word/OCR não instalados"
           cd scripts && SENAC_MA_DIAGNOSTICO=/tmp/senac_ma python3 senac_ma.py
 
+
+      - name: Editais do Cetam (Amazonas; tabela lida por código, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 cetam.py
       - name: Salvar o diagnóstico do Senac Maranhão (7 dias, só para conferir)
         if: ${{ always() }}
         uses: actions/upload-artifact@v4

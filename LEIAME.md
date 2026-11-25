@@ -266,7 +266,7 @@ Critérios do responsável: só instituições conceituadas (órgãos e escolas 
 O responsável aprovou como referência a Fundação Esperança – FÉ e a Associação Central de Cidadania (executoras do Qualifica Bahia) e pediu critérios que as selecionem. Uma OSC executora só entra se cumprir **os 5**:
 
 1. **Antiguidade:** CNPJ com 10 anos ou mais e ativo na Receita (verificado por código, BrasilAPI).
-2. **Histórico com o Estado:** qualificação profissional executada para o governo estadual em pelo menos 3 anos diferentes (termos de colaboração/fomento ou contratos de gestão publicados).
+2. **Histórico com o Estado:** qualificação profissional executada para o governo estadual em pelo menos 3 anos diferentes (termos de colaboração/fomento ou contratos de gestão publicados). **Alternativa** (regra do responsável, 25/11/2026): uma história longa (20 anos ou mais) com financiadores externos provados substitui este critério, desde que não haja denúncias nem notícias negativas.
 3. **Confiança além de um curso avulso:** qualificada como Organização Social e gerindo um equipamento público por contrato de gestão, **ou** com um financiador independente que a avaliou (ex.: BrazilFoundation, UNICEF).
 4. **Sem impedimentos:** não consta no CEPIM, no CEIS nem no CNEP (Portal da Transparência; cruzado por código pela raiz do CNPJ).
 5. **Sem notícias de irregularidades** numa pesquisa pelo nome.
@@ -282,9 +282,11 @@ Mesmo aprovada a OSC, cada turma continua sujeita às regras de sempre: inscriç
 | Instituto Casa da Cidadania (07.961.355/0001-96) | BA | 2006 | 2019 (CG), 2022, 2024, 2025, 2026 | OS (Cesol, CG 015/2019 e 046/2024) | nenhum | **passa** |
 | Instituto Centec (03.021.597/0001-49) | CE | 1999 | contrato de gestão contínuo (Rede CVT) | OS | nenhum | **passa** (já tem leitor: `centec.py`) |
 | ASDEC – Docentes e Egressos da F. Visconde de Cairu (12.049.952/0001-89) | BA | 2009 | 2025, 2026 (falta um 3.º ano) | OS (Cesol, CG 040 e 043/2025) | nenhum | por confirmar |
-| MOC – Movimento de Organização Comunitária (16.260.713/0001-24) | BA | 1971 (criado em 1967) | qualificação em 2024 (SETRE e SEADES); falta um 3.º ano | utilidade pública nos 3 níveis; financiador independente por provar | nenhum | por confirmar |
-| OELA – Oficina Escola de Lutheria da Amazônia (03.470.157/0001-79) | AM/AP | 1999 | só 1 termo estadual de qualificação achado (Amapá) | BrazilFoundation 2019, UNICEF | nenhum | não passa no 2 |
+| MOC – Movimento de Organização Comunitária (16.260.713/0001-24) | BA | 1971 (criado em 1967) | alternativa: 58 anos de história | utilidade pública nos 3 níveis; Terre des Hommes, ICEP e UNICEF | nenhum | **passa** (sem denúncias nem notícias negativas) |
+| OELA – Oficina Escola de Lutheria da Amazônia (03.470.157/0001-79) | AM/AP | 1999 (criada em 1998) | alternativa: 27 anos de história | BrazilFoundation 2019, UNICEF | nenhum | **passa** (sem denúncias nem notícias negativas) |
 | IDAC, IADES e as restantes executoras da SETRE | BA | — | 1 a 4 anos | sem OS nem financiador achado | nenhum | não passa no 3 |
 | Instituto Vida Plena (AC), Instituto Cequalis (TO) | AC, TO | — | — | nenhum histórico público achado | — | não passa |
+
+**Inscrições (verificado a 25/11/2026):** nenhuma das OSCs aprovadas publica as turmas num site com datas. A FÉ e a Casa da Cidadania não têm site (só e-mail); o domínio da ACC (centraldacidadania.com.br) não existe; o site do MOC recusa acessos automáticos (403) e não mostra cursos; o site da OELA abre, mas não anuncia turmas. A SETRE também não publica as turmas do Qualifica Bahia: no plano de trabalho, a divulgação, a inscrição e a matrícula ficam com a OSC, no município. Enquanto não houver uma página pública com datas, os cursos destas OSCs não entram.
 
 Nos outros estados não há OSCs a executar a qualificação estadual: o próprio governo executa (Qualifica Piauí, Maranhão Profissionalizado, Qualifica Pará/Seaster, Capacita Pará/Sectet, Emprega Mais Alagoas, Sine-TO, Seduc-RO) ou contrata o Senai/Senac (Qualifica Sergipe, Seteq-PE, Amapá).

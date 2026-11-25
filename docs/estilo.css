@@ -112,6 +112,7 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 
 /* Paginação da lista de cursos: 10 por página (pedido do responsável, 25/11/2026) */
 .paginacao { margin: 1.6rem 0 .5rem; }
+.paginacao-acima { margin: .6rem 0 .4rem; }
 .paginacao[hidden] { display: none; }
 .paginacao-texto { margin: 0 0 .6rem; color: var(--tinta-suave); font-size: .95rem; }
 .paginacao ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
@@ -274,11 +275,24 @@ a.lembrar::after { content: none !important; }
 .barra-fundo { display: block; background: var(--anil-claro); border-radius: 4px; height: 1.1rem; overflow: hidden; }
 .barra-cheia { display: block; background: var(--anil); height: 100%; border-radius: 4px; }
 .barra-valor { text-align: right; font-variant-numeric: tabular-nums; }
-.mapa-lista { columns: 2; padding-left: 1.1rem; }
+/* tabela dos estados (sem marcadores; 25/11/2026) */
+.mapa-lista { border-collapse: collapse; margin: .8rem 0; min-width: 18rem; font-size: 1rem; }
+.mapa-lista th, .mapa-lista td { padding: .35rem .8rem; border-bottom: 1px solid var(--pedra); text-align: left; }
+.mapa-lista thead th { font-size: .9rem; color: var(--tinta-suave); border-bottom: 2px solid #9aa3b6; }
+.mapa-lista thead th:last-child { text-align: right; }
+.mapa-lista tbody th { font-weight: 400; }
+.mapa-lista td { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.mapa-lista tbody tr:nth-child(even) { background: var(--anil-claro); }
 @media (max-width: 30rem) { .barra { grid-template-columns: 7rem 1fr 4.6rem; } }
 p.avisar { margin: .35rem 0 0; font-size: .88rem; }
 p.avisar a { color: var(--tinta-suave); }
-.mapa-caixa { max-width: 34rem; margin: 1rem 0; }
+.mapa-caixa { max-width: 34rem; margin: 1rem 0; position: relative; }
+.mapa-dica { position: absolute; pointer-events: none; background: var(--tinta); color: #fff; font-size: .9rem; font-weight: 700;
+  padding: .3rem .6rem; border-radius: 6px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,.2); z-index: 2; }
+.mapa-dica[hidden] { display: none; }
+.uf-forma.realce { fill: #c9d3ee; }
+.uf-forma.ativo.realce { fill: #b7c6ec; }
+.uf-forma, .bolinha { cursor: default; }
 .mapa-brasil { width: 100%; height: auto; display: block; }
 .uf-forma { fill: #e4e7ee; stroke: #fff; stroke-width: 1; }
 .uf-forma.ativo { fill: var(--anil-claro); stroke: #fff; }

@@ -34,7 +34,7 @@ ESTADOS = [("AC", "Acre"), ("AL", "Alagoas"), ("AP", "Amapá"), ("AM", "Amazonas
            ("RN", "Rio Grande do Norte"), ("RO", "Rondônia"), ("RR", "Roraima"), ("SE", "Sergipe"), ("TO", "Tocantins")]
 DATA = re.compile(r"\b\d{1,2}\s*(/|de)\s*(\d{1,2}|janeiro|fevereiro|mar[çc]o|abril|maio|junho|julho|agosto|setembro|"
                   r"outubro|novembro|dezembro)\b|o ano (todo|inteiro)|durante todo o ano|ao longo (de todo )?do ano|"
-                  r"permanente|fluxo cont[íi]nuo", re.I)
+                  r"permanente|fluxo cont[íi]nuo|a qualquer tempo|(em )?qualquer (per[íi]odo|momento|[ée]poca) do ano", re.I)
 EJA = re.compile(r"\bEJA\b|jovens,? e adultos", re.I)
 
 PEDIDO = """Você vai me ajudar a encontrar onde e quando pessoas jovens e adultas podem se matricular na EJA \
@@ -80,7 +80,7 @@ def provar(item, uf, campo, paginas):
         return "", "", "sem frase"
     if not dominio_ok(url, uf):
         return frase, url, f"link fora dos sites oficiais do estado ({url[:80]})"
-    if campo == "periodo" and not (DATA.search(frase) and re.search(r"matr[íi]cul|inscri", frase, re.I)):
+    if campo == "periodo" and not DATA.search(frase):
         return frase, url, "a frase não traz período de matrícula (data ou «o ano todo»)"
     if url not in paginas:
         paginas[url] = texto_do_link(url, f"{uf.lower()}.gov.br") if not re.search(r"(^|\.)mec\.gov\.br|//(www\.)?gov\.br", url) \
@@ -92,6 +92,9 @@ def provar(item, uf, campo, paginas):
         return frase, url, "a frase não está na página indicada"
     if not EJA.search(texto):
         return frase, url, "a página não fala de EJA"
+    # a palavra matrícula/inscrição tem de estar na frase ou na página (ex.: AP dá só as datas da pré-matrícula)
+    if campo == "periodo" and not re.search(r"matr[íi]cul|inscri", frase + " " + texto, re.I):
+        return frase, url, "nem a frase nem a página falam de matrícula"
     return frase, url, ""
 
 

@@ -1,0 +1,200 @@
+{
+  "AC": {
+    "periodo": null,
+    "como": {
+      "frase": "procure a escola mais próximo da sua casa, que oferte a modalidade, e faça sua matrícula!",
+      "url": "https://see.ac.gov.br/matriculas-prorrogadas-para-o-eja/"
+    },
+    "requisitos": {
+      "frase": "é preciso ter pelo menos 15 anos de idade para cursar o ensino fundamental, e 18 para o ensino médio.",
+      "url": "https://see.ac.gov.br/inscricoes-abertas-eja/"
+    },
+    "observacao": "A SEE publicou um calendário geral de 2027. Não encontrei nele um período identificado para a EJA. A orientação sobre onde se matricular vem de uma chamada anterior da modalidade."
+  },
+  "AL": {
+    "periodo": {
+      "frase": "Deve ser garantido o acesso, através da matrícula na modalidade EJA, a qualquer tempo da etapa/fase/período/módulo/ano letivo.",
+      "url": "https://matriculaonline.al.gov.br/storage/pdfs/1_Portaria%20SEDUC%2014.183-2026%20Matr%C3%ADcula%202027.pdf"
+    },
+    "como": {
+      "frase": "Será realizada on-line, através do site www.matriculaonline.al.gov.br",
+      "url": "https://matriculaonline.al.gov.br/storage/pdfs/1_Portaria%20SEDUC%2014.183-2026%20Matr%C3%ADcula%202027.pdf"
+    },
+    "requisitos": {
+      "frase": "15 (quinze) anos completos no ato da matrícula para o Ensino Fundamental e 18 (dezoito) anos completos para o Ensino Médio",
+      "url": "https://www.educacao.al.gov.br/educacao/educacao-de-jovens-e-adultos"
+    },
+    "observacao": "A Portaria nº 14.183/2026 regulamenta a EJA em 2027. Para os períodos e módulos iniciais que enumera no art. 7º, a etapa on-line ocorre de 12 a 30 de dezembro de 2026."
+  },
+  "AP": {
+    "periodo": {
+      "frase": "05/01/2027 a 21/01/2027",
+      "url": "https://escolapublica.ap.gov.br/govap/pre-matricula-jovens-e-adultos"
+    },
+    "como": {
+      "frase": "Para realizar a inscrição na pré matricula, clique na aba “Inscrição” da página https://www.escolapublica.ap.gov.br/portal_matricula.",
+      "url": "https://escolapublica.ap.gov.br/govap/pre-matricula-jovens-e-adultos"
+    },
+    "requisitos": {
+      "frase": "Documentação aluno (maior de idade)\nCPF\nRG\nCertidão de Nascimento\nCarteira do SUS\nE-mail de contato\nEndereço residencial",
+      "url": "https://escolapublica.ap.gov.br/govap/chamada-escolar-2027"
+    },
+    "observacao": "O período citado é o da pré-matrícula. O cronograma indica entrega de documentos de 6 a 22 de janeiro de 2027."
+  },
+  "AM": {
+    "periodo": null,
+    "como": null,
+    "requisitos": {
+      "frase": "O CPF é um dos documentos necessários para identificação do estudante",
+      "url": "https://seduc.am.gov.br/not%C3%ADcias/6446-matr%C3%ADculas-2027-pais-ou-respons%C3%A1veis-devem-regularizar-documentos-de-estudantes-da-rede-p%C3%BAblica-estadual-de-ensino.html"
+    },
+    "observacao": "O calendário de matrículas encontrado era o de 2026, com prazo encerrado. A orientação sobre o CPF é da Seduc para a rede estadual em 2027. Não encontrei calendário nem instruções de inscrição específicos da EJA para 2027."
+  },
+  "BA": {
+    "periodo": {
+      "frase": "A matrícula segue aberta durante todo o ano, nas escolas da rede estadual de ensino de toda a Bahia.",
+      "url": "https://www.ba.gov.br/educacao/noticias/2025-02/1423/matriculas-para-educacao-de-jovens-e-adultos-eja-seguem-abertas-na-rede"
+    },
+    "como": {
+      "frase": "basta se dirigir a uma unidade escolar da rede estadual que ofereça a modalidade",
+      "url": "https://www.ba.gov.br/educacao/educacao-de-jovens-e-adultos-eja"
+    },
+    "requisitos": {
+      "frase": "RG, CPF, histórico escolar e comprovante de residência.",
+      "url": "https://www.ba.gov.br/educacao/educacao-de-jovens-e-adultos-eja"
+    },
+    "observacao": "A SEC publicou a orientação sobre matrícula ao longo do ano em fevereiro de 2025. A página da modalidade foi atualizada em outubro de 2026."
+  },
+  "CE": {
+    "periodo": {
+      "frase": "A matrícula do novo aluno poderá ser efetuada em qualquer período do ano;",
+      "url": "https://www.ce.gov.br/seduc/coordenadoria-de-gestao-pedagogica-do-ensino-medio-cogem/centro-de-educacao-de-jovens-e-adultos-ceja/"
+    },
+    "como": {
+      "frase": "nas escolas regulares da rede pública estadual",
+      "url": "https://www.ce.gov.br/seduc/wp-content/uploads/sites/63/2026/11/PortariaMatriculado20261119p02.pdf"
+    },
+    "requisitos": {
+      "frase": "Ensino Médio para jovens e adultos a partir de 18 anos completos.",
+      "url": "https://www.ce.gov.br/seduc/wp-content/uploads/sites/63/2026/11/PortariaMatriculado20261119p02.pdf"
+    },
+    "observacao": "A Portaria nº 2175/2026 distingue a EJA presencial nas escolas regulares da oferta com práticas pedagógicas não presenciais nos CEJA. O ingresso em qualquer período do ano aplica-se à oferta nos CEJA. A mesma portaria indica 15 anos completos para o Ensino Fundamental."
+  },
+  "MA": {
+    "periodo": null,
+    "como": null,
+    "requisitos": {
+      "frase": "o estudante deverá apresentar documento de identificação pessoal e comprovante de escolaridade anterior.",
+      "url": "https://www.educacao.ma.gov.br/wp-content/uploads/2016/12/Regimento-Escolar-dos-Estabelecimentos-de-Ensino-da-Rede-P%C3%BAblica-Estadual-do-Maranh%C3%A3o-2016-PDF.pdf"
+    },
+    "observacao": "O prazo localizado para a EJA do Ensino Fundamental em 2026 encerrou-se em 12 de janeiro. O anúncio de cadastro antecipado para 2027 não identifica a EJA. O regimento prevê avaliação para ingresso nas duas primeiras etapas do Ensino Fundamental quando falta comprovação de escolaridade."
+  },
+  "PA": {
+    "periodo": null,
+    "como": null,
+    "requisitos": {
+      "frase": "A idade mínima para matrícula em cursos de ensino fundamental e ensino médio é de 15 e 18 anos completos, respectivamente.",
+      "url": "https://www.seduc.pa.gov.br/site/public/upload/arquivo/saeb/Regimento%20das%20Escolas%20Estaduais%20de%20Educacao%20Basica%20do%20Para-70ec4.pdf"
+    },
+    "observacao": "O portal oficial consultado apresentava o calendário de 2026, com o prazo de matrícula já encerrado. Não encontrei calendário de ingresso na EJA para 2027. O requisito de idade consta do regimento da rede."
+  },
+  "PB": {
+    "periodo": {
+      "frase": "No entanto, na EJA Semipresencial as matrículas podem ser realizadas em qualquer momento do ano letivo.",
+      "url": "https://paraiba.pb.gov.br/diretas/secretaria-da-educacao/consultas/diretrizes-pedagogica-2025-1.pdf"
+    },
+    "como": {
+      "frase": "exclusivamente em escolas pólos habilitadas para este formato",
+      "url": "https://paraiba.pb.gov.br/diretas/secretaria-da-educacao/PORTARIADEMATRCULAS2025.pdf"
+    },
+    "requisitos": {
+      "frase": "16 anos (Ensino Fundamental Anos Finais) e 18 anos (Ensino Médio)",
+      "url": "https://paraiba.pb.gov.br/diretas/secretaria-da-educacao/consultas/diretrizes-pedagogica-2025-1.pdf"
+    },
+    "observacao": "Os trechos sobre período e local referem-se à EJA semipresencial. As diretrizes de 2026 também descrevem matrícula ao longo do ano letivo nessa modalidade. Não encontrei calendário de 2027 para a EJA presencial. As diretrizes indicam ainda 15 anos para os anos iniciais do Ensino Fundamental."
+  },
+  "PE": {
+    "periodo": {
+      "frase": "Cadastro Escolar: de 25 novembro a 25 de dezembro",
+      "url": "https://portal.educacao.pe.gov.br/matriculas-abertas-para-o-ano-letivo-de-2027-na-rede-estadual/"
+    },
+    "como": {
+      "frase": "pelo site www.matricularapida.pe.gov.br",
+      "url": "https://portal.educacao.pe.gov.br/matriculas-abertas-para-o-ano-letivo-de-2027-na-rede-estadual/"
+    },
+    "requisitos": {
+      "frase": "histórico escolar original ou declaração oficial da última instituição de ensino frequentada, CPF",
+      "url": "https://portal.educacao.pe.gov.br/matriculas-abertas-para-o-ano-letivo-de-2027-na-rede-estadual/"
+    },
+    "observacao": "O cadastro de 25 de novembro a 25 de dezembro de 2026 inclui a EJA para o ano letivo de 2027. A efetivação é presencial na escola, de 4 a 15 de janeiro de 2027. A página lista outros documentos além dos citados."
+  },
+  "PI": {
+    "periodo": null,
+    "como": null,
+    "requisitos": null,
+    "observacao": "A Seduc já lista ofertas de EJA para 2027, mas não encontrei o calendário de matrícula da modalidade. O edital de matrícula localizado é o de 2026, cujo processo regular encerrou-se. A referência a vagas durante todo o ano letivo consta de uma notícia de 2023."
+  },
+  "RN": {
+    "periodo": {
+      "frase": "na Educação Básica, durante todo o ano letivo",
+      "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12025-12-23.pdf"
+    },
+    "como": {
+      "frase": "A Educação de Jovens e Adultos terá matrícula realizada, para atendimento anual e semestral, no Sistema Integrado de Gestão da Educação - SIGEduc",
+      "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12021-12-24.pdf"
+    },
+    "requisitos": {
+      "frase": "15 anos para o ingresso no Ensino fundamental e 18 anos para o ingresso no Ensino Médio",
+      "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12025-12-23.pdf"
+    },
+    "observacao": "O período e as idades constam do art. 1º da Portaria-SEI nº 11041/2025, que trata da matrícula contínua na EJA. O portal de matrícula é https://sigeduc.rn.gov.br/sigeduc/public/matricula/home.jsf."
+  },
+  "RO": {
+    "periodo": null,
+    "como": {
+      "frase": "A reserva de vagas é válida para EJA (Educação de Jovens e Adultos)?\nSim, desde que esteja dentro dos períodos previstos no calendário de matrículas.",
+      "url": "https://matriculaonline.seduc.ro.gov.br/"
+    },
+    "requisitos": {
+      "frase": "Pessoas com 15 anos ou mais que não completaram o Ensino Fundamental e com 18 anos ou mais que não finalizaram o Ensino Médio.",
+      "url": "https://rondonia.ro.gov.br/seduc/programas-e-projetos/programas/programa-de-apoio-as-novas-turmas-da-eja/"
+    },
+    "observacao": "A chamada de EJA localizada para 2026 encerrou-se em 28 de fevereiro. Não encontrei calendário de 2027. O portal explica a reserva de vaga on-line, condicionada ao calendário."
+  },
+  "RR": {
+    "periodo": null,
+    "como": {
+      "frase": "A Central de Matrículas funciona na Secretaria de Educação e Desporto, localizada na Praça do Centro Cívico, n° 550, Centro",
+      "url": "https://educacao.rr.gov.br/matriculas/"
+    },
+    "requisitos": {
+      "frase": "quinze anos completos para o ingresso nos cursos da EJA do Ensino Fundamental e de dezoito anos completos para o ingresso no Ensino Médio.",
+      "url": "https://educacao.rr.gov.br/wp-content/uploads/2026/02/RESOLUCAO-CNE.CEB-No-03.2025.pdf"
+    },
+    "observacao": "O calendário estadual com período de matrícula da EJA que encontrei é o de 2026, já encerrado. O endereço citado é o da Central de Matrículas da rede. As idades constam da resolução nacional disponibilizada pela Seed na página da EJA."
+  },
+  "SE": {
+    "periodo": null,
+    "como": {
+      "frase": "No Portal da Matrícula (matriculaonline.seed.se.gov.br): escolha a modalidade de ensino, o ano letivo",
+      "url": "https://seduc.se.gov.br/perguntas-frequentes/"
+    },
+    "requisitos": {
+      "frase": "a idade mínima de 15 anos para ingresso no Ensino Fundamental e 18 anos no Ensino Médio",
+      "url": "https://cee.se.gov.br/publicada-a-resolucao-no-44-2025-sobre-a-educacao-de-jovens-e-adultos-em-sergipe/"
+    },
+    "observacao": "O último calendário específico da EJA que encontrei foi o do segundo semestre de 2026, com prazo encerrado em julho. Não encontrei datas de matrícula da EJA para 2027. O portal indicado pela Seed é https://matriculaonline.seduc.se.gov.br/Portal."
+  },
+  "TO": {
+    "periodo": null,
+    "como": {
+      "frase": "Comparecer à unidade escolar ou Diretoria Regional de Educação;",
+      "url": "https://servicos.to.gov.br/servico_detalhado.aspx?cod_assunto_documento_tipo=7730"
+    },
+    "requisitos": {
+      "frase": "Documento de identificação (RG ou Certidão de Nascimento);\nCadastro de Pessoa Física (CPF);\nComprovante de residência;\nHistórico escolar ou declaração (se possuir);\nFoto 3x4 (se solicitado).",
+      "url": "https://servicos.to.gov.br/servico_detalhado.aspx?cod_assunto_documento_tipo=7730"
+    },
+    "observacao": "A página oficial do serviço orienta a consultar o cronograma vigente. Não encontrei nela nem nas demais fontes oficiais consultadas datas de inscrição na EJA para 2027."
+  }
+}

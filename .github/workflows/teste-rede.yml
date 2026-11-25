@@ -5,16 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: sudo apt-get install -y -qq poppler-utils >/dev/null
-      - name: Ifap Proeja 2027.1
+      - name: Ifap
         run: |
           set +e
-          curl -sL -m 60 -A "Mozilla/5.0" -o ifap.pdf -w "%{http_code} %{content_type} %{size_download}\n" https://www.ifap.edu.br/documents/1317/Edital_PROEJA_2027.pdf
-          pdftotext -layout ifap.pdf ifap.txt && wc -l ifap.txt
-          grep -n -i -E "gratuit|inscri|sorteio|prova|pontua|crit[ée]rio|idade|fundamental|30 de novembro|30/11|noturno|vagas" ifap.txt | head -80
-          curl -sL -m 40 -A "Mozilla/5.0" -o ps.html -w "PS %{http_code}\n" https://processoseletivo.ifap.edu.br/ps/
-          python3 -c "import re,html;t=open('ps.html',encoding='utf-8',errors='replace').read();x=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<script.*?</script>|<style.*?</style>|<[^>]+>',' ',t)));i=x.find('PROEJA');print(x[max(0,i-300):i+600] if i>=0 else x[:800])"
-      - name: IFPB EJA-EPT 2027
+          curl -sL -m 60 -A "Mozilla/5.0" -o ifap.pdf https://www.ifap.edu.br/documents/1317/Edital_PROEJA_2027.pdf
+          pdftotext -layout ifap.pdf ifap.txt
+          sed -n '10,30p;48,140p;228,262p' ifap.txt
+          grep -n -i -E "gratuit|taxa|gov\.br|processoseletivo|endere|documentos? (necess|exig)" ifap.txt | head -30
+      - name: IFPB
         run: |
           set +e
-          curl -sL -m 40 -A "Mozilla/5.0" -o p7.html -w "%{http_code}\n" https://estudante.ifpb.edu.br/processoseletivo/processo/7/
-          python3 -c "import re,html;t=open('p7.html',encoding='utf-8',errors='replace').read();x=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<script.*?</script>|<style.*?</style>|<[^>]+>',' ',t)));print(x[:3000]);print([l for l in re.findall(r'href=\"([^\"]+)\"',t) if 'media' in l or '.pdf' in l.lower()][:40])"
+          curl -sL -m 40 -A "Mozilla/5.0" -o p7.html https://estudante.ifpb.edu.br/processoseletivo/processo/7/
+          python3 -c "import re,html;t=open('p7.html',encoding='utf-8',errors='replace').read();x=re.sub(r'\s+',' ',html.unescape(re.sub(r'(?s)<script.*?</script>|<style.*?</style>|<[^>]+>',' ',t)));i=x.find('Assuntos Estudantis',3000);print(x[i:i+5000]);print(sorted(set(l for l in re.findall(r'href=\"([^\"]+)\"',t) if re.search(r'processo|edital|media',l,re.I)))[:80])"

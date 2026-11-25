@@ -1,0 +1,127 @@
+{
+ "data": "2026-11-25",
+ "estados": {
+  "AC": {
+   "como": {
+    "frase": "procure a escola mais próximo da sua casa, que oferte a modalidade, e faça sua matrícula!",
+    "url": "https://see.ac.gov.br/matriculas-prorrogadas-para-o-eja/"
+   },
+   "requisitos": {
+    "frase": "é preciso ter pelo menos 15 anos de idade para cursar o ensino fundamental, e 18 para o ensino médio.",
+    "url": "https://see.ac.gov.br/inscricoes-abertas-eja/"
+   }
+  },
+  "AL": {
+   "periodo": {
+    "frase": "Deve ser garantido o acesso, através da matrícula na modalidade EJA, a qualquer tempo da etapa/fase/período/módulo/ano letivo.",
+    "url": "https://matriculaonline.al.gov.br/storage/pdfs/1_Portaria%20SEDUC%2014.183-2026%20Matr%C3%ADcula%202027.pdf"
+   },
+   "como": {
+    "frase": "Será realizada on-line, através do site www.matriculaonline.al.gov.br",
+    "url": "https://matriculaonline.al.gov.br/storage/pdfs/1_Portaria%20SEDUC%2014.183-2026%20Matr%C3%ADcula%202027.pdf"
+   }
+  },
+  "AP": {
+   "periodo": {
+    "frase": "05/01/2027 a 21/01/2027",
+    "url": "https://escolapublica.ap.gov.br/govap/pre-matricula-jovens-e-adultos"
+   },
+   "como": {
+    "frase": "Para realizar a inscrição na pré matricula, clique na aba “Inscrição” da página https://www.escolapublica.ap.gov.br/portal_matricula.",
+    "url": "https://escolapublica.ap.gov.br/govap/pre-matricula-jovens-e-adultos"
+   },
+   "requisitos": {
+    "frase": "Documentação aluno (maior de idade) CPF RG Certidão de Nascimento Carteira do SUS E-mail de contato Endereço residencial",
+    "url": "https://escolapublica.ap.gov.br/govap/chamada-escolar-2027"
+   }
+  },
+  "BA": {
+   "periodo": {
+    "frase": "A matrícula segue aberta durante todo o ano, nas escolas da rede estadual de ensino de toda a Bahia.",
+    "url": "https://www.ba.gov.br/educacao/noticias/2025-02/1423/matriculas-para-educacao-de-jovens-e-adultos-eja-seguem-abertas-na-rede"
+   },
+   "como": {
+    "frase": "basta se dirigir a uma unidade escolar da rede estadual que ofereça a modalidade",
+    "url": "https://www.ba.gov.br/educacao/educacao-de-jovens-e-adultos-eja"
+   },
+   "requisitos": {
+    "frase": "RG, CPF, histórico escolar e comprovante de residência.",
+    "url": "https://www.ba.gov.br/educacao/educacao-de-jovens-e-adultos-eja"
+   }
+  },
+  "CE": {
+   "periodo": {
+    "frase": "A matrícula do novo aluno poderá ser efetuada em qualquer período do ano;",
+    "url": "https://www.ce.gov.br/seduc/coordenadoria-de-gestao-pedagogica-do-ensino-medio-cogem/centro-de-educacao-de-jovens-e-adultos-ceja/"
+   },
+   "como": {
+    "frase": "nas escolas regulares da rede pública estadual",
+    "url": "https://www.ce.gov.br/seduc/wp-content/uploads/sites/63/2026/11/PortariaMatriculado20261119p02.pdf"
+   },
+   "requisitos": {
+    "frase": "Ensino Médio para jovens e adultos a partir de 18 anos completos.",
+    "url": "https://www.ce.gov.br/seduc/wp-content/uploads/sites/63/2026/11/PortariaMatriculado20261119p02.pdf"
+   }
+  },
+  "MA": {
+   "requisitos": {
+    "frase": "o estudante deverá apresentar documento de identificação pessoal e comprovante de escolaridade anterior.",
+    "url": "https://www.educacao.ma.gov.br/wp-content/uploads/2016/12/Regimento-Escolar-dos-Estabelecimentos-de-Ensino-da-Rede-P%C3%BAblica-Estadual-do-Maranh%C3%A3o-2016-PDF.pdf"
+   }
+  },
+  "PE": {
+   "periodo": {
+    "frase": "Cadastro Escolar: de 25 novembro a 25 de dezembro",
+    "url": "https://portal.educacao.pe.gov.br/matriculas-abertas-para-o-ano-letivo-de-2027-na-rede-estadual/"
+   },
+   "como": {
+    "frase": "pelo site www.matricularapida.pe.gov.br",
+    "url": "https://portal.educacao.pe.gov.br/matriculas-abertas-para-o-ano-letivo-de-2027-na-rede-estadual/"
+   },
+   "requisitos": {
+    "frase": "histórico escolar original ou declaração oficial da última instituição de ensino frequentada, CPF",
+    "url": "https://portal.educacao.pe.gov.br/matriculas-abertas-para-o-ano-letivo-de-2027-na-rede-estadual/"
+   }
+  },
+  "RN": {
+   "periodo": {
+    "frase": "na Educação Básica, durante todo o ano letivo",
+    "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12025-12-23.pdf"
+   },
+   "como": {
+    "frase": "A Educação de Jovens e Adultos terá matrícula realizada, para atendimento anual e semestral, no Sistema Integrado de Gestão da Educação - SIGEduc",
+    "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12021-12-24.pdf"
+   },
+   "requisitos": {
+    "frase": "15 anos para o ingresso no Ensino fundamental e 18 anos para o ingresso no Ensino Médio",
+    "url": "https://webdisk.diariooficial.rn.gov.br/Jornal/12025-12-23.pdf"
+   }
+  },
+  "RO": {
+   "como": {
+    "frase": "A reserva de vagas é válida para EJA (Educação de Jovens e Adultos)? Sim, desde que esteja dentro dos períodos previstos no calendário de matrículas.",
+    "url": "https://matriculaonline.seduc.ro.gov.br/"
+   }
+  },
+  "RR": {
+   "como": {
+    "frase": "A Central de Matrículas funciona na Secretaria de Educação e Desporto, localizada na Praça do Centro Cívico, n° 550, Centro",
+    "url": "https://educacao.rr.gov.br/matriculas/"
+   },
+   "requisitos": {
+    "frase": "quinze anos completos para o ingresso nos cursos da EJA do Ensino Fundamental e de dezoito anos completos para o ingresso no Ensino Médio.",
+    "url": "https://educacao.rr.gov.br/wp-content/uploads/2026/02/RESOLUCAO-CNE.CEB-No-03.2025.pdf"
+   }
+  },
+  "SE": {
+   "como": {
+    "frase": "No Portal da Matrícula (matriculaonline.seed.se.gov.br): escolha a modalidade de ensino, o ano letivo",
+    "url": "https://seduc.se.gov.br/perguntas-frequentes/"
+   },
+   "requisitos": {
+    "frase": "a idade mínima de 15 anos para ingresso no Ensino Fundamental e 18 anos no Ensino Médio",
+    "url": "https://cee.se.gov.br/publicada-a-resolucao-no-44-2025-sobre-a-educacao-de-jovens-e-adultos-em-sergipe/"
+   }
+  }
+ }
+}

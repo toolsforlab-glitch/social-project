@@ -178,5 +178,14 @@
   "resolvidas": 3,
   "tokens_entrada": 0,
   "tokens_saida": 0
+ },
+ {
+  "quando": "2026-11-25 16:42",
+  "usado": true,
+  "motivo": "EJA por estado (ChatGPT da assinatura)",
+  "perguntas": 16,
+  "resolvidas": 6,
+  "tokens_entrada": 0,
+  "tokens_saida": 0
  }
 ]

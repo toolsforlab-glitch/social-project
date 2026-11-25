@@ -225,7 +225,10 @@ def exportar_dados(base, cfg):
             "turmas": [{k: v for k, v in t.items() if k != "visivel"} for t in turmas],
             "em_revisao": sim(r.get("Mudança a rever")),
             "onde_inscrever": [unidades[i] for i in lista(r.get("Onde se inscrever")) if i in unidades],
-            "verificado_em": (r.get("Revisto por pessoa") or (r.get("Última verificação") if r.get("Nota da verificação") else "") or "")[:10],
+            # só datas (AAAA-MM-DD): «Revisto por pessoa» pode ter texto
+            "verificado_em": next((v[:10] for v in ((r.get("Revisto por pessoa") or "").strip(),
+                                                   (r.get("Última verificação") or "").strip() if r.get("Nota da verificação") else "")
+                                   if re.match(r"\d{4}-\d{2}-\d{2}", v)), ""),
             "inicio": r.get("Início", ""), "duracao": r.get("Duração", ""),
             "primeiro_visto": r.get("Primeiro visto", ""), "como_me_inscrever": passos(r.get("Como me inscrever")),
             "antes": [i for i in lista(r.get("Antes de começar")) if i in ids_guias],

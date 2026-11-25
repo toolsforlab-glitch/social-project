@@ -90,6 +90,13 @@
     });
   }
   // cursos que só têm inscrições futuras ficam fora das listas que não têm calendário (início, encaminhar)
+  // curso sem turmas: inscrição aberta no período (sem período: hoje), ou que abre nos próximos DIAS_POR_ABRIR dias
+  var DIAS_POR_ABRIR = 60;
+  function porAbrir(c) { return !!(c.abertura && c.abertura > hojeIso()); }
+  function janelaCurso(c) {
+    if (porAbrir(c)) return periodo ? abertaNoPeriodo(c.abertura, c.inscricoes_ate || "") : diasAte(c.abertura) <= DIAS_POR_ABRIR;
+    return abertaNoPeriodo("", c.inscricoes_ate || "");
+  }
   function semFuturos(lista) { return (lista || []).filter(function (c) { return !c.so_futuro; }); }
   // Prazos a terminar: dias que faltam até ao fim das inscrições (0 = hoje). Só com prazo comprovado.
   var DIAS_ALERTA = 3;
@@ -420,7 +427,7 @@
     if (f.marca && marcasDe(c).indexOf(f.marca) < 0) return false;
     // calendário: o curso tem de ter inscrições abertas em algum dia do período (sem período: hoje)
     if ((c.turmas || []).length) { if (!turmasAtuais(c).length) return false; }
-    else if (!abertaNoPeriodo("", c.inscricoes_ate || "")) return false;
+    else if (!janelaCurso(c)) return false;
     if (f.certificado && c.certificado !== "gratuito") return false;
     if (f.duracao && !naDuracao(c, f.duracao)) return false;
     if (f.cidade && cidadesDe(c).indexOf(f.cidade) < 0) return false;
@@ -570,7 +577,7 @@
     function horas(c) { var m = /(\d+(?:[.,]\d+)?)\s*(h\b|h\/|horas?)/i.exec(c.duracao || ""); return m ? parseFloat(m[1].replace(",", ".")) : null; }
     carregar("dados/cursos.json").then(function (d) {
       var todos = semFuturos(d.cursos).filter(function (c) {
-        return (c.turmas || []).length ? turmasAtuais(c).length > 0 : abertaNoPeriodo("", c.inscricoes_ate || "");
+        return (c.turmas || []).length ? turmasAtuais(c).length > 0 : janelaCurso(c);
       });
       var total = todos.length;
       var online = todos.filter(function (c) { return c.modalidade === "online"; }).length;
@@ -757,7 +764,8 @@
       if (temTurmas) {
         factos.push('<span class="bom">' + (turmas.length === 1 ? "1 turma com inscrições abertas" : turmas.length + " turmas com inscrições abertas") + "</span>");
       } else {
-        if (c.inscricoes_ate && !breve) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
+        if (porAbrir(c)) factos.push('<span class="atencao">Inscrições abrem em ' + esc(dataBonita(c.abertura)) + (c.inscricoes_ate ? " e vão até " + esc(dataBonita(c.inscricoes_ate)) : "") + "</span>");
+        else if (c.inscricoes_ate && !breve) factos.push('<span class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</span>");
         else if (c.data_por_confirmar) factos.push('<span class="atencao">Confirme a data na página oficial</span>');
         if (c.situacao === "Por confirmar") factos.push('<span class="atencao">Inscrições por confirmar</span>');
         if (c.inicio) factos.push("Aulas começam em " + esc(dataBonita(c.inicio)));

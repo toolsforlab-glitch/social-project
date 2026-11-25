@@ -57,6 +57,23 @@ def origem_descricao(r):
         return "pagina" if origem == DESCRICAO_PAGINA else "resumo"
     return "pagina" if r.get("Origem") == "turmas" and "psg.ce.senac.br" in (r.get("Link") or "") else "resumo"
 
+def abertura_do_curso(r):
+    """Data em que a inscrição abre (AAAA-MM-DD), só com Situação «Por abrir» e prova «abertura» (frase do edital)."""
+    if (r.get("Situação das inscrições") or "").strip() != "Por abrir" or not comprovado(r, "abertura"):
+        return ""
+    v = (r.get("Inscrições abrem em") or "").strip()[:10]
+    return v if re.match(r"\d{4}-\d{2}-\d{2}$", v) else ""
+
+
+def situacao_do_curso(r):
+    """«Por abrir» passa a «Aberto» no dia da abertura (o site é gerado todos os dias)."""
+    s = (r.get("Situação das inscrições", "") or "Por confirmar").strip()
+    if s == "Por abrir":
+        ab = abertura_do_curso(r)
+        return "Aberto" if ab and ab <= time.strftime("%Y-%m-%d") else ("Por abrir" if ab else "Por confirmar")
+    return s
+
+
 def valor_comprovado(r, coluna, prova):
     v = str(r.get(coluna) or "").strip()
     if not v or v == "Não indicado" or not comprovado(r, prova):
@@ -221,7 +238,9 @@ def exportar_dados(base, cfg):
             "data_por_confirmar": bool(r.get("Inscrições até")) and not comprovado(r, "data"),
             "so_futuro": so_futuro,
             "situacao": ("Aberto" if any(t["situacao"] == "Aberta" for t in turmas) else "Por confirmar") if turmas
-                        else (r.get("Situação das inscrições", "") or "Por confirmar"),
+                        else situacao_do_curso(r),
+            # inscrição que abre numa data futura, comprovada no edital (regra de 25/11/2026): «Inscrições abrem em …»
+            "abertura": abertura_do_curso(r),
             "turmas": [{k: v for k, v in t.items() if k != "visivel"} for t in turmas],
             "em_revisao": sim(r.get("Mudança a rever")),
             "onde_inscrever": [unidades[i] for i in lista(r.get("Onde se inscrever")) if i in unidades],

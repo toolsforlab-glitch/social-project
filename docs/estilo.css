@@ -116,9 +116,10 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .paginacao[hidden] { display: none; }
 .paginacao-texto { margin: 0 0 .6rem; color: var(--tinta-suave); font-size: .95rem; }
 .paginacao ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
-.paginacao .botao.pequeno { margin-left: 0; min-width: 2.75rem; min-height: 2.75rem; }
-.pagina-atual { display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem;
-  font-weight: 700; background: var(--anil); color: #fff; border-radius: var(--raio); }
+/* botões achatados, metade da altura (pedido do responsável, 25/11/2026) */
+.paginacao .botao.pequeno { margin-left: 0; min-width: 2.2rem; padding: .1rem .55rem; line-height: 1.3; font-size: .9rem; border-width: 1.5px; }
+.pagina-atual { display: inline-flex; align-items: center; justify-content: center; min-width: 2.2rem; padding: .1rem .55rem; line-height: 1.3;
+  font-size: .9rem; font-weight: 700; background: var(--anil); color: #fff; border: 1.5px solid var(--anil); border-radius: var(--raio); }
 .reticencias { color: var(--tinta-suave); padding: 0 .2rem; }
 @media print { .paginacao { display: none; } }
 
@@ -192,6 +193,7 @@ select:focus, input[type="search"]:focus { border-color: var(--anil); }
 .filtros-topo .campo { max-width: none; }
 @media (min-width: 48rem) { .filtros-topo { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .campo[hidden] { display: none; }
+.filtros .campo-largo { grid-column: 1 / -1; max-width: none; }
 .filtros-topo .campo-caixa { grid-column: 1 / -1; }
 .filtros-topo .campo-caixa .caixa { display: flex; gap: .55rem; align-items: center; font-weight: 700; min-height: 2.9rem; cursor: pointer; }
 .campo-caixa input[type="checkbox"] { width: 1.3rem; height: 1.3rem; margin: 0; accent-color: currentColor; flex: none; }
@@ -270,19 +272,12 @@ a.lembrar::after { content: none !important; }
 .numero-cartao { background: #fff; border: 1px solid var(--pedra); border-radius: var(--raio); padding: .9rem 1rem; }
 .numero-cartao b { display: block; font-size: 2.1rem; line-height: 1.1; color: var(--anil); font-variant-numeric: tabular-nums; }
 .numero-cartao span { color: var(--tinta-suave); font-size: .95rem; }
-.barras { display: grid; gap: .45rem; margin: .5rem 0; }
+.barras { display: grid; gap: .45rem; margin: .5rem 0; max-width: 32rem; }  /* metade do comprimento (25/11/2026) */
 .barra { display: grid; grid-template-columns: 9.5rem 1fr 5.2rem; align-items: center; gap: .6rem; font-size: .95rem; }
 .barra-fundo { display: block; background: var(--anil-claro); border-radius: 4px; height: 1.1rem; overflow: hidden; }
 .barra-cheia { display: block; background: var(--anil); height: 100%; border-radius: 4px; }
 .barra-valor { text-align: right; font-variant-numeric: tabular-nums; }
 /* tabela dos estados (sem marcadores; 25/11/2026) */
-.mapa-lista { border-collapse: collapse; margin: .8rem 0; min-width: 18rem; font-size: 1rem; }
-.mapa-lista th, .mapa-lista td { padding: .35rem .8rem; border-bottom: 1px solid var(--pedra); text-align: left; }
-.mapa-lista thead th { font-size: .9rem; color: var(--tinta-suave); border-bottom: 2px solid #9aa3b6; }
-.mapa-lista thead th:last-child { text-align: right; }
-.mapa-lista tbody th { font-weight: 400; }
-.mapa-lista td { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
-.mapa-lista tbody tr:nth-child(even) { background: var(--anil-claro); }
 @media (max-width: 30rem) { .barra { grid-template-columns: 7rem 1fr 4.6rem; } }
 p.avisar { margin: .35rem 0 0; font-size: .88rem; }
 p.avisar a { color: var(--tinta-suave); }

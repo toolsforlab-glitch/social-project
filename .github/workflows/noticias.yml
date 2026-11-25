@@ -109,6 +109,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 senac_ba.py
 
+      - name: Turmas do Programa Senac de Gratuidade em Roraima (portal de seleções oficial, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 senac_rr.py
+
       - name: Notícias oficiais de cursos das prefeituras e governos (sem Claude) e verificação das novas
         if: ${{ always() }}
         timeout-minutes: 15

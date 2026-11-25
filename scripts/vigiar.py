@@ -108,6 +108,15 @@ VIGIAS = [
      "resumo": "notícias recentes de inscrições",
      "verificar": "O site da Seduc PI não abre a partir do GitHub. Abra a notícia e procure a página oficial (pi.gov.br) "
                   "com as datas de inscrição e a gratuidade; peça ao Claude para criar o curso."},
+    # Senac Tocantins: o site (www.to.senac.br) só mostra turmas pagas (formas de pagamento na própria lista); em
+    # 25/11/2026 não havia página nem lista pública do PSG. As notícias avisam quando abrem vagas gratuitas.
+    {"nome": "Senac Tocantins (PSG; sem lista pública)",
+     "rss": "https://news.google.com/rss/search?q=%22Senac%22+Tocantins+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "titulo": r"^(?=.*senac)(?=.*(tocantins|palmas|aragua[íi]na|gurupi|\bTO\b))(?=.*(vagas|inscri|gratuit))", "dias": 10,
+     "link": "https://news.google.com/search?q=%22Senac%22+Tocantins+vagas+gratuitas&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+     "resumo": "notícias recentes de vagas gratuitas",
+     "verificar": "O Senac Tocantins não tem lista pública das turmas do PSG. Abra a notícia e procure o edital ou a "
+                  "página oficial com as datas de inscrição; peça ao Claude para criar o curso (pode anexar o PDF)."},
     # OSCs aprovadas pelos critérios de histórico (regra do responsável, 25/11/2026; ver LEIAME). Não publicam as turmas
     # num site: a inscrição é feita no município, pela própria OSC. Se o Google Notícias tiver notícias recentes de cursos
     # ou inscrições com o nome delas, abre-se uma pendência (uma por mês e por OSC). Os cursos só entram com página

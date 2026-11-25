@@ -145,7 +145,7 @@
     }).filter(Boolean);
   }
   function semAncora(u) { return String(u || "").split("#")[0]; }
-  function turmaHtml(t, comBotao, tituloCurso) {
+  function turmaHtml(t, comBotao, tituloCurso, curso) {
     var l = ["<strong>" + esc(t.unidade || (t.local && t.local.nome) || "") + "</strong>" + (t.cidade ? " (" + esc(t.cidade) + ")" : "")];
     var quando = [t.inicio ? dataCurtaG(t.inicio) + (t.fim ? " a " + dataCurtaG(t.fim) : "") : "", t.horario, t.dias]
       .filter(Boolean).join(" · ");
@@ -162,9 +162,8 @@
     if (t.inscricao === "online") l.push(t.info ? "Inscrição pela internet." : "Aulas on-line ao vivo. Inscrição pela internet.");
     if (t.inscricao === "presencial") l.push("Inscrição presencial" + (t.local_texto ? " em: " + esc(t.local_texto) : " na unidade"));
     if (t.inscricao !== "pagina" && t.telefone) { det.push("Dúvidas: " + telefones(t.telefone)); tipos.push("telefone"); }
-    var quem = [t.idade_minima ? t.idade_minima + " anos ou mais" : "", t.escolaridade ? (t.inscricao === "pagina" ? "Escolaridade: " : "Requisito: ") + t.escolaridade.replace(/\.$/, "") : ""]
-      .filter(Boolean).join(" · ");
-    if (quem) { det.push(esc(quem)); tipos.unshift("requisitos"); }
+    var reqs = requisitosDe(curso, t);
+    if (reqs.length) l.push(requisitosHtml(reqs));
     if (t.documentos) { det.push("Documentos: " + esc(t.documentos.replace(/\.$/, ""))); tipos.splice(tipos.indexOf("telefone") >= 0 ? tipos.length - 1 : tipos.length, 0, "documentos"); }
     // turma com local de inscrição próprio (Centec presencial): não mostrar também a morada da unidade
     var u = (t.inscricao === "presencial" && t.local_texto) ? null : t.local;
@@ -174,9 +173,9 @@
       if (u.telefone) { det.push("Telefone " + telefones(u.telefone)); if (tipos.indexOf("telefone") < 0) tipos.push("telefone"); }
     }
     if (det.length && comBotao) {
-      var ordem = ["requisitos", "documentos", "endereço", "telefone"].filter(function (x) { return tipos.indexOf(x) >= 0; });
+      var ordem = ["documentos", "endereço", "telefone"].filter(function (x) { return tipos.indexOf(x) >= 0; });
       var rotulo = ordem.length ? ordem.length === 1 ? ordem[0] : ordem.slice(0, -1).join(", ") + " e " + ordem[ordem.length - 1] : "";
-      l.push('<details class="turma-detalhes"><summary>Ver detalhes da turma' + (rotulo ? " <span>(" + esc(rotulo) + ")</span>" : "") +
+      l.push('<details class="turma-detalhes"><summary>Mais detalhes da turma' + (rotulo ? " <span>(" + esc(rotulo) + ")</span>" : "") +
              "</summary>" + det.join("<br>") + "</details>");
     } else {
       l = l.concat(det);
@@ -187,7 +186,41 @@
       l.push('<a class="botao" href="' + esc(t.link) + '" rel="noopener">' + esc(b.rotulo) + "</a>");
     }
     if (comBotao && tituloCurso) l.push(lembrarHtml(tituloCurso, t.prazo, t.link, [t.unidade, t.cidade].filter(Boolean).join(", ")));
-    return "<li>" + l.join("<br>").replace(/<br><details/g, "<details").replace(/<\/details><br>/g, "</details>") + "</li>";
+    return "<li>" + l.join("<br>").replace(/<br>(<details|<div class="requisitos")/g, "$1").replace(/(<\/details>|<\/ul><\/div>)<br>/g, "$1") + "</li>";
+  }
+
+  // Requisitos num lugar só (pedido do responsável, 25/11/2026): substitui o questionário «Posso me inscrever?» e a
+  // linha «Requisitos:» soltas. Nas turmas, os requisitos da turma (idade, escolaridade) vêm primeiro e os do curso
+  // (renda, público, outros) juntam-se a eles.
+  var ESCOLARIDADE_TXT = {
+    "Saber ler e escrever": "Saber ler e escrever", "Fundamental incompleto": "Ter estudado parte do ensino fundamental",
+    "Fundamental completo": "Ter o ensino fundamental completo", "Médio incompleto": "Ter começado o ensino médio",
+    "Médio completo": "Ter o ensino médio completo", "Superior": "Ter curso superior"
+  };
+  function requisitosDe(c, t) {
+    var l = [], livre = (c && c.requisitos) || "";
+    var idade = function (min, max) {
+      return min && max ? "Ter de " + min + " a " + max + " anos" : min ? "Ter " + min + " anos ou mais" : max ? "Ter até " + max + " anos" : "";
+    };
+    var temIdade = false, temEscola = false;
+    if (t && (t.idade_minima || t.idade_maxima)) { l.push(idade(t.idade_minima, t.idade_maxima)); temIdade = true; }
+    if (t && t.escolaridade) { l.push("Escolaridade: " + t.escolaridade.replace(/\.$/, "")); temEscola = true; }
+    if (c) {
+      if (!temIdade && !/\banos?\b/i.test(livre) && (c.idade_minima || c.idade_maxima)) l.push(idade(c.idade_minima, c.idade_maxima));
+      if (!temEscola && !/fundamental|m[ée]dio|escolaridade|superior|alfabetiz/i.test(livre) && c.escolaridade && ESCOLARIDADE_TXT[c.escolaridade])
+        l.push(ESCOLARIDADE_TXT[c.escolaridade]);
+      if (c.renda && !/renda|sal[áa]rio/i.test(livre)) l.push(c.renda.replace(/\.$/, ""));
+      if (c.exclusivo_para && livre.toLowerCase().indexOf(c.exclusivo_para.toLowerCase().slice(0, 25)) < 0) l.push(c.exclusivo_para.replace(/\.$/, ""));
+      if (/aperfei[cç]oamento/i.test(c.documentos || "")) l.push("Ter experiência na área (é um curso de aperfeiçoamento)");
+      // texto livre com várias condições separadas por «;»: uma por linha, com maiúscula no começo
+      livre.split(/;\s*/).forEach(function (x) { x = x.trim().replace(/\.$/, ""); if (x) l.push(x.charAt(0).toUpperCase() + x.slice(1)); });
+    }
+    return l.filter(Boolean);
+  }
+  function requisitosHtml(itens) {
+    if (!itens.length) return "";
+    return '<div class="requisitos"><p class="requisitos-titulo">Requisitos</p><ul>' +
+      itens.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
   }
 
   // Botão e nota a partir do destino do link (paginas.py: curso, acesso, lista, pdf, formulario, inicio, geral).
@@ -640,43 +673,6 @@
     site.locais.forEach(function (l) { nomesLocal[l.id] = l.rotulo; });
 
     var TURNO = { "Manhã": "De manhã", "Tarde": "À tarde", "Noite": "À noite" };
-    var ESCOLARIDADE = {
-      "Saber ler e escrever": "Você sabe ler e escrever?",
-      "Fundamental incompleto": "Você já estudou pelo menos uma parte do ensino fundamental?",
-      "Fundamental completo": "Você terminou o ensino fundamental?",
-      "Médio incompleto": "Você já começou o ensino médio?",
-      "Médio completo": "Você terminou o ensino médio?",
-      "Superior": "Você tem curso superior?"
-    };
-
-    function perguntas(c) {
-      var q = [];
-      if (c.idade_minima) q.push({ p: "Você tem " + c.idade_minima + " anos ou mais?", nao: "O curso pede idade mínima de " + c.idade_minima + " anos." });
-      if (c.idade_maxima) q.push({ p: "Você tem " + c.idade_maxima + " anos ou menos?", nao: "O curso é para pessoas com até " + c.idade_maxima + " anos." });
-      if (c.escolaridade && ESCOLARIDADE[c.escolaridade]) q.push({ p: ESCOLARIDADE[c.escolaridade], nao: "O curso pede: " + c.escolaridade.toLowerCase() + "." });
-      if (c.renda) {
-        if (/dois sal[aá]rios/i.test(c.renda)) q.push({
-          p: "Somando o que todos da sua casa ganham por mês e dividindo pelo número de pessoas, dá até dois salários mínimos?",
-          nao: "O curso é para famílias com renda de até dois salários mínimos por pessoa." });
-        else q.push({ p: "O curso pede: " + c.renda + ". A sua situação se encaixa?", nao: "O curso pede: " + c.renda + "." });
-      }
-      if (/aperfei[cç]oamento/i.test(c.documentos || "")) q.push({
-        p: "Você já tem experiência na área (certificado, carteira de trabalho, declaração da empresa ou declaração sua)?",
-        nao: "É um curso de aperfeiçoamento: pede experiência na área." });
-      return q;
-    }
-
-    function posso(c, i) {
-      var q = perguntas(c);
-      if (!q.length) return "";
-      return '<details class="posso" data-curso="' + i + '"><summary>Posso me inscrever?</summary>' +
-        '<p class="discreto">Responda para saber. Nada do que você responde é guardado.</p><ol>' +
-        q.map(function (x, j) {
-          return '<li><p>' + esc(x.p) + '</p><div class="simnao" role="group">' +
-            '<button type="button" class="opcao" data-q="' + j + '" data-r="sim" aria-pressed="false">Sim</button>' +
-            '<button type="button" class="opcao" data-q="' + j + '" data-r="nao" aria-pressed="false">Não</button></div></li>';
-        }).join("") + '</ol><p class="resultado" aria-live="polite"></p></details>';
-    }
 
     function antesHtml(c) {
       var g = (c.antes || []).map(function (id) { return guiasPorId[id]; }).filter(Boolean);
@@ -704,7 +700,7 @@
       if (c.gratuidade_comprovada === false) factos.push(marca("atencao", "Gratuidade por confirmar", "marca:grat-confirmar"));
       var breve = terminaEmBreve(c);
       if (novosDesde && (c.primeiro_visto || "").slice(0, 10) > novosDesde) factos.unshift('<span class="novo">Novo desde a sua última visita</span>');
-      else if (recente(c)) factos.unshift(marca("novo", "Novo no site", "facilita:recente"));
+      else if (recente(c)) factos.unshift(marca("novo", "Novo!", "facilita:recente"));
       if (breve) factos.unshift(marca("urgente", quandoTermina(prazoProximo(c)), "facilita:fecha_breve"));
       if (temTurmas) {
         factos.push('<span class="bom">' + (turmas.length === 1 ? "1 turma com inscrições abertas" : turmas.length + " turmas com inscrições abertas") + "</span>");
@@ -728,12 +724,10 @@
         return m ? '<li class="' + m[1] + '">' + m[2] + "</li>" : "<li>" + (f.indexOf("<") >= 0 ? f : esc(f)) + "</li>";
       }).join("");
       var condicoes = [];
-      if (c.exclusivo_para) condicoes.push(esc(c.exclusivo_para));
       (c.etiquetas || []).forEach(function (e) { condicoes.push("Sobre as vagas, a fonte diz: “" + esc(e.frase.replace(/[.\s]+$/, "")) + "”"); });
       var frasesAcess = (c.acessibilidade || []).map(function (e) { return e.frase; }).filter(function (f, i, a) { return a.indexOf(f) === i; });
       frasesAcess.forEach(function (f) { condicoes.push("Sobre acessibilidade, a fonte diz: “" + esc(f.replace(/[.\s]+$/, "")) + "”"); });
       if (c.gratuidade_comprovada === false) condicoes.push(GRATUIDADE_AVISO);
-      if (c.requisitos) condicoes.push("Requisitos: " + esc(c.requisitos));
       // com turmas, os documentos são os de cada turma
       if (c.documentos && !temTurmas) condicoes.push("Documentos: " + esc(c.documentos.replace(/\.$/, "")));
       // O título nunca é uma ligação (igual em todos os cursos): para ir ao site oficial usam-se os botões,
@@ -746,9 +740,9 @@
          : c.vagas === "ordem" ? '<p class="vagas-aviso">Vagas por ordem de inscrição: inscreva-se cedo.</p>' : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
-        posso(c, i) + antesHtml(c) +
+        (temTurmas ? "" : requisitosHtml(requisitosDe(c, null))) + antesHtml(c) +
         (temTurmas ? '<div class="onde turmas"><p class="onde-titulo">Turmas com inscrições abertas</p><ul>' +
-          turmas.map(function (t) { return turmaHtml(t, true, c.titulo); }).join("") + "</ul>" +
+          turmas.map(function (t) { return turmaHtml(t, true, c.titulo, c); }).join("") + "</ul>" +
 "</div>" :
         c.onde_inscrever && c.onde_inscrever.length ? '<div class="onde"><p class="onde-titulo">Onde se inscrever</p><ul>' +
           c.onde_inscrever.map(function (u) {
@@ -1033,30 +1027,6 @@
       if (ev.target.id !== "cursos-marca-limpar") return;
       marcaEscolhida = ""; marcaSumiu = ""; filtrar();
     });
-    lista.addEventListener("click", function (ev) {
-      var b = ev.target.closest(".posso button.opcao");
-      if (!b) return;
-      var caixa = b.closest(".posso");
-      [].forEach.call(b.parentNode.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", x === b); });
-      var c = todos[parseInt(caixa.getAttribute("data-curso"), 10)];
-      var q = perguntas(c), respostas = [];
-      q.forEach(function (x, j) {
-        var on = caixa.querySelector('button[data-q="' + j + '"][aria-pressed="true"]');
-        respostas.push(on ? on.getAttribute("data-r") : null);
-      });
-      var res = caixa.querySelector(".resultado");
-      var naos = q.filter(function (x, j) { return respostas[j] === "nao"; });
-      if (naos.length) {
-        res.className = "resultado atencao";
-        res.textContent = naos.map(function (x) { return x.nao; }).join(" ") + " Veja outros cursos na lista, ou pergunte na unidade se há exceções.";
-      } else if (respostas.indexOf(null) < 0) {
-        res.className = "resultado bom";
-        res.textContent = "Pelo que você respondeu, você pode se inscrever. Confirme na página oficial antes de ir.";
-      } else {
-        res.className = "resultado"; res.textContent = "";
-      }
-    });
-
     // celular: quem chega já com uma escolha (da página inicial) vê logo a contagem e os cursos; os filtros ficam
     // na caixa «Mudar a busca». Em telas largas, a caixa fica sempre aberta.
     // ao imprimir a lista, os detalhes das turmas saem abertos

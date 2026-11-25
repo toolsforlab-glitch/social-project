@@ -1,14 +1,16 @@
-import re, sys, html
+import re, sys, html, glob
 sys.path.insert(0, "scripts")
 from comum import baixar
-import vigiar
-v = [x for x in vigiar.VIGIAS if x["nome"].startswith("IFRO")][0]
-for url in v["itens"]:
-    t = baixar(url, 40).decode("utf-8", "replace")
-    for bloco in t.split('<div class="tileItem">')[1:]:
-        m = re.search(v["item"], bloco, re.S)
-        d = re.search(r"icon-calendar\"></i>\s*(\d{2})/(\d{2})/(\d{2})", bloco)
-        if m and d and d.group(3) == "26" and int(d.group(2)) >= 10:
-            ti = html.unescape(m.group(2)).strip()
-            ok = re.search(v["incluir"], ti, re.I) and not re.search(v["excluir"], ti, re.I)
-            print("✓" if ok else "✗", d.group(0)[-8:], ti, "https://selecao.ifro.edu.br" + m.group(1))
+from base import texto_de_html
+for f in glob.glob("sonda/*.html"):
+    t = open(f, encoding="utf-8", errors="replace").read()
+    pdfs = sorted(set(re.findall(r'href="([^"]+\.pdf)"', t)))
+    print("=====", f[-60:], pdfs)
+    for p in pdfs[:1]:
+        u = p if p.startswith("http") else "https://selecao.ifro.edu.br" + p
+        try:
+            x = texto_de_html(baixar(u.replace(" ", "%20"), 60))
+            for k in ["gratuit", "inscriç", "sorteio", "ordem", "prova", "requisit", "idade", "escolaridade", "período", "vagas"]:
+                for m in list(re.finditer(k, x, re.I))[:2]:
+                    print("  ", k, "::", x[max(0, m.start()-150):m.start()+220])
+        except Exception as e: print("ERRO", u, e)

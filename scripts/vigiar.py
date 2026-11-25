@@ -134,7 +134,7 @@ VIGIAS = [
      "itens": ["https://selecao.ifro.edu.br/extensao-ariquemes", "https://selecao.ifro.edu.br/extensao-buritis", "https://selecao.ifro.edu.br/extensao-cacoal", "https://selecao.ifro.edu.br/extensao-colorado", "https://selecao.ifro.edu.br/extensao-guajara-mirim", "https://selecao.ifro.edu.br/extensao-jaru", "https://selecao.ifro.edu.br/extensao-jiparana", "https://selecao.ifro.edu.br/extensao-calama", "https://selecao.ifro.edu.br/extensao-zona-norte", "https://selecao.ifro.edu.br/extensao-saomiguel", "https://selecao.ifro.edu.br/extensao-vilhena", "https://selecao.ifro.edu.br/reitoria"],
      "estado": "estado/ifro_fic.json",
      "item": r'<h2 class="tileHeadline">\s*<a href="([^"]+)">([^<]+)</a>',
-     "incluir": r"sele[çc][ãa]o de (alunos|cursistas|estudantes)|curso",
+     "incluir": r"sele[çc][ãa]o de (alunos|cursistas|estudantes|interessados|candidatas)|\bcursos?\b|\bFIC\b|forma[çc][ãa]o inicial",
      "excluir": r"professor|bolsista|profissiona|mediador|docente|servidor|ONU|coral|audi[çc]",
      "link": "https://selecao.ifro.edu.br/cursos-fic",
      "verificar": "Edital novo de curso FIC (curta duração, gratuito) num campus do IFRO. Abra o edital: entra se não "

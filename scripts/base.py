@@ -653,3 +653,45 @@ def registar_pendencia(base, problema, verificar, link1, link2="", origem="rotin
         print(f"  → pendência registada: {problema[:90]}")
     except Exception as e:  # noqa: BLE001
         print(f"  ! não foi possível registar a pendência ({e})")
+
+
+# Data de matrícula do edital (regra do responsável, 25/11/2026): a pessoa aprovada que falha a matrícula perde a vaga,
+# por isso o site mostra «Se for aprovado: matrícula de … a …» — só com a frase do edital como prova. Lê a linha do
+# cronograma «Matrícula(s) 04 a 08/01/2027» / «Matrícula 04/01/2027 a 08/01/2027»; não conta «Convocação para
+# matrícula», «matrícula das vagas remanescentes» nem prazos de correção de documentos.
+_MESES_NOME = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro",
+               "novembro", "dezembro"]
+_MATRICULA = re.compile(
+    r"(?<![Pp]ara )(?<![Dd]e )(?<![Dd]a )\bMatr[íi]culas?(?: (?:on-?line|presenciais|presencial|dos aprovados))?\s*:?\s*"
+    r"(?:de |De |De: )?(\d{1,2})(?:/(\d{1,2}))?(?:/(\d{2,4}))?\s*(?:a|até|e)\s*(\d{1,2})/(\d{1,2})/(\d{2,4})")
+
+
+def matricula_do_edital(texto, prazo_inscricoes=""):
+    """(frase do edital, texto para o site «de 4 a 8 de janeiro de 2027») ou ("", ""). Só aceita um período coerente:
+    fim depois do início, até 60 dias de duração e, se houver prazo de inscrições, depois dele."""
+    import datetime as _dt
+    for m in _MATRICULA.finditer(texto or ""):
+        d1, m1, a1, d2, m2, a2 = m.groups()
+        a2 = int(a2) + (2000 if len(a2) == 2 else 0)
+        m1 = int(m1 or m2)
+        a1 = int(a1) + (2000 if a1 and len(a1) == 2 else 0) if a1 else (a2 if m1 <= int(m2) else a2 - 1)
+        try:
+            ini, fim = _dt.date(a1, m1, int(d1)), _dt.date(a2, int(m2), int(d2))
+        except ValueError:
+            continue
+        depois = texto[m.end():m.end() + 60].lower()
+        if fim < ini or (fim - ini).days > 60 or "remanescente" in depois or "corre" in depois[:20]:
+            continue
+        if prazo_inscricoes and fim.isoformat() < prazo_inscricoes:
+            continue
+        if ini == fim:
+            bonito = f"em {ini.day} de {_MESES_NOME[ini.month - 1]} de {ini.year}"
+        elif (ini.month, ini.year) == (fim.month, fim.year):
+            bonito = f"de {ini.day} a {fim.day} de {_MESES_NOME[fim.month - 1]} de {fim.year}"
+        elif ini.year == fim.year:
+            bonito = f"de {ini.day} de {_MESES_NOME[ini.month - 1]} a {fim.day} de {_MESES_NOME[fim.month - 1]} de {fim.year}"
+        else:
+            bonito = (f"de {ini.day} de {_MESES_NOME[ini.month - 1]} de {ini.year} a {fim.day} de "
+                      f"{_MESES_NOME[fim.month - 1]} de {fim.year}")
+        return m.group(0).strip(), bonito
+    return "", ""

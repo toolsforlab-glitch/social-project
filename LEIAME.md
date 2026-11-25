@@ -38,6 +38,7 @@ Lista única das regras que valem hoje. Cada regra nova entra **primeiro aqui** 
 25. **Leitores sem Claude sempre que a fonte é estruturada** (listas, APIs, editais com modelo fixo); o Claude só escolhe ou resume, nunca prova.
 26. **Segurança**: nunca desligar a verificação TLS; nunca ler dados de pagamento nem dados pessoais expostos por APIs das fontes; nunca guardar chaves no repositório (só em GitHub Secrets).
 27. **Fluxos temporários** (`teste-rede.yml`, `scripts/tmp_teste/`, ramo `sonda-tmp`) são apagados logo depois do uso.
+28. **Antes de mudar uma rotina, validar o YAML** (`yaml.safe_load` em cada `.github/workflows/*.yml`): um nome de passo com «: » sem aspas parte o ficheiro e a rotina deixa de correr sem avisar (aconteceu a 25/11, corrigido antes do horário seguinte).
 
 
 

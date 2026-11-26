@@ -178,7 +178,9 @@
   function semAncora(u) { return String(u || "").split("#")[0]; }
   function turmaHtml(t, comBotao, tituloCurso, curso) {
     var l = ["<strong>" + esc(t.unidade || (t.local && t.local.nome) || "") + "</strong>" + (t.cidade ? " (" + esc(t.cidade) + ")" : "")];
-    var quando = [t.inicio ? dataCurtaG(t.inicio) + (t.fim ? " a " + dataCurtaG(t.fim) : "") : "", t.horario, t.dias]
+    // «Dias» às vezes repete o período («23/11/2026 a 18/12/2026»), que já aparece no início da linha
+    var diasT = /^\s*\d{1,2}\/\d{1,2}(\/\d{2,4})?\s*(a|até|-)\s*\d{1,2}\/\d{1,2}(\/\d{2,4})?\s*$/i.test(t.dias || "") && t.inicio ? "" : t.dias;
+    var quando = [t.inicio ? dataCurtaG(t.inicio) + (t.fim ? " a " + dataCurtaG(t.fim) : "") : "", t.horario, diasT]
       .filter(Boolean).join(" · ");
     if (quando) l.push(esc(quando));
     var urgente = t.prazo && diasAte(t.prazo) >= 0 && diasAte(t.prazo) <= DIAS_ALERTA;

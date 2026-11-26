@@ -2,47 +2,11 @@
 
 Site com cursos gratuitos e informação útil, começando por um piloto no **Ceará** (mais cursos on-line do Brasil). Tudo é gerido numa planilha do Google Sheets e publicado sozinho pelo GitHub Actions, com o Claude (API da Anthropic) a pesquisar, verificar e escrever em linguagem simples.
 
-## Regras do site, em vigor
+## Regras, rotinas e fontes
 
-Lista única das regras que valem hoje. Cada regra nova entra **primeiro aqui** (com a data e o código que a aplica) e só depois na secção da fonte. As secções com data mais abaixo ficam como histórico. Última revisão: 25/11/2026.
-
-**A. O que pode entrar no site**
-1. **Só o que a fonte oficial diz; nada deduzido.** Cada afirmação importante tem a frase exata da página ou do edital na Evidência, conferida por código (`citacao_valida`, base.py). O que a fonte não diz fica vazio. Resumos de ferramentas servem para descobrir, nunca para preencher (20/11).
-2. **Gratuito: frase explícita.** «gratuito», «sem custo»… conferida por `gratuidade_explicita` (base.py), ou entidade marcada «Tudo gratuito» por uma pessoa em Sites de confiança, ou «Revisto por pessoa». Sem prova: marca «Gratuidade por confirmar» (20/11). O nome do programa («Programa Senac de Gratuidade») não prova.
-3. **Bolsa não garante gratuidade.** «bolsa integral», «bolsa de estudo», «bolsa de 100%» não contam (`_GRATUIDADE`, base.py; 24/11 e 25/11). «bolsas gratuitas» do PSG conta.
-4. **Escolas públicas = «Tudo gratuito»**: institutos federais e Secretarias de Educação estaduais (Sites de confiança, 23/11). EJA da rede pública estadual é gratuita (25/11). Se a página disser que é pago, vale a página.
-5. **Ou é grátis ou não é**: curso gratuito com certificado pago não entra (`curso_no_site`, base.py; 24/11).
-6. **Sem disputa de vaga**: fica fora o que exige prova, redação, nota do ENEM, entrevista, análise de currículo ou de títulos (`exige_prova`, base.py; 23/11 e 24/11). Entram sorteio e ordem de inscrição, com aviso no cartão («Vagas por sorteio…», «Vagas por ordem de inscrição…»; `regra_vagas`, construir_site.py). Pertencer a um grupo (baixa renda, mulheres, PcD…) não é disputa.
-7. **Inscrição aberta comprovada**: frase da página, prazo do edital, botão marcado por uma pessoa em Sites de confiança, ou curso CLARAMENTE sob demanda (`ACAO_SOB_DEMANDA`, base.py; 21/11).
-8. **404 é fora**: página do curso com erro 404/410, confirmado por uma segunda leitura → Oculto e Encerrado (`Pagina404`, verificar.py; 25/11).
-9. **O que não se comprova sai**: curso de notícia sem página oficial, ou sem prazo e sem prova de vagas → Oculto (16/11; ex.: SENAI Acre).
-10. **Publicação com auditoria**: um curso só passa a Publicado depois de uma segunda leitura independente ou de regras de código (datas coerentes, frases conferidas); senão fica em Rever com o motivo. Oculto e Rever postos por uma pessoa nunca são alterados.
-11. **Instagram de OSC aprovada** conta como página oficial da turma (25/11; conferido no navegador).
-12. **Emprego: fora.** Cursos só para quem tem emprego, cargo ou profissão (servidores, funcionários de uma empresa, profissionais de uma área) ficam fora; cursos só para alunos da rede pública ou da EJA podem entrar (23/11).
-13. **Igrejas, congregações e ONGs**: entram se forem gratuitos e abertos a qualquer pessoa; fora se exigirem ser membro, ir a culto ou catequese, ou se forem formação religiosa (23/11).
-14. **Notícias de jornal só servem para descobrir** (marcadas «Só para descobrir» em Sites de confiança): curso com link de jornal fica em Rever e, sem página oficial, passa a Oculto.
-15. **Certificado, acessibilidade e idades só com frase**: o certificado tem de ser descrito; a acessibilidade tem de nomear um recurso concreto; a idade tem de estar escrita. Escola Virtual de Governo: entra se o público incluir cidadãos ou «qualquer pessoa».
-
-**B. Como se mostra**
-16. **Requisitos: texto da fonte, um por linha**, sem reescrever (25/11).
-17. **Linguagem simples só nos textos do projeto** (descrições «Em resumo», etiquetas, botões). Frases da fonte nunca se alteram. Tudo em português do Brasil (21/11; `IDIOMA`, comum.py).
-18. **«Em resumo:»** aparece quando a descrição foi reescrita pelo projeto; sem rótulo quando foi copiada da página (`origem_descricao`, construir_site.py; 20/11).
-19. **Datas**: «Inscrições até …» só com prazo comprovado; «Aulas começam em …» só com data de início (25/11); «Se for aprovado: matrícula de … a …» só com a frase do cronograma (`matricula_do_edital`, base.py; `matricula_edital.py`; 25/11). O semestre de ingresso não vira etiqueta (fica na descrição; 25/11).
-20. **Cursos «por abrir»**: com data de abertura provada, aparecem até 60 dias antes com «Inscrições abrem em … e vão até …» e passam sozinhos a Aberto no dia (`situacao_do_curso`, construir_site.py; `DIAS_POR_ABRIR`, app.js; 25/11). Até lá, o botão diz «Ver a página oficial» («A inscrição ainda não abriu. Volte a partir de …») e o lembrete do celular é para o dia da abertura (26/11).
-21. **Cada botão diz que página abre** (curso, lista, PDF, formulário, acesso…; `paginas.py`).
-22. **Só mulheres** (Mulheres Mil e afins) vai no título e na condição de acesso.
-22a. **Cursos do mesmo edital num só cartão**: cursos presenciais sem turmas com o mesmo link, entidade, prazo, requisitos e forma de inscrição aparecem juntos («N cursos com a mesma inscrição», com a lista «Cursos e cidades»; `agrupar` e `grupoHtml`, app.js; 26/11).
-
-**C. Como se trabalha**
-23. **Problemas viram pendências** na aba «Pendências para verificar» (`registar_pendencia`, base.py; 22/11). Pendência que depende de uma data futura → lembrete marcado na hora (25/11).
-24. **A rotina marca, uma pessoa decide**: «Mudança a rever» só sai por uma pessoa; «Revisto por pessoa» protege a linha das rotinas.
-25. **Leitores sem Claude sempre que a fonte é estruturada** (listas, APIs, editais com modelo fixo); o Claude só escolhe ou resume, nunca prova.
-26. **Segurança**: nunca desligar a verificação TLS; nunca ler dados de pagamento nem dados pessoais expostos por APIs das fontes; nunca guardar chaves no repositório (só em GitHub Secrets).
-27. **Fluxos temporários** (`teste-rede.yml`, `scripts/tmp_teste/`, ramo `sonda-tmp`) são apagados logo depois do uso.
-28. **Antes de mudar uma rotina, validar o YAML** (`yaml.safe_load` em cada `.github/workflows/*.yml`): um nome de passo com «: » sem aspas parte o ficheiro e a rotina deixa de correr sem avisar (aconteceu a 25/11, corrigido antes do horário seguinte).
-29. **Antes de escrever um leitor novo, procurar se já existe** (`grep -ril <site> scripts/ LEIAME.md .github/workflows/`): a 26/11 o leitor do GO Recife (`gorecife.py`, de 23/11) foi reescrito por engano e reposto no mesmo minuto.
-
-
+- **[REGRAS.md](REGRAS.md)**: a lista única das regras em vigor: quem pode ser fonte, quando um curso entra, quando fica fora, como se mostra e como se trabalha. Uma regra nova entra primeiro lá.
+- **[ROTINAS.md](ROTINAS.md)**: o que corre e quando, e as fontes de cada estado (com leitor, se usa Claude e quantos cursos tem).
+- Este LEIAME guarda o histórico e o detalhe de cada fonte, por data. Quando algo daqui contradiz o REGRAS.md, vale o REGRAS.md.
 
 **Destino dos links: cada botão diz que página abre** (regra do projeto; `paginas.py`). Quem clica tem de cair no lugar que o botão anuncia e saber o que fazer lá. Cada link tem um destino:
 - `curso`: a página do próprio curso ou turma (o título do curso está no título ou no cabeçalho da página). Botão “Ver o curso e se inscrever” / “Ver esta turma e se inscrever”.

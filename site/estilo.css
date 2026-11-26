@@ -342,3 +342,9 @@ a.tel { white-space: nowrap; padding: .15rem 0; }
 /* Aviso de como se distribuem as vagas (sorteio / ordem de inscrição), 24/11/2026 */
 .vagas-aviso { margin: .2rem 0 .7rem; font-weight: 700; color: var(--tinta); font-size: 1rem; }
 .vagas-aviso::before { content: "ⓘ "; color: var(--anil); }
+
+/* cartão com vários cursos do mesmo edital (26/11/2026) */
+.grupo-cursos li strong { color: var(--tinta, inherit); }
+.grupo-descricao { margin-top: .2rem; }
+.grupo-descricao summary { cursor: pointer; font-size: .9rem; color: var(--anil); }
+.grupo-descricao .descricao { margin: .3rem 0 0; }

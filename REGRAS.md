@@ -9,14 +9,14 @@ Lista única. Uma regra nova entra **primeiro aqui**, com a data e o código que
 - **F1. Só instituições conceituadas**: órgãos e escolas do governo, institutos federais, Sistema S (Senac, SENAI, Sebrae…), fundações reconhecidas. Nada «de fundo de quintal» (25/11).
 - **F2. OSC executora só com os 5 critérios**: 10 anos ou mais de CNPJ ativo; histórico com o Estado; confiança além de um curso avulso; sem impedimentos (CEPIM, CEIS, CNEP); sem notícias de irregularidades. Detalhe e resultado no LEIAME, «OSCs executoras» (25/11).
 - **F3. Igrejas, congregações e ONGs**: entram se o curso for gratuito e aberto a qualquer pessoa (23/11).
-- **F4. Jornais só servem para descobrir** (marcados «Só para descobrir» em Sites de confiança). O curso precisa de uma página oficial.
+- **F4. Jornais só servem para descobrir** (marcados «Só para descobrir» em Sites de confiança). O curso precisa de uma página oficial. Uma notícia no site oficial da própria entidade que oferece o curso (ex.: a Semtas no site da Prefeitura do Natal) conta como página oficial; uma notícia antiga, que o portal já não mostra, não publica.
 - **F5. Instagram de uma OSC aprovada** conta como página oficial da turma; é conferido no navegador (25/11).
 - **F6. Escolas públicas são «Tudo gratuito»**: institutos federais, Secretarias de Educação, EJA da rede pública (23/11 e 25/11). Se a página disser que é pago, vale a página.
 
 ## 2. Um curso entra quando TODAS estas são verdade
 
 - **I1. Tudo vem da fonte oficial, com a frase exata.** Cada afirmação importante tem a frase da página ou do edital na Evidência, conferida por código (`citacao_valida`, base.py). O que a fonte não diz fica vazio. Nada deduzido (20/11).
-- **I2. É gratuito, com frase explícita** («gratuito», «sem custo»…; `gratuidade_explicita`, base.py), ou a entidade é «Tudo gratuito» (F6), ou foi revisto por uma pessoa. Sem prova, o cartão diz «Gratuidade por confirmar» (20/11).
+- **I2. É gratuito, com frase explícita** («gratuito», «sem custo»…; `gratuidade_explicita`, base.py), ou a entidade é «Tudo gratuito» (F6), ou foi revisto por uma pessoa. Uma frase só sobre a inscrição («a inscrição é gratuita», «não será cobrada taxa de inscrição») não basta. Sem prova, o cartão diz «Gratuidade por confirmar» (20/11).
 - **I3. A inscrição está aberta e isso está provado**: frase da página, prazo do edital, botão marcado por uma pessoa, ou curso claramente sob demanda (`ACAO_SOB_DEMANDA`, base.py; 21/11). Curso **por abrir**: entra com a data de abertura provada, até 60 dias antes (`DIAS_POR_ABRIR`, app.js; 25/11).
 - **I4. Qualquer pessoa do público pode concorrer.** Ser de um grupo (baixa renda, mulheres, PcD, jovens, alunos da rede pública ou da EJA) não é disputa e pode entrar (23/11).
 - **I5. A vaga não se disputa**: entram ordem de inscrição e sorteio, com aviso no cartão (`regra_vagas`, construir_site.py; 23/11).
@@ -30,7 +30,7 @@ Lista única. Uma regra nova entra **primeiro aqui**, com a data e o código que
 | E1 | É pago, ou o curso é gratuito mas o certificado é pago («Ou é grátis ou não é») | `curso_no_site`, base.py; 24/11 |
 | E2 | Só fala em «bolsa» («bolsa integral», «bolsa de 100%»), sem dizer que é gratuito. «Bolsas gratuitas» do PSG conta | `_GRATUIDADE`, base.py; 24/11 e 25/11 |
 | E3 | Exige prova, redação, nota do ENEM, entrevista, análise de currículo ou de títulos | `exige_prova`, base.py; 23/11 e 24/11 |
-| E4 | É só para quem já trabalha: servidores, funcionários de uma empresa, profissionais de uma área (ex.: Profuncionário do IEMA, 26/11) | 23/11 |
+| E4 | É só para quem já trabalha: servidores, funcionários de uma empresa, profissionais de uma área (ex.: Profuncionário do IEMA, 26/11). Na Escola Virtual de Governo, entra se o público incluir cidadãos, pais ou «qualquer pessoa» | 23/11 |
 | E5 | Exige ser membro, ir ao culto ou à catequese, ou é formação religiosa | 23/11 |
 | E6 | Veio de jornal ou notícia e não há página oficial | 16/11 |
 | E7 | Não se prova o prazo nem as vagas | 16/11 |
@@ -62,7 +62,7 @@ Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, j�
 - **T6. Antes de escrever um leitor novo, procurar se já existe** (`grep -ril <site> scripts/ LEIAME.md .github/workflows/`; 26/11).
 - **T7. Antes de mudar uma rotina, validar o YAML** de todas as rotinas (`yaml.safe_load`; 25/11).
 - **T8. Fluxos temporários** (`teste-rede.yml`, `scripts/tmp_teste/`, ramo `sonda-tmp`) são apagados logo depois do uso.
-- **T9. Segurança**: nunca desligar a verificação TLS; nunca ler dados de pagamento nem dados pessoais expostos pelas fontes; chaves só em GitHub Secrets.
+- **T9. Segurança**: nunca desligar a verificação TLS (um certificado vencido não se ignora: a fonte fica parada até ser renovado); nunca ler dados de pagamento nem dados pessoais expostos pelas fontes (ex.: no Senac PB só se conta o número de turmas); chaves só em GitHub Secrets.
 
 ## Correspondência com a numeração antiga (até 26/11)
 

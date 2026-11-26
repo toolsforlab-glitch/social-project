@@ -28,7 +28,7 @@ Lista única das regras que valem hoje. Cada regra nova entra **primeiro aqui** 
 17. **Linguagem simples só nos textos do projeto** (descrições «Em resumo», etiquetas, botões). Frases da fonte nunca se alteram. Tudo em português do Brasil (21/11; `IDIOMA`, comum.py).
 18. **«Em resumo:»** aparece quando a descrição foi reescrita pelo projeto; sem rótulo quando foi copiada da página (`origem_descricao`, construir_site.py; 20/11).
 19. **Datas**: «Inscrições até …» só com prazo comprovado; «Aulas começam em …» só com data de início (25/11); «Se for aprovado: matrícula de … a …» só com a frase do cronograma (`matricula_do_edital`, base.py; `matricula_edital.py`; 25/11). O semestre de ingresso não vira etiqueta (fica na descrição; 25/11).
-20. **Cursos «por abrir»**: com data de abertura provada, aparecem até 60 dias antes com «Inscrições abrem em … e vão até …» e passam sozinhos a Aberto no dia (`situacao_do_curso`, construir_site.py; `DIAS_POR_ABRIR`, app.js; 25/11).
+20. **Cursos «por abrir»**: com data de abertura provada, aparecem até 60 dias antes com «Inscrições abrem em … e vão até …» e passam sozinhos a Aberto no dia (`situacao_do_curso`, construir_site.py; `DIAS_POR_ABRIR`, app.js; 25/11). Até lá, o botão diz «Ver a página oficial» («A inscrição ainda não abriu. Volte a partir de …») e o lembrete do celular é para o dia da abertura (26/11).
 21. **Cada botão diz que página abre** (curso, lista, PDF, formulário, acesso…; `paginas.py`).
 22. **Só mulheres** (Mulheres Mil e afins) vai no título e na condição de acesso.
 

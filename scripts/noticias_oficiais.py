@@ -66,6 +66,14 @@ FONTES = [
      "pesquisas": ["inscrições cursos", "Escola Móvel inscrições"], "local": "BR-RO", "regiao": "Rondônia", "cidade": "",
      "entidade": "Governo de Rondônia (IDEP – Educação Profissional)",
      "incluir": r"inscri[çc][õo]es.{0,80}cursos|cursos.{0,80}inscri[çc][õo]es|vagas.{0,40}cursos"},
+    {"nome": "Governo de Roraima",
+     "api": "https://portal.rr.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["cursos gratuitos", "qualificação profissional inscrições"], "local": "BR-RR", "regiao": "Roraima",
+     "cidade": "", "entidade": "Governo de Roraima"},
+    {"nome": "Prefeitura de Porto Velho", "pagina": "https://www.portovelho.ro.gov.br/noticias", "local": "BR-RO",
+     "regiao": "Rondônia", "cidade": "Porto Velho", "entidade": "Prefeitura de Porto Velho"},
+    {"nome": "Prefeitura de Palmas", "pagina": "https://www.palmas.to.gov.br/core/noticias/", "local": "BR-TO",
+     "regiao": "Tocantins", "cidade": "Palmas", "entidade": "Prefeitura de Palmas"},
 ]
 
 INCLUIR = re.compile(r"cursos?\s+(?:\w+\s+){0,2}(?:gratuit|de\s+qualifica|profissionaliz|de\s+capacita)|"

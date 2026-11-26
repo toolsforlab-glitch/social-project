@@ -125,8 +125,25 @@
   // «Lembrar-me»: evento de calendário (.ics) no dia do fim das inscrições, com aviso na véspera ao meio-dia.
   // Fica no telemóvel da pessoa: o site não guarda nenhum dado.
   function icsTexto(t) { return String(t || "").replace(/\\/g, "\\\\").replace(/([,;])/g, "\\$1").replace(/\r?\n/g, "\\n"); }
-  function lembrarHtml(titulo, prazo, link, sitio) {
+  // curso «por abrir»: o lembrete é para o dia em que a inscrição abre
+  function lembrarAberturaHtml(titulo, abre, link, sitio) {
+    var d = abre.slice(0, 10).replace(/-/g, ""), p = abre.slice(0, 10).split("-");
+    var fim = new Date(+p[0], +p[1] - 1, +p[2] + 1);
+    var dfim = fim.getFullYear() + ("0" + (fim.getMonth() + 1)).slice(-2) + ("0" + fim.getDate()).slice(-2);
+    var agora = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z";
+    var ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Cursos gratuitos//PT-BR", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+      "UID:abre-" + d + "-" + Math.abs(String(titulo + link).split("").reduce(function (a, ch) { return (a * 31 + ch.charCodeAt(0)) | 0; }, 7)) + "@cursos-gratuitos",
+      "DTSTAMP:" + agora, "DTSTART;VALUE=DATE:" + d, "DTEND;VALUE=DATE:" + dfim,
+      "SUMMARY:" + icsTexto("Abre a inscrição: " + titulo),
+      "DESCRIPTION:" + icsTexto((sitio ? sitio + ". " : "") + "A inscrição abre hoje. Confirme na página oficial: " + link),
+      "URL:" + link, "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+    var nome = "abre-" + titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").slice(0, 40) + ".ics";
+    return '<a class="lembrar" href="data:text/calendar;charset=utf-8,' + encodeURIComponent(ics) + '" download="' + esc(nome) + '">' +
+      "Adicionar à agenda o dia em que a inscrição abre</a>";
+  }
+  function lembrarHtml(titulo, prazo, link, sitio, abre) {
     if (!prazo || !(diasAte(prazo) >= 1)) return "";
+    if (abre) return lembrarAberturaHtml(titulo, abre, link, sitio);
     var d = prazo.slice(0, 10).replace(/-/g, "");
     var p = prazo.slice(0, 10).split("-"), fim = new Date(+p[0], +p[1] - 1, +p[2] + 1);
     var dfim = fim.getFullYear() + ("0" + (fim.getMonth() + 1)).slice(-2) + ("0" + fim.getDate()).slice(-2);
@@ -825,10 +842,13 @@
                      ((c.destino || {}).tipo === "lista" ? "Ver todos os cursos na página oficial" : (c.destino || {}).tipo === "pdf" ? "Ver o edital (PDF)" : "Ver outras turmas na página oficial") + "</a></p>")
                    : (function () {
                        var b = destinoBotao(c.destino, false, "", (c.antes || []).indexOf("govbr") >= 0);
+                       // curso «por abrir»: a inscrição ainda não abriu, o botão só serve para ver a página oficial
+                       if (porAbrir(c)) b = { rotulo: "Ver a página oficial",
+                                              nota: "A inscrição ainda não abriu. Volte a partir de " + esc(dataBonita(c.abertura)) + "." };
                        return (b.nota ? '<p class="guia-link">' + b.nota + "</p>" : "") +
                          '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' + esc(b.rotulo) + "</a>";
                      })()) +
-        (!temTurmas ? lembrarHtml(c.titulo, c.inscricoes_ate, c.url, c.modalidade === "online" ? "On-line" : c.cidade) : "") +
+        (!temTurmas ? lembrarHtml(c.titulo, c.inscricoes_ate, c.url, c.modalidade === "online" ? "On-line" : c.cidade, porAbrir(c) ? c.abertura : "") : "") +
         '<p class="verificado">' + (c.verificado_em ? "Verificado em " + esc(c.verificado_em.slice(8, 10) + "/" + c.verificado_em.slice(5, 7) + "/" + c.verificado_em.slice(0, 4)) + ". " : "") +
         "Confirme sempre na página oficial antes de ir." + avisarErroHtml(c, true) + "</p></li>";
     }

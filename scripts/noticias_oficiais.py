@@ -51,6 +51,21 @@ FONTES = [
      "pesquisas": ["cagece capacita"], "local": "BR-CE", "regiao": "Ceará", "cidade": "Fortaleza",
      "entidade": "Cagece (Cagece Capacita)", "incluir": r"cagece capacita.*(?:carta|curso|inscri|matr[íi]cula|vaga)",
      "primeira_leitura_cria": True},
+    # Norte (26/11/2026). Roraima: a Escola do Legislativo (Escolegis) da Assembleia Legislativa abre turmas
+    # presenciais gratuitas em Boa Vista várias vezes por ano, com inscrições de 2 ou 3 dias no site da ALE-RR
+    # (ex.: 720 vagas, inscrições de 9 a 11/11/2026). Rondônia: o IDEP (Instituto Estadual de Desenvolvimento da
+    # Educação Profissional, escolas técnicas estaduais) abre cursos de qualificação presenciais e remotos, com seleção
+    # por ordem de inscrição, e a Escola Móvel nos municípios; as notícias saem no portal do Governo de Rondônia.
+    {"nome": "Assembleia Legislativa de Roraima – Escolegis",
+     "api": "https://al.rr.leg.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["escolegis"], "local": "BR-RR", "regiao": "Roraima", "cidade": "Boa Vista",
+     "entidade": "Assembleia Legislativa de Roraima (Escola do Legislativo – Escolegis)",
+     "incluir": r"(?:vagas|inscri[çc][õo]es|abre|oferta).{0,60}cursos|cursos.{0,60}(?:vagas|inscri)"},
+    {"nome": "Governo de Rondônia – IDEP",
+     "api": "https://rondonia.ro.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["inscrições cursos", "Escola Móvel inscrições"], "local": "BR-RO", "regiao": "Rondônia", "cidade": "",
+     "entidade": "Governo de Rondônia (IDEP – Educação Profissional)",
+     "incluir": r"inscri[çc][õo]es.{0,80}cursos|cursos.{0,80}inscri[çc][õo]es|vagas.{0,40}cursos"},
 ]
 
 INCLUIR = re.compile(r"cursos?\s+(?:\w+\s+){0,2}(?:gratuit|de\s+qualifica|profissionaliz|de\s+capacita)|"
@@ -90,7 +105,7 @@ def noticias_da_api(fonte, hoje):
     limite = (datetime.date.fromisoformat(hoje) - datetime.timedelta(days=DIAS_API)).isoformat()
     for q in fonte["pesquisas"]:
         url = fonte["api"].format(q=urllib.parse.quote(q))
-        for p in json.loads(baixar(url, timeout=40).decode("utf-8", "replace")):
+        for p in json.loads(baixar(url, timeout=40).decode("utf-8-sig", "replace")):  # o portal de RO manda BOM
             if str(p.get("date", ""))[:10] >= limite:
                 achadas[p["link"]] = limpar_titulo((p.get("title") or {}).get("rendered", ""))
     return achadas

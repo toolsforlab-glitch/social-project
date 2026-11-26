@@ -1,13 +1,19 @@
-import sys, re, json, html
+import sys, re, json
 sys.path.insert(0, ".")
 from comum import baixar
-from base import texto_de_html
-def t(u, n=40): return baixar(u, timeout=n).decode("utf-8", "replace")
-for u in ["https://al.rr.leg.br/2026/11/16/qualificacao-profissional-escolegis/", "https://al.rr.leg.br/2026/11/07/escolegis-cursos/"]:
-    p = json.loads(t("https://al.rr.leg.br/wp-json/wp/v2/posts?slug=" + u.rstrip("/").rsplit("/",1)[-1] + "&_fields=date,content,link"))
-    for x in p:
-        c = x["content"]["rendered"]
-        print("#####", x["date"], x["link"]); print(texto_de_html(c)[:3500])
-        print("LINKS:", [h for h in re.findall(r'href="([^"]+)"', c)][:15])
-posts = json.loads(t("https://rondonia.ro.gov.br/wp-json/wp/v2/posts?categories=205030&per_page=15&_fields=date,link,title"))
-for x in posts: print(x["date"][:10], x["title"]["rendered"][:110], x["link"])
+import noticias_oficiais as n
+for f in n.FONTES[-2:]:
+    a = n.noticias_da_api(f, "2026-11-26"); inc = re.compile(f["incluir"], re.I)
+    print("##", f["nome"], len(a))
+    for l, t in a.items(): print("  ", "INCLUI" if inc.search(t) and not n.EXCLUIR.search(t) else "-", t[:100])
+for site in ["https://boavista.rr.gov.br", "https://www.portovelho.ro.gov.br", "https://www.palmas.to.gov.br", "https://www.aracaju.se.gov.br",
+             "https://teresina.pi.gov.br", "https://www.se.gov.br", "https://www.to.gov.br", "https://portal.rr.gov.br", "https://www.teresina.pi.gov.br"]:
+    for path in ["/wp-json/wp/v2/posts?search=cursos%20gratuitos&per_page=5&_fields=date,link,title", "/"]:
+        try:
+            b = baixar(site + path, timeout=25).decode("utf-8-sig", "replace")
+            if b.lstrip().startswith("["):
+                print("WP", site, [ (x["date"][:10], re.sub(r"<[^>]+>","",x["title"]["rendered"])[:70]) for x in json.loads(b)[:5]]); break
+            else:
+                print("HTML", site + path, len(b), re.findall(r'href="([^"]*(?:noticia|news)[^"]*)"', b)[:3])
+        except Exception as e:
+            print("ERRO", site + path, type(e).__name__, str(e)[:100])

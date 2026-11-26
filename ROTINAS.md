@@ -31,7 +31,7 @@ Cursos presenciais visíveis no site a 26/11/2026 entre parênteses.
 | **Paraíba** (3) | Caminhos Digitais (`caminhos_digitais.py`, código) · vigias: Senac PB, IFPB |
 | **Pernambuco** (2) | GO Recife / Qualifica Recife (`gorecife.py`, código) · Qualifica PE, notícias da SEDEPE (notícias oficiais) · SENAI PE (`senac_ma.py`, Claude) · vigia: Senac PE |
 | **Alagoas** (6) | OxeTech Lab (`oxetech.py`, código) · Senac AL e SENAI AL (`senac_ma.py`, Claude) · Prefeitura de Maceió (notícias oficiais) |
-| **Sergipe** (0) | vigia: Senac SE · SENAI SE só abre com VPN do Brasil (pendência) |
+| **Sergipe** (3) | SENAI SE, Matrícula Web «Turmas Abertas» (só abre com IP do Brasil: tarefa do navegador com VPN, `fontes_navegador.json`) · vigia: Senac SE |
 | **Bahia** (9) | Senac BA, PSG (`senac_ba.py`, código) · Treinar para Empregar, Salvador (`salvador_tpe.py`, código) · vigias: SENAI BA, SEC BA (técnicos por sorteio), IF Baiano, 4 OSCs aprovadas · EJA (lembrete 6/01) |
 | **Piauí** (0) | Senac PI e SENAI PI (`senac_ma.py`, Claude; o Senac PI tem o certificado do site expirado) · Governo do Piauí (notícias oficiais) · vigia: Seduc PI (lembretes 1/02 e 3/05) |
 | **Maranhão** (2) | Senac MA e SENAI MA (`senac_ma.py`, Claude) · IEMA, editais FIC (notícias oficiais) |

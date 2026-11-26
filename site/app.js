@@ -906,7 +906,8 @@
       var b = destinoBotao(c.destino, false, "", (c.antes || []).indexOf("govbr") >= 0);
       if (porAbrir(c)) b = { rotulo: "Ver a página oficial", nota: "A inscrição ainda não abriu. Volte a partir de " + esc(dataBonita(c.abertura)) + "." };
       var verif = cs.map(function (x) { return x.verificado_em || ""; }).filter(Boolean).sort()[0] || "";
-      return '<li class="curso grupo"><h2>' + cs.length + " cursos com a mesma inscrição</h2>" +
+      var cidadeComum = comuns(function (x) { return x.cidade || ""; });
+      return '<li class="curso grupo"><h2>' + cs.length + " cursos" + (cidadeComum ? " em " + esc(cidadeComum) : "") + " com a mesma inscrição</h2>" +
         (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
         (c.vagas === "sorteio" ? '<p class="vagas-aviso">Vagas por sorteio: inscrever-se não garante a vaga.</p>'
          : c.vagas === "ordem" ? '<p class="vagas-aviso">Vagas por ordem de inscrição: inscreva-se cedo.</p>' : "") +

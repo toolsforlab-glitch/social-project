@@ -20,7 +20,7 @@ import re
 import sys
 import urllib.parse
 
-from base import VERIFICACAO_INICIAL, Base, carregar_config
+from base import VERIFICACAO_INICIAL, Base, carregar_config, registar_pendencia
 from comum import baixar, gravar_json, ler_json
 from cursos import id_curso
 
@@ -148,6 +148,10 @@ def main():
             achadas = noticias_da_api(f, hoje) if f.get("api") else noticias_da_pagina(f)
         except Exception as e:  # noqa: BLE001
             print(f"{f['nome']}: a página não abriu ({type(e).__name__}); fica para amanhã.")
+            # regra T10 (26/11/2026): o que o GitHub não abre é tentado no Chrome do responsável pela tarefa diária
+            registar_pendencia(base, f"{f['nome']}: a página não abriu a partir do GitHub ({type(e).__name__}).",
+                               "A tarefa diária do navegador tenta ler esta página no Chrome (regra T10).",
+                               f.get("pagina") or f["api"].split("?")[0], origem="noticias_oficiais.py")
             continue
         primeira = f["nome"] not in estado["vistas"]
         vistas = estado["vistas"].setdefault(f["nome"], {})

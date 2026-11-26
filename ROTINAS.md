@@ -16,6 +16,7 @@ O que corre, quando, e de onde vêm os cursos de cada estado. As regras estão e
 A ordem entre rotinas é dada por `scripts/vez.py`: uma espera que a outra acabe.
 
 **Tarefas agendadas no Claude** (fora do GitHub):
+- **Fontes no navegador** (todos os dias, 10:47 em Lisboa, no computador do responsável, pelo Chrome): lê as pendências de sites que recusaram o GitHub e as fontes de `fontes_navegador.json`; cria os cursos que cumprem as regras (regra T10).
 - Disparo de segurança da rotina diária (todos os dias, 09:41 em Lisboa) e da semanal (segundas, 08:47 UTC). Só disparam se o GitHub ainda não a correu.
 - Lembretes nesta conversa: 1/12 (balanço dos cursos novos por estado e das fontes novas de 26/11), 5/01/2027 (abre a EJA do Amapá), 6/01 (EJA da Bahia), 1/02 e 3/05 (Seduc PI).
 
@@ -49,6 +50,6 @@ Todos os estados recebem também a pesquisa semanal (Claude) e a verificação (
 
 **Vigias** (`vigiar.py`): fontes ainda fechadas ou sem lista legível. Avisam nas Pendências quando a página muda.
 
-**Não abrem a partir do GitHub** (só pelo navegador, ou à espera): Prefeituras de Boa Vista, Teresina, Aracaju, São Luís e Recife (notícias); Governos de Sergipe, Tocantins, Maranhão e Pernambuco (notícias); Seduc PI; site da Cagece.
+**Não abrem a partir do GitHub** (lidos pela tarefa do navegador; lista em `fontes_navegador.json`): Prefeituras de Boa Vista, Teresina, Aracaju, São Luís e Recife (notícias); Governos de Sergipe, Tocantins, Maranhão e Pernambuco (notícias); Seduc PI; site da Cagece.
 
 **Retirado**: SENAI Play (`senai_play.py`, 24/11): o certificado é pago (regra E1).

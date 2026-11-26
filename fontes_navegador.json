@@ -1,0 +1,19 @@
+{
+  "_sobre": "Fontes oficiais que o GitHub não consegue ler (recusa, bloqueio, Instagram). A tarefa diária «Projeto Social – fontes no navegador» lê-as no Chrome do responsável, junto com as pendências abertas de sites que recusaram o acesso automático. Regra T10 do REGRAS.md (26/11/2026). Para juntar uma fonte: uma linha nova em «fontes». tipo: noticias (página de notícias), editais (página de editais), instagram (perfil de OSC aprovada), lista (lista de turmas/cursos).",
+  "fontes": [
+    {"nome": "Seduc Piauí – editais (Mais Formação, Mais Renda; Mulheres Mil)", "url": "https://seduc.pi.gov.br/editais", "tipo": "editais", "local": "BR-PI", "regiao": "Piauí", "cidade": "", "entidade": "Secretaria da Educação do Piauí (Seduc PI)"},
+    {"nome": "Cagece Capacita / Governo do Ceará (notícias)", "url": "https://www.ce.gov.br/?s=cagece+capacita", "tipo": "noticias", "local": "BR-CE", "regiao": "Ceará", "cidade": "Fortaleza", "entidade": "Cagece (Cagece Capacita)"},
+    {"nome": "Prefeitura de Boa Vista (notícias)", "url": "https://boavista.rr.gov.br/noticias", "tipo": "noticias", "local": "BR-RR", "regiao": "Roraima", "cidade": "Boa Vista", "entidade": "Prefeitura de Boa Vista"},
+    {"nome": "Prefeitura de Teresina (notícias)", "url": "https://pmt.pi.gov.br/noticias/", "tipo": "noticias", "local": "BR-PI", "regiao": "Piauí", "cidade": "Teresina", "entidade": "Prefeitura de Teresina"},
+    {"nome": "Prefeitura de Aracaju (notícias)", "url": "https://www.aracaju.se.gov.br/noticias", "tipo": "noticias", "local": "BR-SE", "regiao": "Sergipe", "cidade": "Aracaju", "entidade": "Prefeitura de Aracaju"},
+    {"nome": "Prefeitura de São Luís (notícias)", "url": "https://www.saoluis.ma.gov.br/noticias", "tipo": "noticias", "local": "BR-MA", "regiao": "Maranhão", "cidade": "São Luís", "entidade": "Prefeitura de São Luís"},
+    {"nome": "Prefeitura do Recife (notícias)", "url": "https://www2.recife.pe.gov.br/noticias", "tipo": "noticias", "local": "BR-PE", "regiao": "Pernambuco", "cidade": "Recife", "entidade": "Prefeitura do Recife"},
+    {"nome": "Governo de Sergipe (notícias)", "url": "https://www.se.gov.br/noticias", "tipo": "noticias", "local": "BR-SE", "regiao": "Sergipe", "cidade": "", "entidade": "Governo de Sergipe"},
+    {"nome": "Governo do Tocantins (notícias)", "url": "https://www.to.gov.br/noticias", "tipo": "noticias", "local": "BR-TO", "regiao": "Tocantins", "cidade": "", "entidade": "Governo do Tocantins"},
+    {"nome": "SESI Acre – Nova EJA Profissionalizante", "url": "https://www.sesiac.org.br/educacao/educacao-basica/educacao-de-jovens-e-adultos-nova-eja-profissionalizante.html", "tipo": "noticias", "local": "BR-AC", "regiao": "Acre", "cidade": "Rio Branco", "entidade": "SESI Acre", "nota": "A página diz «100% gratuito» mas não tem período de inscrição; procurar no site do SESI AC (notícias, comunicados) a frase oficial das inscrições abertas."},
+    {"nome": "Fundação Esperança – FÉ (Instagram)", "url": "https://www.instagram.com/fundacaoesperancabarreiras/", "tipo": "instagram", "local": "BR-BA", "regiao": "Bahia", "cidade": "Barreiras", "entidade": "Fundação Esperança – FÉ"},
+    {"nome": "Associação Central de Cidadania (Instagram)", "url": "https://www.instagram.com/accidadania/", "tipo": "instagram", "local": "BR-BA", "regiao": "Bahia", "cidade": "Serrinha", "entidade": "Associação Central de Cidadania"},
+    {"nome": "MOC – Movimento de Organização Comunitária (Instagram)", "url": "https://www.instagram.com/moc_movimento/", "tipo": "instagram", "local": "BR-BA", "regiao": "Bahia", "cidade": "Feira de Santana", "entidade": "MOC – Movimento de Organização Comunitária"},
+    {"nome": "OELA – Oficina Escola de Lutheria da Amazônia (Instagram)", "url": "https://www.instagram.com/oelabrasil/", "tipo": "instagram", "local": "BR-AM", "regiao": "Amazonas", "cidade": "Manaus", "entidade": "OELA – Oficina Escola de Lutheria da Amazônia"}
+  ]
+}

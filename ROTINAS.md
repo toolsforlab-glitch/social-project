@@ -27,7 +27,7 @@ Cursos presenciais visíveis no site a 26/11/2026 entre parênteses.
 | Estado | Fontes e leitor |
 |---|---|
 | **Ceará** (24) | Senac CE, turmas do PSG (`turmas.py`, código) · Centec (`centec.py`, código) · Cagece Capacita e Prefeitura de Fortaleza, notícias e Fortaleza Inclusiva (notícias oficiais) · EJA (à mão) · vigia: IFCE |
-| **Rio Grande do Norte** (6) | IFRN, FIC, extensão e ProEJA (`ifrn_fic.py`, código) · SENAI RN, vagas gratuitas regimentais (vigia; a 26/11 abriu o Edital 012/2026 e os cursos foram criados à mão; falta o leitor próprio) · Semtas Natal (notícias oficiais) · vigia: Senac RN |
+| **Rio Grande do Norte** (6) | IFRN, FIC, extensão e ProEJA (`ifrn_fic.py`, código) · SENAI RN, vagas gratuitas regimentais (`senai_rn.py`, código: lista «Oportunidades» + edital) · Semtas Natal (notícias oficiais) · vigia: Senac RN |
 | **Paraíba** (3) | Caminhos Digitais (`caminhos_digitais.py`, código) · vigias: Senac PB, IFPB |
 | **Pernambuco** (2) | GO Recife / Qualifica Recife (`gorecife.py`, código) · Qualifica PE, notícias da SEDEPE (notícias oficiais) · SENAI PE (`senac_ma.py`, Claude) · vigia: Senac PE |
 | **Alagoas** (6) | OxeTech Lab (`oxetech.py`, código) · Senac AL e SENAI AL (`senac_ma.py`, Claude) · Prefeitura de Maceió (notícias oficiais) |

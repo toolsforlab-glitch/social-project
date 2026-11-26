@@ -129,6 +129,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 ifrn_fic.py
 
+      - name: Vagas gratuitas regimentais do SENAI RN, lista Oportunidades e edital (sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 senai_rn.py
+
       - name: "Data de matrícula dos editais dos cursos novos («Se for aprovado», matrícula …)"
         if: ${{ always() }}
         timeout-minutes: 10

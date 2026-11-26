@@ -9,7 +9,7 @@ on:
       passo:
         description: "Passo para rodar"
         type: choice
-        options: [verificar.py, evg.py, consultar_gpt.py, aplicar_chatgpt.py, turmas.py, senac_ma.py, centec.py, oxetech.py, caminhos_digitais.py, gorecife.py, salvador_tpe.py, senac_pa.py, senai_pa.py, senac_ba.py, senac_rr.py, senac_to.py, ifro_fic.py, ifrn_fic.py, matricula_edital.py, cetam.py, noticias_oficiais.py, vigiar.py, pt_br.py, bradesco.py, fgv.py, escola_trabalhador.py, aprenda_mais.py, sebrae.py, gpt_sebrae.py, gpt_certificado.py, catalogo.py, chatgpt_certificado.py, aplicar_certificado.py, chatgpt_eja.py, aplicar_eja.py]
+        options: [verificar.py, evg.py, consultar_gpt.py, aplicar_chatgpt.py, turmas.py, senac_ma.py, centec.py, oxetech.py, caminhos_digitais.py, gorecife.py, salvador_tpe.py, senac_pa.py, senai_pa.py, senac_ba.py, senac_rr.py, senac_to.py, ifro_fic.py, ifrn_fic.py, senai_rn.py, matricula_edital.py, cetam.py, noticias_oficiais.py, vigiar.py, pt_br.py, bradesco.py, fgv.py, escola_trabalhador.py, aprenda_mais.py, sebrae.py, gpt_sebrae.py, gpt_certificado.py, catalogo.py, chatgpt_certificado.py, aplicar_certificado.py, chatgpt_eja.py, aplicar_eja.py]
         default: verificar.py
 
 permissions:

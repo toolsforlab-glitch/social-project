@@ -37,13 +37,7 @@ VIGIAS = [
      "contar_json": True, "caminho": ["meta", "totalItems"], "link": "https://psg.se.senac.br/cursos",
      "verificar": "Apareceram cursos no portal do PSG do Senac Sergipe: peça ao Claude para montar o leitor próprio a "
                   "partir da lista pública (psg.se.senac.br/api/course/filter)."},
-    # SENAI Rio Grande do Norte: a página «Oportunidades» (vagas gratuitas regimentais) lê esta lista; em 23/11/2026
-    # respondia «Nenhuma oportunidade encontrada».
-    {"nome": "SENAI Rio Grande do Norte (vagas gratuitas regimentais)",
-     "url": "https://www.rn.senai.br/transparencia/includes/api/api-oportunidades.php?acao=resultado&modalidade=&produto=&cidade=&area=&curso=",
-     "fechado": "Nenhuma oportunidade encontrada",
-     "verificar": "O SENAI RN publicou vagas gratuitas na página «Oportunidades» (www.rn.senai.br/oportunidades/): peça "
-                  "ao Claude para montar o leitor próprio enquanto estão abertas."},
+    # SENAI Rio Grande do Norte: desde 26/11/2026 tem leitor próprio (senai_rn.py), já não é vigiado.
     # Senac Rio Grande do Norte: a página do Programa de Bolsas mostra o último edital; em 23/11/2026 só tinha o
     # resultado do edital 006/2026 (fechado). Quando o texto mudar, saiu edital novo.
     {"nome": "Senac Rio Grande do Norte (Programa de Bolsas / PSG)",

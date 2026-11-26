@@ -7,7 +7,7 @@
     "https://loja.sebrae.com.br/otimizac-o-de-resultados-de-marketing-digital-chatbot-372000063385",
     "https://loja.sebrae.com.br/quais-os-passos-para-a-definic-o-de-preco-de-produtos-e-servicos-a0jv2000000h5ckmaa"
    ],
-   "cursos": 220,
+   "cursos": 221,
    "n": 1
   },
   {
@@ -26,7 +26,7 @@
    "exemplos": [
     "https://www.pa.senac.br/psg/selecao"
    ],
-   "cursos": 22,
+   "cursos": 25,
    "n": 3
   },
   {
@@ -35,7 +35,7 @@
    "exemplos": [
     "https://psg.ce.senac.br/oportunidades/"
    ],
-   "cursos": 16,
+   "cursos": 17,
    "n": 4
   },
   {
@@ -48,23 +48,13 @@
    "n": 5
   },
   {
-   "entidade": "Senac Amazonas (Programa Senac de Gratuidade)",
-   "dominio": "am.senac.br",
+   "entidade": "Senac Bahia (Programa Senac de Gratuidade)",
+   "dominio": "ba.senac.br",
    "exemplos": [
-    "https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-394-2026-senac-parintins-inscricoes-abertas-fb4e66490538.pdf",
-    "https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-392-2026-senac-parintins-inscricoes-abertas-parceria-a207814f0172.pdf"
+    "https://www.ba.senac.br/page/psg-consulta-de-vagas"
    ],
    "cursos": 5,
    "n": 6
-  },
-  {
-   "entidade": "Governo da Paraíba – Secties (Caminhos Digitais)",
-   "dominio": "caminhosdigitais.com.br",
-   "exemplos": [
-    "https://caminhosdigitais.com.br/inscricao/"
-   ],
-   "cursos": 5,
-   "n": 7
   },
   {
    "entidade": "Senac Acre (Programa Senac de Gratuidade)",
@@ -74,17 +64,7 @@
     "https://portal.ac.senac.br/psg/assets/arquivos/Edital_PSG_145_2026_presencial_CEP_CZS_vagas_unidade_Escola_Cunha_Vasconcelos_Rodrigues_Alves.pdf"
    ],
    "cursos": 4,
-   "n": 8
-  },
-  {
-   "entidade": "Senac Maranhão (Programa Senac de Gratuidade)",
-   "dominio": "ma.senac.br",
-   "exemplos": [
-    "https://ma.senac.br/editais_psg/edital-psg-no-168-2026-assistente-administrativo-sao-domingos-do-maranhao-ma/",
-    "https://ma.senac.br/editais_psg/edital-senac-ma-psg-2026-no-172-auxiliar-de-cozinha-e-pizzaiolo-barreirinhas-ma/"
-   ],
-   "cursos": 3,
-   "n": 9
+   "n": 7
   },
   {
    "entidade": "Senac Alagoas (Programa Senac de Gratuidade)",
@@ -94,17 +74,44 @@
     "https://psg.al.senac.br/admin/wp-content/uploads/2026/11/Edital-de-Bolsas-Gratuitas-24-2026_2027.pdf"
    ],
    "cursos": 3,
+   "n": 8
+  },
+  {
+   "entidade": "Governo da Paraíba – Secties (Caminhos Digitais)",
+   "dominio": "caminhosdigitais.com.br",
+   "exemplos": [
+    "https://caminhosdigitais.com.br/inscricao/"
+   ],
+   "cursos": 3,
+   "n": 9
+  },
+  {
+   "entidade": "SENAI Bahia (em parceria com a Borborema Recursos Minerais)",
+   "dominio": "senaibahia.com.br",
+   "exemplos": [
+    "https://www.senaibahia.com.br/processo-seletivo-borborema/"
+   ],
+   "cursos": 3,
    "n": 10
   },
   {
-   "entidade": "IF Baiano",
-   "dominio": "ifbaiano.edu.br",
+   "entidade": "Ifac – Instituto Federal do Acre (Campus Rio Branco)",
+   "dominio": "ifac.edu.br",
    "exemplos": [
-    "https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-ruy-barbosa-2027/",
-    "https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-remanso-2027/"
+    "https://editais.ifac.edu.br/quero-estudar-no-ifac/edital/1206/arquivos/"
    ],
    "cursos": 3,
    "n": 11
+  },
+  {
+   "entidade": "SENAI Sergipe",
+   "dominio": "fies.org.br",
+   "exemplos": [
+    "https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7361",
+    "https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7363"
+   ],
+   "cursos": 3,
+   "n": 12
   }
  ]
 }

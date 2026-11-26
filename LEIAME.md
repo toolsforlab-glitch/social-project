@@ -31,6 +31,7 @@ Lista única das regras que valem hoje. Cada regra nova entra **primeiro aqui** 
 20. **Cursos «por abrir»**: com data de abertura provada, aparecem até 60 dias antes com «Inscrições abrem em … e vão até …» e passam sozinhos a Aberto no dia (`situacao_do_curso`, construir_site.py; `DIAS_POR_ABRIR`, app.js; 25/11). Até lá, o botão diz «Ver a página oficial» («A inscrição ainda não abriu. Volte a partir de …») e o lembrete do celular é para o dia da abertura (26/11).
 21. **Cada botão diz que página abre** (curso, lista, PDF, formulário, acesso…; `paginas.py`).
 22. **Só mulheres** (Mulheres Mil e afins) vai no título e na condição de acesso.
+22a. **Cursos do mesmo edital num só cartão**: cursos presenciais sem turmas com o mesmo link, entidade, prazo, requisitos e forma de inscrição aparecem juntos («N cursos com a mesma inscrição», com a lista «Cursos e cidades»; `agrupar` e `grupoHtml`, app.js; 26/11).
 
 **C. Como se trabalha**
 23. **Problemas viram pendências** na aba «Pendências para verificar» (`registar_pendencia`, base.py; 22/11). Pendência que depende de uma data futura → lembrete marcado na hora (25/11).

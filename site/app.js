@@ -885,7 +885,7 @@
       else if (cs.some(recente)) factos.push(marca("novo", "Novo!", "facilita:recente"));
       var breve = terminaEmBreve(c);
       if (breve) factos.unshift(marca("urgente", quandoTermina(prazoProximo(c)), "facilita:fecha_breve"));
-      factos.push(marca("local", "Presencial: " + (comuns(function (x) { return x.cidade || ""; }) || nomesLocal[c.local] || c.regiao || ""), "onde:" + c.local));
+      factos.push(marca("local", "Presencial: " + ([comuns(function (x) { return x.cidade || ""; }), c.regiao].filter(Boolean).join(", ") || String(nomesLocal[c.local] || "").replace(/^Brasil\s*[–-]\s*/, "")), "onde:" + c.local));
       if (c.gratuidade_comprovada === false) factos.push(marca("atencao", "Gratuidade por confirmar", "marca:grat-confirmar"));
       if (porAbrir(c)) factos.push('<li class="atencao">Inscrições abrem em ' + esc(dataBonita(c.abertura)) + (c.inscricoes_ate ? " e vão até " + esc(dataBonita(c.inscricoes_ate)) : "") + "</li>");
       else if (c.inscricoes_ate && !breve) factos.push('<li class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</li>");

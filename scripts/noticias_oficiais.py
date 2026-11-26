@@ -74,6 +74,23 @@ FONTES = [
      "regiao": "Rondônia", "cidade": "Porto Velho", "entidade": "Prefeitura de Porto Velho"},
     {"nome": "Prefeitura de Palmas", "pagina": "https://www.palmas.to.gov.br/core/noticias/", "local": "BR-TO",
      "regiao": "Tocantins", "cidade": "Palmas", "entidade": "Prefeitura de Palmas"},
+    # Maranhão e Pernambuco (26/11/2026). IEMA (Instituto Estadual de Educação, Ciência e Tecnologia do Maranhão):
+    # publica no seu site (WordPress; a API só abre com ?rest_route=) editais de cursos FIC e de qualificação nas
+    # Unidades Vocacionais, várias vezes por ano (ex.: Editais 08, 09, 13 e 18/2026). Nenhum foi tratado à mão, daí
+    # «primeira_leitura_cria». SEDEPE (Secretaria de Desenvolvimento Econômico de Pernambuco): notícias do Qualifica PE
+    # (o portal do programa não abre a partir do GitHub; o site da SEDEPE abre).
+    {"nome": "IEMA – editais de cursos FIC",
+     "api": "https://iema.ma.gov.br/?rest_route=/wp/v2/posts&search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["formação inicial e continuada", "qualificação profissional", "vagas ociosas", "curso de libras"],
+     "local": "BR-MA", "regiao": "Maranhão", "cidade": "",
+     "entidade": "IEMA – Instituto Estadual de Educação, Ciência e Tecnologia do Maranhão",
+     "incluir": r"forma[çc][ãa]o inicial e continuada|\bFICs?\b|qualifica[çc][ãa]o profissional|vagas ociosas|curso (?:b[áa]sico|intermedi[áa]rio)",
+     "primeira_leitura_cria": True},
+    {"nome": "Governo de Pernambuco – SEDEPE (Qualifica PE)",
+     "api": "https://www.sedepe.pe.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["qualifica pe", "cursos gratuitos"], "local": "BR-PE", "regiao": "Pernambuco", "cidade": "",
+     "entidade": "Governo de Pernambuco – SEDEPE (Qualifica PE)",
+     "incluir": r"qualifica pe|inscri[çc][õo]es.{0,60}cursos|cursos.{0,40}(?:gratuit|qualifica)"},
 ]
 
 INCLUIR = re.compile(r"cursos?\s+(?:\w+\s+){0,2}(?:gratuit|de\s+qualifica|profissionaliz|de\s+capacita)|"

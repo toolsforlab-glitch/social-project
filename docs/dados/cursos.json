@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-26T14:20",
+ "atualizado": "2026-11-26T14:30",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -25236,6 +25236,71 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-6ac6a7c6",
+   "titulo": "Cagece Capacita: matrículas ocorrem dia 28 de novembro",
+   "entidade": "Cagece (Cagece Capacita)",
+   "url": "https://www.ce.gov.br/2026/11/26/cagece-capacita-matriculas-ocorrem-dia-28-de-novembro/",
+   "pagina_propria": true,
+   "local": "BR-CE",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Ceará",
+   "cidade": "Fortaleza",
+   "descricao": "Faça cursos de Atendimento ao Cliente e de Pintura Industrial e Básica. Ajudar a entrar ou melhorar no mercado de trabalho.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Carta de encaminhamento emitida pelo SINE/IDT (ex-alunos que já concluíram cursos do Cagece Capacita apresentam o certificado de conclusão)",
+   "certificado": "gratuito",
+   "certificado_comprovado": true,
+   "inscricoes_ate": "2026-11-28",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-26",
+   "inicio": "2026-11-30",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-24",
+   "como_me_inscrever": [
+    "Vá ao Sine/IDT e peça a carta de encaminhamento até o dia 27 de novembro, levando documento de identidade, CPF, comprovante de endereço em Fortaleza ou Região Metropolitana de Fortaleza (RMF) e número do PIS ou Carteira de Trabalho (CTPS).",
+    "No sábado, 28 de novembro, das 7h30 às 11h30, vá à sede da Cagece: Avenida Lauro Vieira Chaves, 1030, Vila União, Fortaleza. As matrículas são por ordem de chegada (50 vagas no total).",
+    "Leve a carta de encaminhamento e os seus documentos pessoais originais (RG, CPF e comprovante de endereço).",
+    "Se você já concluiu um curso do Cagece Capacita, não precisa da carta: basta levar o certificado de conclusão no dia da matrícula."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [
+    "Manhã",
+    "Tarde",
+    "Noite"
+   ],
+   "internet": "Não",
+   "ajuda": "Material didático entregue gratuitamente aos participantes, desde que cumpram a frequência mínima exigida.",
+   "documentos": "Documento de identidade, CPF, comprovante de endereço em Fortaleza ou Região Metropolitana de Fortaleza (RMF), número do PIS ou Carteira de Trabalho e Previdência Social (CTPS).",
+   "etiquetas": [],
+   "vagas": "ordem",
    "acessibilidade": []
   },
   {

@@ -99,7 +99,7 @@ def editais_recentes(n=6):
     links = []
     for href, texto in re.findall(r'<a[^>]+href="([^"#]+)"[^>]*>(.*?)</a>', pagina, re.S):
         if limpo(texto).upper() == "EDITAL" and href.lower().endswith(".pdf"):
-            url = urllib.parse.urljoin(SITE, _html.unescape(href))
+            url = urllib.parse.quote(urllib.parse.urljoin(SITE, _html.unescape(href)), safe=":/%?=&~+")
             if url not in links:
                 links.append(url)
     return links[:n]

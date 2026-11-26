@@ -57,7 +57,7 @@ Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, j�
 - **T1. Problemas viram pendências** na aba «Pendências para verificar» (`registar_pendencia`, base.py). Se a pendência depende de uma data futura, marca-se logo um lembrete (22/11 e 25/11).
 - **T2. A rotina marca, uma pessoa decide**: «Mudança a rever» só sai por uma pessoa; «Revisto por pessoa» protege a linha das rotinas; Oculto e Rever postos por uma pessoa nunca mudam.
 - **T3. Leitores sem Claude sempre que a fonte é estruturada** (listas, APIs, editais com modelo fixo). O Claude só escolhe ou resume, nunca prova.
-- **T4. Sem a API da Anthropic** (até 1/12/2026): as notícias novas com data próxima são revistas à mão («Revisto por pessoa»), com as mesmas regras (26/11).
+- **T4. Se a API da Anthropic falhar**, as notícias novas com data próxima são revistas à mão («Revisto por pessoa»), com as mesmas regras (26/11). Antes de supor que está parada, confirmar nos registos da rotina (custos e erros de limite).
 - **T5. Na dúvida, o ChatGPT da assinatura audita**, a pedido, sem API (`consultar_gpt.py`; 22/11).
 - **T6. Antes de escrever um leitor novo, procurar se já existe** (`grep -ril <site> scripts/ LEIAME.md .github/workflows/`; 26/11).
 - **T7. Antes de mudar uma rotina, validar o YAML** de todas as rotinas (`yaml.safe_load`; 25/11).

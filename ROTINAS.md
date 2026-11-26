@@ -2,7 +2,7 @@
 
 O que corre, quando, e de onde vêm os cursos de cada estado. As regras estão em [REGRAS.md](REGRAS.md); o detalhe de cada leitor está no LEIAME, na secção da fonte.
 
-Última revisão: 26/11/2026. Legenda: **código** = lido por código, sem Claude · **Claude** = precisa da API da Anthropic (**parada até 1/12/2026**) · **resumo** = só o resumo usa Claude; os dados vêm por código.
+Última revisão: 26/11/2026. Legenda: **código** = lido por código, sem Claude · **Claude** = precisa da API da Anthropic (a funcionar: a rotina de 26/11 usou-a sem erros) · **resumo** = só o resumo usa Claude; os dados vêm por código.
 
 ## 1. Rotinas
 
@@ -17,7 +17,7 @@ A ordem entre rotinas é dada por `scripts/vez.py`: uma espera que a outra acabe
 
 **Tarefas agendadas no Claude** (fora do GitHub):
 - Disparo de segurança da rotina diária (todos os dias, 09:41 em Lisboa) e da semanal (segundas, 08:47 UTC). Só disparam se o GitHub ainda não a correu.
-- Lembretes nesta conversa: 1/12 (API de volta: conferir os leitores Claude e as notícias novas), 5/01/2027 (abre a EJA do Amapá), 6/01 (EJA da Bahia), 1/02 e 3/05 (Seduc PI).
+- Lembretes nesta conversa: 1/12 (balanço dos cursos novos por estado e das fontes novas de 26/11), 5/01/2027 (abre a EJA do Amapá), 6/01 (EJA da Bahia), 1/02 e 3/05 (Seduc PI).
 
 ## 2. Fontes por estado
 

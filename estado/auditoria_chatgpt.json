@@ -1,141 +1,98 @@
 {
- "data": "2026-11-25",
+ "data": "2026-11-26",
  "itens": [
   {
    "n": 1,
-   "link": "https://www.gov.br/mec/pt-br/mec-idiomas",
-   "dominio": "www.gov.br",
+   "link": "https://natal.rn.gov.br/news/post2/46141",
+   "dominio": "rn.gov.br",
    "duvidas": [
-    "gratuito",
     "certificado"
    ],
-   "titulo": "Aprender inglês e espanhol",
-   "entidade": "Ministério da Educação (MEC Idiomas)",
+   "titulo": "Cursos de beleza, gastronomia e turismo (Qualifica Natal, 8º ciclo)",
+   "entidade": "Prefeitura do Natal (Semtas, Centros Municipais de Trabalho e Empreendedorismo)",
    "ids": [
-    "C-94e22da3"
+    "C-45476d65"
    ]
   },
   {
    "n": 2,
-   "link": "https://ma.senac.br/editais_psg/edital-senac-ma-psg-2026-no-172-auxiliar-de-cozinha-e-pizzaiolo-barreirinhas-ma/",
-   "dominio": "ma.senac.br",
+   "link": "https://www.senaibahia.com.br/processo-seletivo-borborema/",
+   "dominio": "senaibahia.com.br",
    "duvidas": [
-    "gratuito"
+    "certificado"
    ],
-   "titulo": "Auxiliar de cozinha",
-   "entidade": "Senac Maranhão (Programa Senac de Gratuidade)",
+   "titulo": "Aperfeiçoamento Profissional em Empregabilidade: A Nova Rota da Formação Profissional",
+   "entidade": "SENAI Bahia (em parceria com a Borborema Recursos Minerais)",
    "ids": [
-    "C-00843a35",
-    "C-e3fe5e92"
+    "C-2af304f2",
+    "C-e06e12e1"
    ]
   },
   {
    "n": 3,
-   "link": "https://www.pe.senai.br/wp-content/uploads/2026/11/EDITAL_-_QUA_-_SANTO_AMARO_-_AUXILIAR_DE_LINHA_DE_PROD._-_PR_20261123130333507156.pdf",
-   "dominio": "pe.senai.br",
+   "link": "https://www.ba.senac.br/page/psg-consulta-de-vagas",
+   "dominio": "ba.senac.br",
    "duvidas": [
-    "gratuito",
     "certificado"
    ],
-   "titulo": "Auxiliar de Linha de Produção",
-   "entidade": "SENAI Pernambuco (Gratuidade Regimental)",
+   "titulo": "Técnico em Eventos",
+   "entidade": "Senac Bahia (Programa Senac de Gratuidade)",
    "ids": [
-    "C-5dcbf7d8"
+    "C-03962041",
+    "C-90ca1f27"
    ]
   },
   {
    "n": 4,
-   "link": "https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-oferta-7-3-mil-vagas-em-32-cursos-gratuitos-de-capacitacao-profissional",
-   "dominio": "ce.gov.br",
-   "duvidas": [
-    "situacao",
-    "inscricoes_ate",
-    "certificado"
-   ],
-   "titulo": "32 cursos de capacitação profissional (Programa Autonomia Econômica)",
-   "entidade": "Prefeitura de Fortaleza (SDE – Plano Fortaleza Inclusiva)",
-   "ids": [
-    "C-cf77f502"
-   ]
-  },
-  {
-   "n": 5,
-   "link": "https://www.se.senac.br/senac-sergipe-abre-vagas-647-vagas-para-36-cursos-de-gratuitos/",
-   "dominio": "se.senac.br",
-   "duvidas": [
-    "situacao"
-   ],
-   "titulo": "Gestão de Departamento de Pessoal",
-   "entidade": "Senac Sergipe (Programa Senac de Gratuidade)",
-   "ids": [
-    "C-c6333b5b"
-   ]
-  },
-  {
-   "n": 6,
-   "link": "https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-santo-estevao-2027/",
-   "dominio": "ifbaiano.edu.br",
-   "duvidas": [
-    "inscricoes_ate"
-   ],
-   "titulo": "Cursos técnicos a distância (Santo Estêvão)",
-   "entidade": "IF Baiano",
-   "ids": [
-    "C-bbd64b5d"
-   ]
-  },
-  {
-   "n": 7,
-   "link": "https://editais.ifac.edu.br/edital/visualizacao/8656/",
+   "link": "https://editais.ifac.edu.br/quero-estudar-no-ifac/edital/1206/arquivos/",
    "dominio": "ifac.edu.br",
    "duvidas": [
     "certificado"
    ],
-   "titulo": "Inglês",
-   "entidade": "Instituto Federal do Acre (Ifac)",
+   "titulo": "Inglês para iniciantes (A1), às quartas-feiras",
+   "entidade": "Ifac – Instituto Federal do Acre (Campus Rio Branco)",
    "ids": [
-    "C-fd0b23bb",
-    "C-1b941be0"
+    "C-301c8668",
+    "C-34babd01"
    ]
   },
   {
-   "n": 8,
-   "link": "https://gorecife.recife.pe.gov.br/cursos",
-   "dominio": "pe.gov.br",
+   "n": 5,
+   "link": "https://www.to.senac.br/cursos/abertos",
+   "dominio": "to.senac.br",
    "duvidas": [
     "certificado"
    ],
-   "titulo": "NR10",
-   "entidade": "Prefeitura do Recife – Qualifica Recife (GO Recife)",
+   "titulo": "Preparação de Bolos e Tortas Contemporâneas",
+   "entidade": "Senac Tocantins (Programa Senac de Gratuidade)",
    "ids": [
-    "C-c351514a"
+    "C-ca2480c6"
    ]
   },
   {
-   "n": 9,
-   "link": "https://maceio.al.gov.br/noticias/semtes/prefeitura-de-maceio-oferta-50-vagas-em-cursos-gratuitos-de-qualificacao-profissional-para-2027",
-   "dominio": "al.gov.br",
+   "n": 6,
+   "link": "https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7361",
+   "dominio": "fies.org.br",
    "duvidas": [
     "certificado"
    ],
-   "titulo": "Assistente de Marketing e Vendas",
-   "entidade": "Prefeitura de Maceió (Semtes) com o Senac",
+   "titulo": "Informática Básica",
+   "entidade": "SENAI Sergipe",
    "ids": [
-    "C-3cbfe7b4",
-    "C-58420dfe"
+    "C-4145149b"
    ]
   },
   {
-   "n": 10,
-   "link": "https://processoseletivo.ifrn.edu.br/edital/visualizar/696/",
-   "dominio": "ifrn.edu.br",
+   "n": 7,
+   "link": "https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7363",
+   "dominio": "fies.org.br",
    "duvidas": [
     "certificado"
    ],
-   "titulo": "Operador de Computador integrado ao ensino médio (EJA, curso FIC)",
-   "entidade": "IFRN (Instituto Federal do Rio Grande do Norte)",
+   "titulo": "Word e Excel Avançados",
+   "entidade": "SENAI Sergipe",
    "ids": [
-    "C-18821eaa"
+    "C-6a4c747f"
    ]
   }
  ]

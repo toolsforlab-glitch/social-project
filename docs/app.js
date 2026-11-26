@@ -855,6 +855,74 @@
         "Confirme sempre na página oficial antes de ir." + avisarErroHtml(c, true) + "</p></li>";
     }
 
+    // Cursos do mesmo edital (26/11/2026, pedido do responsável): vários cursos presenciais sem turmas, com o mesmo
+    // link, a mesma entidade, o mesmo prazo e os mesmos requisitos, aparecem num só cartão com a lista de cursos e
+    // cidades (antes eram cartões quase iguais, um por curso, ex.: os 9 cursos do Proeja do Ifap).
+    function chaveGrupo(c) {
+      if ((c.turmas || []).length || c.modalidade === "online" || !c.url) return "";
+      return [semAncora(c.url), c.entidade || "", c.inscricoes_ate || "", c.abertura || "", c.vagas || "",
+              String(c.gratuidade_comprovada), c.matricula || "", JSON.stringify(requisitosDe(c, null)),
+              JSON.stringify(c.como_me_inscrever || [])].join("\u0001");
+    }
+    function agrupar(res) {
+      var porChave = {}, itens = [];
+      res.forEach(function (c) {
+        var k = chaveGrupo(c);
+        if (k && porChave[k]) { porChave[k].push(c); return; }
+        var g = [c];
+        if (k) porChave[k] = g;
+        itens.push(g);
+      });
+      return itens;
+    }
+    function grupoHtml(cs) {
+      var c = cs[0];
+      var comuns = function (f) { var v = f(c); return cs.every(function (x) { return f(x) === v; }) ? v : ""; };
+      var factos = [];
+      function marca(cls, txt, filtro) { return '<li class="' + cls + ' filtravel"><button type="button" class="filtro" data-filtro="' +
+        esc(filtro) + '" title="Mostrar só os cursos assim">' + esc(txt) + "</button></li>"; }
+      if (cs.some(function (x) { return novosDesde && (x.primeiro_visto || "").slice(0, 10) > novosDesde; })) factos.push('<li class="novo">Novo desde a sua última visita</li>');
+      else if (cs.some(recente)) factos.push(marca("novo", "Novo!", "facilita:recente"));
+      var breve = terminaEmBreve(c);
+      if (breve) factos.unshift(marca("urgente", quandoTermina(prazoProximo(c)), "facilita:fecha_breve"));
+      factos.push(marca("local", "Presencial: " + (comuns(function (x) { return x.cidade || ""; }) || nomesLocal[c.local] || c.regiao || ""), "onde:" + c.local));
+      if (c.gratuidade_comprovada === false) factos.push(marca("atencao", "Gratuidade por confirmar", "marca:grat-confirmar"));
+      if (porAbrir(c)) factos.push('<li class="atencao">Inscrições abrem em ' + esc(dataBonita(c.abertura)) + (c.inscricoes_ate ? " e vão até " + esc(dataBonita(c.inscricoes_ate)) : "") + "</li>");
+      else if (c.inscricoes_ate && !breve) factos.push('<li class="atencao">Inscrições até ' + esc(dataBonita(c.inscricoes_ate)) + "</li>");
+      if (c.situacao === "Por confirmar") factos.push('<li class="atencao">Inscrições por confirmar</li>');
+      if (c.matricula) factos.push("<li>Se for aprovado: matrícula " + esc(c.matricula) + "</li>");
+      var turnoComum = comuns(function (x) { return (x.turnos || []).join(","); });
+      turnoComum.split(",").filter(Boolean).forEach(function (t) { if (TURNO[t]) factos.push(t === "Noite" ? marca("local", TURNO[t], "facilita:noite") : "<li>" + esc(TURNO[t]) + "</li>"); });
+      var condicoes = [];
+      (c.etiquetas || []).forEach(function (e) { condicoes.push("Sobre as vagas, a fonte diz: “" + esc(e.frase.replace(/[.\s]+$/, "")) + "”"); });
+      if (c.gratuidade_comprovada === false) condicoes.push(GRATUIDADE_AVISO);
+      var lista = cs.map(function (x) {
+        var det = [x.cidade, turnoComum ? "" : (x.turnos || []).map(function (t) { return TURNO[t] || t; }).join(", "), x.duracao,
+                   x.inicio ? "aulas começam em " + dataCurta(x.inicio) : ""].filter(Boolean);
+        return '<li id="' + idCartao(x, todos.indexOf(x)) + '"><strong>' + esc(x.titulo) + "</strong>" +
+          (det.length ? '<br><span class="discreto">' + esc(det.join(" · ")) + "</span>" : "") +
+          (x.descricao ? '<details class="grupo-descricao"><summary>Sobre este curso</summary>' + descricaoHtml(x, false) + "</details>" : "") + "</li>";
+      }).join("");
+      var b = destinoBotao(c.destino, false, "", (c.antes || []).indexOf("govbr") >= 0);
+      if (porAbrir(c)) b = { rotulo: "Ver a página oficial", nota: "A inscrição ainda não abriu. Volte a partir de " + esc(dataBonita(c.abertura)) + "." };
+      var verif = cs.map(function (x) { return x.verificado_em || ""; }).filter(Boolean).sort()[0] || "";
+      return '<li class="curso grupo"><h2>' + cs.length + " cursos com a mesma inscrição</h2>" +
+        (c.entidade ? '<p class="entidade">' + esc(c.entidade) + "</p>" : "") +
+        (c.vagas === "sorteio" ? '<p class="vagas-aviso">Vagas por sorteio: inscrever-se não garante a vaga.</p>'
+         : c.vagas === "ordem" ? '<p class="vagas-aviso">Vagas por ordem de inscrição: inscreva-se cedo.</p>' : "") +
+        '<ul class="factos">' + factos.join("") + "</ul>" +
+        (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
+        '<div class="onde grupo-cursos"><p class="onde-titulo">Cursos e cidades</p><ul>' + lista + "</ul></div>" +
+        requisitosHtml(requisitosDe(c, null)) + antesHtml(c) +
+        (c.como_me_inscrever && c.como_me_inscrever.length ? '<details class="passos"><summary>Como se inscrever</summary><ol>' +
+          c.como_me_inscrever.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></details>" : "") +
+        (b.nota ? '<p class="guia-link">' + b.nota + "</p>" : "") +
+        '<a class="botao secundario" href="' + esc(c.url) + '" rel="noopener">' + esc(b.rotulo) + "</a>" +
+        lembrarHtml(cs.length + " cursos (" + (c.entidade || "") + ")", c.inscricoes_ate, c.url, comuns(function (x) { return x.cidade || ""; }), porAbrir(c) ? c.abertura : "") +
+        '<p class="verificado">' + (verif ? "Verificado em " + esc(verif.slice(8, 10) + "/" + verif.slice(5, 7) + "/" + verif.slice(0, 4)) + ". " : "") +
+        "Confirme sempre na página oficial antes de ir." + avisarErroHtml(c, true) + "</p></li>";
+    }
+
     // «no Ceará», «na Bahia», «em Pernambuco», «em Portugal»
     function noLugar(nome) {
       var no = ["Acre", "Amapá", "Amazonas", "Ceará", "Distrito Federal", "Espírito Santo", "Maranhão", "Mato Grosso",
@@ -926,13 +994,14 @@
       }
       // qualquer mudança de filtro volta à página 1; só os botões da paginação (e os links #curso-…) mantêm a página
       ultimoRes = res;
-      var totalPaginas = Math.max(1, Math.ceil(res.length / POR_PAGINA));
+      var itens = agrupar(res);
+      var totalPaginas = Math.max(1, Math.ceil(itens.length / POR_PAGINA));
       if (!manterPagina) pagina = 1;
       manterPagina = false;
       if (pagina > totalPaginas) pagina = totalPaginas;
-      var daPagina = res.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
-      desenharPaginas(res.length, totalPaginas);
-      lista.innerHTML = res.length ? daPagina.map(function (c) { return cursoHtml(c, todos.indexOf(c)); }).join("") :
+      var daPagina = itens.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
+      desenharPaginas(itens.length, totalPaginas);
+      lista.innerHTML = res.length ? daPagina.map(function (g) { return g.length > 1 ? grupoHtml(g) : cursoHtml(g[0], todos.indexOf(g[0])); }).join("") :
         (o && o !== "online"
           ? '<li class="vazio">Não há cursos presenciais ' + esc(noLugar(onde.options[onde.selectedIndex].text.replace(/^Brasil\s*[–-]\s*/, ""))) +
             (cidade.value ? " em " + esc(cidade.value) : "") + (ativos.length ? " com estas escolhas" : "") +
@@ -978,7 +1047,7 @@
         return '<li><button type="button" class="botao secundario pequeno" data-pagina="' + i + '"' +
           (aria ? ' aria-label="' + aria + '"' : "") + ">" + rotulo + "</button></li>";
       };
-      var html = '<p class="paginacao-texto">Mostrando ' + ini + "–" + fim + " de " + n + " cursos (página " + pagina +
+      var html = '<p class="paginacao-texto">Mostrando ' + ini + "–" + fim + " de " + n + (n === ultimoRes.length ? " cursos" : " cartões") + " (página " + pagina +
         " de " + total + ")</p><ul>" + (pagina > 1 ? botao(pagina - 1, "‹ Anterior", "Página anterior") : "");
       var anterior = 0;
       for (var i = 1; i <= total; i++) {
@@ -1002,7 +1071,8 @@
     // links para um cartão (#curso-…, da página inicial ou de «Terminam em breve»): abrir a página onde ele está
     function irParaCurso(id) {
       var i = -1;
-      ultimoRes.some(function (c, j) { if (idCartao(c, todos.indexOf(c)) === id) { i = j; return true; } return false; });
+      agrupar(ultimoRes).some(function (g, j) {
+        if (g.some(function (c) { return idCartao(c, todos.indexOf(c)) === id; })) { i = j; return true; } return false; });
       if (i < 0) return false;
       var p = Math.floor(i / POR_PAGINA) + 1;
       if (p !== pagina) { pagina = p; manterPagina = true; filtrar(); }

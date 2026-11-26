@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-26T14:53",
+ "atualizado": "2026-11-26T16:29",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -1676,49 +1676,6 @@
       "conta": "",
       "nota": "A inscrição é feita na unidade, com o CPF.",
       "procurar": "NOÇÕES DE INFORMÁTICA - CVT AMONTADA - 07/12 a 17/12/2026 - 8h às 12h - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-26",
-     "reserva": "",
-     "regra_vagas": ""
-    },
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-iguatu-2026-12-08-18-00-22-00",
-     "unidade": "CVT IGUATU",
-     "cidade": "Iguatu",
-     "local": {
-      "nome": "CVT Iguatu",
-      "municipio": "Iguatu",
-      "site": "https://www.centec.org.br/unidades/cvt-iguatu/",
-      "bairro": "Santo Antônio",
-      "morada": "Av. Dário Rabêlo, s/n",
-      "telefone": "(88) 99651-0043",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-12-08",
-     "fim": "2026-12-18",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - INCOMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "AV. DARIO RABELO, S/N - CAMPUS MULTI-INSTITUCIONAL HUMBERTO TEIXEIRA.",
-     "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 08/12 a 18/12/2026 -18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 08/12 a 18/12/2026 -18h às 22h - PRESENCIAL",
       "frase": "",
       "nome": "Centec"
      },

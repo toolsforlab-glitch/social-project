@@ -1,23 +1,18 @@
-"""Turmas presenciais gratuitas das Escolas Profissionalizantes da Prefeitura do Recife (GO Recife), sem Claude (26/11/2026).
+"""Turmas presenciais do Qualifica Recife (Prefeitura do Recife, Secretaria de Trabalho e Qualificação Profissional),
+lidas da lista pública da plataforma GO Recife, sem Claude (23/11/2026).
 
-A plataforma GO Recife (https://gorecife.recife.pe.gov.br/cursos), da Prefeitura do Recife, lista os cursos com inscrições
-abertas numa API pública (/api/cursos?course_status__iexact=aberto): nome, descrição, escola (nome, rua, bairro), vagas,
-carga horária, idade mínima, prazo de inscrição, início e fim, horário e quem oferece. A Secretaria de Trabalho e
-Qualificação Profissional (STQP) abre turmas várias vezes por ano (ex.: 529 vagas em 30 cursos, setembro de 2026), com
-inscrição de poucos dias. Abre a partir do GitHub.
+A plataforma https://gorecife.recife.pe.gov.br/cursos mostra os cursos das escolas profissionalizantes do Recife. A página
+carrega-os de https://gorecife.recife.pe.gov.br/api/cursos (JSON público, paginado): nome, vagas, prazo de inscrição
+(«registration_deadline»), datas e horário, carga horária, idade mínima e a escola (bairro e morada). Entram só os
+PRESENCIAIS com prazo de inscrição. A inscrição é feita na plataforma (conta do Conecta Recife) ou na própria escola.
 
 Regras (as mesmas das outras fontes de turmas):
-- só turmas PRESENCIAIS com escola indicada (os cursos on-line da lista são de outras entidades, ex.: Google, Microsoft,
-  com páginas próprias);
-- situação pela API e pelas datas: Aberta se «course_status» = aberto e o prazo de inscrição não passou; turma que sai da
-  lista fica Encerrada;
-- gratuidade: frase da página inicial da plataforma («…qualificação profissional. Tudo gratuito.»), conferida por código a
-  cada leitura na lista /api/temas, de onde a página a tira;
-- idade mínima, escola, datas e horário copiados da API, sem reescrever;
-- AUDITORIA antes de publicar: nome, prazo, início, escola e datas coerentes.
+- situação: Aberta até ao prazo de inscrição; depois Encerrada; turma que sai da lista fica Encerrada;
+- gratuidade: só com a frase do próprio portal, conferida por código a cada leitura (FRASE_GRATUIDADE);
+- AUDITORIA antes de publicar: nome, datas válidas e coerentes, horário com sentido, escola indicada.
 """
+import datetime
 import json
-import os
 import re
 import sys
 
@@ -26,101 +21,104 @@ from comum import baixar
 from turmas import ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, necessidades, registo
 
 SITE = "https://gorecife.recife.pe.gov.br"
-API = SITE + "/api/cursos?course_status__iexact=aberto&page={p}"
-LISTA = SITE + "/cursos"
-ENTIDADE = "Prefeitura do Recife (Escolas Profissionalizantes – GO Recife)"
-FRASE_GRATUIDADE = "Aqui você vai encontrar serviços voltados para o empreendedorismo e a qualificação profissional. Tudo gratuito."
-TEMAS = SITE + "/api/temas"
+PAGINA = SITE + "/cursos"
+API = SITE + "/api/cursos"
+ENTIDADE = "Prefeitura do Recife – Qualifica Recife (GO Recife)"
+FRASE_GRATUIDADE = "Todo serviço do portal é público e sem custo"
 
 
-def iso(d):
-    m = re.match(r"(\d{2})/(\d{2})/(\d{4})$", (d or "").strip())
+def json_de(url):
+    return json.loads(baixar(url, timeout=40).decode("utf-8", "replace"))
+
+
+def texto_do_site():
+    """O portal é montado por JavaScript: os textos (como a frase da gratuidade) estão no ficheiro .js do próprio site."""
+    html = baixar(PAGINA, timeout=40).decode("utf-8", "replace")
+    textos = [html]
+    for js in re.findall(r'src="(/assets/[^"]+\.js)"', html)[:4]:
+        try:
+            textos.append(baixar(SITE + js, timeout=60).decode("utf-8", "replace"))
+        except Exception:  # noqa: BLE001
+            pass
+    texto = "\n".join(textos)
+    return re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), texto)
+
+
+def iso(v):
+    m = re.match(r"(\d{2})/(\d{2})/(\d{4})", str(v or ""))
     return f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else ""
 
 
-def br(d):
-    return f"{d[8:10]}/{d[5:7]}/{d[:4]}" if d else ""
+def hora(v):
+    m = re.match(r"(\d{1,2}):(\d{2})", str(v or ""))
+    return f"{int(m.group(1)):02d}:{m.group(2)}" if m else ""
 
 
-def texto_da_plataforma():
-    """O texto «O nome diz tudo…» da página inicial vem da lista pública /api/temas (campo about_us)."""
-    return baixar(TEMAS, timeout=60).decode("utf-8", "replace")
+def titulo_legivel(nome):
+    nome = re.sub(r"\s+", " ", nome or "").strip()
+    if not nome.isupper():
+        return nome
+    pequenas = {"de", "da", "do", "das", "dos", "e", "em", "para", "com", "a", "o"}
+    siglas = {"NR10", "NR35", "NR", "EPI", "TI", "PDV", "IV", "III", "II", "I", "V"}
+    return " ".join(p if p in siglas else (p.lower() if i and p.lower() in pequenas else p[:1] + p[1:].lower())
+                    for i, p in enumerate(nome.split(" ")))
 
 
-def ler_api():
-    itens, p = [], 1
-    while p <= 10:
-        d = json.loads(baixar(API.format(p=p), timeout=60).decode("utf-8", "replace"))
-        itens += d.get("results") or []
-        if not d.get("next"):
-            break
-        p += 1
-    return itens
+def requisitos(t):
+    """Idade mínima da lista e, se a descrição começar por «PRÉ-REQUISITO: …», esse pré-requisito (palavras da prefeitura)."""
+    partes = [f"Ter {t.get('minimum_age')} anos ou mais"] if t.get("minimum_age") else []
+    m = re.match(r"\s*PR[ÉE][\s-]*REQUISITOS?\s*:\s*(.+?)(?=\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]|$)", str(t.get("description") or ""))
+    if m:
+        partes.append(m.group(1).strip().capitalize())
+    return "; ".join(partes)
 
 
-def ler(c):
-    loc = c.get("location") or {}
-    rua = ", ".join(x for x in [(loc.get("street") or "").strip(), (loc.get("number") or "").strip()] if x)
-    onde = " – ".join(x for x in [(loc.get("name") or "").strip(),
-                                  ", ".join(x for x in [rua, (loc.get("neighborhood") or "").strip()] if x)] if x)
-    idade = c.get("minimum_age") or ""
-    return {
-        "id": str(c.get("id", "")), "nome": re.sub(r"\s+", " ", c.get("name") or "").strip(),
-        "descricao": re.sub(r"\s+", " ", c.get("description") or "").strip(),
-        "modalidade": (c.get("modality") or "").upper(), "escola": (loc.get("name") or "").strip(),
-        "bairro": (loc.get("neighborhood") or "").strip(), "onde": onde,
-        "prazo": iso(c.get("registration_deadline")), "ini": iso(c.get("start_date")), "fim": iso(c.get("end_date")),
-        "horario": (c.get("time") or "").strip(), "ch": c.get("workload") or "", "vagas": c.get("vacancies") or "",
-        "idade": str(idade) if idade else "", "idade_max": str(c.get("maximum_age") or ""),
-        "status": (c.get("course_status") or "").lower(), "org": ((c.get("organization") or {}).get("name") or ""),
-    }
-
-
-def auditar(c):
+def auditar(nome, ini, fim, prazo, h_ini, h_fim, escola):
     p = []
-    if not c["nome"]:
+    if not nome:
         p.append("a turma não tem nome")
-    if not c["prazo"]:
+    if not prazo:
         p.append("sem prazo de inscrição")
-    if not c["ini"]:
+    if not ini:
         p.append("sem data de início")
-    elif c["fim"] and c["fim"] < c["ini"]:
-        p.append(f"a data final ({c['fim']}) é anterior ao início ({c['ini']})")
-    if not c["escola"]:
+    elif fim and fim < ini:
+        p.append(f"a data final ({fim}) é anterior ao início ({ini})")
+    if prazo and ini and prazo > ini:
+        p.append(f"o fim das inscrições ({prazo}) é depois do início ({ini})")
+    if not (h_ini and h_fim) or h_ini >= h_fim or int(h_ini[:2]) < 5:
+        p.append(f"o horário ({h_ini or '?'} - {h_fim or '?'}) não faz sentido")
+    if not escola:
         p.append("a turma não indica a escola")
     return p
 
 
 def main():
-    seco = bool(os.environ.get("SECO"))
-    base = None if seco else Base()
-    if base:
-        carregar_config(base)
-        garantir_aba(base)
+    base = Base()
+    carregar_config(base)
+    garantir_aba(base)
     hoje = hoje_ceara()
     try:
-        lidas = [ler(c) for c in ler_api()]
-        gratuito = citacao_valida(FRASE_GRATUIDADE, texto_da_plataforma())
+        d = json_de(API + "?page=1")
+        turmas = list(d.get("results") or [])
+        prox, n = d.get("next"), 1
+        while prox and n < 30:
+            d = json_de(prox)
+            turmas += d.get("results") or []
+            prox, n = d.get("next"), n + 1
     except Exception as e:  # noqa: BLE001
         print(f"GO Recife: a lista de cursos não abriu ({type(e).__name__}: {e}). Nada alterado.")
-        if base:
-            registar_pendencia(base, f"GO Recife: a lista de cursos não abriu ({type(e).__name__}).",
-                               "Se a página abre no seu navegador.", LISTA, origem="gorecife.py")
-            base.guardar()
+        registar_pendencia(base, f"GO Recife (Qualifica Recife): a lista de cursos não abriu ({type(e).__name__}).",
+                           "Se a página abre no seu navegador e mostra cursos.", PAGINA, origem="gorecife.py")
         return 0
-    presenciais = [c for c in lidas if c["modalidade"] == "PRESENCIAL" and c["escola"]]
-    print(f"GO Recife: {len(lidas)} cursos abertos na lista, {len(presenciais)} presenciais; gratuidade "
-          f"{'conferida' if gratuito else 'NÃO conferida'}.")
-    if seco:
-        for c in presenciais:
-            print(f"  {c['nome'][:40]} | {c['onde'][:60]} | inscrições até {c['prazo']} | início {c['ini']} | "
-                  f"{c['vagas']} vagas | idade {c['idade'] or '-'} | {'; '.join(auditar(c)) or 'ok'}")
-        return 0
-    if not gratuito:
-        registar_pendencia(base, "GO Recife: a frase de gratuidade saiu da plataforma; as turmas novas não são publicadas.",
-                           "Se os cursos continuam gratuitos.", SITE, origem="gorecife.py")
+    presenciais = [t for t in turmas if isinstance(t, dict) and (t.get("modality") or "").upper() == "PRESENCIAL"]
+    print(f"GO Recife: {len(turmas)} cursos na lista pública; {len(presenciais)} presenciais.")
 
-    linhas_cursos = [r for r in base.tabela("Cursos") if r.get("ID") and (r.get("Link") or "").startswith(LISTA)]
+    gratuito = False
+    try:
+        gratuito = citacao_valida(FRASE_GRATUIDADE, texto_do_site())
+    except Exception:  # noqa: BLE001
+        pass
+    linhas_cursos = [r for r in base.tabela("Cursos") if r.get("ID") and (r.get("Link") or "").startswith(PAGINA)]
     cursos, ocultos = {}, set()
     for r in linhas_cursos:
         if r.get("Estado") == "Oculto":
@@ -128,35 +126,42 @@ def main():
         else:
             cursos.setdefault(chave(r.get("Título", "")), r["ID"].strip())
     existentes = {t["Link da turma"].strip(): t for t in base.tabela(ABA)
-                  if (t.get("Link da turma") or "").startswith(LISTA)}
+                  if (t.get("Link da turma") or "").startswith(PAGINA)}
+
     novas, alteracoes, historico, cursos_novos, vistos = [], [], [], [], set()
     estado_final = {l: (t.get("Curso", ""), t.get("Situação", ""), t.get("Estado") == "Publicado") for l, t in existentes.items()}
-    for c in presenciais:
-        k = chave(c["nome"])
-        if not c["nome"] or k in ocultos or not c["id"]:
+    for t in presenciais:
+        nome = titulo_legivel(t.get("name"))
+        k = chave(nome)
+        if not nome or k in ocultos:
             continue
-        link = f"{LISTA}#curso-{c['id']}"
+        loc = t.get("location") or {}
+        escola = re.sub(r"\s+", " ", str(loc.get("name") or "")).strip()
+        morada = ", ".join(x for x in [" ".join(str(loc.get(c) or "").strip() for c in ("street", "number")).strip(),
+                                       str(loc.get("neighborhood") or "").strip()] if x)
+        ini, fim, prazo = iso(t.get("start_date")), iso(t.get("end_date")), iso(t.get("registration_deadline"))
+        h_ini, h_fim = hora(t.get("start_time")), hora(t.get("end_time"))
+        link = f"{PAGINA}#curso-{t.get('id')}"
         if link in vistos:
             continue
         vistos.add(link)
-        problemas = auditar(c)
-        situacao = "Aberta" if c["status"] == "aberto" and c["prazo"] and hoje <= c["prazo"] else "Encerrada"
-        idade_txt = f"A partir de {c['idade']} anos" if c["idade"] else ""
+        problemas = auditar(nome, ini, fim, prazo, h_ini, h_fim, escola)
+        aberto = (t.get("course_status") or "").lower() == "aberto" and t.get("is_active") is not False
+        situacao = "Aberta" if aberto and prazo and hoje <= prazo else "Encerrada"
         campos = {
-            "Título na fonte": c["nome"], "Unidade na fonte": c["escola"][:200], "Unidade": "", "Cidade": "Recife",
-            "Link de matrícula": LISTA, "Início": c["ini"], "Fim": c["fim"], "Horário": c["horario"][:200], "Dias": "",
-            "Carga horária": f"{c['ch']} horas" if c["ch"] else "", "Vagas": str(c["vagas"]),
-            "Prazo de inscrição": c["prazo"], "Idade mínima": c["idade"], "Escolaridade": "", "Documentos": "",
-            "Mais informações": (f"Inscrições até {br(c['prazo'])}, no botão «Quero me inscrever» da página de cursos do "
-                                 f"GO Recife. {c['vagas']} vagas." if c["vagas"] else
-                                 f"Inscrições até {br(c['prazo'])}, no botão «Quero me inscrever» da página de cursos do GO Recife."),
-            "Local na fonte": c["onde"][:200], "Modo de inscrição": "online", "Situação": situacao,
+            "Título na fonte": str(t.get("name") or ""), "Unidade na fonte": escola, "Unidade": "", "Cidade": "Recife",
+            "Link de matrícula": PAGINA, "Início": ini, "Fim": fim, "Horário": f"{h_ini} - {h_fim}" if h_ini and h_fim else "",
+            "Dias": "", "Carga horária": f"{t.get('workload')} horas" if t.get("workload") else "",
+            "Vagas": str(t.get("vacancies") or ""), "Prazo de inscrição": prazo,
+            "Idade mínima": str(t.get("minimum_age") or ""), "Escolaridade": "", "Documentos": "",
+            "Mais informações": ("Inscrição na plataforma GO Recife (com a conta do Conecta Recife) ou diretamente na escola"
+                                 + (f": {escola}, {morada}." if morada else ".")),
+            "Local na fonte": f"{escola} – {morada}" if morada else escola, "Modo de inscrição": "ambos", "Situação": situacao,
             "Última verificação": hoje, "Falhas seguidas": 0,
-            "Evidência": (f"lista de cursos do GO Recife ({SITE}/api/cursos), curso {c['id']}: «{c['nome']} | {c['onde']} | "
-                          f"inscrições até {br(c['prazo'])} | {br(c['ini'])} a {br(c['fim'])} | {c['horario']} | "
-                          f"idade mínima {c['idade'] or '-'}»")[:900],
+            "Evidência": (f"lista pública {API}: «{t.get('name')}», inscrições até {prazo or '?'}, aulas de {ini} a {fim}, "
+                          f"{h_ini}-{h_fim}, {t.get('vacancies')} vagas, escola «{escola}»")[:900],
             "Auditoria": (f"{hoje}: não passou: " + "; ".join(problemas) + ".") if problemas else
-            f"{hoje}: ok (nome, prazo, datas e escola da lista oficial do GO Recife).",
+            f"{hoje}: ok (prazo, datas, horário e escola da lista oficial do GO Recife).",
         }
         ex = existentes.get(link)
         if ex:
@@ -171,31 +176,35 @@ def main():
             curso = cursos.get(k)
             if not curso:
                 novo = {
-                    "ID": id_curso(LISTA, c["nome"]), "Estado": "Novo", "Título": c["nome"][:200], "Entidade": ENTIDADE,
-                    "Link": LISTA, "Local": "BR-PE", "Modalidade": "presencial", "País": "BR", "Região": "Pernambuco",
-                    "Cidade": "Recife", "Descrição": c["descricao"][:1500], "Origem da descrição": "Texto da página" if c["descricao"] else "",
-                    "Necessidades": necessidades("", c["nome"]), "Perfis": "todos", "Condição de acesso": "",
-                    "Requisitos": idade_txt, "Certificado": "desconhecido", "Inscrições até": "", "Início": "",
-                    "Duração": "", "Link verificado": "SIM", "Primeiro visto": hoje, "Última verificação": hoje,
-                    "Origem": "turmas", "Notas": "", "Como me inscrever": "",
-                    "Nota da verificação": f"{hoje}: curso criado a partir de uma turma da lista do GO Recife.",
+                    "ID": id_curso(PAGINA, nome), "Estado": "Novo", "Título": nome[:200], "Entidade": ENTIDADE,
+                    "Link": PAGINA, "Local": "BR-PE", "Modalidade": "presencial", "País": "BR", "Região": "Pernambuco",
+                    "Cidade": "Recife", "Descrição": re.sub(r"\s+", " ", str(t.get("description") or ""))[:400],
+                    "Origem da descrição": "", "Necessidades": necessidades("", nome),
+                    "Perfis": "todos", "Condição de acesso": "",
+                    "Requisitos": requisitos(t),
+                    "Certificado": "desconhecido", "Inscrições até": "", "Início": "",
+                    "Duração": f"{t.get('workload')} horas" if t.get("workload") else "", "Link verificado": "SIM",
+                    "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "turmas", "Notas": "",
+                    "Como me inscrever": "", "Nota da verificação": f"{hoje}: curso criado a partir de uma turma na lista oficial do GO Recife.",
                     **VERIFICACAO_INICIAL, "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE",
-                    "Evidência": f"gratuito: «{FRASE_GRATUIDADE}» ({SITE}/)" if gratuito else "",
-                    "Campos comprovados": "gratuito" if gratuito else "",
-                    "O que falta confirmar": "" if gratuito else "A plataforma não diz que o curso é gratuito.",
+                    "Evidência": (f"gratuito: «{FRASE_GRATUIDADE}» ({SITE})" if gratuito else ""),
+                    "Campos comprovados": "gratuito, internet" if gratuito else "internet",
+                    "Precisa de internet": "Não",
+                    "O que falta confirmar": "" if gratuito else "O portal GO Recife não confirmou que os cursos são gratuitos.",
+                    "Antes de começar": "cpf",
                 }
                 cursos_novos.append(novo)
                 curso = cursos[k] = novo["ID"]
             novas.append({"ID": id_turma(link), "Curso": curso, "Estado": "Rever" if problemas else "Publicado",
                           "Link da turma": link, "Primeiro visto": hoje, **campos})
             estado_final[link] = (curso, situacao, not problemas)
-        print(f"  {'·' if ex else '+'} {c['nome'][:45]} | {c['escola'][:40]} | inscrições até {c['prazo'] or '?'} "
-              f"| {situacao}" + (f" | AUDITORIA: {'; '.join(problemas)}" if problemas else ""))
+        print(f"  {'·' if ex else '+'} {nome[:40]} | {escola[:30]} | inscrições até {prazo or '?'} | {situacao}"
+              + (f" | AUDITORIA: {'; '.join(problemas)}" if problemas else ""))
 
     for link, t in existentes.items():
         if link not in vistos and t.get("Situação") != "Encerrada":
             alteracoes.append((t["_linha"], {"Situação": "Encerrada", "Última verificação": hoje,
-                                             "Notas": "Saiu da lista de cursos abertos do GO Recife."}))
+                                             "Notas": "Saiu da lista oficial do GO Recife."}))
             estado_final[link] = (t.get("Curso", ""), "Encerrada", False)
 
     por_curso = {}
@@ -207,7 +216,7 @@ def main():
         return (r.get("Estado") == "Novo" and r.get("Origem") == "turmas" and not sim(r.get("Mudança a rever"))
                 and "Aberta" in por_curso.get(str(r.get("ID", "")).strip(), [])
                 and "gratuito" in (r.get("Campos comprovados") or ""))
-    nota = f"{hoje}: publicado automaticamente: turma aberta aprovada na auditoria e gratuidade escrita na plataforma GO Recife."
+    nota = f"{hoje}: publicado automaticamente: turma aberta aprovada na auditoria e gratuidade confirmada no portal."
     for n in cursos_novos:
         if pode_publicar(n):
             n["Estado"], n["Nota da verificação"] = "Publicado", nota
@@ -215,14 +224,14 @@ def main():
     for r in linhas_cursos:
         if r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip():
             continue
-        n_abertas = por_curso.get(r["ID"].strip(), []).count("Aberta")
+        abertas = por_curso.get(r["ID"].strip(), []).count("Aberta")
         campos = {}
         if pode_publicar(r):
             campos.update({"Estado": "Publicado", "Nota da verificação": nota})
-        nova = "Aberto" if n_abertas else "Encerrado"
+        nova = "Aberto" if abertas else "Encerrado"
         if nova != (r.get("Situação das inscrições") or ""):
             campos["Situação das inscrições"] = nova
-        if n_abertas:
+        if abertas:
             campos["Última verificação"] = hoje
         if campos:
             alteracoes_cursos.append((r["_linha"], campos))
@@ -234,8 +243,9 @@ def main():
     if historico and HISTORICO in base.abas():
         base.acrescentar(HISTORICO, historico)
     base.guardar()
-    print(f"\nGO Recife: {len(presenciais)} turmas presenciais lidas; {len(novas)} turmas novas, {len(alteracoes)} "
-          f"atualizadas; {len(cursos_novos)} cursos novos ({sum(1 for n in cursos_novos if n['Estado'] == 'Publicado')} publicados).")
+    print(f"\nGO Recife: {len(novas)} turmas novas, {len(alteracoes)} atualizadas; {len(cursos_novos)} cursos novos "
+          f"({sum(1 for n in cursos_novos if n['Estado'] == 'Publicado')} publicados); gratuidade no portal: "
+          f"{'confirmada' if gratuito else 'NÃO confirmada'}.")
     return 0
 
 

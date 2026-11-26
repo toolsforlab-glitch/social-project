@@ -898,7 +898,7 @@
       if (c.gratuidade_comprovada === false) condicoes.push(GRATUIDADE_AVISO);
       var lista = cs.map(function (x) {
         var det = [x.cidade, turnoComum ? "" : (x.turnos || []).map(function (t) { return TURNO[t] || t; }).join(", "), x.duracao,
-                   x.inicio ? "aulas começam em " + dataCurta(x.inicio) : ""].filter(Boolean);
+                   x.inicio ? "aulas começam em " + dataCurtaG(x.inicio) : ""].filter(Boolean);
         return '<li id="' + idCartao(x, todos.indexOf(x)) + '"><strong>' + esc(x.titulo) + "</strong>" +
           (det.length ? '<br><span class="discreto">' + esc(det.join(" · ")) + "</span>" : "") +
           (x.descricao ? '<details class="grupo-descricao"><summary>Sobre este curso</summary>' + descricaoHtml(x, false) + "</details>" : "") + "</li>";

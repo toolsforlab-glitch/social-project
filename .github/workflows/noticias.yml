@@ -197,6 +197,10 @@ jobs:
         if: ${{ always() }}
         run: cd scripts && python3 construir_site.py
 
+      - name: Testar o site antes de publicar (lista de cursos num navegador simulado; se falhar, não publica)
+        run: |
+          npm i --no-save --no-audit --no-fund --silent jsdom@24
+          node scripts/testar_site.js || { git checkout -- docs && git clean -fdq docs; echo "::error::O site novo não passou no teste; fica publicada a versão anterior."; exit 1; }
       - name: Publicar
         if: ${{ always() }}
         run: |

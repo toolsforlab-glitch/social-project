@@ -1,6 +1,83 @@
 {
- "atualizado": "2026-11-25T23:22",
+ "atualizado": "2026-11-26T10:23",
  "dias": [
+  {
+   "data": "2026-11-26",
+   "itens": [
+    {
+     "titulo": "Nova lei aumenta corte de benefícios e mexe nas doações ao terceiro setor",
+     "resumo": "O governo sancionou uma lei complementar que aumenta o corte de benefícios. A mudança também afeta as doações destinadas ao terceiro setor.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "Mattos Filho",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOaVZEaUZYa1VRZWFkUmltN2M3c253MFV6M3lkaEZYbFNxTnVyczU3ZzA3Z2NVaUhIZkl3VVlYZVVCNVRfQmZXeWxMQXF2WmFuQVR2MVpUYXpsTzlQanZUek9FcndpS0pIQmIxd2p1S28yeFotYUFiM3J4TnlJSnRDSnhEdw?oc=5"
+    },
+    {
+     "titulo": "Câmara aprova protocolo contra racismo nas escolas",
+     "resumo": "A Câmara dos Deputados aprovou um projeto que cria um protocolo nacional de acolhimento a vítimas de racismo em escolas públicas e privadas. A matéria agora segue para outras etapas de votação.",
+     "tema": "educacao",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/camara-aprova-protocolo-nacional-para-combater-racismo-nas-escolas"
+    },
+    {
+     "titulo": "Júri de Kathlen Romeu é adiado para março de 2027",
+     "resumo": "O julgamento dos policiais militares acusados de matar Kathlen Romeu, grávida de 13 semanas, foi adiado para 8 de março de 2027. A família da vítima terá um advogado de acusação no júri.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/juri-de-kathlen-romeu-e-adiado-para-8-de-marco-de-2027"
+    },
+    {
+     "titulo": "Fundo internacional abre inscrições com doações de até R$ 103 mil",
+     "resumo": "O Global Fund for Community Foundations está com inscrições abertas para apoiar iniciativas comunitárias. Organizações brasileiras podem se candidatar.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/fundo-internacional-oferece-doacoes-de-ate-r-103-mil-para-organizacoes-comunitarias/"
+    },
+    {
+     "titulo": "Procurador do MPDFT lança livro sobre compliance no terceiro setor",
+     "resumo": "Um procurador do Ministério Público do DF lançou o livro \"Compliance no Terceiro Setor\". A obra trata de boas práticas de conformidade para organizações da sociedade civil.",
+     "tema": "gestao",
+     "regiao": "Brasil",
+     "fonte": "Agenda Capital",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPNG1DMmhWZVNMWTB2WWs1c2V4SXFHb0hiNzdGVFdkRzgxOU15VVF4TzlBSzA1SUprSjZlaHpnVVZ0Ml9nMk9rTzBKNS1POHdqQXQ2WW4zZldmUTNLUTN5cnNyNnQ1aGI4VEZ0dldMM2F4OGo0V3lNd3I0cHVRUS1saHFWa3JDTF9mR1pVRExxOUV4eHBoQkZz?oc=5"
+    },
+    {
+     "titulo": "Escolas públicas de três estados vencem o Prêmio Liga STEAM 2026",
+     "resumo": "Projetos de escolas públicas de três estados ganharam o Prêmio Nacional Liga STEAM 2026. A edição teve recorde de projetos inscritos e uma parceria inédita com a UNESCO.",
+     "tema": "educacao",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/escolas-publicas-de-tres-estados-vencem-o-premio-nacional-liga-steam-2026/"
+    },
+    {
+     "titulo": "ABI lança série de vídeos contra a violência contra mulheres",
+     "resumo": "No Dia 25 de novembro, a ABI divulgou cinco vídeos sobre a luta pelos direitos das mulheres. Os depoimentos são de jornalistas, advogadas e juristas.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/abi-divulga-serie-de-videos-pelo-fim-da-violencia-contra-mulheres"
+    },
+    {
+     "titulo": "ONG em Belém oferece 15 vagas de emprego para jovens",
+     "resumo": "Uma ONG de Belém abriu 15 vagas de emprego para jovens de 14 a 23 anos. É uma oportunidade para quem busca o primeiro trabalho na região.",
+     "tema": "desenvolvimento",
+     "regiao": "Brasil",
+     "fonte": "G1",
+     "idioma_original": "pt",
+     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNaGd4Vjl0T2hyREtkZTRjLTZ4MDFRR2pmNl9DUFFRM2VSb1I3M3M2SktDZWtPYjN6aXo4VnpCOGk0WlRfT0g1LXZwQWZwd2doT2k5SU54OUZVVWVzbWFWcXctZXdXZVJ1dVdRNzZpanVnY05aQ240SVNSWTN3ZmFJYURhZ0d4Sk11NmU1cGgyZlBHYnVjQnV2eDNVTlJrX0tDMXROYW5RaEZZYk9KT1h5Q1ZtX0MzNHZwcmfSAcgBQVVfeXFMTkNLek1MYzY1YUl2bEFydllpTjNUUTNndXZNVFZJemdieGhCeUVIV25WRzdhS3FnckhRWUN3aDhPZ0RKd0EwM3dRYzNTRk9MSkJZZlMxcGFuSmJlZ0ZGS2JIM0RpWC1RRlJpYW42WjRZMlFQR0w3VTdIc2VXdWpyNkxsYzZPTzJEOXhId3NqYzg4amlBTWQ0U24wMzRuRTc5ZWdJUTBKczVmVlhuUEpjX0RGSmhrUXRfX3ZmWGxSTTJhMTR5OUhUUXA?oc=5"
+    }
+   ]
+  },
   {
    "data": "2026-11-25",
    "itens": [

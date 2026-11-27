@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T15:29",
+ "atualizado": "2026-11-27T17:24",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -56248,6 +56248,68 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-427c6221",
+   "titulo": "Acredita no Primeiro Passo – Eletricista Instalador Predial e Instalador de Sistemas Fotovoltaicos (Caxias, MA)",
+   "entidade": "FADEX e IFMA – Programa Acredita no Primeiro Passo",
+   "url": "https://www.fadex.org.br/editais/30-2026-selecao-de-participantes-do-programa-acredita-no-primeiro-passo-em-caxias-ma",
+   "pagina_propria": true,
+   "local": "BR-MA",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Maranhão",
+   "cidade": "Caxias",
+   "descricao": "Dois cursos presenciais de 160 horas em Caxias (MA), para quem está no CadÚnico: Eletricista Instalador Predial de Baixa Tensão e Instalador de Sistemas Fotovoltaicos (30 vagas cada). Aulas à noite, de segunda a quinta, no CE Duque de Caxias, com práticas no IFMA. Pelo menos 60% das vagas são para mulheres.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": false,
+   "necessidades": [
+    "profissao",
+    "emprego",
+    "renda"
+   ],
+   "exclusivo_para": "Estar no CadÚnico e morar em Caxias (MA)",
+   "requisitos": "ter entre 18 e 65 anos completos até a data da inscrição\nestar inscrito(a) no CadÚnico, com cadastro ativo\nresidir no Município de Caxias/MA\nCurso de Eletricista Instalador Predial de Baixa Tensão: escolaridade mínima de Ensino Fundamental I (1º ao 5º ano) incompleto\nCurso de Instalador de Sistemas Fotovoltaicos: escolaridade mínima de Ensino Fundamental I (1º ao 5º ano) completo",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2026-11-30",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "2026-12-09",
+   "duracao": "160 horas",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Até 30/11/2026, inscreva-se pelo formulário do edital (forms.gle/gak9oA9RjipqPcBG9) ou presencialmente na Secretaria Municipal de Direitos Humanos e Políticas para as Mulheres, na Secretaria Municipal da Proteção Social ou na Comunidade Batista Missionária (7h30–13h30, de segunda a sexta).",
+    "Leve ou anexe CPF, RG, comprovante de residência, comprovante de escolaridade e o NIS.",
+    "O resultado sai a 4/12 no site da FADEX; as aulas começam a partir de 9/12."
+   ],
+   "antes": [],
+   "idade_minima": 18,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "vagas": "",
    "acessibilidade": []
   }
  ]

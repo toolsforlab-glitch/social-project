@@ -58,8 +58,8 @@ def editais(pagina_html):
         m = re.search(r"Aprendizagem Industrial (B[áa]sica|T[ée]cnica) n[ºo°]\s*(\d+)\.(\d{4}\.\d)", nome, re.I)
         if m:
             tipo = "Básica" if m.group(1).lower().startswith("b") else "Técnica"
-            url = urllib.parse.urljoin(PAGINA, _html.unescape(href))
-            if url not in [o[0] for o in out]:
+            url = urllib.parse.quote(urllib.parse.urljoin(PAGINA, _html.unescape(href)), safe=":/%?=&~+")
+            if (tipo, m.group(2), m.group(3)) not in [o[1:] for o in out]:
                 out.append((url, tipo, m.group(2), m.group(3)))
     return out
 

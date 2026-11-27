@@ -1,20 +1,17 @@
 {
   "1": [
-    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/ferramentas-de-marketing-digital-77-s26sc3ca14055", "aplica_se_a": "Curso online Ferramentas de marketing digital do Sebrae Santa Catarina."},
-    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/criac-o-de-dashboards-praticos-77-s26sc3ca12820", "aplica_se_a": "Curso online Criação de dashboards práticos do Sebrae Santa Catarina."},
-    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/comunicac-o-e-oratoria-77-s26sc3ca14053", "aplica_se_a": "Curso online Comunicação e oratória do Sebrae Santa Catarina."}
+    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/comunicac-o-e-oratoria-77-s26sc3ca14053", "aplica_se_a": "Curso online Comunicação e oratória, da Loja Sebrae Santa Catarina."},
+    {"valor": "gratuito", "frase": "Certificado digital gratuito incluído!", "url": "https://sc.loja.sebrae.com.br/administrac-o-para-pequenos-negocios-marketing-77-s26sc3ca12812", "aplica_se_a": "Curso online Administração para pequenos negócios – Marketing, da Loja Sebrae Santa Catarina."},
+    {"valor": "gratuito", "frase": "Certificado digital gratuito incluso!", "url": "https://sc.loja.sebrae.com.br/ferramentas-de-marketing-digital-77-s26sc3ca14055", "aplica_se_a": "Curso online Ferramentas de marketing digital, da Loja Sebrae Santa Catarina."}
   ],
-  "2": [],
-  "3": [],
+  "2": [], "3": [],
   "4": [
-    {"valor": "pago", "frase": "Ao estudante que solicitar a 2ª via do certificado será cobrada uma taxa", "url": "https://www.ce.senac.br/wp-content/uploads/2024/02/REGIMENTO-ESCOLAR-SENAC-2022.pdf", "aplica_se_a": "Somente à solicitação da segunda via do certificado nos cursos abrangidos pelo Regimento Escolar do Senac Ceará, incluindo os cursos do PSG. Art. 136, § 2º."}
+    {"valor": "gratuito", "frase": "requerimento da 1ª via junto à Secretaria Escolar para a reimpressão gratuitamente.", "url": "https://www.ce.senac.br/wp-content/uploads/2024/02/REGIMENTO-ESCOLAR-SENAC-2022.pdf", "aplica_se_a": "Reimpressão da primeira via do certificado ou diploma que o estudante deixou de retirar após concluir um curso abrangido pelo Regimento Escolar do Senac Ceará, art. 136, § 1º."},
+    {"valor": "pago", "frase": "Ao estudante que solicitar a 2ª via do certificado será cobrada uma taxa", "url": "https://www.ce.senac.br/wp-content/uploads/2024/02/REGIMENTO-ESCOLAR-SENAC-2022.pdf", "aplica_se_a": "Segunda via do certificado dos cursos abrangidos pelo Regimento Escolar do Senac Ceará, art. 136, § 2º."}
   ],
-  "5": [],
-  "6": [
-    {"valor": "pago", "frase": "A cobrança de taxas somente se dará na solicitação da 2ª via de certificados, diplomas e histórico escolar, conforme documento normativo específico do Departamento Regional.", "url": "https://am.senac.br/wp-content/uploads/2025/02/NOVO-REGMENTO-ESCOLAR-2024-APROVADO-NO-CRS.pdf", "aplica_se_a": "Somente à solicitação da segunda via nas unidades de educação profissional do Senac Amazonas, abrangidas pelo Regimento Escolar."}
-  ],
-  "7": [], "8": [], "9": [], "10": [],
+  "5": [], "6": [], "7": [], "8": [], "9": [], "10": [],
   "11": [
-    {"valor": "gratuito", "frase": "O diploma ou o certificado será emitido sem ônus para o(a) estudante.", "url": "https://ifbaiano.edu.br/portal/wp-content/uploads/2025/08/Resolucao-415_2025-Normativa-para-Emissao-e-para-registro-de-diplomas-e-certificados.pdf", "aplica_se_a": "À emissão de diplomas e certificados dos cursos abrangidos pela Resolução nº 415/2025 do IF Baiano, incluindo os diplomas dos cursos técnicos subsequentes EaD de Ruy Barbosa e Remanso. Art. 29."}
-  ]
+    {"valor": "gratuito", "frase": "A segunda via dos Diplomas e Certificados poderá ser emitida sem nenhum custo ao titular, nas seguintes situações:", "url": "https://sei.ifac.edu.br/sei/publicacoes/controlador_publicacoes.php?acao=publicacao_visualizar&id_documento=331469&id_orgao_publicacao=0", "aplica_se_a": "Segunda via de diplomas e certificados abrangidos pela Portaria Normativa IFAC nº 10/2021, incluindo os certificados de Formação Inicial e Continuada, nas situações previstas no art. 54."}
+  ],
+  "12": []
 }

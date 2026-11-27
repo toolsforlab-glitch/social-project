@@ -111,6 +111,9 @@ def provar(r, dominio, paginas):
         return "", frase, url, "sem frase ou sem link"
     if not dominio_permitido(url, [dominio]):
         return "", frase, url, f"link fora do domínio oficial ({url[:80]})"
+    if re.search(r"segunda via|2\s*[ªa]\s*via|1\s*[ªa]\s*via|primeira via|reimpress", frase, re.I):
+        # 27/11/2026: o preço de uma 2ª via (ou da reimpressão) não diz se o certificado em si é gratuito.
+        return "", frase, url, "a frase fala da segunda via ou da reimpressão, não do certificado do curso"
     valor = certificado_da_frase(r.get("valor"), frase)
     if not valor:
         return "", frase, url, "a frase não diz como é o CERTIFICADO (gratuito, pago ou sem certificado)"

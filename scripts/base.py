@@ -493,6 +493,10 @@ def certificado_da_frase(valor, frase):
     valor, frase = str(valor or "").strip().lower(), frase or ""
     if "certificad" not in frase.lower():
         return ""
+    # o que vale para a 2ª via ou para a reimpressão não diz como é o certificado do curso, nem pago nem gratuito
+    # (Regimentos do Senac CE e AM, 25/11/2026; Portaria Normativa do IFAC, 27/11/2026)
+    if re.search(r"[12]\s*[ªa]\.?\s*via|segunda\s+via|primeira\s+via|reimpress", frase, re.I):
+        return ""
     # o certificado tem de ser o que é gratuito: «certificado gratuito», «o certificado é emitido gratuitamente»;
     # «curso gratuito e com certificado» não chega (é o curso que é gratuito)
     if valor == "gratuito" and gratuidade_explicita(frase) and re.search(
@@ -511,9 +515,6 @@ def certificado_da_frase(valor, frase):
     if valor == "gratuito" and re.search(r"n[ãa]o\s+(paga|pagar[áa]?|cobra|[ée]\s+cobrad\w*)\s+(nada|nenhum\w*|qualquer)"
                                         r"[^.]{0,80}?certificad", frase, re.I):
         return "gratuito"
-    # taxa só da 2ª via não quer dizer que o certificado é pago (Regimentos do Senac CE e AM, 25/11/2026)
-    if valor == "pago" and re.search(r"2\s*[ªa]\.?\s*via|segunda\s+via", frase, re.I):
-        return ""
     if valor == "pago" and re.search(r"\bpag[oa]\b|taxa|r\$|valor\s+de", frase, re.I):
         return "pago"
     if valor == "sem certificado" and re.search(r"n[ãa]o\s+(h[áa]|emite|oferece|fornece|possui|d[áa]|geram?)\s+"

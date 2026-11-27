@@ -1,12 +1,9 @@
 {
-  "1": {"gratuito": {"valor": null, "frase": null, "url": null}, "certificado": {"valor": null, "frase": null, "url": null}},
-  "2": {"gratuito": {"valor": "gratuito", "frase": "o Programa Senac de Gratuidade (PSG) visa oferecer ações educacionais com custo zero às pessoas de baixa renda", "url": "https://ma.senac.br/psg/"}},
-  "3": {"gratuito": {"valor": "gratuito", "frase": "serão abertas as inscrições para concessão de bolsas integrais de estudo pelo SENAI/PE, em cursos de qualificação profissional no formato presencial", "url": "https://www.pe.senai.br/wp-content/uploads/2026/11/EDITAL_-_QUA_-_SANTO_AMARO_-_AUXILIAR_DE_LINHA_DE_PROD._-_PR_20261123130333507156.pdf"}, "certificado": {"valor": null, "frase": null, "url": null}},
-  "4": {"situacao": {"valor": null, "frase": null, "url": null}, "inscricoes_ate": {"valor": null, "frase": null, "url": null}, "certificado": {"valor": null, "frase": null, "url": null}},
-  "5": {"situacao": {"valor": "encerrado", "frase": "Fim das inscrições: 02/11/2026 23:59", "url": "https://psg.se.senac.br/detalhes-curso?id=senac_psg_6ad8d2cd16500"}},
-  "6": {"inscricoes_ate": {"valor": "2026-12-04", "frase": "De 03/11/2026 às 23 horas de 04/12/2026.", "url": "https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-santo-estevao-2027/"}},
-  "7": {"certificado": {"valor": null, "frase": null, "url": null}},
-  "8": {"certificado": {"valor": null, "frase": null, "url": null}},
-  "9": {"certificado": {"valor": null, "frase": null, "url": null}},
-  "10": {"certificado": {"valor": null, "frase": null, "url": null}}
+  "1": {"certificado": {"valor": null, "frase": null, "url": null}},
+  "2": {"certificado": {"valor": null, "frase": null, "url": null}},
+  "3": {"certificado": {"valor": null, "frase": null, "url": null}},
+  "4": {"certificado": {"valor": null, "frase": null, "url": null}},
+  "5": {"certificado": {"valor": null, "frase": null, "url": null}},
+  "6": {"certificado": {"valor": null, "frase": null, "url": null}},
+  "7": {"certificado": {"valor": null, "frase": null, "url": null}}
 }

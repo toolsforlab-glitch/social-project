@@ -50,7 +50,7 @@ Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, j�
 - **M6. Cada botão diz que página abre** (curso, lista, PDF, formulário…; `paginas.py`).
 - **M7. «Só mulheres»** vai no título e na condição de acesso.
 - **M8. Cursos do mesmo edital num só cartão** («N cursos com a mesma inscrição»; `agrupar`, app.js; 26/11).
-- **M9. Certificado, acessibilidade e idades só com frase**: o certificado tem de estar descrito; a acessibilidade tem de nomear um recurso concreto; a idade tem de estar escrita.
+- **M9. Certificado, acessibilidade e idades só com frase**: o certificado tem de estar descrito; a acessibilidade tem de nomear um recurso concreto; a idade tem de estar escrita. O preço da 2ª via ou da reimpressão não diz como é o certificado do curso, nem pago nem gratuito (`certificado_da_frase`, base.py; 25/11 e 27/11).
 
 ## 5. Como se trabalha
 

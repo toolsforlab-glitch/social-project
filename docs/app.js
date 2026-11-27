@@ -414,7 +414,7 @@
   // divididas a pedido do responsável (27/11/2026), porque há cursos de 160, 240 horas e técnicos de 800 horas ou mais.
   var FAIXAS_DURACAO = [["curto", "Até 4 horas", 0, 4], ["medio", "De 5 a 20 horas", 4, 20], ["h40", "De 21 a 40 horas", 20, 40],
     ["h80", "De 41 a 80 horas", 40, 80], ["h160", "De 81 a 160 horas", 80, 160], ["h400", "De 161 a 400 horas", 160, 400],
-    ["h400mais", "Mais de 400 horas (cursos técnicos)", 400, Infinity], ["longo", "Mais de 20 horas", 20, Infinity]];
+    ["h400mais", "Mais de 400 horas", 400, Infinity], ["longo", "Mais de 20 horas", 20, Infinity]];
   function naDuracao(c, faixa) {
     var h = horasDe(c);
     if (h === null) return false;

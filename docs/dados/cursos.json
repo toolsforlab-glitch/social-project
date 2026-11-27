@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T21:15",
+ "atualizado": "2026-11-27T21:20",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -753,48 +753,6 @@
    "situacao": "Aberto",
    "abertura": "",
    "turmas": [
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://psg.ce.senac.br/oportunidade/2026-10-246-costureiro/",
-     "unidade": "Senac Iguatu",
-     "cidade": "Iguatu",
-     "local": {
-      "nome": "Senac Iguatu",
-      "municipio": "Iguatu",
-      "site": "https://www.ce.senac.br/unidades/iguatu/",
-      "bairro": "Centro",
-      "morada": "Rua 13 de Maio, 1134",
-      "telefone": "(88) 3582-7750 / (88) 99205-8252",
-      "whatsapp": "",
-      "horario": "Matrículas: 7h30 às 21h30",
-      "o_que_levar": ""
-     },
-     "inicio": "2026-11-30",
-     "fim": "2027-01-27",
-     "horario": "12:00 - 17:00",
-     "dias": "30/11/2026 a 27/01/2027",
-     "prazo": "2026-11-30",
-     "idade_minima": "15",
-     "escolaridade": "Ensino Fundamental incompleto 6ª ano",
-     "documentos": "Comprovante de RG, CPF e residência.",
-     "local_texto": "",
-     "titulo_fonte": "2026.10.246 – Costureiro",
-     "destino": {
-      "tipo": "curso",
-      "conta": "",
-      "nota": "Na página da turma, use o botão “matricule-se” e entregue os documentos na unidade dentro do prazo.",
-      "procurar": "",
-      "frase": ""
-     },
-     "telefone": "(88) 99205-8252",
-     "inscricao": "pagina",
-     "info": "",
-     "verificado_em": "2026-11-27",
-     "reserva": "",
-     "regra_vagas": ""
-    },
     {
      "por_abrir": false,
      "abertura": "",

@@ -1,0 +1,152 @@
+Parte A — Auditoria em 27/11/2026
+A1 — Senac Sergipe · Informática Básica, Técnicas Avançadas de Word e Excel e Qualidade no Atendimento
+
+A1. Gratuito: SIM — «O Senac Sergipe disponibiliza novas turmas gratuitas» — https://www.se.senac.br/senac-sergipe-abre-vagas-647-vagas-para-36-cursos-de-gratuitos/ se.senac.br
+A1. Inscrição aberta: NÃO — «Início das inscrições: 26/10/2026 08:00» / «Fim das inscrições: 02/11/2026 23:59» — https://psg.se.senac.br/detalhes-curso?id=senac_psg_6ad8fb8b04313 PSG
+A1. Sem disputa: SIM — «O ingresso nos cursos do PSG se dá por ordem de inscrição do candidato.» — https://www.se.senac.br/psg/?page_id=111 GRATUIDADE SENAC SE
+A1. Aberto ao público: SIM — «trabalhadores, empregados ou desempregados, com renda familiar mensal per capita de até dois salários mínimos.» — https://www.se.senac.br/senac-sergipe-abre-vagas-647-vagas-para-36-cursos-de-gratuitos/ se.senac.br
+A1. Turma de Informática Básica: SIM — «Período da turma: 17/11/2026 até 11/12/2026» / «Horário do curso: 18:00 às 22:00» — https://psg.se.senac.br/detalhes-curso?id=senac_psg_6ad8fb8b04313 PSG
+A1. Turma de Técnicas Avançadas de Word e Excel: SIM — «Período da turma: 23/11/2026 até 04/12/2026» / «Horário do curso: 13:00 às 17:00» — https://psg.se.senac.br/detalhes-curso?id=senac_psg_6ad8fb09f417d PSG
+A1. Turma de Qualidade no Atendimento: SIM — «Período da turma: 16/11/2026 até 16/12/2026» / «Horário do curso: 18:00 às 22:00» — https://psg.se.senac.br/detalhes-curso?id=senac_psg_6ad8d72dd535c PSG
+A1. Vagas remanescentes nas três turmas: NÃO DIZ
+
+A2 — IF Baiano, Campus Xique-Xique · Libras básico e intermediário · Edital nº 195/2026
+
+A2. Gratuito: SIM — «Todos os cursos são gratuitos» — https://ifbaiano.edu.br/portal/wp-content/uploads/2026/10/Edital.pdf ifbaiano.edu.br
+A2. Inscrição aberta: NÃO — «PERÍODO DE INSCRIÇÕES 14/10/2026 a 23/10/2026» — https://ifbaiano.edu.br/portal/wp-content/uploads/2026/10/Edital.pdf ifbaiano.edu.br
+A2. Sem disputa: SIM — «por ordem de inscrição» — https://ifbaiano.edu.br/portal/wp-content/uploads/2026/10/Edital.pdf ifbaiano.edu.br
+A2. Aberto ao público: SIM — «Comunidade em geral» — https://ifbaiano.edu.br/portal/wp-content/uploads/2026/10/Edital.pdf ifbaiano.edu.br
+A2. Aulas presenciais: SIM — «Local - Sala 07 da UNEB» — https://ifbaiano.edu.br/portal/wp-content/uploads/2026/10/Edital.pdf ifbaiano.edu.br
+
+A3 — SENAI Pernambuco · Controlador Lógico Programável, noturno · Araripina
+
+A3. Gratuito: SIM — «bolsas integrais de estudo pelo SENAI/PE» — https://www.pe.senai.br/wp-content/uploads/2026/10/EDITAL_-_ARARIPINA_-_APP_-_100_VAGAS_-_PRESENCIAL_-__202610071127073287304.pdf pe.senai.br
+A3. Inscrição aberta: SIM — «06/10/2026 e 30/11/2026 - para cursos com início em 26/11/2026;» — https://www.pe.senai.br/wp-content/uploads/2026/11/ERRATA_-_ARARIPINA_-_QUA_-_CONTROLADOR_LOGICO_PROGRAMAVEL__202611261339391012767.pdf Controlador lógico programável
+A3. Sem disputa: SIM — «O critério para o preenchimento das vagas será pela ordem de inscrição.» — https://www.pe.senai.br/wp-content/uploads/2026/10/EDITAL_-_ARARIPINA_-_APP_-_100_VAGAS_-_PRESENCIAL_-__202610071127073287304.pdf pe.senai.br
+A3. Aberto ao público: SIM — «Ter condição de baixa renda autodeclarada» — https://www.pe.senai.br/wp-content/uploads/2026/10/EDITAL_-_ARARIPINA_-_APP_-_100_VAGAS_-_PRESENCIAL_-__202610071127073287304.pdf pe.senai.br
+
+A4 — Prefeitura de Fortaleza · 32 cursos do Programa Autonomia Econômica
+
+A4. Gratuito: SIM — «32 cursos gratuitos de capacitação profissional» — https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-oferta-7-3-mil-vagas-em-32-cursos-gratuitos-de-capacitacao-profissional fortaleza.ce.gov.br
+A4. Inscrição aberta: NÃO DIZ — «INSCRIÇÕES ABERTAS» — https://fortaleza-link-unico.onrender.com/ Qualificação Profissional
+A4. Sem disputa: NÃO DIZ
+A4. Aberto ao público: SIM — «Os cursos são voltados para pessoas a partir de 16 anos, sem limite de idade» — https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-oferta-7-3-mil-vagas-em-32-cursos-gratuitos-de-capacitacao-profissional fortaleza.ce.gov.br
+
+A ficha indicada pela Prefeitura anuncia inscrições abertas. As datas de abertura e encerramento ficaram sem confirmação. Qualificação Profissional
+
+A5 — Prefeitura de Fortaleza · Sine Municipal · Semana de 23 a 27/11
+
+A5. Gratuito: SIM — «promove capacitações gratuitas» — https://www.fortaleza.ce.gov.br/noticias/prefeitura-disponibiliza-2-709-oportunidades-de-trabalho-mutirao-na-praia-do-futuro-atendimento-na-expolog-e-cursos-de-qualificacao-pelo-sine fortaleza.ce.gov.br
+A5. Inscrição aberta: NÃO DIZ
+A5. Sem disputa: NÃO DIZ
+A5. Aberto ao público: SIM — «a idade mínima exigida é de 16 anos» — https://www.fortaleza.ce.gov.br/noticias/prefeitura-disponibiliza-2-709-oportunidades-de-trabalho-mutirao-na-praia-do-futuro-atendimento-na-expolog-e-cursos-de-qualificacao-pelo-sine fortaleza.ce.gov.br
+A5. Cursos anunciados: SIM — «Manicure» / «Auxiliar Administrativo» / «Recepcionista» / «Monitor de Lazer e Recreação» / «Assistente de Logística» — https://www.fortaleza.ce.gov.br/noticias/prefeitura-disponibiliza-2-709-oportunidades-de-trabalho-mutirao-na-praia-do-futuro-atendimento-na-expolog-e-cursos-de-qualificacao-pelo-sine fortaleza.ce.gov.br
+A5. Forma de inscrição nos cursos: NÃO DIZ
+
+A6 — Prefeitura do Recife e UPE · Uso do celular para maiores de 60 anos
+
+A6. Gratuito: SIM — «cursos gratuitos que ensinam a usar o celular» — https://conecta.recife.pe.gov.br/servico/1216 Serviço
+A6. Inscrição aberta: NÃO DIZ
+A6. Sem disputa: NÃO DIZ
+A6. Aberto ao público: SIM — «Idosos (a partir de 60 anos);» / «Residentes no Recife.» — https://conecta.recife.pe.gov.br/servico/1216 Serviço
+A6. Datas das turmas vigentes: NÃO DIZ
+
+A7.1 — IF Baiano · Cursos técnicos subsequentes EaD · Ruy Barbosa
+
+A7.1. Gratuito: SIM — «230 vagas em cursos técnicos gratuitos» — https://ifbaiano.edu.br/portal/campus-ruy-barbosa-oferta-230-vagas-para-cursos-tecnicos-subsequentes-da-modalidade-a-distancia/ IF Baiano
+A7.1. Inscrição aberta: SIM — «De 19/11/2026 às 23 horas de 08/01/2027.» — https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-ruy-barbosa-2027/ Portal de Ingresso – IF Baiano
+A7.1. Sem disputa: SIM — «A classificação no processo seletivo será por ordem de inscrição e demonstração de interesse.» — https://ingresso.ifbaiano.edu.br/wp-content/uploads/2026/11/Edital-001_PROSEL-EaD-modalidade-Subsequente-Campus-Ruy-Barbosa-ano-letivo-2027.pdf ingresso.ifbaiano.edu.br
+A7.1. Aberto ao público: SIM — «Se você concluiu o Ensino Médio ou equivalente» — https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-ruy-barbosa-2027/ Portal de Ingresso – IF Baiano
+A7.1. Gratuidade do curso no edital: NÃO DIZ
+
+A7.2 — IF Baiano · Cursos técnicos subsequentes EaD · Remanso
+
+A7.2. Gratuito: SIM — «O IF Baiano é uma instituição pública federal e todos os cursos são gratuitos.» — https://ingresso.ifbaiano.edu.br/concursos/prosel-integrado-itapetinga-2027/ Portal de Ingresso – IF Baiano
+A7.2. Inscrição aberta: SIM — «De 17/11/2026 às 23 horas de 08/01/2027.» — https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-remanso-2027/ Portal de Ingresso – IF Baiano
+A7.2. Sem disputa: SIM — «A classificação no processo seletivo será por ordem de inscrição e demonstração de interesse.» — https://ingresso.ifbaiano.edu.br/wp-content/uploads/2026/11/Edtial-001-EaD-Campus-Remanso.pdf ingresso.ifbaiano.edu.br
+A7.2. Aberto ao público: SIM — «Se você concluiu o Ensino Médio ou equivalente» — https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-remanso-2027/ Portal de Ingresso – IF Baiano
+A7.2. Gratuidade do curso no edital: NÃO DIZ
+
+A frase sobre gratuidade de Remanso é uma declaração geral do IF Baiano publicada no portal de ingresso de Itapetinga. Portal de Ingresso – IF Baiano
+
+A8 — FADEX e IFMA · Acredita no Primeiro Passo · Caxias/MA
+
+A8. Gratuito: SIM — «a oferta gratuita de cursos» — https://www.fadex.org.br/api/arquivos/publico/editais/1795468368207-7epzqg27-edital-30.2026-participantes-escola-duque-de-caxias.pdf fadex.org.br
+A8. Inscrição aberta: SIM — «23/11/2026 a 30/11/2026 às 23:59» — https://www.fadex.org.br/editais/30-2026-selecao-de-participantes-do-programa-acredita-no-primeiro-passo-em-caxias-ma FADEX
+A8. Sem disputa: SIM — «critérios técnicos e objetivos» — https://www.fadex.org.br/api/arquivos/publico/editais/1795468368207-7epzqg27-edital-30.2026-participantes-escola-duque-de-caxias.pdf fadex.org.br
+A8. Aberto ao público: SIM — «com idade entre 18 e 65 anos, residentes no Município de Caxias, Estado do Maranhão, e inscritos no CadÚnico» — https://www.fadex.org.br/editais/30-2026-selecao-de-participantes-do-programa-acredita-no-primeiro-passo-em-caxias-ma FADEX
+A8. Inscrição online ou presencial: SIM — «por meio de formulário digital» / «Presencialmente» — https://www.fadex.org.br/api/arquivos/publico/editais/1795468368207-7epzqg27-edital-30.2026-participantes-escola-duque-de-caxias.pdf fadex.org.br
+
+O formulário indicado no edital é https://forms.gle/gak9oA9RjipqPcBG9. Os pontos presenciais são as secretarias municipais de Direitos Humanos e de Proteção Social e a Comunidade Batista Missionária. A seleção prioriza o perfil do CadÚnico e aplica a ordem de inscrição como último desempate. O item 6.3 dá o período «19 a 30 de novembro de 2026». O cronograma fixa 23/11 como abertura. fadex.org.br
+
+A9 — FADEX e SETRE · Acredita no Primeiro Passo – Qualifica Piauí
+
+A9. Gratuito: NÃO DIZ
+A9. Inscrição aberta: SIM — «Recebimento contínuo Em andamento A partir de 22/10/2026» — https://www.fadex.org.br/editais/29-2026-edital-de-selecao-de-participantes-para-o-programa-acredita-no-primeiro-passo-qualifica-piaui FADEX
+A9. Sem disputa: SIM — «classificação pela ordem cronológica de inscrição» — https://www.fadex.org.br/api/arquivos/publico/editais/antigos/88f8ead18afd21344d8247b62bbb7c074c670dbd98906db487874c068f4d0b5c.pdf fadex.org.br
+A9. Aberto ao público: SIM — «Estar regularmente inscrito(a) no CadÚnico» — https://www.fadex.org.br/api/arquivos/publico/editais/antigos/88f8ead18afd21344d8247b62bbb7c074c670dbd98906db487874c068f4d0b5c.pdf fadex.org.br
+A9. Datas e locais das primeiras turmas: NÃO DIZ — «será divulgada nos canais oficiais do Programa» — https://www.fadex.org.br/api/arquivos/publico/editais/antigos/88f8ead18afd21344d8247b62bbb7c074c670dbd98906db487874c068f4d0b5c.pdf fadex.org.br
+
+O Edital 29/2026 declara gratuitas as inscrições e o material listado. A SETRE descreve ofertas gratuitas do Qualifica Piauí em uma publicação sobre turmas anteriores. A gratuidade dos cursos deste edital ficou sem confirmação. fadex.org.br
+Parte B — Centro-Oeste
+Não tive acesso ao catálogo do site para confirmar quais ofertas já estão cadastradas.
+
+B1. EJA 2027/1 — Seduc Goiás — Rede estadual de Goiás
+gratuito: «assegurarão gratuitamente aos jovens e aos adultos» — https://legis.senado.gov.br/norma/551270/publicacao/34619663 Senado Federal
+inscrições: «de 09/11/2026 a 30/11/2026» — https://portaleduca.educacao.go.gov.br/matricula/matricula-2027-1 Portal Educa
+seleção: «conforme as vagas disponíveis» — https://portaleduca.educacao.go.gov.br/matricula/matricula-2027-1 Portal Educa
+público: «EJA – Ensino Fundamental: 15 anos;» / «EJA – Ensino Médio: 18 anos.» — https://portaleduca.educacao.go.gov.br/matricula/matricula-2027-1 Portal Educa
+
+B2. EJA 2027 — Secretaria Municipal de Educação — Goiânia/GO
+gratuito: «assegurarão gratuitamente aos jovens e aos adultos» — https://legis.senado.gov.br/norma/551270/publicacao/34619663 Senado Federal
+inscrições: «Solicitação de vagas – Ensino Fundamental e EJA: 04/01/2027, às 12h» — https://sme.goiania.go.gov.br/site/index.php/institucional/ultimas-noticias/3320-prefeitura-de-goiania-divulga-cronograma-de-matriculas-para-o-ano-letivo-de-2027 sme.goiania.go.gov.br
+seleção: NÃO DIZ — https://sme.goiania.go.gov.br/site/index.php/institucional/ultimas-noticias/3320-prefeitura-de-goiania-divulga-cronograma-de-matriculas-para-o-ano-letivo-de-2027
+público: «jovens, adultos e idosos» — https://sme.goiania.go.gov.br/site/index.php/institucional/ultimas-noticias/3147-prefeitura-de-goiania-intensifica-busca-ativa-para-matriculas-na-eja-2 sme.goiania.go.gov.br
+
+B3. Técnico em Agropecuária integrado ao Ensino Médio — IFMT — Santo Antônio de Leverger/MT Campus São Vicente
+gratuito: «todos os nossos cursos de nível médio» / «são gratuitos.» — https://ifmt.edu.br/estude-no-ifmt/sobre/ IFMT
+inscrições: «entre os dias 23 de novembro e 08 de dezembro de 2026» — https://svc.ifmt.edu.br/campus-sao-vicente-abre-45-vagas-remanescentes-para-o-curso-tecnico-em-agropecuaria-integrado-ao-ensino-medio/ Campus São Vicente
+seleção: «Sorteio público eletrônico» — https://svc.ifmt.edu.br/campus-sao-vicente-abre-45-vagas-remanescentes-para-o-curso-tecnico-em-agropecuaria-integrado-ao-ensino-medio/ Campus São Vicente
+público: «Ter concluído o Ensino Fundamental ou equivalente» — https://svc.ifmt.edu.br/campus-sao-vicente-abre-45-vagas-remanescentes-para-o-curso-tecnico-em-agropecuaria-integrado-ao-ensino-medio/ Campus São Vicente
+
+B4. Técnico em Alimentos integrado ao Ensino Médio — IFMT — Rondonópolis/MT
+gratuito: «todos os nossos cursos de nível médio» / «são gratuitos.» — https://ifmt.edu.br/estude-no-ifmt/sobre/ IFMT
+inscrições: «de 23 de novembro a 08 de dezembro de 2026» — https://roo.ifmt.edu.br/ingresso-2027-1-lancado-edital-com-26-vagas-remanescentes-para-cursos-tecnicos-integrados-no-campus-rondonopolis/ Campus Rondonópolis
+seleção: «por meio de Sorteio Público» — https://roo.ifmt.edu.br/ingresso-2027-1-lancado-edital-com-26-vagas-remanescentes-para-cursos-tecnicos-integrados-no-campus-rondonopolis/ Campus Rondonópolis
+público: «ter concluído o ensino fundamental ou equivalente» — https://roo.ifmt.edu.br/ingresso-2027-1-lancado-edital-com-26-vagas-remanescentes-para-cursos-tecnicos-integrados-no-campus-rondonopolis/ Campus Rondonópolis
+
+B5. Rematrícula na EJA 2027 — Secretaria Municipal de Educação — Corumbá/MS
+gratuito: «assegurarão gratuitamente aos jovens e aos adultos» — https://legis.senado.gov.br/norma/551270/publicacao/34619663 Senado Federal
+inscrições: «Educação de Jovens e Adultos (EJA): de 1º a 18 de dezembro» — https://corumba.ms.gov.br/noticias/rematricula-na-rede-municipal-de-corumba-segue-aberta-confira-prazos corumba.ms.gov.br
+seleção: NÃO DIZ — https://corumba.ms.gov.br/noticias/rematricula-na-rede-municipal-de-corumba-segue-aberta-confira-prazos
+público: «para estudantes da 1ª à 4ª fase.» — https://corumba.ms.gov.br/noticias/rematricula-na-rede-municipal-de-corumba-segue-aberta-confira-prazos corumba.ms.gov.br
+
+Em Mato Grosso do Sul, o prazo de Corumbá é para renovação. A Escola Funsat anunciou Informática Básica, Marido de Aluguel e Reparos Elétricos gratuitos em Campo Grande, com inscrições pelo WhatsApp, mas sem datas de inscrição publicadas. corumba.ms.gov.br
+
+B6. Técnico em Marketing integrado à EJA — IFB — Brasília/DF
+gratuito: «todos gratuitos.» — https://www.ifb.edu.br/estude-no-ifb/noticias/49036-ifb-esta-com-vagas-abertas-para-cursos-2027-1 ifb.edu.br
+inscrições: «11 de dezembro de 2026 a 22 de janeiro de 2027» — https://www.ifb.edu.br/brasilia/49096-inscricoes-abertas-para-o-curso-eja-marketing-2027 EJA-EPT
+seleção: «A seleção das pessoas candidatas será realizada por meio de submissão documental» — https://www.ifb.edu.br/attachments/article/49096/Edital%2044.2026%20-%20EJA%20EPT%20T%C3%A9cnico%20em%20Marketing.pdf ifb.edu.br
+público: «documento de conclusão do Ensino Fundamental» / «idade mínima de 18 anos» — https://www.ifb.edu.br/brasilia/49096-inscricoes-abertas-para-o-curso-eja-marketing-2027 EJA-EPT
+
+B7. Técnico em Edificações integrado à EJA — IFB — Samambaia/DF
+gratuito: «todos gratuitos.» — https://www.ifb.edu.br/estude-no-ifb/noticias/49036-ifb-esta-com-vagas-abertas-para-cursos-2027-1 ifb.edu.br
+inscrições: «21/12/2026 a 22/1/2027» — https://www.ifb.edu.br/samambaia/49122-curso-tecnico-em-edificacoes-eja-ept-2027 EJA-EPT 2027
+seleção: «A seleção das pessoas candidatas será realizada por meio de submissão documental» — https://www.ifb.edu.br/attachments/article/49122/Edital%2026_2026%20-%20DGSA_RIFB_IFBRASILIA%20%20-Processo%20Seletivo%20para%20PROEJA%20em%20Edifica%C3%A7%C3%B5es%20CSAM.pdf ifb.edu.br
+público: «documento de conclusão do Ensino Fundamental» / «idade mínima de 18 anos» — https://www.ifb.edu.br/samambaia/49122-curso-tecnico-em-edificacoes-eja-ept-2027 EJA-EPT 2027
+
+B8. Técnico em Produção de Áudio e Vídeo integrado à EJA — IFB — Recanto das Emas/DF
+gratuito: «todos gratuitos.» — https://www.ifb.edu.br/estude-no-ifb/noticias/49036-ifb-esta-com-vagas-abertas-para-cursos-2027-1 ifb.edu.br
+inscrições: «11 de dezembro de 2026 a 22 de janeiro de 2027» — https://www.ifb.edu.br/recantodasemas/49052-processo-seletivo-para-ingresso-no-curso-tecnico-em-producao-de-audio-e-video-eja-ept EJA-EPT
+seleção: «A seleção das pessoas candidatas será realizada por meio de submissão documental» — https://www.ifb.edu.br/attachments/article/49052/EDITAL_45_EJA.pdf ifb.edu.br
+público: «documento de conclusão do Ensino Fundamental» / «idade mínima de 18 anos» — https://www.ifb.edu.br/recantodasemas/49052-processo-seletivo-para-ingresso-no-curso-tecnico-em-producao-de-audio-e-video-eja-ept EJA-EPT
+Páginas oficiais de vagas gratuitas
+UF	Entidade	Página
+GO	Senac	Programa Senac de Gratuidade — Consulta de Vagas. O portal abriu. O destino da consulta não abriu. Senac Goiás
+GO	SENAI	O Portal da Transparência não abriu. O relatório oficial do SENAI Goiás comprova a Gratuidade Regimental. A página de vagas ficou sem confirmação. senaigoias.com.br
+MT	Senac	Portal PSG — Consulta de Vagas. mt.senac.br
+MT	SENAI	Gratuidade — Oportunidades. transparencia.senaimt.ind.br
+MS	Senac	Programa Senac de Gratuidade — Consulta de Vagas. ms.senac.br
+MS	SENAI	Gratuidade — Oportunidades. SENAI MS
+DF	Senac	A página Programa de Bolsas não abriu. O endereço consta no edital oficial do Senac-DF. DF
+DF	SENAI	Programa Senai de Gratuidade Regimental — Inscrições. sistemafibra.org.br

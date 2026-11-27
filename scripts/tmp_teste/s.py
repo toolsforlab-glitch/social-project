@@ -1,25 +1,34 @@
-import re, sys
+import re, sys, io, json
 sys.stdout.reconfigure(line_buffering=True)
 sys.path.insert(0, ".")
 from comum import baixar
 from base import texto_de_html
-U = [
- "https://www.go.senac.br/", "https://www.go.senac.br/psg/", "https://www.go.senac.br/capacitarse", "https://www.go.senac.br/cursos-gratuitos/",
- "https://www.df.senac.br/cursos-gratuitos", "https://www.df.senac.br/",
- "https://www.mt.senac.br/", "https://www.mt.senac.br/psg",
- "https://www.ms.senac.br/cursos-gratuitos", "https://ww3.ms.senac.br/", "https://www.ms.senac.br/",
- "https://senaigo.com.br/", "https://www.senaidf.org.br/", "https://www.senaimt.ind.br/", "https://www.ms.senai.br/",
- "https://www.ifg.edu.br/", "https://selecao.ifg.edu.br/", "https://www.ifgoiano.edu.br/", "https://selecao.ifmt.edu.br/", "https://selecao.ifms.edu.br/", "https://www.ifb.edu.br/",
- "https://goias.gov.br/", "https://www.agenciabrasilia.df.gov.br/", "https://www.mt.gov.br/", "https://www.ms.gov.br/",
- "https://www.goiania.go.gov.br/", "https://www.cuiaba.mt.gov.br/", "https://www.campogrande.ms.gov.br/",
-]
-for u in U:
+from pypdf import PdfReader
+def ler(u, pdf=False):
+    b = baixar(u, timeout=20)
+    if b[:4] == b"%PDF":
+        return re.sub(r"\s+", " ", "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(b)).pages))
+    return re.sub(r"\s+", " ", texto_de_html(b))
+def ver(u, pats, n=260):
     try:
-        b = baixar(u, timeout=15)
-        h = b.decode("utf-8", "replace"); t = texto_de_html(b)
-        tit = (re.search(r"<title[^>]*>([^<]{0,90})", h, re.I) or [None, ""])[1].strip()
-        kw = sorted(set(m.group(0).lower() for m in re.finditer(r"gratuit\w*|gratuidade|psg|inscri\w+ abert\w*|edita\w+|wp-json|rest_route", t + h, re.I)))[:8]
-        links = [l for l in dict.fromkeys(re.findall(r'href="([^"]+)"', h)) if re.search(r"gratu|psg|edita|curso|selec|capacit|inscri", l, re.I)][:12]
-        print(f"\nOK {u} | {len(b)} B | {tit} | {kw}\n   {links}")
+        t = ler(u)
     except Exception as e:
-        print(f"\nFALHA {u} | {type(e).__name__} {str(e)[:70]}")
+        print(f"\n## {u} FALHA {type(e).__name__} {str(e)[:60]}"); return
+    print(f"\n## {u} ({len(t)} chars)")
+    for p in pats:
+        for m in list(re.finditer(p, t, re.I))[:2]:
+            print(f"  [{p[:20]}] …{t[max(0,m.start()-n):m.end()+n]}")
+ver("https://portaleduca.educacao.go.gov.br/matricula/matricula-2027-1", [r"09/11/2026", r"EJA", r"conforme as vagas"])
+ver("https://sme.goiania.go.gov.br/site/index.php/institucional/ultimas-noticias/3320-prefeitura-de-goiania-divulga-cronograma-de-matriculas-para-o-ano-letivo-de-2027", [r"EJA", r"04/01/2027"])
+for u in ["https://www.ifb.edu.br/attachments/article/49096/Edital%2044.2026%20-%20EJA%20EPT%20T%C3%A9cnico%20em%20Marketing.pdf",
+          "https://www.ifb.edu.br/attachments/article/49052/EDITAL_45_EJA.pdf"]:
+    ver(u, [r"submiss[ãa]o documental", r"classifica[çc][ãa]o", r"sorteio", r"ordem de", r"gratuit", r"inscri[çc][õo]es ser[ãa]o", r"per[íi]odo de inscri"], 300)
+try:
+    j = json.loads(baixar("https://psg.se.senac.br/api/course/filter?page=1&limit=50", timeout=20))
+    print("\n## Senac SE API meta:", j.get("meta"), "| itens:", len(j.get("data") or j.get("items") or []))
+    its = j.get("data") or j.get("items") or []
+    for x in its[:8]: print("   ", json.dumps(x, ensure_ascii=False)[:400])
+except Exception as e:
+    print("Senac SE API FALHA", type(e).__name__, e)
+ver("https://goias.gov.br/governo-abre-selecao-com-810-vagas-em-cursos-tecnicos-gratuitos-para-2027/", [r"inscri[çc]", r"sele[çc][ãa]o", r"prova|sorteio|an[áa]lise"])
+ver("https://www.agenciabrasilia.df.gov.br/w/projeto-jornada-da-mulher-trabalhadora-reabre-inscricoes-para-cursos-de-qualificacao", [r"inscri[çc]", r"gratuit", r"cursos?"])

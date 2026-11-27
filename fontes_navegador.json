@@ -12,6 +12,16 @@
    "nota": "Só abre com IP do Brasil. A lista «Turmas Abertas» marca as turmas gratuitas com «Grátis»; cada «+Detalhe» (/Cursos/Detalhe/<n>) diz «GRATUITA», período de inscrição, período do curso, vagas, turno, local e pré-requisitos. Um curso por nome no site (Link = a lista; Página do curso = a 1.ª turma); as turmas na descrição. Cursos já criados a 26/11/2026: Informática Básica (Estância), Word e Excel Avançados (Estância), Eletricista Industrial (Aracaju)."
   },
   {
+   "nome": "FADEX – editais com inscrições abertas (Acredita no Primeiro Passo, PI e MA)",
+   "url": "https://www.fadex.org.br/editais?prazo=abertos",
+   "tipo": "lista",
+   "local": "BR-PI",
+   "regiao": "Piauí",
+   "cidade": "",
+   "entidade": "FADEX (Fundação de apoio da UFPI), com o Governo do Piauí (SETRE) e o IFMA",
+   "nota": "Recusa o GitHub (erro 405). Interessam os «Processos seletivos» de participantes do programa «Acredita no Primeiro Passo» (cursos presenciais para quem está no CadÚnico, no Piauí e no Maranhão). Cada edital tem página própria com datas e o botão «Baixar o edital»; o texto do PDF pode ler-se na página (descompactar os fluxos do PDF). Já tratados a 27/11/2026: Edital 29/2026 (Qualifica Piauí, fluxo contínuo, criado no site); Edital 30/2026 (Caxias/MA, PDF sem texto: auditoria do ChatGPT); Editais 31 a 38/2026 (litoral do Piauí, encerrados a 20/11)."
+  },
+  {
    "nome": "Seduc Piauí – editais (Mais Formação, Mais Renda; Mulheres Mil)",
    "url": "https://seduc.pi.gov.br/editais",
    "tipo": "editais",

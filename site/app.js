@@ -607,7 +607,12 @@
       var total = todos.length;
       var online = todos.filter(function (c) { return c.modalidade === "online"; }).length;
       var cert = todos.filter(function (c) { return c.certificado === "gratuito"; }).length;
-      var pct = function (n) { return total ? Math.round(n * 100 / total) + "%" : "0%"; };
+      // uma casa decimal, para uma faixa com cursos nunca aparecer como 0% (pedido do responsável, 27/11/2026)
+      var pct = function (n) {
+        if (!total || !n) return "0%";
+        var v = n * 100 / total;
+        return v < 0.05 ? "<0,1%" : v.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+      };
       var quando = d.atualizado ? dataBonita(d.atualizado.slice(0, 10)) + ", às " + d.atualizado.slice(11, 16) : "";
       el("numeros-data").textContent = "Lista atualizada em " + quando + ".";
       el("numeros-cartoes").innerHTML = [[total, "cursos com inscrições abertas"], [total - online, "presenciais (" + pct(total - online) + ")"],
@@ -622,10 +627,9 @@
         faixas[i][1]++;
       });
       el("numeros-duracao").innerHTML = faixas.map(function (f) {
-        var p = total ? Math.round(f[1] * 100 / total) : 0;
         // o fundo da barra é o total (100%); a parte azul é a parcela desta faixa (pedido do responsável, 25/11/2026)
         return '<div class="barra"><span>' + esc(f[0]) + '</span><span class="barra-fundo"><span class="barra-cheia" style="width:' + (total ? f[1] * 100 / total : 0).toFixed(1) + '%"></span></span>' +
-          '<span class="barra-valor">' + p + "% (" + f[1] + ")</span></div>";
+          '<span class="barra-valor">' + pct(f[1]) + " (" + f[1] + ")</span></div>";
       }).join("");
       var porUf = {}, ativos = {};
       (site.locais || []).forEach(function (l) { if (/^BR-/.test(l.id)) ativos[l.id.slice(3)] = 1; });

@@ -34,6 +34,8 @@ import urllib.parse
 import zipfile
 import html as _html
 
+DIAS_POR_ABRIR = 60  # cursos «por abrir» aparecem até 60 dias antes da abertura (app.js usa o mesmo número)
+
 from base import (registar_pendencia, HISTORICO, frase_de_gratuidade, gratuidade_comprovada, gratuidade_explicita, VERIFICACAO_INICIAL, Base, carregar_config, citacao_valida, etiquetas_acessibilidade,
                   perfis_da_frase, sim)
 from comum import ErroClaude, baixar, claude, custo_estimado, extrair_json, gravar_json, ler_json
@@ -1638,10 +1640,26 @@ def correr(fonte):
     for curso, sit, est in turmas_finais.values():
         if est == "Publicado" and sit == "Aberta":
             abertas[curso] = abertas.get(curso, 0) + 1
+    # cursos «por abrir» (regra I3/M5, 25/11/2026; aplicada aqui a 27/11/2026): sem turma aberta, mas com turma
+    # publicada cuja inscrição começa nos próximos DIAS_POR_ABRIR dias, com a frase do período no edital
+    limite_abertura = (datetime.date.fromisoformat(hoje) + datetime.timedelta(days=DIAS_POR_ABRIR)).isoformat()
+
+    def _ini_frase(t):
+        m = re.search(r"Inscrições de (\d{2})/(\d{2})/(\d{4})", t.get("Mais informações") or "")
+        f = re.match(r"«([^»]+)»", t.get("Evidência") or "")
+        return (f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else "", f.group(1) if f else "")
+    info_turma = {l: _ini_frase(t) for l, t in existentes.items()}
+    info_turma.update({n["Link da turma"]: _ini_frase(n) for n in novas})
+    por_abrir = {}
+    for l, (curso, sit, est) in turmas_finais.items():
+        ini, fr = info_turma.get(l, ("", ""))
+        if est == "Publicado" and sit == "Por abrir" and ini and fr and hoje < ini <= limite_abertura:
+            if curso not in por_abrir or ini < por_abrir[curso][0]:
+                por_abrir[curso] = (ini, fr, l.split("#")[0])
     nota = (f"{hoje}: publicado automaticamente: turma aberta aprovada na auditoria e edital do Programa Senac de "
             "Gratuidade (sem frase de gratuidade, o site mostra “Gratuidade por confirmar”).")
     for n in cursos_novos:
-        if abertas.get(n["ID"]) and ("gratuito" in n["Campos comprovados"] or "programa" in n["Campos comprovados"]):
+        if (abertas.get(n["ID"]) or por_abrir.get(n["ID"])) and ("gratuito" in n["Campos comprovados"] or "programa" in n["Campos comprovados"]):
             n["Estado"], n["Nota da verificação"] = "Publicado", nota
     alteracoes_cursos = []
     for r in linhas_cursos:
@@ -1671,10 +1689,19 @@ def correr(fonte):
             evid = campos.get("Evidência", r.get("Evidência") or "")
             campos.update({"Campos comprovados": comprovados,
                            "Evidência": (evid + " | " if evid else "") + f"acessibilidade: «{frase_acess}»"})
-        nova = "Aberto" if abertas.get(r["ID"].strip()) else "Encerrado"
+        pa = por_abrir.get(r["ID"].strip())
+        nova = "Aberto" if abertas.get(r["ID"].strip()) else "Por abrir" if pa else "Encerrado"
         if nova != r.get("Situação das inscrições"):
             campos["Situação das inscrições"] = nova
-        if (r.get("Estado") == "Novo" and r.get("Origem") == "turmas" and abertas.get(r["ID"].strip())
+        if nova == "Por abrir":
+            if (r.get("Inscrições abrem em") or "") != pa[0]:
+                campos["Inscrições abrem em"] = pa[0]
+            if "abertura" not in comprovados.split(", "):
+                comprovados = ", ".join([c for c in comprovados.split(", ") if c] + ["abertura"])
+                evid = campos.get("Evidência", r.get("Evidência") or "")
+                campos.update({"Campos comprovados": comprovados,
+                               "Evidência": ((evid + " | ") if evid else "") + f"abertura: «{pa[1]}» ({pa[2]})"})
+        if (r.get("Estado") == "Novo" and r.get("Origem") == "turmas" and (abertas.get(r["ID"].strip()) or pa)
                 and ("gratuito" in comprovados or "programa" in comprovados) and not sim(r.get("Mudança a rever"))):
             campos.update({"Estado": "Publicado", "Nota da verificação": nota})
         if campos:

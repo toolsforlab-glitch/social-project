@@ -410,10 +410,16 @@
     var m = /(\d+(?:[.,]\d+)?)\s*(h\b|h\/|horas?)/i.exec(c.duracao || "");
     return m ? parseFloat(m[1].replace(",", ".")) : null;
   }
+  // faixas de duração (em horas). «longo» (mais de 20 h) fica só para links antigos; as faixas longas foram
+  // divididas a pedido do responsável (27/11/2026), porque há cursos de 160, 240 horas e técnicos de 800 horas ou mais.
+  var FAIXAS_DURACAO = [["curto", "Até 4 horas", 0, 4], ["medio", "De 5 a 20 horas", 4, 20], ["h40", "De 21 a 40 horas", 20, 40],
+    ["h80", "De 41 a 80 horas", 40, 80], ["h160", "De 81 a 160 horas", 80, 160], ["h400", "De 161 a 400 horas", 160, 400],
+    ["h400mais", "Mais de 400 horas (cursos técnicos)", 400, Infinity], ["longo", "Mais de 20 horas", 20, Infinity]];
   function naDuracao(c, faixa) {
     var h = horasDe(c);
     if (h === null) return false;
-    return faixa === "curto" ? h <= 4 : faixa === "medio" ? h > 4 && h <= 20 : h > 20;
+    var f = FAIXAS_DURACAO.filter(function (x) { return x[0] === faixa; })[0];
+    return f ? h > f[2] && h <= f[3] : true;
   }
   function marcasDe(c) {
     return (c.certificado === "gratuito" ? ["cert-gratuito"] : [])
@@ -608,8 +614,13 @@
         [online, "on-line (" + pct(online) + ")"], [cert, "com certificado gratuito (" + pct(cert) + ")"]].map(function (x) {
         return '<div class="numero-cartao"><b>' + x[0].toLocaleString("pt-BR") + "</b><span>" + esc(x[1]) + "</span></div>";
       }).join("");
-      var faixas = [["Até 4 horas", 0], ["De 5 a 20 horas", 0], ["Mais de 20 horas", 0], ["Não informada", 0]];
-      todos.forEach(function (c) { var h = horas(c); faixas[h === null ? 3 : h <= 4 ? 0 : h <= 20 ? 1 : 2][1]++; });
+      var limites = FAIXAS_DURACAO.filter(function (x) { return x[0] !== "longo"; });
+      var faixas = limites.map(function (x) { return [x[1], 0]; }).concat([["Não informada", 0]]);
+      todos.forEach(function (c) {
+        var h = horas(c), i = limites.length;
+        if (h !== null) limites.forEach(function (x, k) { if (h > x[2] && h <= x[3]) i = k; });
+        faixas[i][1]++;
+      });
       el("numeros-duracao").innerHTML = faixas.map(function (f) {
         var p = total ? Math.round(f[1] * 100 / total) : 0;
         // o fundo da barra é o total (100%); a parte azul é a parcela desta faixa (pedido do responsável, 25/11/2026)
@@ -734,7 +745,11 @@
     var certificado = el("cursos-certificado");
     var duracao = el("cursos-duracao");
     if (certificado) certificado.checked = params.get("certificado") === "gratuito" || marcaEscolhida === "cert-gratuito";
-    if (duracao && ["curto", "medio", "longo"].indexOf(params.get("duracao")) >= 0) duracao.value = params.get("duracao");
+    if (duracao && params.get("duracao") === "longo" && !duracao.querySelector('option[value="longo"]')) {
+      // link antigo com «Mais de 20 horas»: a opção volta a aparecer só para este link
+      var opt = document.createElement("option"); opt.value = "longo"; opt.textContent = "Mais de 20 horas"; duracao.appendChild(opt);
+    }
+    if (duracao && FAIXAS_DURACAO.some(function (x) { return x[0] === params.get("duracao"); })) duracao.value = params.get("duracao");
     if (marcaEscolhida === "cert-gratuito") marcaEscolhida = "";  // links antigos: agora é o filtro «Certificado»
     var marcaSumiu = "";  // marca de um link antigo que já nenhum curso tem
     var cidade = el("cursos-cidade");

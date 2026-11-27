@@ -334,7 +334,7 @@ Critérios do responsável: só instituições conceituadas (órgãos e escolas 
 | Estado | Programa (instituição) | Presencial | Seleção | GitHub |
 |---|---|---|---|---|
 | Rede federal | Cursos FIC, técnicos subsequentes e EJA dos IF (IFRN, IFCE, IFS, IFBA, IF Baiano, IFPB, IFPE, IFAL) | sim | sorteio ou ordem de inscrição (conferir por edital; ex.: o PSCT do IFPB usa notas → fica fora) | abre (IFRN tem um portal único de processos seletivos); IFMA e IFPI bloqueiam |
-| MA | IEMA Vocacional – FIC e oficinas (Governo do MA) | sim | inscrição na unidade | site bloqueia (403) |
+| MA | IEMA Vocacional – FIC e oficinas (Governo do MA) | sim | ordem de manifestação de interesse (Edital geral 13/2026, item 4.5) | a API do site abre (`?rest_route=`); lida todos os dias em `noticias_oficiais.py`. 27/11: nenhum edital complementar de oferta aberto; o IEMA publicou editais de FIC em novembro de 2024 e de 2025 |
 | PI | SEDUC-PI – Mais Formação, Mais Renda (FIC e técnicos) e Mulheres Mil | sim | a conferir | site não responde |
 | BA | SEC-BA – técnicos subsequentes (sorteio eletrônico) e FIC Pronatec | sim | sorteio | abre |
 | SE | SEED-SE – técnicos subsequentes; Primeiro Emprego (Governo + UFS, com bolsa; seleção por critérios: idade, renda) | sim | a conferir / prioridade | abre |

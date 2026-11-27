@@ -76,15 +76,18 @@ FONTES = [
      "regiao": "Tocantins", "cidade": "Palmas", "entidade": "Prefeitura de Palmas"},
     # Maranhão e Pernambuco (26/11/2026). IEMA (Instituto Estadual de Educação, Ciência e Tecnologia do Maranhão):
     # publica no seu site (WordPress; a API só abre com ?rest_route=) editais de cursos FIC e de qualificação nas
-    # Unidades Vocacionais, várias vezes por ano (ex.: Editais 08, 09, 13 e 18/2026). Nenhum foi tratado à mão, daí
+    # Unidades Vocacionais, várias vezes por ano (ex.: Editais 08, 09, 13 e 18/2026). O Edital 13/2026 é um edital GERAL
+    # (vigente até 31/12/2026, prorrogável 6 meses): as vagas saem em «Editais Complementares de Oferta», preenchidas por
+    # ordem de manifestação de interesse (item 4.5); daí a pesquisa «vocacional» e «edital complementar» no filtro (27/11).
+    # Nenhum foi tratado à mão, daí
     # «primeira_leitura_cria». SEDEPE (Secretaria de Desenvolvimento Econômico de Pernambuco): notícias do Qualifica PE
     # (o portal do programa não abre a partir do GitHub; o site da SEDEPE abre).
     {"nome": "IEMA – editais de cursos FIC",
      "api": "https://iema.ma.gov.br/?rest_route=/wp/v2/posts&search={q}&per_page=20&_fields=date,link,title",
-     "pesquisas": ["formação inicial e continuada", "qualificação profissional", "vagas ociosas", "curso de libras"],
+     "pesquisas": ["formação inicial e continuada", "qualificação profissional", "vagas ociosas", "curso de libras", "vocacional"],
      "local": "BR-MA", "regiao": "Maranhão", "cidade": "",
      "entidade": "IEMA – Instituto Estadual de Educação, Ciência e Tecnologia do Maranhão",
-     "incluir": r"forma[çc][ãa]o inicial e continuada|\bFICs?\b|qualifica[çc][ãa]o profissional|vagas ociosas|curso (?:b[áa]sico|intermedi[áa]rio)",
+     "incluir": r"forma[çc][ãa]o inicial e continuada|\bFICs?\b|qualifica[çc][ãa]o profissional|vagas ociosas|curso (?:b[áa]sico|intermedi[áa]rio)|edital complementar|unidade vocacional|iema idiomas",
      "primeira_leitura_cria": True},
     {"nome": "Governo de Pernambuco – SEDEPE (Qualifica PE)",
      "api": "https://www.sedepe.pe.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",

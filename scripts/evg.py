@@ -143,15 +143,24 @@ def main():
     print(f"Catálogo da EV.G: {len(todos)} cursos.")
 
     linhas = base.tabela("Cursos")
-    alteracoes, historico, conhecidos = [], [], set()
+    alteracoes, historico, conhecidos, visiveis = [], [], set(), {}
     # 1. cursos da EV.G já na folha
     for r in linhas:
         cid, slug = id_ou_slug((r.get("Página do curso") or "").strip() or r.get("Link", ""))
         if cid is None and not slug:
             continue
         c = por_id.get(cid) if cid is not None else por_slug.get(slug)
+        if c and r.get("Estado") in ("Publicado", "Novo") and int(c["id_curso"]) in visiveis:
+            # 27/11/2026 (revisão T15): o mesmo curso da EV.G estava 3 vezes no site, com títulos diferentes.
+            # A segunda linha visível do mesmo curso fica oculta; vale a primeira.
+            alteracoes.append((r["_linha"], {"Estado": "Oculto", "Notas": ((r.get("Notas") or "") +
+                               f" {hoje}: Oculto — repetido de {visiveis[int(c['id_curso'])]} (mesmo curso na API da EV.G).").strip()}))
+            print(f"  ~ {r['Título'][:60]}: repetido de {visiveis[int(c['id_curso'])]}, fica oculto")
+            continue
         if c:
             conhecidos.add(int(c["id_curso"]))
+            if r.get("Estado") in ("Publicado", "Novo"):
+                visiveis[int(c["id_curso"])] = r.get("ID", "")
         if r.get("Estado") == "Oculto" or (r.get("Revisto por pessoa") or "").strip() or not c:
             continue
         try:

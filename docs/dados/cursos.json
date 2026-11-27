@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T13:47",
+ "atualizado": "2026-11-27T14:32",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -55777,6 +55777,66 @@
     }
    ],
    "vagas": "ordem",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-5c9f0969",
+   "titulo": "Libras Básico I (Língua Brasileira de Sinais) – IFRO Ji-Paraná",
+   "entidade": "IFRO – Instituto Federal de Rondônia (Campus Ji-Paraná, Centro de Idiomas)",
+   "url": "https://selecao.ifro.edu.br/extensao-jiparana/2102-edital-n-52-2026-selecao-de-estudantes-curso-de-libras-basico-i-2027-1",
+   "pagina_propria": true,
+   "local": "BR-RO",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Rondônia",
+   "cidade": "Ji-Paraná",
+   "descricao": "Curso gratuito de Libras (nível básico I), com 40 horas, no IFRO de Ji-Paraná. São 20 vagas, preenchidas por ordem de inscrição. As aulas são às sextas-feiras, das 19h às 22h30, a partir de 5 de fevereiro de 2027.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "O pré-requisito de acesso para o curso é o Ensino Fundamental II completo (9º ano).",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2026-12-11",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Por abrir",
+   "abertura": "2026-11-30",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "2027-02-05",
+   "duracao": "40 horas",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "De 30/11 a 11/12/2026, preencha a ficha de matrícula (Anexo I do edital) e junte num só PDF: documento com foto, CPF, comprovante de residência, certidão de nascimento ou casamento, comprovante do 9º ano e uma foto 3x4.",
+    "Envie tudo pelo formulário do Google Forms (https://forms.gle/Q4YsG1ibnapzmktT8).",
+    "Acompanhe o resultado na página do edital (17/12 preliminar, 21/12 final). A matrícula é feita automaticamente com os documentos enviados."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "vagas": "",
    "acessibilidade": []
   }
  ]

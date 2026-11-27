@@ -4,7 +4,7 @@ from comum import baixar
 from base import texto_de_html
 B = "https://ps.ifgoiano.edu.br"
 os.makedirs("../sonda", exist_ok=True)
-for n in [708, 707, 716]:
+for n in [708, 716]:
     links = []
     for suf in ["", "?page=2", "?page=3"]:
         try:
@@ -12,9 +12,10 @@ for n in [708, 707, 716]:
             h = h.decode("utf-8", "replace")
         except Exception as e:
             print(n, suf, "ERRO", e); continue
+        if suf == "" and n == 716: print("HREFS", re.findall(r'href=["\']([^"\']+)', h)[:80])
         if suf == "":
             open(f"../sonda/v{n}.txt", "w").write(texto_de_html(h))
-        for m in re.findall(r'href="(/media/anexos_edital/[^"]+)"', h):
+        for m in re.findall(r'(?:https://ps\.ifgoiano\.edu\.br)?(/media/anexos_edital/[^"\' >]+)', h):
             if m not in links: links.append(m)
     print(n, "anexos:", len(links))
     for l in links:

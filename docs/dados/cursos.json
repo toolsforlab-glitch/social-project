@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T12:00",
+ "atualizado": "2026-11-27T12:54",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -53542,6 +53542,67 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-53299594",
+   "titulo": "Cursos técnicos na Escola Barão de Parima (Agronegócio, Informática, Marketing, Recursos Humanos, Logística e Administração)",
+   "entidade": "Governo de Roraima – Escola Estadual de Educação Profissional e Tecnológica Barão de Parima",
+   "url": "https://portal.rr.gov.br/escola-barao-de-parima-abre-matriculas-para-cursos-tecnicos-gratuitos-em-boa-vista/",
+   "pagina_propria": true,
+   "local": "BR-RR",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Roraima",
+   "cidade": "Boa Vista",
+   "descricao": "A Escola Estadual de Educação Profissional e Tecnológica Barão de Parima abrirá, de 03 a 27 de novembro, novas matrículas para cursos técnicos gratuitos em Boa Vista. São ofertados cursos técnicos em Agronegócio, Informática, Marketing, Recursos Humanos, Logística e Administração.",
+   "descricao_origem": "pagina",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao",
+    "emprego"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Também é necessário apresentar declaração escolar para quem está cursando ou já concluiu a 2ª série do Ensino Médio, ou histórico escolar para quem já concluiu o ensino médio.",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2026-11-27",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Vá à Escola Barão de Parima: Rua Presidente Castelo Branco, nº 668, bairro Calungá, Boa Vista, das 8h às 18h30, até 27 de novembro.",
+    "Leve os documentos originais e cópias: RG, CPF e comprovante de residência, e a declaração escolar (2ª série do Ensino Médio em curso ou concluída) ou o histórico do ensino médio.",
+    "A matrícula é feita na hora, conforme as vagas. Informações só por mensagem no WhatsApp (95) 98122-2591."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "cursando ou já concluiu a 2ª série do Ensino Médio",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "RG, CPF e comprovante de residência (originais e cópias); declaração escolar ou histórico escolar",
+   "etiquetas": [],
+   "vagas": "sorteio",
    "acessibilidade": []
   }
  ]

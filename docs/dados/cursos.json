@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T15:17",
+ "atualizado": "2026-11-27T15:29",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -56186,6 +56186,68 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-1fba6d23",
+   "titulo": "Acredita no Primeiro Passo – Qualifica Piauí: 8 cursos de qualificação profissional para quem está no CadÚnico",
+   "entidade": "Governo do Piauí (SETRE) e FADEX – Programa Acredita no Primeiro Passo",
+   "url": "https://www.fadex.org.br/editais/29-2026-edital-de-selecao-de-participantes-para-o-programa-acredita-no-primeiro-passo-qualifica-piaui",
+   "pagina_propria": true,
+   "local": "BR-PI",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Piauí",
+   "cidade": "",
+   "descricao": "Cursos presenciais de qualificação profissional para quem está no CadÚnico, em cerca de 30 cidades do Piauí, entre elas Teresina, Parnaíba, Picos, Floriano, Campo Maior e São Raimundo Nonato. Cursos: Saúde Digital, Cuidador Social, Agente Social, Salgadeiro, Instalador de Painéis de Energia Solar, Confeiteiro, Panificação e Maquiagem. Quem participa recebe kit, apostila, uniforme, lanche em cada encontro e certificado.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": false,
+   "necessidades": [
+    "profissao",
+    "emprego",
+    "renda"
+   ],
+   "exclusivo_para": "Estar no CadÚnico e morar numa das cidades do programa",
+   "requisitos": "Ter idade entre 16 (dezesseis) e 65 (sessenta e cinco) anos na data da inscrição\nEstar regularmente inscrito(a) no CadÚnico, com cadastro ativo no momento da inscrição\nResidir em um dos municípios contemplados pelo Programa, relacionados no item 3.2",
+   "certificado": "gratuito",
+   "certificado_comprovado": true,
+   "inscricoes_ate": "",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Preencha o formulário de inscrição indicado no edital (acredita-inscricoes.vercel.app). As inscrições ficam abertas enquanto houver vagas.",
+    "Escolha o curso; pode escolher mais de um, se os horários não coincidirem.",
+    "A cada turma formada, as inscrições são analisadas e classificadas por ordem de inscrição. Os resultados saem no site da FADEX (fadex.org.br) e da SETRE."
+   ],
+   "antes": [],
+   "idade_minima": 16,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "vagas": "ordem",
    "acessibilidade": []
   }
  ]

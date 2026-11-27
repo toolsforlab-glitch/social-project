@@ -449,3 +449,12 @@ por WhatsApp ou na unidade. Fica por encontrar outra fonte (notícias do Senac M
   Agência Brasília.
 - A app Urban VPN para Windows foi instalada a 27/11; o Claude tem acesso para a ligar e desligar quando um site
   bloqueia a VPN (pedido do responsável).
+
+## Auditoria 5 do ChatGPT (Centro-Oeste, 27/11/2026)
+
+Aplicada com as frases conferidas por código (ou pelo Claude no Chrome, no IFMS): 7 cursos técnicos subsequentes do IFMT
+(vagas remanescentes, Edital 234/2026, inscrições até 13/12/2026, sorteio a 17/12); EJA da rede municipal de Goiânia
+(«Por abrir», pedido de vaga a 04/01/2027); local de inscrição do IFB Samambaia (on-line ou presencial) e nota sobre
+Taguatinga; frase de gratuidade do IFMS («Todos os cursos oferecidos são inteiramente gratuitos.», só abre no Chrome
+sem VPN); Jornada da Mulher DF (classificação pelos requisitos do Edital 36/2026, sorteio no empate). Sem resposta útil:
+Senac GO, SENAI GO, Senac MT (as notícias carregam por JavaScript), SER Família Capacita e Senac DF.

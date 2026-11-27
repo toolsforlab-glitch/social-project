@@ -37,7 +37,7 @@ Cursos presenciais visíveis no site a 27/11/2026 entre parênteses (incluem os 
 | **Sergipe** (3) | SENAI SE, Matrícula Web «Turmas Abertas» (só abre com IP do Brasil: tarefa do navegador com VPN, `fontes_navegador.json`) · vigia: Senac SE |
 | **Bahia** (8) | Senac BA, PSG (`senac_ba.py`, código) · Treinar para Empregar, Salvador (`salvador_tpe.py`, código) · vigias: SENAI BA, SEC BA (técnicos por sorteio), IF Baiano, 4 OSCs aprovadas · EJA (lembrete 6/01) |
 | **Piauí** (1) | Senac PI e SENAI PI (`senac_ma.py`, Claude; o Senac PI tem o certificado do site expirado) · Governo do Piauí (notícias oficiais) · FADEX, Acredita no Primeiro Passo (tarefa do navegador) · vigia: Seduc PI (lembretes 1/02 e 3/05) |
-| **Maranhão** (2) | Senac MA e SENAI MA (`senac_ma.py`, Claude) · IEMA, editais FIC (notícias oficiais) |
+| **Maranhão** (3) | Senac MA e SENAI MA (`senac_ma.py`, Claude) · IEMA, editais FIC (notícias oficiais) |
 | **Pará** (103) | Senac PA, PSG (`senac_pa.py`, código) · SENAI PA (`senai_pa.py`, código) |
 | **Amazonas** (1, 1 por abrir) | Cetam (`cetam.py`, código) · Senac AM e SENAI AM (`senac_ma.py`, Claude) · vigias: SENAI AM (chamada pública), OELA |
 | **Amapá** (10, 1 por abrir) | Senac AP e SENAI AP (`senac_ma.py`, Claude) · Ifap ProEJA e EJA estadual (à mão; lembrete 5/01) |
@@ -45,6 +45,10 @@ Cursos presenciais visíveis no site a 27/11/2026 entre parênteses (incluem os 
 | **Rondônia** (4) | IFRO, FIC (`ifro_fic.py`, código) · Programa Vencer, SEAS (vigia) · SENAI RO, Gratuidade Regimental (`senai_ro.py`, código: página + editais de aprendizagem) · Senac RO (`senac_ma.py`, Claude) · IDEP e Prefeitura de Porto Velho (notícias oficiais) |
 | **Roraima** (1) | Escola Barão de Parima (à mão a 27/11) · Senac RR (`senac_rr.py`, código; turmas todas fechadas a 26/11) · Escolegis da ALE-RR e Governo de Roraima (notícias oficiais) |
 | **Tocantins** (1) | Senac TO (`senac_to.py`, código) · Prefeitura de Palmas (notícias oficiais) |
+| **Goiás** (1) | Seduc-GO, EJA (à mão, 27/11) · a fazer: Senac GO, SENAI GO, IFG, IF Goiano, Prefeitura de Goiânia |
+| **Distrito Federal** (1) | Sedet-DF, Jornada da Mulher Trabalhadora (à mão, 27/11) · a fazer: IFB EJA-EPT, Senac DF (bloqueia), SENAI DF |
+| **Mato Grosso** (0) | a fazer: Senac MT (portal PSG), SENAI MT (Gratuidade – Oportunidades), IFMT |
+| **Mato Grosso do Sul** (0) | a fazer: Senac MS, SENAI MS, IFMS (bloqueia GitHub e VPN) |
 | **On-line, todo o Brasil** (674) | Escola Virtual de Governo, Fundação Bradesco, FGV, Escola do Trabalhador 4.0, Aprenda Mais, Sebrae (resumo) · catálogos sob demanda (`catalogo.py`) · pesquisa semanal (`cursos.py`, Claude) |
 
 Todos os estados recebem também a pesquisa semanal (Claude) e a verificação (Claude).

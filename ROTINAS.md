@@ -51,7 +51,7 @@ Todos os estados recebem também a pesquisa semanal (Claude) e a verificação (
 
 **Notícias oficiais** (`noticias_oficiais.py`, lista `FONTES`): leem a página ou a pesquisa do site oficial; uma notícia nova sobre cursos vira um curso «Novo», que a verificação (Claude) ou uma pessoa confere antes de publicar.
 
-**Vigias** (`vigiar.py`): fontes ainda fechadas ou sem lista legível. Avisam nas Pendências quando a página muda.
+**Vigias** (`vigiar.py`): fontes ainda fechadas ou sem lista legível. Avisam nas Pendências quando a página muda. Os vigias do Google Notícias fazem uma pausa de 4 s entre pedidos; num erro 429 esperam e tentam de novo (30, 60, 120 s) e, se o bloqueio continuar, os restantes ficam para o dia seguinte (27/11: 36 falhas numa só rodada antes da correção).
 
 **Não abrem a partir do GitHub** (lidos pela tarefa do navegador; lista em `fontes_navegador.json`): Prefeituras de Boa Vista, Teresina, Aracaju, São Luís e Recife (notícias); Governos de Sergipe, Tocantins, Maranhão e Pernambuco (notícias); Seduc PI; site da Cagece.
 

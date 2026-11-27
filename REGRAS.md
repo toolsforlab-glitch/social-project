@@ -100,7 +100,7 @@ Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, j�
 
 ## 6. Práticas em uso, por confirmar pelo responsável
 
-Nenhuma de momento (P1 virou a regra I8 e P2 entrou na I5, a 27/11).
+- **P3 (27/11). Gratuidade de um instituto federal sem página que o diga**: quando não se acha uma frase da instituição (como no IF Goiano), guarda-se a LDB, art. 3.º, VI («gratuidade do ensino público em estabelecimentos oficiais»), vista no planalto.gov.br, e o cartão diz em «O que falta confirmar» que a frase é da lei. A F6 só previa a LDB para a EJA (art. 37). Usado nos 2 integrados do IF Goiano Porangatu.
 
 ## Correspondência com a numeração antiga (até 26/11)
 

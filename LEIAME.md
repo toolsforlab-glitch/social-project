@@ -385,7 +385,7 @@ Nos outros estados não há OSCs a executar a qualificação estadual: o própri
 ## Centro-Oeste – começo (27/11/2026)
 - **Testado a partir do GitHub**: abrem go.senac.br (página «Programa Senac de Gratuidade»), mt.senac.br/psg (portal em JavaScript), ms.senac.br, senaimt.ind.br, ms.senai.br, ifg.edu.br (editais), ifgoiano.edu.br, ifb.edu.br (pede CAPTCHA depois de vários pedidos seguidos), goias.gov.br, agenciabrasilia.df.gov.br, mt.gov.br, prefeituras de Goiânia, Cuiabá e Campo Grande. Não abrem: df.senac.br (bloqueio WAF, também com a VPN do Brasil), selecao.ifms.edu.br (403; bloqueia VPN de propósito), selecao.ifg.edu.br (403), selecao.ifmt.edu.br (tempo esgotado), senaidf.org.br (ligação recusada).
 - **Criados à mão (auditoria 4 do ChatGPT, frases conferidas)**: EJA 2027/1 da rede estadual de Goiás (C-fc3ce992, até 30/11), Jornada da Mulher Trabalhadora da Sedet-DF (C-f928d51a, até 30/11), e no MA o Acredita no Primeiro Passo de Caxias (C-427c6221, até 30/11).
-- **Ficam fora**: Cotec Goiás, 810 vagas técnicas (classificação por notas do histórico ou do Enem); IFMT, cursos técnicos integrados ao ensino médio (é o ensino médio regular para quem acabou o fundamental, não EJA); rematrícula da EJA de Corumbá (só para quem já estuda).
+- **Ficam fora**: Cotec Goiás, 810 vagas técnicas (classificação por notas do histórico ou do Enem); IFMT, cursos técnicos integrados ao ensino médio do processo principal (fechado em setembro; desde 27/11 os integrados com sorteio ou ordem de inscrição entram, regra I8); rematrícula da EJA de Corumbá (só para quem já estuda).
 - **A seguir**: leitores do Senac GO/MT/MS e do SENAI MT/MS (a resposta do ChatGPT indica as páginas «Consulta de Vagas» e «Gratuidade – Oportunidades»); cursos EJA-EPT do IFB (inscrições de 11/12 a 22/01); EJA de Goiânia (pedido de vaga a 04/01/2027).
 
 
@@ -458,3 +458,9 @@ Aplicada com as frases conferidas por código (ou pelo Claude no Chrome, no IFMS
 Taguatinga; frase de gratuidade do IFMS («Todos os cursos oferecidos são inteiramente gratuitos.», só abre no Chrome
 sem VPN); Jornada da Mulher DF (classificação pelos requisitos do Edital 36/2026, sorteio no empate). Sem resposta útil:
 Senac GO, SENAI GO, Senac MT (as notícias carregam por JavaScript), SER Família Capacita e Senac DF.
+
+### Técnicos integrados ao ensino médio (regra I8, 27/11)
+
+- **Entraram**: IFMT, vagas remanescentes em 10 campi (C-960d4543, Edital 205/2026, sorteio, até 08/12); IF Goiano Porangatu, Agropecuária (C-0e80dcfe) e Inteligência Artificial (C-15bbe374) (Edital 001/2026, sorteio, até 03/12).
+- **Ficam fora no Centro-Oeste**: IFB (Edital 24/2026, sorteio, fechou a 22/11); IFMS (Edital 54/2026, prova); IFG (prova); IF Goiano Morrinhos e Urutaí (análise de histórico, E3).
+- **Norte e Nordeste (procura de 27/11)**: nenhum aberto com sorteio ou ordem de inscrição. Já fechados: IFRO (25/10), IFAP (24/11), IFPA (16/11, desempenho escolar), IFCE, IFS (03/11), IF Baiano, IFSertãoPE (histórico), IFAC (histórico). Com prova: IFMA, IFPI, IFRN, IFPB, IFSertãoPB, IFPE, IFBA, IFTO, ETEs de Pernambuco. Por notas: IFAM (inscrições suspensas e por reabrir). Lembrete a 12/01/2027 para procurar vagas remanescentes.

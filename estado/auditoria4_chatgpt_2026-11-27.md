@@ -44,6 +44,14 @@ A7. IF Baiano — Cursos técnicos subsequentes a distância 2027 (Ruy Barbosa e
    Páginas oficiais: https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-ruy-barbosa-2027/ e https://ingresso.ifbaiano.edu.br/concursos/subsequente-ead-remanso-2027/
    Falta: como os candidatos são selecionados (sorteio, ordem de inscrição, análise de histórico, prova); se o edital diz que o curso é gratuito.
 
+A8. FADEX / IFMA — Programa «Acredita no Primeiro Passo» em Caxias (MA): Eletricista Instalador Predial de Baixa Tensão e Instalador de Sistemas Fotovoltaicos (Edital 30/2026, inscrições até 30/11/2026)
+   Página oficial: https://www.fadex.org.br/editais/30-2026-selecao-de-participantes-do-programa-acredita-no-primeiro-passo-em-caxias-ma (o PDF do edital está no botão «Baixar o edital»)
+   Falta: frase dizendo que os cursos são gratuitos; como os participantes são selecionados (ordem de inscrição, sorteio, análise de critérios, entrevista); onde se faz a inscrição.
+
+A9. FADEX / Governo do Piauí (SETRE) — «Acredita no Primeiro Passo – Qualifica Piauí» (Edital 29/2026, fluxo contínuo)
+   Página oficial: https://www.fadex.org.br/editais/29-2026-edital-de-selecao-de-participantes-para-o-programa-acredita-no-primeiro-passo-qualifica-piaui
+   Falta: uma frase oficial (edital, site da SETRE ou do programa) dizendo que o CURSO é gratuito ou sem custo; datas e locais das primeiras turmas já divulgadas.
+
 PARTE B — Procure cursos que faltam no site (Centro-Oeste: Goiás, Mato Grosso, Mato Grosso do Sul e Distrito Federal):
 Procure, só em sites oficiais (governos estaduais e do DF, prefeituras de capitais e cidades grandes, Senac GO/MT/MS/DF, SENAI GO/MT/MS/DF, Sebrae, institutos federais IFG, IF Goiano, IFMT, IFMS, IFB, escolas estaduais de educação profissional, como os Cotecs de Goiás e a Escola do Futuro, o Qualifica DF, a Escola de Governo), cursos PRESENCIAIS gratuitos com inscrições abertas agora (ou a abrir até 25/01/2027), em Goiânia, Cuiabá, Campo Grande, Brasília e nas regiões administrativas do DF, ou noutras cidades destes estados. Inclua matrícula na EJA (Educação de Jovens e Adultos) da rede pública com período oficial.
 Diga também, para cada Senac e SENAI destes estados, em que página oficial ficam as vagas gratuitas (Programa Senac de Gratuidade, Gratuidade Regimental do SENAI), mesmo que hoje não haja nada aberto.

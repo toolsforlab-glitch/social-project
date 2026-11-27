@@ -46,9 +46,9 @@ Cursos presenciais visíveis no site a 27/11/2026 entre parênteses (incluem os 
 | **Roraima** (1) | Escola Barão de Parima (à mão a 27/11) · Senac RR (`senac_rr.py`, código; turmas todas fechadas a 26/11) · Escolegis da ALE-RR e Governo de Roraima (notícias oficiais) |
 | **Tocantins** (1) | Senac TO (`senac_to.py`, código) · Prefeitura de Palmas (notícias oficiais) |
 | **Goiás** (1) | Seduc-GO, EJA (à mão, 27/11) · a fazer: Senac GO, SENAI GO, IFG, IF Goiano, Prefeitura de Goiânia |
-| **Distrito Federal** (1) | Sedet-DF, Jornada da Mulher Trabalhadora (à mão, 27/11) · a fazer: IFB EJA-EPT, Senac DF (bloqueia), SENAI DF |
-| **Mato Grosso** (0) | a fazer: Senac MT (o portal PSG não lista vagas: a consulta está desligada e a inscrição é por WhatsApp ou na unidade), SENAI MT (Gratuidade – Oportunidades), IFMT |
-| **Mato Grosso do Sul** (9) | Senac MS (`senac_ms.py`, código: consulta de vagas e editais em PDF) · a fazer: SENAI MS, IFMS (bloqueia GitHub e VPN) |
+| **Distrito Federal** (8) | Sedet-DF, Jornada da Mulher Trabalhadora (à mão, 27/11) · IFB, 7 cursos técnicos EJA-EPT 2027 «Por abrir» (à mão, 27/11; o IFB pede CAPTCHA ao GitHub) · a fazer: Senac DF (bloqueia), SENAI DF |
+| **Mato Grosso** (0) | notícias do SENAI MT (`noticias_oficiais.py`) · Senac MT (sem lista de vagas: inscrição por WhatsApp ou na unidade) · SER Família Capacita (SENAI MT e Governo de MT, 50 mil vagas para pessoas vulneráveis; o painel do Power BI só tem turmas de julho de 2026) · a fazer: IFMT |
+| **Mato Grosso do Sul** (9) | Senac MS (`senac_ms.py`, código: consulta de vagas e editais em PDF) · notícias do SENAI MS (`noticias_oficiais.py`; o SENAI MS não tem lista de vagas gratuitas) · a fazer: IFMS (bloqueia GitHub e VPN) |
 | **On-line, todo o Brasil** (674) | Escola Virtual de Governo, Fundação Bradesco, FGV, Escola do Trabalhador 4.0, Aprenda Mais, Sebrae (resumo) · catálogos sob demanda (`catalogo.py`) · pesquisa semanal (`cursos.py`, Claude) |
 
 Todos os estados recebem também a pesquisa semanal (Claude) e a verificação (Claude).

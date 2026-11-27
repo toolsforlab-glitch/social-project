@@ -416,3 +416,20 @@ criados à mão não apareciam no site.
 
 O Senac MT não publica vagas no site: a «Consulta de vagas» do portal PSG está desligada (tabela vazia) e a inscrição é
 por WhatsApp ou na unidade. Fica por encontrar outra fonte (notícias do Senac MT ou editais).
+
+## SENAI MS, SENAI MT e IFB (27/11/2026)
+
+- **SENAI MS** e **SENAI MT** não têm lista de vagas gratuitas como o SENAI RN. O SENAI MS publica editais de
+  aprendizagem e de bolsistas; o SENAI MT, um catálogo de cursos pagos. As vagas gratuitas de parcerias saem nas
+  notícias dos dois sites, agora lidas pelo `noticias_oficiais.py`. O antigo endereço senaimt.com.br tem o certificado
+  expirado; o atual é senaimt.ind.br.
+- **SER Família Capacita** (SENAI MT e Governo de Mato Grosso): programa de qualificação gratuita para pessoas em
+  situação de vulnerabilidade (50 mil vagas, 141 municípios). A lista de turmas está num painel do Power BI
+  (novidades.senaimt.ind.br/ser-familia-capacita) que só se lê no navegador; a 27/11 tinha apenas turmas de julho de
+  2026. As notícias do SENAI MT procuram «ser família».
+- **IFB**: 7 cursos técnicos integrados ao ensino médio na EJA (EJA-EPT), em Gama, Taguatinga, Samambaia, Brasília,
+  Recanto das Emas, São Sebastião e Estrutural, criados à mão como «Por abrir» (inscrições da ampla concorrência de
+  11/12/2026 a 22/01/2027; Samambaia a partir de 21/12; Estrutural de 4 a 22/01, se sobrarem vagas). Gratuidade: página
+  do IFB («Os cursos são totalmente gratuitos») e LDB; vagas preenchidas por ordem até a turma encher. O IFB pede
+  CAPTCHA ao GitHub depois de 1 ou 2 pedidos seguidos: as páginas foram lidas no navegador e os editais pelo GitHub com
+  pausas de 12 s.

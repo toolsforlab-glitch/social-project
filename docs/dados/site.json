@@ -119,6 +119,22 @@
   {
    "id": "BR-TO",
    "rotulo": "Brasil – Tocantins"
+  },
+  {
+   "id": "BR-GO",
+   "rotulo": "Brasil – Goiás"
+  },
+  {
+   "id": "BR-DF",
+   "rotulo": "Brasil – Distrito Federal"
+  },
+  {
+   "id": "BR-MT",
+   "rotulo": "Brasil – Mato Grosso"
+  },
+  {
+   "id": "BR-MS",
+   "rotulo": "Brasil – Mato Grosso do Sul"
   }
  ],
  "formulario": {

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T21:36",
+ "atualizado": "2026-11-27T21:39",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -59190,6 +59190,67 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-960d4543",
+   "titulo": "Cursos técnicos integrados ao ensino médio – vagas que sobraram (IFMT, 10 campi, sorteio)",
+   "entidade": "Instituto Federal de Mato Grosso (IFMT)",
+   "url": "https://ifmt.edu.br/blog/ingresso-2027-1-lancado-edital-com-196-vagas-para-cursos-tecnicos-integrados-em-10-campi-do-ifmt/",
+   "pagina_propria": true,
+   "local": "BR-MT",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Mato Grosso",
+   "cidade": "Alta Floresta, Barra do Garças, Cáceres, Canarana, Cuiabá, Pontes e Lacerda, Rondonópolis, São Vicente, Sorriso e Tangará da Serra",
+   "descricao": "Ensino médio junto com um curso técnico, gratuito, no IFMT, para quem terminou o 9.º ano. São 196 vagas que sobraram em 10 campi para começar em 2027. Se houver mais inscritos do que vagas, há sorteio público a 15 de dezembro.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "escola",
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Ter terminado o ensino fundamental (ou equivalente) até à matrícula",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2026-12-08",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Até 08/12/2026, inscreva-se no site de seleção do IFMT (seletivo.ifmt.edu.br), no Edital 205/2026, e veja lá os cursos de cada campus.",
+    "Se houver mais inscritos do que vagas, há sorteio público a 15/12/2026, às 14h30 (transmitido no YouTube do IFMT); o resultado final sai a 18/12.",
+    "Siga a matrícula no início de janeiro, conforme o edital."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "vagas": "sorteio",
    "acessibilidade": []
   }
  ]

@@ -292,12 +292,12 @@ a.lembrar::after { content: none !important; }
 .numero-cartao b { display: block; font-size: 2.1rem; line-height: 1.1; color: var(--anil); font-variant-numeric: tabular-nums; }
 .numero-cartao span { color: var(--tinta-suave); font-size: .95rem; }
 .barras { display: grid; gap: .45rem; margin: .5rem 0; max-width: 32rem; }  /* metade do comprimento (25/11/2026) */
-.barra { display: grid; grid-template-columns: 9.5rem 1fr 5.2rem; align-items: center; gap: .6rem; font-size: .95rem; }
+.barra { display: grid; grid-template-columns: 9.5rem 1fr 6.6rem; align-items: center; gap: .6rem; font-size: .95rem; }
 .barra-fundo { display: block; background: var(--anil-claro); border-radius: 4px; height: 1.1rem; overflow: hidden; }
 .barra-cheia { display: block; background: var(--anil); height: 100%; border-radius: 4px; }
 .barra-valor { text-align: right; font-variant-numeric: tabular-nums; }
 /* tabela dos estados (sem marcadores; 25/11/2026) */
-@media (max-width: 30rem) { .barra { grid-template-columns: 7rem 1fr 4.6rem; } }
+@media (max-width: 30rem) { .barra { grid-template-columns: 7rem 1fr 5.8rem; } }
 p.avisar { margin: .35rem 0 0; font-size: .88rem; }
 p.avisar a { color: var(--tinta-suave); }
 .mapa-caixa { max-width: 34rem; margin: 1rem 0; position: relative; }

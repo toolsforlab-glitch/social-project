@@ -491,3 +491,12 @@ Conversa: https://chatgpt.com/c/6b0a06ea-bee0-83ed-9c73-0f2647ca2fde. Muitas pá
 - **Senac DF**: o site inteiro (incluindo a página inicial) responde «AFD - WAF Block» no Chrome com a VPN do Brasil e também sem VPN (IP de Portugal). No Instagram oficial (@senacdf) os posts recentes são de cursos pagos com desconto, sem Programa de Gratuidade. Continua sem caminho.
 - **Senac PI**: psg.pi.senac.br continua com o certificado vencido («Privacy error»; não se passa por cima, regra T9). O Instagram oficial (@senacpiaui) não tem posts recentes de vagas gratuitas. Continua sem caminho; o leitor volta a funcionar sozinho quando o certificado for renovado.
 - **Fonte nova achada**: Senac EAD, Programa Senac de Gratuidade nacional (https://www.ead.senac.br/gratuito/), com vagas por estado e seleção por ordem de inscrição. A 27/11 não havia nenhum curso com inscrição em curso (o selo «Inscrições abertas» da lista estava desatualizado). Ficou na tarefa diária do navegador (`fontes_navegador.json`).
+
+### Senac São Paulo – bolsas integrais do Programa Senac de Gratuidade (27/11)
+
+- Página: https://www.sp.senac.br/bolsas-de-estudo («Cursos 100% gratuitos»; «Sem taxas de matrícula e gratuitos para quem tem renda familiar mensal de até 2 salários mínimos federais»; inscrições «São preenchidas por ordem de inscrição, sem provas e taxas»; abrem 20 dias antes do início de cada turma, às 12h).
+- **O site recusa o GitHub (403)**: só se lê no Chrome. A API pública do próprio site (chamada pela página) dá tudo:
+  1. cursos com bolsa: `/o/senac-curso-services/cursos/20125/20102?turmasBolsa=true&start=0&end=50&sort=localized_title_pt_BR_sortable` (50 por página; 931 cursos a 27/11);
+  2. unidades do curso: `/o/senac-content-services/cursosInfoDetalhe/20125/{articleId}?inscricaoAberta=false&bolsaAberta=true&buscarUnidadesComOferta=true` (`unidadesComOferta`: nome, categoryId, cidade; `possoFazerEsseCurso` traz a escolaridade);
+  3. turmas: `/o/senac-oferta-services/ofertasPorCategoryIds/20125?codigoFTOferta=…&dataEfetivaOferta=…&categoryIds=…&start=0&end=100&bolsaAberta=true&cursoArticleId=…&considerarDataBolsaFutura=true` (XML por turma: `dataInicioOferta`, `dataFimOferta`, `horariosAllOferta`, `qtdeTotalVagasPSG`, `vagasBolsaOferta`, `dataAberturaBolsaOferta`, `botaoBolsaOferta`).
+- Leitura completa no Chrome a 27/11 (4 min, sem erros): 8.745 turmas; **293 com inscrição de bolsa aberta hoje (5.267 vagas de bolsa) em 38 cidades** (107 na capital) e 1.755 que abrem nos próximos 60 dias.

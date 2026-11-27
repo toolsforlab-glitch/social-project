@@ -249,6 +249,11 @@ DESTINOS_FONTES = [
     (r"^https://www\.to\.senac\.br/cursos/abertos", {
         "tipo": "lista", "nome": "Senac Tocantins",
         "nota": "Na lista de cursos abertos, procure o nome do curso."}),
+    # Senac MS (27/11/2026): a consulta de vagas lista os cursos por cidade, com o edital e a forma de inscrição
+    (r"^https://www\.ms\.senac\.br/Cursos/Gratuitos-PSG/Consulta-de-Vagas", {
+        "tipo": "lista", "nome": "Senac Mato Grosso do Sul",
+        "nota": "Na consulta de vagas, abra a sua cidade e procure o nome do curso. A inscrição é na unidade (o "
+                "endereço está por baixo do curso) ou pelo formulário, quando houver o botão «Matricule-se»."}),
     (r"^https://ma\.senac\.br/editais_psg/", {
         "tipo": "curso", "nota": "É a página do edital deste curso: em “Quer participar?” está o botão “Inscrição” e "
                                  "em “Documentos” está o edital completo."}),

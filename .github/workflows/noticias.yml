@@ -119,6 +119,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 senac_to.py
 
+      - name: Turmas do Programa Senac de Gratuidade em Mato Grosso do Sul (consulta de vagas e editais, sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 senac_ms.py
+
       - name: Cursos curtos (FIC) dos campi do IFRO, lidos dos editais oficiais (sem Claude)
         if: ${{ always() }}
         timeout-minutes: 10

@@ -144,6 +144,16 @@
    "regiao": "Amazonas",
    "cidade": "Manaus",
    "entidade": "OELA – Oficina Escola de Lutheria da Amazônia"
+  },
+  {
+   "nome": "SENAI DF – Gratuidade Regimental (cursos e editais)",
+   "url": "https://sistemafibra.org.br/senai/cursos_gratuidade/indexCursos.php",
+   "tipo": "lista",
+   "local": "BR-DF",
+   "regiao": "Distrito Federal",
+   "cidade": "",
+   "entidade": "SENAI Distrito Federal (Gratuidade Regimental)",
+   "nota": "O site sistemafibra.org.br não responde ao GitHub. Os editais estão em https://www.sistemafibra.org.br/senai/editais/gratuidade/edital-gratuidade (um por trimestre; o PDF tem a lista de turmas nos Anexos I e II). Edital 01/2027 (inscrições de 17/11/2026 a 15/03/2027) já criado a 27/11/2026 como curso geral. Quando sair o edital seguinte (02/2027), criar outro curso geral com as frases do novo edital e fechar o anterior."
   }
  ]
 }

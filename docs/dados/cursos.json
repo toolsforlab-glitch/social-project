@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T13:04",
+ "atualizado": "2026-11-27T13:07",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -55643,6 +55643,140 @@
    "documentos": "RG, CPF e comprovante de residência (originais e cópias); declaração escolar ou histórico escolar",
    "etiquetas": [],
    "vagas": "sorteio",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-91c5a437",
+   "titulo": "Aprendizagem Industrial Básica – SENAI Rondônia (Gratuidade 2027.1)",
+   "entidade": "SENAI Rondônia (Gratuidade Regimental)",
+   "url": "https://portal.fiero.org.br/senai/paginas/aprendizagem-b%EF%BF%BDsica-e-tcnica/101",
+   "pagina_propria": true,
+   "local": "BR-RO",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Rondônia",
+   "cidade": "",
+   "descricao": "Cursos de aprendizagem industrial, presenciais e gratuitos, do SENAI Rondônia (Edital 42/2027.1), em áreas como Mecânica, Eletrotécnica, Tecnologia da Informação, Refrigeração, Panificação e Vestuário. Turmas em Porto Velho, Ariquemes, Ji-Paraná, Vilhena, Cacoal e Rolim de Moura. As aulas começam a 25 de janeiro de 2027. As vagas são primeiro para jovens indicados pelas indústrias; as que sobram ficam para a comunidade, por ordem de inscrição.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao",
+    "emprego"
+   ],
+   "exclusivo_para": "Jovens de 14 a 23 anos e 11 meses (sem idade máxima para pessoas com deficiência)",
+   "requisitos": "Podem participar jovens com idade entre 14 e 23 anos e 11 meses (para cursos de Aprendizagem Industrial Básica) ou entre 16 e 23 anos e 11 meses (para cursos de Aprendizagem Industrial Técnica), que estejam cursando ou tenham concluído o nível de escolaridade exigido no edital (Ensino Fundamental a partir do 9º ano ou Ensino Médio).\nA idade máxima de 24 anos não se aplica a pessoas com deficiência (PCD).",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2026-11-30",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "2027-01-25",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Entre na página «Gratuidade» do SENAI Rondônia (portal.fiero.org.br/senai), escolha a sua cidade e clique em «Faça sua inscrição aqui», até 30 de novembro de 2026.",
+    "Escolha só um curso: inscrições em mais de um curso podem ser canceladas.",
+    "Acompanhe o resultado no portal do SENAI. Se for classificado, envie RG ou certidão de nascimento, CPF, comprovante de escolaridade, comprovante de residência, 1 foto 3x4 e, se for menor de 18 anos, RG e CPF do responsável.",
+    "A matrícula da comunidade é de 03 a 22/12/2026 ou de 05 a 20/01/2027."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "Ensino Fundamental a partir do 9º ano",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "RG ou certidão de nascimento, CPF, comprovante de escolaridade, comprovante de residência, 1 foto 3x4; para menores de 18 anos, RG e CPF do responsável",
+   "etiquetas": [
+    {
+     "texto": "Vagas reservadas para jovens",
+     "frase": "Havendo vagas disponíveis não reservadas pelas indústrias, essas serão ofertadas para a comunidade, seguindo a ordem de inscrições pelo site do SENAI/RO, para a seleção de jovens da comunidade"
+    }
+   ],
+   "vagas": "ordem",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-6ac3c574",
+   "titulo": "Aprendizagem Industrial Técnica – SENAI Rondônia (Gratuidade 2027.1)",
+   "entidade": "SENAI Rondônia (Gratuidade Regimental)",
+   "url": "https://portal.fiero.org.br/senai/paginas/aprendizagem-b%EF%BF%BDsica-e-tcnica/101",
+   "pagina_propria": true,
+   "local": "BR-RO",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "curso",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "Rondônia",
+   "cidade": "",
+   "descricao": "Cursos de aprendizagem industrial, presenciais e gratuitos, do SENAI Rondônia (Edital 43/2027.1), em áreas como Mecânica, Eletrotécnica, Tecnologia da Informação, Refrigeração, Panificação e Vestuário. Turmas em Porto Velho, Ariquemes, Ji-Paraná, Vilhena, Cacoal, Jaru e Rolim de Moura. As aulas começam a 25 de janeiro de 2027. As vagas são primeiro para jovens indicados pelas indústrias; as que sobram ficam para a comunidade, por ordem de inscrição.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao",
+    "emprego"
+   ],
+   "exclusivo_para": "Jovens de 16 a 23 anos e 11 meses (sem idade máxima para pessoas com deficiência)",
+   "requisitos": "Podem participar jovens com idade entre 14 e 23 anos e 11 meses (para cursos de Aprendizagem Industrial Básica) ou entre 16 e 23 anos e 11 meses (para cursos de Aprendizagem Industrial Técnica), que estejam cursando ou tenham concluído o nível de escolaridade exigido no edital (Ensino Fundamental a partir do 9º ano ou Ensino Médio).\nA idade máxima de 24 anos não se aplica a pessoas com deficiência (PCD).",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2026-11-30",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "2027-01-25",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Entre na página «Gratuidade» do SENAI Rondônia (portal.fiero.org.br/senai), escolha a sua cidade e clique em «Faça sua inscrição aqui», até 30 de novembro de 2026.",
+    "Escolha só um curso: inscrições em mais de um curso podem ser canceladas.",
+    "Acompanhe o resultado no portal do SENAI. Se for classificado, envie RG ou certidão de nascimento, CPF, comprovante de escolaridade, comprovante de residência, 1 foto 3x4 e, se for menor de 18 anos, RG e CPF do responsável.",
+    "A matrícula da comunidade é de 03 a 22/12/2026 ou de 05 a 20/01/2027."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "a partir da 2ª série do Ensino Médio",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "RG ou certidão de nascimento, CPF, comprovante de escolaridade, comprovante de residência, 1 foto 3x4; para menores de 18 anos, RG e CPF do responsável",
+   "etiquetas": [
+    {
+     "texto": "Vagas reservadas para jovens",
+     "frase": "Havendo vagas disponíveis não reservadas pelas indústrias, essas serão ofertadas para a comunidade, seguindo a ordem de inscrições pelo site do SENAI/RO, para a seleção de jovens da comunidade"
+    }
+   ],
+   "vagas": "ordem",
    "acessibilidade": []
   }
  ]

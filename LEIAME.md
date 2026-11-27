@@ -464,3 +464,11 @@ Senac GO, SENAI GO, Senac MT (as notícias carregam por JavaScript), SER Famíli
 - **Entraram**: IFMT, vagas remanescentes em 10 campi (C-960d4543, Edital 205/2026, sorteio, até 08/12); IF Goiano Porangatu, Agropecuária (C-0e80dcfe) e Inteligência Artificial (C-15bbe374) (Edital 001/2026, sorteio, até 03/12).
 - **Ficam fora no Centro-Oeste**: IFB (Edital 24/2026, sorteio, fechou a 22/11); IFMS (Edital 54/2026, prova); IFG (prova); IF Goiano Morrinhos e Urutaí (análise de histórico, E3).
 - **Norte e Nordeste (procura de 27/11)**: nenhum aberto com sorteio ou ordem de inscrição. Já fechados: IFRO (25/10), IFAP (24/11), IFPA (16/11, desempenho escolar), IFCE, IFS (03/11), IF Baiano, IFSertãoPE (histórico), IFAC (histórico). Com prova: IFMA, IFPI, IFRN, IFPB, IFSertãoPB, IFPE, IFBA, IFTO, ETEs de Pernambuco. Por notas: IFAM (inscrições suspensas e por reabrir). Lembrete a 12/01/2027 para procurar vagas remanescentes.
+
+### Revisão T15 antes do Sudeste (27/11)
+
+- **Rotinas**: todas acabaram sem falhas. A 27/11 de manhã, o Google Notícias respondeu 429 (demasiados pedidos) a 26 vigias; o `vigiar.py` já tem pausa e novas tentativas desde as 14h43 de 27/11, por isso a confirmação fica para a rodada de 28/11.
+- **Corrigido**: o mesmo curso da EV.G estava 3 vezes no site («Como trabalhar com computadores», com três títulos) e «Educação financeira pessoal» 2 vezes; os repetidos ficaram ocultos e o `evg.py` passou a ocultar sozinho a segunda linha visível do mesmo curso. Qualifica Natal (inscrições a 23 e 24/11) e Técnico em Zootecnia do Senar PI (prazo 24/11) passaram a Expirado. Frase da LDB acrescentada a 5 matrículas de EJA (art. 37) e a 3 cursos do IF Baiano (art. 3.º, VI), regra F6.
+- **Dúvidas para a auditoria 6 do ChatGPT** (`estado/auditoria6_chatgpt_2026-11-27.md`): Prefeitura de Fortaleza (32 cursos), FGV «Fundamentos de Marketing» (duas páginas), GO Recife «NR10»/«NR 10», IFMT Edital 205/2026, SENAI SE, certificado do Sebrae e da Fundação Bradesco, IEFP, Recife 60+, Cagece Capacita, e as páginas de listas do Sudeste.
+- **«Mudança a rever» (só uma pessoa tira)**: 22 linhas, quase todas já ocultas ou expiradas; no site estão a Prefeitura de Fortaleza (C-cf77f502) e o IF Baiano de Ruy Barbosa e Remanso (C-f87d83a8, C-cc5db6c6).
+- **ID repetido**: C-f3ab9761 aparece em duas linhas (ambas ocultas); já não é criado de novo.

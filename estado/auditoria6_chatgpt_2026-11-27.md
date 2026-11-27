@@ -48,6 +48,10 @@ A8. IEFP (Portugal) — cursos de Português Língua de Acolhimento e Proficiên
    Página oficial: https://www.iefp.pt (página da formação «Português Língua de Acolhimento» ou perguntas frequentes)
    Falta: (a) frase oficial dizendo que esta formação é gratuita para o formando; (b) quem pode inscrever-se.
 
+A9. IFRO (Campus Ji-Paraná, Centro de Idiomas) — Edital nº 52/2026, curso FIC de Libras Básico I 2027/1
+   Página oficial: https://selecao.ifro.edu.br/extensao-jiparana/2102-edital-n-52-2026-selecao-de-estudantes-curso-de-libras-basico-i-2027-1
+   Falta: (a) o período de inscrições no cronograma do edital (lemos «30/11/2027 a 11/12/2027», mas as aulas começam em 05/02/2027: é erro de digitação?); há retificação?; (b) como se preenchem as vagas (sorteio, ordem de inscrição).
+
 PARTE B — Cursos que a rotina marcou para rever:
 
 B1. Prefeitura do Recife (Secretaria de Transformação Digital) — «Uso do celular para maiores de 60 anos»

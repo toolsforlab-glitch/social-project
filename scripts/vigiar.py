@@ -37,6 +37,14 @@ VIGIAS = [
      "contar_json": True, "caminho": ["meta", "totalItems"], "link": "https://psg.se.senac.br/cursos",
      "verificar": "Apareceram cursos no portal do PSG do Senac Sergipe: peça ao Claude para montar o leitor próprio a "
                   "partir da lista pública (psg.se.senac.br/api/course/filter)."},
+    # Programa Vencer (Governo de Rondônia, SEAS; cursos do SENAI e do Senac para quem está no CadÚnico, com auxílio):
+    # a 3ª edição de 2026 está no site (C-09b3246d, inscrições até 30/11/2026). A página tem as datas da edição; quando
+    # a frase das datas mudar, abriu outra edição ou reabertura (27/11/2026).
+    {"nome": "Programa Vencer (Governo de Rondônia, SEAS)",
+     "url": "https://rondoniasocial.ro.gov.br/vencer/",
+     "fechado": "Fim (Reabertura) 30/11/2026",
+     "verificar": "A página do Programa Vencer mudou as datas (nova edição ou reabertura): leia o edital novo e atualize "
+                  "ou crie o curso (Edital nº 6/2026/SEAS-CODS era o da 3ª edição)."},
     # SENAI Rio Grande do Norte: desde 26/11/2026 tem leitor próprio (senai_rn.py), já não é vigiado.
     # Senac Rio Grande do Norte: a página do Programa de Bolsas mostra o último edital; em 23/11/2026 só tinha o
     # resultado do edital 006/2026 (fechado). Quando o texto mudar, saiu edital novo.

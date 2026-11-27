@@ -135,6 +135,22 @@
   {
    "id": "BR-MS",
    "rotulo": "Brasil – Mato Grosso do Sul"
+  },
+  {
+   "id": "BR-SP",
+   "rotulo": "Brasil – São Paulo"
+  },
+  {
+   "id": "BR-RJ",
+   "rotulo": "Brasil – Rio de Janeiro"
+  },
+  {
+   "id": "BR-MG",
+   "rotulo": "Brasil – Minas Gerais"
+  },
+  {
+   "id": "BR-ES",
+   "rotulo": "Brasil – Espírito Santo"
   }
  ],
  "formulario": {

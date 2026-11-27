@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T22:59",
+ "atualizado": "2026-11-27T23:40",
  "cursos": [
   {
    "id": "C-2204a779",
@@ -59010,6 +59010,67 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-bddefc48",
+   "titulo": "Cursos gratuitos com bolsa integral do Senac São Paulo (Programa Senac de Gratuidade)",
+   "entidade": "Senac São Paulo (Programa Senac de Gratuidade)",
+   "url": "https://www.sp.senac.br/bolsas-de-estudo",
+   "pagina_propria": true,
+   "local": "BR-SP",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "São Paulo",
+   "cidade": "Capital e interior (38 cidades com turmas abertas a 27/11/2026)",
+   "descricao": "Cursos livres, técnicos e de idiomas do Senac São Paulo, de graça para quem tem renda familiar de até 2 salários mínimos por pessoa, com o material incluído. Cada turma abre as inscrições de bolsa 20 dias antes de começar, ao meio-dia, e as vagas vão por ordem de inscrição, sem prova.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; a escolaridade e a idade dependem de cada curso",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Crie ou atualize o seu cadastro no site do Senac São Paulo, em nome de quem vai estudar.",
+    "Na busca de cursos com bolsa, escolha a unidade, o tipo de curso e o período.",
+    "Na página do curso, veja a data em que abrem as bolsas da turma e, nesse dia, a partir do meio-dia, clique em «Inscrever para bolsa de estudo». As vagas vão por ordem de inscrição.",
+    "Acompanhe o resultado pelo e-mail."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "2 salários mínimos por pessoa",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "vagas": "ordem",
    "acessibilidade": []
   }
  ]

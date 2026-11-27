@@ -76,6 +76,15 @@ FONTES = [
      "api": "https://www.manaus.am.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
      "pesquisas": ["cursos gratuitos", "qualificação profissional inscrições"], "local": "BR-AM", "regiao": "Amazonas",
      "cidade": "Manaus", "entidade": "Prefeitura de Manaus"},
+    # Centro-Oeste (27/11/2026): o SENAI MS e o SENAI MT não têm lista de vagas gratuitas (o SENAI MS publica editais de
+    # aprendizagem e de bolsistas; o SENAI MT, cursos pagos e o SER Família Capacita, num painel do Power BI). As vagas
+    # gratuitas de parcerias (Energisa, Suzano, Funtrab) saem nas notícias dos dois sites, que abrem a partir do GitHub.
+    {"nome": "SENAI MS – notícias", "pagina": "https://www.ms.senai.br/ultimas-noticias", "local": "BR-MS",
+     "regiao": "Mato Grosso do Sul", "cidade": "", "entidade": "SENAI Mato Grosso do Sul",
+     "incluir": r"gratuit|(?:vagas|inscri[çc][õo]es|matr[íi]culas).{0,60}(?:cursos?|qualifica)"},
+    {"nome": "SENAI MT – notícias", "pagina": "https://www.senaimt.ind.br/noticias", "local": "BR-MT",
+     "regiao": "Mato Grosso", "cidade": "", "entidade": "SENAI Mato Grosso",
+     "incluir": r"gratuit|ser fam[íi]lia|(?:vagas|inscri[çc][õo]es|matr[íi]culas).{0,60}(?:cursos?|qualifica)"},
     {"nome": "Prefeitura de Porto Velho", "pagina": "https://www.portovelho.ro.gov.br/noticias", "local": "BR-RO",
      "regiao": "Rondônia", "cidade": "Porto Velho", "entidade": "Prefeitura de Porto Velho"},
     {"nome": "Prefeitura de Palmas", "pagina": "https://www.palmas.to.gov.br/core/noticias/", "local": "BR-TO",

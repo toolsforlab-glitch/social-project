@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T23:40",
+ "atualizado": "2026-11-27T23:50",
  "cursos": [
   {
    "id": "C-2204a779",
@@ -59071,6 +59071,66 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-97c84bf3",
+   "titulo": "Cursos livres gratuitos do SENAI-SP (Gratuidade Regimental)",
+   "entidade": "SENAI São Paulo (Gratuidade Regimental)",
+   "url": "https://www.sp.senai.br/cursos/cursos-livres/0?gratuito=1",
+   "pagina_propria": true,
+   "local": "BR-SP",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": ""
+   },
+   "pais": "BR",
+   "regiao": "São Paulo",
+   "cidade": "Escolas SENAI da capital, da Grande São Paulo e do interior",
+   "descricao": "O SENAI-SP tem 388 cursos livres gratuitos (aperfeiçoamento e qualificação), sobretudo presenciais nas suas escolas. Em cada curso, «Ver unidades» mostra as escolas e as turmas, com as datas, as vagas e o que é preciso para a matrícula.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "A idade e a escolaridade mínimas dependem de cada curso (estão na turma)",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Abra a lista de cursos livres gratuitos do SENAI-SP e filtre pela sua região ou cidade.",
+    "Em cada curso, clique em «Ver unidades» e depois em «Ver turmas» para ver datas, vagas e requisitos.",
+    "Siga o que a turma indicar: em muitas, a matrícula é presencial na secretaria da escola, até acabarem as vagas, com RG, CPF, comprovante de escolaridade e de endereço."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "vagas": "",
    "acessibilidade": []
   }
  ]

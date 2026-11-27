@@ -21,7 +21,9 @@ ou de preenchimento online), o período de inscrição (item 4.1) e, por turma, 
 soma das vagas lidas tem de bater com o total anunciado no início do edital; se não bater, as turmas desse edital vão
 para «Rever». Erratas: os cursos nomeados numa errata vão para «Rever» (se a errata falar da inscrição, todos).
 
-As turmas só são publicadas quando a inscrição abre (como nos outros editais) e passam a «Encerrado» depois do fim.
+As turmas são publicadas como «Por abrir» assim que o edital sai (até 60 dias antes da inscrição, regra I3; desde
+27/11/2026, porque as janelas de 1 a 3 dias quase não deixavam ver os cursos), passam a «Aberto» no primeiro dia de
+inscrição e a «Encerrado» depois do fim.
 Um curso no site = um curso num município (ou EaD) num edital, com as unidades, horários e datas nas notas.
 """
 import hashlib
@@ -40,6 +42,7 @@ from turmas import necessidades
 SITE = "https://www.cetam.am.gov.br"
 PAGINA = SITE + "/tudo-sobre-inscricoes/"
 PORTAL = "https://inscricao.cetam.am.gov.br/"
+DIAS_POR_ABRIR = 60  # regra I3 (REGRAS.md)
 ENTIDADE = "Cetam – Centro de Educação Tecnológica do Amazonas (Governo do Amazonas)"
 ESTADO = "estado/cetam.json"  # editais já lidos (período de inscrição), para não baixar de novo os fechados
 MESES_RECENTES = 3  # só se leem editais publicados nos últimos meses (pasta AAAA/MM do upload)
@@ -432,6 +435,9 @@ def main():
             continue
         if (r.get("Inscrições até") or "9999") < hoje and r.get("Situação das inscrições") != "Encerrado":
             alteracoes.append((r["_linha"], {"Situação das inscrições": "Encerrado", "Última verificação": hoje}))
+        elif (r.get("Situação das inscrições") == "Por abrir" and (r.get("Inscrições abrem em") or "9999") <= hoje
+              <= (r.get("Inscrições até") or "0000")):
+            alteracoes.append((r["_linha"], {"Situação das inscrições": "Aberto", "Última verificação": hoje}))
 
     cache = ler_json(ESTADO, {})
     for num, url in recentes:
@@ -445,7 +451,9 @@ def main():
             continue
         cursos, fora = agrupar(r)
         aberto = bool(r["ini"] and r["fim"] and r["ini"] <= hoje <= r["fim"])
-        print(f"  edital {num}: inscrição {r['ini'] or '?'} a {r['fim'] or '?'} ({'aberta' if aberto else 'fechada'}); "
+        limite = (date.fromisoformat(hoje) + timedelta(days=DIAS_POR_ABRIR)).isoformat()
+        por_abrir = bool(r["ini"] and r["fim"] and hoje < r["ini"] <= limite)
+        print(f"  edital {num}: inscrição {r['ini'] or '?'} a {r['fim'] or '?'} ({'aberta' if aberto else 'por abrir' if por_abrir else 'fechada'}); "
               f"{len(r['turmas'])} turmas, {r['soma']} vagas (edital: {r['total'] or '?'}); {len(cursos)} cursos; "
               f"{len(fora)} fora por serem só para quem já é da área; gratuidade {'sim' if r['gratuidade'] else 'NÃO'}; "
               f"seleção {'sim' if r['selecao'] else 'NÃO'}; material pago {'sim' if r['materiais'] else 'não'}"
@@ -475,7 +483,7 @@ def main():
                                      "no formato conhecido; não foi publicado.",
                                "Peça ao Claude para ver o edital e ajustar o leitor (cetam.py).", url, origem="cetam.py")
             continue
-        if not aberto:
+        if not (aberto or por_abrir):
             continue
         rever_tudo = bool(r["problemas"]) or bool(re.search(r"inscri|4\.1", r["texto_errata"], re.I))
         evid_base = " | ".join(x for x in [
@@ -498,7 +506,8 @@ def main():
                 f"{t['inicio'][8:]}/{t['inicio'][5:7]} a {t['fim'][8:]}/{t['fim'][5:7]}, {t['vagas']} vagas"
                 if t["local"] else f"{t['inicio'][8:]}/{t['inicio'][5:7]} a {t['fim'][8:]}/{t['fim'][5:7]}, {t['vagas']} vagas"
                 for t in c["turmas"])
-            evid = (evid_base + f" | turma: «{c['turmas'][0]['linha'][:250]}»")[:1500]
+            evid = (evid_base + (f" | abertura: «{r['frase_insc']}» ({url})" if por_abrir else "")
+                    + f" | turma: «{c['turmas'][0]['linha'][:250]}»")[:1500]
             linha = {
                 "ID": cid, "Estado": "Rever" if rever else "Publicado", "Título": nome[:200], "Entidade": ENTIDADE,
                 "Link": PORTAL, "Local": "BR-AM", "Modalidade": "online" if c["online"] else "presencial", "País": "BR",
@@ -521,8 +530,9 @@ def main():
                                        + (" Rever: " + "; ".join(r["problemas"][:3]) if r["problemas"] else "")
                                        + (" Rever: há errata que nomeia este curso ou a inscrição." if rever and r["texto_errata"] else "")
                                        + (f" Rever: {c['suspeito']}." if c.get("suspeito") else ""),
-                "Situação das inscrições": "Aberto", "Verificar automaticamente": "FALSE", "Evidência": evid,
-                "Campos comprovados": "gratuito, situação, certificado", "Página do curso": url,
+                "Situação das inscrições": "Aberto" if aberto else "Por abrir", "Inscrições abrem em": "" if aberto else r["ini"],
+                "Verificar automaticamente": "FALSE", "Evidência": evid,
+                "Campos comprovados": "gratuito, situação, certificado" + ("" if aberto else ", abertura"), "Página do curso": url,
             }
             novos.append(linha)
             historico.append(registo_historico(linha, "Edital Cetam", linha["Estado"], linha, url))

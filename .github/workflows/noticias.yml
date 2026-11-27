@@ -134,6 +134,11 @@ jobs:
         timeout-minutes: 15
         run: cd scripts && python3 senai_rn.py
 
+      - name: Gratuidade Regimental do SENAI RO, aprendizagem industrial (sem Claude)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 senai_ro.py
+
       - name: "Data de matrícula dos editais dos cursos novos («Se for aprovado», matrícula …)"
         if: ${{ always() }}
         timeout-minutes: 10

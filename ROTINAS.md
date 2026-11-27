@@ -42,7 +42,7 @@ Cursos presenciais visíveis no site a 27/11/2026 entre parênteses (incluem os 
 | **Amazonas** (1, 1 por abrir) | Cetam (`cetam.py`, código) · Senac AM e SENAI AM (`senac_ma.py`, Claude) · vigias: SENAI AM (chamada pública), OELA |
 | **Amapá** (10, 1 por abrir) | Senac AP e SENAI AP (`senac_ma.py`, Claude) · Ifap ProEJA e EJA estadual (à mão; lembrete 5/01) |
 | **Acre** (14, 2 por abrir) | Senac AC (`senac_ma.py`, Claude) |
-| **Rondônia** (2) | IFRO, FIC (`ifro_fic.py`, código) · SENAI RO, Gratuidade Regimental (à mão a 27/11; falta leitor) · Senac RO (`senac_ma.py`, Claude) · IDEP e Prefeitura de Porto Velho (notícias oficiais) |
+| **Rondônia** (2) | IFRO, FIC (`ifro_fic.py`, código) · SENAI RO, Gratuidade Regimental (`senai_ro.py`, código: página + editais de aprendizagem) · Senac RO (`senac_ma.py`, Claude) · IDEP e Prefeitura de Porto Velho (notícias oficiais) |
 | **Roraima** (1) | Escola Barão de Parima (à mão a 27/11) · Senac RR (`senac_rr.py`, código; turmas todas fechadas a 26/11) · Escolegis da ALE-RR e Governo de Roraima (notícias oficiais) |
 | **Tocantins** (1) | Senac TO (`senac_to.py`, código) · Prefeitura de Palmas (notícias oficiais) |
 | **On-line, todo o Brasil** (674) | Escola Virtual de Governo, Fundação Bradesco, FGV, Escola do Trabalhador 4.0, Aprenda Mais, Sebrae (resumo) · catálogos sob demanda (`catalogo.py`) · pesquisa semanal (`cursos.py`, Claude) |

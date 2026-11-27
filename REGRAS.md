@@ -23,6 +23,7 @@ Lista única. Uma regra nova entra **primeiro aqui**, com a data e o código que
   - **Curso por abrir**: entra com a data de abertura provada (prova «abertura»), até 60 dias antes (`DIAS_POR_ABRIR` em app.js, senac_ma.py e cetam.py; 25/11; nos leitores do Senac desde 27/11; no Cetam desde 27/11, logo que o edital sai, porque as janelas de 1 a 4 dias quase não deixavam ver os cursos).
   - **Inscrição «enquanto houver vagas»** (ou «até o limite de vagas»): a turma fica aberta até à véspera do início das aulas (senac_ma.py, senac_ms.py; 26/11 e 27/11).
 - **I4. Qualquer pessoa do público pode concorrer.** Ser de um grupo (baixa renda, mulheres, PcD, jovens, alunos da rede pública ou da EJA) não é disputa e pode entrar (23/11). Vagas que a comunidade só recebe depois de outro público (ex.: aprendizagem do SENAI RO, sobras das vagas das indústrias) entram, com isso em «O que falta confirmar» (27/11). Exigir o ensino médio completo (cursos técnicos subsequentes) é um requisito, não uma disputa (IFMT, 27/11).
+- **I8. Cursos técnicos integrados ao ensino médio regular entram** (decisão do responsável, 27/11), para quem acaba o 9.º ano, quando a vaga é por sorteio ou ordem de inscrição; os que selecionam por notas ficam fora pela E3. Vão para «Terminar a escola», com a idade mínima e a escolaridade pedidas no cartão. Até 27/11 tinham ficado fora por escolha do Claude, sem regra.
 - **I5. A vaga não se disputa**: entram ordem de inscrição, ordem de chegada e sorteio, com aviso no cartão (`regra_vagas`, construir_site.py; 23/11). Se a fonte não diz como as vagas são preenchidas e não fala de prova, o curso entra, com «A página não diz como as vagas são preenchidas» em «O que falta confirmar» (prática das listas de turmas do Senac e do SENAI SE). Classificação por critérios sociais do edital (renda, CadÚnico, ser mulher…) com sorteio no empate também entra, com isso em «O que falta confirmar» (Jornada da Mulher DF; aceite pelo responsável a 27/11).
 - **I6. A página oficial abre** (E8).
 - **I7. Passou a auditoria**: segunda leitura independente ou regras de código (datas coerentes, frases conferidas). Senão fica em Rever, com o motivo (regra antiga 10).
@@ -99,7 +100,7 @@ Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, j�
 
 ## 6. Práticas em uso, por confirmar pelo responsável
 
-- **P1. Curso técnico integrado ao ensino médio regular** (para quem acabou o 9.º ano, em geral adolescentes; ex.: IFMT integrados, IF Goiano) **tem ficado fora**; entram a EJA integrada (EJA-EPT, Proeja) e os técnicos subsequentes. Razão: o público do site são jovens e adultos em situação de vulnerabilidade, e esses cursos são a entrada regular no ensino médio.
+Nenhuma de momento (P1 virou a regra I8 e P2 entrou na I5, a 27/11).
 
 ## Correspondência com a numeração antiga (até 26/11)
 

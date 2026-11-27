@@ -29,8 +29,12 @@ LOCALIZACAO = {
     "BR-RR": {"type": "approximate", "country": "BR", "region": "Roraima", "city": "Boa Vista", "timezone": "America/Boa_Vista"},
     "BR-AP": {"type": "approximate", "country": "BR", "region": "Amapá", "city": "Macapá", "timezone": "America/Belem"},
     "BR-TO": {"type": "approximate", "country": "BR", "region": "Tocantins", "city": "Palmas", "timezone": "America/Araguaina"},
+    "BR-GO": {"type": "approximate", "country": "BR", "region": "Goiás", "city": "Goiânia", "timezone": "America/Sao_Paulo"},
+    "BR-DF": {"type": "approximate", "country": "BR", "region": "Distrito Federal", "city": "Brasília", "timezone": "America/Sao_Paulo"},
+    "BR-MT": {"type": "approximate", "country": "BR", "region": "Mato Grosso", "city": "Cuiabá", "timezone": "America/Cuiaba"},
+    "BR-MS": {"type": "approximate", "country": "BR", "region": "Mato Grosso do Sul", "city": "Campo Grande", "timezone": "America/Campo_Grande"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe", "BR-PA": "Pará", "BR-AM": "Amazonas", "BR-RO": "Rondônia", "BR-RR": "Roraima", "BR-AP": "Amapá", "BR-TO": "Tocantins"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe", "BR-PA": "Pará", "BR-AM": "Amazonas", "BR-RO": "Rondônia", "BR-RR": "Roraima", "BR-AP": "Amapá", "BR-TO": "Tocantins", "BR-GO": "Goiás", "BR-DF": "Distrito Federal", "BR-MT": "Mato Grosso", "BR-MS": "Mato Grosso do Sul"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.

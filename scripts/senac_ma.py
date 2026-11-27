@@ -1585,7 +1585,7 @@ def correr(fonte):
                     "Cidade": "", "Descrição": "", "Necessidades": necessidades("", titulo),
                     "Perfis": ", ".join(perfis_da_frase(edital["reserva"])) or "todos",
                     "Condição de acesso": "", "Requisitos": requisito_fixo, "Certificado": "desconhecido", "Inscrições até": "",
-                    "Início": "", "Duração": str(t.get("carga_horaria") or ""), "Link verificado": "SIM",
+                    "Início": "", "Duração": (f"{t['carga_horaria']} horas" if re.fullmatch(r"\d+(?:[.,]\d+)?", str(t.get("carga_horaria") or "").strip()) else str(t.get("carga_horaria") or "")), "Link verificado": "SIM",
                     "Primeiro visto": hoje, "Última verificação": hoje, "Origem": "turmas", "Notas": "",
                     "Como me inscrever": "", **VERIFICACAO_INICIAL,
                     "Nota da verificação": f"{hoje}: curso criado a partir do edital nº {e.get('number')} do {fonte['nome']}.",

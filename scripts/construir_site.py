@@ -114,6 +114,12 @@ def abertura_da_turma(t):
     return f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else ""
 
 
+def duracao_legivel(d):
+    """«160» sozinho não diz nada a quem lê (27/11/2026): um número sem unidade é a carga horária, em horas."""
+    d = (d or "").strip()
+    return f"{d} horas" if re.fullmatch(r"\d+(?:[.,]\d+)?", d) else d
+
+
 def exportar_turmas(base, unidades, municipios):
     """Turmas por curso, lidas das páginas oficiais por turmas.py. Só saem as que não encerraram.
 
@@ -248,7 +254,7 @@ def exportar_dados(base, cfg):
             "verificado_em": next((v[:10] for v in ((r.get("Revisto por pessoa") or "").strip(),
                                                    (r.get("Última verificação") or "").strip() if r.get("Nota da verificação") else "")
                                    if re.match(r"\d{4}-\d{2}-\d{2}", v)), ""),
-            "inicio": r.get("Início", ""), "duracao": r.get("Duração", ""),
+            "inicio": r.get("Início", ""), "duracao": duracao_legivel(r.get("Duração", "")),
             # data de matrícula do edital, só com prova (regra de 25/11/2026): «Se for aprovado: matrícula de … a …»
             "matricula": valor_comprovado(r, "Matrícula (como o edital diz)", "matrícula"),
             "primeiro_visto": r.get("Primeiro visto", ""), "como_me_inscrever": passos(r.get("Como me inscrever")),

@@ -472,3 +472,16 @@ Senac GO, SENAI GO, Senac MT (as notícias carregam por JavaScript), SER Famíli
 - **Dúvidas para a auditoria 6 do ChatGPT** (`estado/auditoria6_chatgpt_2026-11-27.md`): Prefeitura de Fortaleza (32 cursos), FGV «Fundamentos de Marketing» (duas páginas), GO Recife «NR10»/«NR 10», IFMT Edital 205/2026, SENAI SE, certificado do Sebrae e da Fundação Bradesco, IEFP, Recife 60+, Cagece Capacita, e as páginas de listas do Sudeste.
 - **«Mudança a rever» (só uma pessoa tira)**: 22 linhas, quase todas já ocultas ou expiradas; no site estão a Prefeitura de Fortaleza (C-cf77f502) e o IF Baiano de Ruy Barbosa e Remanso (C-f87d83a8, C-cc5db6c6).
 - **ID repetido**: C-f3ab9761 aparece em duas linhas (ambas ocultas); já não é criado de novo.
+
+### Auditoria 6 do ChatGPT (27/11, corrida pelo Claude no ChatGPT do responsável)
+
+Conversa: https://chatgpt.com/c/6b0a06ea-bee0-83ed-9c73-0f2647ca2fde. Muitas páginas não abriram ao ChatGPT; o que se aplicou foi conferido por código ou no navegador.
+- **Fundação Bradesco (Escola Virtual)**: certificado gratuito, frase das perguntas frequentes («Na Escola Virtual da Fundação Bradesco você não paga nada nem para fazer o curso, nem para emitir o certificado.», https://www.ev.org.br/faq), conferida por código e acrescentada aos cursos.
+- **Prefeitura de Fortaleza, 32 cursos (C-cf77f502)**: oculto. A notícia não tem datas e a ficha de inscrição, fora do site da Prefeitura (onrender.com), só mostra Pedicure (14 a 18/12/2026).
+- **FGV «Fundamentos de Marketing» (C-9201cd18)**: era a versão em espanhol; oculto, e o `fgv.py` passa a aceitar só cursos com apresentação em português.
+- **GO Recife «NR10» e «NR 10»**: são duas turmas diferentes (Areias, até 27/11; Várzea, até 28/11), vistas no navegador; ficam.
+- **Cagece Capacita (C-5fb69af8)**: expirado (oferta de julho; a Cagece abre turmas todos os meses, com matrícula num só dia).
+- **IFRO Libras (C-5c9f0969)**: o edital escreve mesmo «30/11/2027 a 11/12/2027» e não há retificação; fica publicado com aviso, como o responsável já tinha decidido.
+- **IFMT Edital 205/2026**: a notícia diz «janeiro de 2026»; o edital não abriu ao ChatGPT. O cartão não escreve o ano da matrícula, por isso nada a corrigir.
+- **Sem resposta**: SENAI SE, certificado do Sebrae, IEFP, Recife 60+ (as páginas não abriram ao ChatGPT).
+- **Sudeste (parte C)**: Senac SP (sp.senac.br/bolsas-de-estudo, «Cursos 100% gratuitos»), SENAI SP (sp.senai.br/oportunidades), Firjan SENAI (editais gratuitos), SENAI ES (senaies.com.br/editais), Qualifica SP, FAETEC, Trilhas de Futuro (MG), Qualificar ES, matrícula da EJA de SP e MG, IFMG (subsequentes por sorteio) e IFES. As Etecs (Centro Paula Souza) têm prova: ficam fora.

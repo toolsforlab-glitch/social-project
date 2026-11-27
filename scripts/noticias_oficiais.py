@@ -70,6 +70,12 @@ FONTES = [
      "api": "https://portal.rr.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
      "pesquisas": ["cursos gratuitos", "qualificação profissional inscrições"], "local": "BR-RR", "regiao": "Roraima",
      "cidade": "", "entidade": "Governo de Roraima"},
+    # Amazonas (27/11/2026): a Prefeitura de Manaus (Semtepi, Cmaes) abre cursos gratuitos de qualificação e de arte
+    # algumas vezes por ano; o portal é WordPress e a pesquisa abre a partir do GitHub (o do Governo do Amazonas não).
+    {"nome": "Prefeitura de Manaus",
+     "api": "https://www.manaus.am.gov.br/wp-json/wp/v2/posts?search={q}&per_page=20&_fields=date,link,title",
+     "pesquisas": ["cursos gratuitos", "qualificação profissional inscrições"], "local": "BR-AM", "regiao": "Amazonas",
+     "cidade": "Manaus", "entidade": "Prefeitura de Manaus"},
     {"nome": "Prefeitura de Porto Velho", "pagina": "https://www.portovelho.ro.gov.br/noticias", "local": "BR-RO",
      "regiao": "Rondônia", "cidade": "Porto Velho", "entidade": "Prefeitura de Porto Velho"},
     {"nome": "Prefeitura de Palmas", "pagina": "https://www.palmas.to.gov.br/core/noticias/", "local": "BR-TO",

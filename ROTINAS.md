@@ -47,8 +47,8 @@ Cursos presenciais visíveis no site a 27/11/2026 entre parênteses (incluem os 
 | **Tocantins** (1) | Senac TO (`senac_to.py`, código) · Prefeitura de Palmas (notícias oficiais) |
 | **Goiás** (1) | Seduc-GO, EJA (à mão, 27/11) · a fazer: Senac GO, SENAI GO, IFG, IF Goiano, Prefeitura de Goiânia |
 | **Distrito Federal** (1) | Sedet-DF, Jornada da Mulher Trabalhadora (à mão, 27/11) · a fazer: IFB EJA-EPT, Senac DF (bloqueia), SENAI DF |
-| **Mato Grosso** (0) | a fazer: Senac MT (portal PSG), SENAI MT (Gratuidade – Oportunidades), IFMT |
-| **Mato Grosso do Sul** (0) | a fazer: Senac MS, SENAI MS, IFMS (bloqueia GitHub e VPN) |
+| **Mato Grosso** (0) | a fazer: Senac MT (o portal PSG não lista vagas: a consulta está desligada e a inscrição é por WhatsApp ou na unidade), SENAI MT (Gratuidade – Oportunidades), IFMT |
+| **Mato Grosso do Sul** (9) | Senac MS (`senac_ms.py`, código: consulta de vagas e editais em PDF) · a fazer: SENAI MS, IFMS (bloqueia GitHub e VPN) |
 | **On-line, todo o Brasil** (674) | Escola Virtual de Governo, Fundação Bradesco, FGV, Escola do Trabalhador 4.0, Aprenda Mais, Sebrae (resumo) · catálogos sob demanda (`catalogo.py`) · pesquisa semanal (`cursos.py`, Claude) |
 
 Todos os estados recebem também a pesquisa semanal (Claude) e a verificação (Claude).

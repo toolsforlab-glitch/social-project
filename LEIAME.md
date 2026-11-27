@@ -401,3 +401,18 @@ Nos outros estados não há OSCs a executar a qualificação estadual: o própri
 - **Prefeitura de Manaus** (Semtepi, Cmaes): acrescentada às notícias oficiais (pesquisa WordPress, abre a partir do GitHub).
 - **IFAM** (portal 403, www2 com certificado expirado) e **portal do Governo do Amazonas** (tempo esgotado) ficam na aba
   «Sites que bloqueiam».
+
+## Senac MS (27/11/2026)
+
+`senac_ms.py` lê a consulta de vagas do PSG (https://www.ms.senac.br/Cursos/Gratuitos-PSG/Consulta-de-Vagas), cidade a
+cidade, e o edital em PDF de cada curso (`pdftotext -layout`): carga horária, vagas, período das aulas, local, idade e
+escolaridade. A inscrição é «enquanto houver vagas»: a turma fica aberta até à véspera do início das aulas. Ficam de
+fora as turmas exclusivas de um parceiro ou fechadas (hospital, penitenciária, projeto), escritas assim na página ou no
+edital. Gratuidade e renda: frases da própria página, conferidas a cada leitura. Corre no `noticias.yml` depois do Cetam
+(precisa do pdftotext). Primeira leitura: 20 cursos na página, 10 turmas abertas, 9 cursos publicados.
+
+Os locais GO, DF, MT e MS foram ligados na aba «Locais» a 27/11: até aí, os cursos de Goiás e do Distrito Federal
+criados à mão não apareciam no site.
+
+O Senac MT não publica vagas no site: a «Consulta de vagas» do portal PSG está desligada (tabela vazia) e a inscrição é
+por WhatsApp ou na unidade. Fica por encontrar outra fonte (notícias do Senac MT ou editais).

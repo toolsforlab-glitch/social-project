@@ -441,7 +441,9 @@ _EXIGE_PROVA = re.compile(
     r"prova de reda[çc][ãa]o|reda[çc][ãa]o (?:eliminat|classificat)|"
     r"entrevista (?:para (?:a )?verifica[çc][ãa]o (?:do|de) n[íi]vel|de n[íi]vel|t[ée]cnica|de conhecimentos?)|"
     r"verifica[çc][ãa]o (?:do|de) n[íi]vel de profici[êe]ncia|teste de nivelamento (?:eliminat|classificat|para ingresso)|"
-    r"an[áa]lise (?:de|do) curr[íi]culo|an[áa]lise curricular", re.I)
+    r"an[áa]lise (?:de|do) curr[íi]culo|an[áa]lise curricular|"
+    # 27/11/2026 (arrumação do REGRAS.md, E3): análise de títulos ou de notas do histórico escolar também é disputa
+    r"an[áa]lise (?:de|do|dos) (?:hist[óo]rico escolar|t[íi]tulos|boletim)|classifica[çc][ãa]o pel[ao]s? (?:notas|m[ée]dias)", re.I)
 
 
 def exige_prova(texto):

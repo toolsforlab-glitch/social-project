@@ -119,11 +119,6 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 senac_to.py
 
-      - name: Turmas do Programa Senac de Gratuidade em Mato Grosso do Sul (consulta de vagas e editais, sem Claude)
-        if: ${{ always() }}
-        timeout-minutes: 10
-        run: cd scripts && python3 senac_ms.py
-
       - name: Cursos curtos (FIC) dos campi do IFRO, lidos dos editais oficiais (sem Claude)
         if: ${{ always() }}
         timeout-minutes: 10
@@ -169,6 +164,11 @@ jobs:
         if: ${{ always() }}
         timeout-minutes: 10
         run: cd scripts && python3 cetam.py
+
+      - name: Turmas do Programa Senac de Gratuidade em Mato Grosso do Sul (consulta de vagas e editais, sem Claude; precisa do pdftotext instalado acima)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 senac_ms.py
       - name: Salvar o diagnóstico do Senac Maranhão (7 dias, só para conferir)
         if: ${{ always() }}
         uses: actions/upload-artifact@v4

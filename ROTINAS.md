@@ -36,11 +36,11 @@ Cursos presenciais visíveis no site a 26/11/2026 entre parênteses.
 | **Piauí** (0) | Senac PI e SENAI PI (`senac_ma.py`, Claude; o Senac PI tem o certificado do site expirado) · Governo do Piauí (notícias oficiais) · vigia: Seduc PI (lembretes 1/02 e 3/05) |
 | **Maranhão** (2) | Senac MA e SENAI MA (`senac_ma.py`, Claude) · IEMA, editais FIC (notícias oficiais) |
 | **Pará** (102) | Senac PA, PSG (`senac_pa.py`, código) · SENAI PA (`senai_pa.py`, código) |
-| **Amazonas** (0) | Cetam (`cetam.py`, código) · Senac AM e SENAI AM (`senac_ma.py`, Claude) · vigias: SENAI AM (chamada pública), OELA |
+| **Amazonas** (1, por abrir) | Cetam (`cetam.py`, código) · Senac AM e SENAI AM (`senac_ma.py`, Claude) · vigias: SENAI AM (chamada pública), OELA |
 | **Amapá** (10) | Senac AP e SENAI AP (`senac_ma.py`, Claude) · Ifap ProEJA e EJA estadual (à mão; lembrete 5/01) |
 | **Acre** (4) | Senac AC (`senac_ma.py`, Claude) |
-| **Rondônia** (0) | IFRO, FIC (`ifro_fic.py`, código) · Senac RO (`senac_ma.py`, Claude) · IDEP e Prefeitura de Porto Velho (notícias oficiais) |
-| **Roraima** (0) | Senac RR (`senac_rr.py`, código; turmas todas fechadas a 26/11) · Escolegis da ALE-RR e Governo de Roraima (notícias oficiais) |
+| **Rondônia** (2) | IFRO, FIC (`ifro_fic.py`, código) · SENAI RO, Gratuidade Regimental (à mão a 27/11; falta leitor) · Senac RO (`senac_ma.py`, Claude) · IDEP e Prefeitura de Porto Velho (notícias oficiais) |
+| **Roraima** (1) | Escola Barão de Parima (à mão a 27/11) · Senac RR (`senac_rr.py`, código; turmas todas fechadas a 26/11) · Escolegis da ALE-RR e Governo de Roraima (notícias oficiais) |
 | **Tocantins** (1) | Senac TO (`senac_to.py`, código) · Prefeitura de Palmas (notícias oficiais) |
 | **On-line, todo o Brasil** (645) | Escola Virtual de Governo, Fundação Bradesco, FGV, Escola do Trabalhador 4.0, Aprenda Mais, Sebrae (resumo) · catálogos sob demanda (`catalogo.py`) · pesquisa semanal (`cursos.py`, Claude) |
 

@@ -154,6 +154,16 @@
    "cidade": "",
    "entidade": "SENAI Distrito Federal (Gratuidade Regimental)",
    "nota": "O site sistemafibra.org.br não responde ao GitHub. Os editais estão em https://www.sistemafibra.org.br/senai/editais/gratuidade/edital-gratuidade (um por trimestre; o PDF tem a lista de turmas nos Anexos I e II). Edital 01/2027 (inscrições de 17/11/2026 a 15/03/2027) já criado a 27/11/2026 como curso geral. Quando sair o edital seguinte (02/2027), criar outro curso geral com as frases do novo edital e fechar o anterior."
+  },
+  {
+   "nome": "Senac EAD – Programa Senac de Gratuidade (cursos a distância, vagas por estado)",
+   "url": "https://www.ead.senac.br/gratuito/",
+   "tipo": "lista",
+   "local": "online",
+   "regiao": "",
+   "cidade": "",
+   "entidade": "Senac EAD (Programa Senac de Gratuidade)",
+   "nota": "Página nacional com cursos livres e técnicos a distância do PSG; seleção por estado e por ordem de inscrição («classificação obtida pela ordem de inscrição no curso pelo candidato»). O selo «Inscrições abertas» da lista não é fiável: a 27/11/2026 os 6 cursos livres com esse selo tinham o período de inscrição já passado (19 a 28/10/2026 ou julho). Abrir cada curso (a página só mostra o texto depois do JavaScript) e ler «Período de inscrição», «Início do curso» e «As vagas para esse curso estão destinadas somente para…» (estados). Criar o curso só com período em curso; pôr os estados nos requisitos. Os técnicos EAD 2027 fecharam a 16/11/2026 (resultado a 01/12)."
   }
  ]
 }

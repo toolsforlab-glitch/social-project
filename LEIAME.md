@@ -485,3 +485,9 @@ Conversa: https://chatgpt.com/c/6b0a06ea-bee0-83ed-9c73-0f2647ca2fde. Muitas pá
 - **IFMT Edital 205/2026**: a notícia diz «janeiro de 2026»; o edital não abriu ao ChatGPT. O cartão não escreve o ano da matrícula, por isso nada a corrigir.
 - **Sem resposta**: SENAI SE, certificado do Sebrae, IEFP, Recife 60+ (as páginas não abriram ao ChatGPT).
 - **Sudeste (parte C)**: Senac SP (sp.senac.br/bolsas-de-estudo, «Cursos 100% gratuitos»), SENAI SP (sp.senai.br/oportunidades), Firjan SENAI (editais gratuitos), SENAI ES (senaies.com.br/editais), Qualifica SP, FAETEC, Trilhas de Futuro (MG), Qualificar ES, matrícula da EJA de SP e MG, IFMG (subsequentes por sorteio) e IFES. As Etecs (Centro Paula Souza) têm prova: ficam fora.
+
+### Caminhos alternativos para o Senac DF e o Senac PI (27/11)
+
+- **Senac DF**: o site inteiro (incluindo a página inicial) responde «AFD - WAF Block» no Chrome com a VPN do Brasil e também sem VPN (IP de Portugal). No Instagram oficial (@senacdf) os posts recentes são de cursos pagos com desconto, sem Programa de Gratuidade. Continua sem caminho.
+- **Senac PI**: psg.pi.senac.br continua com o certificado vencido («Privacy error»; não se passa por cima, regra T9). O Instagram oficial (@senacpiaui) não tem posts recentes de vagas gratuitas. Continua sem caminho; o leitor volta a funcionar sozinho quando o certificado for renovado.
+- **Fonte nova achada**: Senac EAD, Programa Senac de Gratuidade nacional (https://www.ead.senac.br/gratuito/), com vagas por estado e seleção por ordem de inscrição. A 27/11 não havia nenhum curso com inscrição em curso (o selo «Inscrições abertas» da lista estava desatualizado). Ficou na tarefa diária do navegador (`fontes_navegador.json`).

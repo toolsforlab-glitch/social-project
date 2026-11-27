@@ -1,0 +1,133 @@
+Você é um auditor independente de um site brasileiro de cursos gratuitos para pessoas em situação de vulnerabilidade. Responda em português do Brasil. Use a pesquisa na web e abra as páginas oficiais (algumas só abrem com IP do Brasil; se não abrir, diga «não abriu»).
+
+REGRAS DO SITE (um curso só pode estar no site se TODAS forem verdade):
+1. Gratuito: a página oficial diz, com palavras suas, que o CURSO é gratuito («inscrição gratuita» sozinha não basta; «bolsa» sozinha não basta). Se o certificado for pago, o curso sai.
+2. Inscrição aberta (ou com data de abertura) com datas escritas na página oficial.
+3. Sem disputa: NÃO pode haver prova, redação, nota do ENEM, entrevista ou análise de currículo. Sorteio ou ordem de inscrição podem.
+4. Aberto ao público (não só para servidores ou para quem já trabalha numa empresa ou área). Grupos como baixa renda, mulheres ou jovens são permitidos.
+
+FORMATO DA RESPOSTA (obrigatório, para o código conferir): para cada item, uma linha por regra:
+<número>. <regra>: SIM | NÃO | NÃO DIZ — «frase copiada letra a letra da página» — <link exato da página>
+Copie as frases sem mudar nada. Não invente frases nem links. Se não achar, escreva NÃO DIZ.
+
+PARTE A — Confira estes cursos, que foram publicados hoje (26/11/2026):
+
+1. SENAI RN – Técnico em Administração, Técnico em Eletrotécnica e Técnico em Modelagem do Vestuário (Natal), Edital SENAI RN 012/2026, inscrições de 25 a 29/11/2026.
+   Lista: https://www.rn.senai.br/oportunidades/
+   Edital: https://www.rn.senai.br/wp-content/uploads/2026/11/EDITAL%20Cursos%20T%C3%A9cnicos%20Gratuidade%202026_2.pdf
+   Pergunta extra: o curso técnico tem alguma taxa (matrícula, material, diploma)?
+
+2. SENAI Sergipe – Informática Básica (Estância), Word e Excel Avançados (Estância), Eletricista Industrial (Aracaju).
+   Páginas: https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7361 , https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7363 , https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7365
+   Pergunta extra: como são preenchidas as vagas (ordem de inscrição, sorteio, outra)? Há edital ou regulamento destas turmas «Projeto de Interiorização»? O certificado é gratuito?
+
+3. Cagece Capacita (Fortaleza) – Atendimento ao Cliente e Pintura Industrial e Básica, matrícula a 28/11/2026, com carta de encaminhamento do SINE/IDT.
+   Notícia: https://www.ce.gov.br/2026/11/26/cagece-capacita-matriculas-ocorrem-dia-28-de-novembro/
+
+PARTE B — Procure cursos que faltam no site (Piauí, Amazonas, Rondônia, Roraima):
+Procure, só em sites oficiais (governo estadual ou municipal, Senac, SENAI, Sebrae, institutos federais IFPI, IFAM, IFRO, IFRR, Cetam, IDEP, Seduc), cursos PRESENCIAIS gratuitos com inscrições abertas agora (ou a abrir até 25/01/2027), em Teresina, Manaus, Porto Velho, Boa Vista ou noutras cidades destes estados. Inclua matrícula na EJA (Educação de Jovens e Adultos) da rede pública com período oficial.
+Para cada curso achado, responda no formato:
+B<n>. <nome do curso> — <entidade> — <cidade>
+   gratuito: «frase» — <link>
+   inscrições: «frase com as datas» — <link>
+   seleção: «frase» (ou NÃO DIZ) — <link>
+   público: «frase» (ou NÃO DIZ) — <link>
+No máximo 10 cursos. Não traga notícias de jornal sem o link da página oficial.
+…
+Parte A
+SENAI RN — Técnico em Administração, Técnico em Eletrotécnica e Técnico em Modelagem do Vestuário
+
+Gratuito: SIM — «100% GRATUITO» — https://www.rn.senai.br/wp-content/uploads/2026/11/EDITAL%20Cursos%20T%C3%A9cnicos%20Gratuidade%202026_2.pdf 
+Inscrição aberta: SIM — «25 a 29/11/2026» — https://www.rn.senai.br/wp-content/uploads/2026/11/EDITAL%20Cursos%20T%C3%A9cnicos%20Gratuidade%202026_2.pdf 
+Sem disputa: SIM — «será realizado sorteio público» — https://www.rn.senai.br/wp-content/uploads/2026/11/EDITAL%20Cursos%20T%C3%A9cnicos%20Gratuidade%202026_2.pdf 
+Aberto ao público: SIM — «Ter condição de baixa renda autodeclarada no ato da inscrição;» — https://www.rn.senai.br/wp-content/uploads/2026/11/EDITAL%20Cursos%20T%C3%A9cnicos%20Gratuidade%202026_2.pdf 
+Taxa de matrícula, material ou diploma: NÃO DIZ — https://www.rn.senai.br/wp-content/uploads/2026/11/EDITAL%20Cursos%20T%C3%A9cnicos%20Gratuidade%202026_2.pdf 
+O edital permite encerrar as inscrições antecipadamente. A conferência das inscrições é seguida de reunião informativa obrigatória, com sorteio se houver mais candidatos presentes e interessados do que vagas. 
+
+SENAI Sergipe — Informática Básica, Estância
+
+Gratuito: SIM — «Grátis» — https://www.se.senai.br/cursos?categoria=metalmecanica 
+Inscrição aberta: SIM — «Inscrição: 25/11/2026 a 07/12/2026» — https://www.se.senai.br/cursos?categoria=metalmecanica 
+Sem disputa: NÃO DIZ — não abriu — https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7361
+Aberto ao público: NÃO DIZ — não abriu — https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7361
+SENAI Sergipe — Word e Excel Avançados, Estância
+
+Gratuito: SIM — «Gratuito» — https://senai.alfamaweb.com.br/cursos/word-e-excel-avancados-8991 
+Inscrição aberta: SIM — «25/11/2026 a 31/05/2027» — https://senai.alfamaweb.com.br/cursos/word-e-excel-avancados-8991 
+Sem disputa: NÃO DIZ — https://senai.alfamaweb.com.br/cursos/word-e-excel-avancados-8991 
+Aberto ao público: SIM — «Trabalhadores da indústria; comunidade; público em geral.» — https://senai.alfamaweb.com.br/cursos/word-e-excel-avancados-8991 
+A página original da turma 7363 não abriu. O catálogo e a página alternativa do SENAI Sergipe registram a oferta de Word e Excel Avançados em Estância. 
+
+SENAI Sergipe — Eletricista Industrial, Aracaju
+
+Gratuito: SIM — «Grátis» — https://www.se.senai.br/cursos?categoria=metalmecanica 
+Inscrição aberta: SIM — «Inscrição: 25/11/2026 a 16/12/2026» — https://www.se.senai.br/cursos?categoria=metalmecanica 
+Sem disputa: NÃO DIZ — não abriu — https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7365
+Aberto ao público: NÃO DIZ — não abriu — https://app.fies.org.br/MatriculaWebSENAI/Cursos/Detalhe/7365
+SENAI Sergipe — perguntas extras sobre as três ofertas
+
+Preenchimento das vagas: NÃO DIZ — https://senai.alfamaweb.com.br/projeto-de-interiorizacao 
+Edital ou regulamento específico das turmas: NÃO DIZ — https://senai.alfamaweb.com.br/projeto-de-interiorizacao 
+Certificado gratuito: NÃO DIZ — https://senai.alfamaweb.com.br/perguntas-frequentes 
+O catálogo do SENAI Sergipe não abriu diretamente. Os trechos de Informática Básica e Eletricista Industrial vieram da versão indexada da página oficial. 
+
+Cagece Capacita — Atendimento ao Cliente e Pintura Industrial e Básica, Fortaleza
+
+Gratuito: SIM — «oferta cursos profissionalizantes gratuitamente» — https://www.ce.gov.br/2026/11/26/cagece-capacita-matriculas-ocorrem-dia-28-de-novembro/ 
+Inscrição aberta: SIM — «Data: 28 de novembro» — https://www.ce.gov.br/2026/11/26/cagece-capacita-matriculas-ocorrem-dia-28-de-novembro/ 
+Sem disputa: SIM — «as matrículas ocorrem por ordem de chegada» — https://www.ce.gov.br/2026/11/26/cagece-capacita-matriculas-ocorrem-dia-28-de-novembro/ 
+Aberto ao público: SIM — «voltados à comunidade» — https://www.ce.gov.br/2026/11/11/cagece-capacita-cartas-de-encaminhamento-ja-estao-disponiveis-no-sine-idt-2/ 
+Carta de encaminhamento: SIM — «portando a carta de encaminhamento emitida pelo SINE/IDT» — https://www.ce.gov.br/2026/11/26/cagece-capacita-matriculas-ocorrem-dia-28-de-novembro/ 
+Certificado gratuito: SIM — «O material didático e o certificado de conclusão do curso serão entregues gratuitamente aos participantes» — https://www.ce.gov.br/2026/11/11/cagece-capacita-cartas-de-encaminhamento-ja-estao-disponiveis-no-sine-idt-2/ 
+As duas páginas não abriram diretamente. Os trechos vieram das versões indexadas das publicações oficiais. A publicação prevê dispensa da carta para ex-alunos que apresentarem o certificado anterior e exige frequência mínima para a entrega do novo certificado. 
+
+Parte B
+B1. Técnico em Informática, turma presencial — SENAI Rondônia, CEET — Porto Velho
+gratuito: «Cursos Gratuitos SENAI Porto Velho - CEET» — https://portal.fiero.org.br/senai/paginas/porto-velho--ceet-%7C-senai-gratuidade-2027.1/93 
+
+inscrições: «03 a 30/11/2026» — https://portal.fiero.org.br/senai/paginas/aprendizagem-b%EF%BF%BDsica-e-tcnica/101 
+
+seleção: «seguindo a ordem de inscrições» — https://portal.fiero.org.br/files/arquivos/SENAI/SENAI%20GRATUIDADE%202027.1/EDITAIS/Edital%20dos%20Cursos%20de%20Aprendizagem%20Industrial%20T%C3%A9cnica%20n%C2%BA%2043.2027.1.pdf 
+
+público: «As oportunidades são destinadas a jovens de diferentes municípios do Estado» — https://portal.fiero.org.br/senai/imprensa/noticia/2026/11/senai-ro-disponibiliza-mais-de-3-mil-vagas-gratuitas-para-a-comunidade/2792 
+
+B2. Técnico em Mecânica, turma presencial — SENAI Rondônia — Ariquemes
+gratuito: «são 100% gratuitos.» — https://portal.fiero.org.br/senai/paginas/aprendizagem-b%EF%BF%BDsica-e-tcnica/101 
+
+inscrições: «03 a 30/11/2026» — https://portal.fiero.org.br/senai/paginas/aprendizagem-b%EF%BF%BDsica-e-tcnica/101 
+
+seleção: «obedecendo a ordem cronológica de inscrição.» — https://portal.fiero.org.br/senai/paginas/aprendizagem-b%EF%BF%BDsica-e-tcnica/101 
+
+público: «Havendo vagas disponíveis não reservadas pelas indústrias, essas serão ofertadas para a comunidade» — https://portal.fiero.org.br/files/arquivos/SENAI/SENAI%20GRATUIDADE%202027.1/EDITAIS/Edital%20dos%20Cursos%20de%20Aprendizagem%20Industrial%20T%C3%A9cnica%20n%C2%BA%2043.2027.1.pdf 
+
+B3. Técnico em Informática — Escola Estadual Barão de Parima — Boa Vista
+gratuito: «cursos técnicos gratuitos» — https://portal.rr.gov.br/escola-barao-de-parima-abre-matriculas-para-cursos-tecnicos-gratuitos-em-boa-vista/ 
+
+inscrições: «03 a 27 de novembro» — https://portal.rr.gov.br/escola-barao-de-parima-abre-matriculas-para-cursos-tecnicos-gratuitos-em-boa-vista/ 
+
+seleção: «procurar diretamente a unidade para consultar as opções disponíveis e efetuar a matrícula.» — https://portal.rr.gov.br/escola-barao-de-parima-abre-matriculas-para-cursos-tecnicos-gratuitos-em-boa-vista/ 
+
+público: «aberta ao público em geral» — https://portal.rr.gov.br/escola-barao-de-parima-abre-matriculas-para-cursos-tecnicos-gratuitos-em-boa-vista/ 
+
+B4. EJA, 1º segmento do Ensino Fundamental — Rede Municipal — Boa Vista
+gratuito: «Os sistemas de ensino assegurarão gratuitamente aos jovens e aos adultos» — https://legis.senado.gov.br/norma/551270/publicacao/34619663 
+
+inscrições: «A partir de 02/02/2026, e durante todo o ano letivo, as transferências e matrículas novas ficarão disponíveis» — https://publicacoes.boavista.rr.gov.br/ler/diario/6483 
+
+seleção: NÃO DIZ — https://publicacoes.boavista.rr.gov.br/ler/diario/6483 
+
+público: «o interessado deve ter 15 anos completos» — https://pressem.boavista.rr.gov.br/noticias/3825246760771519853 
+
+B5. Garçom, aperfeiçoamento — Senac Amazonas — Manaus
+gratuito: «As vagas gratuitas descritas no anexo II deste Edital» — https://am.senac.br/wp-content/uploads/2026/01/EDITAL-001_2026_Programa-Senac-de-Gratuidade_PSG_Senac-Amazonas.doc.pdf 
+
+inscrições: «30/11/2026 a 04/12/2026» — https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-388-2026-senac-manaus-centro-cth-inscricoes-abertas-42320fca8957.pdf 
+
+seleção: NÃO DIZ — https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-388-2026-senac-manaus-centro-cth-inscricoes-abertas-42320fca8957.pdf 
+
+público: «Idade mínima: Maior ou igual a 18 anos;» — https://portalsenac.am.senac.br/portal_senac/web/uploads/psg/publicacoes/n-388-2026-senac-manaus-centro-cth-inscricoes-abertas-42320fca8957.pdf 
+
+A oferta de Garçom exige comprovante de formação ou experiência anterior. O edital geral prevê ordem de inscrição e permite avaliações complementares. A publicação da turma não informa se haverá essa avaliação. 
+
+O edital municipal de Boa Vista para 2027 não abriu. No Piauí, localizei a relação oficial de ofertas da EJA para 2027, sem prazo de matrícula verificável na página consultada. A presença das ofertas da Parte B no catálogo atual do site ficou sem verificação. 
+

@@ -1,6 +1,56 @@
 {
- "atualizado": "2026-11-26T17:10",
+ "atualizado": "2026-11-27T12:00",
  "dias": [
+  {
+   "data": "2026-11-27",
+   "itens": [
+    {
+     "titulo": "Maioria dos brasileiros não vê a importância da primeira infância",
+     "resumo": "Pesquisa mostra que 84% dos brasileiros não reconhecem a importância da primeira infância. Na Amazônia Legal, o déficit de estatura das crianças está acima da média nacional.",
+     "tema": "desenvolvimento",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/84-dos-brasileiros-nao-reconhecem-importancia-da-primeira-infancia-desigualdades-ameacam-criancas-na-amazonia/"
+    },
+    {
+     "titulo": "Guia ajuda famílias de alto patrimônio a se aproximar do setor social",
+     "resumo": "A FOPHI Network, com apoio do Movimento Bem Maior, lançou um guia para famílias com alto patrimônio, family offices e o campo social. A publicação propõe quatro papéis para as equipes que atuam nessa área.",
+     "tema": "filantropia",
+     "regiao": "Brasil",
+     "fonte": "Observatório do Terceiro Setor",
+     "idioma_original": "pt",
+     "link": "https://observatorio3setor.org.br/filantropia-de-alto-patrimonio-ganha-guia-para-aproximar-familias-family-offices-e-campo-social/"
+    },
+    {
+     "titulo": "Iphan aprova tombamento do antigo prédio do DOI-Codi no Rio",
+     "resumo": "O Iphan aprovou o tombamento do prédio onde funcionou o DOI-Codi durante a ditadura militar, no Rio de Janeiro. O local passa a ser patrimônio nacional para preservar a memória desse período.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/iphan-aprova-tombamento-do-antigo-predio-do-doi-codi-no-rio"
+    },
+    {
+     "titulo": "Casal trans é agredido por dois homens em supermercado do DF",
+     "resumo": "Um professor trans e sua esposa denunciaram uma agressão feita por dois homens em um supermercado do Gama, no Distrito Federal, na segunda-feira (23). O caso reforça a discussão sobre violência contra pessoas trans.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/casal-trans-denuncia-agressao-por-dois-homens-em-supermercado-no-df"
+    },
+    {
+     "titulo": "Polícia do Rio prende mais dois suspeitos de agredir professor",
+     "resumo": "A polícia do Rio prendeu mais dois envolvidos na agressão ao professor e escritor André Aires, no centro da cidade. Segundo a Secretaria Municipal de Saúde, ele segue internado em estado grave.",
+     "tema": "direitos",
+     "regiao": "Brasil",
+     "fonte": "Agência Brasil – Direitos Humanos",
+     "idioma_original": "pt",
+     "link": "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/policia-do-rio-prende-mais-dois-envolvidos-em-agressoes-professor"
+    }
+   ]
+  },
   {
    "data": "2026-11-26",
    "itens": [

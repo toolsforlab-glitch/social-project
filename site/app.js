@@ -370,7 +370,10 @@
     if (id === "sem_escolaridade") return ["Nenhuma", "Saber ler e escrever"].indexOf(c.escolaridade) >= 0;
     if (id === "ajuda") return !!c.ajuda && !/^n[aã]o/i.test(c.ajuda);
     if (id === "reservadas") return !!(c.etiquetas || []).length;
-    if (id === "acessivel") return !!(c.acessibilidade || []).length;
+    // «Para pessoas com deficiência» (pedido do responsável, 27/11/2026): cursos só para elas, com vagas reservadas para elas
+    // ou com acessibilidade confirmada na página oficial
+    if (id === "acessivel") return !!(c.acessibilidade || []).length ||
+      (c.etiquetas || []).some(function (e) { return /defici/i.test(e.texto || ""); });
     if (id === "fecha_breve") return terminaEmBreve(c);
     if (id === "recente") return recente(c);
     return true;

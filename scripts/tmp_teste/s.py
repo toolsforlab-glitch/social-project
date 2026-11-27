@@ -1,7 +1,7 @@
 import sys, re, json
 sys.stdout.reconfigure(line_buffering=True)
 sys.path.insert(0, ".")
-from base import baixar
+from comum import baixar
 U = [
  "https://www.manaus.am.gov.br/wp-json/wp/v2/posts?search=cursos%20gratuitos&per_page=10&_fields=date,link,title",
  "https://www.manaus.am.gov.br/wp-json/wp/v2/posts?search=semtepi%20cursos&per_page=10&_fields=date,link,title",

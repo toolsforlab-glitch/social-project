@@ -6,13 +6,12 @@ B = "https://ps.ifgoiano.edu.br"
 os.makedirs("../sonda", exist_ok=True)
 for n in [708, 716]:
     links = []
-    for suf in ["", "?page=2", "?page=3"]:
+    for suf in ["", "?pesquisa=1&pageAnexo=2"]:
         try:
             h = baixar(f"{B}/edital/visualizar/{n}/{suf}", timeout=40)
             h = h.decode("utf-8", "replace")
         except Exception as e:
             print(n, suf, "ERRO", e); continue
-        if suf == "" and n == 716: print("HREFS", re.findall(r'href=["\']([^"\']+)', h)[:80])
         if suf == "":
             open(f"../sonda/v{n}.txt", "w").write(texto_de_html(h))
         for m in re.findall(r'(?:https://ps\.ifgoiano\.edu\.br)?(/media/anexos_edital/[^"\' >]+)', h):
@@ -20,7 +19,8 @@ for n in [708, 716]:
     print(n, "anexos:", len(links))
     for l in links:
         print("  ", l)
-        if not re.search(r"edital|retifica", l, re.I) or re.search(r"anexo", l, re.I): continue
+        bn = l.rsplit("/",1)[-1]
+        if not re.search(r"edital|retifica", bn, re.I) or re.search(r"anexo", bn, re.I) or not bn.lower().endswith(".pdf"): continue
         try:
             b = baixar(B + l, timeout=60)
             p = f"../sonda/{n}_{len(os.listdir('../sonda'))}.pdf"; open(p, "wb").write(b)

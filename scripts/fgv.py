@@ -61,6 +61,19 @@ def frases_faq():
     return citacao_valida(FRASE_GRATUITO, texto), citacao_valida(FRASE_DISPONIVEL, texto)
 
 
+_ES = {"el", "los", "las", "del", "una", "usted", "sus", "y", "según", "también", "pueden", "conocer", "aprenderá", "le"}
+_EN = {"the", "and", "of", "you", "your", "will", "this", "with", "learn"}
+_PT = {"o", "os", "do", "da", "dos", "das", "uma", "você", "e", "não", "são", "também", "seus", "suas", "aprender"}
+
+
+def em_portugues(texto):
+    """27/11/2026 (revisão T15): o portfólio da FGV tem versões em espanhol e inglês com o mesmo título
+    (ex.: «Fundamentos de Marketing» e «fundamentos-de-marketing-2», em espanhol). O público do site lê português."""
+    palavras = re.findall(r"[a-záéíóúâêôãõçñ]+", (texto or "").lower())
+    pt = sum(w in _PT for w in palavras)
+    return pt >= max(sum(w in _ES for w in palavras), sum(w in _EN for w in palavras))
+
+
 def detalhe(slug):
     d = obter_json(f"{API}/OfertaGratuita/GetDetalhe?codigoCurso={slug}")["result"]
     objetivo = texto_de_html((d.get("objetivoHtml") or "").encode())
@@ -69,7 +82,7 @@ def detalhe(slug):
     return {"slug": slug, "url": f"{SITE}/curso/{slug}", "titulo": (d.get("nomeCurso") or "").strip(),
             "horas": d.get("cargaHoraria") or 0, "area": d.get("areaConhecimentoCurso") or "",
             "descricao": " ".join(frases[:2])[:500], "publico": publico[:600],
-            "prova": exige_prova(objetivo + " " + publico)}
+            "prova": exige_prova(objetivo + " " + publico), "portugues": em_portugues(objetivo)}
 
 
 def provas(d, faq_ok, disp_ok):
@@ -136,7 +149,7 @@ def main():
         except Exception as e:  # noqa: BLE001
             print(f"  ! {slug}: {e}")
             continue
-        if d["titulo"] and not d["prova"]:
+        if d["titulo"] and not d["prova"] and d["portugues"]:
             novos_lidos.append(d)
     novos, custo = [], 0.0
     if novos_lidos:

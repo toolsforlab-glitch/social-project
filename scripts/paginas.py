@@ -238,6 +238,17 @@ DESTINOS_FONTES = [
         "tipo": "curso", "conta": "conta Sebrae",
         "nota": "Na página do curso (aparece “Gratuito”), clique em “Inscreva-se agora”. A página pode abrir na loja "
                 "do Sebrae do seu estado: é o mesmo curso."}),
+    # Senac Pará, Bahia e Tocantins (27/11/2026): o link da turma abre a página da seleção (PA) ou a lista de vagas (BA,
+    # TO), como descrevem senac_pa.py, senac_ba.py e senac_to.py; não há página só da turma
+    (r"^https://www\.pa\.senac\.br/psg/selecao/detalhar/", {
+        "tipo": "lista", "nome": "Senac Pará",
+        "nota": "Na página da seleção, procure o nome do curso e use o botão «Inscrever neste curso»."}),
+    (r"^https://www\.ba\.senac\.br/page/psg-consulta-de-vagas", {
+        "tipo": "lista", "nome": "Senac Bahia",
+        "nota": "Na consulta de vagas, escolha a unidade e procure o nome do curso."}),
+    (r"^https://www\.to\.senac\.br/cursos/abertos", {
+        "tipo": "lista", "nome": "Senac Tocantins",
+        "nota": "Na lista de cursos abertos, procure o nome do curso."}),
     (r"^https://ma\.senac\.br/editais_psg/", {
         "tipo": "curso", "nota": "É a página do edital deste curso: em “Quer participar?” está o botão “Inscrição” e "
                                  "em “Documentos” está o edital completo."}),

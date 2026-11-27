@@ -168,6 +168,9 @@ def main():
             if (primeira and not f.get("primeira_leitura_cria")) or link.rstrip("/") in links_na_base:
                 continue
             n_novas += 1
+            # a mesma notícia pode vir de duas fontes (ex.: notícias da Prefeitura de Fortaleza e Fortaleza Inclusiva,
+            # 27/11/2026): cria-se uma vez só
+            links_na_base.add(link.rstrip("/"))
             novos.append({
                 "ID": id_curso(link, titulo), "Estado": "Novo", "Título": titulo, "Entidade": f["entidade"], "Link": link,
                 "Local": f["local"], "Modalidade": "presencial", "País": "BR", "Região": f["regiao"], "Cidade": f["cidade"],

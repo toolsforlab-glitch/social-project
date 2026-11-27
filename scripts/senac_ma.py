@@ -224,7 +224,9 @@ MAX_CARACTERES = 30000
 DIAGNOSTICO = os.environ.get("SENAC_MA_DIAGNOSTICO", "")  # pasta onde guardar texto e resposta de cada edital
 MAX_TENTATIVAS = 2       # um edital sem nada comprovado é relido uma vez; à segunda fica de lado
 
-SEM_FRASE_GRATUIDADE = "O edital não diz por escrito que o curso é gratuito (só nomeia o Programa Senac de Gratuidade)."
+SEM_FRASE_GRATUIDADE = "O edital não diz por escrito que o curso é gratuito (só nomeia o programa de gratuidade)."
+# texto antigo (até 27/11/2026), que dizia «Senac» também nos editais do SENAI: é substituído quando a linha é relida
+SEM_FRASE_GRATUIDADE_ANTIGA = "O edital não diz por escrito que o curso é gratuito (só nomeia o Programa Senac de Gratuidade)."
 
 SISTEMA = """Extrais dados de um edital oficial do Senac Maranhão (Programa Senac de Gratuidade) para uma base \
 de dados pública. Cada valor que devolves vai ser conferido por código no texto do edital: só conta se vier \
@@ -1672,7 +1674,7 @@ def correr(fonte):
         if "gratuito" in lista_prov and not gratuidade_comprovada(r):
             lista_prov = ["programa" if c == "gratuito" else c for c in lista_prov]
             comprovados = ", ".join(dict.fromkeys(lista_prov))
-            falta = (r.get("O que falta confirmar") or "").strip()
+            falta = (r.get("O que falta confirmar") or "").replace(SEM_FRASE_GRATUIDADE_ANTIGA, "").strip()
             campos.update({"Campos comprovados": comprovados,
                            "Evidência": (r.get("Evidência") or "").replace("gratuito: «", "programa: «"),
                            "O que falta confirmar": (SEM_FRASE_GRATUIDADE + " " + falta).strip()[:900]

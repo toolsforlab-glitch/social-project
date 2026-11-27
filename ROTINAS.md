@@ -39,7 +39,7 @@ Cursos presenciais visíveis no site a 27/11/2026 entre parênteses (incluem os 
 | **Piauí** (1) | Senac PI e SENAI PI (`senac_ma.py`, Claude; o Senac PI tem o certificado do site expirado) · Governo do Piauí (notícias oficiais) · FADEX, Acredita no Primeiro Passo (tarefa do navegador) · vigia: Seduc PI (lembretes 1/02 e 3/05) |
 | **Maranhão** (3) | Senac MA e SENAI MA (`senac_ma.py`, Claude) · IEMA, editais FIC (notícias oficiais) |
 | **Pará** (103) | Senac PA, PSG (`senac_pa.py`, código) · SENAI PA (`senai_pa.py`, código) |
-| **Amazonas** (1, 1 por abrir) | Cetam (`cetam.py`, código) · Senac AM e SENAI AM (`senac_ma.py`, Claude) · vigias: SENAI AM (chamada pública), OELA |
+| **Amazonas** (1, 1 por abrir) | Cetam (`cetam.py`, código; «Por abrir» desde que o edital sai, 27/11) · Senac AM e SENAI AM (`senac_ma.py`, Claude) · notícias da Prefeitura de Manaus (`noticias_oficiais.py`) · vigias: SENAI AM (chamada pública), OELA |
 | **Amapá** (10, 1 por abrir) | Senac AP e SENAI AP (`senac_ma.py`, Claude) · Ifap ProEJA e EJA estadual (à mão; lembrete 5/01) |
 | **Acre** (14, 2 por abrir) | Senac AC (`senac_ma.py`, Claude) |
 | **Rondônia** (4) | IFRO, FIC (`ifro_fic.py`, código) · Programa Vencer, SEAS (vigia) · SENAI RO, Gratuidade Regimental (`senai_ro.py`, código: página + editais de aprendizagem) · Senac RO (`senac_ma.py`, Claude) · IDEP e Prefeitura de Porto Velho (notícias oficiais) |

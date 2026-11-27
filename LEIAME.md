@@ -388,3 +388,16 @@ Nos outros estados não há OSCs a executar a qualificação estadual: o própri
 - **Ficam fora**: Cotec Goiás, 810 vagas técnicas (classificação por notas do histórico ou do Enem); IFMT, cursos técnicos integrados ao ensino médio (é o ensino médio regular para quem acabou o fundamental, não EJA); rematrícula da EJA de Corumbá (só para quem já estuda).
 - **A seguir**: leitores do Senac GO/MT/MS e do SENAI MT/MS (a resposta do ChatGPT indica as páginas «Consulta de Vagas» e «Gratuidade – Oportunidades»); cursos EJA-EPT do IFB (inscrições de 11/12 a 22/01); EJA de Goiânia (pedido de vaga a 04/01/2027).
 
+
+## Amazonas – porque há tão poucos cursos presenciais (27/11/2026)
+
+- **Cetam**: editais grandes, mas com inscrições de 1 a 4 dias. O leitor só publicava as turmas durante a janela, o que quase
+  ninguém chegava a ver. Desde 27/11 publica-as como «Por abrir» logo que o edital sai (até 60 dias antes, regra I3, com a frase
+  do período na prova «abertura») e passa-as a «Aberto» no primeiro dia. Agora não há edital por abrir (009, 010 e 011/2026
+  fechados); o próximo da capital deve sair no fim de janeiro (lembrete a 26/01).
+- **Senac AM**: aberturas com inscrição de um só dia, às vezes postas na lista depois da data. O leitor já trata o «Por abrir»;
+  correr mais vezes ajudaria pouco.
+- **SENAI AM**: entre chamadas; a de 2026 saiu a 12/12/2025 (lembrete a 15/12).
+- **Prefeitura de Manaus** (Semtepi, Cmaes): acrescentada às notícias oficiais (pesquisa WordPress, abre a partir do GitHub).
+- **IFAM** (portal 403, www2 com certificado expirado) e **portal do Governo do Amazonas** (tempo esgotado) ficam na aba
+  «Sites que bloqueiam».

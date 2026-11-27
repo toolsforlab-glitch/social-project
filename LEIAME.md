@@ -433,3 +433,19 @@ por WhatsApp ou na unidade. Fica por encontrar outra fonte (notícias do Senac M
   do IFB («Os cursos são totalmente gratuitos») e LDB; vagas preenchidas por ordem até a turma encher. O IFB pede
   CAPTCHA ao GitHub depois de 1 ou 2 pedidos seguidos: as páginas foram lidas no navegador e os editais pelo GitHub com
   pausas de 12 s.
+
+## SENAI DF, IFMS e IFMT (27/11/2026)
+
+- **SENAI DF** (sistemafibra.org.br, não responde ao GitHub): Edital 01/2027 da Gratuidade Regimental, 6.465 vagas
+  gratuitas para baixa renda (até 1,5 salário mínimo por pessoa) em cerca de 80 cursos no Gama, SIG, Taguatinga e
+  Sobradinho, com turmas de janeiro a março de 2027. A inscrição (17/11/2026 a 15/03/2027) é um cadastro de interesse;
+  a matrícula, por ordem de chegada após a convocação. Criado um curso geral; a fonte está na tarefa do navegador para
+  o edital seguinte. O texto do PDF foi extraído no Chrome com um leitor de PDF em JavaScript (sem bibliotecas de fora).
+- **IFMS** (Edital 73/2026): 8 cursos técnicos integrados na EJA (EJA EPT 2027.1), inscrições até 08/01/2027, sorteio
+  eletrónico se houver mais inscritos do que vagas. O IFMS recusa o GitHub e a VPN; lido no Chrome sem VPN. Gratuidade
+  pela LDB. O 2027.2 (Jardim e Três Lagoas) abre inscrições de 03/05 a 14/06/2027.
+- **IFMT**: as seleções 2027/1 fecharam em agosto e setembro; nada aberto.
+- **Senac DF**: bloqueia («AFD – WAF Block») também a partir de Portugal, sem VPN. Fica por ver pelas notícias da
+  Agência Brasília.
+- A app Urban VPN para Windows foi instalada a 27/11; o Claude tem acesso para a ligar e desligar quando um site
+  bloqueia a VPN (pedido do responsável).

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-27T20:21",
+ "atualizado": "2026-11-27T20:44",
  "cursos": [
   {
    "id": "C-ac9029b1",
@@ -235,7 +235,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-11",
    "como_me_inscrever": [
-    "Confirme se você cumpre os requisitos: renda familiar de até 2 salários mínimos por pessoa e estar estudando ou ter concluído a educação básica.",
+    "Confirme se você cumpre os requisitos: renda familiar de até 2 salários mínimos por pessoa; estar estudando ou ter concluído a educação básica.",
     "Escolha a turma: a página lista o curso no Senac Quixadá (16/11/2026 a 23/11/2026, segunda a sexta, 18h às 22h) e no Senac Iguatu (24/11/2026 a 27/11/2026, terça, quarta, quinta e sexta, 12h às 17h).",
     "No site psg.ce.senac.br/oportunidades, clique em \"Quero me inscrever\" e siga as instruções do formulário.",
     "Para saber o que precisa para garantir a vaga, veja a página \"Bolsas de estudos\" indicada no site."
@@ -1831,7 +1831,7 @@
     "Acesse o site www.ev.org.br e faça o cadastro com nome completo, telefone e e-mail.",
     "Crie uma senha pessoal para entrar na sua conta.",
     "Na página do curso, clique em 'Quero me matricular'.",
-    "Tenha um computador com internet e um e-mail válido. O curso é 100% on-line."
+    "Tenha um computador com internet e um e-mail válido. O curso é 100% online."
    ],
    "antes": [],
    "idade_minima": 14,
@@ -2280,7 +2280,7 @@
    "pais": "BR",
    "regiao": "Ceará",
    "cidade": "",
-   "descricao": "O papel do assistente de logística é fundamental para o eficaz funcionamento dos principais processos da empresa, sendo uma das ocupações mais requisitadas no mercado do trabalho. Aprenda sobre distribuição de mercadorias, fornecendo as informações necessárias para a tomada de decisões importantes sobre operações logísticas. Matricule-se agora e vem ser Senac!",
+   "descricao": "O papel do assistente de logística é fundamental para o eficaz funcionamento dos principais processos da empresa, sendo uma das ocupações mais requisitadas no mercado do trabalho. Aprenda sobre distribuição de mercadorias, fornecendo as informações necessárias para a tomada de decisões importantes sobre operações logísticas. Matricule-se agora e venha ser Senac!",
    "descricao_origem": "pagina",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -3386,7 +3386,7 @@
    "pais": "BR",
    "regiao": "",
    "cidade": "",
-   "descricao": "Aprenda os fundamentos básicos da Inteligência Artificial generativa, desde a sua história até os conceitos essenciais, e as suas aplicações no dia a dia. Serve de base inicial para seguir com os outros cursos de Inteligência Artificial da Escola Virtual.",
+   "descricao": "Aprenda os fundamentos básicos da Inteligência Artificial generativa, desde a sua história até os conceitos essenciais, e suas aplicações no dia a dia. Serve de base inicial para seguir com os outros cursos de Inteligência Artificial da Escola Virtual.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -7295,7 +7295,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-27",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-21",
    "como_me_inscrever": [],
@@ -7351,7 +7351,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-27",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-21",
    "como_me_inscrever": [],
@@ -7408,7 +7408,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-27",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-21",
    "como_me_inscrever": [],
@@ -7465,7 +7465,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-27",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-21",
    "como_me_inscrever": [],
@@ -7522,7 +7522,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-27",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-21",
    "como_me_inscrever": [],
@@ -20302,7 +20302,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-27",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-22",
    "como_me_inscrever": [],
@@ -27756,7 +27756,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-24",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
@@ -32868,7 +32868,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -32885,7 +32885,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -32929,7 +32929,7 @@
     "direitos"
    ],
    "exclusivo_para": "",
-   "requisitos": "ser da área da saúde ou interessada neste tema, compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "ser da área da saúde ou interessada neste tema; compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -32946,7 +32946,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -32990,7 +32990,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33007,7 +33007,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -33051,7 +33051,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33068,7 +33068,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -33112,7 +33112,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33129,7 +33129,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -33481,7 +33481,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33498,7 +33498,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -33542,7 +33542,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33559,7 +33559,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -33603,7 +33603,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33620,7 +33620,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -33664,7 +33664,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33681,7 +33681,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -33725,7 +33725,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -33742,7 +33742,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34419,7 +34419,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34481,7 +34481,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34543,7 +34543,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34606,7 +34606,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34668,7 +34668,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34730,7 +34730,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34791,7 +34791,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34853,7 +34853,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34914,7 +34914,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -34976,7 +34976,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35101,7 +35101,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35163,7 +35163,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35226,7 +35226,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35288,7 +35288,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35350,7 +35350,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35412,7 +35412,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35474,7 +35474,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35536,7 +35536,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35598,7 +35598,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -35954,7 +35954,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -36016,7 +36016,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -36078,7 +36078,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -36140,7 +36140,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -36202,7 +36202,7 @@
     "materias"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -36281,7 +36281,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -36343,7 +36343,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -36405,7 +36405,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -36467,7 +36467,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -36529,7 +36529,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -36901,7 +36901,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -36963,7 +36963,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -37025,7 +37025,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -37087,7 +37087,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -37149,7 +37149,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -38466,7 +38466,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -38529,7 +38529,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -38591,7 +38591,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -38653,7 +38653,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -38714,7 +38714,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-24",
    "como_me_inscrever": [
-    "Crie a sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
+    "Crie sua conta na plataforma Aprenda Mais, do MEC (aprendamais.mec.gov.br).",
     "Abra a página do curso e faça a inscrição.",
     "Estude no seu ritmo e termine até 31/01/2027.",
     "Para o certificado de conclusão, é preciso ter 60% ou mais de aproveitamento."
@@ -39376,7 +39376,7 @@
     "direitos"
    ],
    "exclusivo_para": "",
-   "requisitos": "ensino médio completo, compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "ensino médio completo; compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -39438,7 +39438,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -39500,7 +39500,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "ensino médio completo, compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "ensino médio completo; compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -39561,7 +39561,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -39623,7 +39623,7 @@
     "direitos"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -39999,7 +39999,7 @@
     "mudar"
    ],
    "exclusivo_para": "",
-   "requisitos": "compreensão de leitura em língua portuguesa e possuir equipamento com recursos de áudio e vídeo",
+   "requisitos": "compreensão de leitura em língua portuguesa; possuir equipamento com recursos de áudio e vídeo",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -40117,7 +40117,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 15 anos Escolaridade mínima: Ensino Médio Cursando Requisito/conhecimento específico: editor de texto; planilhas eletrônicas avançado",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 15 anos; Escolaridade mínima: Ensino Médio Cursando; Requisito/conhecimento específico: editor de texto; planilhas eletrônicas avançado",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -40202,7 +40202,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: Ensino Médio Cursando Idade mínima: 14 anos Requisito/conhecimento específico: conhecimentos básicos sobre lógica de programação e sobre acesso a arquivos em servidor e a registros em banco de dados.",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: Ensino Médio Cursando; Idade mínima: 14 anos; Requisito/conhecimento específico: conhecimentos básicos sobre lógica de programação e sobre acesso a arquivos em servidor e a registros em banco de dados.",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -40287,7 +40287,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 16 anos Escolaridade mínima: Ensino Fundamental II incompleto (a partir do 9º ano) Requisito/Conhecimento Específico: Ter Smartphone ou Tablet de qualquer modelo ou SO (Android ou IOS)",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 16 anos; Escolaridade mínima: Ensino Fundamental II incompleto (a partir do 9º ano); Requisito/Conhecimento Específico: Ter Smartphone ou Tablet de qualquer modelo ou SO (Android ou IOS)",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -40372,7 +40372,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 15 anos Escolaridade mínima: Ensino Médio Cursando Requisito/Conhecimento Específico: deve-se ter conhecimento básico em editores de texto, planilhas eletrônicas e no sistema operacional Windows ou Linux. É recomendável conhecimen",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 15 anos; Escolaridade mínima: Ensino Médio Cursando; Requisito/Conhecimento Específico: deve-se ter conhecimento básico em editores de texto, planilhas eletrônicas e no sistema operacional Windows ou Linux. É recomendável conhecimen",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -40457,7 +40457,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Idade mínima: 14 anos. Escolaridade mínima: Ensino Fundamental Completo. Requisito Específico: editores de texto e planilhas eletrônicas.",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Idade mínima: 14 anos; Escolaridade mínima: Ensino Fundamental Completo; Requisito Específico: editores de texto e planilhas eletrônicas.",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -40542,7 +40542,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 15 anos Escolaridade mínima: Ensino Fundamental Incompleto 6º ano",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Requisito de idade: 15 anos; Escolaridade mínima: Ensino Fundamental Incompleto 6º ano",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -40627,7 +40627,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Escolaridade mínima: estar cursando, no mínimo, o 1º ano do Ensino Médio Idade maior ou igual a 18 anos",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Escolaridade mínima: estar cursando, no mínimo, o 1º ano do Ensino Médio; Idade maior ou igual a 18 anos",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -41477,7 +41477,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Idade mínima de 16 anos Escolaridade mínima: Ensino Fundamental (1º ao 5º ano) completo",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Idade mínima de 16 anos; Escolaridade mínima: Ensino Fundamental (1º ao 5º ano) completo",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -41732,7 +41732,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Ensino Fundamental Completo Idade maior ou igual a 16 anos.",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Ensino Fundamental Completo; Idade maior ou igual a 16 anos.",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -41817,7 +41817,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Idade mínima: 18 anos Escolaridade mínima: Ensino Fundamental Completo.",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Idade mínima: 18 anos; Escolaridade mínima: Ensino Fundamental Completo.",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -41902,7 +41902,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Escolaridade mínima: Ensino Fundamental II incompleto (a partir do 9º ano) Requisito de Idade: maior ou igual a 14 anos. Requisito Específico: Conhecimentos básicos de informática (SO Windows e internet).",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Escolaridade mínima: Ensino Fundamental II incompleto (a partir do 9º ano); Requisito de Idade: maior ou igual a 14 anos; Requisito Específico: Conhecimentos básicos de informática (SO Windows e internet).",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -49547,7 +49547,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-25",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-25",
    "como_me_inscrever": [
@@ -49609,7 +49609,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-25",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-25",
    "como_me_inscrever": [
@@ -50095,7 +50095,7 @@
    "onde_inscrever": [],
    "verificado_em": "2026-11-25",
    "inicio": "",
-   "duracao": "1 horas",
+   "duracao": "1 hora",
    "matricula": "",
    "primeiro_visto": "2026-11-25",
    "como_me_inscrever": [
@@ -50996,7 +50996,7 @@
    "pais": "BR",
    "regiao": "Amapá",
    "cidade": "Laranjal do Jari",
-   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 4 semestres, no campus do Ifap em Laranjal do Jari. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1.º semestre de 2027.",
+   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 4 semestres, no campus do Ifap em Laranjal do Jari. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1º semestre de 2027.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -51060,7 +51060,7 @@
    "pais": "BR",
    "regiao": "Amapá",
    "cidade": "Macapá",
-   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 5 semestres, no campus do Ifap em Macapá. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1.º semestre de 2027.",
+   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 5 semestres, no campus do Ifap em Macapá. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1º semestre de 2027.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -51124,7 +51124,7 @@
    "pais": "BR",
    "regiao": "Amapá",
    "cidade": "Macapá",
-   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 6 semestres, no campus do Ifap em Macapá. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1.º semestre de 2027.",
+   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 6 semestres, no campus do Ifap em Macapá. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1º semestre de 2027.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -51188,7 +51188,7 @@
    "pais": "BR",
    "regiao": "Amapá",
    "cidade": "Macapá",
-   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 6 semestres, no campus do Ifap em Macapá. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1.º semestre de 2027.",
+   "descricao": "Curso técnico junto com o ensino médio, para jovens e adultos que terminaram o ensino fundamental e não têm o ensino médio (Proeja). Aulas à noite, durante 6 semestres, no campus do Ifap em Macapá. Não há prova: a classificação é pela idade e pelo tempo desde o fim do ensino fundamental (mais idade e mais tempo fora da escola dão mais pontos). Começa no 1º semestre de 2027.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -53681,7 +53681,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-26",
    "como_me_inscrever": [
-    "Entre na página «Oportunidades» do SENAI RN (www.rn.senai.br/oportunidades) até 29 de novembro de 2026, às 23h59, e escolha o curso e o turno.",
+    "Entre na página \"Oportunidades\" do SENAI RN (www.rn.senai.br/oportunidades) até 29 de novembro de 2026, às 23h59, e escolha o curso e o turno.",
     "Preencha o formulário e anexe em PDF (frente e verso): documento com foto com RG e CPF e o certificado do ensino médio ou a declaração de que está no 2º ou 3º ano.",
     "As inscrições podem fechar antes se o curso chegar ao dobro das vagas: inscreva-se cedo.",
     "O resultado das inscrições chega por WhatsApp ou e-mail a 1/12. Quem for selecionado vai à reunião de informação a 2/12 no SENAI CTGAS-ER (Av. Capitão-Mor Gouveia, 2770, Lagoa Nova, Natal). Se houver mais interessados do que vagas, há sorteio.",
@@ -53745,7 +53745,7 @@
    "matricula": "",
    "primeiro_visto": "2026-11-26",
    "como_me_inscrever": [
-    "Entre na página «Oportunidades» do SENAI RN (www.rn.senai.br/oportunidades) até 29 de novembro de 2026, às 23h59, e escolha o curso e o turno.",
+    "Entre na página \"Oportunidades\" do SENAI RN (www.rn.senai.br/oportunidades) até 29 de novembro de 2026, às 23h59, e escolha o curso e o turno.",
     "Preencha o formulário e anexe em PDF (frente e verso): documento com foto com RG e CPF e o certificado do ensino médio ou a declaração de que está no 2º ou 3º ano.",
     "As inscrições podem fechar antes se o curso chegar ao dobro das vagas: inscreva-se cedo.",
     "O resultado das inscrições chega por WhatsApp ou e-mail a 1/12. Quem for selecionado vai à reunião de informação a 2/12 no SENAI CTGAS-ER (Av. Capitão-Mor Gouveia, 2770, Lagoa Nova, Natal). Se houver mais interessados do que vagas, há sorteio.",
@@ -54040,7 +54040,7 @@
    "pais": "BR",
    "regiao": "Pernambuco",
    "cidade": "Recife",
-   "descricao": "Capacitar os trabalhadores que direta ou indiretamente desenvolvam serviços com eletricidade nas etapas de projeto, construção, montagem, operação, manutenção e nas proximidades desses locais, conscientizando-os à tomarem medidas que preservem a saúde e a segurança de todos.",
+   "descricao": "Capacitar os trabalhadores que direta ou indiretamente desenvolvam serviços com eletricidade nas etapas de projeto, construção, montagem, operação, manutenção e nas proximidades desses locais, conscientizando-os a tomarem medidas que preservem a saúde e a segurança de todos.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -54218,7 +54218,7 @@
     "emprego"
    ],
    "exclusivo_para": "",
-   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Escolaridade mínima: Ensino Médio incompleto Requisito de Idade: maior ou igual a 15 anos. Requisito Específico: Conhecimento básico em editores de texto, planilhas eletrônicas e no sistema operacional Windows ou Linux, protocolo TCP/IP, segurança ló",
+   "requisitos": "Renda familiar de até 2 salários mínimos por pessoa; Escolaridade mínima: Ensino Médio incompleto; Requisito de Idade: maior ou igual a 15 anos; Requisito Específico: Conhecimento básico em editores de texto, planilhas eletrônicas e no sistema operacional Windows ou Linux, protocolo TCP/IP, segurança ló",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -55699,7 +55699,7 @@
     "renda"
    ],
    "exclusivo_para": "Estar no CadÚnico (cadastro atualizado nos últimos 24 meses) e morar em Rondônia",
-   "requisitos": "estar cadastrado(a) no Cadastro Único do Governo Federal - CadÚnico, com status ativo e não cancelado, tendo sua última atualização cadastral ocorrida há, no máximo, 24 (vinte e quatro) meses\nter 16 (dezesseis) anos de idade ou mais no momento do cadastro para cursos de qualificação profissional\nresidir no estado de Rondônia\nSer alfabetizado, possuir capacidade de leitura e compreensão do material didático",
+   "requisitos": "estar cadastrado(a) no Cadastro Único do Governo Federal - CadÚnico, com status ativo e não cancelado, tendo sua última atualização cadastral ocorrida há, no máximo, 24 (vinte e quatro) meses; ter 16 (dezesseis) anos de idade ou mais no momento do cadastro para cursos de qualificação profissional; residir no estado de Rondônia; Ser alfabetizado, possuir capacidade de leitura e compreensão do material didático",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "2026-11-30",
@@ -55761,7 +55761,7 @@
     "renda"
    ],
    "exclusivo_para": "Estar no CadÚnico e morar numa das cidades do programa",
-   "requisitos": "Ter idade entre 16 (dezesseis) e 65 (sessenta e cinco) anos na data da inscrição\nEstar regularmente inscrito(a) no CadÚnico, com cadastro ativo no momento da inscrição\nResidir em um dos municípios contemplados pelo Programa, relacionados no item 3.2",
+   "requisitos": "Ter idade entre 16 (dezesseis) e 65 (sessenta e cinco) anos na data da inscrição; Estar regularmente inscrito(a) no CadÚnico, com cadastro ativo no momento da inscrição; Residir em um dos municípios contemplados pelo Programa, relacionados no item 3.2",
    "certificado": "gratuito",
    "certificado_comprovado": true,
    "inscricoes_ate": "",
@@ -55874,7 +55874,7 @@
    "pais": "BR",
    "regiao": "Distrito Federal",
    "cidade": "Itapoã e Sobradinho II",
-   "descricao": "Cursos gratuitos de qualificação profissional para mulheres que moram no Itapoã ou em Sobradinho II: alongamento de unhas, extensão de cílios e trancista, de manhã ou à tarde. São 165 vagas; as aulas começam a 8 de dezembro.",
+   "descricao": "Cursos gratuitos de qualificação profissional para mulheres que moram no Itapoã ou em Sobradinho II: alongamento de unhas, extensão de cílios e trancista, de manhã ou à tarde. São 165 vagas; as aulas começam no dia 8 de dezembro.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -55963,7 +55963,7 @@
    "como_me_inscrever": [
     "Até 30/11/2026, inscreva-se pelo formulário do edital (forms.gle/gak9oA9RjipqPcBG9) ou presencialmente na Secretaria Municipal de Direitos Humanos e Políticas para as Mulheres, na Secretaria Municipal da Proteção Social ou na Comunidade Batista Missionária (7h30–13h30, de segunda a sexta).",
     "Leve ou anexe CPF, RG, comprovante de residência, comprovante de escolaridade e o NIS.",
-    "O resultado sai a 4/12 no site da FADEX; as aulas começam a partir de 9/12."
+    "O resultado sai no dia 4/12 no site da FADEX; as aulas começam a partir de 9/12."
    ],
    "antes": [],
    "idade_minima": 18,
@@ -56848,7 +56848,7 @@
    "pais": "BR",
    "regiao": "Distrito Federal",
    "cidade": "Gama",
-   "descricao": "Para quem tem 18 anos ou mais e não terminou o ensino médio: estuda o ensino médio junto com um curso técnico (administração, protocolo, arquivo e controlo de estoques), à noite, durante 2 anos e meio. No fim recebe o diploma do ensino médio e o de técnico.",
+   "descricao": "Para quem tem 18 anos ou mais e não terminou o ensino médio: estuda o ensino médio junto com um curso técnico (administração, protocolo, arquivo e controle de estoques), à noite, durante 2 anos e meio. No fim recebe o diploma do ensino médio e o de técnico.",
    "descricao_origem": "resumo",
    "gratuidade_comprovada": true,
    "necessidades": [
@@ -56856,7 +56856,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter terminado o ensino fundamental (até ao 9.º ano) e ter pelo menos 18 anos até ao dia da matrícula",
+   "requisitos": "Ter terminado o ensino fundamental (até o 9.º ano); ter pelo menos 18 anos até o dia da matrícula",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -56917,7 +56917,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter terminado o ensino fundamental (até ao 9.º ano) e ter pelo menos 18 anos até ao dia da matrícula",
+   "requisitos": "Ter terminado o ensino fundamental (até o 9.º ano); ter pelo menos 18 anos até o dia da matrícula",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -56978,7 +56978,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter terminado o ensino fundamental (até ao 9.º ano) e ter pelo menos 18 anos até ao dia da matrícula",
+   "requisitos": "Ter terminado o ensino fundamental (até o 9.º ano); ter pelo menos 18 anos até o dia da matrícula",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -57039,7 +57039,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter terminado o ensino fundamental (até ao 9.º ano) e ter pelo menos 18 anos até ao dia da matrícula",
+   "requisitos": "Ter terminado o ensino fundamental (até o 9.º ano); ter pelo menos 18 anos até o dia da matrícula",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -57100,7 +57100,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter terminado o ensino fundamental (até ao 9.º ano) e ter pelo menos 18 anos até ao dia da matrícula",
+   "requisitos": "Ter terminado o ensino fundamental (até o 9.º ano); ter pelo menos 18 anos até o dia da matrícula",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -57161,7 +57161,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter terminado o ensino fundamental (até ao 9.º ano) e ter pelo menos 18 anos até ao dia da matrícula",
+   "requisitos": "Ter terminado o ensino fundamental (até o 9.º ano); ter pelo menos 18 anos até o dia da matrícula",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -57222,7 +57222,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter terminado o ensino fundamental (até ao 9.º ano) e ter pelo menos 18 anos até ao dia da matrícula",
+   "requisitos": "Ter terminado o ensino fundamental (até o 9.º ano); ter pelo menos 18 anos até o dia da matrícula",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "",
@@ -57344,7 +57344,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter 18 anos até à matrícula e ter terminado (ou estar a terminar) o ensino fundamental",
+   "requisitos": "Ter 18 anos até a matrícula e ter terminado (ou estar terminando) o ensino fundamental",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "2027-01-08",
@@ -57362,8 +57362,8 @@
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
     "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
-    "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico em 15/01/2027.",
+    "O resultado sai em 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],
    "idade_minima": 18,
@@ -57405,7 +57405,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter 18 anos até à matrícula e ter terminado (ou estar a terminar) o ensino fundamental",
+   "requisitos": "Ter 18 anos até a matrícula e ter terminado (ou estar terminando) o ensino fundamental",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "2027-01-08",
@@ -57423,8 +57423,8 @@
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
     "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
-    "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico em 15/01/2027.",
+    "O resultado sai em 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],
    "idade_minima": 18,
@@ -57466,7 +57466,7 @@
     "profissao"
    ],
    "exclusivo_para": "",
-   "requisitos": "Ter 18 anos até à matrícula e ter terminado (ou estar a terminar) o ensino fundamental",
+   "requisitos": "Ter 18 anos até a matrícula e ter terminado (ou estar terminando) o ensino fundamental",
    "certificado": "",
    "certificado_comprovado": false,
    "inscricoes_ate": "2027-01-08",
@@ -57484,8 +57484,8 @@
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
     "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
-    "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico em 15/01/2027.",
+    "O resultado sai em 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],
    "idade_minima": 18,
@@ -57545,8 +57545,8 @@
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
     "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
-    "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico em 15/01/2027.",
+    "O resultado sai em 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],
    "idade_minima": 18,
@@ -57605,8 +57605,8 @@
    "matricula": "",
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
-    "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
+    "Até 08/01/2027, se inscreva na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico a 15/01/2027.",
     "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],
@@ -57666,8 +57666,8 @@
    "matricula": "",
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
-    "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
+    "Até 08/01/2027, se inscreva na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico a 15/01/2027.",
     "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],
@@ -57727,8 +57727,8 @@
    "matricula": "",
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
-    "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
+    "Até 08/01/2027, se inscreva na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico a 15/01/2027.",
     "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],
@@ -57788,8 +57788,8 @@
    "matricula": "",
    "primeiro_visto": "2026-11-27",
    "como_me_inscrever": [
-    "Até 08/01/2027, inscreva-se na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
-    "Se houver mais inscritos do que vagas, há sorteio eletrónico a 15/01/2027.",
+    "Até 08/01/2027, se inscreva na Central de Seleção do IFMS (selecao.ifms.edu.br, «Página do candidato»: faça o cadastro, depois «Inscrições Abertas», Edital 73/2026, e escolha o campus e o curso). Sem internet, peça ajuda na Central de Relacionamento (Cerel) do campus.",
+    "Se houver mais inscritos do que vagas, há sorteio eletrônico a 15/01/2027.",
     "O resultado sai a 21/01/2027; a matrícula é de 22 a 26/01/2027."
    ],
    "antes": [],

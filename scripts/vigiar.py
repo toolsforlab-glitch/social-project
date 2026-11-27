@@ -229,16 +229,46 @@ for _uf in ESTADOS_EJA:
                      "período, não entra. Para quem não acha escola: CadEJA do MEC (cadeja.mec.gov.br)."})
 
 
+_ULTIMO_GN = 0.0
+_GN_BLOQUEADO = False
+
+
 def vigiar_rss(base, v):
     """Notícias recentes (Google Notícias) que o leitor próprio ainda não apanhou."""
     import datetime
     import email.utils
     import re
     from comum import ler_json
-    try:
-        xml = baixar(v["rss"], timeout=40).decode("utf-8", "replace")
-    except Exception as e:  # noqa: BLE001
-        print(f"{v['nome']}: o Google Notícias não abriu ({type(e).__name__}); fica para amanhã.")
+    # 27/11/2026: com dezenas de vigias seguidos, o Google Notícias respondeu 429 (demasiados pedidos) a 36 deles.
+    # Agora há uma pausa entre pedidos e, num 429, espera-se e tenta-se de novo (até 3 vezes, 30 s, 60 s, 120 s).
+    import time
+    import urllib.error
+    global _ULTIMO_GN, _GN_BLOQUEADO
+    if _GN_BLOQUEADO:
+        print(f"{v['nome']}: Google Notícias bloqueado nesta rodada (429 repetido); fica para amanhã.")
+        return
+    xml = None
+    for n, espera in enumerate((30, 60, 120, None)):
+        falta = 4 - (time.monotonic() - _ULTIMO_GN)
+        if falta > 0:
+            time.sleep(falta)
+        _ULTIMO_GN = time.monotonic()
+        try:
+            xml = baixar(v["rss"], timeout=40).decode("utf-8", "replace")
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and espera:
+                print(f"{v['nome']}: Google Notícias pediu para abrandar (429); nova tentativa em {espera}s")
+                time.sleep(espera)
+                continue
+            if e.code == 429:
+                _GN_BLOQUEADO = True
+            print(f"{v['nome']}: o Google Notícias não abriu (HTTPError {e.code}); fica para amanhã.")
+            return
+        except Exception as e:  # noqa: BLE001
+            print(f"{v['nome']}: o Google Notícias não abriu ({type(e).__name__}); fica para amanhã.")
+            return
+    if xml is None:
         return
     import os
     dias = int(os.environ.get("DIAS_ENSAIO") or v["dias"])  # só para ensaios

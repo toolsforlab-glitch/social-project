@@ -13,7 +13,7 @@ Lista única. Uma regra nova entra **primeiro aqui**, com a data e o código que
 - **F3. Igrejas, congregações e ONGs**: entram se o curso for gratuito e aberto a qualquer pessoa (23/11).
 - **F4. Jornais só servem para descobrir** (marcados «Só para descobrir» em Sites de confiança). O curso precisa de uma página oficial. Uma notícia no site oficial da própria entidade que oferece o curso (ex.: a Semtas no site da Prefeitura do Natal) conta como página oficial; uma notícia antiga, que o portal já não mostra, não publica.
 - **F5. Instagram de uma OSC aprovada** conta como página oficial da turma; é conferido no navegador (25/11).
-- **F6. Escolas públicas são «Tudo gratuito»**: institutos federais, Secretarias de Educação, EJA da rede pública (23/11 e 25/11). Mesmo assim guarda-se uma frase: a página de perguntas frequentes da instituição (ex.: IFMS, «Todos os cursos oferecidos são inteiramente gratuitos.»; IFMT, página «Estude no IFMT»; IFB, notícia dos cursos EJA-EPT) ou, para a EJA, o art. 37 da LDB («assegurarão gratuitamente aos jovens e aos adultos»). A frase «a inscrição é gratuita» do edital não basta (I2). Se a página disser que é pago, vale a página (27/11).
+- **F6. Escolas públicas são «Tudo gratuito»**: institutos federais, Secretarias de Educação, EJA da rede pública (23/11 e 25/11). Mesmo assim guarda-se uma frase: a página de perguntas frequentes da instituição (ex.: IFMS, «Todos os cursos oferecidos são inteiramente gratuitos.»; IFMT, página «Estude no IFMT»; IFB, notícia dos cursos EJA-EPT) ou, se a instituição não tiver essa frase, a LDB: art. 37 para a EJA («assegurarão gratuitamente aos jovens e aos adultos») e art. 3.º, VI para os outros cursos («gratuidade do ensino público em estabelecimentos oficiais»; 27/11). A LDB nunca serve para cursos de fundações de apoio ou parceiros (Funcern, Fadex…). A frase «a inscrição é gratuita» do edital não basta (I2). Se a página disser que é pago, vale a página (27/11).
 
 ## 2. Um curso entra quando TODAS estas são verdade
 
@@ -100,7 +100,7 @@ Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, j�
 
 ## 6. Práticas em uso, por confirmar pelo responsável
 
-- **P3 (27/11). Gratuidade de um instituto federal sem página que o diga**: quando não se acha uma frase da instituição (como no IF Goiano), guarda-se a LDB, art. 3.º, VI («gratuidade do ensino público em estabelecimentos oficiais»), vista no planalto.gov.br, e o cartão diz em «O que falta confirmar» que a frase é da lei. A F6 só previa a LDB para a EJA (art. 37). Usado nos 2 integrados do IF Goiano Porangatu.
+Nenhuma de momento (P3, a LDB para institutos federais, entrou na F6 a 27/11).
 
 ## Correspondência com a numeração antiga (até 26/11)
 

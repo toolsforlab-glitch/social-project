@@ -127,11 +127,16 @@ def main():
     gratuito = citacao_valida(FRASE_GRATUIDADE, texto_faq)
     renda = FRASE_RENDA if citacao_valida(FRASE_RENDA, texto_faq) else ""
     insc = FRASE_INSCRICAO if citacao_valida(FRASE_INSCRICAO, texto_faq) else ""
-    with ThreadPoolExecutor(6) as ex:
-        lidos = []
-        for r in ex.map(lambda u: _seguro(ler_curso, u), links):
-            if r:
-                lidos.append(r)
+    with ThreadPoolExecutor(3) as ex:
+        lidos = [r for r in ex.map(lambda u: _seguro(ler_curso, u), links) if r]
+    # 28/11/2026: na 1.ª leitura algumas páginas vieram sem a lista de turmas (resposta incompleta com 6 leituras em
+    # paralelo); as páginas sem turmas são lidas outra vez, uma a uma
+    vazios = [i for i, r in enumerate(lidos) if not r["turmas"]]
+    for i in vazios:
+        r = _seguro(ler_curso, lidos[i]["url"])
+        if r and r["turmas"]:
+            lidos[i] = r
+    print(f"  (páginas sem turmas: {len(vazios)} na 1.ª leitura, {sum(1 for r in lidos if not r['turmas'])} depois de reler)")
     print(f"Senac SC: {len(links)} cursos do PSG com «Inscrições abertas» (o portal diz {total}); {len(lidos)} lidos; "
           f"gratuidade {'conferida' if gratuito else 'NÃO conferida'}; renda {'conferida' if renda else 'não'}; "
           f"inscrição {'conferida' if insc else 'não'}.")

@@ -204,6 +204,16 @@
       "cidade": "",
       "entidade": "Senac Rio de Janeiro, com o Governo do Estado do Rio de Janeiro (PROPAG)",
       "nota": "Recusa o GitHub. As turmas estão num «var DATA = [...]» dentro da página (u=unidade, c=curso, i=início, p=S subsequente / C concomitante). Cartão C-65877a6d só para a subsequente (prazo = véspera do início). Quando aparecerem turmas novas com início futuro, atualizar o prazo, o início e a contagem (M12); a concomitante fechou a 30/10/2026."
+    },
+    {
+      "nome": "Caminho da Capacitação (Fundo Social de SP) – ciclos",
+      "url": "https://www.caminhodacapacitacao.sp.gov.br/",
+      "tipo": "lista",
+      "local": "BR-SP",
+      "regiao": "São Paulo",
+      "cidade": "",
+      "entidade": "Fundo Social de São Paulo (Governo do Estado), programa Caminho da Capacitação",
+      "nota": "A página lista os ciclos («34º Ciclo - 07/12/2026 Grande SP»). Quando aparecer um ciclo novo, criar o cartão desse ciclo (prazo = véspera do início) como o C-3328009c. A lista de cursos e municípios só aparece depois de entrar com CPF em cursofussp.sp.gov.br: não entrar em nome de ninguém."
     }
   ]
 }

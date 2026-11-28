@@ -71,8 +71,15 @@ def cursos_abertos():
         p += 1
 
 
-def ler_curso(url):
-    b = baixar(url, timeout=60).decode("utf-8", "replace")
+def ler_curso(url, tentativas=4):
+    """A página às vezes vem incompleta (sem o título nem as turmas) quando se leem muitas seguidas: tenta-se de novo,
+    com uma pausa, até 4 vezes (28/11/2026)."""
+    import time
+    for n in range(tentativas):
+        b = baixar(url, timeout=60).decode("utf-8", "replace")
+        if "<h1" in b and ("Turmas Dispon" in b or "Posso fazer este curso" in b):
+            break
+        time.sleep(3 + 4 * n)
     t = limpo(re.sub(r"<script.*?</script>|<style.*?</style>", "", b, flags=re.S))
     titulo = limpo((re.search(r"<h1[^>]*>(.*?)</h1>", b, re.S) or [None, ""])[1]) or url.rsplit("/", 1)[-1].replace("-", " ").title()
     desc = re.search(r"O que [ée] (?:o curso|este curso)\??\s*(.+?)(?=\s+O que vou aprender\?)", t)
@@ -127,7 +134,7 @@ def main():
     gratuito = citacao_valida(FRASE_GRATUIDADE, texto_faq)
     renda = FRASE_RENDA if citacao_valida(FRASE_RENDA, texto_faq) else ""
     insc = FRASE_INSCRICAO if citacao_valida(FRASE_INSCRICAO, texto_faq) else ""
-    with ThreadPoolExecutor(3) as ex:
+    with ThreadPoolExecutor(2) as ex:
         lidos = [r for r in ex.map(lambda u: _seguro(ler_curso, u), links) if r]
     # 28/11/2026: na 1.ª leitura algumas páginas vieram sem a lista de turmas (resposta incompleta com 6 leituras em
     # paralelo); as páginas sem turmas são lidas outra vez, uma a uma

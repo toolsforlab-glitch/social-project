@@ -9,7 +9,8 @@ antigas (2023, 2024); só contam as que têm datas. O botão «Inscreva-se» abr
 inscrição por CPF (apsweb.senacrs.com.br/modulos/vestibular): não há página própria por turma, por isso o link do
 curso é a «Consulta Vagas», onde está o bloco da turma com os requisitos e o cronograma.
 
-Provas (conferidas a cada leitura na página «Perguntas frequentes» do portal, hotsite/psg/index.html):
+Provas (conferidas a cada leitura na página «Perguntas frequentes» do portal, index.html#/perguntas-frequentes, cujo
+texto vem de hotsite/psg/partials/faq.html):
 - gratuidade: «…para garantir a oferta de vagas gratuitas em cursos de educação profissional, da Formação Inicial ao
   Nível Técnico, com custo zero à população brasileira de baixa renda.»;
 - vagas: «Os interessados fazem suas inscrições e são selecionados segundo a ordem cronológica de suas inscrições.»
@@ -31,8 +32,8 @@ from comum import baixar
 from turmas import ABA, chave, garantir_aba, hoje_ceara, id_curso, id_turma, necessidades, registo
 
 LISTA = "https://www.senacrs.com.br/hotsite/psg/partials/vagas-filter.php"
-FAQ = "https://www.senacrs.com.br/hotsite/psg/index.html"
-FAQ_LINK = FAQ + "#/perguntas-frequentes"
+FAQ = "https://www.senacrs.com.br/hotsite/psg/partials/faq.html"  # conteúdo da página «Perguntas frequentes» do portal
+FAQ_LINK = "https://www.senacrs.com.br/hotsite/psg/index.html#/perguntas-frequentes"
 ENTIDADE = "Senac Rio Grande do Sul (Programa Senac de Gratuidade)"
 FRASE_GRATUIDADE = ("para garantir a oferta de vagas gratuitas em cursos de educação profissional, da Formação Inicial "
                     "ao Nível Técnico, com custo zero à população brasileira de baixa renda")
@@ -119,14 +120,26 @@ def idade_escolaridade(reqs):
     for r in reqs:
         if re.search(r"renda", r, re.I):
             renda = r
-        elif re.search(r"idade", r, re.I):
+        elif re.search(r"escolaridade", r, re.I):  # antes da idade: «escolaridade» contém «idade»
+            esc = re.sub(r"^[a-e]\)\s*", "", r)
+        elif re.search(r"\bidade\b", r, re.I):
             m = re.search(r"(\d{2})\s*anos", r)
             idade = m.group(1) if m else ""
-        elif re.search(r"escolaridade", r, re.I):
-            esc = re.sub(r"^[a-e]\)\s*", "", r)
-        elif re.search(r"documento", r, re.I):
+        elif re.search(r"documento|certificado de curso|carteira de trabalho", r, re.I):
             doc = re.sub(r"^[a-e]\)\s*", "", r)
     return idade, esc, doc, renda
+
+
+# regra de 23/11/2026: fora os cursos que exigem ser estudante ou profissional de uma área (ex.: «ter cursado ou estar
+# cursando técnico ou Ensino Superior em Enfermagem»); a alternativa «certificado de qualquer curso de qualificação ou
+# autodeclaração» não conta como exigência de área
+_AREA = re.compile(r"(?:cursad[oa]|cursando|formad[oa]|forma[çc][ãa]o)\s+(?:o\s+|um\s+)?(?:curso\s+)?(?:t[ée]cnico|ensino superior|gradua)"
+                   r"|registro (?:profissional|no conselho)|conhecimentos espec[íi]ficos", re.I)
+
+
+def exige_area(c):
+    m = _AREA.search(" ".join(c["requisitos"]) + " " + c["req_texto"])
+    return m.group(0) if m else ""
 
 
 def auditar(c):
@@ -182,6 +195,10 @@ def main():
             continue  # turmas antigas que a página ainda guarda (2023, 2024)
         k = chave(c["nome"])
         if not c["nome"] or k in ocultos:
+            continue
+        area = exige_area(c)
+        if area:
+            print(f"  - fora (exige ser da área: «{area}»): {c['nome'][:50]} | {c['unidade']}")
             continue
         link = f"{LISTA}#{slug(c['unidade'] + '-' + c['nome'] + '-' + c['turno'] + '-' + c['insc_ini'])}"
         if link in vistos:

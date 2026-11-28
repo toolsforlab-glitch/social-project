@@ -99,6 +99,11 @@ jobs:
         timeout-minutes: 10
         run: cd scripts && python3 senac_pa.py
 
+      - name: Turmas do PSG do Senac Rio Grande do Sul (Consulta Vagas oficial, código)
+        if: ${{ always() }}
+        timeout-minutes: 10
+        run: cd scripts && python3 senac_rs.py
+
       - name: Cursos gratuitos do SENAI Pará (páginas das unidades, sem Claude)
         if: ${{ always() }}
         timeout-minutes: 10

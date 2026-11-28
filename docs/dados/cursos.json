@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-28T01:30",
+ "atualizado": "2026-11-28T01:32",
  "cursos": [
   {
    "id": "C-2204a779",
@@ -26930,9 +26930,9 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null,
-   "turmas_contadas_em": "",
-   "turmas_unidade": ""
+   "turmas_abertas": 4,
+   "turmas_contadas_em": "2026-11-27",
+   "turmas_unidade": "cursos"
   },
   {
    "id": "C-cc5db6c6",
@@ -26996,9 +26996,9 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null,
-   "turmas_contadas_em": "",
-   "turmas_unidade": ""
+   "turmas_abertas": 5,
+   "turmas_contadas_em": "2026-11-27",
+   "turmas_unidade": "cursos"
   },
   {
    "id": "C-bbd64b5d",
@@ -27061,9 +27061,9 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null,
-   "turmas_contadas_em": "",
-   "turmas_unidade": ""
+   "turmas_abertas": 4,
+   "turmas_contadas_em": "2026-11-27",
+   "turmas_unidade": "cursos"
   },
   {
    "id": "C-c351514a",
@@ -58645,9 +58645,9 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null,
-   "turmas_contadas_em": "",
-   "turmas_unidade": ""
+   "turmas_abertas": 8,
+   "turmas_contadas_em": "2026-11-27",
+   "turmas_unidade": "cursos"
   },
   {
    "id": "C-fc3ce992",
@@ -58772,9 +58772,9 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null,
-   "turmas_contadas_em": "",
-   "turmas_unidade": ""
+   "turmas_abertas": 6,
+   "turmas_contadas_em": "2026-11-27",
+   "turmas_unidade": "cursos (3 cursos em cada um dos 2 locais)"
   },
   {
    "id": "C-427c6221",
@@ -60227,9 +60227,9 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null,
-   "turmas_contadas_em": "",
-   "turmas_unidade": ""
+   "turmas_abertas": 260,
+   "turmas_contadas_em": "2026-11-27",
+   "turmas_unidade": "turmas"
   },
   {
    "id": "C-8112c7b7",
@@ -61944,9 +61944,9 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null,
-   "turmas_contadas_em": "",
-   "turmas_unidade": ""
+   "turmas_abertas": 456,
+   "turmas_contadas_em": "2026-11-27",
+   "turmas_unidade": "turmas"
   },
   {
    "id": "C-16e96bdf",

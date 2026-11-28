@@ -500,3 +500,12 @@ Conversa: https://chatgpt.com/c/6b0a06ea-bee0-83ed-9c73-0f2647ca2fde. Muitas pá
   2. unidades do curso: `/o/senac-content-services/cursosInfoDetalhe/20125/{articleId}?inscricaoAberta=false&bolsaAberta=true&buscarUnidadesComOferta=true` (`unidadesComOferta`: nome, categoryId, cidade; `possoFazerEsseCurso` traz a escolaridade);
   3. turmas: `/o/senac-oferta-services/ofertasPorCategoryIds/20125?codigoFTOferta=…&dataEfetivaOferta=…&categoryIds=…&start=0&end=100&bolsaAberta=true&cursoArticleId=…&considerarDataBolsaFutura=true` (XML por turma: `dataInicioOferta`, `dataFimOferta`, `horariosAllOferta`, `qtdeTotalVagasPSG`, `vagasBolsaOferta`, `dataAberturaBolsaOferta`, `botaoBolsaOferta`).
 - Leitura completa no Chrome a 27/11 (4 min, sem erros): 8.745 turmas; **293 com inscrição de bolsa aberta hoje (5.267 vagas de bolsa) em 38 cidades** (107 na capital) e 1.755 que abrem nos próximos 60 dias.
+
+### Auditoria 7 do ChatGPT (Sudeste, 28/11, corrida pelo Claude)
+
+Conversa: https://chatgpt.com/c/6b0a18c7-4da0-83eb-ab07-6c392a3a4615. Aplicado depois de conferido:
+- **Firjan SENAI (RJ)**: curso geral do edital de qualificação profissional (C-b454c3ac): 11.260 vagas gratuitas, renda até 1,5 salário mínimo por pessoa, ordem de inscrição, inscrições de 23/11/2026 a 23/04/2027; página e PDF conferidos por código.
+- **IFSP**: 3.235 vagas em cursos técnicos concomitantes e subsequentes, sorteio sem prova, inscrições até 04/12; **taxa de inscrição de R$ 30** (vista no navegador). À espera de decisão do responsável sobre cursos com taxa de inscrição.
+- **Qualifica SP**: «Todos os cursos são gratuitos para estudantes.»; em caso de excesso há prioridade social (desempregados, 60+, mulheres arrimo de família, afrodescendentes); a última oferta fechou a 25/11; nada aberto a 28/11. Cursos on-line dos parceiros: «IA para Todos» (StartSe) diz-se para qualquer brasileiro, mas o certificado não diz se é gratuito; «Ela Empreende!» com o formulário em erro.
+- **SENAI-SP a distância**: «Todos os cursos, online têm certificado gratuito»; falta saber se são abertos a todo o Brasil.
+- Ficam fora: FAETEC (oferta vista com entrevista), Qualificação Setorial da Firjan (prioridade a indicados por sindicatos), Trilhas de Futuro (fechou a 10/11), curso do IFES só para quem trabalha numa instituição de ensino.

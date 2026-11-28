@@ -78,7 +78,10 @@ def ler_curso(url):
     desc = re.search(r"O que [ée] (?:o curso|este curso)\??\s*(.+?)(?=\s+O que vou aprender\?)", t)
     if not desc:
         desc = re.search(r"Sobre o curso\s*(.+?)(?=\s+O que vou aprender\?)", t)
-    req = re.search(r"Requisitos para Matr[íi]cula\s*(.+?)(?=\s+Como serei avaliado\?|\s+Turmas Dispon[íi]veis)", t)
+    # cada requisito é um elemento HTML próprio: lêem-se os textos entre etiquetas, não o texto corrido
+    i_req = b.find("Requisitos para Matr")
+    f_req = min([x for x in (b.find("Como serei avaliado", i_req), b.find("Turmas Dispon", i_req)) if x > 0] or [i_req + 3000])
+    itens_req = [limpo(x) for x in re.findall(r">([^<>]{2,})<", b[i_req:f_req]) if limpo(x)][1:] if i_req >= 0 else []
     horas = sum(int(h) for h in re.findall(r"(\d+) horas", t.split("Posso fazer este curso?")[0].split("O que vou aprender?")[-1]))
     turmas = []
     seg = b[b.find("Turmas Disponíveis"):] if "Turmas Disponíveis" in b else ""
@@ -86,8 +89,8 @@ def ler_curso(url):
     for i, ini in enumerate(pos):
         bloco_html = seg[ini:pos[i + 1] if i + 1 < len(pos) else ini + 12000]
         bt = limpo(bloco_html)
-        antes = limpo(seg[max(0, ini - 600):ini])
-        uni = re.findall(r"((?:FACULDADE\s+)?SENAC[^0-9]{3,60}?)\s+\d+\s+turmas?", antes)
+        antes = limpo(seg[:ini])
+        uni = re.findall(r"((?:FACULDADE\s+)?SENAC\b[^0-9]{3,60}?)\s+\d+\s+turmas?\b", antes)
         m = re.match(r"Turma (\d{4}\.\d+\.\d+)\s+(.+?)\s+((?:Segunda|Terça|Quarta|Quinta|Sexta|Sábado|Domingo).+?)\s+Início (\d\d/\d\d/\d{4})\s+Término (\d\d/\d\d/\d{4})", bt)
         vagas = re.search(r"Vagas dispon[íi]veis\s+(\d+)", bt)
         turmas.append({
@@ -99,7 +102,7 @@ def ler_curso(url):
         if not t_["unidade"] and i:
             t_["unidade"] = turmas[i - 1]["unidade"]
     return {"url": url, "titulo": titulo, "descricao": (desc.group(1).strip() if desc else "")[:500],
-            "requisitos": req.group(1).strip()[:600] if req else "", "horas": horas, "turmas": turmas}
+            "requisitos": "; ".join(itens_req)[:600], "itens_req": itens_req, "horas": horas, "turmas": turmas}
 
 
 def requisitos_de(texto):
@@ -157,7 +160,7 @@ def main():
         if area or re.search(r"integrado ao ensino m[ée]dio", c["titulo"] + c["url"], re.I):
             fora.append(f"{c['titulo'][:50]} ({area.group(0) if area else 'integrado ao ensino médio'})")
             continue
-        reqs = requisitos_de(c["requisitos"])
+        reqs = c["itens_req"] or requisitos_de(c["requisitos"])
         idade = next((re.search(r"(\d{2}) anos", r).group(1) for r in reqs if re.search(r"[Ii]dade.*?\d{2} anos", r)), "")
         esc = next((r for r in reqs if re.search(r"Ensino (Fundamental|M[ée]dio)|escolaridade", r, re.I) and "Histórico" not in r), "")
         docs = [r for r in reqs if r not in (esc,) and not re.search(r"[Ii]dade", r)]

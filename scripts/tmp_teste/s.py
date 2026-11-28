@@ -14,7 +14,7 @@ for c in cs:
     g = [t for t in c["turmas"] if t["gratis"]]
     if not g: continue
     area = m._AREA.search(c["requisitos"])
-    print("##", c["titulo"], "|", c["horas"], "h | área:", area.group(0) if area else "", "| req:", m.requisitos_de(c["requisitos"]), "| desc:", c["descricao"][:100])
+    print("##", c["titulo"], "|", c["horas"], "h | área:", area.group(0) if area else "", "| req:", c["itens_req"], "| desc:", c["descricao"][:100])
     for t in g:
         n += 1; print("   ", t["codigo"], "|", t["unidade"], "|", t["cidade"], "|", t["dias"][:60], "|", t["ini"], t["fim"], "|", t["vagas"])
 print("turmas grátis:", n)

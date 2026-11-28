@@ -521,3 +521,8 @@ Conversa: https://chatgpt.com/c/6b0a18c7-4da0-83eb-ab07-6c392a3a4615. Aplicado d
 
 - **Entraram** (frases conferidas por código; as três páginas abrem no GitHub): EJA da rede municipal de São Paulo (C-b0d81ba7; «mantém abertas durante todo o ano as matrículas», a partir de 15 anos, ensino fundamental); Fundação Paulistana (C-6bd83298; «inscrições permanentes», 100% gratuitos, 16+, morar na cidade; 24 cursos com pré-inscrição; a página não diz como se preenchem as vagas); Caminho da Capacitação do Fundo Social de SP (C-3328009c; 34.º ciclo na Grande SP a 07/12/2026, prazo = véspera; prioridade a pessoas vulneráveis; os cursos e municípios só aparecem depois de entrar com CPF em cursofussp.sp.gov.br).
 - **Ficam para depois**: MOOC do Centro Paula Souza (mooc.cps.sp.gov.br, cursos livres on-line gratuitos sem limite de vagas: um leitor de catálogo on-line, como o da FGV); EJA estadual de SP (a matrícula 2027 fechou a 18/09; ver os CEEJA); CMCTs da Prefeitura de SP (sorteio, costumam abrir em dezembro); prefeituras de outras cidades (Campinas, Guarulhos, Santo André, Mauá…). Etecs: prova e taxa, ficam fora.
+
+### EJA no Rio de Janeiro (28/11)
+
+- **Rede estadual** (C-7c164d46): a inscrição de novos alunos de 2027, EJA incluída (fundamental a partir de 15 anos, médio a partir de 18, até 31/01/2027), é no Matrícula Fácil de 12/11 a 04/12/2026; não é por ordem de inscrição; resultado a 17/12, confirmação na escola de 18 a 22/01/2027. O site da Seeduc não abre a partir do GitHub (tempo esgotado): frases vistas no Chrome. Gratuidade pela LDB (F6).
+- **Prefeitura do Rio**: a inscrição de alunos novos (EJA incluída) em matricula.rio foi em janeiro no ano passado (14 a 16/01/2026); lembrete a 11/01/2027.

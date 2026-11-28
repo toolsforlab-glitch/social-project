@@ -88,6 +88,8 @@
     if (!periodo) return ini <= h && fim >= h;
     return ini <= periodo.fim && fim >= periodo.ini;
   }
+  // opções abertas de um cartão: as turmas atuais; num cartão geral (ex.: Senac SP), as turmas que reúne; senão 1 (28/11/2026)
+  function opcoesAbertas(c) { return (c.turmas || []).length ? turmasAtuais(c).length : (c.turmas_abertas || 1); }
   function turmasAtuais(c) {
     var h = hojeIso();
     return (c.turmas || []).filter(function (t) {
@@ -645,7 +647,7 @@
       (site.locais || []).forEach(function (l) { if (/^BR-/.test(l.id)) ativos[l.id.slice(3)] = 1; });
       // cada turma aberta conta como uma opção: curso com turmas conta as turmas atuais; cartão geral (ex.: Senac SP)
       // conta as turmas que reúne; os outros contam 1 (pedido do responsável, 28/11/2026)
-      var opcoes = function (c) { return (c.turmas || []).length ? turmasAtuais(c).length : (c.turmas_abertas || 1); };
+      var opcoes = opcoesAbertas;
       todos.forEach(function (c) { if (c.modalidade !== "online" && /^BR-/.test(c.local || "")) porUf[c.local.slice(3)] = (porUf[c.local.slice(3)] || 0) + opcoes(c); });
       var max = Math.max.apply(null, [1].concat(Object.keys(porUf).map(function (k) { return porUf[k]; })));
       var svg = el("mapa-brasil"), g = el("mapa-bolinhas");
@@ -850,6 +852,9 @@
         // como se distribuem as vagas (regra de 24/11/2026: sorteio e ordem de inscrição entram, com aviso claro)
         (c.vagas === "sorteio" ? '<p class="vagas-aviso">Vagas por sorteio: inscrever-se não garante a vaga.</p>'
          : c.vagas === "ordem" ? '<p class="vagas-aviso">Vagas por ordem de inscrição: inscreva-se cedo.</p>' : "") +
+        // cartão geral: quantas turmas reúne, com a data da contagem (28/11/2026)
+        (c.turmas_abertas ? '<p class="turmas-geral">Este cartão reúne ' + c.turmas_abertas.toLocaleString("pt-BR") +
+          " turmas com inscrições abertas (contadas a " + esc(dataBonita(c.turmas_contadas_em)) + "). Escolha a sua na página oficial.</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         (temTurmas ? "" : requisitosHtml(requisitosDe(c, null))) + antesHtml(c) +
@@ -981,6 +986,11 @@
       var presenciais = res.filter(function (c) { return c.modalidade !== "online"; }).length;
       var resumo = res.length === 1 ? "1 curso" : res.length + " cursos";
       if (o && o !== "online" && res.length) resumo += res.length === 1 ? " presencial" : " presenciais";
+      // cartões gerais reúnem muitas turmas: a contagem diz também o total de turmas abertas (pedido do responsável, 28/11/2026)
+      if (res.some(function (c) { return c.turmas_abertas; })) {
+        var nOpcoes = res.reduce(function (s, c) { return s + opcoesAbertas(c); }, 0);
+        resumo += " (ao todo, " + nOpcoes.toLocaleString("pt-BR") + " turmas e cursos com inscrições abertas)";
+      }
       contagem.textContent = res.length ? resumo : "";
       medirBusca(texto.value, res.length);
       // filtros ativos, visíveis no topo da lista (na coluna da esquerda podem ficar fora da vista), cada um com ✕

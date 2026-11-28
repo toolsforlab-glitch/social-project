@@ -95,9 +95,9 @@ def turmas_do_cartao_geral(r, dias=7):
         n = int(float(str(r.get("Turmas abertas (cartão geral)") or "").replace(".", "").replace(",", ".")))
         quando = datetime.date.fromisoformat(str(r.get("Turmas contadas em") or "")[:10])
     except ValueError:
-        return None
+        return None, ""
     hoje = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).date()
-    return n if n > 1 and 0 <= (hoje - quando).days <= dias else None
+    return (n, quando.isoformat()) if n > 1 and 0 <= (hoje - quando).days <= dias else (None, "")
 
 
 def destino_do_curso(r):
@@ -295,7 +295,7 @@ def exportar_dados(base, cfg):
         cursos[-1]["turnos"] = lista(cursos[-1]["turnos"])
         # cartão geral (ex.: Senac SP, Senac RJ): quantas turmas abertas ele reúne, para o mapa dos números não mostrar
         # só 1 (pedido do responsável, 28/11/2026). Só conta se a contagem tiver no máximo 7 dias.
-        cursos[-1]["turmas_abertas"] = turmas_do_cartao_geral(r)
+        cursos[-1]["turmas_abertas"], cursos[-1]["turmas_contadas_em"] = turmas_do_cartao_geral(r)
         for campo in ("idade_minima", "idade_maxima"):
             try:
                 cursos[-1][campo] = int(float(cursos[-1][campo])) if cursos[-1][campo] else None

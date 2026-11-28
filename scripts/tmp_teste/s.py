@@ -1,18 +1,13 @@
-import os, sys, json, re, html, urllib.request
-os.makedirs("../sonda", exist_ok=True)
-def get(u):
-    req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
-    r = urllib.request.urlopen(req, timeout=120); return r.read().decode("utf-8", "replace"), r.geturl()
-t, _ = get("https://www.senacrs.com.br/hotsite/psg/partials/vagas-filter.php")
-out = []
-i = t.find("Lei Lucas")
-out.append("RAW: " + t[i-3000:i+4500])
-for alvo in re.findall(r'data-bs-target="#([^"]+)"', t[i-3000:i+4500]):
-    j = t.find(f'id="{alvo}"'); out.append(f"--- modal {alvo}: " + re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", t[j:j+5000])))[:3000])
-for u in ["https://apsweb.senacrs.com.br/modulos/vestibular", "https://apsweb.senacrs.com.br/modulos/vestibular/"]:
-    try:
-        b, fim = get(u); out.append(f"=== {u} -> {fim} {len(b)}\n" + b[:6000])
-    except Exception as e:
-        out.append(f"=== {u} erro {e}")
-open("../sonda/rs.txt", "w").write("\n".join(out))
-json.dump([{"ok": len(t)}], open("../sonda/resumo.json", "w"))
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import senac_rs as m
+from comum import baixar
+from base import texto_de_html, citacao_valida
+p = baixar(m.LISTA, timeout=180).decode("utf-8", "replace")
+f = texto_de_html(baixar(m.FAQ, timeout=60))
+print("gratuidade:", citacao_valida(m.FRASE_GRATUIDADE, f), "| ordem:", citacao_valida(m.FRASE_ORDEM, f), "| faq len", len(f))
+ts = m.ler_turmas(p)
+print("turmas com datas:", len(ts))
+for t in ts:
+    if t["prazo"] >= "2026-01-01":
+        print({k: v for k, v in t.items() if k not in ("req_texto", "cron_texto")}, "| cidade:", m.cidade_da_unidade(t["unidade"]), "| idade/esc/doc/renda:", m.idade_escolaridade(t["requisitos"]), "| auditoria:", m.auditar(t))

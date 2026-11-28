@@ -1,17 +1,17 @@
-import os, sys, re, urllib.request
+import os, sys, re, html, urllib.request
 def get(u):
     req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
     r = urllib.request.urlopen(req, timeout=60); return r.read().decode("utf-8", "replace"), r.geturl()
-for u in ["https://portal.sc.senac.br/psg/", "https://www.sc.senac.br/psg/"]:
-    b, f = get(u)
-    print("=====", u, f, len(b))
-    print(re.sub(r"\s+", " ", re.sub(r"<style.*?</style>", "", b, flags=re.S))[:3000])
-    print(sorted(set(re.findall(r'(?:src|href)=["\']([^"\']+)', b)))[:80])
-    for js in re.findall(r'src=["\']([^"\']+\.js[^"\']*)', b)[:15]:
-        url = js if js.startswith("http") else re.sub(r"/[^/]*$", "/", f) + js.lstrip("./") if not js.startswith("/") else re.match(r"https?://[^/]+", f).group(0) + js
-        try:
-            j, _ = get(url)
-            apis = sorted(set(re.findall(r'["\'`](https?://[^"\'`\s]{8,200}|/api/[^"\'`\s]{2,120}|api/[^"\'`\s]{2,120})["\'`]', j)))
-            print("JS", url, len(j), apis[:60])
-        except Exception as e:
-            print("JS", url, "erro", e)
+def tx(b): return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<script.*?</script>|<style.*?</style>", "", b, flags=re.S))))
+b, f = get("https://portal.sc.senac.br/cursos/1/todas-unidades/psg/todas-modalidades/todos-tipos/todas-areas/search")
+print("LISTA", f, len(b))
+t = tx(b); i = t.find("Cursos"); print(t[:200]); 
+links = sorted(set(re.findall(r'href="([^"]*curso[^"]*)"', b)))
+print(len(links), links[:60])
+print(re.findall(r'(?:pagina|page)[^"]{0,40}', b)[:20])
+m = re.search(r"(\d+)\s+(?:cursos?|resultados?)\s+encontrad", t, re.I); print("total", m.group(0) if m else "")
+i = t.find("PSG"); print(t[i-1500:i+3000])
+for p in ["faq.html", "programa.html", "inscricao.html"]:
+    try:
+        x, _ = get("https://www.sc.senac.br/psg/partials/" + p); print("==", p, tx(x)[:2500])
+    except Exception as e: print("==", p, e)

@@ -81,7 +81,7 @@ def ler_curso(url):
     # cada requisito é um elemento HTML próprio: lêem-se os textos entre etiquetas, não o texto corrido
     i_req = b.find("Requisitos para Matr")
     f_req = min([x for x in (b.find("Como serei avaliado", i_req), b.find("Turmas Dispon", i_req)) if x > 0] or [i_req + 3000])
-    itens_req = [limpo(x) for x in re.findall(r">([^<>]{2,})<", b[i_req:f_req]) if limpo(x)][1:] if i_req >= 0 else []
+    itens_req = [limpo(x) for x in re.findall(r">([^<>]{2,})<", b[i_req:f_req]) if limpo(x)] if i_req >= 0 else []
     horas = sum(int(h) for h in re.findall(r"(\d+) horas", t.split("Posso fazer este curso?")[0].split("O que vou aprender?")[-1]))
     turmas = []
     seg = b[b.find("Turmas Disponíveis"):] if "Turmas Disponíveis" in b else ""
@@ -240,6 +240,11 @@ def main():
                   + (f" | AUDITORIA: {'; '.join(problemas)}" if problemas else ""))
     for f in fora:
         print("  - fora:", f)
+    if any("onhecimento espec" in f for f in fora):
+        registar_pendencia(base, "Senac SC (PSG): cursos gratuitos que pedem «Comprovante de Conhecimento Específico» ficam fora do site "
+                                 "até se saber o que vale como comprovante (se basta uma autodeclaração ou um certificado de qualquer curso, como no Senac-RS, podem entrar).",
+                           "O que o Senac SC aceita como «Comprovante de Conhecimento Específico» (perguntar à unidade ou ver o regulamento do PSG).",
+                           LISTA.format(p=1), origem="senac_sc.py")
     for link, t in existentes.items():
         if link not in vistos and t.get("Situação") != "Encerrada":
             alteracoes.append((t["_linha"], {"Situação": "Encerrada", "Última verificação": hoje,

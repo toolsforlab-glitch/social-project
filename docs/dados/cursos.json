@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-28T00:50",
+ "atualizado": "2026-11-28T00:55",
  "cursos": [
   {
    "id": "C-2204a779",
@@ -61,7 +61,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fa5789f3",
@@ -193,7 +194,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-26602af1",
@@ -254,7 +256,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d3002f62",
@@ -355,7 +358,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-72a8f105",
@@ -457,7 +461,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-83784e23",
@@ -558,7 +563,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-14117737",
@@ -659,7 +665,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5e97b4a5",
@@ -760,7 +767,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-932cc024",
@@ -861,7 +869,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-998f6482",
@@ -962,7 +971,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7fcf0c3c",
@@ -1063,7 +1073,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2de39e02",
@@ -1165,7 +1176,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b4a0b075",
@@ -1267,7 +1279,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1c54d19f",
@@ -1369,7 +1382,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e393a066",
@@ -1513,7 +1527,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5fa91c58",
@@ -1659,7 +1674,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-50ce7a69",
@@ -1762,7 +1778,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9bf82116",
@@ -1865,7 +1882,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5a7a632",
@@ -1968,7 +1986,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4ae3e898",
@@ -2071,7 +2090,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f7e7b708",
@@ -2131,7 +2151,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-24152039",
@@ -2191,7 +2212,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-54bc3665",
@@ -2253,7 +2275,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8c0f4123",
@@ -2316,7 +2339,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e586697e",
@@ -2380,7 +2404,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c17ca7cd",
@@ -2444,7 +2469,8 @@
    ],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-66dce181",
@@ -2503,7 +2529,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c4a38974",
@@ -2562,7 +2589,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6a66b244",
@@ -2622,7 +2650,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-94e22da3",
@@ -2676,7 +2705,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f8acea15",
@@ -2778,7 +2808,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9ecf4c4a",
@@ -2869,7 +2900,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2f691367",
@@ -3012,7 +3044,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b01eb1bd",
@@ -3113,7 +3146,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-457a38cf",
@@ -3268,7 +3302,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e72c7ec8",
@@ -3423,7 +3458,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9c659a51",
@@ -3578,7 +3614,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-849ee036",
@@ -3669,7 +3706,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6f926d1f",
@@ -3732,7 +3770,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-79321995",
@@ -3792,7 +3831,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-067cbf5f",
@@ -3853,7 +3893,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-52931e65",
@@ -3912,7 +3953,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f5ff48a8",
@@ -3971,7 +4013,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-af98c596",
@@ -4030,7 +4073,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5adb7969",
@@ -4088,7 +4132,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-22651031",
@@ -4147,7 +4192,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d9d64312",
@@ -4205,7 +4251,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c581c764",
@@ -4263,7 +4310,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-816295a6",
@@ -4321,7 +4369,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2ab803e8",
@@ -4379,7 +4428,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fcf4b693",
@@ -4437,7 +4487,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4b8f6df4",
@@ -4495,7 +4546,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-76cd0fee",
@@ -4553,7 +4605,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1e9996fb",
@@ -4611,7 +4664,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-badb4d91",
@@ -4668,7 +4722,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4806c989",
@@ -4725,7 +4780,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-00190582",
@@ -4783,7 +4839,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f22e37eb",
@@ -4840,7 +4897,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a97274fb",
@@ -4897,7 +4955,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0d214cd4",
@@ -4954,7 +5013,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-df5ee565",
@@ -5011,7 +5071,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-10853e99",
@@ -5068,7 +5129,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7b7a5a92",
@@ -5126,7 +5188,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d636a539",
@@ -5184,7 +5247,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-813ae9b5",
@@ -5242,7 +5306,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8847b6c1",
@@ -5299,7 +5364,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7b96c0f3",
@@ -5356,7 +5422,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bae0a95f",
@@ -5414,7 +5481,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dfd6f0b8",
@@ -5472,7 +5540,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4f9b7988",
@@ -5529,7 +5598,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-327d181f",
@@ -5588,7 +5658,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8f3e8599",
@@ -5646,7 +5717,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4be8b26b",
@@ -5704,7 +5776,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7f21edc6",
@@ -5763,7 +5836,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ee24e54b",
@@ -5822,7 +5896,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9da3a4af",
@@ -5881,7 +5956,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5f569122",
@@ -5939,7 +6015,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0161409e",
@@ -5998,7 +6075,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-87d477e9",
@@ -6056,7 +6134,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-215ba59b",
@@ -6114,7 +6193,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9d968175",
@@ -6172,7 +6252,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8c745534",
@@ -6230,7 +6311,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c23fd060",
@@ -6288,7 +6370,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a26e0d65",
@@ -6345,7 +6428,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0dec668c",
@@ -6403,7 +6487,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-11d4ff31",
@@ -6465,7 +6550,8 @@
    ],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-53fca2af",
@@ -6522,7 +6608,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-09abb249",
@@ -6579,7 +6666,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-013f88a8",
@@ -6636,7 +6724,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-07fd38bd",
@@ -6693,7 +6782,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ebfe2f8a",
@@ -6751,7 +6841,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1eb54aed",
@@ -6809,7 +6900,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2f35790c",
@@ -6866,7 +6958,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-568bc05e",
@@ -6925,7 +7018,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-908750ba",
@@ -6984,7 +7078,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-257b9ee1",
@@ -7041,7 +7136,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3d5cba1d",
@@ -7099,7 +7195,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0ac57e45",
@@ -7157,7 +7254,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0068361f",
@@ -7217,7 +7315,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5b83b1a5",
@@ -7276,7 +7375,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-533db051",
@@ -7336,7 +7436,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0d09ef75",
@@ -7394,7 +7495,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cac01d3d",
@@ -7453,7 +7555,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7e90bc99",
@@ -7512,7 +7615,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2c19f38e",
@@ -7572,7 +7676,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-80a34d7c",
@@ -7632,7 +7737,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-02a4610e",
@@ -7690,7 +7796,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1ed69c73",
@@ -7748,7 +7855,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4d6073ec",
@@ -7806,7 +7914,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-031dbbbb",
@@ -7863,7 +7972,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bfa52390",
@@ -7921,7 +8031,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4b290d53",
@@ -7979,7 +8090,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-46030822",
@@ -8037,7 +8149,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c5cf0d68",
@@ -8095,7 +8208,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-14854540",
@@ -8153,7 +8267,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a6de6864",
@@ -8211,7 +8326,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0caaf4f2",
@@ -8269,7 +8385,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2c33d0f2",
@@ -8327,7 +8444,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cad23266",
@@ -8385,7 +8503,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-790615ba",
@@ -8443,7 +8562,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ca06b6d3",
@@ -8501,7 +8621,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-47175dfd",
@@ -8559,7 +8680,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c53b92a7",
@@ -8618,7 +8740,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-20963596",
@@ -8677,7 +8800,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7a2fd0ca",
@@ -8735,7 +8859,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-44078211",
@@ -8793,7 +8918,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4b227a3c",
@@ -8851,7 +8977,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-44701c64",
@@ -8909,7 +9036,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6f2e51b2",
@@ -8968,7 +9096,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c3bfbbae",
@@ -9026,7 +9155,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a232c689",
@@ -9083,7 +9213,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-863c7c1c",
@@ -9142,7 +9273,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a228b3d3",
@@ -9200,7 +9332,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-454aa31b",
@@ -9257,7 +9390,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d02b4264",
@@ -9315,7 +9449,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b79f39cd",
@@ -9374,7 +9509,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cb0415e0",
@@ -9432,7 +9568,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-39c4a087",
@@ -9491,7 +9628,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-de2513bf",
@@ -9549,7 +9687,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1e20cda9",
@@ -9607,7 +9746,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0117abb7",
@@ -9665,7 +9805,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b6223d09",
@@ -9723,7 +9864,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2416cd61",
@@ -9781,7 +9923,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ca8f74e5",
@@ -9839,7 +9982,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8704f226",
@@ -9897,7 +10041,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-39a109cc",
@@ -9955,7 +10100,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e3b7d4e9",
@@ -10012,7 +10158,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-06aa0adb",
@@ -10070,7 +10217,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8c31d5c4",
@@ -10128,7 +10276,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-89dc45a3",
@@ -10186,7 +10335,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dc0a1fac",
@@ -10244,7 +10394,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d104312d",
@@ -10301,7 +10452,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-99e97b03",
@@ -10358,7 +10510,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fd329143",
@@ -10416,7 +10569,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9bb84658",
@@ -10474,7 +10628,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5590029",
@@ -10532,7 +10687,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-69bc73b4",
@@ -10590,7 +10746,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e951037b",
@@ -10648,7 +10805,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8475ea46",
@@ -10706,7 +10864,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5425c6df",
@@ -10764,7 +10923,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7dc28642",
@@ -10822,7 +10982,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4e6d0b66",
@@ -10880,7 +11041,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-14a386a5",
@@ -10938,7 +11100,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ea6d2743",
@@ -10996,7 +11159,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8071acad",
@@ -11054,7 +11218,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4d1f8ad8",
@@ -11111,7 +11276,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-03ec27be",
@@ -11169,7 +11335,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-afa3b1e8",
@@ -11227,7 +11394,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8cba3d0b",
@@ -11286,7 +11454,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9ed79eed",
@@ -11343,7 +11512,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-20848fe1",
@@ -11401,7 +11571,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-332852a9",
@@ -11458,7 +11629,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7254243f",
@@ -11516,7 +11688,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-09f1be4c",
@@ -11574,7 +11747,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e38d5501",
@@ -11631,7 +11805,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fae441ea",
@@ -11689,7 +11864,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e343fbfc",
@@ -11746,7 +11922,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e0746b8a",
@@ -11804,7 +11981,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8c0f9b4a",
@@ -11862,7 +12040,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-614eb1be",
@@ -11920,7 +12099,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-38c8d68a",
@@ -11977,7 +12157,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1160637b",
@@ -12035,7 +12216,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dbf25244",
@@ -12093,7 +12275,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b12038aa",
@@ -12151,7 +12334,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fc5d87e7",
@@ -12209,7 +12393,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8d36dd0a",
@@ -12267,7 +12452,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c2b72b26",
@@ -12325,7 +12511,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-22ec2d47",
@@ -12384,7 +12571,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4d62c1ed",
@@ -12442,7 +12630,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5bc1aeb",
@@ -12499,7 +12688,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6bb37963",
@@ -12557,7 +12747,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bd776ebc",
@@ -12615,7 +12806,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cd033465",
@@ -12672,7 +12864,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-54fd4aac",
@@ -12730,7 +12923,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d97472d7",
@@ -12788,7 +12982,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3cc96337",
@@ -12846,7 +13041,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a5700d85",
@@ -12904,7 +13100,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a14b4ff7",
@@ -12963,7 +13160,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8319f1c7",
@@ -13022,7 +13220,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5ad1e47f",
@@ -13079,7 +13278,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ec8af8cf",
@@ -13136,7 +13336,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d7e01993",
@@ -13194,7 +13395,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2259fdb6",
@@ -13253,7 +13455,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-582f0c85",
@@ -13311,7 +13514,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8514f8d1",
@@ -13369,7 +13573,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a2e880a2",
@@ -13426,7 +13631,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-97bc1b86",
@@ -13484,7 +13690,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-26a3116d",
@@ -13542,7 +13749,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-99fad04e",
@@ -13600,7 +13808,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8d6c9da5",
@@ -13659,7 +13868,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2268bea2",
@@ -13717,7 +13927,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2546d7a0",
@@ -13775,7 +13986,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9d4949ad",
@@ -13832,7 +14044,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9bad51e8",
@@ -13889,7 +14102,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2792b575",
@@ -13947,7 +14161,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-12787f91",
@@ -14006,7 +14221,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d88d2612",
@@ -14064,7 +14280,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9d2f2914",
@@ -14121,7 +14338,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d2ce2c06",
@@ -14179,7 +14397,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-434443e7",
@@ -14236,7 +14455,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3d0dbde0",
@@ -14295,7 +14515,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f529456d",
@@ -14354,7 +14575,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-677780f5",
@@ -14412,7 +14634,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-769d6bd9",
@@ -14470,7 +14693,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-604ef804",
@@ -14528,7 +14752,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-292498f7",
@@ -14586,7 +14811,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-27c8b1b4",
@@ -14643,7 +14869,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1fc204d0",
@@ -14701,7 +14928,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-feeb4e11",
@@ -14760,7 +14988,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b8933993",
@@ -14819,7 +15048,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d31a9a26",
@@ -14877,7 +15107,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bda9b047",
@@ -14935,7 +15166,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cb566db1",
@@ -14993,7 +15225,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-032433f7",
@@ -15051,7 +15284,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3a86c16a",
@@ -15110,7 +15344,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c5b4e85d",
@@ -15168,7 +15403,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-796de620",
@@ -15226,7 +15462,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fb9885ea",
@@ -15284,7 +15521,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-53f8045a",
@@ -15342,7 +15580,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e3c4dcdd",
@@ -15401,7 +15640,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7e5a412e",
@@ -15460,7 +15700,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b5eded51",
@@ -15518,7 +15759,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5f88046",
@@ -15576,7 +15818,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1eca44ea",
@@ -15634,7 +15877,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1d1e36a7",
@@ -15693,7 +15937,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6dace3e7",
@@ -15752,7 +15997,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b60adf9c",
@@ -15810,7 +16056,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dd5fc075",
@@ -15868,7 +16115,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9d77e033",
@@ -15926,7 +16174,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ecf2c5aa",
@@ -15983,7 +16232,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8c46f36e",
@@ -16041,7 +16291,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-715a0f16",
@@ -16099,7 +16350,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9b1f15fb",
@@ -16158,7 +16410,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-12177b30",
@@ -16216,7 +16469,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1f426a85",
@@ -16274,7 +16528,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0eaa2a7e",
@@ -16332,7 +16587,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-54db7044",
@@ -16390,7 +16646,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e6a40744",
@@ -16448,7 +16705,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9ee7e747",
@@ -16505,7 +16763,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fb3855c9",
@@ -16563,7 +16822,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b1e5da6d",
@@ -16621,7 +16881,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d6264001",
@@ -16679,7 +16940,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8d02468b",
@@ -16737,7 +16999,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5eab6259",
@@ -16795,7 +17058,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-86f27800",
@@ -16853,7 +17117,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-16d0665c",
@@ -16910,7 +17175,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e94e5f17",
@@ -16968,7 +17234,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bec81ce2",
@@ -17027,7 +17294,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3bf6a09e",
@@ -17085,7 +17353,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c6c590cb",
@@ -17142,7 +17411,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b7fe1dfc",
@@ -17200,7 +17470,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-60a1624d",
@@ -17258,7 +17529,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-593dbc5d",
@@ -17315,7 +17587,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a832de27",
@@ -17374,7 +17647,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ba58b89e",
@@ -17432,7 +17706,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-29e28d05",
@@ -17490,7 +17765,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8dd56980",
@@ -17548,7 +17824,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d00b65fd",
@@ -17605,7 +17882,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4845a937",
@@ -17663,7 +17941,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6ee1fee7",
@@ -17721,7 +18000,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-580da020",
@@ -17780,7 +18060,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-23511323",
@@ -17837,7 +18118,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ef8268a3",
@@ -17895,7 +18177,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-66508345",
@@ -17953,7 +18236,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-37ba5332",
@@ -18011,7 +18295,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-822486db",
@@ -18071,7 +18356,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ea329152",
@@ -18130,7 +18416,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0dacb121",
@@ -18189,7 +18476,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-224279db",
@@ -18247,7 +18535,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d0781212",
@@ -18305,7 +18594,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-46828bde",
@@ -18363,7 +18653,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-07e25002",
@@ -18421,7 +18712,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f8923928",
@@ -18479,7 +18771,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e0649bdc",
@@ -18538,7 +18831,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c3d91374",
@@ -18596,7 +18890,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-54d65cae",
@@ -18654,7 +18949,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d1677743",
@@ -18713,7 +19009,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e318022e",
@@ -18771,7 +19068,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-03b2676e",
@@ -18829,7 +19127,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d7a84cf1",
@@ -18887,7 +19186,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1dd2cac6",
@@ -18945,7 +19245,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d8517153",
@@ -19003,7 +19304,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-669e85f9",
@@ -19062,7 +19364,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-69e7c74e",
@@ -19121,7 +19424,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d1cdf480",
@@ -19180,7 +19484,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a080df26",
@@ -19238,7 +19543,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ba171c61",
@@ -19296,7 +19602,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6b953f32",
@@ -19354,7 +19661,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-84075cc5",
@@ -19411,7 +19719,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bed96caa",
@@ -19469,7 +19778,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ffa5be5c",
@@ -19528,7 +19838,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cb92d2ad",
@@ -19586,7 +19897,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c9c5db5a",
@@ -19645,7 +19957,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8038ce43",
@@ -19703,7 +20016,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a654f5c1",
@@ -19761,7 +20075,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7d1dedf4",
@@ -19819,7 +20134,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f8791e40",
@@ -19878,7 +20194,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a21b5734",
@@ -19936,7 +20253,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0f779f2c",
@@ -19995,7 +20313,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f566ea44",
@@ -20053,7 +20372,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cf26e8c2",
@@ -20111,7 +20431,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f1b1d21e",
@@ -20169,7 +20490,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-45d3da0e",
@@ -20228,7 +20550,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a4c47995",
@@ -20286,7 +20609,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5856e9cb",
@@ -20344,7 +20668,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-032b847b",
@@ -20402,7 +20727,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2ad9948b",
@@ -20460,7 +20786,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ce9e881f",
@@ -20517,7 +20844,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cfdd6e63",
@@ -20575,7 +20903,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cbc01d0b",
@@ -20633,7 +20962,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e79c86b6",
@@ -20691,7 +21021,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-033f5d82",
@@ -20750,7 +21081,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-47bc77eb",
@@ -20809,7 +21141,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-785759c8",
@@ -20867,7 +21200,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4d1cec0e",
@@ -20925,7 +21259,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cec4f90b",
@@ -20984,7 +21319,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-91fec56b",
@@ -21041,7 +21377,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d21f3f16",
@@ -21098,7 +21435,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cfd8ccdf",
@@ -21156,7 +21494,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4d824a85",
@@ -21215,7 +21554,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b569d46f",
@@ -21273,7 +21613,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-be9ea4cd",
@@ -21331,7 +21672,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-76be8fba",
@@ -21390,7 +21732,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4483697e",
@@ -21448,7 +21791,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-05849100",
@@ -21506,7 +21850,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-93993502",
@@ -21565,7 +21910,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-157373f3",
@@ -21623,7 +21969,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-023d7af8",
@@ -21682,7 +22029,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-abba1b9b",
@@ -21740,7 +22088,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6513b5fc",
@@ -21798,7 +22147,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b853dc79",
@@ -21856,7 +22206,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-43a35883",
@@ -21914,7 +22265,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cc5c36c9",
@@ -21973,7 +22325,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4df7b33d",
@@ -22031,7 +22384,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0109b950",
@@ -22089,7 +22443,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b6d044da",
@@ -22148,7 +22503,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-700405dd",
@@ -22206,7 +22562,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9e1779e7",
@@ -22265,7 +22622,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e113b521",
@@ -22324,7 +22682,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a3778bab",
@@ -22382,7 +22741,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-da5104d6",
@@ -22441,7 +22801,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-016d6a23",
@@ -22498,7 +22859,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-426b164e",
@@ -22557,7 +22919,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-29633fba",
@@ -22616,7 +22979,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-43b61bdf",
@@ -22675,7 +23039,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dbe4f819",
@@ -22733,7 +23098,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0c4f34a7",
@@ -22792,7 +23158,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-08669aa0",
@@ -22850,7 +23217,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-79a7cc15",
@@ -22907,7 +23275,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-30edbcf5",
@@ -22965,7 +23334,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-077f6503",
@@ -23023,7 +23393,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-32267dcf",
@@ -23083,7 +23454,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d164a5ce",
@@ -23142,7 +23514,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-80487e28",
@@ -23199,7 +23572,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2068c698",
@@ -23256,7 +23630,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-653f84d8",
@@ -23314,7 +23689,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7fd04e86",
@@ -23372,7 +23748,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-459e7376",
@@ -23431,7 +23808,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9e818e71",
@@ -23489,7 +23867,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2732523f",
@@ -23547,7 +23926,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-66b14c4b",
@@ -23604,7 +23984,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a258a0a2",
@@ -23661,7 +24042,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9d85c58b",
@@ -23723,7 +24105,8 @@
    ],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0ee07070",
@@ -23781,7 +24164,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9d538438",
@@ -23839,7 +24223,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a6384955",
@@ -23935,7 +24320,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4d12c7d8",
@@ -24031,7 +24417,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a7eb960a",
@@ -24186,7 +24573,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3731f58b",
@@ -24277,7 +24665,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f497e4fc",
@@ -24368,7 +24757,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fbed9996",
@@ -24459,7 +24849,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e974ea15",
@@ -24550,7 +24941,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b9207e6a",
@@ -24673,7 +25065,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ef13e624",
@@ -24764,7 +25157,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f8487253",
@@ -24919,7 +25313,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0253d96e",
@@ -25010,7 +25405,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cf222140",
@@ -25101,7 +25497,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-60205147",
@@ -25256,7 +25653,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7145371e",
@@ -25379,7 +25777,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-924b740c",
@@ -25502,7 +25901,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bd749443",
@@ -25657,7 +26057,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b113929f",
@@ -25780,7 +26181,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-866584b8",
@@ -25871,7 +26273,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d4480876",
@@ -25972,7 +26375,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f87d83a8",
@@ -26036,7 +26440,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cc5db6c6",
@@ -26100,7 +26505,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bbd64b5d",
@@ -26163,7 +26569,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c351514a",
@@ -26256,7 +26663,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3cbfe7b4",
@@ -26310,7 +26718,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-58420dfe",
@@ -26364,7 +26773,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0d47909a",
@@ -26465,7 +26875,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-18821eaa",
@@ -26530,7 +26941,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-565e4bd1",
@@ -26588,7 +27000,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-95081920",
@@ -26647,7 +27060,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3ef0fe54",
@@ -26704,7 +27118,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-23e5d6c8",
@@ -26761,7 +27176,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-90fb3009",
@@ -26818,7 +27234,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2c30a0ed",
@@ -26876,7 +27293,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-82702303",
@@ -26934,7 +27352,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-debe292b",
@@ -26991,7 +27410,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6ac6a7c6",
@@ -27057,7 +27477,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-00843a35",
@@ -27148,7 +27569,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e3fe5e92",
@@ -27239,7 +27661,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-410f33f8",
@@ -27303,7 +27726,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3b050fa3",
@@ -27366,7 +27790,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-df4a5434",
@@ -27428,7 +27853,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5661c394",
@@ -27491,7 +27917,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-849cee28",
@@ -27554,7 +27981,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-02e6848d",
@@ -27618,7 +28046,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5b92b68b",
@@ -27680,7 +28109,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-eb37c21d",
@@ -27744,7 +28174,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9e5ca377",
@@ -27806,7 +28237,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ef2cb607",
@@ -27868,7 +28300,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-56977bd3",
@@ -27930,7 +28363,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-58f5eaa6",
@@ -27992,7 +28426,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e9e38e1d",
@@ -28054,7 +28489,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-28a1edc5",
@@ -28116,7 +28552,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3e31beb5",
@@ -28179,7 +28616,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-380a1c2a",
@@ -28242,7 +28680,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a713dc34",
@@ -28305,7 +28744,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a68dc67c",
@@ -28367,7 +28807,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-86d0e6df",
@@ -28429,7 +28870,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9411b1c9",
@@ -28492,7 +28934,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-18ac0a23",
@@ -28556,7 +28999,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-06b02577",
@@ -28618,7 +29062,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7c864e62",
@@ -28680,7 +29125,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-231ddd3f",
@@ -28743,7 +29189,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-93b14e9d",
@@ -28806,7 +29253,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9892220c",
@@ -28869,7 +29317,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b49948f4",
@@ -28931,7 +29380,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fa4071c8",
@@ -28995,7 +29445,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-16503992",
@@ -29059,7 +29510,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-812bd3bf",
@@ -29124,7 +29576,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-895be7cc",
@@ -29186,7 +29639,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b3ccb329",
@@ -29249,7 +29703,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bc1fcf13",
@@ -29311,7 +29766,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-85b562ac",
@@ -29374,7 +29830,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-57e0f80f",
@@ -29437,7 +29894,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d9edf374",
@@ -29499,7 +29957,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0b72c4e8",
@@ -29562,7 +30021,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-eb3c6c93",
@@ -29626,7 +30086,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9d64a3b5",
@@ -29691,7 +30152,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-495a1896",
@@ -29754,7 +30216,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0c5d5592",
@@ -29817,7 +30280,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-76ea285c",
@@ -29879,7 +30343,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fc2eb703",
@@ -29943,7 +30408,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7983430b",
@@ -30005,7 +30471,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-64510020",
@@ -30069,7 +30536,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-740fced6",
@@ -30132,7 +30600,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8ea0920f",
@@ -30195,7 +30664,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-64926cf4",
@@ -30259,7 +30729,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bf79b3cd",
@@ -30321,7 +30792,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-83e62b17",
@@ -30384,7 +30856,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-76556488",
@@ -30447,7 +30920,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c81aaf35",
@@ -30510,7 +30984,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6c80aba1",
@@ -30573,7 +31048,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-038f8211",
@@ -30636,7 +31112,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-20ce4b13",
@@ -30699,7 +31176,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6c007cd3",
@@ -30761,7 +31239,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-078997fb",
@@ -30824,7 +31303,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5f0eb8ef",
@@ -30886,7 +31366,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-969dca9c",
@@ -30949,7 +31430,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-63eb9343",
@@ -31012,7 +31494,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ef93b950",
@@ -31075,7 +31558,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e30aab50",
@@ -31138,7 +31622,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6731595f",
@@ -31201,7 +31686,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-339975a3",
@@ -31264,7 +31750,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4fa89d44",
@@ -31326,7 +31813,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-30fefae3",
@@ -31390,7 +31878,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a1bac1a0",
@@ -31454,7 +31943,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-237815a6",
@@ -31518,7 +32008,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2074b3c6",
@@ -31581,7 +32072,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-eb9678b1",
@@ -31644,7 +32136,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fae0bee9",
@@ -31707,7 +32200,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-30a8a4e9",
@@ -31769,7 +32263,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f6715824",
@@ -31833,7 +32328,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d570bdbc",
@@ -31895,7 +32391,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-576e2f02",
@@ -31958,7 +32455,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c4a2b1b1",
@@ -32022,7 +32520,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1bce4408",
@@ -32086,7 +32585,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-643c4eba",
@@ -32150,7 +32650,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-904dee58",
@@ -32212,7 +32713,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-753003ea",
@@ -32275,7 +32777,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-38559705",
@@ -32339,7 +32842,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b169415e",
@@ -32396,7 +32900,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b166be3c",
@@ -32454,7 +32959,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3ceaa36c",
@@ -32512,7 +33018,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b3e50e88",
@@ -32569,7 +33076,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c7d77aeb",
@@ -32627,7 +33135,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d16b7365",
@@ -32684,7 +33193,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-701fbacb",
@@ -32742,7 +33252,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-afcc59a8",
@@ -32800,7 +33311,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e31cced3",
@@ -32858,7 +33370,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-01667de7",
@@ -32917,7 +33430,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-99b107c0",
@@ -32975,7 +33489,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-584a68d4",
@@ -33032,7 +33547,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cce858b1",
@@ -33090,7 +33606,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b9c71ce1",
@@ -33148,7 +33665,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-94f1f41d",
@@ -33206,7 +33724,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0d41e1e8",
@@ -33263,7 +33782,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dd272943",
@@ -33325,7 +33845,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4c43650b",
@@ -33387,7 +33908,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-51fbcb2d",
@@ -33449,7 +33971,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-52393f40",
@@ -33512,7 +34035,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e18af8ac",
@@ -33575,7 +34099,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9ae6470c",
@@ -33637,7 +34162,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5f60fe1f",
@@ -33699,7 +34225,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cb088d92",
@@ -33761,7 +34288,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-261077a0",
@@ -33823,7 +34351,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-83cba8e1",
@@ -33885,7 +34414,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7fddf7cc",
@@ -33949,7 +34479,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5d2ecc27",
@@ -34011,7 +34542,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4b6da8f5",
@@ -34074,7 +34606,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6d0339c9",
@@ -34136,7 +34669,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a3b0f8d3",
@@ -34198,7 +34732,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6a5e139b",
@@ -34260,7 +34795,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3951468b",
@@ -34322,7 +34858,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-287d3089",
@@ -34384,7 +34921,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-13c389fc",
@@ -34446,7 +34984,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-04e5d518",
@@ -34508,7 +35047,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0d94dc86",
@@ -34570,7 +35110,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8ba9dca4",
@@ -34632,7 +35173,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1918c71e",
@@ -34695,7 +35237,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-63256541",
@@ -34758,7 +35301,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b727ceb7",
@@ -34821,7 +35365,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-41efa30c",
@@ -34884,7 +35429,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b4dcdeb6",
@@ -34944,7 +35490,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dcf0c3a1",
@@ -35007,7 +35554,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b116b711",
@@ -35071,7 +35619,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-28822c44",
@@ -35134,7 +35683,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-575606a5",
@@ -35197,7 +35747,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-950b64cc",
@@ -35260,7 +35811,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-14291a38",
@@ -35324,7 +35876,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d35c6ec6",
@@ -35387,7 +35940,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8512536a",
@@ -35450,7 +36004,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a435c6b9",
@@ -35512,7 +36067,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b219a32c",
@@ -35575,7 +36131,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-506d16ea",
@@ -35637,7 +36194,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5fec71c1",
@@ -35700,7 +36258,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4a75fad4",
@@ -35764,7 +36323,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-073755c7",
@@ -35827,7 +36387,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fc63cc65",
@@ -35890,7 +36451,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c4a920c6",
@@ -35954,7 +36516,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-be51c836",
@@ -36017,7 +36580,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-644ffd55",
@@ -36080,7 +36644,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-eb1dc3c5",
@@ -36143,7 +36708,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0667d64d",
@@ -36206,7 +36772,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6ce84f94",
@@ -36269,7 +36836,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fcb6f0ae",
@@ -36332,7 +36900,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bac8d49e",
@@ -36396,7 +36965,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1f0a2cfd",
@@ -36459,7 +37029,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d46652e7",
@@ -36522,7 +37093,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0258d2fd",
@@ -36585,7 +37157,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2e0d7957",
@@ -36648,7 +37221,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7086743e",
@@ -36711,7 +37285,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-32112e8c",
@@ -36774,7 +37349,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ef3bef25",
@@ -36837,7 +37413,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1468a352",
@@ -36900,7 +37477,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5b4d20b",
@@ -36963,7 +37541,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5630b24a",
@@ -37026,7 +37605,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-85791231",
@@ -37089,7 +37669,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2a991a6a",
@@ -37152,7 +37733,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0a2b0950",
@@ -37215,7 +37797,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9fad6f3b",
@@ -37278,7 +37861,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ba51e4d5",
@@ -37341,7 +37925,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6808580f",
@@ -37404,7 +37989,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-86d7ee53",
@@ -37467,7 +38053,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9ed6a026",
@@ -37530,7 +38117,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b12b9e2d",
@@ -37593,7 +38181,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0955628f",
@@ -37656,7 +38245,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ce464198",
@@ -37719,7 +38309,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-09a36b7f",
@@ -37782,7 +38373,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a093d407",
@@ -37845,7 +38437,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-070a70a6",
@@ -37908,7 +38501,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-44b36320",
@@ -37971,7 +38565,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-19f53be7",
@@ -38034,7 +38629,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-aa860941",
@@ -38097,7 +38693,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-30a479bb",
@@ -38161,7 +38758,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6eacc4f2",
@@ -38225,7 +38823,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b20eaaaa",
@@ -38289,7 +38888,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b02b2ad6",
@@ -38353,7 +38953,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-90ad28ec",
@@ -38419,7 +39020,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-399321c0",
@@ -38483,7 +39085,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-13cf7535",
@@ -38547,7 +39150,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1ebf1d99",
@@ -38612,7 +39216,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6809ceed",
@@ -38676,7 +39281,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-16011f4d",
@@ -38740,7 +39346,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-105a372d",
@@ -38804,7 +39411,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2b6daa15",
@@ -38868,7 +39476,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dabf32b8",
@@ -38932,7 +39541,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b407370c",
@@ -38996,7 +39606,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-069c0b5b",
@@ -39058,7 +39669,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e5aae595",
@@ -39121,7 +39733,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-16c8607d",
@@ -39183,7 +39796,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-df68cb76",
@@ -39246,7 +39860,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-03870110",
@@ -39310,7 +39925,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c7a98299",
@@ -39373,7 +39989,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a94e5e95",
@@ -39436,7 +40053,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7cace852",
@@ -39498,7 +40116,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-19e2406c",
@@ -39561,7 +40180,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e5b60ad5",
@@ -39624,7 +40244,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b0bb1fee",
@@ -39687,7 +40308,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4d938b8b",
@@ -39750,7 +40372,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0b6c3090",
@@ -39813,7 +40436,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8ac7f8fb",
@@ -39875,7 +40499,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f4bebe69",
@@ -39937,7 +40562,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d9aac0e9",
@@ -39999,7 +40625,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6a087e1b",
@@ -40062,7 +40689,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-970d49dc",
@@ -40125,7 +40753,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2d297afb",
@@ -40188,7 +40817,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-48071ca5",
@@ -40251,7 +40881,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ccfd5eeb",
@@ -40314,7 +40945,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c345ab17",
@@ -40376,7 +41008,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c5a82568",
@@ -40439,7 +41072,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ee6f340c",
@@ -40502,7 +41136,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-89520a6a",
@@ -40565,7 +41200,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2653f3d0",
@@ -40629,7 +41265,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3df993ce",
@@ -40693,7 +41330,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e7ce9e41",
@@ -40757,7 +41395,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e44b040c",
@@ -40821,7 +41460,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-81a7e2c6",
@@ -40884,7 +41524,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ac5dde48",
@@ -40970,7 +41611,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e0d0784a",
@@ -41056,7 +41698,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-03b5ff42",
@@ -41142,7 +41785,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9603d354",
@@ -41228,7 +41872,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b8e9a616",
@@ -41314,7 +41959,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3db6fa9f",
@@ -41400,7 +42046,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3f113cc1",
@@ -41486,7 +42133,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-970af2cc",
@@ -41572,7 +42220,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b91e56bc",
@@ -41658,7 +42307,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-54dbcdc6",
@@ -41744,7 +42394,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-70cf2952",
@@ -41830,7 +42481,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2543ff64",
@@ -41916,7 +42568,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-31df5511",
@@ -42002,7 +42655,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fb1e6613",
@@ -42088,7 +42742,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9663ab72",
@@ -42174,7 +42829,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f595700b",
@@ -42260,7 +42916,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-47a74001",
@@ -42346,7 +43003,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5e536810",
@@ -42432,7 +43090,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-98c3fe10",
@@ -42518,7 +43177,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-beb439ab",
@@ -42604,7 +43264,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-18cb21cf",
@@ -42690,7 +43351,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1cb23fe5",
@@ -42776,7 +43438,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c78f7582",
@@ -42867,7 +43530,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b6ba3100",
@@ -42930,7 +43594,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b5328b2d",
@@ -42993,7 +43658,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f509de31",
@@ -43056,7 +43722,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c6922df4",
@@ -43119,7 +43786,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6a35f3f6",
@@ -43182,7 +43850,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6cdd26f6",
@@ -43245,7 +43914,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f8bb5e6d",
@@ -43308,7 +43978,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d70fb52f",
@@ -43371,7 +44042,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-134076a8",
@@ -43434,7 +44106,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0874d367",
@@ -43497,7 +44170,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ee4f88b3",
@@ -43560,7 +44234,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-48e27cbe",
@@ -43623,7 +44298,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-34fd0437",
@@ -43686,7 +44362,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c6a323c8",
@@ -43749,7 +44426,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2470484c",
@@ -43812,7 +44490,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b7743ee9",
@@ -43875,7 +44554,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c52b20fa",
@@ -43938,7 +44618,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-51542719",
@@ -44001,7 +44682,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-da5a103a",
@@ -44064,7 +44746,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4f355a45",
@@ -44127,7 +44810,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c07f8c82",
@@ -44190,7 +44874,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0dad5c23",
@@ -44253,7 +44938,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-908c2bc8",
@@ -44316,7 +45002,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-db5261d1",
@@ -44379,7 +45066,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6525dd18",
@@ -44442,7 +45130,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-83c790c9",
@@ -44505,7 +45194,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-12332cd2",
@@ -44568,7 +45258,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e89e07fa",
@@ -44631,7 +45322,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8225bccf",
@@ -44694,7 +45386,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-443c565d",
@@ -44757,7 +45450,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e0c9eb08",
@@ -44820,7 +45514,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-00692568",
@@ -44883,7 +45578,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a506dae3",
@@ -44946,7 +45642,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-50c3c154",
@@ -45009,7 +45706,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6d77b0c4",
@@ -45072,7 +45770,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2e81d34b",
@@ -45135,7 +45834,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2caecb48",
@@ -45198,7 +45898,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f1c54580",
@@ -45261,7 +45962,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-27492345",
@@ -45324,7 +46026,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5415097",
@@ -45387,7 +46090,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d6502517",
@@ -45450,7 +46154,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f4a9b359",
@@ -45513,7 +46218,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-355a5606",
@@ -45576,7 +46282,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-05f9e5e9",
@@ -45639,7 +46346,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8b83e8eb",
@@ -45702,7 +46410,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0b0e27f9",
@@ -45765,7 +46474,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-aff3d89e",
@@ -45828,7 +46538,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e7c9a1f7",
@@ -45892,7 +46603,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-00d36923",
@@ -45955,7 +46667,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-73b9f4dd",
@@ -46018,7 +46731,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9f962164",
@@ -46081,7 +46795,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6585535d",
@@ -46144,7 +46859,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-558e2969",
@@ -46207,7 +46923,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-67408d5b",
@@ -46270,7 +46987,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b78a0872",
@@ -46333,7 +47051,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f451f71b",
@@ -46396,7 +47115,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-7f59c5af",
@@ -46459,7 +47179,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8dfe7737",
@@ -46522,7 +47243,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5677c08a",
@@ -46585,7 +47307,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cf322a50",
@@ -46649,7 +47372,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5c5b2fef",
@@ -46712,7 +47436,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a40194c2",
@@ -46775,7 +47500,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9b85bd20",
@@ -46838,7 +47564,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-852c8246",
@@ -46901,7 +47628,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bcb13caf",
@@ -46964,7 +47692,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5abc470",
@@ -47027,7 +47756,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4dcf9540",
@@ -47090,7 +47820,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-445b387e",
@@ -47153,7 +47884,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c1e53348",
@@ -47216,7 +47948,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-48b31b69",
@@ -47279,7 +48012,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c98e90cd",
@@ -47342,7 +48076,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b0868c56",
@@ -47405,7 +48140,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-33baa842",
@@ -47468,7 +48204,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-352a956b",
@@ -47531,7 +48268,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-89649d41",
@@ -47594,7 +48332,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-415bb238",
@@ -47657,7 +48396,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-90d6c841",
@@ -47720,7 +48460,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5f075b9e",
@@ -47783,7 +48524,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6e4e65d2",
@@ -47846,7 +48588,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-eea47147",
@@ -47909,7 +48652,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-eeffa8fb",
@@ -47972,7 +48716,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-af0c4f16",
@@ -48035,7 +48780,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b7ed95f1",
@@ -48098,7 +48844,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-08776b01",
@@ -48161,7 +48908,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-aa3f27c5",
@@ -48224,7 +48972,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-63268992",
@@ -48287,7 +49036,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c2a07a51",
@@ -48350,7 +49100,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-94075e15",
@@ -48413,7 +49164,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f44077d3",
@@ -48476,7 +49228,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fa8a7606",
@@ -48539,7 +49292,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-33ecb263",
@@ -48602,7 +49356,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5e81f1d0",
@@ -48695,7 +49450,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-81916050",
@@ -48788,7 +49544,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9fe050d9",
@@ -48882,7 +49639,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-54a5a548",
@@ -48939,7 +49697,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-16efa8ec",
@@ -48996,7 +49755,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-28ae539f",
@@ -49056,7 +49816,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0d34904e",
@@ -49119,7 +49880,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-cdc19868",
@@ -49182,7 +49944,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-57de3c52",
@@ -49244,7 +50007,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-592b6830",
@@ -49306,7 +50070,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-eeb7af70",
@@ -49369,7 +50134,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-07f2ebd4",
@@ -49431,7 +50197,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-50dc2294",
@@ -49495,7 +50262,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5445127b",
@@ -49557,7 +50325,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5cd720ac",
@@ -49620,7 +50389,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-051d1e2c",
@@ -49683,7 +50453,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-18565605",
@@ -49745,7 +50516,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-482b7976",
@@ -49807,7 +50579,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-dcac8ee9",
@@ -49871,7 +50644,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f294a30c",
@@ -49934,7 +50708,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9425220f",
@@ -49997,7 +50772,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c12c1900",
@@ -50059,7 +50835,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6b686f16",
@@ -50123,7 +50900,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-44fa255a",
@@ -50185,7 +50963,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-77f219ad",
@@ -50247,7 +51026,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2a76f539",
@@ -50310,7 +51090,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5d5d32f1",
@@ -50373,7 +51154,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e81aed52",
@@ -50436,7 +51218,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fa809618",
@@ -50500,7 +51283,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bd436f03",
@@ -50563,7 +51347,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c037fe42",
@@ -50625,7 +51410,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-69e4ff42",
@@ -50687,7 +51473,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2a0c72ae",
@@ -50751,7 +51538,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-498e0568",
@@ -50814,7 +51602,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d5db6a6e",
@@ -50873,7 +51662,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fca3d387",
@@ -50933,7 +51723,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1b6b4c8e",
@@ -50995,7 +51786,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-784748ec",
@@ -51057,7 +51849,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3acc9517",
@@ -51119,7 +51912,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f81fa7da",
@@ -51182,7 +51976,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a5a07d6b",
@@ -51245,7 +52040,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bfdd0f29",
@@ -51307,7 +52103,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4b16d190",
@@ -51372,7 +52169,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-618e4efc",
@@ -51435,7 +52233,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6d0297e4",
@@ -51497,7 +52296,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5ade2601",
@@ -51560,7 +52360,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-29e4c935",
@@ -51622,7 +52423,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0d941988",
@@ -51685,7 +52487,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5e18ee9a",
@@ -51748,7 +52551,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a04d8c2e",
@@ -51811,7 +52615,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8f248bb0",
@@ -51873,7 +52678,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e1c9f134",
@@ -51931,7 +52737,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6f4752ce",
@@ -51996,7 +52803,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2c89d5e5",
@@ -52061,7 +52869,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8889752e",
@@ -52126,7 +52935,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-20b36079",
@@ -52191,7 +53001,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-71cf4b81",
@@ -52256,7 +53067,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-98a62868",
@@ -52321,7 +53133,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-679324b1",
@@ -52386,7 +53199,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0e0a1f10",
@@ -52451,7 +53265,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-57d46475",
@@ -52516,7 +53331,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ac2c8a94",
@@ -52575,7 +53391,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5ace06ed",
@@ -52634,7 +53451,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3c0037bb",
@@ -52693,7 +53511,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9189fc08",
@@ -52752,7 +53571,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2af304f2",
@@ -52814,7 +53634,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e06e12e1",
@@ -52876,7 +53697,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9fc462e3",
@@ -52938,7 +53760,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9b2f7fb7",
@@ -53006,7 +53829,8 @@
    ],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-03962041",
@@ -53099,7 +53923,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9647ecc2",
@@ -53357,7 +54182,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-49abf649",
@@ -53450,7 +54276,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4bb02c92",
@@ -53543,7 +54370,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5502b8ac",
@@ -53645,7 +54473,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-301c8668",
@@ -53706,7 +54535,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-34babd01",
@@ -53767,7 +54597,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a8200113",
@@ -53828,7 +54659,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-3faa52dd",
@@ -53887,7 +54719,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-78a23f6d",
@@ -53973,7 +54806,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-74842da2",
@@ -54059,7 +54893,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ca2480c6",
@@ -54152,7 +54987,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5d1cc6ba",
@@ -54209,7 +55045,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d28e0a60",
@@ -54266,7 +55103,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-750f9494",
@@ -54323,7 +55161,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a8730c54",
@@ -54385,7 +55224,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2c782733",
@@ -54447,7 +55287,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d0483c50",
@@ -54509,7 +55350,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ab0e163e",
@@ -54571,7 +55413,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c77d6585",
@@ -54629,7 +55472,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-53e0646d",
@@ -54694,7 +55538,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a4f23747",
@@ -54759,7 +55604,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b3a11b98",
@@ -54824,7 +55670,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4145149b",
@@ -54888,7 +55735,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6a4c747f",
@@ -54952,7 +55800,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b20e86ce",
@@ -55017,7 +55866,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-001ebeda",
@@ -55110,7 +55960,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e6c5f136",
@@ -55196,7 +56047,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6165bf64",
@@ -55282,7 +56134,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-98971c07",
@@ -55373,7 +56226,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c72ab264",
@@ -55464,7 +56318,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fed016af",
@@ -55555,7 +56410,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c903d69e",
@@ -55647,7 +56503,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c60c90ff",
@@ -55738,7 +56595,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4c21dd94",
@@ -55829,7 +56687,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-75357af5",
@@ -55920,7 +56779,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-332a4050",
@@ -56011,7 +56871,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-aa8e425d",
@@ -56102,7 +56963,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4e2208f6",
@@ -56193,7 +57055,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0b478ee6",
@@ -56250,7 +57113,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1d0f89bc",
@@ -56312,7 +57176,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f1d2139c",
@@ -56374,7 +57239,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0b809763",
@@ -56430,7 +57296,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-53299594",
@@ -56492,7 +57359,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-91c5a437",
@@ -56560,7 +57428,8 @@
    ],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6ac3c574",
@@ -56628,7 +57497,8 @@
    ],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5c9f0969",
@@ -56689,7 +57559,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-09b3246d",
@@ -56752,7 +57623,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1fba6d23",
@@ -56815,7 +57687,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-fc3ce992",
@@ -56876,7 +57749,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f928d51a",
@@ -56938,7 +57812,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-427c6221",
@@ -57001,7 +57876,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-2e08ce9b",
@@ -57093,7 +57969,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-d69ca11c",
@@ -57185,7 +58062,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c6bdb068",
@@ -57277,7 +58155,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-040f3b7a",
@@ -57369,7 +58248,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-9c162f2e",
@@ -57493,7 +58373,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-36df7ffc",
@@ -57585,7 +58466,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-ad575a64",
@@ -57677,7 +58559,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-83d77fc4",
@@ -57769,7 +58652,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0e8d7454",
@@ -57861,7 +58745,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1735b440",
@@ -57923,7 +58808,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e1f3a6b7",
@@ -57985,7 +58871,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c8f3c51e",
@@ -58047,7 +58934,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f99a9c09",
@@ -58109,7 +58997,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-36c2aba2",
@@ -58171,7 +59060,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-5f74eef5",
@@ -58233,7 +59123,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-719d7c89",
@@ -58295,7 +59186,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6cbf89e6",
@@ -58357,7 +59249,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-8112c7b7",
@@ -58419,7 +59312,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4fe391d4",
@@ -58481,7 +59375,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-11a3d436",
@@ -58543,7 +59438,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-1cc9d984",
@@ -58605,7 +59501,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-89439adb",
@@ -58667,7 +59564,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e3ccff66",
@@ -58729,7 +59627,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-17fbee60",
@@ -58791,7 +59690,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-f74ee3c5",
@@ -58853,7 +59753,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-879f381b",
@@ -58955,7 +59856,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-73253e88",
@@ -59056,7 +59958,112 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
+  },
+  {
+   "id": "C-41cc40d4",
+   "titulo": "Noções de Atendimento Humanizado em Saúde",
+   "entidade": "Instituto Centec (Rede CVT)",
+   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
+   "pagina_propria": false,
+   "local": "BR-CE",
+   "modalidade": "presencial",
+   "destino": {
+    "tipo": "lista",
+    "conta": "",
+    "nota": "A inscrição é feita na unidade, com o CPF.",
+    "procurar": "Noções de Atendimento Humanizado em Saúde",
+    "frase": "",
+    "nome": "Centec"
+   },
+   "pais": "BR",
+   "regiao": "Ceará",
+   "cidade": "",
+   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao",
+    "emprego"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Ter 16 anos ou mais",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [
+    {
+     "por_abrir": false,
+     "abertura": "",
+     "situacao": "Aberta",
+     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-atendimento-humanizado-em-saude-cvt-granja-2026-12-07-18-00-22-00",
+     "unidade": "CVT GRANJA",
+     "cidade": "Granja",
+     "local": {
+      "nome": "CVT Granja",
+      "municipio": "Granja",
+      "site": "https://www.centec.org.br/unidades/cvt-granja/",
+      "bairro": "Centro",
+      "morada": "Praça Coronel Luís Felipe, s/nº",
+      "telefone": "(88) 99651-0067",
+      "whatsapp": "",
+      "horario": "",
+      "o_que_levar": "CPF"
+     },
+     "inicio": "2026-12-07",
+     "fim": "2026-12-18",
+     "horario": "18:00 - 22:00",
+     "dias": "",
+     "prazo": "",
+     "idade_minima": "16",
+     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) COMPLETO ( Estudantes e Profissionais da Área de Saúde )",
+     "documentos": "",
+     "local_texto": "URUOCA - ESCOLA VALDEMAR ROCHA",
+     "titulo_fonte": "NOÇÕES DE ATENDIMENTO HUMANIZADO EM SAÚDE - CVT GRANJA - 07/12 a 18/12/2026 - 18h às 22h - PRESENCIAL",
+     "destino": {
+      "tipo": "lista",
+      "conta": "",
+      "nota": "A inscrição é feita na unidade, com o CPF.",
+      "procurar": "NOÇÕES DE ATENDIMENTO HUMANIZADO EM SAÚDE - CVT GRANJA - 07/12 a 18/12/2026 - 18h às 22h - PRESENCIAL",
+      "frase": "",
+      "nome": "Centec"
+     },
+     "telefone": "3066-7000",
+     "inscricao": "presencial",
+     "info": "",
+     "verificado_em": "2026-11-27",
+     "reserva": "",
+     "regra_vagas": ""
+    }
+   ],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "",
+   "duracao": "40h/aula",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [],
+   "antes": [],
+   "idade_minima": 16,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "Não",
+   "ajuda": "",
+   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
+   "etiquetas": [],
+   "vagas": "",
+   "acessibilidade": [],
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-79ddaa2f",
@@ -59118,7 +60125,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-4b320991",
@@ -59180,7 +60188,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-c968d415",
@@ -59242,7 +60251,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-88ad0351",
@@ -59304,7 +60314,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-e0eddd76",
@@ -59366,7 +60377,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-6aa72d93",
@@ -59428,7 +60440,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-a9b928ea",
@@ -59490,7 +60503,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-657f0ba0",
@@ -59550,7 +60564,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-960d4543",
@@ -59612,7 +60627,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-0e80dcfe",
@@ -59674,7 +60690,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-15bbe374",
@@ -59736,7 +60753,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-bddefc48",
@@ -59798,7 +60816,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-97c84bf3",
@@ -59859,7 +60878,8 @@
    "etiquetas": [],
    "vagas": "",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-b454c3ac",
@@ -59921,7 +60941,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-16e96bdf",
@@ -59983,7 +61004,8 @@
    "etiquetas": [],
    "vagas": "ordem",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   },
   {
    "id": "C-65877a6d",
@@ -60044,7 +61066,8 @@
    "etiquetas": [],
    "vagas": "sorteio",
    "acessibilidade": [],
-   "turmas_abertas": null
+   "turmas_abertas": null,
+   "turmas_contadas_em": ""
   }
  ]
 }

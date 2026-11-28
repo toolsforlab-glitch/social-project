@@ -81,12 +81,15 @@ def janela(pagina, alvo):
 
 def ler_turmas(pagina):
     turmas = []
-    for bloco in re.split(r'<div class="card\s+box\b', pagina)[1:]:
-        bloco = bloco[:8000].split("<!----------")[0]
-        if "<!--" in bloco[:200]:
-            continue
+    for inicio_bloco in re.finditer(r'<div class="card\s+box\b', pagina):
+        pos = inicio_bloco.start()
+        if pagina.rfind("<!--", 0, pos) > pagina.rfind("-->", 0, pos):
+            continue  # bloco dentro de um comentário HTML (turma retirada da página)
+        bloco = pagina[inicio_bloco.end():inicio_bloco.end() + 8000].split("<!----------")[0]
         unidade = re.search(r'<h4 class="name">(.*?)</h4>', bloco, re.S)
-        nome = re.search(r'<h5 class="name">(.*?)</h5>', bloco, re.S)
+        # o nome do curso é o primeiro <h5> que não é «Inscrições/Modalidade/Vagas/Turno» (às vezes sem class="name")
+        nome = next((h for h in re.finditer(r"<h5[^>]*>(.*?)</h5>", bloco, re.S)
+                     if not re.match(r"\s*(Inscri|Modalidade|Vagas|Turno)", limpo(h.group(1)))), None)
         insc = re.search(r"Inscri[çc][õo]es:\s*(\d{2}/\d{2}/+\d{4})\s*a\s*(\d{2}/\d{2}/+\d{4})", bloco)
         if not (unidade and nome and insc):
             continue

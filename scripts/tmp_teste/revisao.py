@@ -33,7 +33,10 @@ for k, v in lk.items():
 print("Sem gratuidade comprovada (publicados abertos):", sum(1 for r in cs if r.get("Estado")=="Publicado" and r.get("Situação das inscrições")=="Aberto" and "gratuito" not in (r.get("Campos comprovados") or "") and not (r.get("Revisto por pessoa") or "").strip()))
 ps = b.tabela("Pendências para verificar")
 print("Pendências:", len(ps), list(ps[0].keys()) if ps else "")
-abertas = [p for p in ps if not sim(p.get("Feito")) and not (p.get("Feito") or "").strip()]
+abertas = [p for p in ps if not sim(p.get("Feito"))]
 print("Abertas:", len(abertas))
-for p in abertas[-60:]:
-    print("  ", p["_linha"], " | ".join(str(p.get(k, ""))[:110] for k in list(p.keys())[:4] if not k.startswith("_")))
+for p in abertas:
+    print("  ", p["_linha"], p.get("Aberta em"), "|", p.get("Visto pela última vez"), "|", str(p.get("Problema"))[:150], "|", str(p.get("Origem"))[:20])
+for r in cs:
+    if r.get("ID") in ("C-cec8358a","C-97deea12"):
+        print({k: str(v)[:200] for k, v in r.items() if v and k in ("Estado","Situação das inscrições","Nota da verificação","Notas","Inscrições até","Início","Evidência","Campos comprovados","Link")})

@@ -43,6 +43,7 @@ Lista única. Uma regra nova entra **primeiro aqui**, com a data e o código que
 | E9 | As inscrições já fecharam (prazo passado ou turma encerrada), ou o curso já está a decorrer/terminou sem inscrição aberta | rotinas de turmas, `arquivar.py` |
 | E10 | A executora é uma OSC que não cumpre os 5 critérios (F2) | 25/11 |
 | E11 | É curso superior (graduação) ou pós-graduação (especialização, mestrado) | prática desde o início; escrito a 27/11 |
+| E12 | Cobra taxa de inscrição e já não dá para pedir a isenção (o prazo do pedido fechou, ou o edital não prevê isenção). Se a isenção ainda pode ser pedida, o curso entra, com no cartão o valor da taxa, quem tem direito à isenção (frase do edital) e o prazo do pedido; sai quando esse prazo fecha | decisão do responsável, 28/11 (IFSP) |
 
 Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, já retirado) ficam na secção da fonte, no LEIAME.
 

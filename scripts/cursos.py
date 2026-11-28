@@ -44,9 +44,9 @@ SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabili
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.
 
 Um curso só entra se cumprir TODAS estas regras:
-1. É gratuito para quem o frequenta (inscrição e aulas sem custo). Conta como gratuito um programa oficial \
+1. É gratuito para quem o frequenta (aulas sem custo; inscrição sem custo, ou com taxa de que ainda se pode pedir isenção). Conta como gratuito um programa oficial \
 que é gratuito por regra (ex.: Programa Senac de Gratuidade, cursos FIC dos institutos federais, Centec), \
-mesmo que a página não o repita em cada turma. Se houver taxa de inscrição, indica-o nos requisitos.
+mesmo que a página não o repita em cada turma. Se houver taxa de inscrição, o curso só entra se o prazo para pedir a isenção da taxa ainda estiver aberto: indica nos requisitos o valor da taxa, quem tem direito à isenção e até quando se pode pedir.
 2. Está disponível agora: inscrições abertas, curso de acesso livre a qualquer momento, ou turma com data futura. \
 Exclui cursos com inscrições já encerradas ou de anos anteriores. Um programa que abre inscrições \
 regularmente (ex.: matrículas todos os meses) conta como disponível se a página mais recente for deste ano: \

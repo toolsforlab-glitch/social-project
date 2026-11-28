@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-28T00:43",
+ "atualizado": "2026-11-28T00:50",
  "cursos": [
   {
    "id": "C-2204a779",
@@ -60,7 +60,8 @@
    "documentos": "CPF, e-mail e cadastro na Escola Virtual de Governo (EV.G)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fa5789f3",
@@ -191,7 +192,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-26602af1",
@@ -251,7 +253,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d3002f62",
@@ -351,7 +354,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-72a8f105",
@@ -452,7 +456,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-83784e23",
@@ -552,7 +557,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-14117737",
@@ -652,7 +658,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5e97b4a5",
@@ -752,7 +759,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-932cc024",
@@ -852,7 +860,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-998f6482",
@@ -952,7 +961,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7fcf0c3c",
@@ -1052,7 +1062,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2de39e02",
@@ -1153,7 +1164,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b4a0b075",
@@ -1254,7 +1266,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1c54d19f",
@@ -1355,7 +1368,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e393a066",
@@ -1498,7 +1512,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5fa91c58",
@@ -1621,92 +1636,6 @@
      "verificado_em": "2026-11-27",
      "reserva": "",
      "regra_vagas": ""
-    },
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-granja-2026-12-07-18-00-22-00",
-     "unidade": "CVT GRANJA",
-     "cidade": "Granja",
-     "local": {
-      "nome": "CVT Granja",
-      "municipio": "Granja",
-      "site": "https://www.centec.org.br/unidades/cvt-granja/",
-      "bairro": "Centro",
-      "morada": "Praça Coronel Luís Felipe, s/nº",
-      "telefone": "(88) 99651-0067",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-12-07",
-     "fim": "2026-12-18",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - INCOMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "ESTREITO DOS MARTINS - CENTRO DE CONVIVÊNCIA",
-     "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT GRANJA - 07/12 a 18/12/2026 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE INFORMÁTICA - CVT GRANJA - 07/12 a 18/12/2026 - 18h às 22h - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-27",
-     "reserva": "",
-     "regra_vagas": ""
-    },
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-informatica-cvt-iguatu-2026-12-08-18-00-22-00",
-     "unidade": "CVT IGUATU",
-     "cidade": "Iguatu",
-     "local": {
-      "nome": "CVT Iguatu",
-      "municipio": "Iguatu",
-      "site": "https://www.centec.org.br/unidades/cvt-iguatu/",
-      "bairro": "Santo Antônio",
-      "morada": "Av. Dário Rabêlo, s/n",
-      "telefone": "(88) 99651-0043",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-12-08",
-     "fim": "2026-12-18",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) - INCOMPLETO / SEM PRÉ-REQUISITOS",
-     "documentos": "",
-     "local_texto": "AV. DARIO RABELO, S/N - CAMPUS MULTI-INSTITUCIONAL HUMBERTO TEIXEIRA.",
-     "titulo_fonte": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 08/12 a 18/12/2026 -18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE INFORMÁTICA - CVT IGUATU - 08/12 a 18/12/2026 -18h às 22h - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-27",
-     "reserva": "",
-     "regra_vagas": ""
     }
    ],
    "em_revisao": false,
@@ -1729,7 +1658,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-50ce7a69",
@@ -1831,7 +1761,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9bf82116",
@@ -1933,7 +1864,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5a7a632",
@@ -2035,7 +1967,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4ae3e898",
@@ -2137,7 +2070,8 @@
    "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f7e7b708",
@@ -2196,7 +2130,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-24152039",
@@ -2255,7 +2190,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-54bc3665",
@@ -2316,7 +2252,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8c0f4123",
@@ -2378,7 +2315,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e586697e",
@@ -2441,7 +2379,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c17ca7cd",
@@ -2504,7 +2443,8 @@
     }
    ],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-66dce181",
@@ -2562,7 +2502,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c4a38974",
@@ -2620,7 +2561,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6a66b244",
@@ -2679,7 +2621,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-94e22da3",
@@ -2732,7 +2675,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f8acea15",
@@ -2833,7 +2777,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9ecf4c4a",
@@ -2923,7 +2868,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2f691367",
@@ -3065,7 +3011,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b01eb1bd",
@@ -3165,7 +3112,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-457a38cf",
@@ -3319,7 +3267,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e72c7ec8",
@@ -3473,7 +3422,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9c659a51",
@@ -3627,7 +3577,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-849ee036",
@@ -3717,7 +3668,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6f926d1f",
@@ -3779,7 +3731,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-79321995",
@@ -3838,7 +3791,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-067cbf5f",
@@ -3898,7 +3852,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-52931e65",
@@ -3956,7 +3911,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f5ff48a8",
@@ -4014,7 +3970,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-af98c596",
@@ -4072,7 +4029,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5adb7969",
@@ -4129,7 +4087,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-22651031",
@@ -4187,7 +4146,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d9d64312",
@@ -4244,7 +4204,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c581c764",
@@ -4301,7 +4262,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-816295a6",
@@ -4358,7 +4320,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2ab803e8",
@@ -4415,7 +4378,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fcf4b693",
@@ -4472,7 +4436,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4b8f6df4",
@@ -4529,7 +4494,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-76cd0fee",
@@ -4586,7 +4552,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1e9996fb",
@@ -4643,7 +4610,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-badb4d91",
@@ -4699,7 +4667,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4806c989",
@@ -4755,7 +4724,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-00190582",
@@ -4812,7 +4782,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f22e37eb",
@@ -4868,7 +4839,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a97274fb",
@@ -4924,7 +4896,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0d214cd4",
@@ -4980,7 +4953,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-df5ee565",
@@ -5036,7 +5010,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-10853e99",
@@ -5092,7 +5067,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7b7a5a92",
@@ -5149,7 +5125,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d636a539",
@@ -5206,7 +5183,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-813ae9b5",
@@ -5263,7 +5241,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8847b6c1",
@@ -5319,7 +5298,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7b96c0f3",
@@ -5375,7 +5355,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bae0a95f",
@@ -5432,7 +5413,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dfd6f0b8",
@@ -5489,7 +5471,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4f9b7988",
@@ -5545,7 +5528,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-327d181f",
@@ -5603,7 +5587,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8f3e8599",
@@ -5660,7 +5645,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4be8b26b",
@@ -5717,7 +5703,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7f21edc6",
@@ -5775,7 +5762,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ee24e54b",
@@ -5833,7 +5821,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9da3a4af",
@@ -5891,7 +5880,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5f569122",
@@ -5948,7 +5938,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0161409e",
@@ -6006,7 +5997,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-87d477e9",
@@ -6063,7 +6055,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-215ba59b",
@@ -6120,7 +6113,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9d968175",
@@ -6177,7 +6171,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8c745534",
@@ -6234,7 +6229,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c23fd060",
@@ -6291,7 +6287,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a26e0d65",
@@ -6347,7 +6344,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0dec668c",
@@ -6404,7 +6402,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-11d4ff31",
@@ -6465,7 +6464,8 @@
     }
    ],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-53fca2af",
@@ -6521,7 +6521,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-09abb249",
@@ -6577,7 +6578,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-013f88a8",
@@ -6633,7 +6635,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-07fd38bd",
@@ -6689,7 +6692,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ebfe2f8a",
@@ -6746,7 +6750,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1eb54aed",
@@ -6803,7 +6808,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2f35790c",
@@ -6859,7 +6865,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-568bc05e",
@@ -6917,7 +6924,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-908750ba",
@@ -6975,7 +6983,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-257b9ee1",
@@ -7031,7 +7040,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3d5cba1d",
@@ -7088,7 +7098,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0ac57e45",
@@ -7145,7 +7156,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0068361f",
@@ -7204,7 +7216,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5b83b1a5",
@@ -7262,7 +7275,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-533db051",
@@ -7321,7 +7335,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0d09ef75",
@@ -7378,7 +7393,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cac01d3d",
@@ -7436,7 +7452,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7e90bc99",
@@ -7494,7 +7511,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2c19f38e",
@@ -7553,7 +7571,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-80a34d7c",
@@ -7612,7 +7631,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-02a4610e",
@@ -7669,7 +7689,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1ed69c73",
@@ -7726,7 +7747,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4d6073ec",
@@ -7783,7 +7805,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-031dbbbb",
@@ -7839,7 +7862,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bfa52390",
@@ -7896,7 +7920,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4b290d53",
@@ -7953,7 +7978,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-46030822",
@@ -8010,7 +8036,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c5cf0d68",
@@ -8067,7 +8094,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-14854540",
@@ -8124,7 +8152,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a6de6864",
@@ -8181,7 +8210,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0caaf4f2",
@@ -8238,7 +8268,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2c33d0f2",
@@ -8295,7 +8326,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cad23266",
@@ -8352,7 +8384,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-790615ba",
@@ -8409,7 +8442,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ca06b6d3",
@@ -8466,7 +8500,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-47175dfd",
@@ -8523,7 +8558,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c53b92a7",
@@ -8581,7 +8617,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-20963596",
@@ -8639,7 +8676,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7a2fd0ca",
@@ -8696,7 +8734,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-44078211",
@@ -8753,7 +8792,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4b227a3c",
@@ -8810,7 +8850,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-44701c64",
@@ -8867,7 +8908,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6f2e51b2",
@@ -8925,7 +8967,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c3bfbbae",
@@ -8982,7 +9025,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a232c689",
@@ -9038,7 +9082,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-863c7c1c",
@@ -9096,7 +9141,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a228b3d3",
@@ -9153,7 +9199,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-454aa31b",
@@ -9209,7 +9256,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d02b4264",
@@ -9266,7 +9314,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b79f39cd",
@@ -9324,7 +9373,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cb0415e0",
@@ -9381,7 +9431,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-39c4a087",
@@ -9439,7 +9490,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-de2513bf",
@@ -9496,7 +9548,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1e20cda9",
@@ -9553,7 +9606,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0117abb7",
@@ -9610,7 +9664,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b6223d09",
@@ -9667,7 +9722,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2416cd61",
@@ -9724,7 +9780,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ca8f74e5",
@@ -9781,7 +9838,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8704f226",
@@ -9838,7 +9896,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-39a109cc",
@@ -9895,7 +9954,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e3b7d4e9",
@@ -9951,7 +10011,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-06aa0adb",
@@ -10008,7 +10069,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8c31d5c4",
@@ -10065,7 +10127,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-89dc45a3",
@@ -10122,7 +10185,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dc0a1fac",
@@ -10179,7 +10243,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d104312d",
@@ -10235,7 +10300,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-99e97b03",
@@ -10291,7 +10357,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fd329143",
@@ -10348,7 +10415,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9bb84658",
@@ -10405,7 +10473,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5590029",
@@ -10462,7 +10531,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-69bc73b4",
@@ -10519,7 +10589,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e951037b",
@@ -10576,7 +10647,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8475ea46",
@@ -10633,7 +10705,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5425c6df",
@@ -10690,7 +10763,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7dc28642",
@@ -10747,7 +10821,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4e6d0b66",
@@ -10804,7 +10879,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-14a386a5",
@@ -10861,7 +10937,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ea6d2743",
@@ -10918,7 +10995,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8071acad",
@@ -10975,7 +11053,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4d1f8ad8",
@@ -11031,7 +11110,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-03ec27be",
@@ -11088,7 +11168,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-afa3b1e8",
@@ -11145,7 +11226,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8cba3d0b",
@@ -11203,7 +11285,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9ed79eed",
@@ -11259,7 +11342,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-20848fe1",
@@ -11316,7 +11400,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-332852a9",
@@ -11372,7 +11457,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7254243f",
@@ -11429,7 +11515,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-09f1be4c",
@@ -11486,7 +11573,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e38d5501",
@@ -11542,7 +11630,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fae441ea",
@@ -11599,7 +11688,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e343fbfc",
@@ -11655,7 +11745,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e0746b8a",
@@ -11712,7 +11803,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8c0f9b4a",
@@ -11769,7 +11861,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-614eb1be",
@@ -11826,7 +11919,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-38c8d68a",
@@ -11882,7 +11976,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1160637b",
@@ -11939,7 +12034,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dbf25244",
@@ -11996,7 +12092,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b12038aa",
@@ -12053,7 +12150,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fc5d87e7",
@@ -12110,7 +12208,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8d36dd0a",
@@ -12167,7 +12266,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c2b72b26",
@@ -12224,7 +12324,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-22ec2d47",
@@ -12282,7 +12383,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4d62c1ed",
@@ -12339,7 +12441,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5bc1aeb",
@@ -12395,7 +12498,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6bb37963",
@@ -12452,7 +12556,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bd776ebc",
@@ -12509,7 +12614,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cd033465",
@@ -12565,7 +12671,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-54fd4aac",
@@ -12622,7 +12729,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d97472d7",
@@ -12679,7 +12787,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3cc96337",
@@ -12736,7 +12845,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a5700d85",
@@ -12793,7 +12903,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a14b4ff7",
@@ -12851,7 +12962,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8319f1c7",
@@ -12909,7 +13021,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5ad1e47f",
@@ -12965,7 +13078,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ec8af8cf",
@@ -13021,7 +13135,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d7e01993",
@@ -13078,7 +13193,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2259fdb6",
@@ -13136,7 +13252,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-582f0c85",
@@ -13193,7 +13310,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8514f8d1",
@@ -13250,7 +13368,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a2e880a2",
@@ -13306,7 +13425,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-97bc1b86",
@@ -13363,7 +13483,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-26a3116d",
@@ -13420,7 +13541,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-99fad04e",
@@ -13477,7 +13599,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8d6c9da5",
@@ -13535,7 +13658,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2268bea2",
@@ -13592,7 +13716,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2546d7a0",
@@ -13649,7 +13774,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9d4949ad",
@@ -13705,7 +13831,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9bad51e8",
@@ -13761,7 +13888,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2792b575",
@@ -13818,7 +13946,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-12787f91",
@@ -13876,7 +14005,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d88d2612",
@@ -13933,7 +14063,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9d2f2914",
@@ -13989,7 +14120,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d2ce2c06",
@@ -14046,7 +14178,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-434443e7",
@@ -14102,7 +14235,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3d0dbde0",
@@ -14160,7 +14294,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f529456d",
@@ -14218,7 +14353,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-677780f5",
@@ -14275,7 +14411,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-769d6bd9",
@@ -14332,7 +14469,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-604ef804",
@@ -14389,7 +14527,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-292498f7",
@@ -14446,7 +14585,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-27c8b1b4",
@@ -14502,7 +14642,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1fc204d0",
@@ -14559,7 +14700,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-feeb4e11",
@@ -14617,7 +14759,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b8933993",
@@ -14675,7 +14818,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d31a9a26",
@@ -14732,7 +14876,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bda9b047",
@@ -14789,7 +14934,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cb566db1",
@@ -14846,7 +14992,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-032433f7",
@@ -14903,7 +15050,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3a86c16a",
@@ -14961,7 +15109,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c5b4e85d",
@@ -15018,7 +15167,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-796de620",
@@ -15075,7 +15225,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fb9885ea",
@@ -15132,7 +15283,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-53f8045a",
@@ -15189,7 +15341,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e3c4dcdd",
@@ -15247,7 +15400,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7e5a412e",
@@ -15305,7 +15459,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b5eded51",
@@ -15362,7 +15517,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5f88046",
@@ -15419,7 +15575,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1eca44ea",
@@ -15476,7 +15633,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1d1e36a7",
@@ -15534,7 +15692,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6dace3e7",
@@ -15592,7 +15751,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b60adf9c",
@@ -15649,7 +15809,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dd5fc075",
@@ -15706,7 +15867,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9d77e033",
@@ -15763,7 +15925,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ecf2c5aa",
@@ -15819,7 +15982,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8c46f36e",
@@ -15876,7 +16040,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-715a0f16",
@@ -15933,7 +16098,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9b1f15fb",
@@ -15991,7 +16157,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-12177b30",
@@ -16048,7 +16215,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1f426a85",
@@ -16105,7 +16273,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0eaa2a7e",
@@ -16162,7 +16331,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-54db7044",
@@ -16219,7 +16389,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e6a40744",
@@ -16276,7 +16447,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9ee7e747",
@@ -16332,7 +16504,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fb3855c9",
@@ -16389,7 +16562,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b1e5da6d",
@@ -16446,7 +16620,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d6264001",
@@ -16503,7 +16678,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8d02468b",
@@ -16560,7 +16736,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5eab6259",
@@ -16617,7 +16794,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-86f27800",
@@ -16674,7 +16852,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-16d0665c",
@@ -16730,7 +16909,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e94e5f17",
@@ -16787,7 +16967,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bec81ce2",
@@ -16845,7 +17026,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3bf6a09e",
@@ -16902,7 +17084,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c6c590cb",
@@ -16958,7 +17141,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b7fe1dfc",
@@ -17015,7 +17199,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-60a1624d",
@@ -17072,7 +17257,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-593dbc5d",
@@ -17128,7 +17314,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a832de27",
@@ -17186,7 +17373,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ba58b89e",
@@ -17243,7 +17431,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-29e28d05",
@@ -17300,7 +17489,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8dd56980",
@@ -17357,7 +17547,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d00b65fd",
@@ -17413,7 +17604,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4845a937",
@@ -17470,7 +17662,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6ee1fee7",
@@ -17527,7 +17720,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-580da020",
@@ -17585,7 +17779,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-23511323",
@@ -17641,7 +17836,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ef8268a3",
@@ -17698,7 +17894,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-66508345",
@@ -17755,7 +17952,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-37ba5332",
@@ -17812,7 +18010,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-822486db",
@@ -17871,7 +18070,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ea329152",
@@ -17929,7 +18129,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0dacb121",
@@ -17987,7 +18188,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-224279db",
@@ -18044,7 +18246,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d0781212",
@@ -18101,7 +18304,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-46828bde",
@@ -18158,7 +18362,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-07e25002",
@@ -18215,7 +18420,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f8923928",
@@ -18272,7 +18478,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e0649bdc",
@@ -18330,7 +18537,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c3d91374",
@@ -18387,7 +18595,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-54d65cae",
@@ -18444,7 +18653,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d1677743",
@@ -18502,7 +18712,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e318022e",
@@ -18559,7 +18770,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-03b2676e",
@@ -18616,7 +18828,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d7a84cf1",
@@ -18673,7 +18886,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1dd2cac6",
@@ -18730,7 +18944,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d8517153",
@@ -18787,7 +19002,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-669e85f9",
@@ -18845,7 +19061,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-69e7c74e",
@@ -18903,7 +19120,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d1cdf480",
@@ -18961,7 +19179,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a080df26",
@@ -19018,7 +19237,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ba171c61",
@@ -19075,7 +19295,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6b953f32",
@@ -19132,7 +19353,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-84075cc5",
@@ -19188,7 +19410,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bed96caa",
@@ -19245,7 +19468,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ffa5be5c",
@@ -19303,7 +19527,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cb92d2ad",
@@ -19360,7 +19585,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c9c5db5a",
@@ -19418,7 +19644,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8038ce43",
@@ -19475,7 +19702,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a654f5c1",
@@ -19532,7 +19760,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7d1dedf4",
@@ -19589,7 +19818,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f8791e40",
@@ -19647,7 +19877,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a21b5734",
@@ -19704,7 +19935,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0f779f2c",
@@ -19762,7 +19994,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f566ea44",
@@ -19819,7 +20052,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cf26e8c2",
@@ -19876,7 +20110,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f1b1d21e",
@@ -19933,7 +20168,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-45d3da0e",
@@ -19991,7 +20227,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a4c47995",
@@ -20048,7 +20285,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5856e9cb",
@@ -20105,7 +20343,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-032b847b",
@@ -20162,7 +20401,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2ad9948b",
@@ -20219,7 +20459,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ce9e881f",
@@ -20275,7 +20516,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cfdd6e63",
@@ -20332,7 +20574,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cbc01d0b",
@@ -20389,7 +20632,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e79c86b6",
@@ -20446,7 +20690,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-033f5d82",
@@ -20504,7 +20749,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-47bc77eb",
@@ -20562,7 +20808,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-785759c8",
@@ -20619,7 +20866,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4d1cec0e",
@@ -20676,7 +20924,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cec4f90b",
@@ -20734,7 +20983,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-91fec56b",
@@ -20790,7 +21040,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d21f3f16",
@@ -20846,7 +21097,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cfd8ccdf",
@@ -20903,7 +21155,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4d824a85",
@@ -20961,7 +21214,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b569d46f",
@@ -21018,7 +21272,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-be9ea4cd",
@@ -21075,7 +21330,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-76be8fba",
@@ -21133,7 +21389,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4483697e",
@@ -21190,7 +21447,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-05849100",
@@ -21247,7 +21505,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-93993502",
@@ -21305,7 +21564,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-157373f3",
@@ -21362,7 +21622,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-023d7af8",
@@ -21420,7 +21681,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-abba1b9b",
@@ -21477,7 +21739,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6513b5fc",
@@ -21534,7 +21797,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b853dc79",
@@ -21591,7 +21855,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-43a35883",
@@ -21648,7 +21913,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cc5c36c9",
@@ -21706,7 +21972,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4df7b33d",
@@ -21763,7 +22030,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0109b950",
@@ -21820,7 +22088,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b6d044da",
@@ -21878,7 +22147,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-700405dd",
@@ -21935,7 +22205,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9e1779e7",
@@ -21993,7 +22264,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e113b521",
@@ -22051,7 +22323,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a3778bab",
@@ -22108,7 +22381,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-da5104d6",
@@ -22166,7 +22440,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-016d6a23",
@@ -22222,7 +22497,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-426b164e",
@@ -22280,7 +22556,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-29633fba",
@@ -22338,7 +22615,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-43b61bdf",
@@ -22396,7 +22674,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dbe4f819",
@@ -22453,7 +22732,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0c4f34a7",
@@ -22511,7 +22791,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-08669aa0",
@@ -22568,7 +22849,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-79a7cc15",
@@ -22624,7 +22906,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-30edbcf5",
@@ -22681,7 +22964,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-077f6503",
@@ -22738,7 +23022,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-32267dcf",
@@ -22797,7 +23082,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d164a5ce",
@@ -22855,7 +23141,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-80487e28",
@@ -22911,7 +23198,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2068c698",
@@ -22967,7 +23255,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-653f84d8",
@@ -23024,7 +23313,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7fd04e86",
@@ -23081,7 +23371,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-459e7376",
@@ -23139,7 +23430,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9e818e71",
@@ -23196,7 +23488,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2732523f",
@@ -23253,7 +23546,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-66b14c4b",
@@ -23309,7 +23603,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a258a0a2",
@@ -23365,7 +23660,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9d85c58b",
@@ -23426,7 +23722,8 @@
     }
    ],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0ee07070",
@@ -23483,7 +23780,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9d538438",
@@ -23540,7 +23838,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a6384955",
@@ -23635,7 +23934,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4d12c7d8",
@@ -23730,7 +24030,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a7eb960a",
@@ -23884,7 +24185,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3731f58b",
@@ -23974,7 +24276,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f497e4fc",
@@ -24064,7 +24367,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fbed9996",
@@ -24154,7 +24458,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e974ea15",
@@ -24244,7 +24549,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b9207e6a",
@@ -24366,7 +24672,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ef13e624",
@@ -24456,7 +24763,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f8487253",
@@ -24610,7 +24918,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0253d96e",
@@ -24700,7 +25009,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cf222140",
@@ -24790,7 +25100,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-60205147",
@@ -24944,7 +25255,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7145371e",
@@ -25066,7 +25378,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-924b740c",
@@ -25188,7 +25501,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bd749443",
@@ -25342,7 +25656,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b113929f",
@@ -25464,7 +25779,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-866584b8",
@@ -25554,7 +25870,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d4480876",
@@ -25654,7 +25971,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f87d83a8",
@@ -25717,7 +26035,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cc5db6c6",
@@ -25780,7 +26099,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bbd64b5d",
@@ -25842,7 +26162,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c351514a",
@@ -25934,7 +26255,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3cbfe7b4",
@@ -25987,7 +26309,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-58420dfe",
@@ -26040,7 +26363,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0d47909a",
@@ -26140,7 +26464,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-18821eaa",
@@ -26204,7 +26529,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-565e4bd1",
@@ -26261,7 +26587,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-95081920",
@@ -26319,7 +26646,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3ef0fe54",
@@ -26375,7 +26703,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-23e5d6c8",
@@ -26431,7 +26760,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-90fb3009",
@@ -26487,7 +26817,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2c30a0ed",
@@ -26544,7 +26875,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-82702303",
@@ -26601,7 +26933,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-debe292b",
@@ -26657,7 +26990,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6ac6a7c6",
@@ -26722,7 +27056,8 @@
    "documentos": "Documento de identidade, CPF, comprovante de endereço em Fortaleza ou Região Metropolitana de Fortaleza (RMF), número do PIS ou Carteira de Trabalho e Previdência Social (CTPS).",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-00843a35",
@@ -26812,7 +27147,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e3fe5e92",
@@ -26902,7 +27238,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-410f33f8",
@@ -26965,7 +27302,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3b050fa3",
@@ -27027,7 +27365,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-df4a5434",
@@ -27088,7 +27427,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5661c394",
@@ -27150,7 +27490,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-849cee28",
@@ -27212,7 +27553,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-02e6848d",
@@ -27275,7 +27617,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5b92b68b",
@@ -27336,7 +27679,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-eb37c21d",
@@ -27399,7 +27743,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9e5ca377",
@@ -27460,7 +27805,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ef2cb607",
@@ -27521,7 +27867,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-56977bd3",
@@ -27582,7 +27929,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-58f5eaa6",
@@ -27643,7 +27991,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e9e38e1d",
@@ -27704,7 +28053,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-28a1edc5",
@@ -27765,7 +28115,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3e31beb5",
@@ -27827,7 +28178,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-380a1c2a",
@@ -27889,7 +28241,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a713dc34",
@@ -27951,7 +28304,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a68dc67c",
@@ -28012,7 +28366,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-86d0e6df",
@@ -28073,7 +28428,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9411b1c9",
@@ -28135,7 +28491,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-18ac0a23",
@@ -28198,7 +28555,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-06b02577",
@@ -28259,7 +28617,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7c864e62",
@@ -28320,7 +28679,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-231ddd3f",
@@ -28382,7 +28742,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-93b14e9d",
@@ -28444,7 +28805,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9892220c",
@@ -28506,7 +28868,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b49948f4",
@@ -28567,7 +28930,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fa4071c8",
@@ -28630,7 +28994,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-16503992",
@@ -28693,7 +29058,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-812bd3bf",
@@ -28757,7 +29123,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-895be7cc",
@@ -28818,7 +29185,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b3ccb329",
@@ -28880,7 +29248,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bc1fcf13",
@@ -28941,7 +29310,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-85b562ac",
@@ -29003,7 +29373,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-57e0f80f",
@@ -29065,7 +29436,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d9edf374",
@@ -29126,7 +29498,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0b72c4e8",
@@ -29188,7 +29561,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-eb3c6c93",
@@ -29251,7 +29625,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9d64a3b5",
@@ -29315,7 +29690,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-495a1896",
@@ -29377,7 +29753,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0c5d5592",
@@ -29439,7 +29816,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-76ea285c",
@@ -29500,7 +29878,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fc2eb703",
@@ -29563,7 +29942,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7983430b",
@@ -29624,7 +30004,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-64510020",
@@ -29687,7 +30068,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-740fced6",
@@ -29749,7 +30131,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8ea0920f",
@@ -29811,7 +30194,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-64926cf4",
@@ -29874,7 +30258,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bf79b3cd",
@@ -29935,7 +30320,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-83e62b17",
@@ -29997,7 +30383,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-76556488",
@@ -30059,7 +30446,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c81aaf35",
@@ -30121,7 +30509,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6c80aba1",
@@ -30183,7 +30572,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-038f8211",
@@ -30245,7 +30635,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-20ce4b13",
@@ -30307,7 +30698,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6c007cd3",
@@ -30368,7 +30760,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-078997fb",
@@ -30430,7 +30823,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5f0eb8ef",
@@ -30491,7 +30885,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-969dca9c",
@@ -30553,7 +30948,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-63eb9343",
@@ -30615,7 +31011,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ef93b950",
@@ -30677,7 +31074,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e30aab50",
@@ -30739,7 +31137,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6731595f",
@@ -30801,7 +31200,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-339975a3",
@@ -30863,7 +31263,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4fa89d44",
@@ -30924,7 +31325,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-30fefae3",
@@ -30987,7 +31389,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a1bac1a0",
@@ -31050,7 +31453,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-237815a6",
@@ -31113,7 +31517,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2074b3c6",
@@ -31175,7 +31580,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-eb9678b1",
@@ -31237,7 +31643,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fae0bee9",
@@ -31299,7 +31706,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-30a8a4e9",
@@ -31360,7 +31768,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f6715824",
@@ -31423,7 +31832,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d570bdbc",
@@ -31484,7 +31894,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-576e2f02",
@@ -31546,7 +31957,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c4a2b1b1",
@@ -31609,7 +32021,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1bce4408",
@@ -31672,7 +32085,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-643c4eba",
@@ -31735,7 +32149,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-904dee58",
@@ -31796,7 +32211,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-753003ea",
@@ -31858,7 +32274,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-38559705",
@@ -31921,7 +32338,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b169415e",
@@ -31977,7 +32395,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b166be3c",
@@ -32034,7 +32453,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3ceaa36c",
@@ -32091,7 +32511,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b3e50e88",
@@ -32147,7 +32568,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c7d77aeb",
@@ -32204,7 +32626,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d16b7365",
@@ -32260,7 +32683,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-701fbacb",
@@ -32317,7 +32741,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-afcc59a8",
@@ -32374,7 +32799,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e31cced3",
@@ -32431,7 +32857,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-01667de7",
@@ -32489,7 +32916,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-99b107c0",
@@ -32546,7 +32974,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-584a68d4",
@@ -32602,7 +33031,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cce858b1",
@@ -32659,7 +33089,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b9c71ce1",
@@ -32716,7 +33147,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-94f1f41d",
@@ -32773,7 +33205,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0d41e1e8",
@@ -32829,7 +33262,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dd272943",
@@ -32890,7 +33324,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4c43650b",
@@ -32951,7 +33386,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-51fbcb2d",
@@ -33012,7 +33448,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-52393f40",
@@ -33074,7 +33511,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e18af8ac",
@@ -33136,7 +33574,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9ae6470c",
@@ -33197,7 +33636,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5f60fe1f",
@@ -33258,7 +33698,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cb088d92",
@@ -33319,7 +33760,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-261077a0",
@@ -33380,7 +33822,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-83cba8e1",
@@ -33441,7 +33884,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7fddf7cc",
@@ -33504,7 +33948,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5d2ecc27",
@@ -33565,7 +34010,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4b6da8f5",
@@ -33627,7 +34073,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6d0339c9",
@@ -33688,7 +34135,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a3b0f8d3",
@@ -33749,7 +34197,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6a5e139b",
@@ -33810,7 +34259,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3951468b",
@@ -33871,7 +34321,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-287d3089",
@@ -33932,7 +34383,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-13c389fc",
@@ -33993,7 +34445,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-04e5d518",
@@ -34054,7 +34507,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0d94dc86",
@@ -34115,7 +34569,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8ba9dca4",
@@ -34176,7 +34631,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1918c71e",
@@ -34238,7 +34694,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-63256541",
@@ -34300,7 +34757,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b727ceb7",
@@ -34362,7 +34820,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-41efa30c",
@@ -34424,7 +34883,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b4dcdeb6",
@@ -34483,7 +34943,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dcf0c3a1",
@@ -34545,7 +35006,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b116b711",
@@ -34608,7 +35070,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-28822c44",
@@ -34670,7 +35133,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-575606a5",
@@ -34732,7 +35196,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-950b64cc",
@@ -34794,7 +35259,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-14291a38",
@@ -34857,7 +35323,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d35c6ec6",
@@ -34919,7 +35386,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8512536a",
@@ -34981,7 +35449,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a435c6b9",
@@ -35042,7 +35511,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b219a32c",
@@ -35104,7 +35574,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-506d16ea",
@@ -35165,7 +35636,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5fec71c1",
@@ -35227,7 +35699,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4a75fad4",
@@ -35290,7 +35763,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-073755c7",
@@ -35352,7 +35826,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fc63cc65",
@@ -35414,7 +35889,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c4a920c6",
@@ -35477,7 +35953,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-be51c836",
@@ -35539,7 +36016,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-644ffd55",
@@ -35601,7 +36079,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-eb1dc3c5",
@@ -35663,7 +36142,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0667d64d",
@@ -35725,7 +36205,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6ce84f94",
@@ -35787,7 +36268,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fcb6f0ae",
@@ -35849,7 +36331,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bac8d49e",
@@ -35912,7 +36395,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1f0a2cfd",
@@ -35974,7 +36458,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d46652e7",
@@ -36036,7 +36521,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0258d2fd",
@@ -36098,7 +36584,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2e0d7957",
@@ -36160,7 +36647,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7086743e",
@@ -36222,7 +36710,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-32112e8c",
@@ -36284,7 +36773,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ef3bef25",
@@ -36346,7 +36836,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1468a352",
@@ -36408,7 +36899,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5b4d20b",
@@ -36470,7 +36962,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5630b24a",
@@ -36532,7 +37025,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-85791231",
@@ -36594,7 +37088,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2a991a6a",
@@ -36656,7 +37151,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0a2b0950",
@@ -36718,7 +37214,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9fad6f3b",
@@ -36780,7 +37277,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ba51e4d5",
@@ -36842,7 +37340,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6808580f",
@@ -36904,7 +37403,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-86d7ee53",
@@ -36966,7 +37466,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9ed6a026",
@@ -37028,7 +37529,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b12b9e2d",
@@ -37090,7 +37592,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0955628f",
@@ -37152,7 +37655,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ce464198",
@@ -37214,7 +37718,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-09a36b7f",
@@ -37276,7 +37781,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a093d407",
@@ -37338,7 +37844,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-070a70a6",
@@ -37400,7 +37907,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-44b36320",
@@ -37462,7 +37970,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-19f53be7",
@@ -37524,7 +38033,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-aa860941",
@@ -37586,7 +38096,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-30a479bb",
@@ -37649,7 +38160,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6eacc4f2",
@@ -37712,7 +38224,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b20eaaaa",
@@ -37775,7 +38288,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b02b2ad6",
@@ -37838,7 +38352,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-90ad28ec",
@@ -37903,7 +38418,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-399321c0",
@@ -37966,7 +38482,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-13cf7535",
@@ -38029,7 +38546,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1ebf1d99",
@@ -38093,7 +38611,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6809ceed",
@@ -38156,7 +38675,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-16011f4d",
@@ -38219,7 +38739,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-105a372d",
@@ -38282,7 +38803,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2b6daa15",
@@ -38345,7 +38867,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dabf32b8",
@@ -38408,7 +38931,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b407370c",
@@ -38471,7 +38995,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-069c0b5b",
@@ -38532,7 +39057,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e5aae595",
@@ -38594,7 +39120,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-16c8607d",
@@ -38655,7 +39182,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-df68cb76",
@@ -38717,7 +39245,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-03870110",
@@ -38780,7 +39309,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c7a98299",
@@ -38842,7 +39372,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a94e5e95",
@@ -38904,7 +39435,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7cace852",
@@ -38965,7 +39497,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-19e2406c",
@@ -39027,7 +39560,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e5b60ad5",
@@ -39089,7 +39623,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b0bb1fee",
@@ -39151,7 +39686,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4d938b8b",
@@ -39213,7 +39749,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0b6c3090",
@@ -39275,7 +39812,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8ac7f8fb",
@@ -39336,7 +39874,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f4bebe69",
@@ -39397,7 +39936,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d9aac0e9",
@@ -39458,7 +39998,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6a087e1b",
@@ -39520,7 +40061,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-970d49dc",
@@ -39582,7 +40124,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2d297afb",
@@ -39644,7 +40187,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-48071ca5",
@@ -39706,7 +40250,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ccfd5eeb",
@@ -39768,7 +40313,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c345ab17",
@@ -39829,7 +40375,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c5a82568",
@@ -39891,7 +40438,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ee6f340c",
@@ -39953,7 +40501,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-89520a6a",
@@ -40015,7 +40564,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2653f3d0",
@@ -40078,7 +40628,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3df993ce",
@@ -40141,7 +40692,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e7ce9e41",
@@ -40204,7 +40756,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e44b040c",
@@ -40267,7 +40820,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-81a7e2c6",
@@ -40329,7 +40883,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ac5dde48",
@@ -40414,7 +40969,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e0d0784a",
@@ -40499,7 +41055,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-03b5ff42",
@@ -40584,7 +41141,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9603d354",
@@ -40669,7 +41227,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b8e9a616",
@@ -40754,7 +41313,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3db6fa9f",
@@ -40839,7 +41399,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3f113cc1",
@@ -40924,7 +41485,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-970af2cc",
@@ -41009,7 +41571,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b91e56bc",
@@ -41094,7 +41657,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-54dbcdc6",
@@ -41179,7 +41743,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-70cf2952",
@@ -41264,7 +41829,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2543ff64",
@@ -41349,7 +41915,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-31df5511",
@@ -41434,7 +42001,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fb1e6613",
@@ -41519,7 +42087,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9663ab72",
@@ -41604,7 +42173,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f595700b",
@@ -41689,7 +42259,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-47a74001",
@@ -41774,7 +42345,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5e536810",
@@ -41859,7 +42431,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-98c3fe10",
@@ -41944,7 +42517,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-beb439ab",
@@ -42029,7 +42603,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-18cb21cf",
@@ -42114,7 +42689,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1cb23fe5",
@@ -42199,7 +42775,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c78f7582",
@@ -42289,7 +42866,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b6ba3100",
@@ -42351,7 +42929,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b5328b2d",
@@ -42413,7 +42992,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f509de31",
@@ -42475,7 +43055,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c6922df4",
@@ -42537,7 +43118,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6a35f3f6",
@@ -42599,7 +43181,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6cdd26f6",
@@ -42661,7 +43244,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f8bb5e6d",
@@ -42723,7 +43307,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d70fb52f",
@@ -42785,7 +43370,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-134076a8",
@@ -42847,7 +43433,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0874d367",
@@ -42909,7 +43496,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ee4f88b3",
@@ -42971,7 +43559,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-48e27cbe",
@@ -43033,7 +43622,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-34fd0437",
@@ -43095,7 +43685,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c6a323c8",
@@ -43157,7 +43748,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2470484c",
@@ -43219,7 +43811,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b7743ee9",
@@ -43281,7 +43874,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c52b20fa",
@@ -43343,7 +43937,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-51542719",
@@ -43405,7 +44000,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-da5a103a",
@@ -43467,7 +44063,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4f355a45",
@@ -43529,7 +44126,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c07f8c82",
@@ -43591,7 +44189,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0dad5c23",
@@ -43653,7 +44252,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-908c2bc8",
@@ -43715,7 +44315,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-db5261d1",
@@ -43777,7 +44378,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6525dd18",
@@ -43839,7 +44441,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-83c790c9",
@@ -43901,7 +44504,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-12332cd2",
@@ -43963,7 +44567,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e89e07fa",
@@ -44025,7 +44630,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8225bccf",
@@ -44087,7 +44693,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-443c565d",
@@ -44149,7 +44756,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e0c9eb08",
@@ -44211,7 +44819,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-00692568",
@@ -44273,7 +44882,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a506dae3",
@@ -44335,7 +44945,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-50c3c154",
@@ -44397,7 +45008,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6d77b0c4",
@@ -44459,7 +45071,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2e81d34b",
@@ -44521,7 +45134,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2caecb48",
@@ -44583,7 +45197,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f1c54580",
@@ -44645,7 +45260,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-27492345",
@@ -44707,7 +45323,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5415097",
@@ -44769,7 +45386,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d6502517",
@@ -44831,7 +45449,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f4a9b359",
@@ -44893,7 +45512,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-355a5606",
@@ -44955,7 +45575,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-05f9e5e9",
@@ -45017,7 +45638,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8b83e8eb",
@@ -45079,7 +45701,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0b0e27f9",
@@ -45141,7 +45764,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-aff3d89e",
@@ -45203,7 +45827,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e7c9a1f7",
@@ -45266,7 +45891,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-00d36923",
@@ -45328,7 +45954,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-73b9f4dd",
@@ -45390,7 +46017,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9f962164",
@@ -45452,7 +46080,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6585535d",
@@ -45514,7 +46143,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-558e2969",
@@ -45576,7 +46206,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-67408d5b",
@@ -45638,7 +46269,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b78a0872",
@@ -45700,7 +46332,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f451f71b",
@@ -45762,7 +46395,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-7f59c5af",
@@ -45824,7 +46458,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8dfe7737",
@@ -45886,7 +46521,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5677c08a",
@@ -45948,7 +46584,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cf322a50",
@@ -46011,7 +46648,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5c5b2fef",
@@ -46073,7 +46711,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a40194c2",
@@ -46135,7 +46774,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9b85bd20",
@@ -46197,7 +46837,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-852c8246",
@@ -46259,7 +46900,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bcb13caf",
@@ -46321,7 +46963,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5abc470",
@@ -46383,7 +47026,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4dcf9540",
@@ -46445,7 +47089,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-445b387e",
@@ -46507,7 +47152,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c1e53348",
@@ -46569,7 +47215,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-48b31b69",
@@ -46631,7 +47278,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c98e90cd",
@@ -46693,7 +47341,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b0868c56",
@@ -46755,7 +47404,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-33baa842",
@@ -46817,7 +47467,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-352a956b",
@@ -46879,7 +47530,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-89649d41",
@@ -46941,7 +47593,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-415bb238",
@@ -47003,7 +47656,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-90d6c841",
@@ -47065,7 +47719,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5f075b9e",
@@ -47127,7 +47782,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6e4e65d2",
@@ -47189,7 +47845,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-eea47147",
@@ -47251,7 +47908,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-eeffa8fb",
@@ -47313,7 +47971,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-af0c4f16",
@@ -47375,7 +48034,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b7ed95f1",
@@ -47437,7 +48097,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-08776b01",
@@ -47499,7 +48160,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-aa3f27c5",
@@ -47561,7 +48223,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-63268992",
@@ -47623,7 +48286,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c2a07a51",
@@ -47685,7 +48349,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-94075e15",
@@ -47747,7 +48412,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f44077d3",
@@ -47809,7 +48475,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fa8a7606",
@@ -47871,7 +48538,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-33ecb263",
@@ -47933,7 +48601,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5e81f1d0",
@@ -48025,7 +48694,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-81916050",
@@ -48117,7 +48787,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9fe050d9",
@@ -48210,7 +48881,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-54a5a548",
@@ -48266,7 +48938,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-16efa8ec",
@@ -48322,7 +48995,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-28ae539f",
@@ -48381,7 +49055,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0d34904e",
@@ -48443,7 +49118,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-cdc19868",
@@ -48505,7 +49181,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-57de3c52",
@@ -48566,7 +49243,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-592b6830",
@@ -48627,7 +49305,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-eeb7af70",
@@ -48689,7 +49368,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-07f2ebd4",
@@ -48750,7 +49430,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-50dc2294",
@@ -48813,7 +49494,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5445127b",
@@ -48874,7 +49556,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5cd720ac",
@@ -48936,7 +49619,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-051d1e2c",
@@ -48998,7 +49682,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-18565605",
@@ -49059,7 +49744,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-482b7976",
@@ -49120,7 +49806,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-dcac8ee9",
@@ -49183,7 +49870,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f294a30c",
@@ -49245,7 +49933,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9425220f",
@@ -49307,7 +49996,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c12c1900",
@@ -49368,7 +50058,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6b686f16",
@@ -49431,7 +50122,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-44fa255a",
@@ -49492,7 +50184,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-77f219ad",
@@ -49553,7 +50246,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2a76f539",
@@ -49615,7 +50309,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5d5d32f1",
@@ -49677,7 +50372,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e81aed52",
@@ -49739,7 +50435,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fa809618",
@@ -49802,7 +50499,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bd436f03",
@@ -49864,7 +50562,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c037fe42",
@@ -49925,7 +50624,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-69e4ff42",
@@ -49986,7 +50686,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2a0c72ae",
@@ -50049,7 +50750,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-498e0568",
@@ -50111,7 +50813,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d5db6a6e",
@@ -50169,7 +50872,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fca3d387",
@@ -50228,7 +50932,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1b6b4c8e",
@@ -50289,7 +50994,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-784748ec",
@@ -50350,7 +51056,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3acc9517",
@@ -50411,7 +51118,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f81fa7da",
@@ -50473,7 +51181,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a5a07d6b",
@@ -50535,7 +51244,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bfdd0f29",
@@ -50596,7 +51306,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4b16d190",
@@ -50660,7 +51371,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-618e4efc",
@@ -50722,7 +51434,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6d0297e4",
@@ -50783,7 +51496,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5ade2601",
@@ -50845,7 +51559,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-29e4c935",
@@ -50906,7 +51621,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0d941988",
@@ -50968,7 +51684,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5e18ee9a",
@@ -51030,7 +51747,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a04d8c2e",
@@ -51092,7 +51810,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8f248bb0",
@@ -51153,7 +51872,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e1c9f134",
@@ -51210,7 +51930,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6f4752ce",
@@ -51274,7 +51995,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2c89d5e5",
@@ -51338,7 +52060,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8889752e",
@@ -51402,7 +52125,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-20b36079",
@@ -51466,7 +52190,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-71cf4b81",
@@ -51530,7 +52255,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-98a62868",
@@ -51594,7 +52320,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-679324b1",
@@ -51658,7 +52385,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0e0a1f10",
@@ -51722,7 +52450,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-57d46475",
@@ -51786,7 +52515,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ac2c8a94",
@@ -51844,7 +52574,8 @@
    "documentos": "histórico escolar original ou declaração oficial da última instituição de ensino frequentada, CPF",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5ace06ed",
@@ -51902,7 +52633,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3c0037bb",
@@ -51960,7 +52692,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9189fc08",
@@ -52018,7 +52751,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2af304f2",
@@ -52079,7 +52813,8 @@
    "documentos": "Documento oficial de identificação com foto legível (RG, CNH ou Carteira Profissional)",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e06e12e1",
@@ -52140,7 +52875,8 @@
    "documentos": "Documento oficial de identificação com foto legível (RG, CNH ou Carteira Profissional)",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9fc462e3",
@@ -52201,7 +52937,8 @@
    "documentos": "Documento oficial de identificação com foto legível (RG, CNH ou Carteira Profissional)",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9b2f7fb7",
@@ -52268,7 +53005,8 @@
     }
    ],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-03962041",
@@ -52360,7 +53098,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9647ecc2",
@@ -52617,7 +53356,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-49abf649",
@@ -52709,7 +53449,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4bb02c92",
@@ -52801,7 +53542,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5502b8ac",
@@ -52902,7 +53644,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-301c8668",
@@ -52962,7 +53705,8 @@
    "documentos": "01(uma) fotografia 3x4; 01 (uma) cópia do RG, constando frente e verso; 01 (uma) cópia do CPF; 01 (uma) cópia do comprovante de residência; 01 (uma) cópia do comprovante de escolaridade",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-34babd01",
@@ -53022,7 +53766,8 @@
    "documentos": "01(uma) fotografia 3x4; 01 (uma) cópia do RG, constando frente e verso; 01 (uma) cópia do CPF; 01 (uma) cópia do comprovante de residência; 01 (uma) cópia do comprovante de escolaridade",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a8200113",
@@ -53082,7 +53827,8 @@
    "documentos": "01(uma) fotografia 3x4; 01 (uma) cópia do RG, constando frente e verso; 01 (uma) cópia do CPF; 01 (uma) cópia do comprovante de residência; 01 (uma) cópia do comprovante de escolaridade",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-3faa52dd",
@@ -53140,7 +53886,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-78a23f6d",
@@ -53225,7 +53972,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-74842da2",
@@ -53310,7 +54058,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ca2480c6",
@@ -53402,7 +54151,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5d1cc6ba",
@@ -53458,7 +54208,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d28e0a60",
@@ -53514,7 +54265,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-750f9494",
@@ -53570,7 +54322,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a8730c54",
@@ -53631,7 +54384,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2c782733",
@@ -53692,7 +54446,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d0483c50",
@@ -53753,7 +54508,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ab0e163e",
@@ -53814,7 +54570,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c77d6585",
@@ -53871,7 +54628,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-53e0646d",
@@ -53935,7 +54693,8 @@
    "documentos": "Documento Oficial de identificação com foto (contendo o RG e CPF); Diploma ou Certificado de Conclusão do Ensino Médio, devidamente reconhecido ou Declaração de Matrícula em curso regular, para candidatos que estejam cursando o 2º ou 3º ano do Ensino Médio; CPF e documento oficial de identificação com foto do responsável legal, quando sua participação for juridicamente exigível em razão da menoridade.",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a4f23747",
@@ -53999,7 +54758,8 @@
    "documentos": "Documento Oficial de identificação com foto (contendo o RG e CPF); Diploma ou Certificado de Conclusão do Ensino Médio, devidamente reconhecido ou Declaração de Matrícula em curso regular, para candidatos que estejam cursando o 2º ou 3º ano do Ensino Médio; CPF e documento oficial de identificação com foto do responsável legal, quando sua participação for juridicamente exigível em razão da menoridade.",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b3a11b98",
@@ -54063,7 +54823,8 @@
    "documentos": "Documento Oficial de identificação com foto (contendo o RG e CPF); Diploma ou Certificado de Conclusão do Ensino Médio, devidamente reconhecido ou Declaração de Matrícula em curso regular, para candidatos que estejam cursando o 2º ou 3º ano do Ensino Médio; CPF e documento oficial de identificação com foto do responsável legal, quando sua participação for juridicamente exigível em razão da menoridade.",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4145149b",
@@ -54126,7 +54887,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6a4c747f",
@@ -54189,7 +54951,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b20e86ce",
@@ -54253,7 +55016,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-001ebeda",
@@ -54345,7 +55109,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e6c5f136",
@@ -54430,7 +55195,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6165bf64",
@@ -54515,7 +55281,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-98971c07",
@@ -54605,7 +55372,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c72ab264",
@@ -54695,7 +55463,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fed016af",
@@ -54785,7 +55554,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c903d69e",
@@ -54876,7 +55646,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c60c90ff",
@@ -54966,7 +55737,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4c21dd94",
@@ -55056,7 +55828,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-75357af5",
@@ -55146,7 +55919,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-332a4050",
@@ -55236,7 +56010,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-aa8e425d",
@@ -55326,7 +56101,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4e2208f6",
@@ -55416,7 +56192,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0b478ee6",
@@ -55472,7 +56249,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1d0f89bc",
@@ -55533,7 +56311,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f1d2139c",
@@ -55594,7 +56373,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0b809763",
@@ -55649,7 +56429,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-53299594",
@@ -55710,7 +56491,8 @@
    "documentos": "RG, CPF e comprovante de residência (originais e cópias); declaração escolar ou histórico escolar",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-91c5a437",
@@ -55777,7 +56559,8 @@
     }
    ],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6ac3c574",
@@ -55844,7 +56627,8 @@
     }
    ],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5c9f0969",
@@ -55904,7 +56688,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-09b3246d",
@@ -55966,7 +56751,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1fba6d23",
@@ -56028,7 +56814,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-fc3ce992",
@@ -56088,7 +56875,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f928d51a",
@@ -56149,7 +56937,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-427c6221",
@@ -56211,7 +57000,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-2e08ce9b",
@@ -56302,7 +57092,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-d69ca11c",
@@ -56393,7 +57184,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c6bdb068",
@@ -56484,7 +57276,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-040f3b7a",
@@ -56575,7 +57368,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-9c162f2e",
@@ -56698,7 +57492,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-36df7ffc",
@@ -56789,7 +57584,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-ad575a64",
@@ -56880,7 +57676,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-83d77fc4",
@@ -56971,7 +57768,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0e8d7454",
@@ -57062,7 +57860,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1735b440",
@@ -57123,7 +57922,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e1f3a6b7",
@@ -57184,7 +57984,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c8f3c51e",
@@ -57245,7 +58046,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f99a9c09",
@@ -57306,7 +58108,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-36c2aba2",
@@ -57367,7 +58170,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-5f74eef5",
@@ -57428,7 +58232,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-719d7c89",
@@ -57489,7 +58294,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6cbf89e6",
@@ -57550,7 +58356,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-8112c7b7",
@@ -57611,7 +58418,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4fe391d4",
@@ -57672,7 +58480,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-11a3d436",
@@ -57733,7 +58542,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-1cc9d984",
@@ -57794,7 +58604,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-89439adb",
@@ -57855,7 +58666,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e3ccff66",
@@ -57916,7 +58728,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-17fbee60",
@@ -57977,7 +58790,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-f74ee3c5",
@@ -58038,7 +58852,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-879f381b",
@@ -58139,7 +58954,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-73253e88",
@@ -58239,109 +59055,8 @@
    "documentos": "RG, CPF e valor da renda bruta familiar mensal",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
-  },
-  {
-   "id": "C-41cc40d4",
-   "titulo": "Noções de Atendimento Humanizado em Saúde",
-   "entidade": "Instituto Centec (Rede CVT)",
-   "url": "https://www.centec.org.br/cursos-formacao-inicial-continuada/",
-   "pagina_propria": false,
-   "local": "BR-CE",
-   "modalidade": "presencial",
-   "destino": {
-    "tipo": "lista",
-    "conta": "",
-    "nota": "A inscrição é feita na unidade, com o CPF.",
-    "procurar": "Noções de Atendimento Humanizado em Saúde",
-    "frase": "",
-    "nome": "Centec"
-   },
-   "pais": "BR",
-   "regiao": "Ceará",
-   "cidade": "",
-   "descricao": "Curso de qualificação profissional da Rede CVT, com 40h/aula.",
-   "descricao_origem": "resumo",
-   "gratuidade_comprovada": true,
-   "necessidades": [
-    "profissao",
-    "emprego"
-   ],
-   "exclusivo_para": "",
-   "requisitos": "Ter 16 anos ou mais",
-   "certificado": "",
-   "certificado_comprovado": false,
-   "inscricoes_ate": "",
-   "data_por_confirmar": false,
-   "so_futuro": false,
-   "situacao": "Aberto",
-   "abertura": "",
-   "turmas": [
-    {
-     "por_abrir": false,
-     "abertura": "",
-     "situacao": "Aberta",
-     "link": "https://www.centec.org.br/cursos-formacao-inicial-continuada/#nocoes-de-atendimento-humanizado-em-saude-cvt-granja-2026-12-07-18-00-22-00",
-     "unidade": "CVT GRANJA",
-     "cidade": "Granja",
-     "local": {
-      "nome": "CVT Granja",
-      "municipio": "Granja",
-      "site": "https://www.centec.org.br/unidades/cvt-granja/",
-      "bairro": "Centro",
-      "morada": "Praça Coronel Luís Felipe, s/nº",
-      "telefone": "(88) 99651-0067",
-      "whatsapp": "",
-      "horario": "",
-      "o_que_levar": "CPF"
-     },
-     "inicio": "2026-12-07",
-     "fim": "2026-12-18",
-     "horario": "18:00 - 22:00",
-     "dias": "",
-     "prazo": "",
-     "idade_minima": "16",
-     "escolaridade": "ENSINO FUNDAMENTAL II (6º AO 9º) COMPLETO ( Estudantes e Profissionais da Área de Saúde )",
-     "documentos": "",
-     "local_texto": "URUOCA - ESCOLA VALDEMAR ROCHA",
-     "titulo_fonte": "NOÇÕES DE ATENDIMENTO HUMANIZADO EM SAÚDE - CVT GRANJA - 07/12 a 18/12/2026 - 18h às 22h - PRESENCIAL",
-     "destino": {
-      "tipo": "lista",
-      "conta": "",
-      "nota": "A inscrição é feita na unidade, com o CPF.",
-      "procurar": "NOÇÕES DE ATENDIMENTO HUMANIZADO EM SAÚDE - CVT GRANJA - 07/12 a 18/12/2026 - 18h às 22h - PRESENCIAL",
-      "frase": "",
-      "nome": "Centec"
-     },
-     "telefone": "3066-7000",
-     "inscricao": "presencial",
-     "info": "",
-     "verificado_em": "2026-11-27",
-     "reserva": "",
-     "regra_vagas": ""
-    }
-   ],
-   "em_revisao": false,
-   "onde_inscrever": [],
-   "verificado_em": "2026-11-27",
-   "inicio": "",
-   "duracao": "40h/aula",
-   "matricula": "",
-   "primeiro_visto": "2026-11-27",
-   "como_me_inscrever": [],
-   "antes": [],
-   "idade_minima": 16,
-   "idade_maxima": null,
-   "escolaridade": "",
-   "renda": "",
-   "cadunico": "",
-   "turnos": [],
-   "internet": "Não",
-   "ajuda": "",
-   "documentos": "Cópia do RG e CPF; comprovante de residência; declaração de escolaridade (se necessário)",
-   "etiquetas": [],
-   "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-79ddaa2f",
@@ -58402,7 +59117,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-4b320991",
@@ -58463,7 +59179,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-c968d415",
@@ -58524,7 +59241,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-88ad0351",
@@ -58585,7 +59303,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-e0eddd76",
@@ -58646,7 +59365,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-6aa72d93",
@@ -58707,7 +59427,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-a9b928ea",
@@ -58768,7 +59489,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-657f0ba0",
@@ -58827,7 +59549,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-960d4543",
@@ -58888,7 +59611,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-0e80dcfe",
@@ -58949,7 +59673,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-15bbe374",
@@ -59010,7 +59735,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-bddefc48",
@@ -59071,7 +59797,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-97c84bf3",
@@ -59131,7 +59858,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-b454c3ac",
@@ -59192,7 +59920,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-16e96bdf",
@@ -59253,7 +59982,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "ordem",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   },
   {
    "id": "C-65877a6d",
@@ -59313,7 +60043,8 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "sorteio",
-   "acessibilidade": []
+   "acessibilidade": [],
+   "turmas_abertas": null
   }
  ]
 }

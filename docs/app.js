@@ -643,14 +643,17 @@
       }).join("");
       var porUf = {}, ativos = {};
       (site.locais || []).forEach(function (l) { if (/^BR-/.test(l.id)) ativos[l.id.slice(3)] = 1; });
-      todos.forEach(function (c) { if (c.modalidade !== "online" && /^BR-/.test(c.local || "")) porUf[c.local.slice(3)] = (porUf[c.local.slice(3)] || 0) + 1; });
+      // cada turma aberta conta como uma opção: curso com turmas conta as turmas atuais; cartão geral (ex.: Senac SP)
+      // conta as turmas que reúne; os outros contam 1 (pedido do responsável, 28/11/2026)
+      var opcoes = function (c) { return (c.turmas || []).length ? turmasAtuais(c).length : (c.turmas_abertas || 1); };
+      todos.forEach(function (c) { if (c.modalidade !== "online" && /^BR-/.test(c.local || "")) porUf[c.local.slice(3)] = (porUf[c.local.slice(3)] || 0) + opcoes(c); });
       var max = Math.max.apply(null, [1].concat(Object.keys(porUf).map(function (k) { return porUf[k]; })));
       var svg = el("mapa-brasil"), g = el("mapa-bolinhas");
       var nomeUf = {}; GRADE.forEach(function (x) { nomeUf[x[0]] = x[3]; });
       function textoDica(uf) {
         var n = porUf[uf] || 0;
         return (nomeUf[uf] || uf) + ": " + (!ativos[uf] ? "ainda não faz parte do site"
-          : n === 1 ? "1 curso presencial" : n + " cursos presenciais");
+          : n === 1 ? "1 opção presencial (curso ou turma)" : n.toLocaleString("pt-BR") + " opções presenciais (cursos e turmas)");
       }
       if (svg && g) {
         var marcas = "";
@@ -659,7 +662,7 @@
           if (!ativos[uf]) return;
           f.classList.add("ativo");
           var b = f.getBBox(), n = porUf[uf] || 0;
-          var r = n >= 100 ? 17 : n >= 10 ? 14 : 12;
+          var r = n >= 1000 ? 20 : n >= 100 ? 17 : n >= 10 ? 14 : 12;
           // posição da bolinha: centro da caixa do estado (ajustes para estados de forma irregular)
           var ajuste = { PE: [-25, 0], PI: [0, 8], MA: [0, 10], BA: [-6, 0], PB: [-4, -2], AL: [3, -3], SE: [2, 3], RN: [4, 0] }[uf] || [0, 0];
           var x = b.x + b.width / 2 + ajuste[0], y = b.y + b.height / 2 + ajuste[1];

@@ -298,6 +298,7 @@ def exportar_dados(base, cfg):
         # cartão geral (ex.: Senac SP, Senac RJ): quantas turmas abertas ele reúne, para o mapa dos números não mostrar
         # só 1 (pedido do responsável, 28/11/2026). Só conta se a contagem tiver no máximo 7 dias.
         cursos[-1]["turmas_abertas"], cursos[-1]["turmas_contadas_em"] = turmas_do_cartao_geral(r)
+        cursos[-1]["turmas_unidade"] = (r.get("O que se contou") or "").strip() or "turmas" if cursos[-1]["turmas_abertas"] else ""
         for campo in ("idade_minima", "idade_maxima"):
             try:
                 cursos[-1][campo] = int(float(cursos[-1][campo])) if cursos[-1][campo] else None

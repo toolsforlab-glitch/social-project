@@ -66,7 +66,14 @@
     });
   }
   function el(id) { return document.getElementById(id); }
+  // O dia muda à meia-noite de Brasília, não à meia-noite do relógio de quem abre o site (pedido do responsável, 28/11/2026)
   function hojeIso() {
+    try {
+      var p = {};
+      new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" })
+        .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+      if (p.year && p.month && p.day) return p.year + "-" + p.month + "-" + p.day;
+    } catch (e) { /* navegador antigo: usa o relógio do aparelho */ }
     var d = new Date();
     return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
   }
@@ -102,8 +109,8 @@
   var DIAS_ALERTA = 3;
   function diasAte(iso) {
     if (!iso) return null;
-    var p = iso.slice(0, 10).split("-"), d = new Date(+p[0], +p[1] - 1, +p[2]);
-    var h = new Date(); h = new Date(h.getFullYear(), h.getMonth(), h.getDate());
+    var p = iso.slice(0, 10).split("-"), d = Date.UTC(+p[0], +p[1] - 1, +p[2]);
+    var q = hojeIso().split("-"), h = Date.UTC(+q[0], +q[1] - 1, +q[2]);
     return Math.round((d - h) / 864e5);
   }
   function prazoProximo(c) {

@@ -37,8 +37,11 @@ LOCALIZACAO = {
     "BR-RJ": {"type": "approximate", "country": "BR", "region": "Rio de Janeiro", "city": "Rio de Janeiro", "timezone": "America/Sao_Paulo"},
     "BR-MG": {"type": "approximate", "country": "BR", "region": "Minas Gerais", "city": "Belo Horizonte", "timezone": "America/Sao_Paulo"},
     "BR-ES": {"type": "approximate", "country": "BR", "region": "Espírito Santo", "city": "Vitória", "timezone": "America/Sao_Paulo"},
+    "BR-PR": {"type": "approximate", "country": "BR", "region": "Paraná", "city": "Curitiba", "timezone": "America/Sao_Paulo"},
+    "BR-SC": {"type": "approximate", "country": "BR", "region": "Santa Catarina", "city": "Florianópolis", "timezone": "America/Sao_Paulo"},
+    "BR-RS": {"type": "approximate", "country": "BR", "region": "Rio Grande do Sul", "city": "Porto Alegre", "timezone": "America/Sao_Paulo"},
 }
-NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe", "BR-PA": "Pará", "BR-AM": "Amazonas", "BR-RO": "Rondônia", "BR-RR": "Roraima", "BR-AP": "Amapá", "BR-TO": "Tocantins", "BR-GO": "Goiás", "BR-DF": "Distrito Federal", "BR-MT": "Mato Grosso", "BR-MS": "Mato Grosso do Sul", "BR-SP": "São Paulo", "BR-RJ": "Rio de Janeiro", "BR-MG": "Minas Gerais", "BR-ES": "Espírito Santo"}
+NOMES_LOCAIS = {"BR-MA": "Maranhão", "BR-CE": "Ceará", "BR-AC": "Acre", "BR-PI": "Piauí", "BR-PE": "Pernambuco", "BR-AL": "Alagoas", "BR-PB": "Paraíba", "BR-BA": "Bahia", "BR-RN": "Rio Grande do Norte", "BR-SE": "Sergipe", "BR-PA": "Pará", "BR-AM": "Amazonas", "BR-RO": "Rondônia", "BR-RR": "Roraima", "BR-AP": "Amapá", "BR-TO": "Tocantins", "BR-GO": "Goiás", "BR-DF": "Distrito Federal", "BR-MT": "Mato Grosso", "BR-MS": "Mato Grosso do Sul", "BR-SP": "São Paulo", "BR-RJ": "Rio de Janeiro", "BR-MG": "Minas Gerais", "BR-ES": "Espírito Santo", "BR-PR": "Paraná", "BR-SC": "Santa Catarina", "BR-RS": "Rio Grande do Sul"}
 
 SISTEMA = """Procuras cursos GRATUITOS para pessoas em situação de vulnerabilidade, para um site público \
 em português. Pesquisa na web e usa só informação que encontraste nas páginas dos resultados.

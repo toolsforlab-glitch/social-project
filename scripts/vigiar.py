@@ -220,15 +220,25 @@ VIGIAS = [
 # rede pública abre em períodos (em geral de novembro a fevereiro, e alguns estados no meio do ano); estas vigias
 # avisam quando sai notícia de matrícula aberta, para se criar o curso em «Terminar a escola» a partir da página
 # oficial da secretaria de educação.
-ESTADOS_EJA = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Maranhão", "Pará", "Paraíba",
-               "Pernambuco", "Piauí", "Rio Grande do Norte", "Rondônia", "Roraima", "Sergipe", "Tocantins"]
-for _uf in ESTADOS_EJA:
+# 28/11/2026: o título tem de nomear o estado, a capital ou a sigla (uma notícia de Bertioga, SP, apareceu como
+# «EJA – Sergipe»); passam a ser vigiados todos os estados das regiões abertas.
+ESTADOS_EJA = {"Acre": "Rio Branco|AC", "Alagoas": "Macei[óo]|AL", "Amapá": "Macap[áa]|AP", "Amazonas": "Manaus|AM",
+               "Bahia": "Salvador|BA", "Ceará": "Fortaleza|CE", "Maranhão": "S[ãa]o Lu[íi]s|MA", "Pará": "Bel[ée]m|PA",
+               "Paraíba": "Jo[ãa]o Pessoa|PB", "Pernambuco": "Recife|PE", "Piauí": "Teresina|PI",
+               "Rio Grande do Norte": "Natal|RN", "Rondônia": "Porto Velho|RO", "Roraima": "Boa Vista|RR",
+               "Sergipe": "Aracaju|SE", "Tocantins": "Palmas|TO", "Goiás": "Goi[âa]nia|GO", "Mato Grosso": "Cuiab[áa]|MT",
+               "Mato Grosso do Sul": "Campo Grande|MS", "Distrito Federal": "Bras[íi]lia|DF",
+               "São Paulo": "SP", "Rio de Janeiro": "RJ", "Minas Gerais": "Belo Horizonte|MG",
+               "Espírito Santo": "Vit[óo]ria|ES", "Paraná": "Curitiba|PR",
+               "Santa Catarina": "Florian[óo]polis|SC", "Rio Grande do Sul": "Porto Alegre|RS"}
+for _uf, _locais in ESTADOS_EJA.items():
     _q = urllib.parse.quote_plus(f'EJA matrícula "{_uf}"')
     VIGIAS.append({
         "nome": f"EJA – {_uf}",
         "rss": f"https://news.google.com/rss/search?q={_q}&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "titulo": r"^(?!.*(fraude|suspeit|investig|\blei\b|den[úu]ncia))(?=.*(\bEJA\b|jovens e adultos))"
-                   r"(?=.*(matr[íi]cul|vagas|inscri))", "dias": 14,
+                   r"(?=.*(matr[íi]cul|vagas|inscri))"
+                   rf"(?=.*(?:{_uf}|{'|'.join(rf'(?-i:\b{x}\b)' if x.isupper() else x for x in _locais.split('|'))}))", "dias": 14,
         "link": f"https://news.google.com/search?q={_q}&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "resumo": "notícias recentes de matrícula na EJA",
         "verificar": "Matrícula na EJA da rede pública (estado ou prefeitura). Abra a notícia e procure a página "

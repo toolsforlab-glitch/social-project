@@ -93,7 +93,9 @@ def passos(valor):
 def turmas_do_cartao_geral(r, dias=7):
     try:
         n = int(float(str(r.get("Turmas abertas (cartão geral)") or "").replace(".", "").replace(",", ".")))
-        quando = datetime.date.fromisoformat(str(r.get("Turmas contadas em") or "")[:10])
+        q = str(r.get("Turmas contadas em") or "").strip()
+        m = re.match(r"(\d{2})/(\d{2})/(\d{4})", q)  # a folha pode mostrar a data como dd/mm/aaaa
+        quando = datetime.date.fromisoformat(f"{m[3]}-{m[2]}-{m[1]}" if m else q[:10])
     except ValueError:
         return None, ""
     hoje = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).date()

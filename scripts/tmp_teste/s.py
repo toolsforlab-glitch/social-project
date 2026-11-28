@@ -5,10 +5,9 @@ import urllib.request
 os.makedirs("../sonda", exist_ok=True)
 res = []
 B = "https://mais.ifmg.edu.br/maisifmg"
-urls = [B + "/enrol/index.php?id=62", B + "/course/view.php?id=62", B + "/course/info.php?id=62", B + "/local/staticpage/view.php?page=registro",
-        B + "/enrol/index.php?id=125", B + "/enrol/index.php?id=612", B + "/enrol/index.php?id=232",
-        "http://mooc.cps.sp.gov.br/", "https://mooc.cps.sp.gov.br/login/index.php", "https://mooc.cps.sp.gov.br/index.php",
-        "https://www.cps.sp.gov.br/mooc/", "https://mooc.cps.sp.gov.br/moodle/"]
+urls = ["https://cursosmooc.cps.sp.gov.br/", "https://cursosmooc.cps.sp.gov.br/course/index.php?categoryid=4",
+ "https://www.gov.br/pt-br/servicos/participar-de-processo-seletivo-para-curso-de-formacao-inicial-e-continuada-ifmg",
+ "https://www.gov.br/pt-br/servicos/matricular-se-em-curso-de-formacao-inicial-e-continuada-ifmg"]
 for i, u in enumerate(urls):
     try:
         req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"})

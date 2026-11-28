@@ -17,7 +17,8 @@ Regras:
   população brasileira de baixa renda.»), conferidas por código; renda: «Possuir renda familiar per capita de até 2
   salários mínimos federais» (perguntas frequentes);
 - ficam fora os cursos cujos requisitos pedem ser da área (conhecimento específico, curso técnico ou superior na
-  área, registro profissional) e os integrados ao ensino médio (são escola regular, com matrícula própria).
+  área, registro profissional), os integrados ao ensino médio (são escola regular, com matrícula própria) e a
+  Aprendizagem Profissional (Jovem Aprendiz: é um emprego, a inscrição é feita pela empresa).
 """
 import html as _html
 import re
@@ -77,7 +78,7 @@ def ler_curso(url, tentativas=4):
     import time
     for n in range(tentativas):
         b = baixar(url, timeout=60).decode("utf-8", "replace")
-        if "<h1" in b and "Turmas Dispon" in b:
+        if "<h1" in b and ("Turmas Dispon" in b or "Novas turmas em breve" in b):
             break
         time.sleep(2 + 3 * n)
     t = limpo(re.sub(r"<script.*?</script>|<style.*?</style>", "", b, flags=re.S))
@@ -169,8 +170,10 @@ def main():
         if not gratis:
             continue
         area = _AREA.search(c["requisitos"])
-        if area or re.search(r"integrado ao ensino m[ée]dio", c["titulo"] + c["url"], re.I):
-            fora.append(f"{c['titulo'][:50]} ({area.group(0) if area else 'integrado ao ensino médio'})")
+        aprendiz = re.search(r"aprendizagem profissional|jovem aprendiz", c["titulo"] + c["url"], re.I)
+        if area or aprendiz or re.search(r"integrado ao ensino m[ée]dio", c["titulo"] + c["url"], re.I):
+            # Jovem Aprendiz é um emprego (a inscrição é feita pela empresa), não um curso aberto (regra de 22/11/2026)
+            fora.append(f"{c['titulo'][:50]} ({area.group(0) if area else 'aprendizagem profissional' if aprendiz else 'integrado ao ensino médio'})")
             continue
         reqs = c["itens_req"] or requisitos_de(c["requisitos"])
         idade = next((re.search(r"(\d{2}) anos", r).group(1) for r in reqs if re.search(r"[Ii]dade.*?\d{2} anos", r)), "")

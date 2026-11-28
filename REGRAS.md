@@ -58,6 +58,7 @@ Regras de uma só fonte (ex.: no SENAI Play, só cursos com 16 horas ou mais, j�
 - **M8. Cursos do mesmo edital num só cartão** («N cursos com a mesma inscrição»; `agrupar`, app.js; 26/11). Um edital muito grande, com dezenas de cursos e a mesma inscrição, pode entrar como um curso geral que descreve a oferta (SENAI DF, Edital 01/2027, 27/11).
 - **M9. Certificado, acessibilidade e idades só com frase**: o certificado tem de estar descrito; a acessibilidade tem de nomear um recurso concreto; a idade tem de estar escrita. O preço da 2ª via ou da reimpressão não diz como é o certificado do curso, nem pago nem gratuito (`certificado_da_frase`, base.py; 25/11 e 27/11).
 - **M10. Duração sempre com a unidade** («160 horas», nunca «160» sozinho; `duracao_legivel`, construir_site.py, e senac_ma.py). O filtro e a página de números usam as faixas: até 4, 5–20, 21–40, 41–80, 81–160, 161–400 e mais de 400 horas (`FAIXAS_DURACAO`, app.js; 27/11, a pedido do responsável).
+- **M11. O dia do site é o de Brasília** (28/11, a pedido do responsável): os prazos e as turmas mudam à meia-noite de Brasília, não à do relógio de quem abre o site (`hojeIso`, app.js). As rotinas já usam a hora de Fortaleza, igual à de Brasília (`hoje_ceara`). Percentagens com uma casa decimal, para uma faixa com cursos nunca aparecer como 0% (27/11).
 
 ## 5. Como se trabalha
 

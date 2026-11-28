@@ -531,3 +531,13 @@ Conversa: https://chatgpt.com/c/6b0a18c7-4da0-83eb-ab07-6c392a3a4615. Aplicado d
 
 - **Ceprocamp, Campinas** (C-e0d84aaf, por abrir): Edital Fumec/Ceprocamp 05/2026, cursos técnicos do 1.º semestre de 2027 — Administração (3 turmas) e Enfermagem (1 turma), 30 vagas cada; inscrições pela internet de 01 a 15/12/2026; «totalmente gratuitos» (item 10.2); classificação por pontos sociais (escola pública, renda, idade) — entra pela I5. A Fumec não abre a partir do GitHub (tempo esgotado); o edital foi lido no Chrome por código (fetch + DecompressionStream + ToUnicode), sem abrir o PDF numa aba; o texto sai com algumas letras trocadas (E→., F→3, É→0), por isso as frases na Evidência foram reconstruídas.
 - **Sem nada aberto que se prove hoje**: Guarulhos (só notícias antigas), CPAT/Feirão de Campinas (só jornais), Ceprocamp qualificação (as matrículas costumam abrir em julho e janeiro, presenciais, por ordem de chegada). Ficam para a pesquisa semanal.
+
+### Minas Gerais, Espírito Santo e institutos federais do RJ (28/11)
+
+Nada aberto que se prove hoje; nenhum cartão novo.
+- **Senac MG**: a página do PSG (mg.senac.br/psg) lê a API pública `/o/curso-aggregator-headless/v1.0/listar-cursos-inscricoes-abertas-v2?tipoDeGratuidade=2&unidade=N` (unidades em `/o/curso-aggregator-headless/v1.0/cidades-unidades`, 37 unidades). A 28/11 deu 0 cursos PSG em todas as unidades (com `tipoDeGratuidade=1` há 402, que são os pagos). As turmas PSG de BH/Contagem/Betim costumam abrir com inscrição presencial «até o preenchimento das vagas» (jornais). Fica na tarefa do navegador.
+- **Senac ES**: página do PSG sem lista de cursos (o link «Bolsa gratuita PSG» dá 404); a inscrição é por ordem de inscrição; nenhum edital atual encontrado.
+- **CEETs (Secti ES)**: técnicos 2027/1 até 06/12, mas a classificação é pelas notas de Português e Matemática → fora (E3).
+- **Qualificar ES**: última oferta on-line em agosto; nada aberto.
+- **IF Sudeste MG** (técnicos EaD por sorteio) fechou a 19/10; **IFSULDEMINAS** só especializações com taxa; **IFMG**: a plataforma +IFMG tem cursos FIC on-line sem seleção (candidato a leitor de catálogo on-line, como o da FGV); **IFRJ, IFF, CEFET/RJ**: os editais deste semestre já fecharam (IFRJ EJA a 03/11, IFF a 08/10, CEFET/RJ a 24/11).
+- **EJA ES e MG**: a Chamada Escolar 2027 do ES (09/11 a 11/12) não diz se inclui a EJA; no ano passado a EJA teve matrícula própria em janeiro. A EJA de MG tem vagas remanescentes de 21/01 a 03/02/2027. Lembrete a 12/01/2027.

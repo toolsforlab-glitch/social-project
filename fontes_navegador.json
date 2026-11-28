@@ -214,6 +214,16 @@
       "cidade": "",
       "entidade": "Fundo Social de São Paulo (Governo do Estado), programa Caminho da Capacitação",
       "nota": "A página lista os ciclos («34º Ciclo - 07/12/2026 Grande SP»). Quando aparecer um ciclo novo, criar o cartão desse ciclo (prazo = véspera do início) como o C-3328009c. A lista de cursos e municípios só aparece depois de entrar com CPF em cursofussp.sp.gov.br: não entrar em nome de ninguém."
+    },
+    {
+      "nome": "Senac Minas – Programa Senac de Gratuidade (API das inscrições abertas)",
+      "url": "https://www.mg.senac.br/psg",
+      "tipo": "lista",
+      "local": "BR-MG",
+      "regiao": "Minas Gerais",
+      "cidade": "",
+      "entidade": "Senac em Minas (Programa Senac de Gratuidade)",
+      "nota": "No Chrome, na página mg.senac.br/psg: fetch('/o/curso-aggregator-headless/v1.0/cidades-unidades') dá as 37 unidades; para cada uma, fetch('/o/curso-aggregator-headless/v1.0/listar-cursos-inscricoes-abertas-v2?pageSize=100&page=1&tipoDeGratuidade=2&unidade=ID') dá os cursos PSG com inscrição aberta (tipoDeGratuidade=1 são os pagos). Fazer os pedidos em paralelo (em série o Chrome trava). A 28/11 não havia nenhum. Quando houver, criar um cartão geral com a contagem (M12)."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-28T00:08",
+ "atualizado": "2026-11-28T00:12",
  "cursos": [
   {
    "id": "C-2204a779",
@@ -59131,6 +59131,67 @@
    "documentos": "",
    "etiquetas": [],
    "vagas": "",
+   "acessibilidade": []
+  },
+  {
+   "id": "C-b454c3ac",
+   "titulo": "Cursos de qualificação profissional gratuitos da Firjan SENAI (Rio de Janeiro, 11.260 vagas)",
+   "entidade": "Firjan SENAI (SENAI-RJ, Gratuidade Regimental)",
+   "url": "https://www.firjansenai.com.br/sites/default/files/2026-11/OFERTAS%201%20EDITAL%20QP_Gratuidade_REV.0_atual.%2011.11.2026.pdf.pdf",
+   "pagina_propria": true,
+   "local": "BR-RJ",
+   "modalidade": "misto",
+   "destino": {
+    "tipo": "edital",
+    "procurar": "",
+    "conta": "",
+    "frase": "",
+    "nota": "Os cursos, as datas e as vagas estão na tabela do anexo, perto do fim."
+   },
+   "pais": "BR",
+   "regiao": "Rio de Janeiro",
+   "cidade": "Rio de Janeiro (Maracanã, Tijuca, Jacarepaguá, Benfica e outras), São Gonçalo, Niterói, Nova Iguaçu, Duque de Caxias, Volta Redonda, Barra Mansa, Resende, Campos, Petrópolis, Itaguaí, Três Rios, Itaperuna, Nova Friburgo e outras",
+   "descricao": "Cursos de qualificação profissional gratuitos da Firjan SENAI em escolas de todo o estado do Rio de Janeiro, para pessoas de baixa renda (até 1,5 salário mínimo por pessoa na família). Há cursos presenciais, semipresenciais e on-line ao vivo. As vagas vão por ordem de inscrição, com início das turmas entre janeiro e abril de 2027.",
+   "descricao_origem": "resumo",
+   "gratuidade_comprovada": true,
+   "necessidades": [
+    "profissao"
+   ],
+   "exclusivo_para": "",
+   "requisitos": "Renda familiar de até 1,5 salário mínimo por pessoa; a idade e a escolaridade dependem de cada curso (estão no edital)",
+   "certificado": "",
+   "certificado_comprovado": false,
+   "inscricoes_ate": "2027-04-23",
+   "data_por_confirmar": false,
+   "so_futuro": false,
+   "situacao": "Aberto",
+   "abertura": "",
+   "turmas": [],
+   "em_revisao": false,
+   "onde_inscrever": [],
+   "verificado_em": "2026-11-27",
+   "inicio": "",
+   "duracao": "",
+   "matricula": "",
+   "primeiro_visto": "2026-11-27",
+   "como_me_inscrever": [
+    "Abra o edital na página «Editais gratuitos» da Firjan SENAI e escolha o curso, a escola e o turno.",
+    "Cursos presenciais e semipresenciais: inscrição e matrícula presenciais na escola SENAI escolhida, com os documentos do edital e a autodeclaração de baixa renda.",
+    "Cursos on-line ao vivo: inscrição no site da Firjan, enviando os documentos pela plataforma.",
+    "As vagas vão por ordem de inscrição; a inscrição de cada turma fecha quando enche."
+   ],
+   "antes": [],
+   "idade_minima": null,
+   "idade_maxima": null,
+   "escolaridade": "",
+   "renda": "1,5 salário mínimo por pessoa",
+   "cadunico": "",
+   "turnos": [],
+   "internet": "",
+   "ajuda": "",
+   "documentos": "",
+   "etiquetas": [],
+   "vagas": "ordem",
    "acessibilidade": []
   }
  ]

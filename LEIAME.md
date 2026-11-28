@@ -526,3 +526,8 @@ Conversa: https://chatgpt.com/c/6b0a18c7-4da0-83eb-ab07-6c392a3a4615. Aplicado d
 
 - **Rede estadual** (C-7c164d46): a inscrição de novos alunos de 2027, EJA incluída (fundamental a partir de 15 anos, médio a partir de 18, até 31/01/2027), é no Matrícula Fácil de 12/11 a 04/12/2026; não é por ordem de inscrição; resultado a 17/12, confirmação na escola de 18 a 22/01/2027. O site da Seeduc não abre a partir do GitHub (tempo esgotado): frases vistas no Chrome. Gratuidade pela LDB (F6).
 - **Prefeitura do Rio**: a inscrição de alunos novos (EJA incluída) em matricula.rio foi em janeiro no ano passado (14 a 16/01/2026); lembrete a 11/01/2027.
+
+### Outras cidades de São Paulo (28/11)
+
+- **Ceprocamp, Campinas** (C-e0d84aaf, por abrir): Edital Fumec/Ceprocamp 05/2026, cursos técnicos do 1.º semestre de 2027 — Administração (3 turmas) e Enfermagem (1 turma), 30 vagas cada; inscrições pela internet de 01 a 15/12/2026; «totalmente gratuitos» (item 10.2); classificação por pontos sociais (escola pública, renda, idade) — entra pela I5. A Fumec não abre a partir do GitHub (tempo esgotado); o edital foi lido no Chrome por código (fetch + DecompressionStream + ToUnicode), sem abrir o PDF numa aba; o texto sai com algumas letras trocadas (E→., F→3, É→0), por isso as frases na Evidência foram reconstruídas.
+- **Sem nada aberto que se prove hoje**: Guarulhos (só notícias antigas), CPAT/Feirão de Campinas (só jornais), Ceprocamp qualificação (as matrículas costumam abrir em julho e janeiro, presenciais, por ordem de chegada). Ficam para a pesquisa semanal.

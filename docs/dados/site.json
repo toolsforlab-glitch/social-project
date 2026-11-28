@@ -151,6 +151,18 @@
   {
    "id": "BR-ES",
    "rotulo": "Brasil – Espírito Santo"
+  },
+  {
+   "id": "BR-PR",
+   "rotulo": "Brasil – Paraná"
+  },
+  {
+   "id": "BR-SC",
+   "rotulo": "Brasil – Santa Catarina"
+  },
+  {
+   "id": "BR-RS",
+   "rotulo": "Brasil – Rio Grande do Sul"
   }
  ],
  "formulario": {

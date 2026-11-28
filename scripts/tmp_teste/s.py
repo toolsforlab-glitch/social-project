@@ -13,7 +13,7 @@ def campos(h):
         if n and 'type="hidden"' in t: d[html.unescape(n.group(1))]=html.unescape(v.group(1) if v else "")
     return d
 try:
-    h=get(); print("GET ok", len(h), h.count("btnCalendario"))
+    h=get(); print("GET ok", len(h), h.count("btnCalendario")); print(h[:3000])
     alvos=re.findall(r"__doPostBack\(&#39;(grdPesquisa\$ctl\d+\$btnCalendario)&#39;",h) or re.findall(r"__doPostBack\('(grdPesquisa\$ctl\d+\$btnCalendario)'",h)
     print("alvos",len(alvos), alvos[:2])
     d=campos(h); d["__EVENTTARGET"]=alvos[0]; d["__EVENTARGUMENT"]=""

@@ -85,7 +85,7 @@ IFMG_GOVBR = "https://www.gov.br/pt-br/servicos/participar-de-processo-seletivo-
 IFMG_FRASE_SEM_SELECAO = ("Para a participação em cursos FIC ofertados pela Plataforma +IFMG, não há processo seletivo. "
                           "Os cursos poderão ser realizados de imediato no momento da inscrição ao curso pela própria plataforma.")
 IFMG_AREAS_FORA = {"ProGestores", "Formação para EaD"}
-_TURMA = re.compile(r"\bturmas?\b|\b20\d\d(?:\.\d)?\b|com tutores", re.I)
+_TURMA = re.compile(r"\bturmas?\b|\b20\d\d\.\d\b|com tutores|\biniciantes\s+20\d\d\b", re.I)
 
 
 def ler_ifmg():

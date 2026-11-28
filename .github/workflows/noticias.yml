@@ -203,6 +203,11 @@ jobs:
         timeout-minutes: 20
         run: cd scripts && python3 aprenda_mais.py || echo 'Aprenda Mais não lida'
 
+      - name: Cursos on-line abertos do MOOC do Centro Paula Souza e da Plataforma +IFMG (prova por código)
+        if: ${{ always() }}
+        timeout-minutes: 15
+        run: cd scripts && python3 moodle_abertos.py || echo 'MOOC CPS / +IFMG não lidos'
+
       - name: Cursos on-line do Sebrae (catálogo oficial, prova por código)
         if: ${{ always() }}
         timeout-minutes: 20

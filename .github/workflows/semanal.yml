@@ -133,4 +133,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs semanal estado
-          git diff --cached --quiet || (git commit -q -m "Cursos e resumo $(date -u +%F)" && (git push -q || (git pull -q --rebase -X theirs && git push -q)))
+          git diff --cached --quiet || (git commit -q -m "Cursos e resumo $(date -u +%F)" && bash scripts/enviar.sh)

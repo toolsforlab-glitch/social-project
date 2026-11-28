@@ -106,7 +106,7 @@ jobs:
 
       - name: Turmas gratuitas do PSG do Senac Santa Catarina (portal oficial, código)
         if: ${{ always() }}
-        timeout-minutes: 15
+        timeout-minutes: 25
         run: cd scripts && python3 senac_sc.py
 
       - name: Cursos gratuitos do SENAI Pará (páginas das unidades, sem Claude)

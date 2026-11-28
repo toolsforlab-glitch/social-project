@@ -77,9 +77,9 @@ def ler_curso(url, tentativas=4):
     import time
     for n in range(tentativas):
         b = baixar(url, timeout=60).decode("utf-8", "replace")
-        if "<h1" in b and ("Turmas Dispon" in b or "Posso fazer este curso" in b):
+        if "<h1" in b and "Turmas Dispon" in b:
             break
-        time.sleep(3 + 4 * n)
+        time.sleep(2 + 3 * n)
     t = limpo(re.sub(r"<script.*?</script>|<style.*?</style>", "", b, flags=re.S))
     titulo = limpo((re.search(r"<h1[^>]*>(.*?)</h1>", b, re.S) or [None, ""])[1]) or url.rsplit("/", 1)[-1].replace("-", " ").title()
     desc = re.search(r"O que [ée] (?:o curso|este curso)\??\s*(.+?)(?=\s+O que vou aprender\?)", t)

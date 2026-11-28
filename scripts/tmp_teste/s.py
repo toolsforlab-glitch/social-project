@@ -9,3 +9,5 @@ with ThreadPoolExecutor(2) as ex:
 for c in lidos:
     if "administracao" in c["url"] or not c["turmas"]:
         print(c["url"], len(c["turmas"]), [t["gratis"] for t in c["turmas"]], c["titulo"])
+import collections
+print("com turmas:", sum(1 for c in lidos if c["turmas"]), "sem:", sum(1 for c in lidos if not c["turmas"]))

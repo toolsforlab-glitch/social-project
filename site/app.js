@@ -989,7 +989,9 @@
       // cartões gerais reúnem muitas turmas: a contagem diz também o total de turmas abertas (pedido do responsável, 28/11/2026)
       if (res.some(function (c) { return c.turmas_abertas; })) {
         var nOpcoes = res.reduce(function (s, c) { return s + opcoesAbertas(c); }, 0);
-        resumo += " (ao todo, " + nOpcoes.toLocaleString("pt-BR") + " turmas e cursos com inscrições abertas)";
+        // o número que se lê primeiro é o das turmas; os cartões vêm a seguir (pedido do responsável, 28/11/2026)
+        resumo = nOpcoes.toLocaleString("pt-BR") + " turmas e cursos com inscrições abertas" +
+          (o && o !== "online" ? " presenciais" : "") + " (em " + (res.length === 1 ? "1 cartão" : res.length + " cartões") + ")";
       }
       contagem.textContent = res.length ? resumo : "";
       medirBusca(texto.value, res.length);

@@ -854,7 +854,7 @@
          : c.vagas === "ordem" ? '<p class="vagas-aviso">Vagas por ordem de inscrição: inscreva-se cedo.</p>' : "") +
         // cartão geral: quantas turmas reúne, com a data da contagem (28/11/2026)
         (c.turmas_abertas ? '<p class="turmas-geral">Este cartão reúne ' + c.turmas_abertas.toLocaleString("pt-BR") +
-          " turmas com inscrições abertas (contadas a " + esc(dataBonita(c.turmas_contadas_em)) + "). Escolha a sua na página oficial.</p>" : "") +
+          " " + esc(c.turmas_unidade || "turmas") + " com inscrições abertas (contadas a " + esc(dataBonita(c.turmas_contadas_em)) + "). Escolha a sua na página oficial.</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
         (temTurmas ? "" : requisitosHtml(requisitosDe(c, null))) + antesHtml(c) +

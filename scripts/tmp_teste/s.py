@@ -1,3 +1,4 @@
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import re, urllib.request, urllib.parse, http.cookiejar, html, json
 from comum import AGENTE
 U="https://psg.rj.senac.br/Ext/Vagas.aspx"

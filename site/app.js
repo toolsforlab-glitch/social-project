@@ -853,7 +853,7 @@
         (c.vagas === "sorteio" ? '<p class="vagas-aviso">Vagas por sorteio: inscrever-se não garante a vaga.</p>'
          : c.vagas === "ordem" ? '<p class="vagas-aviso">Vagas por ordem de inscrição: inscreva-se cedo.</p>' : "") +
         // cartão geral: quantas turmas reúne, com a data da contagem (28/11/2026)
-        (c.turmas_abertas ? '<p class="turmas-geral">Este cartão reúne ' + c.turmas_abertas.toLocaleString("pt-BR") +
+        (c.turmas_abertas ? '<p class="turmas-geral">Inclui ' + c.turmas_abertas.toLocaleString("pt-BR") +
           " " + esc(c.turmas_unidade || "turmas") + " com inscrições abertas (contadas a " + esc(dataBonita(c.turmas_contadas_em)) + "). Escolha a sua na página oficial.</p>" : "") +
         '<ul class="factos">' + factosHtml + "</ul>" +
         (condicoes.length ? '<p class="condicao">' + condicoes.join(". ") + "</p>" : "") +
@@ -989,9 +989,9 @@
       // cartões gerais reúnem muitas turmas: a contagem diz também o total de turmas abertas (pedido do responsável, 28/11/2026)
       if (res.some(function (c) { return c.turmas_abertas; })) {
         var nOpcoes = res.reduce(function (s, c) { return s + opcoesAbertas(c); }, 0);
-        // o número que se lê primeiro é o das turmas; os cartões vêm a seguir (pedido do responsável, 28/11/2026)
+        // o número que se lê primeiro é o das turmas; os resultados vêm a seguir (pedido do responsável, 28/11/2026; «cartões» passou a «resultados», porque «cartão» lembra cartão de banco)
         resumo = nOpcoes.toLocaleString("pt-BR") + " turmas e cursos com inscrições abertas" +
-          (o && o !== "online" ? " presenciais" : "") + " (em " + (res.length === 1 ? "1 cartão" : res.length + " cartões") + ")";
+          (o && o !== "online" ? " presenciais" : "") + " (em " + (res.length === 1 ? "1 resultado" : res.length + " resultados") + ")";
       }
       contagem.textContent = res.length ? resumo : "";
       medirBusca(texto.value, res.length);
@@ -1092,7 +1092,7 @@
         return '<li><button type="button" class="botao secundario pequeno" data-pagina="' + i + '"' +
           (aria ? ' aria-label="' + aria + '"' : "") + ">" + rotulo + "</button></li>";
       };
-      var html = '<p class="paginacao-texto">Mostrando ' + ini + "–" + fim + " de " + n + (n === ultimoRes.length ? " cursos" : " cartões") + " (página " + pagina +
+      var html = '<p class="paginacao-texto">Mostrando ' + ini + "–" + fim + " de " + n + (n === ultimoRes.length ? " cursos" : " resultados") + " (página " + pagina +
         " de " + total + ")</p><ul>" + (pagina > 1 ? botao(pagina - 1, "‹ Anterior", "Página anterior") : "");
       var anterior = 0;
       for (var i = 1; i <= total; i++) {
